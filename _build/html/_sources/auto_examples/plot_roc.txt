@@ -1,0 +1,18 @@
+
+
+.. _example_plot_roc.py:
+
+
+=======================================
+Receiver operating characteristic (ROC)
+=======================================
+
+Example of Receiver operating characteristic (ROC) metric to
+evaluate the quality of the output of a classifier.
+
+
+**Python source code:** :download:`plot_roc.py <plot_roc.py>`
+
+.. literalinclude:: plot_roc.py
+    :lines: 9-
+    
