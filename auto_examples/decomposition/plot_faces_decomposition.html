@@ -300,12 +300,12 @@ $(function () {
                         .click(function(event){
                                 if (this == event.target) {
                                         $(this).css('list-style-image',
-                                                   (!$(this).children('ul').is(':hidden')) ? 'url(../../logos/plusBox.png)' : 'url(../../logos/minBox.png)');
+                                                   (!$(this).children('ul').is(':hidden')) ? 'url(../../images/plusBox.png)' : 'url(../../images/minBox.png)');
                                                    $(this).children('ul').toggle('slow');
                                 }
                                 return false;
                         })
-                        .css({cursor:'pointer', 'list-style-image':'url(../../logos/plusBox.png)'})
+                        .css({cursor:'pointer', 'list-style-image':'url(../../images/plusBox.png)'})
                         .children('ul').hide();
                 $('ul li ul li ul li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
 });
