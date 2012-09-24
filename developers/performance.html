@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to optimize for speed &mdash; scikit-learn 0.13-git documentation</title>
+    <title>2. How to optimize for speed &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -29,8 +29,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
-    <link rel="next" title="Utilities for Developers" href="utilities.html" />
-    <link rel="prev" title="Contributing" href="index.html" />
+    <link rel="next" title="3. Utilities for Developers" href="utilities.html" />
+    <link rel="prev" title="1. Contributing" href="index.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -90,14 +90,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="index.html" title="Contributing"
+	<a href="index.html" title="1. Contributing"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Contributing
+	    1. Contributing
 	    </span>
 	    <span class="hiddenrellink">
-	    Contributing
+	    1. Contributing
 	    </span>
 	    
 	    </a>
@@ -107,14 +107,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="utilities.html" title="Utilities for Developers"
+	<a href="utilities.html" title="3. Utilities for Developers"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Utilities for De...
+	    3. Utilities for...
 	    </span>
 	    <span class="hiddenrellink">
-	    Utilities for Developers
+	    3. Utilities for Developers
 	    </span>
 	    
 	    </a>
@@ -130,19 +130,19 @@
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">How to optimize for speed</a><ul>
-<li><a class="reference internal" href="#python-cython-or-c-c">Python, Cython or C/C++?</a></li>
-<li><a class="reference internal" href="#profiling-python-code">Profiling Python code</a></li>
-<li><a class="reference internal" href="#memory-usage-profiling">Memory usage profiling</a></li>
-<li><a class="reference internal" href="#performance-tips-for-the-cython-developer">Performance tips for the Cython developer</a></li>
-<li><a class="reference internal" href="#profiling-compiled-extensions">Profiling compiled extensions</a><ul>
-<li><a class="reference internal" href="#using-yep-and-google-perftools">Using yep and google-perftools</a></li>
-<li><a class="reference internal" href="#using-gprof">Using gprof</a></li>
-<li><a class="reference internal" href="#using-valgrind-callgrind-kcachegrind">Using valgrind / callgrind / kcachegrind</a></li>
+<li><a class="reference internal" href="#">2. How to optimize for speed</a><ul>
+<li><a class="reference internal" href="#python-cython-or-c-c">2.1. Python, Cython or C/C++?</a></li>
+<li><a class="reference internal" href="#profiling-python-code">2.2. Profiling Python code</a></li>
+<li><a class="reference internal" href="#memory-usage-profiling">2.3. Memory usage profiling</a></li>
+<li><a class="reference internal" href="#performance-tips-for-the-cython-developer">2.4. Performance tips for the Cython developer</a></li>
+<li><a class="reference internal" href="#profiling-compiled-extensions">2.5. Profiling compiled extensions</a><ul>
+<li><a class="reference internal" href="#using-yep-and-google-perftools">2.5.1. Using yep and google-perftools</a></li>
+<li><a class="reference internal" href="#using-gprof">2.5.2. Using gprof</a></li>
+<li><a class="reference internal" href="#using-valgrind-callgrind-kcachegrind">2.5.3. Using valgrind / callgrind / kcachegrind</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#multi-core-parallelism-using-joblib-parallel">Multi-core parallelism using <tt class="docutils literal"><span class="pre">joblib.Parallel</span></tt></a></li>
-<li><a class="reference internal" href="#a-sample-algorithmic-trick-warm-restarts-for-cross-validation">A sample algorithmic trick: warm restarts for cross validation</a></li>
+<li><a class="reference internal" href="#multi-core-parallelism-using-joblib-parallel">2.6. Multi-core parallelism using <tt class="docutils literal"><span class="pre">joblib.Parallel</span></tt></a></li>
+<li><a class="reference internal" href="#a-sample-algorithmic-trick-warm-restarts-for-cross-validation">2.7. A sample algorithmic trick: warm restarts for cross validation</a></li>
 </ul>
 </li>
 </ul>
@@ -159,7 +159,7 @@
           <div class="body">
             
   <div class="section" id="how-to-optimize-for-speed">
-<span id="performance-howto"></span><h1>How to optimize for speed<a class="headerlink" href="#how-to-optimize-for-speed" title="Permalink to this headline">¶</a></h1>
+<span id="performance-howto"></span><h1>2. How to optimize for speed<a class="headerlink" href="#how-to-optimize-for-speed" title="Permalink to this headline">¶</a></h1>
 <p>The following gives some practical guidelines to help you write efficient
 code for the scikit-learn project.</p>
 <div class="admonition note">
@@ -176,7 +176,7 @@ that is better suited to the problem.</p>
 <p class="last">The section <a class="reference internal" href="#warm-restarts"><em>A sample algorithmic trick: warm restarts for cross validation</em></a> gives an example of such a trick.</p>
 </div>
 <div class="section" id="python-cython-or-c-c">
-<h2>Python, Cython or C/C++?<a class="headerlink" href="#python-cython-or-c-c" title="Permalink to this headline">¶</a></h2>
+<h2>2.1. Python, Cython or C/C++?<a class="headerlink" href="#python-cython-or-c-c" title="Permalink to this headline">¶</a></h2>
 <p>In general, the scikit-learn project emphasizes the <strong>readability</strong> of
 the source code to make it easy for the project users to dive into the
 source code so as to understand how the algorithm behaves on their data
@@ -221,7 +221,7 @@ the Cython source code. The goal is to make it possible to install the
 scikit on any machine with Python, Numpy, Scipy and C/C++ compiler.</p>
 </div>
 <div class="section" id="profiling-python-code">
-<span id="id1"></span><h2>Profiling Python code<a class="headerlink" href="#profiling-python-code" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>2.2. Profiling Python code<a class="headerlink" href="#profiling-python-code" title="Permalink to this headline">¶</a></h2>
 <p>In order to profile Python code we recommend to write a script that
 loads and prepare you data and then use the IPython integrated profiler
 for interactively exploring the relevant part for the code.</p>
@@ -392,7 +392,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 pin-point the most expensive expressions that would deserve additional care.</p>
 </div>
 <div class="section" id="memory-usage-profiling">
-<h2>Memory usage profiling<a class="headerlink" href="#memory-usage-profiling" title="Permalink to this headline">¶</a></h2>
+<h2>2.3. Memory usage profiling<a class="headerlink" href="#memory-usage-profiling" title="Permalink to this headline">¶</a></h2>
 <p>You can analyze in detail the memory usage of any Python code with the help of
 <a class="reference external" href="http://pypi.python.org/pypi/memory_profiler">memory_profiler</a>. First,
 install the latest version:</p>
@@ -468,7 +468,7 @@ maximum of 3: 76.402344 MB per loop</pre>
 <tt class="docutils literal"><span class="pre">%mprun?</span></tt>.</p>
 </div>
 <div class="section" id="performance-tips-for-the-cython-developer">
-<h2>Performance tips for the Cython developer<a class="headerlink" href="#performance-tips-for-the-cython-developer" title="Permalink to this headline">¶</a></h2>
+<h2>2.4. Performance tips for the Cython developer<a class="headerlink" href="#performance-tips-for-the-cython-developer" title="Permalink to this headline">¶</a></h2>
 <p>If profiling of the Python code reveals that the Python interpreter
 overhead is larger by one order of magnitude or more than the cost of the
 actual numerical computation (e.g. <tt class="docutils literal"><span class="pre">for</span></tt> loops over vector components,
@@ -491,13 +491,13 @@ memory alignement, direct blas calls...</p>
 </ul>
 </div>
 <div class="section" id="profiling-compiled-extensions">
-<span id="profiling-compiled-extension"></span><h2>Profiling compiled extensions<a class="headerlink" href="#profiling-compiled-extensions" title="Permalink to this headline">¶</a></h2>
+<span id="profiling-compiled-extension"></span><h2>2.5. Profiling compiled extensions<a class="headerlink" href="#profiling-compiled-extensions" title="Permalink to this headline">¶</a></h2>
 <p>When working with compiled extensions (written in C/C++ with a wrapper or
 directly as Cython extension), the default Python profiler is useless:
 we need a dedicated tool to instrospect what&#8217;s happening inside the
 compiled extension it-self.</p>
 <div class="section" id="using-yep-and-google-perftools">
-<h3>Using yep and google-perftools<a class="headerlink" href="#using-yep-and-google-perftools" title="Permalink to this headline">¶</a></h3>
+<h3>2.5.1. Using yep and google-perftools<a class="headerlink" href="#using-yep-and-google-perftools" title="Permalink to this headline">¶</a></h3>
 <p>Easy profiling without special compilation options use yep:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://pypi.python.org/pypi/yep">http://pypi.python.org/pypi/yep</a></li>
@@ -512,7 +512,7 @@ issue can be tracked on the <a class="reference external" href="https://code.goo
 </div>
 </div>
 <div class="section" id="using-gprof">
-<h3>Using gprof<a class="headerlink" href="#using-gprof" title="Permalink to this headline">¶</a></h3>
+<h3>2.5.2. Using gprof<a class="headerlink" href="#using-gprof" title="Permalink to this headline">¶</a></h3>
 <p>In order to profile compiled Python extensions one could use <tt class="docutils literal"><span class="pre">gprof</span></tt>
 after having recompiled the project with <tt class="docutils literal"><span class="pre">gcc</span> <span class="pre">-pg</span></tt> and using the
 <tt class="docutils literal"><span class="pre">python-dbg</span></tt> variant of the interpreter on debian / ubuntu: however
@@ -522,12 +522,12 @@ with <tt class="docutils literal"><span class="pre">-pg</span></tt> which is rat
 recompile everything.</p>
 </div>
 <div class="section" id="using-valgrind-callgrind-kcachegrind">
-<h3>Using valgrind / callgrind / kcachegrind<a class="headerlink" href="#using-valgrind-callgrind-kcachegrind" title="Permalink to this headline">¶</a></h3>
+<h3>2.5.3. Using valgrind / callgrind / kcachegrind<a class="headerlink" href="#using-valgrind-callgrind-kcachegrind" title="Permalink to this headline">¶</a></h3>
 <p>TODO</p>
 </div>
 </div>
 <div class="section" id="multi-core-parallelism-using-joblib-parallel">
-<h2>Multi-core parallelism using <tt class="docutils literal"><span class="pre">joblib.Parallel</span></tt><a class="headerlink" href="#multi-core-parallelism-using-joblib-parallel" title="Permalink to this headline">¶</a></h2>
+<h2>2.6. Multi-core parallelism using <tt class="docutils literal"><span class="pre">joblib.Parallel</span></tt><a class="headerlink" href="#multi-core-parallelism-using-joblib-parallel" title="Permalink to this headline">¶</a></h2>
 <p>TODO: give a simple teaser example here.</p>
 <p>Checkout the official joblib documentation:</p>
 <ul class="simple">
@@ -535,7 +535,7 @@ recompile everything.</p>
 </ul>
 </div>
 <div class="section" id="a-sample-algorithmic-trick-warm-restarts-for-cross-validation">
-<span id="warm-restarts"></span><h2>A sample algorithmic trick: warm restarts for cross validation<a class="headerlink" href="#a-sample-algorithmic-trick-warm-restarts-for-cross-validation" title="Permalink to this headline">¶</a></h2>
+<span id="warm-restarts"></span><h2>2.7. A sample algorithmic trick: warm restarts for cross validation<a class="headerlink" href="#a-sample-algorithmic-trick-warm-restarts-for-cross-validation" title="Permalink to this headline">¶</a></h2>
 <p>TODO: demonstrate the warm restart tricks for cross validation of linear
 regression with Coordinate Descent.</p>
 </div>
@@ -548,23 +548,6 @@ regression with Coordinate Descent.</p>
         <div class="clearer"></div>
       </div>
     </div>
-
-<script type="text/javascript">
-$(function () {
-             $('ul li ul li ul li:has(ul)')
-                        .click(function(event){
-                                if (this == event.target) {
-                                        $(this).css('list-style-image',
-                                                   (!$(this).children('ul').is(':hidden')) ? 'url(_static/plusBox.png)' : 'url(_static/minBox.png)');
-                                                   $(this).children('ul').toggle('slow');
-                                }
-                                return false;
-                        })
-                        .css({cursor:'pointer', 'list-style-image':'url(_static/plusBox.png)'})
-                        .children('ul').hide();
-                $('ul li ul li ul li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
-});
-</script>
 
     <div class="footer">
         &copy; 2010–2011, scikit-learn developers (BSD License).
@@ -579,12 +562,12 @@ $(function () {
     <div class="buttonPrevious">
       <a href="index.html">
         Previous
-      </a>  
+      </a>
     </div>
     <div class="buttonNext">
       <a href="utilities.html">
         Next
-      </a>  
+      </a>
     </div>
     
      </div>
@@ -597,6 +580,12 @@ $(function () {
                $(this).css('background-color', '#A7D6E2');
            }
        );
+       var bodywrapper = $('.bodywrapper');
+   	var sidebarbutton = $('#sidebarbutton');
+        sidebarbutton.css({
+	    'height': '900px'
+       });
+       
      </script>
   </body>
 </html>

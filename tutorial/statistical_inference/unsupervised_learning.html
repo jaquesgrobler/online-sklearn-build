@@ -408,7 +408,7 @@ data by projecting on a principal subspace.</p>
 <p><a class="reference internal" href="../../modules/decomposition.html#ica"><em>Independent component analysis (ICA)</em></a> selects components so that the distribution of their loadings carries
 a maximum amount of independent information. It is able to recover
 <strong>non-Gaussian</strong> independent signals:</p>
-<a class="reference external image-reference" href="../../auto_examples/decomposition/plot_ica_blind_source_separation.html"><img alt="tutorial/statistical_inference/../../auto_examples/decomposition/images/plot_ica_blind_source_separation_1.png" class="align-center" src="tutorial/statistical_inference/../../auto_examples/decomposition/images/plot_ica_blind_source_separation_1.png" /></a>
+<a class="reference external image-reference" href="../../auto_examples/decomposition/plot_ica_blind_source_separation.html"><img alt="../../_images/plot_ica_blind_source_separation_1.png" class="align-center" src="../../_images/plot_ica_blind_source_separation_1.png" style="width: 560.0px; height: 420.0px;" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Generate sample data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span>  <span class="c"># Signal 1 : sinusoidal signal</span>
@@ -440,23 +440,6 @@ a maximum amount of independent information. It is able to recover
       </div>
     </div>
 
-<script type="text/javascript">
-$(function () {
-             $('ul li ul li ul li:has(ul)')
-                        .click(function(event){
-                                if (this == event.target) {
-                                        $(this).css('list-style-image',
-                                                   (!$(this).children('ul').is(':hidden')) ? 'url(_static/plusBox.png)' : 'url(_static/minBox.png)');
-                                                   $(this).children('ul').toggle('slow');
-                                }
-                                return false;
-                        })
-                        .css({cursor:'pointer', 'list-style-image':'url(_static/plusBox.png)'})
-                        .children('ul').hide();
-                $('ul li ul li ul li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
-});
-</script>
-
     <div class="footer">
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
@@ -470,12 +453,12 @@ $(function () {
     <div class="buttonPrevious">
       <a href="model_selection.html">
         Previous
-      </a>  
+      </a>
     </div>
     <div class="buttonNext">
       <a href="putting_together.html">
         Next
-      </a>  
+      </a>
     </div>
     
      </div>
@@ -488,6 +471,12 @@ $(function () {
                $(this).css('background-color', '#A7D6E2');
            }
        );
+       var bodywrapper = $('.bodywrapper');
+   	var sidebarbutton = $('#sidebarbutton');
+        sidebarbutton.css({
+	    'height': '900px'
+       });
+       
      </script>
   </body>
 </html>

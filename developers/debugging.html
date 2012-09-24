@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Developers’ Tips for Debugging &mdash; scikit-learn 0.13-git documentation</title>
+    <title>4. Developers’ Tips for Debugging &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -29,8 +29,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
-    <link rel="next" title="About us" href="../about.html" />
-    <link rel="prev" title="Utilities for Developers" href="utilities.html" />
+    <link rel="next" title="5. About us" href="../about.html" />
+    <link rel="prev" title="3. Utilities for Developers" href="utilities.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -90,14 +90,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="utilities.html" title="Utilities for Developers"
+	<a href="utilities.html" title="3. Utilities for Developers"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Utilities for De...
+	    3. Utilities for...
 	    </span>
 	    <span class="hiddenrellink">
-	    Utilities for Developers
+	    3. Utilities for Developers
 	    </span>
 	    
 	    </a>
@@ -107,14 +107,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="../about.html" title="About us"
+	<a href="../about.html" title="5. About us"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    About us
+	    5. About us
 	    </span>
 	    <span class="hiddenrellink">
-	    About us
+	    5. About us
 	    </span>
 	    
 	    </a>
@@ -130,8 +130,8 @@
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">Developers&#8217; Tips for Debugging</a><ul>
-<li><a class="reference internal" href="#memory-errors-debugging-cython-with-valgrind">Memory errors: debugging Cython with valgrind</a></li>
+<li><a class="reference internal" href="#">4. Developers&#8217; Tips for Debugging</a><ul>
+<li><a class="reference internal" href="#memory-errors-debugging-cython-with-valgrind">4.1. Memory errors: debugging Cython with valgrind</a></li>
 </ul>
 </li>
 </ul>
@@ -148,9 +148,9 @@
           <div class="body">
             
   <div class="section" id="developers-tips-for-debugging">
-<span id="developers-debugging"></span><h1>Developers&#8217; Tips for Debugging<a class="headerlink" href="#developers-tips-for-debugging" title="Permalink to this headline">¶</a></h1>
+<span id="developers-debugging"></span><h1>4. Developers&#8217; Tips for Debugging<a class="headerlink" href="#developers-tips-for-debugging" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="memory-errors-debugging-cython-with-valgrind">
-<h2>Memory errors: debugging Cython with valgrind<a class="headerlink" href="#memory-errors-debugging-cython-with-valgrind" title="Permalink to this headline">¶</a></h2>
+<h2>4.1. Memory errors: debugging Cython with valgrind<a class="headerlink" href="#memory-errors-debugging-cython-with-valgrind" title="Permalink to this headline">¶</a></h2>
 <p>While python/numpy&#8217;s built-in memory management is relatively robust, it can
 lead to performance penalties for some routines. For this reason, much of
 the high-performance code in scikit-learn in written in cython. This
@@ -198,23 +198,6 @@ tutorials and documentation on the <a class="reference external" href="http://va
       </div>
     </div>
 
-<script type="text/javascript">
-$(function () {
-             $('ul li ul li ul li:has(ul)')
-                        .click(function(event){
-                                if (this == event.target) {
-                                        $(this).css('list-style-image',
-                                                   (!$(this).children('ul').is(':hidden')) ? 'url(_static/plusBox.png)' : 'url(_static/minBox.png)');
-                                                   $(this).children('ul').toggle('slow');
-                                }
-                                return false;
-                        })
-                        .css({cursor:'pointer', 'list-style-image':'url(_static/plusBox.png)'})
-                        .children('ul').hide();
-                $('ul li ul li ul li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
-});
-</script>
-
     <div class="footer">
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
@@ -228,12 +211,12 @@ $(function () {
     <div class="buttonPrevious">
       <a href="utilities.html">
         Previous
-      </a>  
+      </a>
     </div>
     <div class="buttonNext">
       <a href="../about.html">
         Next
-      </a>  
+      </a>
     </div>
     
      </div>
@@ -246,6 +229,12 @@ $(function () {
                $(this).css('background-color', '#A7D6E2');
            }
        );
+       var bodywrapper = $('.bodywrapper');
+   	var sidebarbutton = $('#sidebarbutton');
+        sidebarbutton.css({
+	    'height': '900px'
+       });
+       
      </script>
   </body>
 </html>

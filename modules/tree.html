@@ -285,7 +285,7 @@ iris dataset:</p>
 </pre></div>
 </div>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/tree/plot_iris.html"><img alt="../_images/plot_iris_11.png" src="../_images/plot_iris_11.png" style="width: 600.0px; height: 450.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/tree/plot_iris.html"><img alt="../_images/plot_iris_13.png" src="../_images/plot_iris_13.png" style="width: 600.0px; height: 450.0px;" /></a>
 </div>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
@@ -558,23 +558,6 @@ Elements of Statistical Learning, Springer, 2009.</li>
       </div>
     </div>
 
-<script type="text/javascript">
-$(function () {
-             $('ul li ul li ul li:has(ul)')
-                        .click(function(event){
-                                if (this == event.target) {
-                                        $(this).css('list-style-image',
-                                                   (!$(this).children('ul').is(':hidden')) ? 'url(_static/plusBox.png)' : 'url(_static/minBox.png)');
-                                                   $(this).children('ul').toggle('slow');
-                                }
-                                return false;
-                        })
-                        .css({cursor:'pointer', 'list-style-image':'url(_static/plusBox.png)'})
-                        .children('ul').hide();
-                $('ul li ul li ul li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
-});
-</script>
-
     <div class="footer">
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
@@ -588,12 +571,12 @@ $(function () {
     <div class="buttonPrevious">
       <a href="naive_bayes.html">
         Previous
-      </a>  
+      </a>
     </div>
     <div class="buttonNext">
       <a href="ensemble.html">
         Next
-      </a>  
+      </a>
     </div>
     
      </div>
@@ -606,6 +589,12 @@ $(function () {
                $(this).css('background-color', '#A7D6E2');
            }
        );
+       var bodywrapper = $('.bodywrapper');
+   	var sidebarbutton = $('#sidebarbutton');
+        sidebarbutton.css({
+	    'height': '900px'
+       });
+       
      </script>
   </body>
 </html>

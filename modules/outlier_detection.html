@@ -264,7 +264,7 @@ whithout being influenced by outliers). The Mahalanobis distances
 obtained from this estimate is used to derive a measure of outlyingness.
 This strategy is illustrated below.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/covariance/plot_mahalanobis_distances.html"><img alt="modules/../auto_examples/covariance/images/plot_mahalanobis_distances_1.png" src="modules/../auto_examples/covariance/images/plot_mahalanobis_distances_1.png" /></a>
+<a class="reference external image-reference" href="../auto_examples/covariance/plot_mahalanobis_distances.html"><img alt="../_images/plot_mahalanobis_distances_11.png" src="../_images/plot_mahalanobis_distances_11.png" style="width: 600.0px; height: 450.0px;" /></a>
 </div>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
@@ -313,7 +313,7 @@ fits a bit the outliers present in the training set. On the
 opposite, the decision rule based on fitting an
 <a class="reference internal" href="generated/sklearn.covariance.EllipticEnvelope.html#sklearn.covariance.EllipticEnvelope" title="sklearn.covariance.EllipticEnvelope"><tt class="xref py py-class docutils literal"><span class="pre">covariance.EllipticEnvelope</span></tt></a> learns an ellipse, which
 fits well the inlier distribution.</td>
-<td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier1" src="modules/../auto_examples/covariance/images/plot_outlier_detection_1.png" /></a></td>
+<td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier1" src="../_images/plot_outlier_detection_11.png" style="width: 500.0px; height: 250.0px;" /></a></td>
 </tr>
 <tr class="row-even"><td>As the inlier distribution becomes bimodal, the
 <a class="reference internal" href="generated/sklearn.covariance.EllipticEnvelope.html#sklearn.covariance.EllipticEnvelope" title="sklearn.covariance.EllipticEnvelope"><tt class="xref py py-class docutils literal"><span class="pre">covariance.EllipticEnvelope</span></tt></a> does not fit well the
@@ -321,13 +321,13 @@ inliers. However, we can see that the <a class="reference internal" href="genera
 tends to overfit: because it has not model of inliers, it
 interprets a region where, by chance some outliers are
 clustered, as inliers.</td>
-<td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier2" src="modules/../auto_examples/covariance/images/plot_outlier_detection_2.png" /></a></td>
+<td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier2" src="../_images/plot_outlier_detection_21.png" style="width: 500.0px; height: 250.0px;" /></a></td>
 </tr>
 <tr class="row-odd"><td>If the inlier distribution is strongly non Gaussian, the
 <a class="reference internal" href="generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM" title="sklearn.svm.OneClassSVM"><tt class="xref py py-class docutils literal"><span class="pre">svm.OneClassSVM</span></tt></a> is able to recover a reasonable
 approximation, whereas the <a class="reference internal" href="generated/sklearn.covariance.EllipticEnvelope.html#sklearn.covariance.EllipticEnvelope" title="sklearn.covariance.EllipticEnvelope"><tt class="xref py py-class docutils literal"><span class="pre">covariance.EllipticEnvelope</span></tt></a>
 completely fails.</td>
-<td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier3" src="modules/../auto_examples/covariance/images/plot_outlier_detection_3.png" /></a></td>
+<td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier3" src="../_images/plot_outlier_detection_31.png" style="width: 500.0px; height: 250.0px;" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -352,23 +352,6 @@ detection with <a class="reference internal" href="generated/sklearn.covariance.
       </div>
     </div>
 
-<script type="text/javascript">
-$(function () {
-             $('ul li ul li ul li:has(ul)')
-                        .click(function(event){
-                                if (this == event.target) {
-                                        $(this).css('list-style-image',
-                                                   (!$(this).children('ul').is(':hidden')) ? 'url(_static/plusBox.png)' : 'url(_static/minBox.png)');
-                                                   $(this).children('ul').toggle('slow');
-                                }
-                                return false;
-                        })
-                        .css({cursor:'pointer', 'list-style-image':'url(_static/plusBox.png)'})
-                        .children('ul').hide();
-                $('ul li ul li ul li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
-});
-</script>
-
     <div class="footer">
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
@@ -382,12 +365,12 @@ $(function () {
     <div class="buttonPrevious">
       <a href="covariance.html">
         Previous
-      </a>  
+      </a>
     </div>
     <div class="buttonNext">
       <a href="hmm.html">
         Next
-      </a>  
+      </a>
     </div>
     
      </div>
@@ -400,6 +383,12 @@ $(function () {
                $(this).css('background-color', '#A7D6E2');
            }
        );
+       var bodywrapper = $('.bodywrapper');
+   	var sidebarbutton = $('#sidebarbutton');
+        sidebarbutton.css({
+	    'height': '900px'
+       });
+       
      </script>
   </body>
 </html>

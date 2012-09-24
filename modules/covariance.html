@@ -272,7 +272,7 @@ terms of likelihood.</li>
 </ul>
 </div>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/covariance/plot_covariance_estimation.html"><img alt="modules/../auto_examples/covariance/images/plot_covariance_estimation_1.png" src="modules/../auto_examples/covariance/images/plot_covariance_estimation_1.png" /></a>
+<a class="reference external image-reference" href="../auto_examples/covariance/plot_covariance_estimation.html"><img alt="../_images/plot_covariance_estimation_11.png" src="../_images/plot_covariance_estimation_11.png" style="width: 520.0px; height: 390.0px;" /></a>
 </div>
 </div>
 <div class="section" id="oracle-approximating-shrinkage">
@@ -305,7 +305,7 @@ an <a class="reference internal" href="generated/sklearn.covariance.OAS.html#skl
 </ul>
 </div>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/covariance/plot_lw_vs_oas.html"><img alt="modules/../auto_examples/covariance/images/plot_lw_vs_oas_1.png" src="modules/../auto_examples/covariance/images/plot_lw_vs_oas_1.png" /></a>
+<a class="reference external image-reference" href="../auto_examples/covariance/plot_lw_vs_oas.html"><img alt="../_images/plot_lw_vs_oas_11.png" src="../_images/plot_lw_vs_oas_11.png" style="width: 600.0px; height: 450.0px;" /></a>
 </div>
 </div>
 </div>
@@ -330,7 +330,7 @@ the precision matrix: the higher its <cite>alpha</cite> parameter, the more spar
 the precision matrix. The corresponding <a class="reference internal" href="generated/sklearn.covariance.GraphLassoCV.html#sklearn.covariance.GraphLassoCV" title="sklearn.covariance.GraphLassoCV"><tt class="xref py py-class docutils literal"><span class="pre">GraphLassoCV</span></tt></a> object uses
 cross-validation to automatically set the <cite>alpha</cite> parameter.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/covariance/plot_sparse_cov.html"><img alt="modules/../auto_examples/covariance/images/plot_sparse_cov_1.png" src="modules/../auto_examples/covariance/images/plot_sparse_cov_1.png" /></a>
+<a class="reference external image-reference" href="../auto_examples/covariance/plot_sparse_cov.html"><img alt="../_images/plot_sparse_cov_11.png" src="../_images/plot_sparse_cov_11.png" style="width: 600.0px; height: 360.0px;" /></a>
 <p class="caption"><em>A comparison of maximum likelihood, shrinkage and sparse estimates of
 the covariance and precision matrix in the very small samples
 settings.</em></p>
@@ -453,8 +453,8 @@ visualize the difference between <a class="reference internal" href="generated/s
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="../auto_examples/covariance/plot_robust_vs_empirical_covariance.html"><img alt="robust_vs_emp" src="modules/../auto_examples/covariance/images/plot_robust_vs_empirical_covariance_1.png" /></a></td>
-<td><a class="reference external" href="../auto_examples/covariance/plot_mahalanobis_distances.html"><img alt="mahalanobis" src="modules/../auto_examples/covariance/images/plot_mahalanobis_distances_1.png" /></a></td>
+<tr class="row-even"><td><a class="reference external" href="../auto_examples/covariance/plot_robust_vs_empirical_covariance.html"><img alt="robust_vs_emp" src="../_images/plot_robust_vs_empirical_covariance_11.png" style="width: 392.0px; height: 294.0px;" /></a></td>
+<td><a class="reference external" href="../auto_examples/covariance/plot_mahalanobis_distances.html"><img alt="mahalanobis" src="../_images/plot_mahalanobis_distances_11.png" style="width: 392.0px; height: 294.0px;" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -470,23 +470,6 @@ visualize the difference between <a class="reference internal" href="generated/s
       </div>
     </div>
 
-<script type="text/javascript">
-$(function () {
-             $('ul li ul li ul li:has(ul)')
-                        .click(function(event){
-                                if (this == event.target) {
-                                        $(this).css('list-style-image',
-                                                   (!$(this).children('ul').is(':hidden')) ? 'url(_static/plusBox.png)' : 'url(_static/minBox.png)');
-                                                   $(this).children('ul').toggle('slow');
-                                }
-                                return false;
-                        })
-                        .css({cursor:'pointer', 'list-style-image':'url(_static/plusBox.png)'})
-                        .children('ul').hide();
-                $('ul li ul li ul li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
-});
-</script>
-
     <div class="footer">
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
@@ -500,12 +483,12 @@ $(function () {
     <div class="buttonPrevious">
       <a href="decomposition.html">
         Previous
-      </a>  
+      </a>
     </div>
     <div class="buttonNext">
       <a href="outlier_detection.html">
         Next
-      </a>  
+      </a>
     </div>
     
      </div>
@@ -518,6 +501,12 @@ $(function () {
                $(this).css('background-color', '#A7D6E2');
            }
        );
+       var bodywrapper = $('.bodywrapper');
+   	var sidebarbutton = $('#sidebarbutton');
+        sidebarbutton.css({
+	    'height': '900px'
+       });
+       
      </script>
   </body>
 </html>

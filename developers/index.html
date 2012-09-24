@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Contributing &mdash; scikit-learn 0.13-git documentation</title>
+    <title>1. Contributing &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -29,7 +29,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
-    <link rel="next" title="How to optimize for speed" href="performance.html" />
+    <link rel="next" title="2. How to optimize for speed" href="performance.html" />
     <link rel="prev" title="Multi-output Decision Tree Regression" href="../auto_examples/tree/plot_tree_regression_multioutput.html" />
 <script type="text/javascript">
 
@@ -107,14 +107,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="performance.html" title="How to optimize for speed"
+	<a href="performance.html" title="2. How to optimize for speed"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    How to optimize ...
+	    2. How to optimi...
 	    </span>
 	    <span class="hiddenrellink">
-	    How to optimize for speed
+	    2. How to optimize for speed
 	    </span>
 	    
 	    </a>
@@ -130,35 +130,35 @@
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">Contributing</a><ul>
-<li><a class="reference internal" href="#submitting-a-bug-report">Submitting a bug report</a></li>
-<li><a class="reference internal" href="#retrieving-the-latest-code">Retrieving the latest code</a></li>
-<li><a class="reference internal" href="#contributing-code">Contributing code</a><ul>
-<li><a class="reference internal" href="#how-to-contribute">How to contribute</a></li>
-<li><a class="reference internal" href="#easy-issues">Easy Issues</a></li>
-<li><a class="reference internal" href="#documentation">Documentation</a></li>
-<li><a class="reference internal" href="#testing-and-improving-test-coverage">Testing and improving test coverage</a></li>
-<li><a class="reference internal" href="#developers-web-site">Developers web site</a></li>
-<li><a class="reference internal" href="#issue-tracker-tags">Issue Tracker Tags</a></li>
+<li><a class="reference internal" href="#">1. Contributing</a><ul>
+<li><a class="reference internal" href="#submitting-a-bug-report">1.1. Submitting a bug report</a></li>
+<li><a class="reference internal" href="#retrieving-the-latest-code">1.2. Retrieving the latest code</a></li>
+<li><a class="reference internal" href="#contributing-code">1.3. Contributing code</a><ul>
+<li><a class="reference internal" href="#how-to-contribute">1.3.1. How to contribute</a></li>
+<li><a class="reference internal" href="#easy-issues">1.3.2. Easy Issues</a></li>
+<li><a class="reference internal" href="#documentation">1.3.3. Documentation</a></li>
+<li><a class="reference internal" href="#testing-and-improving-test-coverage">1.3.4. Testing and improving test coverage</a></li>
+<li><a class="reference internal" href="#developers-web-site">1.3.5. Developers web site</a></li>
+<li><a class="reference internal" href="#issue-tracker-tags">1.3.6. Issue Tracker Tags</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#other-ways-to-contribute">Other ways to contribute</a></li>
-<li><a class="reference internal" href="#coding-guidelines">Coding guidelines</a><ul>
-<li><a class="reference internal" href="#input-validation">Input validation</a></li>
-<li><a class="reference internal" href="#random-numbers">Random Numbers</a></li>
+<li><a class="reference internal" href="#other-ways-to-contribute">1.4. Other ways to contribute</a></li>
+<li><a class="reference internal" href="#coding-guidelines">1.5. Coding guidelines</a><ul>
+<li><a class="reference internal" href="#input-validation">1.5.1. Input validation</a></li>
+<li><a class="reference internal" href="#random-numbers">1.5.2. Random Numbers</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#apis-of-scikit-learn-objects">APIs of scikit-learn objects</a><ul>
-<li><a class="reference internal" href="#different-objects">Different objects</a></li>
-<li><a class="reference internal" href="#estimators">Estimators</a><ul>
-<li><a class="reference internal" href="#instantiation">Instantiation</a></li>
-<li><a class="reference internal" href="#fitting">Fitting</a></li>
-<li><a class="reference internal" href="#optional-arguments">Optional Arguments</a></li>
+<li><a class="reference internal" href="#apis-of-scikit-learn-objects">1.6. APIs of scikit-learn objects</a><ul>
+<li><a class="reference internal" href="#different-objects">1.6.1. Different objects</a></li>
+<li><a class="reference internal" href="#estimators">1.6.2. Estimators</a><ul>
+<li><a class="reference internal" href="#instantiation">1.6.2.1. Instantiation</a></li>
+<li><a class="reference internal" href="#fitting">1.6.2.2. Fitting</a></li>
+<li><a class="reference internal" href="#optional-arguments">1.6.2.3. Optional Arguments</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#unresolved-api-issues">Unresolved API issues</a></li>
-<li><a class="reference internal" href="#working-notes">Working notes</a></li>
-<li><a class="reference internal" href="#specific-models">Specific models</a></li>
+<li><a class="reference internal" href="#unresolved-api-issues">1.6.3. Unresolved API issues</a></li>
+<li><a class="reference internal" href="#working-notes">1.6.4. Working notes</a></li>
+<li><a class="reference internal" href="#specific-models">1.6.5. Specific models</a></li>
 </ul>
 </li>
 </ul>
@@ -177,19 +177,19 @@
           <div class="body">
             
   <div class="section" id="contributing">
-<span id="id1"></span><h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>1. Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
 <p>This project is a community effort, and everyone is welcome to
 contribute.</p>
 <p>The project is hosted on <a class="reference external" href="http://github.com/scikit-learn/scikit-learn">http://github.com/scikit-learn/scikit-learn</a></p>
 <div class="section" id="submitting-a-bug-report">
-<h2>Submitting a bug report<a class="headerlink" href="#submitting-a-bug-report" title="Permalink to this headline">¶</a></h2>
+<h2>1.1. Submitting a bug report<a class="headerlink" href="#submitting-a-bug-report" title="Permalink to this headline">¶</a></h2>
 <p>In case you experience issues using this package, do not hesitate to submit a
 ticket to the
 <a class="reference external" href="http://github.com/scikit-learn/scikit-learn/issues">Bug Tracker</a>. You are
 also welcome to post feature requests or links to pull requests.</p>
 </div>
 <div class="section" id="retrieving-the-latest-code">
-<span id="git-repo"></span><h2>Retrieving the latest code<a class="headerlink" href="#retrieving-the-latest-code" title="Permalink to this headline">¶</a></h2>
+<span id="git-repo"></span><h2>1.2. Retrieving the latest code<a class="headerlink" href="#retrieving-the-latest-code" title="Permalink to this headline">¶</a></h2>
 <p>We use <a class="reference external" href="http://git-scm.com/">Git</a> for version control and
 <a class="reference external" href="http://github.com/">GitHub</a> for hosting our main repository.</p>
 <p>You can check out the latest sources with the command:</p>
@@ -209,7 +209,7 @@ build in-place and launch all the tests. Have a look at the <tt class="docutils 
 additional utilities.</p>
 </div>
 <div class="section" id="contributing-code">
-<h2>Contributing code<a class="headerlink" href="#contributing-code" title="Permalink to this headline">¶</a></h2>
+<h2>1.3. Contributing code<a class="headerlink" href="#contributing-code" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>To avoid duplicating work, it is highly advised that you contact the
@@ -217,7 +217,7 @@ developers on the mailing list before starting work on a non-trivial feature.</p
 <p class="last"><a class="reference external" href="https://lists.sourceforge.net/lists/listinfo/scikit-learn-general">https://lists.sourceforge.net/lists/listinfo/scikit-learn-general</a></p>
 </div>
 <div class="section" id="how-to-contribute">
-<h3>How to contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h3>
+<h3>1.3.1. How to contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h3>
 <p>The preferred way to contribute to scikit-learn is to fork the <a class="reference external" href="http://github.com/scikit-learn/scikit-learn/">main
 repository</a> on GitHub:</p>
 <blockquote>
@@ -340,7 +340,7 @@ right direction.</p>
 </div>
 </div>
 <div class="section" id="easy-issues">
-<h3>Easy Issues<a class="headerlink" href="#easy-issues" title="Permalink to this headline">¶</a></h3>
+<h3>1.3.2. Easy Issues<a class="headerlink" href="#easy-issues" title="Permalink to this headline">¶</a></h3>
 <p>A great way to start contributing to scikit-learn is to pick an item from the
 list of <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/issues?labels=Easy">Easy issues</a>
 in the issue tracker. Resolving these issues allow you to start contributing
@@ -349,7 +349,7 @@ be greatly appreciated by the more experienced developers as it helps free up
 their time to concentrate on other issues.</p>
 </div>
 <div class="section" id="documentation">
-<span id="contribute-documentation"></span><h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<span id="contribute-documentation"></span><h3>1.3.3. Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
 <p>We are glad to accept any sort of documentation: function docstrings,
 reStructuredText documents (like this one), tutorials, etc. reStructuredText
 documents live in the source code repository under the doc/ directory.</p>
@@ -376,7 +376,7 @@ slightly differently. To get the best results, you should use version
 </div>
 </div>
 <div class="section" id="testing-and-improving-test-coverage">
-<span id="testing-coverage"></span><h3>Testing and improving test coverage<a class="headerlink" href="#testing-and-improving-test-coverage" title="Permalink to this headline">¶</a></h3>
+<span id="testing-coverage"></span><h3>1.3.4. Testing and improving test coverage<a class="headerlink" href="#testing-and-improving-test-coverage" title="Permalink to this headline">¶</a></h3>
 <p>High-quality <a class="reference external" href="http://en.wikipedia.org/wiki/Unit_testing">unit testing</a>
 is a corner-stone of the sciki-learn development process. For this
 purpose, we use the <a class="reference external" href="http://nose.readthedocs.org/en/latest/">nose</a>
@@ -401,11 +401,11 @@ write or adapt a test specifically for these lines.</li>
 </div>
 </div>
 <div class="section" id="developers-web-site">
-<h3>Developers web site<a class="headerlink" href="#developers-web-site" title="Permalink to this headline">¶</a></h3>
+<h3>1.3.5. Developers web site<a class="headerlink" href="#developers-web-site" title="Permalink to this headline">¶</a></h3>
 <p>More information can be found on the <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/wiki">developer&#8217;s wiki</a>.</p>
 </div>
 <div class="section" id="issue-tracker-tags">
-<h3>Issue Tracker Tags<a class="headerlink" href="#issue-tracker-tags" title="Permalink to this headline">¶</a></h3>
+<h3>1.3.6. Issue Tracker Tags<a class="headerlink" href="#issue-tracker-tags" title="Permalink to this headline">¶</a></h3>
 <p>All issues and pull requests on the
 <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/issues">Github issue tracker</a>
 should have (at least) one of the following tags:</p>
@@ -441,7 +441,7 @@ but is still approachable for someone new to the project.</td>
 </div>
 </div>
 <div class="section" id="other-ways-to-contribute">
-<h2>Other ways to contribute<a class="headerlink" href="#other-ways-to-contribute" title="Permalink to this headline">¶</a></h2>
+<h2>1.4. Other ways to contribute<a class="headerlink" href="#other-ways-to-contribute" title="Permalink to this headline">¶</a></h2>
 <p>Code is not the only way to contribute to scikit-learn. For instance,
 documentation is also a very important part of the project and often
 doesn&#8217;t get as much attention as it deserves. If you find a typo in
@@ -452,7 +452,7 @@ documentation can be found under the doc/ directory.</p>
 and articles, link to it from your website, or simply say &#8220;I use it&#8221;:</p>
 <script type="text/javascript" src="http://www.ohloh.net/p/480792/widgets/project_users.js?style=rainbow"></script></div>
 <div class="section" id="coding-guidelines">
-<span id="id3"></span><h2>Coding guidelines<a class="headerlink" href="#coding-guidelines" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>1.5. Coding guidelines<a class="headerlink" href="#coding-guidelines" title="Permalink to this headline">¶</a></h2>
 <p>The following are some guidelines on how new code should be written. Of
 course, there are special cases and there will be exceptions to these
 rules. However, following these rules when submitting new code makes
@@ -482,7 +482,7 @@ in all your docstrings.</li>
 </div></blockquote>
 <p>A good example of code that we like can be found <a class="reference external" href="https://svn.enthought.com/enthought/browser/sandbox/docs/coding_standard.py">here</a>.</p>
 <div class="section" id="input-validation">
-<h3>Input validation<a class="headerlink" href="#input-validation" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.1. Input validation<a class="headerlink" href="#input-validation" title="Permalink to this headline">¶</a></h3>
 <p>The module <a class="reference internal" href="../modules/classes.html#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a> contains various functions for doing input
 validation and conversion. Sometimes, <tt class="docutils literal"><span class="pre">np.asarray</span></tt> suffices for validation;
 do <cite>not</cite> use <tt class="docutils literal"><span class="pre">np.asanyarray</span></tt> or <tt class="docutils literal"><span class="pre">np.atleast_2d</span></tt>, since those let NumPy&#8217;s
@@ -496,7 +496,7 @@ scikit-learn API function. The exact function to use depends mainly on whether
 <p>For more information, refer to the <a class="reference internal" href="utilities.html#developers-utils"><em>Utilities for Developers</em></a> page.</p>
 </div>
 <div class="section" id="random-numbers">
-<h3>Random Numbers<a class="headerlink" href="#random-numbers" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.2. Random Numbers<a class="headerlink" href="#random-numbers" title="Permalink to this headline">¶</a></h3>
 <p>If your code depends on a random number generator, do not use
 <tt class="docutils literal"><span class="pre">numpy.random.random()</span></tt> or similar routines.  To ensure
 repeatability in error checking, the routine should accept a keyword
@@ -532,13 +532,13 @@ See <a class="reference internal" href="../modules/generated/sklearn.utils.check
 </div>
 </div>
 <div class="section" id="apis-of-scikit-learn-objects">
-<h2>APIs of scikit-learn objects<a class="headerlink" href="#apis-of-scikit-learn-objects" title="Permalink to this headline">¶</a></h2>
+<h2>1.6. APIs of scikit-learn objects<a class="headerlink" href="#apis-of-scikit-learn-objects" title="Permalink to this headline">¶</a></h2>
 <p>To have a uniform API, we try to have a common basic API for all the
 objects. In addition, to avoid the proliferation of framework code, we
 try to adopt simple conventions and limit to a minimum the number of
 methods an object must implement.</p>
 <div class="section" id="different-objects">
-<h3>Different objects<a class="headerlink" href="#different-objects" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.1. Different objects<a class="headerlink" href="#different-objects" title="Permalink to this headline">¶</a></h3>
 <p>The main objects in scikit-learn are (one class can implement
 multiple interfaces):</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -580,7 +580,7 @@ data, implements (higher is better):</p>
 </table>
 </div>
 <div class="section" id="estimators">
-<h3>Estimators<a class="headerlink" href="#estimators" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.2. Estimators<a class="headerlink" href="#estimators" title="Permalink to this headline">¶</a></h3>
 <p>The API has one predominant object: the estimator. A estimator is an
 object that fits a model based on some training data and is capable of
 inferring some properties on new data. It can be, for instance, a
@@ -594,7 +594,7 @@ to <tt class="docutils literal"><span class="pre">__init__</span></tt>). This me
 estimator.</p>
 <p>All estimators should inherit from <tt class="docutils literal"><span class="pre">sklearn.base.BaseEstimator</span></tt>.</p>
 <div class="section" id="instantiation">
-<h4>Instantiation<a class="headerlink" href="#instantiation" title="Permalink to this headline">¶</a></h4>
+<h4>1.6.2.1. Instantiation<a class="headerlink" href="#instantiation" title="Permalink to this headline">¶</a></h4>
 <p>This concerns the creation of an object. The object&#8217;s <tt class="docutils literal"><span class="pre">__init__</span></tt> method
 might accept constants as arguments that determine the estimator&#8217;s behavior
 (like the C constant in SVMs). It should not, however, take the actual training
@@ -634,7 +634,7 @@ following is wrong:</p>
 their parameters by cross-validation.</p>
 </div>
 <div class="section" id="fitting">
-<h4>Fitting<a class="headerlink" href="#fitting" title="Permalink to this headline">¶</a></h4>
+<h4>1.6.2.2. Fitting<a class="headerlink" href="#fitting" title="Permalink to this headline">¶</a></h4>
 <p>The next thing you will probably want to do is to estimate some
 parameters in the model. This is implemented in the <tt class="docutils literal"><span class="pre">fit()</span></tt> method.</p>
 <p>The <tt class="docutils literal"><span class="pre">fit()</span></tt> method takes the training data as arguments, which can be one
@@ -694,13 +694,13 @@ you call <tt class="docutils literal"><span class="pre">fit</span></tt> a second
 account: <strong>fit should be idempotent</strong>.</p>
 </div>
 <div class="section" id="optional-arguments">
-<h4>Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline">¶</a></h4>
+<h4>1.6.2.3. Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline">¶</a></h4>
 <p>In iterative algorithms, the number of iterations should be specified by
 an integer called <tt class="docutils literal"><span class="pre">n_iter</span></tt>.</p>
 </div>
 </div>
 <div class="section" id="unresolved-api-issues">
-<h3>Unresolved API issues<a class="headerlink" href="#unresolved-api-issues" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.3. Unresolved API issues<a class="headerlink" href="#unresolved-api-issues" title="Permalink to this headline">¶</a></h3>
 <p>Some things are must still be decided:</p>
 <blockquote>
 <div><ul class="simple">
@@ -711,12 +711,12 @@ in <tt class="docutils literal"><span class="pre">fit()</span></tt> ?</li>
 </div></blockquote>
 </div>
 <div class="section" id="working-notes">
-<h3>Working notes<a class="headerlink" href="#working-notes" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.4. Working notes<a class="headerlink" href="#working-notes" title="Permalink to this headline">¶</a></h3>
 <p>For unresolved issues, TODOs, and remarks on ongoing work, developers are
 advised to maintain notes on the <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/wiki">GitHub wiki</a>.</p>
 </div>
 <div class="section" id="specific-models">
-<h3>Specific models<a class="headerlink" href="#specific-models" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.5. Specific models<a class="headerlink" href="#specific-models" title="Permalink to this headline">¶</a></h3>
 <p>In linear models, coefficients are stored in an array called <tt class="docutils literal"><span class="pre">coef_</span></tt>,
 and the independent term is stored in <tt class="docutils literal"><span class="pre">intercept_</span></tt>.</p>
 </div>
@@ -731,23 +731,6 @@ and the independent term is stored in <tt class="docutils literal"><span class="
       </div>
     </div>
 
-<script type="text/javascript">
-$(function () {
-             $('ul li ul li ul li:has(ul)')
-                        .click(function(event){
-                                if (this == event.target) {
-                                        $(this).css('list-style-image',
-                                                   (!$(this).children('ul').is(':hidden')) ? 'url(_static/plusBox.png)' : 'url(_static/minBox.png)');
-                                                   $(this).children('ul').toggle('slow');
-                                }
-                                return false;
-                        })
-                        .css({cursor:'pointer', 'list-style-image':'url(_static/plusBox.png)'})
-                        .children('ul').hide();
-                $('ul li ul li ul li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
-});
-</script>
-
     <div class="footer">
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
@@ -761,12 +744,12 @@ $(function () {
     <div class="buttonPrevious">
       <a href="../auto_examples/tree/plot_tree_regression_multioutput.html">
         Previous
-      </a>  
+      </a>
     </div>
     <div class="buttonNext">
       <a href="performance.html">
         Next
-      </a>  
+      </a>
     </div>
     
      </div>
@@ -779,6 +762,12 @@ $(function () {
                $(this).css('background-color', '#A7D6E2');
            }
        );
+       var bodywrapper = $('.bodywrapper');
+   	var sidebarbutton = $('#sidebarbutton');
+        sidebarbutton.css({
+	    'height': '900px'
+       });
+       
      </script>
   </body>
 </html>

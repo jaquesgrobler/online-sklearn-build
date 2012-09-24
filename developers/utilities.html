@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Utilities for Developers &mdash; scikit-learn 0.13-git documentation</title>
+    <title>3. Utilities for Developers &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -29,8 +29,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
-    <link rel="next" title="Developers’ Tips for Debugging" href="debugging.html" />
-    <link rel="prev" title="How to optimize for speed" href="performance.html" />
+    <link rel="next" title="4. Developers’ Tips for Debugging" href="debugging.html" />
+    <link rel="prev" title="2. How to optimize for speed" href="performance.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -90,14 +90,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="performance.html" title="How to optimize for speed"
+	<a href="performance.html" title="2. How to optimize for speed"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    How to optimize ...
+	    2. How to optimi...
 	    </span>
 	    <span class="hiddenrellink">
-	    How to optimize for speed
+	    2. How to optimize for speed
 	    </span>
 	    
 	    </a>
@@ -107,14 +107,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="debugging.html" title="Developers’ Tips for Debugging"
+	<a href="debugging.html" title="4. Developers’ Tips for Debugging"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Developers’ Tips...
+	    4. Developers’ T...
 	    </span>
 	    <span class="hiddenrellink">
-	    Developers’ Tips for Debugging
+	    4. Developers’ Tips for Debugging
 	    </span>
 	    
 	    </a>
@@ -130,20 +130,20 @@
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">Utilities for Developers</a><ul>
-<li><a class="reference internal" href="#validation-tools">Validation Tools</a></li>
-<li><a class="reference internal" href="#efficient-linear-algebra-array-operations">Efficient Linear Algebra &amp; Array Operations</a></li>
-<li><a class="reference internal" href="#efficient-routines-for-sparse-matrices">Efficient Routines for Sparse Matrices</a></li>
-<li><a class="reference internal" href="#graph-routines">Graph Routines</a></li>
-<li><a class="reference internal" href="#backports">Backports</a><ul>
-<li><a class="reference internal" href="#arpack">ARPACK</a></li>
-<li><a class="reference internal" href="#benchmarking">Benchmarking</a></li>
+<li><a class="reference internal" href="#">3. Utilities for Developers</a><ul>
+<li><a class="reference internal" href="#validation-tools">3.1. Validation Tools</a></li>
+<li><a class="reference internal" href="#efficient-linear-algebra-array-operations">3.2. Efficient Linear Algebra &amp; Array Operations</a></li>
+<li><a class="reference internal" href="#efficient-routines-for-sparse-matrices">3.3. Efficient Routines for Sparse Matrices</a></li>
+<li><a class="reference internal" href="#graph-routines">3.4. Graph Routines</a></li>
+<li><a class="reference internal" href="#backports">3.5. Backports</a><ul>
+<li><a class="reference internal" href="#arpack">3.5.1. ARPACK</a></li>
+<li><a class="reference internal" href="#benchmarking">3.5.2. Benchmarking</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#testing-functions">Testing Functions</a></li>
-<li><a class="reference internal" href="#helper-functions">Helper Functions</a></li>
-<li><a class="reference internal" href="#hash-functions">Hash Functions</a></li>
-<li><a class="reference internal" href="#warnings-and-exceptions">Warnings and Exceptions</a></li>
+<li><a class="reference internal" href="#testing-functions">3.6. Testing Functions</a></li>
+<li><a class="reference internal" href="#helper-functions">3.7. Helper Functions</a></li>
+<li><a class="reference internal" href="#hash-functions">3.8. Hash Functions</a></li>
+<li><a class="reference internal" href="#warnings-and-exceptions">3.9. Warnings and Exceptions</a></li>
 </ul>
 </li>
 </ul>
@@ -160,7 +160,7 @@
           <div class="body">
             
   <div class="section" id="utilities-for-developers">
-<span id="developers-utils"></span><h1>Utilities for Developers<a class="headerlink" href="#utilities-for-developers" title="Permalink to this headline">¶</a></h1>
+<span id="developers-utils"></span><h1>3. Utilities for Developers<a class="headerlink" href="#utilities-for-developers" title="Permalink to this headline">¶</a></h1>
 <p>Scikit-learn contains a number of utilities to help with development.  These are
 located in <a class="reference internal" href="../modules/classes.html#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a>, and include tools in a number of categories.
 All the following functions and classes are in the module <a class="reference internal" href="../modules/classes.html#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a>.</p>
@@ -172,7 +172,7 @@ scikit-learn.  Backports, in particular, will be removed as the scikit-learn
 dependencies evolve.</p>
 </div>
 <div class="section" id="validation-tools">
-<h2>Validation Tools<a class="headerlink" href="#validation-tools" title="Permalink to this headline">¶</a></h2>
+<h2>3.1. Validation Tools<a class="headerlink" href="#validation-tools" title="Permalink to this headline">¶</a></h2>
 <p>These are tools used to check and validate input.  When you write a function
 which accepts arrays, matrices, or sparse matrices as arguments, the following
 should be used when applicable.</p>
@@ -219,7 +219,7 @@ randomly-initialized <tt class="docutils literal"><span class="pre">RandomState<
 </div>
 </div>
 <div class="section" id="efficient-linear-algebra-array-operations">
-<h2>Efficient Linear Algebra &amp; Array Operations<a class="headerlink" href="#efficient-linear-algebra-array-operations" title="Permalink to this headline">¶</a></h2>
+<h2>3.2. Efficient Linear Algebra &amp; Array Operations<a class="headerlink" href="#efficient-linear-algebra-array-operations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">extmath.randomized_range_finder</span></tt>: construct an orthonormal matrix
 whose range approximates the range of the input.  This is used in
@@ -261,7 +261,7 @@ Used in <tt class="docutils literal"><span class="pre">sklearn.cluster.k_means</
 </ul>
 </div>
 <div class="section" id="efficient-routines-for-sparse-matrices">
-<h2>Efficient Routines for Sparse Matrices<a class="headerlink" href="#efficient-routines-for-sparse-matrices" title="Permalink to this headline">¶</a></h2>
+<h2>3.3. Efficient Routines for Sparse Matrices<a class="headerlink" href="#efficient-routines-for-sparse-matrices" title="Permalink to this headline">¶</a></h2>
 <p>The <tt class="docutils literal"><span class="pre">sklearn.utils.sparsefuncs</span></tt> cython module hosts compiled extensions to
 efficiently process <tt class="docutils literal"><span class="pre">scipy.sparse</span></tt> data.</p>
 <ul class="simple">
@@ -280,7 +280,7 @@ Used for scaling features to unit standard deviation in
 </ul>
 </div>
 <div class="section" id="graph-routines">
-<h2>Graph Routines<a class="headerlink" href="#graph-routines" title="Permalink to this headline">¶</a></h2>
+<h2>3.4. Graph Routines<a class="headerlink" href="#graph-routines" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">graph.single_source_shortest_path_length</span></tt>:
 (not currently used in scikit-learn)
@@ -301,7 +301,7 @@ connectivity matrix is a <tt class="docutils literal"><span class="pre">scipy.sp
 </ul>
 </div>
 <div class="section" id="backports">
-<h2>Backports<a class="headerlink" href="#backports" title="Permalink to this headline">¶</a></h2>
+<h2>3.5. Backports<a class="headerlink" href="#backports" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-class docutils literal"><span class="pre">fixes.Counter</span></tt> (partial backport of <tt class="docutils literal"><span class="pre">collections.Counter</span></tt> from
 Python 2.7) Used in <tt class="docutils literal"><span class="pre">sklearn.feature_extraction.text</span></tt>.</li>
@@ -330,7 +330,7 @@ Used in <tt class="docutils literal"><span class="pre">sklearn.cluster.hierarchi
 <a class="reference internal" href="../modules/classes.html#module-sklearn.feature_extraction" title="sklearn.feature_extraction"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.feature_extraction</span></tt></a>.</li>
 </ul>
 <div class="section" id="arpack">
-<h3>ARPACK<a class="headerlink" href="#arpack" title="Permalink to this headline">¶</a></h3>
+<h3>3.5.1. ARPACK<a class="headerlink" href="#arpack" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">arpack.eigs</span></tt>
 (backported from <tt class="docutils literal"><span class="pre">scipy.sparse.linalg.eigs</span></tt> in scipy 0.10)
@@ -350,7 +350,7 @@ scipy versions.</li>
 </ul>
 </div>
 <div class="section" id="benchmarking">
-<h3>Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this headline">¶</a></h3>
+<h3>3.5.2. Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">bench.total_seconds</span></tt> (back-ported from <tt class="docutils literal"><span class="pre">timedelta.total_seconds</span></tt>
 in Python 2.7).  Used in <tt class="docutils literal"><span class="pre">benchmarks/bench_glm.py</span></tt>.</li>
@@ -358,7 +358,7 @@ in Python 2.7).  Used in <tt class="docutils literal"><span class="pre">benchmar
 </div>
 </div>
 <div class="section" id="testing-functions">
-<h2>Testing Functions<a class="headerlink" href="#testing-functions" title="Permalink to this headline">¶</a></h2>
+<h2>3.6. Testing Functions<a class="headerlink" href="#testing-functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">testing.assert_in</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">testing.assert_not_in</span></tt>: Assertions for
 container membership. Designed for forward compatibility with Nose 1.0.</li>
@@ -367,7 +367,7 @@ requests of mldata.  Used in tests of <a class="reference internal" href="../mod
 </ul>
 </div>
 <div class="section" id="helper-functions">
-<h2>Helper Functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
+<h2>3.7. Helper Functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-class docutils literal"><span class="pre">gen_even_slices</span></tt>: generator to create <tt class="docutils literal"><span class="pre">n</span></tt>-packs of slices going up
 to <tt class="docutils literal"><span class="pre">n</span></tt>.  Used in <tt class="docutils literal"><span class="pre">sklearn.decomposition.dict_learning</span></tt> and
@@ -384,7 +384,7 @@ array-likes, matrices and sparse matrices.</li>
 </ul>
 </div>
 <div class="section" id="hash-functions">
-<h2>Hash Functions<a class="headerlink" href="#hash-functions" title="Permalink to this headline">¶</a></h2>
+<h2>3.8. Hash Functions<a class="headerlink" href="#hash-functions" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first"><tt class="xref py py-func docutils literal"><span class="pre">murmurhash3_32</span></tt> provides a python wrapper for the
 <cite>MurmurHash3_x86_32</cite> C++ non cryptographic hash function. This hash
@@ -406,7 +406,7 @@ MurmurHash while skipping the overhead of the Python interpreter.</p>
 </ul>
 </div>
 <div class="section" id="warnings-and-exceptions">
-<h2>Warnings and Exceptions<a class="headerlink" href="#warnings-and-exceptions" title="Permalink to this headline">¶</a></h2>
+<h2>3.9. Warnings and Exceptions<a class="headerlink" href="#warnings-and-exceptions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-class docutils literal"><span class="pre">deprecated</span></tt>: Decorator to mark a function or class as deprecated.</li>
 <li><tt class="xref py py-class docutils literal"><span class="pre">ConvergenceWarning</span></tt>: Custom warning to catch convergence problems.
@@ -423,23 +423,6 @@ Used in <tt class="docutils literal"><span class="pre">sklearn.covariance.graph_
       </div>
     </div>
 
-<script type="text/javascript">
-$(function () {
-             $('ul li ul li ul li:has(ul)')
-                        .click(function(event){
-                                if (this == event.target) {
-                                        $(this).css('list-style-image',
-                                                   (!$(this).children('ul').is(':hidden')) ? 'url(_static/plusBox.png)' : 'url(_static/minBox.png)');
-                                                   $(this).children('ul').toggle('slow');
-                                }
-                                return false;
-                        })
-                        .css({cursor:'pointer', 'list-style-image':'url(_static/plusBox.png)'})
-                        .children('ul').hide();
-                $('ul li ul li ul li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
-});
-</script>
-
     <div class="footer">
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
@@ -453,12 +436,12 @@ $(function () {
     <div class="buttonPrevious">
       <a href="performance.html">
         Previous
-      </a>  
+      </a>
     </div>
     <div class="buttonNext">
       <a href="debugging.html">
         Next
-      </a>  
+      </a>
     </div>
     
      </div>
@@ -471,6 +454,12 @@ $(function () {
                $(this).css('background-color', '#A7D6E2');
            }
        );
+       var bodywrapper = $('.bodywrapper');
+   	var sidebarbutton = $('#sidebarbutton');
+        sidebarbutton.css({
+	    'height': '900px'
+       });
+       
      </script>
   </body>
 </html>

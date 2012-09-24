@@ -204,7 +204,7 @@ function does not actually depend on the data given to the <tt class="docutils l
 Only the dimensionality of the data is used.
 Details on the method can be found in <a class="reference internal" href="#rr2007">[RR2007]</a>.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/plot_kernel_approximation.html"><img alt="modules/../auto_examples/images/plot_kernel_approximation_2.png" src="modules/../auto_examples/images/plot_kernel_approximation_2.png" /></a>
+<a class="reference external image-reference" href="../auto_examples/plot_kernel_approximation.html"><img alt="../_images/plot_kernel_approximation_21.png" src="../_images/plot_kernel_approximation_21.png" style="width: 600.0px; height: 250.0px;" /></a>
 <p class="caption">Comparing an exact RBF kernel (left) with the approximation (right)</p>
 </div>
 <div class="topic">
@@ -318,23 +318,6 @@ Vempati, S. and Vedaldi, A. and Zisserman, A. and Jawahar, CV - 2010</td></tr>
       </div>
     </div>
 
-<script type="text/javascript">
-$(function () {
-             $('ul li ul li ul li:has(ul)')
-                        .click(function(event){
-                                if (this == event.target) {
-                                        $(this).css('list-style-image',
-                                                   (!$(this).children('ul').is(':hidden')) ? 'url(_static/plusBox.png)' : 'url(_static/minBox.png)');
-                                                   $(this).children('ul').toggle('slow');
-                                }
-                                return false;
-                        })
-                        .css({cursor:'pointer', 'list-style-image':'url(_static/plusBox.png)'})
-                        .children('ul').hide();
-                $('ul li ul li ul li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
-});
-</script>
-
     <div class="footer">
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
@@ -348,12 +331,12 @@ $(function () {
     <div class="buttonPrevious">
       <a href="feature_extraction.html">
         Previous
-      </a>  
+      </a>
     </div>
     <div class="buttonNext">
       <a href="../datasets/index.html">
         Next
-      </a>  
+      </a>
     </div>
     
      </div>
@@ -366,6 +349,12 @@ $(function () {
                $(this).css('background-color', '#A7D6E2');
            }
        );
+       var bodywrapper = $('.bodywrapper');
+   	var sidebarbutton = $('#sidebarbutton');
+        sidebarbutton.css({
+	    'height': '900px'
+       });
+       
      </script>
   </body>
 </html>
