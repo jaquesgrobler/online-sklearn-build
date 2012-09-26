@@ -17,8 +17,35 @@ We classify 8x8 images of digits into two classes: 0-4 against 5-9.
 The visualization shows coefficients of the models for varying C.
 
 
+
+.. image:: images/plot_logistic_l1_l2_sparsity_1.png
+    :align: center
+
+
+**Script output**::
+
+  C=10
+  Sparsity with L1 penalty: 7.81%
+  score with L1 penalty: 0.9093
+  Sparsity with L2 penalty: 4.69%
+  score with L2 penalty: 0.9093
+  C=100
+  Sparsity with L1 penalty: 6.25%
+  score with L1 penalty: 0.9098
+  Sparsity with L2 penalty: 4.69%
+  score with L2 penalty: 0.9098
+  C=1000
+  Sparsity with L1 penalty: 4.69%
+  score with L1 penalty: 0.9104
+  Sparsity with L2 penalty: 4.69%
+  score with L2 penalty: 0.9098
+
+
+
 **Python source code:** :download:`plot_logistic_l1_l2_sparsity.py <plot_logistic_l1_l2_sparsity.py>`
 
 .. literalinclude:: plot_logistic_l1_l2_sparsity.py
     :lines: 15-
+
+**Total running time of the example:**  0.38 seconds
     

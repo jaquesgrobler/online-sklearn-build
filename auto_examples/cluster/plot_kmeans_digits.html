@@ -201,6 +201,16 @@ definitions and discussions of the metrics):</p>
 </tr>
 </tbody>
 </table>
+<img alt="../../_images/plot_kmeans_digits_1.png" class="align-center" src="../../_images/plot_kmeans_digits_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>n_digits: 10,          n_samples 1797,         n_features 64
+_______________________________________________________________________________
+init    time  inertia    homo   compl  v-meas     ARI     AMI  silhouette
+k-means++   1.09s    69432   0.602   0.650   0.625   0.465   0.598    0.146
+   random   1.00s    69694   0.669   0.710   0.689   0.553   0.666    0.147
+PCA-based   0.08s    71820   0.673   0.715   0.693   0.567   0.670    0.150
+_______________________________________________________________________________</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_kmeans_digits.py"><tt class="xref download docutils literal"><span class="pre">plot_kmeans_digits.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -305,6 +315,7 @@ definitions and discussions of the metrics):</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  4.68 seconds</p>
 </div>
 
 

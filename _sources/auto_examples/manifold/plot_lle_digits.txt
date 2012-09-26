@@ -10,8 +10,85 @@ Manifold learning on handwritten digits: Locally Linear Embedding, Isomap...
 An illustration of various embeddings on the digits dataset.
 
 
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_lle_digits_1.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_lle_digits_2.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_lle_digits_3.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_lle_digits_4.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_lle_digits_5.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_lle_digits_6.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_lle_digits_7.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_lle_digits_8.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_lle_digits_9.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_lle_digits_10.png
+            :scale: 47
+
+
+**Script output**::
+
+  Computing random projection
+  Computing PCA projection
+  Computing LDA projection
+  Computing Isomap embedding
+  Done.
+  Computing LLE embedding
+  Done. Reconstruction error: 1.28518e-06
+  Computing modified LLE embedding
+  Done. Reconstruction error: 0.359648
+  Computing Hessian LLE embedding
+  Done. Reconstruction error: 0.212037
+  Computing LTSA embedding
+  Done. Reconstruction error: 0.212076
+  Computing MDS embedding
+  Done. Stress: 143525262.393715
+
+
+
 **Python source code:** :download:`plot_lle_digits.py <plot_lle_digits.py>`
 
 .. literalinclude:: plot_lle_digits.py
     :lines: 8-
+
+**Total running time of the example:**  13.34 seconds
     
