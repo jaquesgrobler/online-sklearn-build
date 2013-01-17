@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.15.1.1. sklearn.linear_model.LinearRegression &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.17.12. sklearn.linear_model.LinearRegression &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.15.1.2. sklearn.linear_model.Ridge" href="sklearn.linear_model.Ridge.html" />
-    <link rel="prev" title="8.14.1. sklearn.lda.LDA" href="sklearn.lda.LDA.html" />
+    <link rel="next" title="8.17.13. sklearn.linear_model.LogisticRegression" href="sklearn.linear_model.LogisticRegression.html" />
+    <link rel="prev" title="8.17.11. sklearn.linear_model.LassoLarsIC" href="sklearn.linear_model.LassoLarsIC.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.lda.LDA.html" title="8.14.1. sklearn.lda.LDA"
+	<a href="sklearn.linear_model.LassoLarsIC.html" title="8.17.11. sklearn.linear_model.LassoLarsIC"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.14.1. sklearn....
+	    8.17.11. sklearn...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.14.1. sklearn.lda.LDA
+	    8.17.11. sklearn.linear_model.LassoLarsIC
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.linear_model.Ridge.html" title="8.15.1.2. sklearn.linear_model.Ridge"
+	<a href="sklearn.linear_model.LogisticRegression.html" title="8.17.13. sklearn.linear_model.LogisticRegression"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.15.1.2. sklear...
+	    8.17.13. sklearn...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.15.1.2. sklearn.linear_model.Ridge
+	    8.17.13. sklearn.linear_model.LogisticRegression
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.15.1.1. sklearn.linear_model.LinearRegression</a></li>
+<li><a class="reference internal" href="#">8.17.12. sklearn.linear_model.LinearRegression</a></li>
 </ul>
 
     
@@ -162,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-linear-model-linearregression">
-<h1>8.15.1.1. sklearn.linear_model.LinearRegression<a class="headerlink" href="#sklearn-linear-model-linearregression" title="Permalink to this headline">¶</a></h1>
+<h1>8.17.12. sklearn.linear_model.LinearRegression<a class="headerlink" href="#sklearn-linear-model-linearregression" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.linear_model.LinearRegression">
 <em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">LinearRegression</tt><big>(</big><em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LinearRegression" title="Permalink to this definition">¶</a></dt>
@@ -189,23 +193,6 @@ to false, no intercept will be used in calculations
 <p>From the implementation point of view, this is just plain Ordinary
 Least Squares (numpy.linalg.lstsq) wrapped as a predictor object.</p>
 <p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="16%" />
-<col width="7%" />
-<col width="77%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><cite>coef_</cite></td>
-<td>array</td>
-<td>Estimated coefficients for the linear regression problem.</td>
-</tr>
-<tr class="row-even"><td><cite>intercept_</cite></td>
-<td>array</td>
-<td>Independent term in the linear model.</td>
-</tr>
-</tbody>
-</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -271,14 +258,14 @@ Least Squares (numpy.linalg.lstsq) wrapped as a predictor object.</p>
 <blockquote>
 <div><p>Training data</p>
 </div></blockquote>
-<p><strong>y</strong> : numpy array of shape [n_samples, n_responses]</p>
+<p><strong>y</strong> : numpy array of shape [n_samples, n_targets]</p>
 <blockquote>
 <div><p>Target values</p>
 </div></blockquote>
 <p><strong>n_jobs</strong> : The number of jobs to use for the computation.</p>
 <blockquote>
 <div><p>If -1 all CPUs are used. This will only provide speedup for
-n_response &gt; 1 and sufficient large problems</p>
+n_targets &gt; 1 and sufficient large problems</p>
 </div></blockquote>
 </td>
 </tr>
@@ -396,12 +383,12 @@ component of a nested object.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.lda.LDA.html">
+      <a href="sklearn.linear_model.LassoLarsIC.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.linear_model.Ridge.html">
+      <a href="sklearn.linear_model.LogisticRegression.html">
         Next
       </a>
     </div>

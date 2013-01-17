@@ -32,6 +32,8 @@
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.3.9. sklearn.cross_validation.StratifiedShuffleSplit" href="sklearn.cross_validation.StratifiedShuffleSplit.html" />
     <link rel="prev" title="8.3.7. sklearn.cross_validation.StratifiedKFold" href="sklearn.cross_validation.StratifiedKFold.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -165,7 +169,7 @@
 <h1>8.3.8. sklearn.cross_validation.ShuffleSplit<a class="headerlink" href="#sklearn-cross-validation-shufflesplit" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.cross_validation.ShuffleSplit">
-<em class="property">class </em><tt class="descclassname">sklearn.cross_validation.</tt><tt class="descname">ShuffleSplit</tt><big>(</big><em>n</em>, <em>n_iterations=10</em>, <em>test_size=0.1</em>, <em>train_size=None</em>, <em>indices=True</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.ShuffleSplit" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.cross_validation.</tt><tt class="descname">ShuffleSplit</tt><big>(</big><em>n</em>, <em>n_iter=10</em>, <em>test_size=0.1</em>, <em>train_size=None</em>, <em>indices=True</em>, <em>random_state=None</em>, <em>n_iterations=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.ShuffleSplit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Random permutation cross-validation iterator.</p>
 <p>Yields indices to split data into training and test sets.</p>
 <p>Note: contrary to other cross-validation strategies, random splits
@@ -179,22 +183,23 @@ still very likely for sizeable datasets.</p>
 <blockquote>
 <div><p>Total number of elements in the dataset.</p>
 </div></blockquote>
-<p><strong>n_iterations</strong> : int (default 10)</p>
+<p><strong>n_iter</strong> : int (default 10)</p>
 <blockquote>
 <div><p>Number of re-shuffling &amp; splitting iterations.</p>
 </div></blockquote>
-<p><strong>test_size</strong> : float (default 0.1) or int</p>
+<p><strong>test_size</strong> : float (default 0.1), int, or None</p>
 <blockquote>
 <div><p>If float, should be between 0.0 and 1.0 and represent the
 proportion of the dataset to include in the test split. If
-int, represents the absolute number of test samples.</p>
+int, represents the absolute number of test samples. If None,
+the value is automatically set to the complement of the train size.</p>
 </div></blockquote>
 <p><strong>train_size</strong> : float, int, or None (default is None)</p>
 <blockquote>
 <div><p>If float, should be between 0.0 and 1.0 and represent the
 proportion of the dataset to include in the train split. If
 int, represents the absolute number of train samples. If None,
-the value is automatically set to the complement of the test fraction.</p>
+the value is automatically set to the complement of the test size.</p>
 </div></blockquote>
 <p><strong>indices</strong> : boolean, optional (default True)</p>
 <blockquote>
@@ -219,13 +224,13 @@ matrices, since those cannot be indexed by boolean masks.</p>
 </div>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_iterations</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">test_size</span><span class="o">=.</span><span class="mi">25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span>
 <span class="go">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span>
 <span class="gp">... </span>
-<span class="go">ShuffleSplit(4, n_iterations=3, test_size=0.25, indices=True, ...)</span>
+<span class="go">ShuffleSplit(4, n_iter=3, test_size=0.25, indices=True, ...)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">rs</span><span class="p">:</span>
 <span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="s">&quot;TRAIN: </span><span class="si">%s</span><span class="s"> TEST: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">))</span>
 <span class="gp">...</span>
@@ -234,7 +239,7 @@ matrices, since those cannot be indexed by boolean masks.</p>
 <span class="go">TRAIN: [0 2 1] TEST: [3]</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_iterations</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">train_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">rs</span><span class="p">:</span>
 <span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="s">&quot;TRAIN: </span><span class="si">%s</span><span class="s"> TEST: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">))</span>
@@ -246,7 +251,7 @@ matrices, since those cannot be indexed by boolean masks.</p>
 </div>
 <dl class="method">
 <dt id="sklearn.cross_validation.ShuffleSplit.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n</em>, <em>n_iterations=10</em>, <em>test_size=0.1</em>, <em>train_size=None</em>, <em>indices=True</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.ShuffleSplit.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n</em>, <em>n_iter=10</em>, <em>test_size=0.1</em>, <em>train_size=None</em>, <em>indices=True</em>, <em>random_state=None</em>, <em>n_iterations=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.ShuffleSplit.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

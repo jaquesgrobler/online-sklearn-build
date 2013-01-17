@@ -32,6 +32,8 @@
     <link rel="up" title="4. Unsupervised learning" href="../unsupervised_learning.html" />
     <link rel="next" title="4.3. Clustering" href="clustering.html" />
     <link rel="prev" title="4.1.3.2.1. Variational Gaussian Mixture Models" href="dp-derivation.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -165,16 +169,20 @@
 <li><a class="reference internal" href="#id3">4.2.5.1. Complexity</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#local-tangent-space-alignment">4.2.6. Local Tangent Space Alignment</a><ul>
+<li><a class="reference internal" href="#spectral-embedding">4.2.6. Spectral Embedding</a><ul>
 <li><a class="reference internal" href="#id4">4.2.6.1. Complexity</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#multi-dimensional-scaling-mds">4.2.7. Multi-dimensional Scaling (MDS)</a><ul>
-<li><a class="reference internal" href="#metric-mds">4.2.7.1. Metric MDS</a></li>
-<li><a class="reference internal" href="#nonmetric-mds">4.2.7.2. Nonmetric MDS</a></li>
+<li><a class="reference internal" href="#local-tangent-space-alignment">4.2.7. Local Tangent Space Alignment</a><ul>
+<li><a class="reference internal" href="#id5">4.2.7.1. Complexity</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#tips-on-practical-use">4.2.8. Tips on practical use</a></li>
+<li><a class="reference internal" href="#multi-dimensional-scaling-mds">4.2.8. Multi-dimensional Scaling (MDS)</a><ul>
+<li><a class="reference internal" href="#metric-mds">4.2.8.1. Metric MDS</a></li>
+<li><a class="reference internal" href="#nonmetric-mds">4.2.8.2. Nonmetric MDS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tips-on-practical-use">4.2.9. Tips on practical use</a></li>
 </ul>
 </li>
 </ul>
@@ -223,7 +231,7 @@ visualization of the data structure, the randomness of the choice leaves much
 to be desired.  In a random projection, it is likely that the more
 interesting structure within the data will be lost.</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/manifold/plot_lle_digits.html"><img alt="digits_img" src="../_images/plot_lle_digits_11.png" style="width: 400.0px; height: 300.0px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/manifold/plot_lle_digits.html"><img alt="digits_img" src="../_images/plot_lle_digits_13.png" style="width: 400.0px; height: 300.0px;" /></a>
  <a class="reference external image-reference" href="../auto_examples/manifold/plot_lle_digits.html"><img alt="projected_img" src="../_images/plot_lle_digits_21.png" style="width: 400.0px; height: 300.0px;" /></a>
 </strong></p><p>To address this concern, a number of supervised and unsupervised linear
 dimensionality reduction frameworks have been designed, such as Principal
@@ -436,8 +444,50 @@ Donoho, D. &amp; Grimes, C. Proc Natl Acad Sci USA. 100:5591 (2003)</li>
 </div>
 </div>
 </div>
+<div class="section" id="spectral-embedding">
+<h2>4.2.6. Spectral Embedding<a class="headerlink" href="#spectral-embedding" title="Permalink to this headline">¶</a></h2>
+<p>Spectral Embedding (also known as Laplacian Eigenmaps) is one method
+to calculate nonlinear embedding. It finds a low dimensional representation
+of the data using a spectral decomposition of the graph Laplacian.
+The graph generated can be considered as a discrete approximation of the
+low dimensional manifold in the high dimensional space. Minimization of a
+cost function based on the graph ensures that points close to each other on
+the manifold are mapped close to each other in the low dimensional space,
+preserving local distances. Spectral embedding can be  performed with the
+function <a class="reference internal" href="generated/sklearn.manifold.spectral_embedding.html#sklearn.manifold.spectral_embedding" title="sklearn.manifold.spectral_embedding"><tt class="xref py py-func docutils literal"><span class="pre">spectral_embedding</span></tt></a> or its object-oriented counterpart
+<a class="reference internal" href="generated/sklearn.manifold.SpectralEmbedding.html#sklearn.manifold.SpectralEmbedding" title="sklearn.manifold.SpectralEmbedding"><tt class="xref py py-class docutils literal"><span class="pre">SpectralEmbedding</span></tt></a>.</p>
+<div class="section" id="id4">
+<h3>4.2.6.1. Complexity<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>The Spectral Embedding algorithm comprises three stages:</p>
+<ol class="arabic simple">
+<li><strong>Weighted Graph Construction</strong>. Transform the raw input data into
+graph representation using affinity (adjacency) matrix representation.</li>
+<li><strong>Graph Laplacian Construction</strong>. unnormalized Graph Laplacian
+is constructed as <img class="math" src="../_images/math/a3b48be1e364c4c250dbb3ca7ee426b5fe39ebd3.png" alt="L = D - A"/> for and normalized one as
+<img class="math" src="../_images/math/43ddb8c871de20b37f35c5ba754b12cfdc2d5b84.png" alt="L = D^{-\frac{1}{2}} (D - A) D^{-\frac{1}{2}}"/>.</li>
+<li><strong>Partial Eigenvalue Decomposition</strong>. Eigenvalue decomposition is
+done on graph Laplacian</li>
+</ol>
+<p>The overall complexity of spectral embedding is
+<img class="math" src="../_images/math/f25c41ecaf087953402b078828ee8c6f486bcf45.png" alt="O[D \log(k) N \log(N)] + O[D N k^3] + O[d N^2]"/>.</p>
+<ul class="simple">
+<li><img class="math" src="../_images/math/fc97ef67268cd4e91bacdf12b8901d7036c9a056.png" alt="N"/> : number of training data points</li>
+<li><img class="math" src="../_images/math/9ffb448918db29f2a72f8f87f421b3b3cad18f95.png" alt="D"/> : input dimension</li>
+<li><img class="math" src="../_images/math/8c325612684d41304b9751c175df7bcc0f61f64f.png" alt="k"/> : number of nearest neighbors</li>
+<li><img class="math" src="../_images/math/96ab646de7704969b91c76a214126b45f2b07b25.png" alt="d"/> : output dimension</li>
+</ul>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.cse.ohio-state.edu/~mbelkin/papers/LEM_NC_03.pdf">&#8220;Laplacian Eigenmaps for Dimensionality Reduction
+and Data Representation&#8221;</a>
+M. Belkin, P. Niyogi, Neural Computation, June 2003; 15 (6):1373-1396</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="section" id="local-tangent-space-alignment">
-<h2>4.2.6. Local Tangent Space Alignment<a class="headerlink" href="#local-tangent-space-alignment" title="Permalink to this headline">¶</a></h2>
+<h2>4.2.7. Local Tangent Space Alignment<a class="headerlink" href="#local-tangent-space-alignment" title="Permalink to this headline">¶</a></h2>
 <p>Though not technically a variant of LLE, Local tangent space alignment (LTSA)
 is algorithmically similar enough to LLE that it can be put in this category.
 Rather than focusing on preserving neighborhood distances as in LLE, LTSA
@@ -449,8 +499,8 @@ tangent spaces to learn the embedding.  LTSA can be performed with function
 <div class="figure align-center">
 <a class="reference external image-reference" href="../auto_examples/manifold/plot_lle_digits.html"><img alt="../_images/plot_lle_digits_91.png" src="../_images/plot_lle_digits_91.png" style="width: 400.0px; height: 300.0px;" /></a>
 </div>
-<div class="section" id="id4">
-<h3>4.2.6.1. Complexity<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>4.2.7.1. Complexity<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>The LTSA algorithm comprises three stages:</p>
 <ol class="arabic simple">
 <li><strong>Nearest Neighbors Search</strong>.  Same as standard LLE</li>
@@ -478,8 +528,9 @@ Zhang, Z. &amp; Zha, H. Journal of Shanghai Univ. 8:406 (2004)</li>
 </div>
 </div>
 <div class="section" id="multi-dimensional-scaling-mds">
-<span id="multidimensional-scaling"></span><h2>4.2.7. Multi-dimensional Scaling (MDS)<a class="headerlink" href="#multi-dimensional-scaling-mds" title="Permalink to this headline">¶</a></h2>
-<p>Multidimensional scaling (<a class="reference internal" href="generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS" title="sklearn.manifold.MDS"><tt class="xref py py-class docutils literal"><span class="pre">MDS</span></tt></a>) seeks a low-dimensional
+<span id="multidimensional-scaling"></span><h2>4.2.8. Multi-dimensional Scaling (MDS)<a class="headerlink" href="#multi-dimensional-scaling-mds" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Multidimensional_scaling">Multidimensional scaling</a>
+(<a class="reference internal" href="generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS" title="sklearn.manifold.MDS"><tt class="xref py py-class docutils literal"><span class="pre">MDS</span></tt></a>) seeks a low-dimensional
 representation of the data in which the distances respect well the
 distances in the original high-dimensional space.</p>
 <p>In general, is a technique used for analyzing similarity or
@@ -503,7 +554,7 @@ space and the similarities/dissimilarities.</p>
 the similarities chosen in some optimal ways. The objective, called the
 stress, is then defined by <img class="math" src="../_images/math/7b4069328fe8ee4dc959c1f55b2879b7e6371250.png" alt="sum_{i &lt; j} d_{ij}(X) - \hat{d}_{ij}(X)"/></p>
 <div class="section" id="metric-mds">
-<h3>4.2.7.1. Metric MDS<a class="headerlink" href="#metric-mds" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.8.1. Metric MDS<a class="headerlink" href="#metric-mds" title="Permalink to this headline">¶</a></h3>
 <p>The simplest metric <a class="reference internal" href="generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS" title="sklearn.manifold.MDS"><tt class="xref py py-class docutils literal"><span class="pre">MDS</span></tt></a> model, called <cite>absolute MDS</cite>, disparities are defined by
 <img class="math" src="../_images/math/c15c5f9ba99b2e9c01c4a8d3198d2c9f9550f28a.png" alt="\hat{d}_{ij} = S_{ij}"/>. With absolute MDS, the value <img class="math" src="../_images/math/fc6fb3ab34757b7bcd2cc3486311053b169705da.png" alt="S_{ij}"/>
 should then correspond exactly to the distance between point <img class="math" src="../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i"/> and
@@ -511,7 +562,7 @@ should then correspond exactly to the distance between point <img class="math" s
 <p>Most commonly, disparities are set to <img class="math" src="../_images/math/0825b71c3967e2b09382a954634692befe9ef109.png" alt="\hat{d}_{ij} = b S_{ij}"/>.</p>
 </div>
 <div class="section" id="nonmetric-mds">
-<h3>4.2.7.2. Nonmetric MDS<a class="headerlink" href="#nonmetric-mds" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.8.2. Nonmetric MDS<a class="headerlink" href="#nonmetric-mds" title="Permalink to this headline">¶</a></h3>
 <p>Non metric <a class="reference internal" href="generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS" title="sklearn.manifold.MDS"><tt class="xref py py-class docutils literal"><span class="pre">MDS</span></tt></a> focuses on the ordination of the data. If
 <img class="math" src="../_images/math/c8f7245f6e1d9d54f499875c77190889b00c6bdd.png" alt="S_{ij} &lt; S_{kl}"/>, then the embedding should enforce <img class="math" src="../_images/math/effa2e398cfd0d4e8aef3f9f9c4134a0c29912b0.png" alt="d_{ij} &lt;
 d_{jk}"/>. A simple algorithm to enforce that is to use a monotonic regression
@@ -536,11 +587,11 @@ Kruskal, J. Psychometrika, 29, (1964)</li>
 </div>
 </div>
 <div class="section" id="tips-on-practical-use">
-<h2>4.2.8. Tips on practical use<a class="headerlink" href="#tips-on-practical-use" title="Permalink to this headline">¶</a></h2>
+<h2>4.2.9. Tips on practical use<a class="headerlink" href="#tips-on-practical-use" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Make sure the same scale is used over all features. Because manifold
 learning methods are based on a nearest-neighbor search, the algorithm
-may perform poorly otherwise.  See <a class="reference internal" href="preprocessing.html#preprocessing-scaler"><em>Scaler</em></a>
+may perform poorly otherwise.  See <a class="reference internal" href="preprocessing.html#preprocessing-scaler"><em>StandardScaler</em></a>
 for convenient ways of scaling heterogeneous data.</li>
 <li>The reconstruction error computed by each routine can be used to choose
 the optimal output dimension.  For a <img class="math" src="../_images/math/96ab646de7704969b91c76a214126b45f2b07b25.png" alt="d"/>-dimensional manifold embedded
@@ -560,6 +611,12 @@ can attempt to understand the source of the singularity: if it is due to
 disjoint sets, increasing <tt class="docutils literal"><span class="pre">n_neighbors</span></tt> may help.  If it is due to
 identical points in the dataset, removing these points may help.</li>
 </ul>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="ensemble.html#random-hashing"><em>Totally Random Trees Embedding</em></a> can also be useful to derive non-linear
+representations of feature space, also it does not perform
+dimensionality reduction.</p>
+</div>
 </div>
 </div>
 

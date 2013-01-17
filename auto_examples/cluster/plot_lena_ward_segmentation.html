@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="A demo of the mean-shift clustering algorithm" href="plot_mean_shift.html" />
     <link rel="prev" title="Segmenting the picture of Lena in regions" href="plot_lena_segmentation.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -166,6 +170,13 @@
 <p>Compute the segmentation of a 2D image with Ward hierarchical
 clustering. The clustering is spatially constrained in order
 for each segmented region to be in one piece.</p>
+<img alt="../../_images/plot_lena_ward_segmentation_1.png" class="align-center" src="../../_images/plot_lena_ward_segmentation_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Compute structured hierarchical clustering...
+Elaspsed time:  9.53548622131
+Number of pixels:  65536
+Number of clusters:  15</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lena_ward_segmentation.py"><tt class="xref download docutils literal"><span class="pre">plot_lena_ward_segmentation.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author : Vincent Michel, 2010</span>
 <span class="c">#          Alexandre Gramfort, 2011</span>
@@ -208,12 +219,13 @@ for each segmented region to be in one piece.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">lena</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">):</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">label</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="n">contours</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">(</span><span class="n">l</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">)),</span> <span class="p">])</span>
+               <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">(</span><span class="n">l</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">)),</span> <span class="p">])</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  9.97 seconds</p>
 </div>
 
 

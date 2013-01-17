@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Sparse recovery: feature selection for sparse linear models" href="plot_sparse_recovery.html" />
     <link rel="prev" title="SGD: Separating hyperplane with weighted classes" href="plot_sgd_weighted_classes.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -165,6 +169,7 @@
 <span id="example-linear-model-plot-sgd-weighted-samples-py"></span><h1>SGD: Weighted samples<a class="headerlink" href="#sgd-weighted-samples" title="Permalink to this headline">¶</a></h1>
 <p>Plot decision function of a weighted dataset, where the size of points
 is proportional to its weight.</p>
+<img alt="../../_images/plot_sgd_weighted_samples_1.png" class="align-center" src="../../_images/plot_sgd_weighted_samples_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_sgd_weighted_samples.py"><tt class="xref download docutils literal"><span class="pre">plot_sgd_weighted_samples.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -201,13 +206,14 @@ is proportional to its weight.</p>
 <span class="n">samples_weights</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyles</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;dashed&#39;</span><span class="p">])</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">no_weights</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">samples_weights</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
-    <span class="p">[</span><span class="s">&quot;no weights&quot;</span><span class="p">,</span> <span class="s">&quot;with weights&quot;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s">&quot;lower left&quot;</span><span class="p">)</span>
+          <span class="p">[</span><span class="s">&quot;no weights&quot;</span><span class="p">,</span> <span class="s">&quot;with weights&quot;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s">&quot;lower left&quot;</span><span class="p">)</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.13 seconds</p>
 </div>
 
 

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.1.1. sklearn.metrics.confusion_matrix &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.19.1.6. sklearn.metrics.confusion_matrix &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.1.2. sklearn.metrics.roc_curve" href="sklearn.metrics.roc_curve.html" />
-    <link rel="prev" title="8.16.4. sklearn.manifold.locally_linear_embedding" href="sklearn.manifold.locally_linear_embedding.html" />
+    <link rel="next" title="8.19.1.7. sklearn.metrics.f1_score" href="sklearn.metrics.f1_score.html" />
+    <link rel="prev" title="8.19.1.5. sklearn.metrics.classification_report" href="sklearn.metrics.classification_report.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.manifold.locally_linear_embedding.html" title="8.16.4. sklearn.manifold.locally_linear_embedding"
+	<a href="sklearn.metrics.classification_report.html" title="8.19.1.5. sklearn.metrics.classification_report"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.16.4. sklearn....
+	    8.19.1.5. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.16.4. sklearn.manifold.locally_linear_embedding
+	    8.19.1.5. sklearn.metrics.classification_report
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.roc_curve.html" title="8.17.1.2. sklearn.metrics.roc_curve"
+	<a href="sklearn.metrics.f1_score.html" title="8.19.1.7. sklearn.metrics.f1_score"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.17.1.2. sklear...
+	    8.19.1.7. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.1.2. sklearn.metrics.roc_curve
+	    8.19.1.7. sklearn.metrics.f1_score
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.17.1.1. sklearn.metrics.confusion_matrix</a></li>
+<li><a class="reference internal" href="#">8.19.1.6. sklearn.metrics.confusion_matrix</a></li>
 </ul>
 
     
@@ -162,37 +166,37 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-confusion-matrix">
-<h1>8.17.1.1. sklearn.metrics.confusion_matrix<a class="headerlink" href="#sklearn-metrics-confusion-matrix" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.1.6. sklearn.metrics.confusion_matrix<a class="headerlink" href="#sklearn-metrics-confusion-matrix" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.confusion_matrix">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">confusion_matrix</tt><big>(</big><em>y_true</em>, <em>y_pred</em>, <em>labels=None</em><big>)</big><a class="headerlink" href="#sklearn.metrics.confusion_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute confusion matrix to evaluate the accuracy of a classification</p>
-<p>By definition a confusion matrix cm is such that cm[i, j] is equal
-to the number of observations known to be in group i but predicted
-to be in group j.</p>
+<p>By definition a confusion matrix <img class="math" src="../../_images/math/c3355896da590fc491a10150a50416687626d7cc.png" alt="C"/> is such that <img class="math" src="../../_images/math/f468c9fba3c965c89e60abf6e9826fbd709bf7e4.png" alt="C_{i, j}"/>
+is equal to the number of observations known to be in group <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i"/> but
+predicted to be in group <img class="math" src="../../_images/math/8122aa89ea6e80784c6513d22787ad86e36ad0cc.png" alt="j"/>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>true targets</p>
+<div><p>Ground truth (correct) target values.</p>
 </div></blockquote>
 <p><strong>y_pred</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>estimated targets</p>
+<div><p>Estimated targets as returned by a classifier.</p>
 </div></blockquote>
 <p><strong>labels</strong> : array, shape = [n_classes]</p>
 <blockquote>
-<div><p>lists all labels occuring in the dataset.
+<div><p>List of all labels occuring in the dataset.
 If none is given, those that appear at least once
-in y_true or y_pred are used.</p>
+in <tt class="docutils literal"><span class="pre">y_true</span></tt> or <tt class="docutils literal"><span class="pre">y_pred</span></tt> are used.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>CM</strong> : array, shape = [n_classes, n_classes]</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array, shape = [n_classes, n_classes]</p>
 <blockquote class="last">
-<div><p>confusion matrix</p>
+<div><p>Confusion matrix</p>
 </div></blockquote>
 </td>
 </tr>
@@ -200,6 +204,16 @@ in y_true or y_pred are used.</p>
 </table>
 <p class="rubric">References</p>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Confusion_matrix">http://en.wikipedia.org/wiki/Confusion_matrix</a></p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="go">array([[2, 0, 0],</span>
+<span class="go">       [0, 0, 1],</span>
+<span class="go">       [1, 0, 2]])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -223,12 +237,12 @@ in y_true or y_pred are used.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.manifold.locally_linear_embedding.html">
+      <a href="sklearn.metrics.classification_report.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.metrics.roc_curve.html">
+      <a href="sklearn.metrics.f1_score.html">
         Next
       </a>
     </div>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.20.2. sklearn.naive_bayes.MultinomialNB &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.22.2. sklearn.naive_bayes.MultinomialNB &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.20.3. sklearn.naive_bayes.BernoulliNB" href="sklearn.naive_bayes.BernoulliNB.html" />
-    <link rel="prev" title="8.20.1. sklearn.naive_bayes.GaussianNB" href="sklearn.naive_bayes.GaussianNB.html" />
+    <link rel="next" title="8.22.3. sklearn.naive_bayes.BernoulliNB" href="sklearn.naive_bayes.BernoulliNB.html" />
+    <link rel="prev" title="8.22.1. sklearn.naive_bayes.GaussianNB" href="sklearn.naive_bayes.GaussianNB.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.naive_bayes.GaussianNB.html" title="8.20.1. sklearn.naive_bayes.GaussianNB"
+	<a href="sklearn.naive_bayes.GaussianNB.html" title="8.22.1. sklearn.naive_bayes.GaussianNB"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.20.1. sklearn....
+	    8.22.1. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.20.1. sklearn.naive_bayes.GaussianNB
+	    8.22.1. sklearn.naive_bayes.GaussianNB
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.naive_bayes.BernoulliNB.html" title="8.20.3. sklearn.naive_bayes.BernoulliNB"
+	<a href="sklearn.naive_bayes.BernoulliNB.html" title="8.22.3. sklearn.naive_bayes.BernoulliNB"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.20.3. sklearn....
+	    8.22.3. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.20.3. sklearn.naive_bayes.BernoulliNB
+	    8.22.3. sklearn.naive_bayes.BernoulliNB
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.20.2. sklearn.naive_bayes.MultinomialNB</a></li>
+<li><a class="reference internal" href="#">8.22.2. sklearn.naive_bayes.MultinomialNB</a></li>
 </ul>
 
     
@@ -162,10 +166,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-naive-bayes-multinomialnb">
-<h1>8.20.2. sklearn.naive_bayes.MultinomialNB<a class="headerlink" href="#sklearn-naive-bayes-multinomialnb" title="Permalink to this headline">¶</a></h1>
+<h1>8.22.2. sklearn.naive_bayes.MultinomialNB<a class="headerlink" href="#sklearn-naive-bayes-multinomialnb" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.naive_bayes.MultinomialNB">
-<em class="property">class </em><tt class="descclassname">sklearn.naive_bayes.</tt><tt class="descname">MultinomialNB</tt><big>(</big><em>alpha=1.0</em>, <em>fit_prior=True</em><big>)</big><a class="headerlink" href="#sklearn.naive_bayes.MultinomialNB" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.naive_bayes.</tt><tt class="descname">MultinomialNB</tt><big>(</big><em>alpha=1.0</em>, <em>fit_prior=True</em>, <em>class_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.naive_bayes.MultinomialNB" title="Permalink to this definition">¶</a></dt>
 <dd><p>Naive Bayes classifier for multinomial models</p>
 <p>The multinomial Naive Bayes classifier is suitable for classification with
 discrete features (e.g., word counts for text classification). The
@@ -175,15 +179,20 @@ in practice, fractional counts such as tf-idf may also work.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>alpha: float, optional (default=1.0)</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>alpha</strong> : float, optional (default=1.0)</p>
 <blockquote>
 <div><p>Additive (Laplace/Lidstone) smoothing parameter
 (0 for no smoothing).</p>
 </div></blockquote>
-<p><strong>fit_prior: boolean</strong> :</p>
-<blockquote class="last">
+<p><strong>fit_prior</strong> : boolean</p>
+<blockquote>
 <div><p>Whether to learn class prior probabilities or not.
 If false, a uniform prior will be used.</p>
+</div></blockquote>
+<p><strong>class_weight</strong> : array-like, size=[n_classes,]</p>
+<blockquote class="last">
+<div><p>Prior probabilities of the classes. If specified the priors are not
+adjusted according to the data.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -200,7 +209,7 @@ Tackling the poor assumptions of naive Bayes text classifiers, ICML.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-<span class="go">MultinomialNB(alpha=1.0, fit_prior=True)</span>
+<span class="go">MultinomialNB(alpha=1.0, class_weight=None, fit_prior=True)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
 <span class="go">[3]</span>
 </pre></div>
@@ -260,7 +269,7 @@ referring to <cite>class_log_prior_</cite> and
 </table>
 <dl class="method">
 <dt id="sklearn.naive_bayes.MultinomialNB.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>alpha=1.0</em>, <em>fit_prior=True</em><big>)</big><a class="headerlink" href="#sklearn.naive_bayes.MultinomialNB.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>alpha=1.0</em>, <em>fit_prior=True</em>, <em>class_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.naive_bayes.MultinomialNB.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

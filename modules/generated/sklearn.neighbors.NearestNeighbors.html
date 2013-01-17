@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.21.1. sklearn.neighbors.NearestNeighbors &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.23.1. sklearn.neighbors.NearestNeighbors &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.21.2. sklearn.neighbors.KNeighborsClassifier" href="sklearn.neighbors.KNeighborsClassifier.html" />
-    <link rel="prev" title="8.20.3. sklearn.naive_bayes.BernoulliNB" href="sklearn.naive_bayes.BernoulliNB.html" />
+    <link rel="next" title="8.23.2. sklearn.neighbors.KNeighborsClassifier" href="sklearn.neighbors.KNeighborsClassifier.html" />
+    <link rel="prev" title="8.22.3. sklearn.naive_bayes.BernoulliNB" href="sklearn.naive_bayes.BernoulliNB.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.naive_bayes.BernoulliNB.html" title="8.20.3. sklearn.naive_bayes.BernoulliNB"
+	<a href="sklearn.naive_bayes.BernoulliNB.html" title="8.22.3. sklearn.naive_bayes.BernoulliNB"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.20.3. sklearn....
+	    8.22.3. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.20.3. sklearn.naive_bayes.BernoulliNB
+	    8.22.3. sklearn.naive_bayes.BernoulliNB
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.neighbors.KNeighborsClassifier.html" title="8.21.2. sklearn.neighbors.KNeighborsClassifier"
+	<a href="sklearn.neighbors.KNeighborsClassifier.html" title="8.23.2. sklearn.neighbors.KNeighborsClassifier"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.21.2. sklearn....
+	    8.23.2. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.21.2. sklearn.neighbors.KNeighborsClassifier
+	    8.23.2. sklearn.neighbors.KNeighborsClassifier
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.21.1. sklearn.neighbors.NearestNeighbors</a></li>
+<li><a class="reference internal" href="#">8.23.1. sklearn.neighbors.NearestNeighbors</a></li>
 </ul>
 
     
@@ -162,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-neighbors-nearestneighbors">
-<h1>8.21.1. sklearn.neighbors.NearestNeighbors<a class="headerlink" href="#sklearn-neighbors-nearestneighbors" title="Permalink to this headline">¶</a></h1>
+<h1>8.23.1. sklearn.neighbors.NearestNeighbors<a class="headerlink" href="#sklearn-neighbors-nearestneighbors" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.neighbors.NearestNeighbors">
 <em class="property">class </em><tt class="descclassname">sklearn.neighbors.</tt><tt class="descname">NearestNeighbors</tt><big>(</big><em>n_neighbors=5</em>, <em>radius=1.0</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>warn_on_equidistant=True</em>, <em>p=2</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.NearestNeighbors" title="Permalink to this definition">¶</a></dt>
@@ -238,7 +242,8 @@ for a discussion of the choice of <tt class="docutils literal"><span class="pre"
 <span class="go">NearestNeighbors(...)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">]],</span> <span class="mi">2</span><span class="p">,</span> <span class="n">return_distance</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> 
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">]],</span> <span class="mi">2</span><span class="p">,</span> <span class="n">return_distance</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">... </span>
 <span class="go">array([[2, 0]]...)</span>
 </pre></div>
 </div>
@@ -266,7 +271,7 @@ for a discussion of the choice of <tt class="docutils literal"><span class="pre"
 <td>Computes the (weighted) graph of k-Neighbors for points in X</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.neighbors.NearestNeighbors.radius_neighbors" title="sklearn.neighbors.NearestNeighbors.radius_neighbors"><tt class="xref py py-obj docutils literal"><span class="pre">radius_neighbors</span></tt></a>(X[,&nbsp;radius,&nbsp;return_distance])</td>
-<td>Finds the neighbors of a point within a given radius.</td>
+<td>Finds the neighbors within a given radius of a point or points.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.neighbors.NearestNeighbors.radius_neighbors_graph" title="sklearn.neighbors.NearestNeighbors.radius_neighbors_graph"><tt class="xref py py-obj docutils literal"><span class="pre">radius_neighbors_graph</span></tt></a>(X[,&nbsp;radius,&nbsp;mode])</td>
 <td>Computes the (weighted) graph of Neighbors for points in X</td>
@@ -435,15 +440,15 @@ A[i, j] is assigned the weight of edge that connects i to j.</p>
 <dl class="method">
 <dt id="sklearn.neighbors.NearestNeighbors.radius_neighbors">
 <tt class="descname">radius_neighbors</tt><big>(</big><em>X</em>, <em>radius=None</em>, <em>return_distance=True</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.NearestNeighbors.radius_neighbors" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds the neighbors of a point within a given radius.</p>
-<p>Returns distance</p>
+<dd><p>Finds the neighbors within a given radius of a point or points.</p>
+<p>Returns indices of and distances to the neighbors of each point.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, last dimension same as that of fit data</p>
 <blockquote>
-<div><p>The new point.</p>
+<div><p>The new point or points</p>
 </div></blockquote>
 <p><strong>radius</strong> : float</p>
 <blockquote>
@@ -458,8 +463,8 @@ A[i, j] is assigned the weight of edge that connects i to j.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>dist</strong> : array</p>
 <blockquote>
-<div><p>Array representing the lengths to point, only present if
-return_distance=True</p>
+<div><p>Array representing the euclidean distances to each point,
+only present if return_distance=True.</p>
 </div></blockquote>
 <p><strong>ind</strong> : array</p>
 <blockquote class="last">
@@ -469,6 +474,12 @@ return_distance=True</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>Because the number of neighbors of each point is not necessarily
+equal, the results for multiple query points cannot be fit in a
+standard data array.
+For efficiency, <cite>radius_neighbors</cite> returns arrays of objects, where
+each object is a 1D array of indices or distances.</p>
 <p class="rubric">Examples</p>
 <p>In the following example, we construnct a NeighborsClassifier
 class from an array representing our data set and ask who&#8217;s
@@ -484,10 +495,7 @@ the closest point to [1,1,1]</p>
 </div>
 <p>The first array returned contains the distances to all points which
 are closer than 1.6, while the second array returned contains their
-indices.  In general, multiple points can be queried at the same time.
-Because the number of neighbors of each point is not necessarily
-equal, <cite>radius_neighbors</cite> returns an array of objects, where each
-object is a 1D array of indices.</p>
+indices.  In general, multiple points can be queried at the same time.</p>
 </dd></dl>
 
 <dl class="method">

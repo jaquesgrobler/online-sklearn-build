@@ -32,6 +32,8 @@
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.2.2. sklearn.covariance.EllipticEnvelope" href="sklearn.covariance.EllipticEnvelope.html" />
     <link rel="prev" title="8.1.2.7. sklearn.cluster.spectral_clustering" href="sklearn.cluster.spectral_clustering.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -215,7 +219,7 @@ If False (default), data are centered before computation.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.covariance.EmpiricalCovariance.error_norm" title="sklearn.covariance.EmpiricalCovariance.error_norm"><tt class="xref py py-obj docutils literal"><span class="pre">error_norm</span></tt></a>(comp_cov[,&nbsp;norm,&nbsp;scaling,&nbsp;squared])</td>
 <td>Computes the Mean Squared Error between two covariance estimators.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.covariance.EmpiricalCovariance.fit" title="sklearn.covariance.EmpiricalCovariance.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.covariance.EmpiricalCovariance.fit" title="sklearn.covariance.EmpiricalCovariance.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X[,&nbsp;y])</td>
 <td>Fits the Maximum Likelihood Estimator covariance model</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.covariance.EmpiricalCovariance.get_params" title="sklearn.covariance.EmpiricalCovariance.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
@@ -227,7 +231,7 @@ If False (default), data are centered before computation.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.covariance.EmpiricalCovariance.mahalanobis" title="sklearn.covariance.EmpiricalCovariance.mahalanobis"><tt class="xref py py-obj docutils literal"><span class="pre">mahalanobis</span></tt></a>(observations)</td>
 <td>Computes the mahalanobis distances of given observations.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.covariance.EmpiricalCovariance.score" title="sklearn.covariance.EmpiricalCovariance.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X_test)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.covariance.EmpiricalCovariance.score" title="sklearn.covariance.EmpiricalCovariance.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X_test[,&nbsp;y])</td>
 <td>Computes the log-likelihood of a gaussian data set with <cite>self.covariance_</cite> as an estimator of its covariance matrix.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.covariance.EmpiricalCovariance.set_params" title="sklearn.covariance.EmpiricalCovariance.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
@@ -283,18 +287,19 @@ If False, the error norm is returned.</p>
 
 <dl class="method">
 <dt id="sklearn.covariance.EmpiricalCovariance.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.covariance.EmpiricalCovariance.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.covariance.EmpiricalCovariance.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fits the Maximum Likelihood Estimator covariance model
 according to the given training data and parameters.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like, shape = [n_samples, n_features]</strong> :</p>
 <blockquote>
 <div><p>Training data, where n_samples is the number of samples and
 n_features is the number of features.</p>
 </div></blockquote>
+<p><strong>y: not used, present for API consistence purpose.</strong> :</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>self</strong> : object</p>
@@ -374,20 +379,21 @@ tha data used in fit (including centering).</p>
 
 <dl class="method">
 <dt id="sklearn.covariance.EmpiricalCovariance.score">
-<tt class="descname">score</tt><big>(</big><em>X_test</em><big>)</big><a class="headerlink" href="#sklearn.covariance.EmpiricalCovariance.score" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">score</tt><big>(</big><em>X_test</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.covariance.EmpiricalCovariance.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the log-likelihood of a gaussian data set with
 <cite>self.covariance_</cite> as an estimator of its covariance matrix.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X_test</strong> : array-like, shape = [n_samples, n_features]</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X_test: array-like, shape = [n_samples, n_features]</strong> :</p>
 <blockquote>
 <div><p>Test data of which we compute the likelihood, where n_samples is
 the number of samples and n_features is the number of features.
 X_test is assumed to be drawn from the same distribution than
 tha data used in fit (including centering).</p>
 </div></blockquote>
+<p><strong>y: not used, present for API consistence purpose.</strong> :</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>res</strong> : float</p>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.26.1.1. sklearn.svm.SVC &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.29.1.1. sklearn.svm.SVC &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.26.1.2. sklearn.svm.LinearSVC" href="sklearn.svm.LinearSVC.html" />
-    <link rel="prev" title="8.25.1. sklearn.qda.QDA" href="sklearn.qda.QDA.html" />
+    <link rel="next" title="8.29.1.2. sklearn.svm.LinearSVC" href="sklearn.svm.LinearSVC.html" />
+    <link rel="prev" title="8.28.3. sklearn.random_projection.johnson_lindenstrauss_min_dim" href="sklearn.random_projection.johnson_lindenstrauss_min_dim.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.qda.QDA.html" title="8.25.1. sklearn.qda.QDA"
+	<a href="sklearn.random_projection.johnson_lindenstrauss_min_dim.html" title="8.28.3. sklearn.random_projection.johnson_lindenstrauss_min_dim"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.25.1. sklearn....
+	    8.28.3. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.25.1. sklearn.qda.QDA
+	    8.28.3. sklearn.random_projection.johnson_lindenstrauss_min_dim
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.svm.LinearSVC.html" title="8.26.1.2. sklearn.svm.LinearSVC"
+	<a href="sklearn.svm.LinearSVC.html" title="8.29.1.2. sklearn.svm.LinearSVC"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.26.1.2. sklear...
+	    8.29.1.2. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.26.1.2. sklearn.svm.LinearSVC
+	    8.29.1.2. sklearn.svm.LinearSVC
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.26.1.1. sklearn.svm.SVC</a></li>
+<li><a class="reference internal" href="#">8.29.1.1. sklearn.svm.SVC</a></li>
 </ul>
 
     
@@ -162,10 +166,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-svm-svc">
-<h1>8.26.1.1. sklearn.svm.SVC<a class="headerlink" href="#sklearn-svm-svc" title="Permalink to this headline">¶</a></h1>
+<h1>8.29.1.1. sklearn.svm.SVC<a class="headerlink" href="#sklearn-svm-svc" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.svm.SVC">
-<em class="property">class </em><tt class="descclassname">sklearn.svm.</tt><tt class="descname">SVC</tt><big>(</big><em>C=1.0</em>, <em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>shrinking=True</em>, <em>probability=False</em>, <em>tol=0.001</em>, <em>cache_size=200</em>, <em>class_weight=None</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#sklearn.svm.SVC" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.svm.</tt><tt class="descname">SVC</tt><big>(</big><em>C=1.0</em>, <em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>shrinking=True</em>, <em>probability=False</em>, <em>tol=0.001</em>, <em>cache_size=200</em>, <em>class_weight=None</em>, <em>verbose=False</em>, <em>max_iter=-1</em><big>)</big><a class="headerlink" href="#sklearn.svm.SVC" title="Permalink to this definition">¶</a></dt>
 <dd><p>C-Support Vector Classification.</p>
 <p>The implementations is a based on libsvm. The fit time complexity
 is more than quadratic with the number of samples which makes it hard
@@ -186,8 +190,10 @@ see the corresponding section in the narrative documentation:
 <p><strong>kernel</strong> : string, optional (default=&#8217;rbf&#8217;)</p>
 <blockquote>
 <div><p>Specifies the kernel type to be used in the algorithm.
-It must be one of &#8216;linear&#8217;, &#8216;poly&#8217;, &#8216;rbf&#8217;, &#8216;sigmoid&#8217;, &#8216;precomputed&#8217;.
-If none is given, &#8216;rbf&#8217; will be used.</p>
+It must be one of &#8216;linear&#8217;, &#8216;poly&#8217;, &#8216;rbf&#8217;, &#8216;sigmoid&#8217;, &#8216;precomputed&#8217; or
+a callable.
+If none is given, &#8216;rbf&#8217; will be used. If a callable is given it is
+used to precompute the kernel matrix.</p>
 </div></blockquote>
 <p><strong>degree</strong> : int, optional (default=3)</p>
 <blockquote>
@@ -213,11 +219,11 @@ to calling predict_proba.</p>
 <blockquote>
 <div><p>Whether to use the shrinking heuristic.</p>
 </div></blockquote>
-<p><strong>tol: float, optional (default=1e-3)</strong> :</p>
+<p><strong>tol</strong> : float, optional (default=1e-3)</p>
 <blockquote>
 <div><p>Tolerance for stopping criterion.</p>
 </div></blockquote>
-<p><strong>cache_size: float, optional</strong> :</p>
+<p><strong>cache_size</strong> : float, optional</p>
 <blockquote>
 <div><p>Specify the size of the kernel cache (in MB)</p>
 </div></blockquote>
@@ -230,10 +236,14 @@ automatically adjust weights inversely proportional to
 class frequencies.</p>
 </div></blockquote>
 <p><strong>verbose</strong> : bool, default: False</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Enable verbose output. Note that this setting takes advantage of a
 per-process runtime setting in libsvm that, if enabled, may not work
 properly in a multithreaded context.</p>
+</div></blockquote>
+<p><strong>max_iter</strong> : int, optional (default=-1)</p>
+<blockquote class="last">
+<div><p>Hard limit on iterations within solver, or -1 for no limit.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -256,10 +266,10 @@ properly in a multithreaded context.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> 
 <span class="go">SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, degree=3,</span>
-<span class="go">        gamma=0.0, kernel=&#39;rbf&#39;, probability=False, shrinking=True,</span>
-<span class="go">        tol=0.001, verbose=False)</span>
+<span class="go">        gamma=0.0, kernel=&#39;rbf&#39;, max_iter=-1, probability=False,</span>
+<span class="go">        shrinking=True, tol=0.001, verbose=False)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]))</span>
-<span class="go">[ 1.]</span>
+<span class="go">[1]</span>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
@@ -310,7 +320,7 @@ problem). This is only available in the case of linear kernel.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.SVC.decision_function" title="sklearn.svm.SVC.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
 <td>Distance of the samples X to the separating hyperplane.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.svm.SVC.fit" title="sklearn.svm.SVC.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;class_weight,&nbsp;sample_weight])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.svm.SVC.fit" title="sklearn.svm.SVC.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;sample_weight])</td>
 <td>Fit the SVM model according to the given training data.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.SVC.get_params" title="sklearn.svm.SVC.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
@@ -335,7 +345,7 @@ problem). This is only available in the case of linear kernel.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.svm.SVC.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>C=1.0</em>, <em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>shrinking=True</em>, <em>probability=False</em>, <em>tol=0.001</em>, <em>cache_size=200</em>, <em>class_weight=None</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#sklearn.svm.SVC.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>C=1.0</em>, <em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>shrinking=True</em>, <em>probability=False</em>, <em>tol=0.001</em>, <em>cache_size=200</em>, <em>class_weight=None</em>, <em>verbose=False</em>, <em>max_iter=-1</em><big>)</big><a class="headerlink" href="#sklearn.svm.SVC.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -362,7 +372,7 @@ in the model.</p>
 
 <dl class="method">
 <dt id="sklearn.svm.SVC.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>class_weight=None</em>, <em>sample_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.svm.SVC.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>sample_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.svm.SVC.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit the SVM model according to the given training data.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -564,7 +574,7 @@ component of a nested object.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.qda.QDA.html">
+      <a href="sklearn.random_projection.johnson_lindenstrauss_min_dim.html">
         Previous
       </a>
     </div>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.3.9. sklearn.metrics.v_measure_score &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.19.3.10. sklearn.metrics.v_measure_score &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.4.1. sklearn.metrics.pairwise.euclidean_distances" href="sklearn.metrics.pairwise.euclidean_distances.html" />
-    <link rel="prev" title="8.17.3.8. sklearn.metrics.silhouette_score" href="sklearn.metrics.silhouette_score.html" />
+    <link rel="next" title="8.19.4.1. sklearn.metrics.pairwise.additive_chi2_kernel" href="sklearn.metrics.pairwise.additive_chi2_kernel.html" />
+    <link rel="prev" title="8.19.3.9. sklearn.metrics.silhouette_samples" href="sklearn.metrics.silhouette_samples.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.silhouette_score.html" title="8.17.3.8. sklearn.metrics.silhouette_score"
+	<a href="sklearn.metrics.silhouette_samples.html" title="8.19.3.9. sklearn.metrics.silhouette_samples"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.17.3.8. sklear...
+	    8.19.3.9. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.3.8. sklearn.metrics.silhouette_score
+	    8.19.3.9. sklearn.metrics.silhouette_samples
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.pairwise.euclidean_distances.html" title="8.17.4.1. sklearn.metrics.pairwise.euclidean_distances"
+	<a href="sklearn.metrics.pairwise.additive_chi2_kernel.html" title="8.19.4.1. sklearn.metrics.pairwise.additive_chi2_kernel"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.17.4.1. sklear...
+	    8.19.4.1. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.4.1. sklearn.metrics.pairwise.euclidean_distances
+	    8.19.4.1. sklearn.metrics.pairwise.additive_chi2_kernel
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.17.3.9. sklearn.metrics.v_measure_score</a></li>
+<li><a class="reference internal" href="#">8.19.3.10. sklearn.metrics.v_measure_score</a></li>
 </ul>
 
     
@@ -162,12 +166,12 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-v-measure-score">
-<h1>8.17.3.9. sklearn.metrics.v_measure_score<a class="headerlink" href="#sklearn-metrics-v-measure-score" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.3.10. sklearn.metrics.v_measure_score<a class="headerlink" href="#sklearn-metrics-v-measure-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.v_measure_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">v_measure_score</tt><big>(</big><em>labels_true</em>, <em>labels_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.v_measure_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>V-Measure cluster labeling given a ground truth.</p>
-<p>This score is identical to normalized_mutual_info_score.</p>
+<p>This score is identical to <a class="reference internal" href="sklearn.metrics.normalized_mutual_info_score.html#sklearn.metrics.normalized_mutual_info_score" title="sklearn.metrics.normalized_mutual_info_score"><tt class="xref py py-func docutils literal"><span class="pre">normalized_mutual_info_score</span></tt></a>.</p>
 <p>The V-Measure is the hormonic mean between homogeneity and completeness:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">v</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">homogeneity</span> <span class="o">*</span> <span class="n">completeness</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">homogeneity</span> <span class="o">+</span> <span class="n">completeness</span><span class="p">)</span>
 </pre></div>
@@ -175,8 +179,8 @@
 <p>This metric is independent of the absolute values of the labels:
 a permutation of the class or cluster label values won&#8217;t change the
 score value in any way.</p>
-<p>This metric is furthermore symmetric: switching <cite>label_true</cite> with
-<cite>label_pred</cite> will return the same score value. This can be useful to
+<p>This metric is furthermore symmetric: switching <tt class="docutils literal"><span class="pre">label_true</span></tt> with
+<tt class="docutils literal"><span class="pre">label_pred</span></tt> will return the same score value. This can be useful to
 measure the agreement of two independent label assignments strategies
 on the same dataset when the real ground truth is not known.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -206,12 +210,11 @@ on the same dataset when the real ground truth is not known.</p>
 <p class="last"><a class="reference internal" href="sklearn.metrics.homogeneity_score.html#sklearn.metrics.homogeneity_score" title="sklearn.metrics.homogeneity_score"><tt class="xref py py-obj docutils literal"><span class="pre">homogeneity_score</span></tt></a>, <a class="reference internal" href="sklearn.metrics.completeness_score.html#sklearn.metrics.completeness_score" title="sklearn.metrics.completeness_score"><tt class="xref py py-obj docutils literal"><span class="pre">completeness_score</span></tt></a></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="rosenberg2007" rules="none">
+<table class="docutils citation" frame="void" id="r107" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[Rosenberg2007]</a></td><td><cite>V-Measure: A conditional entropy-based external cluster
-evaluation measure Andrew Rosenberg and Julia Hirschberg, 2007</cite>
-<a class="reference external" href="http://acl.ldc.upenn.edu/D/D07/D07-1043.pdf">http://acl.ldc.upenn.edu/D/D07/D07-1043.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[R107]</a></td><td><a class="reference external" href="http://acl.ldc.upenn.edu/D/D07/D07-1043.pdf">Andrew Rosenberg and Julia Hirschberg, 2007. V-Measure: A
+conditional entropy-based external cluster evaluation measure</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -225,31 +228,37 @@ evaluation measure Andrew Rosenberg and Julia Hirschberg, 2007</cite>
 </div>
 <p>Labelings that assign all classes members to the same clusters
 are complete be not homogeneous, hence penalized:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>     
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="gp">... </span>                                                 
 <span class="go">0.8...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>     
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="gp">... </span>                                                 
 <span class="go">0.66...</span>
 </pre></div>
 </div>
 <p>Labelings that have pure clusters with members coming from the same
 classes are homogeneous but un-necessary splits harms completeness
-and thus penalize V-measure as well:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>     
+and thus penalize V-Measure as well:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+<span class="gp">... </span>                                                 
 <span class="go">0.8...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>     
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="gp">... </span>                                                 
 <span class="go">0.66...</span>
 </pre></div>
 </div>
 <p>If classes members are completly splitted across different clusters,
-the assignment is totally in-complete, hence the v-measure is null:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="go">0.0</span>
+the assignment is totally incomplete, hence the V-Measure is null:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="gp">... </span>                                                 
+<span class="go">0.0...</span>
 </pre></div>
 </div>
 <p>Clusters that include samples from totally different classes totally
 destroy the homogeneity of the labeling, hence:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="go">0.0</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+<span class="gp">... </span>                                                 
+<span class="go">0.0...</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -275,12 +284,12 @@ destroy the homogeneity of the labeling, hence:</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.metrics.silhouette_score.html">
+      <a href="sklearn.metrics.silhouette_samples.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.metrics.pairwise.euclidean_distances.html">
+      <a href="sklearn.metrics.pairwise.additive_chi2_kernel.html">
         Next
       </a>
     </div>

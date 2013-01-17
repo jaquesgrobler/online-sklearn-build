@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Faces recognition example using eigenfaces and SVMs" href="face_recognition.html" />
     <link rel="prev" title="Visualizing the stock market structure" href="plot_stock_market.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -179,10 +183,9 @@ sparsity): this is an example of <strong>compressive sensing</strong>.</p>
 addition to the data-fidelity term corresponding to a linear regression,
 we penalize the L1 norm of the image to account for its sparsity. The
 resulting optimization problem is called the <a class="reference internal" href="../../modules/linear_model.html#lasso"><em>Lasso</em></a>. We use the
-class <tt class="xref py py-class docutils literal"><span class="pre">sklearn.linear_model.sparse.Lasso</span></tt>, that uses the
-coordinate descent algorithm. Importantly, this implementation is more
-computationally efficient on a sparse matrix, as the projection operator
-used here.</p>
+class <a class="reference internal" href="../../modules/generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.linear_model.Lasso</span></tt></a>, that uses the coordinate descent
+algorithm. Importantly, this implementation is more computationally efficient
+on a sparse matrix, than the projection operator used here.</p>
 <p>The reconstruction with L1 penalization gives a result with zero error
 (all pixels are successfully labeled with 0 or 1), even if noise was
 added to the projections. In comparison, an L2 penalization
@@ -191,6 +194,7 @@ errors for the pixels. Important artifacts are observed on the
 reconstructed image, contrary to the L1 penalization. Note in particular
 the circular artifact separating the pixels in the corners, that have
 contributed to fewer projections than the central disk.</p>
+<img alt="../../_images/plot_tomography_l1_reconstruction_1.png" class="align-center" src="../../_images/plot_tomography_l1_reconstruction_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_tomography_l1_reconstruction.py"><tt class="xref download docutils literal"><span class="pre">plot_tomography_l1_reconstruction.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -307,6 +311,7 @@ contributed to fewer projections than the central disk.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  16.26 seconds</p>
 </div>
 
 

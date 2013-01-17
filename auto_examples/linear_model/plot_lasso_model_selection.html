@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Logit function" href="plot_logistic.html" />
     <link rel="prev" title="Lasso path using LARS" href="plot_lasso_lars.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -195,6 +199,18 @@ illustrates why nested-cross validation is necessary when trying to
 evaluate the performance of a method for which a parameter is chosen by
 cross-validation: this choice of parameter may not be optimal for unseen
 data.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../../_images/plot_lasso_model_selection_2.png"><img alt="../../_images/plot_lasso_model_selection_2.png" src="../../_images/plot_lasso_model_selection_2.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lasso_model_selection_1.png"><img alt="../../_images/plot_lasso_model_selection_1.png" src="../../_images/plot_lasso_model_selection_1.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lasso_model_selection_3.png"><img alt="../../_images/plot_lasso_model_selection_3.png" src="../../_images/plot_lasso_model_selection_3.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+</ul>
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Computing regularization path using the coordinate descent lasso...
+Computing regularization path using the Lars lasso...</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lasso_model_selection.py"><tt class="xref download docutils literal"><span class="pre">plot_lasso_model_selection.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -239,8 +255,8 @@ data.</p>
     <span class="n">criterion_</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">criterion_</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">alphas_</span><span class="p">),</span> <span class="n">criterion_</span><span class="p">,</span> <span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
             <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> criterion&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">alpha_</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-              <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;alpha: </span><span class="si">%s</span><span class="s"> estimate&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">alpha_</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+               <span class="n">label</span><span class="o">=</span><span class="s">&#39;alpha: </span><span class="si">%s</span><span class="s"> estimate&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;-log(alpha)&#39;</span><span class="p">)</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;criterion&#39;</span><span class="p">)</span>
 
@@ -302,14 +318,15 @@ data.</p>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;-log(alpha)&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Mean square error&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Mean square error on each fold: Lars (train time: </span><span class="si">%.2f</span><span class="s">s)&#39;</span> <span class="o">%</span>
-            <span class="n">t_lasso_lars_cv</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Mean square error on each fold: Lars (train time: </span><span class="si">%.2f</span><span class="s">s)&#39;</span>
+         <span class="o">%</span> <span class="n">t_lasso_lars_cv</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  2.57 seconds</p>
 </div>
 
 

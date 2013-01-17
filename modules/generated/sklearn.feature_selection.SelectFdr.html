@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.8.4. sklearn.feature_selection.SelectFdr &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.9.4. sklearn.feature_selection.SelectFdr &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.8.5. sklearn.feature_selection.SelectFwe" href="sklearn.feature_selection.SelectFwe.html" />
-    <link rel="prev" title="8.8.3. sklearn.feature_selection.SelectFpr" href="sklearn.feature_selection.SelectFpr.html" />
+    <link rel="next" title="8.9.5. sklearn.feature_selection.SelectFwe" href="sklearn.feature_selection.SelectFwe.html" />
+    <link rel="prev" title="8.9.3. sklearn.feature_selection.SelectFpr" href="sklearn.feature_selection.SelectFpr.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.feature_selection.SelectFpr.html" title="8.8.3. sklearn.feature_selection.SelectFpr"
+	<a href="sklearn.feature_selection.SelectFpr.html" title="8.9.3. sklearn.feature_selection.SelectFpr"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.8.3. sklearn.f...
+	    8.9.3. sklearn.f...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.8.3. sklearn.feature_selection.SelectFpr
+	    8.9.3. sklearn.feature_selection.SelectFpr
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.feature_selection.SelectFwe.html" title="8.8.5. sklearn.feature_selection.SelectFwe"
+	<a href="sklearn.feature_selection.SelectFwe.html" title="8.9.5. sklearn.feature_selection.SelectFwe"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.8.5. sklearn.f...
+	    8.9.5. sklearn.f...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.8.5. sklearn.feature_selection.SelectFwe
+	    8.9.5. sklearn.feature_selection.SelectFwe
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.8.4. sklearn.feature_selection.SelectFdr</a></li>
+<li><a class="reference internal" href="#">8.9.4. sklearn.feature_selection.SelectFdr</a></li>
 </ul>
 
     
@@ -162,10 +166,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-feature-selection-selectfdr">
-<h1>8.8.4. sklearn.feature_selection.SelectFdr<a class="headerlink" href="#sklearn-feature-selection-selectfdr" title="Permalink to this headline">¶</a></h1>
+<h1>8.9.4. sklearn.feature_selection.SelectFdr<a class="headerlink" href="#sklearn-feature-selection-selectfdr" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_selection.SelectFdr">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectFdr</tt><big>(</big><em>score_func=&lt;function f_classif at 0x49d0e60&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectFdr</tt><big>(</big><em>score_func=&lt;function f_classif at 0x41a9140&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter: Select the p-values for an estimated false discovery rate</p>
 <p>This uses the Benjamini-Hochberg procedure. <tt class="docutils literal"><span class="pre">alpha</span></tt> is the target false
 discovery rate.</p>
@@ -173,16 +177,34 @@ discovery rate.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>score_func: callable</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>score_func</strong> : callable</p>
 <blockquote>
-<div><p>Function taking two arrays X and y, and returning 2 arrays:
-both scores and pvalues</p>
+<div><p>Function taking two arrays X and y, and returning a pair of arrays
+(scores, pvalues).</p>
 </div></blockquote>
-<p><strong>alpha: float, optional</strong> :</p>
+<p><strong>alpha</strong> : float, optional</p>
 <blockquote class="last">
-<div><p>The highest uncorrected p-value for features to keep</p>
+<div><p>The highest uncorrected p-value for features to keep.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="47%" />
+<col width="41%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a href="#id1"><span class="problematic" id="id2">scores_</span></a></td>
+<td>array-like, shape=(n_features,)</td>
+<td>Scores of features.</td>
+</tr>
+<tr class="row-even"><td><a href="#id3"><span class="problematic" id="id4">pvalues_</span></a></td>
+<td>array-like, shape=(n_features,)</td>
+<td>p-values of feature scores.</td>
 </tr>
 </tbody>
 </table>
@@ -218,7 +240,7 @@ both scores and pvalues</p>
 </table>
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFdr.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x49d0e60&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x41a9140&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -255,10 +277,6 @@ and returns a transformed version of X.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>This method just calls fit and transform consecutively, i.e., it is not
-an optimized implementation of fit_transform, unlike other transformers
-such as PCA.</p>
 </dd></dl>
 
 <dl class="method">

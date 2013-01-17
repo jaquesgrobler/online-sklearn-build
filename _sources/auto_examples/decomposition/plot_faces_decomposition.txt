@@ -14,8 +14,80 @@ matrix decomposition (dimension reduction) methods from the module
 
 
 
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_faces_decomposition_9.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_faces_decomposition_3.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_faces_decomposition_8.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_faces_decomposition_2.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_faces_decomposition_4.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_faces_decomposition_7.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_faces_decomposition_1.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_faces_decomposition_5.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_faces_decomposition_6.png
+            :scale: 47
+
+
+**Script output**::
+
+  Dataset consists of 400 faces
+  Extracting the top 6 Eigenfaces - RandomizedPCA...
+  done in 0.195s
+  Extracting the top 6 Non-negative components - NMF...
+  done in 0.843s
+  Extracting the top 6 Independent components - FastICA...
+  done in 1.148s
+  Extracting the top 6 Sparse comp. - MiniBatchSparsePCA...
+  done in 1.286s
+  Extracting the top 6 MiniBatchDictionaryLearning...
+  done in 0.959s
+  Extracting the top 6 Cluster centers - MiniBatchKMeans...
+  done in 0.244s
+  Extracting the top 6 Factor Analysis components - FA...
+  done in 3.008s
+
+
+
 **Python source code:** :download:`plot_faces_decomposition.py <plot_faces_decomposition.py>`
 
 .. literalinclude:: plot_faces_decomposition.py
     :lines: 12-
+
+**Total running time of the example:**  9.82 seconds
     

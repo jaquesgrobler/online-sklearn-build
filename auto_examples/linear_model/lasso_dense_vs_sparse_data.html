@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Comparison of Manifold Learning methods" href="../manifold/plot_compare_methods.html" />
     <link rel="prev" title="Sparse recovery: feature selection for sparse linear models" href="plot_sparse_recovery.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -195,8 +199,8 @@ data and that in the case of sparse data the speed is improved.</p>
 <span class="n">dense_lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Dense Lasso done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="s">&quot;Distance between coefficients : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">sparse_lasso</span><span class="o">.</span><span class="n">coef_</span>
-                                                        <span class="o">-</span> <span class="n">dense_lasso</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Distance between coefficients : </span><span class="si">%s</span><span class="s">&quot;</span>
+      <span class="o">%</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">sparse_lasso</span><span class="o">.</span><span class="n">coef_</span> <span class="o">-</span> <span class="n">dense_lasso</span><span class="o">.</span><span class="n">coef_</span><span class="p">))</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># The two Lasso implementations on Sparse data</span>
@@ -221,8 +225,8 @@ data and that in the case of sparse data the speed is improved.</p>
 <span class="n">dense_lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xs</span><span class="o">.</span><span class="n">todense</span><span class="p">(),</span> <span class="n">y</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Dense Lasso done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="s">&quot;Distance between coefficients : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">sparse_lasso</span><span class="o">.</span><span class="n">coef_</span>
-                                                        <span class="o">-</span> <span class="n">dense_lasso</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Distance between coefficients : </span><span class="si">%s</span><span class="s">&quot;</span>
+      <span class="o">%</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">sparse_lasso</span><span class="o">.</span><span class="n">coef_</span> <span class="o">-</span> <span class="n">dense_lasso</span><span class="o">.</span><span class="n">coef_</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>

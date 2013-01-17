@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Confusion matrix" href="plot_confusion_matrix.html" />
+    <link rel="next" title="Classifiers Comparison" href="plot_classifier_comparison.html" />
     <link rel="prev" title="Examples" href="index.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_confusion_matrix.html" title="Confusion matrix"
+	<a href="plot_classifier_comparison.html" title="Classifiers Comparison"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Confusion matrix
+	    Classifiers Comp...
 	    </span>
 	    <span class="hiddenrellink">
-	    Confusion matrix
+	    Classifiers Comparison
 	    </span>
 	    
 	    </a>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -168,6 +172,12 @@ class dataset, and we classify it with a Support Vector classifier, as
 well as L1 and L2 penalized logistic regression.</p>
 <p>The logistic regression is not a multiclass classifier out of the box. As
 a result it can identify only the first class.</p>
+<img alt="../_images/plot_classification_probability_1.png" class="align-center" src="../_images/plot_classification_probability_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>classif_rate for Linear SVC : 82.000000
+classif_rate for L1 logistic : 79.333333
+classif_rate for L2 logistic : 76.666667</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_classification_probability.py"><tt class="xref download docutils literal"><span class="pre">plot_classification_probability.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -191,11 +201,9 @@ a result it can identify only the first class.</p>
 
 <span class="c"># Create different classifiers. The logistic regression cannot do</span>
 <span class="c"># multiclass out of the box.</span>
-<span class="n">classifiers</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s">&#39;L1 logistic&#39;</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l1&#39;</span><span class="p">),</span>
-                <span class="s">&#39;L2 logistic&#39;</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">),</span>
-                <span class="s">&#39;Linear SVC&#39;</span><span class="p">:</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-              <span class="p">}</span>
+<span class="n">classifiers</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;L1 logistic&#39;</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l1&#39;</span><span class="p">),</span>
+               <span class="s">&#39;L2 logistic&#39;</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">),</span>
+               <span class="s">&#39;Linear SVC&#39;</span><span class="p">:</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="bp">True</span><span class="p">)}</span>
 
 <span class="n">n_classifiers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">classifiers</span><span class="p">)</span>
 
@@ -207,7 +215,7 @@ a result it can identify only the first class.</p>
 
     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="n">classif_rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span> <span class="o">*</span> <span class="mi">100</span>
-    <span class="k">print</span>  <span class="s">&quot;classif_rate for </span><span class="si">%s</span><span class="s"> : </span><span class="si">%f</span><span class="s"> &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">classif_rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;classif_rate for </span><span class="si">%s</span><span class="s"> : </span><span class="si">%f</span><span class="s"> &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">classif_rate</span><span class="p">))</span>
 
     <span class="c"># View probabilities=</span>
     <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -236,6 +244,7 @@ a result it can identify only the first class.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.73 seconds</p>
 </div>
 
 
@@ -262,7 +271,7 @@ a result it can identify only the first class.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_confusion_matrix.html">
+      <a href="plot_classifier_comparison.html">
         Next
       </a>
     </div>

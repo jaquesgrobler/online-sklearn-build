@@ -32,6 +32,8 @@
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.2.3. sklearn.covariance.GraphLasso" href="sklearn.covariance.GraphLasso.html" />
     <link rel="prev" title="8.2.1. sklearn.covariance.EmpiricalCovariance" href="sklearn.covariance.EmpiricalCovariance.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -165,7 +169,7 @@
 <h1>8.2.2. sklearn.covariance.EllipticEnvelope<a class="headerlink" href="#sklearn-covariance-ellipticenvelope" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.covariance.EllipticEnvelope">
-<em class="property">class </em><tt class="descclassname">sklearn.covariance.</tt><tt class="descname">EllipticEnvelope</tt><big>(</big><em>store_precision=True</em>, <em>assume_centered=False</em>, <em>support_fraction=None</em>, <em>contamination=0.1</em><big>)</big><a class="headerlink" href="#sklearn.covariance.EllipticEnvelope" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.covariance.</tt><tt class="descname">EllipticEnvelope</tt><big>(</big><em>store_precision=True</em>, <em>assume_centered=False</em>, <em>support_fraction=None</em>, <em>contamination=0.1</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.covariance.EllipticEnvelope" title="Permalink to this definition">¶</a></dt>
 <dd><p>An object for detecting outliers in a Gaussian distributed dataset.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -259,7 +263,7 @@ robust estimates of location and shape.</td>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.covariance.EllipticEnvelope.error_norm" title="sklearn.covariance.EllipticEnvelope.error_norm"><tt class="xref py py-obj docutils literal"><span class="pre">error_norm</span></tt></a>(comp_cov[,&nbsp;norm,&nbsp;scaling,&nbsp;squared])</td>
 <td>Computes the Mean Squared Error between two covariance estimators.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.covariance.EllipticEnvelope.fit" title="sklearn.covariance.EllipticEnvelope.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.covariance.EllipticEnvelope.fit" title="sklearn.covariance.EllipticEnvelope.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X[,&nbsp;y])</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.covariance.EllipticEnvelope.get_params" title="sklearn.covariance.EllipticEnvelope.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
@@ -287,7 +291,7 @@ robust estimates of location and shape.</td>
 </table>
 <dl class="method">
 <dt id="sklearn.covariance.EllipticEnvelope.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>store_precision=True</em>, <em>assume_centered=False</em>, <em>support_fraction=None</em>, <em>contamination=0.1</em><big>)</big><a class="headerlink" href="#sklearn.covariance.EllipticEnvelope.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>store_precision=True</em>, <em>assume_centered=False</em>, <em>support_fraction=None</em>, <em>contamination=0.1</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.covariance.EllipticEnvelope.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -394,7 +398,7 @@ If False, the error norm is returned.</p>
 
 <dl class="method">
 <dt id="sklearn.covariance.EllipticEnvelope.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.covariance.EllipticEnvelope.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.covariance.EllipticEnvelope.fit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

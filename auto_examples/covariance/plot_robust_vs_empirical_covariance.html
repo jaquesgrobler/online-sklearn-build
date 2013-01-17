@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Sparse inverse covariance estimation" href="plot_sparse_cov.html" />
     <link rel="prev" title="Outlier detection with several methods." href="plot_outlier_detection.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -198,6 +202,7 @@ so one can trust our implementation by comparing to this case.</li>
 <dt>[2] Johanna Hardin, David M Rocke. Journal of Computational and</dt>
 <dd>Graphical Statistics. December 1, 2005, 14(4): 928-946.</dd>
 </dl>
+<img alt="../../_images/plot_robust_vs_empirical_covariance_1.png" class="align-center" src="../../_images/plot_robust_vs_empirical_covariance_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_robust_vs_empirical_covariance.py"><tt class="xref download docutils literal"><span class="pre">plot_robust_vs_empirical_covariance.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -280,8 +285,8 @@ so one can trust our implementation by comparing to this case.</li>
             <span class="n">yerr</span><span class="o">=</span><span class="n">err_cov_emp_full</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="mi">1</span><span class="p">)[:(</span><span class="n">x_size</span> <span class="o">/</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)],</span>
             <span class="n">label</span><span class="o">=</span><span class="s">&quot;Full data set empirical covariance&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_n_outliers</span><span class="p">[(</span><span class="n">x_size</span> <span class="o">/</span> <span class="mi">5</span><span class="p">):(</span><span class="n">x_size</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)],</span>
-         <span class="n">err_cov_emp_full</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)[(</span><span class="n">x_size</span> <span class="o">/</span> <span class="mi">5</span><span class="p">):(</span><span class="n">x_size</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)],</span>
-         <span class="n">color</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+        <span class="n">err_cov_emp_full</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)[(</span><span class="n">x_size</span> <span class="o">/</span> <span class="mi">5</span><span class="p">):(</span><span class="n">x_size</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">,</span>
+        <span class="n">ls</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">range_n_outliers</span><span class="p">,</span> <span class="n">err_cov_emp_pure</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
             <span class="n">yerr</span><span class="o">=</span><span class="n">err_cov_emp_pure</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
             <span class="n">label</span><span class="o">=</span><span class="s">&quot;Pure data set empirical covariance&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
@@ -293,6 +298,7 @@ so one can trust our implementation by comparing to this case.</li>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  3.96 seconds</p>
 </div>
 
 

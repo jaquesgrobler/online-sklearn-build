@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.5.14. sklearn.decomposition.dict_learning &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.5.15. sklearn.decomposition.dict_learning &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.5.15. sklearn.decomposition.dict_learning_online" href="sklearn.decomposition.dict_learning_online.html" />
-    <link rel="prev" title="8.5.13. sklearn.decomposition.fastica" href="sklearn.decomposition.fastica.html" />
+    <link rel="next" title="8.5.16. sklearn.decomposition.dict_learning_online" href="sklearn.decomposition.dict_learning_online.html" />
+    <link rel="prev" title="8.5.14. sklearn.decomposition.fastica" href="sklearn.decomposition.fastica.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.decomposition.fastica.html" title="8.5.13. sklearn.decomposition.fastica"
+	<a href="sklearn.decomposition.fastica.html" title="8.5.14. sklearn.decomposition.fastica"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.5.13. sklearn....
+	    8.5.14. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.5.13. sklearn.decomposition.fastica
+	    8.5.14. sklearn.decomposition.fastica
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.decomposition.dict_learning_online.html" title="8.5.15. sklearn.decomposition.dict_learning_online"
+	<a href="sklearn.decomposition.dict_learning_online.html" title="8.5.16. sklearn.decomposition.dict_learning_online"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.5.15. sklearn....
+	    8.5.16. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.5.15. sklearn.decomposition.dict_learning_online
+	    8.5.16. sklearn.decomposition.dict_learning_online
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.5.14. sklearn.decomposition.dict_learning</a></li>
+<li><a class="reference internal" href="#">8.5.15. sklearn.decomposition.dict_learning</a></li>
 </ul>
 
     
@@ -162,16 +166,16 @@
           <div class="body">
             
   <div class="section" id="sklearn-decomposition-dict-learning">
-<h1>8.5.14. sklearn.decomposition.dict_learning<a class="headerlink" href="#sklearn-decomposition-dict-learning" title="Permalink to this headline">¶</a></h1>
+<h1>8.5.15. sklearn.decomposition.dict_learning<a class="headerlink" href="#sklearn-decomposition-dict-learning" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.decomposition.dict_learning">
-<tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">dict_learning</tt><big>(</big><em>X</em>, <em>n_atoms</em>, <em>alpha</em>, <em>max_iter=100</em>, <em>tol=1e-08</em>, <em>method='lars'</em>, <em>n_jobs=1</em>, <em>dict_init=None</em>, <em>code_init=None</em>, <em>callback=None</em>, <em>verbose=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.dict_learning" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">dict_learning</tt><big>(</big><em>X</em>, <em>n_components</em>, <em>alpha</em>, <em>max_iter=100</em>, <em>tol=1e-08</em>, <em>method='lars'</em>, <em>n_jobs=1</em>, <em>dict_init=None</em>, <em>code_init=None</em>, <em>callback=None</em>, <em>verbose=False</em>, <em>random_state=None</em>, <em>n_atoms=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.dict_learning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solves a dictionary learning matrix factorization problem.</p>
 <p>Finds the best dictionary and the corresponding sparse code for
 approximating the data matrix X by solving:</p>
 <div class="highlight-python"><pre>(U^*, V^*) = argmin 0.5 || X - U V ||_2^2 + alpha * || U ||_1
              (U,V)
-            with || V_k ||_2 = 1 for all  0 &lt;= k &lt; n_atoms</pre>
+            with || V_k ||_2 = 1 for all  0 &lt;= k &lt; n_components</pre>
 </div>
 <p>where V is the dictionary and U is the sparse code.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -182,7 +186,7 @@ approximating the data matrix X by solving:</p>
 <blockquote>
 <div><p>Data matrix.</p>
 </div></blockquote>
-<p><strong>n_atoms: int,</strong> :</p>
+<p><strong>n_components: int,</strong> :</p>
 <blockquote>
 <div><p>Number of dictionary atoms to extract.</p>
 </div></blockquote>
@@ -210,11 +214,11 @@ the estimated components are sparse.</p>
 <blockquote>
 <div><p>Number of parallel jobs to run, or -1 to autodetect.</p>
 </div></blockquote>
-<p><strong>dict_init: array of shape (n_atoms, n_features),</strong> :</p>
+<p><strong>dict_init: array of shape (n_components, n_features),</strong> :</p>
 <blockquote>
 <div><p>Initial value for the dictionary for warm restart scenarios.</p>
 </div></blockquote>
-<p><strong>code_init: array of shape (n_samples, n_atoms),</strong> :</p>
+<p><strong>code_init: array of shape (n_samples, n_components),</strong> :</p>
 <blockquote>
 <div><p>Initial value for the sparse code for warm restart scenarios.</p>
 </div></blockquote>
@@ -232,11 +236,11 @@ the estimated components are sparse.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>code: array of shape (n_samples, n_atoms)</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>code: array of shape (n_samples, n_components)</strong> :</p>
 <blockquote>
 <div><p>The sparse code factor in the matrix factorization.</p>
 </div></blockquote>
-<p><strong>dictionary: array of shape (n_atoms, n_features),</strong> :</p>
+<p><strong>dictionary: array of shape (n_components, n_features),</strong> :</p>
 <blockquote>
 <div><p>The dictionary factor in the matrix factorization.</p>
 </div></blockquote>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.1.12. sklearn.metrics.precision_recall_curve &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.19.1.11. sklearn.metrics.precision_recall_curve &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.1.13. sklearn.metrics.zero_one_score" href="sklearn.metrics.zero_one_score.html" />
-    <link rel="prev" title="8.17.1.11. sklearn.metrics.classification_report" href="sklearn.metrics.classification_report.html" />
+    <link rel="next" title="8.19.1.12. sklearn.metrics.precision_recall_fscore_support" href="sklearn.metrics.precision_recall_fscore_support.html" />
+    <link rel="prev" title="8.19.1.10. sklearn.metrics.matthews_corrcoef" href="sklearn.metrics.matthews_corrcoef.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.classification_report.html" title="8.17.1.11. sklearn.metrics.classification_report"
+	<a href="sklearn.metrics.matthews_corrcoef.html" title="8.19.1.10. sklearn.metrics.matthews_corrcoef"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.17.1.11. sklea...
+	    8.19.1.10. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.1.11. sklearn.metrics.classification_report
+	    8.19.1.10. sklearn.metrics.matthews_corrcoef
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.zero_one_score.html" title="8.17.1.13. sklearn.metrics.zero_one_score"
+	<a href="sklearn.metrics.precision_recall_fscore_support.html" title="8.19.1.12. sklearn.metrics.precision_recall_fscore_support"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.17.1.13. sklea...
+	    8.19.1.12. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.1.13. sklearn.metrics.zero_one_score
+	    8.19.1.12. sklearn.metrics.precision_recall_fscore_support
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.17.1.12. sklearn.metrics.precision_recall_curve</a></li>
+<li><a class="reference internal" href="#">8.19.1.11. sklearn.metrics.precision_recall_curve</a></li>
 </ul>
 
     
@@ -162,18 +166,18 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-precision-recall-curve">
-<h1>8.17.1.12. sklearn.metrics.precision_recall_curve<a class="headerlink" href="#sklearn-metrics-precision-recall-curve" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.1.11. sklearn.metrics.precision_recall_curve<a class="headerlink" href="#sklearn-metrics-precision-recall-curve" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.precision_recall_curve">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">precision_recall_curve</tt><big>(</big><em>y_true</em>, <em>probas_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.precision_recall_curve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute precision-recall pairs for different probability thresholds</p>
 <p>Note: this implementation is restricted to the binary classification task.</p>
-<p>The precision is the ratio <img class="math" src="../../_images/math/8619a477265f0add9d03256c5e1f092a373b0f78.png" alt="tp / (tp + fp)"/> where tp is the number of
-true positives and fp the number of false positives. The precision is
+<p>The precision is the ratio <tt class="docutils literal"><span class="pre">tp</span> <span class="pre">/</span> <span class="pre">(tp</span> <span class="pre">+</span> <span class="pre">fp)</span></tt> where <tt class="docutils literal"><span class="pre">tp</span></tt> is the number of
+true positives and <tt class="docutils literal"><span class="pre">fp</span></tt> the number of false positives. The precision is
 intuitively the ability of the classifier not to label as positive a sample
 that is negative.</p>
-<p>The recall is the ratio <img class="math" src="../../_images/math/b93f9414f59ad06c532feae9a075f7a453543b52.png" alt="tp / (tp + fn)"/> where tp is the number of
-true positives and fn the number of false negatives. The recall is
+<p>The recall is the ratio <tt class="docutils literal"><span class="pre">tp</span> <span class="pre">/</span> <span class="pre">(tp</span> <span class="pre">+</span> <span class="pre">fn)</span></tt> where <tt class="docutils literal"><span class="pre">tp</span></tt> is the number of
+true positives and <tt class="docutils literal"><span class="pre">fn</span></tt> the number of false negatives. The recall is
 intuitively the ability of the classifier to find all the positive samples.</p>
 <p>The last precision and recall values are 1. and 0. respectively and do not
 have a corresponding threshold.  This ensures that the graph starts on the
@@ -184,30 +188,44 @@ x axis.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>True targets of binary classification in range {-1, 1} or {0, 1}</p>
+<div><p>True targets of binary classification in range {-1, 1} or {0, 1}.</p>
 </div></blockquote>
 <p><strong>probas_pred</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>Estimated probabilities</p>
+<div><p>Estimated probabilities or decision function.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>precision</strong> : array, shape = [n + 1]</p>
 <blockquote>
-<div><p>Precision values</p>
+<div><p>Precision values.</p>
 </div></blockquote>
 <p><strong>recall</strong> : array, shape = [n + 1]</p>
 <blockquote>
-<div><p>Recall values</p>
+<div><p>Recall values.</p>
 </div></blockquote>
 <p><strong>thresholds</strong> : array, shape = [n]</p>
 <blockquote class="last">
-<div><p>Thresholds on y_score used to compute precision and recall</p>
+<div><p>Thresholds on y_score used to compute precision and recall.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">precision</span>  
+<span class="go">array([ 0.66...,  0.5       ,  1.        ,  1.        ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">recall</span>
+<span class="go">array([ 1. ,  0.5,  0.5,  0. ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">threshold</span>
+<span class="go">array([ 0.35,  0.4 ,  0.8 ])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -231,12 +249,12 @@ x axis.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.metrics.classification_report.html">
+      <a href="sklearn.metrics.matthews_corrcoef.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.metrics.zero_one_score.html">
+      <a href="sklearn.metrics.precision_recall_fscore_support.html">
         Next
       </a>
     </div>

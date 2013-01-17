@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Gradient Boosting regularization" href="plot_gradient_boosting_regularization.html" />
     <link rel="prev" title="Prediction Intervals for Gradient Boosting Regression" href="plot_gradient_boosting_quantile.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -166,6 +170,10 @@
 <p>Demonstrate Gradient Boosting on the boston housing dataset.</p>
 <p>This example fits a Gradient Boosting model with least squares loss and
 500 regression trees of depth 4.</p>
+<img alt="../../_images/plot_gradient_boosting_regression_1.png" class="align-center" src="../../_images/plot_gradient_boosting_regression_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>MSE: 6.2071</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_gradient_boosting_regression.py"><tt class="xref download docutils literal"><span class="pre">plot_gradient_boosting_regression.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -192,7 +200,7 @@
 <span class="c">###############################################################################</span>
 <span class="c"># Fit regression model</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-          <span class="s">&#39;learn_rate&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s">&#39;loss&#39;</span><span class="p">:</span> <span class="s">&#39;ls&#39;</span><span class="p">}</span>
+          <span class="s">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s">&#39;loss&#39;</span><span class="p">:</span> <span class="s">&#39;ls&#39;</span><span class="p">}</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
 
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -234,6 +242,7 @@
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.92 seconds</p>
 </div>
 
 

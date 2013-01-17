@@ -32,6 +32,8 @@
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.3.13. sklearn.cross_validation.check_cv" href="sklearn.cross_validation.check_cv.html" />
     <link rel="prev" title="8.3.11. sklearn.cross_validation.cross_val_score" href="sklearn.cross_validation.cross_val_score.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -171,20 +175,20 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>estimator: estimator object implementing &#8216;fit&#8217;</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>estimator</strong> : estimator object implementing &#8216;fit&#8217;</p>
 <blockquote>
-<div><p>The object to use to fit the data</p>
+<div><p>The object to use to fit the data.</p>
 </div></blockquote>
-<p><strong>X: array-like of shape at least 2D</strong> :</p>
+<p><strong>X</strong> : array-like of shape at least 2D</p>
 <blockquote>
 <div><p>The data to fit.</p>
 </div></blockquote>
-<p><strong>y: array-like</strong> :</p>
+<p><strong>y</strong> : array-like</p>
 <blockquote>
 <div><p>The target variable to try to predict in the case of
 supervised learning.</p>
 </div></blockquote>
-<p><strong>score_func: callable</strong> :</p>
+<p><strong>score_func</strong> : callable</p>
 <blockquote>
 <div><p>Callable taking as arguments the test targets (y_test) and
 the predicted targets (y_pred) and returns a float. The score
@@ -196,30 +200,30 @@ Returns below for further details).</p>
 <blockquote>
 <div><p>If an integer is passed, it is the number of fold (default 3).
 Specific crossvalidation objects can be passed, see
-sklearn.cross_validation module for the list of possible objects</p>
+sklearn.cross_validation module for the list of possible objects.</p>
 </div></blockquote>
-<p><strong>n_jobs: integer, optional</strong> :</p>
+<p><strong>n_jobs</strong> : integer, optional</p>
 <blockquote>
 <div><p>The number of CPUs to use to do the computation. -1 means
 &#8216;all CPUs&#8217;.</p>
 </div></blockquote>
-<p><strong>labels: array-like of shape [n_samples] (optional)</strong> :</p>
+<p><strong>labels</strong> : array-like of shape [n_samples] (optional)</p>
 <blockquote>
 <div><p>Labels constrain the permutation among groups of samples with
 a same label.</p>
 </div></blockquote>
-<p><strong>random_state: RandomState or an int seed (0 by default)</strong> :</p>
+<p><strong>random_state</strong> : RandomState or an int seed (0 by default)</p>
 <blockquote>
 <div><p>A random number generator instance to define the state of the
 random permutations generator.</p>
 </div></blockquote>
-<p><strong>verbose: integer, optional</strong> :</p>
+<p><strong>verbose</strong> : integer, optional</p>
 <blockquote>
-<div><p>The verbosity level</p>
+<div><p>The verbosity level.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>score: float</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>score</strong> : float</p>
 <blockquote>
 <div><p>The true score without permuting targets.</p>
 </div></blockquote>
@@ -227,11 +231,11 @@ random permutations generator.</p>
 <blockquote>
 <div><p>The scores obtained for each permutations.</p>
 </div></blockquote>
-<p><strong>pvalue: float</strong> :</p>
+<p><strong>pvalue</strong> : float</p>
 <blockquote class="last">
 <div><p>The returned value equals p-value if <cite>score_func</cite> returns bigger
-numbers for better scores (e.g., zero_one). If <cite>score_func</cite> is rather a
-loss function (i.e. when lower is better such as with
+numbers for better scores (e.g., accuracy_score). If <cite>score_func</cite> is
+rather a loss function (i.e. when lower is better such as with
 <cite>mean_squared_error</cite>) then this is actually the complement of the
 p-value:  1 - p-value.</p>
 </div></blockquote>

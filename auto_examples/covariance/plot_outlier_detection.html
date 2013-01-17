@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Robust vs Empirical covariance estimate" href="plot_robust_vs_empirical_covariance.html" />
     <link rel="prev" title="Robust covariance estimation and Mahalanobis distances relevance" href="plot_mahalanobis_distances.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -180,6 +184,14 @@ by each method.</p>
 Thus rather than using the &#8216;predict&#8217; method of the objects, we set the
 threshold on the decision_function to separate out the corresponding
 fraction.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../../_images/plot_outlier_detection_1.png"><img alt="../../_images/plot_outlier_detection_1.png" src="../../_images/plot_outlier_detection_1.png" style="width: 470.0px; height: 235.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_outlier_detection_3.png"><img alt="../../_images/plot_outlier_detection_3.png" src="../../_images/plot_outlier_detection_3.png" style="width: 470.0px; height: 235.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_outlier_detection_2.png"><img alt="../../_images/plot_outlier_detection_2.png" src="../../_images/plot_outlier_detection_2.png" style="width: 470.0px; height: 235.0px;" /></a>
+</li>
+</ul>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_outlier_detection.py"><tt class="xref download docutils literal"><span class="pre">plot_outlier_detection.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -200,8 +212,7 @@ fraction.</p>
 <span class="n">classifiers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">&quot;One-Class SVM&quot;</span><span class="p">:</span> <span class="n">svm</span><span class="o">.</span><span class="n">OneClassSVM</span><span class="p">(</span><span class="n">nu</span><span class="o">=</span><span class="mf">0.95</span> <span class="o">*</span> <span class="n">outliers_fraction</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">,</span>
                                      <span class="n">kernel</span><span class="o">=</span><span class="s">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
-    <span class="s">&quot;robust covariance estimator&quot;</span><span class="p">:</span> <span class="n">EllipticEnvelope</span><span class="p">(</span><span class="n">contamination</span><span class="o">=.</span><span class="mi">1</span><span class="p">),</span>
-    <span class="p">}</span>
+    <span class="s">&quot;robust covariance estimator&quot;</span><span class="p">:</span> <span class="n">EllipticEnvelope</span><span class="p">(</span><span class="n">contamination</span><span class="o">=.</span><span class="mi">1</span><span class="p">)}</span>
 
 <span class="c"># Compare given classifiers under given settings</span>
 <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
@@ -236,7 +247,7 @@ fraction.</p>
         <span class="n">subplot</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">subplot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Outlier detection&quot;</span><span class="p">)</span>
         <span class="n">subplot</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">threshold</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
-                <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues_r</span><span class="p">)</span>
+                         <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues_r</span><span class="p">)</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">subplot</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="n">threshold</span><span class="p">],</span>
                             <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
         <span class="n">subplot</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="n">threshold</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
@@ -256,6 +267,7 @@ fraction.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  3.06 seconds</p>
 </div>
 
 

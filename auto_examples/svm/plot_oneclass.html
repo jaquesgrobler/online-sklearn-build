@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="RBF SVM parameters" href="plot_rbf_parameters.html" />
     <link rel="prev" title="Plot different SVM classifiers in the iris dataset" href="plot_iris.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -166,6 +170,7 @@
 <p><a class="reference internal" href="../../modules/svm.html#svm-outlier-detection"><em>One-class SVM</em></a> is an unsupervised
 algorithm that learns a decision function for novelty detection:
 classifying new data as similar or different to the training set.</p>
+<img alt="../../_images/plot_oneclass_1.png" class="align-center" src="../../_images/plot_oneclass_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_oneclass.py"><tt class="xref download docutils literal"><span class="pre">plot_oneclass.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -215,12 +220,13 @@ classifying new data as similar or different to the training set.</p>
           <span class="n">loc</span><span class="o">=</span><span class="s">&quot;upper left&quot;</span><span class="p">,</span>
           <span class="n">prop</span><span class="o">=</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">font_manager</span><span class="o">.</span><span class="n">FontProperties</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">))</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span>
-    <span class="s">&quot;error train: </span><span class="si">%d</span><span class="s">/200 ; errors novel regular: </span><span class="si">%d</span><span class="s">/20 ; &quot;</span> \
-        <span class="s">&quot;errors novel abnormal: </span><span class="si">%d</span><span class="s">/20&quot;</span>
+    <span class="s">&quot;error train: </span><span class="si">%d</span><span class="s">/200 ; errors novel regular: </span><span class="si">%d</span><span class="s">/20 ; &quot;</span>
+    <span class="s">&quot;errors novel abnormal: </span><span class="si">%d</span><span class="s">/20&quot;</span>
     <span class="o">%</span> <span class="p">(</span><span class="n">n_error_train</span><span class="p">,</span> <span class="n">n_error_test</span><span class="p">,</span> <span class="n">n_error_outliers</span><span class="p">))</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.41 seconds</p>
 </div>
 
 

@@ -32,6 +32,8 @@
     <link rel="up" title="2.2. A tutorial on statistical-learning for scientific data processing" href="index.html" />
     <link rel="next" title="2.2.4. Unsupervised learning: seeking representations of the data" href="unsupervised_learning.html" />
     <link rel="prev" title="2.2.2. Supervised learning: predicting an output variable from high-dimensional observations" href="supervised_learning.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -214,7 +218,7 @@ data in <em>folds</em> that we use for training and testing:</p>
 The <cite>sklearn</cite> exposes cross-validation generators to generate list
 of indices for this purpose:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">k_fold</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">KFold</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k_fold</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">KFold</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">n_folds</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train_indices</span><span class="p">,</span> <span class="n">test_indices</span> <span class="ow">in</span> <span class="n">k_fold</span><span class="p">:</span>
 <span class="gp">... </span>     <span class="k">print</span> <span class="s">&#39;Train: </span><span class="si">%s</span><span class="s"> | test: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train_indices</span><span class="p">,</span> <span class="n">test_indices</span><span class="p">)</span>
 <span class="go">Train: [2 3 4 5] | test: [0 1]</span>
@@ -223,7 +227,7 @@ of indices for this purpose:</p>
 </pre></div>
 </div>
 <p>The cross-validation can then be implemented easily:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">kfold</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">KFold</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_digits</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">kfold</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">KFold</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_digits</span><span class="p">),</span> <span class="n">n_folds</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">svc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_digits</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">y_digits</span><span class="p">[</span><span class="n">train</span><span class="p">])</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_digits</span><span class="p">[</span><span class="n">test</span><span class="p">],</span> <span class="n">y_digits</span><span class="p">[</span><span class="n">test</span><span class="p">])</span>
 <span class="gp">... </span>         <span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">kfold</span><span class="p">]</span>
 <span class="go">[0.93489148580968284, 0.95659432387312182, 0.93989983305509184]</span>
@@ -252,18 +256,18 @@ of the computer.</p>
 <td><a class="reference internal" href="../../modules/generated/sklearn.cross_validation.LeaveOneOut.html#sklearn.cross_validation.LeaveOneOut" title="sklearn.cross_validation.LeaveOneOut"><tt class="xref py py-class docutils literal"><span class="pre">LeaveOneOut</span></tt></a> <strong>(n)</strong></td>
 <td><a class="reference internal" href="../../modules/generated/sklearn.cross_validation.LeaveOneLabelOut.html#sklearn.cross_validation.LeaveOneLabelOut" title="sklearn.cross_validation.LeaveOneLabelOut"><tt class="xref py py-class docutils literal"><span class="pre">LeaveOneLabelOut</span></tt></a> <strong>(labels)</strong></td>
 </tr>
-<tr class="row-even"><td>Split it K folds, train on K-1, test on left-out</td>
-<td>Make sure that all classes are even accross the folds</td>
+<tr class="row-even"><td>Split it K folds, train on K-1 and then test on left-out</td>
+<td>It preserves the class ratios / label distribution within each fold.</td>
 <td>Leave one observation out</td>
 <td>Takes a label array to group observations</td>
 </tr>
 </tbody>
 </table>
-<a class="reference external image-reference" href="../../auto_examples/exercises/plot_cv_digits.html"><img alt="../../_images/plot_cv_digits_1.png" class="align-right" src="../../_images/plot_cv_digits_1.png" style="width: 250.0px; height: 200.0px;" /></a>
 <div class="green topic">
 <p class="topic-title first"><strong>Exercise</strong></p>
+<a class="reference external image-reference" href="../../auto_examples/exercises/plot_cv_digits.html"><img alt="../../_images/plot_cv_digits_11.png" class="align-right" src="../../_images/plot_cv_digits_11.png" style="width: 360.0px; height: 270.0px;" /></a>
 <p>On the digits dataset, plot the cross-validation score of a <a class="reference internal" href="../../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><tt class="xref py py-class docutils literal"><span class="pre">SVC</span></tt></a>
-estimator with an RBF kernel as a function of parameter <cite>C</cite> (use a
+estimator with an linear kernel as a function of parameter <cite>C</cite> (use a
 logarithmic grid of points, from <cite>1</cite> to <cite>10</cite>).</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">svm</span>
 
@@ -271,14 +275,14 @@ logarithmic grid of points, from <cite>1</cite> to <cite>10</cite>).</p>
 <span class="n">X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span>
 
-<span class="n">svc</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
-<span class="n">C_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">svc</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span>
+<span class="n">C_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="n">scores</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 <span class="n">scores_std</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Solution: <a class="reference download internal" href="../../_downloads/plot_cv_digits1.py"><tt class="xref download docutils literal"><span class="pre">../../auto_examples/exercises/plot_cv_digits.py</span></tt></a></p>
+<p><strong>Solution:</strong> <a class="reference internal" href="../../auto_examples/exercises/plot_cv_digits.html#example-exercises-plot-cv-digits-py"><em>Cross-validation on Digits Dataset Exercise</em></a></p>
 </div>
 </div>
 <div class="section" id="grid-search-and-cross-validated-estimators">
@@ -305,8 +309,8 @@ estimator during the construction and exposes an estimator API:</p>
 <span class="go">0.94228356336260977</span>
 </pre></div>
 </div>
-<p>By default the <a class="reference internal" href="../../modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">GridSearchCV</span></tt></a> uses a 3-fold cross-validation. However, if
-it detects that a classifier is passed, rather than a regressor, it uses
+<p>By default, the <a class="reference internal" href="../../modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">GridSearchCV</span></tt></a> uses a 3-fold cross-validation. However,
+if it detects that a classifier is passed, rather than a regressor, it uses
 a stratified 3-fold.</p>
 <div class="topic">
 <p class="topic-title first">Nested cross-validation</p>
@@ -315,7 +319,7 @@ a stratified 3-fold.</p>
 </pre></div>
 </div>
 <p>Two cross-validation loops are performed in parallel: one by the
-<a class="reference internal" href="../../modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">GridSearchCV</span></tt></a> estimator to set <cite>gamma</cite>, the other one by
+<a class="reference internal" href="../../modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">GridSearchCV</span></tt></a> estimator to set <cite>gamma</cite> and the other one by
 <cite>cross_val_score</cite> to measure the prediction performance of the
 estimator. The resulting scores are unbiased estimates of the
 prediction score on new data.</p>
@@ -329,8 +333,8 @@ than 1).</p>
 <div class="section" id="cross-validated-estimators">
 <span id="cv-estimators-tut"></span><h3>2.2.3.3.2. Cross-validated estimators<a class="headerlink" href="#cross-validated-estimators" title="Permalink to this headline">¶</a></h3>
 <p>Cross-validation to set a parameter can be done more efficiently on an
-algorithm-by-algorithm basis. This is why, for certain estimators, the
-sklearn exposes <a class="reference internal" href="../../modules/cross_validation.html#cross-validation"><em>Cross-Validation: evaluating estimator performance</em></a> estimators, that set their parameter
+algorithm-by-algorithm basis. This is why for certain estimators the
+sklearn exposes <a class="reference internal" href="../../modules/cross_validation.html#cross-validation"><em>Cross-Validation: evaluating estimator performance</em></a> estimators that set their parameter
 automatically by cross-validation:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span><span class="p">,</span> <span class="n">datasets</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lasso</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LassoCV</span><span class="p">()</span>
@@ -359,15 +363,15 @@ alpha.</p>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">linear_model</span>
 
 <span class="n">diabetes</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span><span class="p">()</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">data</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">target</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="mi">150</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">150</span><span class="p">]</span>
 
 <span class="n">lasso</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">Lasso</span><span class="p">()</span>
 
-<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Solution: <a class="reference download internal" href="../../_downloads/plot_cv_diabetes1.py"><tt class="xref download docutils literal"><span class="pre">../../auto_examples/exercises/plot_cv_diabetes.py</span></tt></a></p>
+<p><strong>Solution:</strong> <a class="reference internal" href="../../auto_examples/exercises/plot_cv_diabetes.html#example-exercises-plot-cv-diabetes-py"><em>Cross-validation on diabetes Dataset Exercise</em></a></p>
 </div>
 </div>
 </div>

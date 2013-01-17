@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.3.6. sklearn.metrics.mutual_info_score &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.19.3.6. sklearn.metrics.mutual_info_score &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.3.7. sklearn.metrics.normalized_mutual_info_score" href="sklearn.metrics.normalized_mutual_info_score.html" />
-    <link rel="prev" title="8.17.3.5. sklearn.metrics.homogeneity_score" href="sklearn.metrics.homogeneity_score.html" />
+    <link rel="next" title="8.19.3.7. sklearn.metrics.normalized_mutual_info_score" href="sklearn.metrics.normalized_mutual_info_score.html" />
+    <link rel="prev" title="8.19.3.5. sklearn.metrics.homogeneity_score" href="sklearn.metrics.homogeneity_score.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.homogeneity_score.html" title="8.17.3.5. sklearn.metrics.homogeneity_score"
+	<a href="sklearn.metrics.homogeneity_score.html" title="8.19.3.5. sklearn.metrics.homogeneity_score"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.17.3.5. sklear...
+	    8.19.3.5. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.3.5. sklearn.metrics.homogeneity_score
+	    8.19.3.5. sklearn.metrics.homogeneity_score
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.normalized_mutual_info_score.html" title="8.17.3.7. sklearn.metrics.normalized_mutual_info_score"
+	<a href="sklearn.metrics.normalized_mutual_info_score.html" title="8.19.3.7. sklearn.metrics.normalized_mutual_info_score"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.17.3.7. sklear...
+	    8.19.3.7. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.3.7. sklearn.metrics.normalized_mutual_info_score
+	    8.19.3.7. sklearn.metrics.normalized_mutual_info_score
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.17.3.6. sklearn.metrics.mutual_info_score</a></li>
+<li><a class="reference internal" href="#">8.19.3.6. sklearn.metrics.mutual_info_score</a></li>
 </ul>
 
     
@@ -162,16 +166,16 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-mutual-info-score">
-<h1>8.17.3.6. sklearn.metrics.mutual_info_score<a class="headerlink" href="#sklearn-metrics-mutual-info-score" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.3.6. sklearn.metrics.mutual_info_score<a class="headerlink" href="#sklearn-metrics-mutual-info-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.mutual_info_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">mutual_info_score</tt><big>(</big><em>labels_true</em>, <em>labels_pred</em>, <em>contingency=None</em><big>)</big><a class="headerlink" href="#sklearn.metrics.mutual_info_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mutual Information between two clusterings</p>
-<p>The Mutual Information is a measure of the similarity between two labels
-of the same data. Where P(i) is the probability of a random sample occuring
-in cluster U_i and P&#8217;(j) is the probability of a random sample occuring in
-cluster V_j, the Mutual information  between clusterings U and V is given
-as:</p>
+<p>The Mutual Information is a measure of the similarity between two labels of
+the same data. Where <img class="math" src="../../_images/math/b5e9eceb5c805a272e59cd35fc0cb0df9c5831c2.png" alt="P(i)"/> is the probability of a random sample
+occuring in cluster <img class="math" src="../../_images/math/fb8df2d00f692a5a5ee3e592916d04a5a3e1060b.png" alt="U_i"/> and <img class="math" src="../../_images/math/61b31ba302290ba8d4eb667344c20bc54f837c47.png" alt="P'(j)"/> is the probability of a
+random sample occuring in cluster <img class="math" src="../../_images/math/6fbba8e6f8bc75af045750f417c9000c07feb8dc.png" alt="V_j"/>, the Mutual Information
+between clusterings <img class="math" src="../../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U"/> and <img class="math" src="../../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/> is given as:</p>
 <div class="math">
 <p><img src="../../_images/math/0c19d1f2ac204c9bf5ae784b0e34fad3c0e0f7f0.png" alt="MI(U,V)=\sum_{i=1}^R \sum_{j=1}^C P(i,j)\log\frac{P(i,j)}{P(i)P'(j)}"/></p>
 </div><p>This is equal to the Kullback-Leibler divergence of the joint distribution
@@ -179,8 +183,8 @@ with the product distribution of the marginals.</p>
 <p>This metric is independent of the absolute values of the labels:
 a permutation of the class or cluster label values won&#8217;t change the
 score value in any way.</p>
-<p>This metric is furthermore symmetric: switching <cite>label_true</cite> with
-<cite>label_pred</cite> will return the same score value. This can be useful to
+<p>This metric is furthermore symmetric: switching <tt class="docutils literal"><span class="pre">label_true</span></tt> with
+<tt class="docutils literal"><span class="pre">label_pred</span></tt> will return the same score value. This can be useful to
 measure the agreement of two independent label assignments strategies
 on the same dataset when the real ground truth is not known.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -197,9 +201,9 @@ on the same dataset when the real ground truth is not known.</p>
 </div></blockquote>
 <p><strong>contingency: None or array, shape = [n_classes_true, n_classes_pred]</strong> :</p>
 <blockquote>
-<div><p>A contingency matrix given by the contingency_matrix function.
-If value is None, it will be computed, otherwise the given value is
-used, with labels_true and labels_pred ignored.</p>
+<div><p>A contingency matrix given by the <tt class="xref py py-func docutils literal"><span class="pre">contingency_matrix</span></tt> function.
+If value is <tt class="docutils literal"><span class="pre">None</span></tt>, it will be computed, otherwise the given value is
+used, with <tt class="docutils literal"><span class="pre">labels_true</span></tt> and <tt class="docutils literal"><span class="pre">labels_pred</span></tt> ignored.</p>
 </div></blockquote>
 </td>
 </tr>

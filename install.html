@@ -32,6 +32,8 @@
     <link rel="up" title="&lt;no title&gt;" href="user_guide.html" />
     <link rel="next" title="2. Tutorials: From the bottom up with scikit-learn" href="tutorial/index.html" />
     <link rel="prev" title="&lt;no title&gt;" href="user_guide.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -138,14 +142,14 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
 <li><a class="reference internal" href="#">1. Installing <cite>scikit-learn</cite></a><ul>
 <li><a class="reference internal" href="#installing-an-official-release">1.1. Installing an official release</a><ul>
-<li><a class="reference internal" href="#installing-from-source">1.1.1. Installing from source</a><ul>
+<li><a class="reference internal" href="#getting-the-dependencies">1.1.1. Getting the dependencies</a><ul>
 <li><a class="reference internal" href="#easy-install">1.1.1.1. Easy install</a></li>
 <li><a class="reference internal" href="#from-source-package">1.1.1.2. From source package</a></li>
 </ul>
@@ -159,7 +163,8 @@
 <li><a class="reference internal" href="#python-x-y">1.2.2. Python(x, y)</a></li>
 <li><a class="reference internal" href="#enthought-python-distribution">1.2.3. Enthought Python distribution</a></li>
 <li><a class="reference internal" href="#macports">1.2.4. Macports</a></li>
-<li><a class="reference internal" href="#netbsd">1.2.5. NetBSD</a></li>
+<li><a class="reference internal" href="#archlinux">1.2.5. Archlinux</a></li>
+<li><a class="reference internal" href="#netbsd">1.2.6. NetBSD</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#bleeding-edge">1.3. Bleeding Edge</a></li>
@@ -185,8 +190,8 @@
 <blockquote>
 <div><ul class="simple">
 <li>Install the version of scikit-learn provided by your
-<a class="reference internal" href="#install-by-distribution"><em>operating system distribution</em></a> . This
-is the quickest option for those who have operating systems that
+<a class="reference internal" href="#install-by-distribution"><em>operating system or Python distribution</em></a>.
+This is the quickest option for those who have operating systems that
 distribute scikit-learn.</li>
 <li><a class="reference internal" href="#install-official-release"><em>Install an official release</em></a>. This
 is the best approach for users who want a stable version number
@@ -204,24 +209,45 @@ brand-new code.</li>
 </div>
 <div class="section" id="installing-an-official-release">
 <span id="install-official-release"></span><h2>1.1. Installing an official release<a class="headerlink" href="#installing-an-official-release" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="installing-from-source">
-<h3>1.1.1. Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this headline">¶</a></h3>
-<p>Installing from source requires you to have installed python (&gt;= 2.6), numpy
-(&gt;= 1.3), scipy (&gt;= 0.7), setuptools, python development headers and a working
-C++ compiler. Under Debian-based systems you can get all this by executing with
-root privileges:</p>
-<div class="highlight-python"><pre>sudo apt-get install python-dev python-numpy python-numpy-dev python-setuptools python-numpy-dev python-scipy libatlas-dev g++</pre>
+<div class="section" id="getting-the-dependencies">
+<h3>1.1.1. Getting the dependencies<a class="headerlink" href="#getting-the-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>Installing from source requires you to have installed Python (&gt;= 2.6),
+NumPy (&gt;= 1.3), SciPy (&gt;= 0.7), setuptools, Python development headers
+and a working C++ compiler.
+Under Debian-based operating systems, which include Ubuntu,
+you can install all these requirements by issuing:</p>
+<div class="highlight-python"><pre>sudo apt-get install build-essential python-dev python-numpy python-setuptools python-scipy libatlas-dev</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>In Order to build the documentation and run the example code contains in
+<p>In order to build the documentation and run the example code contains in
 this documentation you will need matplotlib:</p>
 <div class="last highlight-python"><pre>sudo apt-get install python-matplotlib</pre>
 </div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">On Ubuntu LTS (10.04) the package <cite>libatlas-dev</cite> is called <cite>libatlas-headers</cite></p>
+<p>On older versions of Ubuntu,
+you might need to <tt class="docutils literal"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python-numpy-dev</span></tt>
+to get the header files for NumPy.</p>
+<p class="last">On Ubuntu 10.04 LTS, the package <cite>libatlas-dev</cite> is called <cite>libatlas-headers</cite>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The above installs the ATLAS implementation of BLAS
+(the Basic Linear Algebra Subprograms library).
+Ubuntu 11.10 and later, and recent (testing) versions of Debian,
+offer an alternative implementation called OpenBLAS.
+While this implementation has some issues
+(please don&#8217;t file bug reports about this),
+it may offer a significant speedup to some modules of scikit-learn,
+especially on multicore hardware.
+Replacing ATLAS with OpenBLAS only requires two commands:</p>
+<div class="last highlight-python"><pre># NumPy may not run when both ATLAS and OpenBLAS are installed,
+# so remove the former.
+sudo apt-get remove libatlas3gf-base libatlas-dev
+sudo apt-get install libopenblas-dev</pre>
+</div>
 </div>
 <div class="section" id="easy-install">
 <h4>1.1.1.1. Easy install<a class="headerlink" href="#easy-install" title="Permalink to this headline">¶</a></h4>
@@ -239,7 +265,7 @@ these commands.</p>
 <div class="section" id="from-source-package">
 <h4>1.1.1.2. From source package<a class="headerlink" href="#from-source-package" title="Permalink to this headline">¶</a></h4>
 <p>Download the package from <a class="reference external" href="http://pypi.python.org/pypi/scikit-learn/">http://pypi.python.org/pypi/scikit-learn/</a>
-, unpack the sources and cd into archive.</p>
+, unpack the sources and cd into the source directory.</p>
 <p>This packages uses distutils, which is the default way of installing
 python modules. The install command is:</p>
 <div class="highlight-python"><pre>python setup.py install</pre>
@@ -248,13 +274,13 @@ python modules. The install command is:</p>
 </div>
 <div class="section" id="windows-installer">
 <h3>1.1.2. Windows installer<a class="headerlink" href="#windows-installer" title="Permalink to this headline">¶</a></h3>
-<p>You can download a windows installer from <a class="reference external" href="https://sourceforge.net/projects/scikit-learn/files/">downloads</a> in the
+<p>You can download a Windows installer from <a class="reference external" href="https://sourceforge.net/projects/scikit-learn/files/">downloads</a> in the
 project&#8217;s web page. Note that must also have installed the packages
 numpy and setuptools.</p>
 <p>This package is also expected to work with python(x,y) as of 2.6.5.5.</p>
 <div class="topic">
-<p class="topic-title first"><strong>Installing on Windows 64bit</strong></p>
-<p>To install a 64bit version of the scikit, you can download the
+<p class="topic-title first"><strong>Installing on Windows 64-bit</strong></p>
+<p>To install a 64-bit version of scikit-learn, you can download the
 binaries from <a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#scikit-learn">http://www.lfd.uci.edu/~gohlke/pythonlibs/#scikit-learn</a>
 Note that this will require a compatible version of numpy, scipy and
 matplotlib. The easiest option is to also download them from the same
@@ -265,7 +291,7 @@ URL.</p>
 <h3>1.1.3. Building on windows<a class="headerlink" href="#building-on-windows" title="Permalink to this headline">¶</a></h3>
 <p>To build scikit-learn on windows you will need a C/C++ compiler in
 addition to numpy, scipy and setuptools. At least
-<a class="reference external" href="http://www.mingw.org">MinGW</a> (a port of GCC to Windows OS) and the
+<a class="reference external" href="http://www.mingw.org">MinGW</a> (a port of GCC to Windows OS) and
 Microsoft Visual C++ 2008 should work out of the box. To force the use
 of a particular compiler, write a file named <tt class="docutils literal"><span class="pre">setup.cfg</span></tt> in the
 source directory with the content:</p>
@@ -299,8 +325,8 @@ scikit-learn integrated with their package-management systems.</p>
 <p>These can make installation and upgrading much easier for users since
 the integration includes the ability to automatically install
 dependencies (numpy, scipy) that scikit-learn requires.</p>
-<p>The following is a list of Linux distributions that provide their own
-version of scikit-learn:</p>
+<p>The following is an imcomplete list of Python and OS distributions
+that provide their own version of scikit-learn:</p>
 <div class="section" id="debian-and-derivatives-ubuntu">
 <h3>1.2.1. Debian and derivatives (Ubuntu)<a class="headerlink" href="#debian-and-derivatives-ubuntu" title="Permalink to this headline">¶</a></h3>
 <p>The Debian package is named python-sklearn (formerly
@@ -335,8 +361,22 @@ command:</p>
 </div>
 <p>depending on the version of Python you want to use.</p>
 </div>
+<div class="section" id="archlinux">
+<h3>1.2.5. Archlinux<a class="headerlink" href="#archlinux" title="Permalink to this headline">¶</a></h3>
+<p>Archlinux&#8217;s package is provided at
+<a class="reference external" href="https://aur.archlinux.org/">Arch User Repository (AUR)</a> with name
+<cite>python2-scikit-learn</cite> for latest stable version and <cite>python2-scikit-learn-git</cite>
+for building from git version. If <cite>yaourt</cite> is available, it can be installed
+by typing the following command:</p>
+<div class="highlight-python"><pre>sudo yaourt -S python2-scikit-learn</pre>
+</div>
+<p>or:</p>
+<div class="highlight-python"><pre>sudo yaourt -S python2-scikit-learn-git</pre>
+</div>
+<p>depending on the version of scikit-learn you want to use.</p>
+</div>
 <div class="section" id="netbsd">
-<h3>1.2.5. NetBSD<a class="headerlink" href="#netbsd" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.6. NetBSD<a class="headerlink" href="#netbsd" title="Permalink to this headline">¶</a></h3>
 <p>scikit-learn is available via <a class="reference external" href="http://pkgsrc-wip.sourceforge.net/">pkgsrc-wip</a>:</p>
 <blockquote>
 <div><a class="reference external" href="http://pkgsrc.se/wip/py-scikit_learn">http://pkgsrc.se/wip/py-scikit_learn</a></div></blockquote>
@@ -354,11 +394,11 @@ source directory:</p>
 <div class="highlight-python"><pre>nosetests sklearn --exe</pre>
 </div>
 <p>This should give you a lot of output (and some warnings) but
-eventually should finish with the a text similar to:</p>
+eventually should finish with a message similar to:</p>
 <div class="highlight-python"><pre>Ran 601 tests in 27.920s
 OK (SKIP=2)</pre>
 </div>
-<p>otherwise please consider posting an issue into the <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/issues">bug tracker</a> or to the
+<p>Otherwise, please consider posting an issue into the <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/issues">bug tracker</a> or to the
 <a class="reference internal" href="support.html#mailing-lists"><em>Mailing List</em></a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -377,7 +417,7 @@ source directory:</p>
 <p>Test can now be run using nosetests:</p>
 <div class="highlight-python"><pre>nosetests sklearn/</pre>
 </div>
-<p>This is automated in the commands:</p>
+<p>This is automated by the commands:</p>
 <div class="highlight-python"><pre>make in</pre>
 </div>
 <p>and:</p>

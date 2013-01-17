@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Color Quantization using K-Means" href="plot_color_quantization.html" />
     <link rel="prev" title="Comparing different clustering algorithms on toy datasets" href="plot_cluster_comparison.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -171,6 +175,16 @@ times that the algorithm will be run with different centroid
 seeds is reduced.
 The next plot displays what using eight clusters would deliver
 and finally the ground truth.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../../_images/plot_cluster_iris_4.png"><img alt="../../_images/plot_cluster_iris_4.png" src="../../_images/plot_cluster_iris_4.png" style="width: 188.0px; height: 141.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_cluster_iris_3.png"><img alt="../../_images/plot_cluster_iris_3.png" src="../../_images/plot_cluster_iris_3.png" style="width: 188.0px; height: 141.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_cluster_iris_1.png"><img alt="../../_images/plot_cluster_iris_1.png" src="../../_images/plot_cluster_iris_1.png" style="width: 188.0px; height: 141.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_cluster_iris_2.png"><img alt="../../_images/plot_cluster_iris_2.png" src="../../_images/plot_cluster_iris_2.png" style="width: 188.0px; height: 141.0px;" /></a>
+</li>
+</ul>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_cluster_iris.py"><tt class="xref download docutils literal"><span class="pre">plot_cluster_iris.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -197,8 +211,7 @@ and finally the ground truth.</p>
 <span class="n">estimators</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;k_means_iris_3&#39;</span><span class="p">:</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
               <span class="s">&#39;k_means_iris_8&#39;</span><span class="p">:</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
               <span class="s">&#39;k_means_iris_bad_init&#39;</span><span class="p">:</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                                              <span class="n">init</span><span class="o">=</span><span class="s">&#39;random&#39;</span><span class="p">),</span>
-             <span class="p">}</span>
+                                              <span class="n">init</span><span class="o">=</span><span class="s">&#39;random&#39;</span><span class="p">)}</span>
 
 
 <span class="n">fignum</span> <span class="o">=</span> <span class="mi">1</span>
@@ -235,8 +248,7 @@ and finally the ground truth.</p>
               <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="n">label</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">,</span>
               <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="n">label</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">name</span><span class="p">,</span>
               <span class="n">horizontalalignment</span><span class="o">=</span><span class="s">&#39;center&#39;</span><span class="p">,</span>
-              <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">),</span>
-             <span class="p">)</span>
+              <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">))</span>
 <span class="c"># Reorder the labels to have colors matching the cluster results</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">choose</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
@@ -250,6 +262,7 @@ and finally the ground truth.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.54 seconds</p>
 </div>
 
 

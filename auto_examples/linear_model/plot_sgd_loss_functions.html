@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Ordinary Least Squares with SGD" href="plot_sgd_ols.html" />
     <link rel="prev" title="Plot multi-class SGD on the iris dataset" href="plot_sgd_iris.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -165,21 +169,27 @@
 <span id="example-linear-model-plot-sgd-loss-functions-py"></span><h1>SGD: Convex Loss Functions<a class="headerlink" href="#sgd-convex-loss-functions" title="Permalink to this headline">¶</a></h1>
 <p>Plot the convex loss functions supported by
 <cite>sklearn.linear_model.stochastic_gradient</cite>.</p>
+<img alt="../../_images/plot_sgd_loss_functions_1.png" class="align-center" src="../../_images/plot_sgd_loss_functions_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_sgd_loss_functions.py"><tt class="xref download docutils literal"><span class="pre">plot_sgd_loss_functions.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model.sgd_fast</span> <span class="kn">import</span> <span class="n">Hinge</span><span class="p">,</span> \
-     <span class="n">ModifiedHuber</span><span class="p">,</span> <span class="n">SquaredLoss</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model.sgd_fast</span> <span class="kn">import</span> <span class="n">SquaredHinge</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model.sgd_fast</span> <span class="kn">import</span> <span class="n">Hinge</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model.sgd_fast</span> <span class="kn">import</span> <span class="n">ModifiedHuber</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model.sgd_fast</span> <span class="kn">import</span> <span class="n">SquaredLoss</span>
 
 <span class="c">###############################################################################</span>
-<span class="c"># Define loss funcitons</span>
-<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span>
+<span class="c"># Define loss functions</span>
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span>
 <span class="n">hinge</span> <span class="o">=</span> <span class="n">Hinge</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">squared_hinge</span> <span class="o">=</span> <span class="n">SquaredHinge</span><span class="p">()</span>
+<span class="n">perceptron</span> <span class="o">=</span> <span class="n">Hinge</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">log_loss</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
 <span class="n">modified_huber</span> <span class="o">=</span> <span class="n">ModifiedHuber</span><span class="p">()</span>
 <span class="n">squared_loss</span> <span class="o">=</span> <span class="n">SquaredLoss</span><span class="p">()</span>
+
 
 <span class="c">###############################################################################</span>
 <span class="c"># Plot loss funcitons</span>
@@ -188,19 +198,24 @@
         <span class="n">label</span><span class="o">=</span><span class="s">&quot;Zero-one loss&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="p">[</span><span class="n">hinge</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xx</span><span class="p">],</span> <span class="s">&#39;g-&#39;</span><span class="p">,</span>
         <span class="n">label</span><span class="o">=</span><span class="s">&quot;Hinge loss&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="p">[</span><span class="n">perceptron</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xx</span><span class="p">],</span> <span class="s">&#39;m-&#39;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s">&quot;Perceptron loss&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="p">[</span><span class="n">log_loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xx</span><span class="p">],</span> <span class="s">&#39;r-&#39;</span><span class="p">,</span>
         <span class="n">label</span><span class="o">=</span><span class="s">&quot;Log loss&quot;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="p">[</span><span class="n">modified_huber</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xx</span><span class="p">],</span> <span class="s">&#39;y-&#39;</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="s">&quot;Modified huber loss&quot;</span><span class="p">)</span>
-<span class="c">#pl.plot(xx, [2.0*squared_loss.loss(x, 1) for x in xx], &#39;c-&#39;,</span>
+<span class="c">#pl.plot(xx, [2 * squared_loss.loss(x, 1) for x in xx], &#39;c-&#39;,</span>
 <span class="c">#        label=&quot;Squared loss&quot;)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="p">[</span><span class="n">squared_hinge</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xx</span><span class="p">],</span> <span class="s">&#39;b-&#39;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s">&quot;Squared hinge loss&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="p">[</span><span class="n">modified_huber</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xx</span><span class="p">],</span> <span class="s">&#39;y--&#39;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s">&quot;Modified huber loss&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&quot;upper right&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&quot;$y \cdot f(x)$&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;$L(y, f(x))$&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.08 seconds</p>
 </div>
 
 

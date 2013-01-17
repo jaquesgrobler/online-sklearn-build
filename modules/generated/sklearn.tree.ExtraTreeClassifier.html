@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.27.3. sklearn.tree.ExtraTreeClassifier &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.30.3. sklearn.tree.ExtraTreeClassifier &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.27.4. sklearn.tree.ExtraTreeRegressor" href="sklearn.tree.ExtraTreeRegressor.html" />
-    <link rel="prev" title="8.27.2. sklearn.tree.DecisionTreeRegressor" href="sklearn.tree.DecisionTreeRegressor.html" />
+    <link rel="next" title="8.30.4. sklearn.tree.ExtraTreeRegressor" href="sklearn.tree.ExtraTreeRegressor.html" />
+    <link rel="prev" title="8.30.2. sklearn.tree.DecisionTreeRegressor" href="sklearn.tree.DecisionTreeRegressor.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.tree.DecisionTreeRegressor.html" title="8.27.2. sklearn.tree.DecisionTreeRegressor"
+	<a href="sklearn.tree.DecisionTreeRegressor.html" title="8.30.2. sklearn.tree.DecisionTreeRegressor"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.27.2. sklearn....
+	    8.30.2. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.27.2. sklearn.tree.DecisionTreeRegressor
+	    8.30.2. sklearn.tree.DecisionTreeRegressor
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.tree.ExtraTreeRegressor.html" title="8.27.4. sklearn.tree.ExtraTreeRegressor"
+	<a href="sklearn.tree.ExtraTreeRegressor.html" title="8.30.4. sklearn.tree.ExtraTreeRegressor"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.27.4. sklearn....
+	    8.30.4. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.27.4. sklearn.tree.ExtraTreeRegressor
+	    8.30.4. sklearn.tree.ExtraTreeRegressor
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.27.3. sklearn.tree.ExtraTreeClassifier</a></li>
+<li><a class="reference internal" href="#">8.30.3. sklearn.tree.ExtraTreeClassifier</a></li>
 </ul>
 
     
@@ -162,10 +166,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-tree-extratreeclassifier">
-<h1>8.27.3. sklearn.tree.ExtraTreeClassifier<a class="headerlink" href="#sklearn-tree-extratreeclassifier" title="Permalink to this headline">¶</a></h1>
+<h1>8.30.3. sklearn.tree.ExtraTreeClassifier<a class="headerlink" href="#sklearn-tree-extratreeclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.tree.ExtraTreeClassifier">
-<em class="property">class </em><tt class="descclassname">sklearn.tree.</tt><tt class="descname">ExtraTreeClassifier</tt><big>(</big><em>criterion='gini'</em>, <em>max_depth=None</em>, <em>min_samples_split=1</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features='auto'</em>, <em>compute_importances=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.tree.ExtraTreeClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.tree.</tt><tt class="descname">ExtraTreeClassifier</tt><big>(</big><em>criterion='gini'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features='auto'</em>, <em>compute_importances=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.tree.ExtraTreeClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>An extremely randomized tree classifier.</p>
 <p>Extra-trees differ from classic decision trees in the way they are built.
 When looking for the best split to separate the samples of a node into two
@@ -179,10 +183,10 @@ decision tree.</p>
 <p class="last"><a class="reference internal" href="sklearn.tree.ExtraTreeRegressor.html#sklearn.tree.ExtraTreeRegressor" title="sklearn.tree.ExtraTreeRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">ExtraTreeRegressor</span></tt></a>, <tt class="xref py py-obj docutils literal"><span class="pre">ExtraTreesClassifier</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">ExtraTreesRegressor</span></tt></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r84" rules="none">
+<table class="docutils citation" frame="void" id="r123" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R84]</a></td><td>P. Geurts, D. Ernst., and L. Wehenkel, &#8220;Extremely randomized trees&#8221;,
+<tr><td class="label"><a class="fn-backref" href="#id1">[R123]</a></td><td>P. Geurts, D. Ernst., and L. Wehenkel, &#8220;Extremely randomized trees&#8221;,
 Machine Learning, 63(1), 3-42, 2006.</td></tr>
 </tbody>
 </table>
@@ -193,7 +197,7 @@ Machine Learning, 63(1), 3-42, 2006.</td></tr>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.tree.ExtraTreeClassifier.fit" title="sklearn.tree.ExtraTreeClassifier.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;sample_mask,&nbsp;X_argsorted])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.tree.ExtraTreeClassifier.fit" title="sklearn.tree.ExtraTreeClassifier.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;sample_mask,&nbsp;X_argsorted,&nbsp;...])</td>
 <td>Build a decision tree from the training set (X, y).</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.tree.ExtraTreeClassifier.fit_transform" title="sklearn.tree.ExtraTreeClassifier.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
@@ -203,7 +207,7 @@ Machine Learning, 63(1), 3-42, 2006.</td></tr>
 <td>Get parameters for the estimator</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.tree.ExtraTreeClassifier.predict" title="sklearn.tree.ExtraTreeClassifier.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
-<td>Predict class or regression target for X.</td>
+<td>Predict class or regression value for X.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.tree.ExtraTreeClassifier.predict_log_proba" title="sklearn.tree.ExtraTreeClassifier.predict_log_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_log_proba</span></tt></a>(X)</td>
 <td>Predict class log-probabilities of the input samples X.</td>
@@ -224,18 +228,18 @@ Machine Learning, 63(1), 3-42, 2006.</td></tr>
 </table>
 <dl class="method">
 <dt id="sklearn.tree.ExtraTreeClassifier.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>criterion='gini'</em>, <em>max_depth=None</em>, <em>min_samples_split=1</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features='auto'</em>, <em>compute_importances=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.tree.ExtraTreeClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>criterion='gini'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features='auto'</em>, <em>compute_importances=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.tree.ExtraTreeClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="sklearn.tree.ExtraTreeClassifier.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>sample_mask=None</em>, <em>X_argsorted=None</em><big>)</big><a class="headerlink" href="#sklearn.tree.ExtraTreeClassifier.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>sample_mask=None</em>, <em>X_argsorted=None</em>, <em>check_input=True</em>, <em>sample_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.tree.ExtraTreeClassifier.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a decision tree from the training set (X, y).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like of shape = [n_samples, n_features]</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
 <blockquote>
 <div><p>The training input samples. Use <tt class="docutils literal"><span class="pre">dtype=np.float32</span></tt>
 and <tt class="docutils literal"><span class="pre">order='F'</span></tt> for maximum efficiency.</p>
@@ -246,6 +250,38 @@ and <tt class="docutils literal"><span class="pre">order='F'</span></tt> for max
 classification, real numbers in regression).
 Use <tt class="docutils literal"><span class="pre">dtype=np.float64</span></tt> and <tt class="docutils literal"><span class="pre">order='C'</span></tt> for maximum
 efficiency.</p>
+</div></blockquote>
+<p><strong>sample_mask</strong> : array-like, shape = [n_samples], dtype = bool or None</p>
+<blockquote>
+<div><p>A bit mask that encodes the rows of <tt class="docutils literal"><span class="pre">X</span></tt> that should be
+used to build the decision tree. It can be used for bagging
+without the need to create of copy of <tt class="docutils literal"><span class="pre">X</span></tt>.
+If None a mask will be created that includes all samples.</p>
+</div></blockquote>
+<p><strong>X_argsorted</strong> : array-like, shape = [n_samples, n_features] or None</p>
+<blockquote>
+<div><p>Each column of <tt class="docutils literal"><span class="pre">X_argsorted</span></tt> holds the row indices of <tt class="docutils literal"><span class="pre">X</span></tt>
+sorted according to the value of the corresponding feature
+in ascending order.
+I.e. <tt class="docutils literal"><span class="pre">X[X_argsorted[i,</span> <span class="pre">k],</span> <span class="pre">k]</span> <span class="pre">&lt;=</span> <span class="pre">X[X_argsorted[j,</span> <span class="pre">k],</span> <span class="pre">k]</span></tt>
+for each j &gt; i.
+If None, <tt class="docutils literal"><span class="pre">X_argsorted</span></tt> is computed internally.
+The argument is supported to enable multiple decision trees
+to share the data structure and to avoid re-computation in
+tree ensembles. For maximum efficiency use dtype np.int32.</p>
+</div></blockquote>
+<p><strong>sample_weight</strong> : array-like, shape = [n_samples] or None</p>
+<blockquote>
+<div><p>Sample weights. If None, then samples are equally weighted. Splits
+that would create child nodes with net zero or negative weight are
+ignored while searching for a split in each node. In the case of
+classification, splits are also ignored if they would result in any
+single class carrying a negative weight in either child node.</p>
+</div></blockquote>
+<p><strong>check_input: boolean, (default=True)</strong> :</p>
+<blockquote>
+<div><p>Allow to bypass several input checking.
+Don&#8217;t use this parameter unless you know what you do.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -287,10 +323,6 @@ and returns a transformed version of X.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>This method just calls fit and transform consecutively, i.e., it is not
-an optimized implementation of fit_transform, unlike other transformers
-such as PCA.</p>
 </dd></dl>
 
 <dl class="method">
@@ -315,7 +347,7 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.tree.ExtraTreeClassifier.predict">
 <tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.tree.ExtraTreeClassifier.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict class or regression target for X.</p>
+<dd><p>Predict class or regression value for X.</p>
 <p>For a classification model, the predicted class for each sample in X is
 returned. For a regression model, the predicted value based on X is
 returned.</p>

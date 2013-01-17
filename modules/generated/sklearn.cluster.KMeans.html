@@ -32,6 +32,8 @@
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.1.1.4. sklearn.cluster.MiniBatchKMeans" href="sklearn.cluster.MiniBatchKMeans.html" />
     <link rel="prev" title="8.1.1.2. sklearn.cluster.DBSCAN" href="sklearn.cluster.DBSCAN.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -213,7 +217,7 @@ down the pairwise matrix into n_jobs even slices and computing them in
 parallel.</p>
 <p>If -1 all CPUs are used. If 1 is given, no parallel computing code is
 used at all, which is useful for debuging. For n_jobs below -1,
-(n_cpus + 1 - n_jobs) are used. Thus for n_jobs = -2, all CPUs but one
+(n_cpus + 1 + n_jobs) are used. Thus for n_jobs = -2, all CPUs but one
 are used.</p>
 </div></blockquote>
 <p><strong>random_state: integer or numpy.RandomState, optional</strong> :</p>
@@ -270,25 +274,28 @@ partition.</td>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.KMeans.fit" title="sklearn.cluster.KMeans.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X[,&nbsp;y])</td>
-<td>Compute k-means</td>
+<td>Compute k-means clustering.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.KMeans.fit_predict" title="sklearn.cluster.KMeans.fit_predict"><tt class="xref py py-obj docutils literal"><span class="pre">fit_predict</span></tt></a>(X)</td>
 <td>Compute cluster centers and predict cluster index for each sample.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.KMeans.get_params" title="sklearn.cluster.KMeans.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.KMeans.fit_transform" title="sklearn.cluster.KMeans.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
+<td>Compute clustering and transform X to cluster-distance space.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.KMeans.get_params" title="sklearn.cluster.KMeans.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for the estimator</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.KMeans.predict" title="sklearn.cluster.KMeans.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.KMeans.predict" title="sklearn.cluster.KMeans.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
 <td>Predict the closest cluster each sample in X belongs to.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.KMeans.score" title="sklearn.cluster.KMeans.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.KMeans.score" title="sklearn.cluster.KMeans.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X)</td>
 <td>Opposite of the value of X on the K-means objective.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.KMeans.set_params" title="sklearn.cluster.KMeans.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.KMeans.set_params" title="sklearn.cluster.KMeans.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.KMeans.transform" title="sklearn.cluster.KMeans.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X[,&nbsp;y])</td>
-<td>Transform the data to a cluster-distance space</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.KMeans.transform" title="sklearn.cluster.KMeans.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X[,&nbsp;y])</td>
+<td>Transform X to a cluster-distance space</td>
 </tr>
 </tbody>
 </table>
@@ -300,7 +307,15 @@ partition.</td>
 <dl class="method">
 <dt id="sklearn.cluster.KMeans.fit">
 <tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.KMeans.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute k-means</p>
+<dd><p>Compute k-means clustering.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><strong>X</strong> : array-like or sparse matrix, shape=(n_samples, n_features)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -309,6 +324,13 @@ partition.</td>
 <dd><p>Compute cluster centers and predict cluster index for each sample.</p>
 <p>Convenience method; equivalent to calling fit(X) followed by
 predict(X).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.cluster.KMeans.fit_transform">
+<tt class="descname">fit_transform</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.KMeans.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute clustering and transform X to cluster-distance space.</p>
+<p>Equivalent to fit(X).transform(X), but more efficiently implemented.</p>
 </dd></dl>
 
 <dl class="method">
@@ -402,7 +424,7 @@ component of a nested object.</p>
 <dl class="method">
 <dt id="sklearn.cluster.KMeans.transform">
 <tt class="descname">transform</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.KMeans.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform the data to a cluster-distance space</p>
+<dd><p>Transform X to a cluster-distance space</p>
 <p>In the new space, each dimension is the distance to the cluster
 centers.  Note that even if X is sparse, the array returned by
 <cite>transform</cite> will typically be dense.</p>

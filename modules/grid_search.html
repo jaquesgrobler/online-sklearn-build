@@ -29,9 +29,11 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
-    <link rel="up" title="5. Model Selection" href="../model_selection.html" />
-    <link rel="next" title="8.15.1.5. sklearn.linear_model.RidgeCV" href="generated/sklearn.linear_model.RidgeCV.html" />
+    <link rel="up" title="5. Model selection and evaluation" href="../model_selection.html" />
+    <link rel="next" title="8.17.25. sklearn.linear_model.RidgeCV" href="generated/sklearn.linear_model.RidgeCV.html" />
     <link rel="prev" title="5.1. Cross-Validation: evaluating estimator performance" href="cross_validation.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="generated/sklearn.linear_model.RidgeCV.html" title="8.15.1.5. sklearn.linear_model.RidgeCV"
+	<a href="generated/sklearn.linear_model.RidgeCV.html" title="8.17.25. sklearn.linear_model.RidgeCV"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.15.1.5. sklear...
+	    8.17.25. sklearn...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.15.1.5. sklearn.linear_model.RidgeCV
+	    8.17.25. sklearn.linear_model.RidgeCV
 	    </span>
 	    
 	    </a>
@@ -125,14 +129,14 @@
 	&nbsp;
 	</div>
 	<div class="rellink">
-	<a href="../model_selection.html" title="5. Model Selection" >
+	<a href="../model_selection.html" title="5. Model selection and evaluation" >
 	Up
 	<br>
 	<span class="smallrellink">
-	5. Model Selecti...
+	5. Model selecti...
 	</span>
 	<span class="hiddenrellink">
-	5. Model Selection
+	5. Model selection and evaluation
 	</span>
 	
 	</a>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -187,11 +191,18 @@ Lasso, etc.) using an internal <a class="reference internal" href="cross_validat
 <p>The main class for implementing hyperparameters grid search in
 scikit-learn is <a class="reference internal" href="generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">grid_search.GridSearchCV</span></tt></a>. This class is passed
 a base model instance (for example <tt class="docutils literal"><span class="pre">sklearn.svm.SVC()</span></tt>) along with a
-grid of potential hyper-parameter values such as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="s">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">],</span> <span class="s">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;rbf&#39;</span><span class="p">]},</span>
- <span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="s">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;linear&#39;</span><span class="p">]}]</span>
+grid of potential hyper-parameter values specified with the <cite>param_grid</cite>
+attribute. For instace the following <cite>param_grid</cite>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">param_grid</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="s">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;linear&#39;</span><span class="p">]},</span>
+  <span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="s">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">],</span> <span class="s">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;rbf&#39;</span><span class="p">]},</span>
+ <span class="p">]</span>
 </pre></div>
 </div>
+<p>specifies that two grids should be explored: one with a linear kernel and
+C values in [1, 10, 100, 1000], and the second one with an RBG kernel,
+and the cross-product of C values ranging in [1, 10, 100, 1000] and gamma
+values in [0.001, 0.0001].</p>
 <p>The <a class="reference internal" href="generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">grid_search.GridSearchCV</span></tt></a> instance implements the usual
 estimator API: when &#8220;fitting&#8221; it on a dataset all the possible
 combinations of hyperparameter values are evaluated and the best
@@ -259,7 +270,7 @@ compute the <strong>regularization path</strong> of the estimator.</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoCV</span></tt></a>([eps,&nbsp;n_alphas,&nbsp;...])</td>
 <td>Lasso linear model with iterative fitting along a regularization path</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.ElasticNetCV.html#sklearn.linear_model.ElasticNetCV" title="sklearn.linear_model.ElasticNetCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.ElasticNetCV</span></tt></a>([rho,&nbsp;eps,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.ElasticNetCV.html#sklearn.linear_model.ElasticNetCV" title="sklearn.linear_model.ElasticNetCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.ElasticNetCV</span></tt></a>([l1_ratio,&nbsp;eps,&nbsp;...])</td>
 <td>Elastic Net model with iterative fitting along a regularization path</td>
 </tr>
 </tbody>

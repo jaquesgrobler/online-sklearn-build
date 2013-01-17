@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Pixel importances with a parallel forest of trees" href="plot_forest_importances_faces.html" />
     <link rel="prev" title="Sparse coding with a precomputed dictionary" href="../decomposition/plot_sparse_coding.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -168,6 +172,20 @@ features on an artifical classification task. The red bars are the feature
 importances of the forest, along with their inter-trees variability.</p>
 <p>As expected, the plot suggests that 3 features are informative, while the
 remaining are not.</p>
+<img alt="../../_images/plot_forest_importances_1.png" class="align-center" src="../../_images/plot_forest_importances_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Feature ranking:
+1. feature 1 (0.251764)
+2. feature 0 (0.200486)
+3. feature 2 (0.171010)
+4. feature 5 (0.055133)
+5. feature 7 (0.055120)
+6. feature 8 (0.054825)
+7. feature 9 (0.053174)
+8. feature 3 (0.052988)
+9. feature 6 (0.052828)
+10. feature 4 (0.052671)</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_forest_importances.py"><tt class="xref download docutils literal"><span class="pre">plot_forest_importances.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -214,6 +232,7 @@ remaining are not.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  2.92 seconds</p>
 </div>
 
 

@@ -32,6 +32,8 @@
     <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
     <link rel="next" title="3.4. Nearest Neighbors" href="neighbors.html" />
     <link rel="prev" title="3.2. Support Vector Machines" href="svm.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -225,9 +229,10 @@ for the training samples:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">&quot;hinge&quot;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&quot;l2&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="go">SGDClassifier(alpha=0.0001, class_weight=None, epsilon=0.1, eta0=0.0,</span>
-<span class="go">       fit_intercept=True, learning_rate=&#39;optimal&#39;, loss=&#39;hinge&#39;, n_iter=5,</span>
-<span class="go">       n_jobs=1, penalty=&#39;l2&#39;, power_t=0.5, rho=0.85, seed=0,</span>
-<span class="go">       shuffle=False, verbose=0, warm_start=False)</span>
+<span class="go">       fit_intercept=True, l1_ratio=0.15, learning_rate=&#39;optimal&#39;,</span>
+<span class="go">       loss=&#39;hinge&#39;, n_iter=5, n_jobs=1, penalty=&#39;l2&#39;, power_t=0.5,</span>
+<span class="go">       random_state=None, rho=None, shuffle=False, verbose=0,</span>
+<span class="go">       warm_start=False)</span>
 </pre></div>
 </div>
 <p>After being fitted, the model can then be used to predict new values:</p>
@@ -390,9 +395,9 @@ is highly recommended to scale your data. For example, scale each
 attribute on the input vector X to [0,1] or [-1,+1], or standardize
 it to have mean 0 and variance 1. Note that the <em>same</em> scaling
 must be applied to the test vector to obtain meaningful
-results. This can be easily done using <tt class="xref py py-class docutils literal"><span class="pre">Scaler</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Scaler</span>
-<span class="n">scaler</span> <span class="o">=</span> <span class="n">Scaler</span><span class="p">()</span>
+results. This can be easily done using <tt class="xref py py-class docutils literal"><span class="pre">StandardScaler</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>  <span class="c"># Don&#39;t cheat - fit only on training data</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>  <span class="c"># apply same transformation to test data</span>
@@ -473,7 +478,7 @@ in the parameter space when <img class="math" src="../_images/math/4b2566e774110
 optimization problems. In contrast to (batch) gradient descent, SGD
 approximates the true gradient of <img class="math" src="../_images/math/0f5010a36c1ef37e53a7227ed06991d6c32a1033.png" alt="E(w,b)"/> by considering a
 single training example at a time.</p>
-<p>The class <a class="reference internal" href="generated/sklearn.linear_model.sparse.SGDClassifier.html#sklearn.linear_model.sparse.SGDClassifier" title="sklearn.linear_model.sparse.SGDClassifier"><tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt></a> implements a first-order SGD learning
+<p>The class <a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier" title="sklearn.linear_model.SGDClassifier"><tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt></a> implements a first-order SGD learning
 routine.  The algorithm iterates over the training examples and for each
 example updates the model parameters according to the update rule given by</p>
 <div class="math">
@@ -487,13 +492,13 @@ classification, the default learning rate schedule (<tt class="docutils literal"
 is given by</p>
 <div class="math">
 <p><img src="../_images/math/817aecbc24ddcea57b42df2d50982cdd8ccae5da.png" alt="\eta^{(t)} = \frac {1}{\alpha  (t_0 + t)}"/></p>
-</div><p>where <img class="math" src="../_images/math/e0d2bf360290fd61d1c1557e763f2622363b3d35.png" alt="t"/> is the time step (there are a total of <cite>n_samples * epochs</cite>
+</div><p>where <img class="math" src="../_images/math/e0d2bf360290fd61d1c1557e763f2622363b3d35.png" alt="t"/> is the time step (there are a total of <cite>n_samples * n_iter</cite>
 time steps), <img class="math" src="../_images/math/10fde25257f32317828fde97047bbe76438b6305.png" alt="t_0"/> is determined based on a heuristic proposed by Léon Bottou
 such that the expected initial updates are comparable with the expected
 size of the weights (this assuming that the norm of the training samples is
 approx. 1). The exact definition can be found in <tt class="docutils literal"><span class="pre">_init_t</span></tt> in <tt class="xref py py-class docutils literal"><span class="pre">BaseSGD</span></tt>.</p>
-<p>For regression, the default learning rate schedule, inverse scaling
-(<tt class="docutils literal"><span class="pre">learning_rate='invscaling'</span></tt>), is given by</p>
+<p>For regression the default learning rate schedule is inverse scaling
+(<tt class="docutils literal"><span class="pre">learning_rate='invscaling'</span></tt>), given by</p>
 <div class="math">
 <p><img src="../_images/math/1d5dd409d3ff0af6931e97cc37087d4d33c4ffd3.png" alt="\eta^{(t)} = \frac{eta_0}{t^{power\_t}}"/></p>
 </div><p>where <img class="math" src="../_images/math/4b2b820d2fd6e45c2457f073ffec25469e13e1c8.png" alt="eta_0"/> and <img class="math" src="../_images/math/9fac8c10bc0c567ad37e956d3f4d8285795be865.png" alt="power\_t"/> are hyperparameters choosen by the
@@ -501,7 +506,7 @@ user via <tt class="docutils literal"><span class="pre">eta0</span></tt> and <tt
 <p>For a constant learning rate use <tt class="docutils literal"><span class="pre">learning_rate='constant'</span></tt> and use <tt class="docutils literal"><span class="pre">eta0</span></tt>
 to specify the learning rate.</p>
 <p>The model parameters can be accessed through the members <tt class="docutils literal"><span class="pre">coef_</span></tt> and
-<tt class="docutils literal"><span class="pre">intercept\_</span></tt>:</p>
+<tt class="docutils literal"><span class="pre">intercept_</span></tt>:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Member <tt class="docutils literal"><span class="pre">coef_</span></tt> holds the weights <img class="math" src="../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w"/></li>

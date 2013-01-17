@@ -32,6 +32,8 @@
     <link rel="up" title="4. Unsupervised learning" href="../unsupervised_learning.html" />
     <link rel="next" title="4.5. Covariance estimation" href="covariance.html" />
     <link rel="prev" title="4.3. Clustering" href="clustering.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -161,8 +165,9 @@
 <li><a class="reference internal" href="#mini-batch-dictionary-learning">4.4.2.3. Mini-batch dictionary learning</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#independent-component-analysis-ica">4.4.3. Independent component analysis (ICA)</a></li>
-<li><a class="reference internal" href="#non-negative-matrix-factorization-nmf-or-nnmf">4.4.4. Non-negative matrix factorization (NMF or NNMF)</a></li>
+<li><a class="reference internal" href="#factor-analysis">4.4.3. Factor Analysis</a></li>
+<li><a class="reference internal" href="#independent-component-analysis-ica">4.4.4. Independent component analysis (ICA)</a></li>
+<li><a class="reference internal" href="#non-negative-matrix-factorization-nmf-or-nnmf">4.4.5. Non-negative matrix factorization (NMF or NNMF)</a></li>
 </ul>
 </li>
 </ul>
@@ -397,9 +402,9 @@ sparse coding. This is useful when dictionary learning is used for extracting
 features that will be used for supervised learning, because it allows the
 learning algorithm to assign different weights to negative loadings of a
 particular atom, from to the corresponding positive loading.</p>
-<p>The split code for a single sample has length <cite>2 * n_atoms</cite>
+<p>The split code for a single sample has length <cite>2 * n_components</cite>
 and is constructed using the following rule: First, the regular code of length
-<cite>n_atoms</cite> is computed. Then, the first <cite>n_atoms</cite> entries of the split_code are
+<cite>n_components</cite> is computed. Then, the first <cite>n_components</cite> entries of the split_code are
 filled with the positive part of the regular code vector. The second half of
 the split code is filled with the negative part of the code vector, only with
 a positive sign. Therefore, the split_code is non-negative.</p>
@@ -468,8 +473,63 @@ when the data is not readily available from the start, or for when the data
 does not fit into the memory.</p>
 </div>
 </div>
+<div class="section" id="factor-analysis">
+<span id="fa"></span><h2>4.4.3. Factor Analysis<a class="headerlink" href="#factor-analysis" title="Permalink to this headline">¶</a></h2>
+<p>In unsupervised learning we only have a dataset <img class="math" src="../_images/math/62a3e289b6543bef57e3e781b613a55b2ee9f06c.png" alt="X = \{x_1, x_2, \dots, x_n
+\}"/>. How can this dataset be described mathematically? A very simple
+<cite>continuous latent variabel</cite> model for <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/> is</p>
+<div class="math">
+<p><img src="../_images/math/f151791b7059007ca3b90e7a79234b5d235fef0c.png" alt="x_i = W h_i + \mu + \epsilon"/></p>
+</div><p>The vector <img class="math" src="../_images/math/07945693f849dc8a95b0317cbe2da5486feea0fc.png" alt="h_i"/> is called <cite>latent</cite> because it is unobserved. <img class="math" src="../_images/math/eaf4418fbe935c15a606516d8f55dc380cd8e822.png" alt="\epsilon"/> is
+considered a noise term distributed according to a Gaussian with mean 0 and
+covariance <img class="math" src="../_images/math/866f0204648be9ca6b10e14dd72295295dd53a79.png" alt="\Psi"/> (i.e. <img class="math" src="../_images/math/f4d4329cbb958fd860529a538d234d1085163393.png" alt="\epsilon \sim \mathcal{N}(0, \Psi)"/>), <img class="math" src="../_images/math/2d8c833ed800824727cd7bd2fb9de1a12ad7e674.png" alt="\mu"/> is some
+arbitrary offset vector. Such a model is called <cite>generative</cite> as it describes
+how <img class="math" src="../_images/math/67bc6daa9d6b964201d6cef60cbeb1ac5fd26ead.png" alt="x_i"/> is generated from <img class="math" src="../_images/math/07945693f849dc8a95b0317cbe2da5486feea0fc.png" alt="h_i"/>. If we use all the <img class="math" src="../_images/math/67bc6daa9d6b964201d6cef60cbeb1ac5fd26ead.png" alt="x_i"/>&#8216;s as columns to form
+a matrix <img class="math" src="../_images/math/5ecbbc0083da71f2cbc69e1377535094685b108a.png" alt="\mathbf{X}"/> and all the <img class="math" src="../_images/math/07945693f849dc8a95b0317cbe2da5486feea0fc.png" alt="h_i"/>&#8216;s as columns of a matrix <img class="math" src="../_images/math/c746f7991e5f940edb47ca2a4fd4cd486396374e.png" alt="\mathbf{H}"/>
+then we can write (with suitably defined <img class="math" src="../_images/math/18523a009c970b5982cc76b50b4924454baaf597.png" alt="\mathbf{M}"/> and <img class="math" src="../_images/math/1c2c21bd5fa15d8f04a93ad369d15f4a43ae380c.png" alt="\mathbf{E}"/>):</p>
+<div class="math">
+<p><img src="../_images/math/e2c9e2e73a737acc886242479458cc2f2d7ab42e.png" alt="\mathbf{X} = W \mathbf{H} + \mathbf{M} + \mathbf{E}"/></p>
+</div><p>In other words, we <cite>decomposed</cite> matrix <img class="math" src="../_images/math/5ecbbc0083da71f2cbc69e1377535094685b108a.png" alt="\mathbf{X}"/>.</p>
+<p>If <img class="math" src="../_images/math/07945693f849dc8a95b0317cbe2da5486feea0fc.png" alt="h_i"/> is given, the above equation automatically implies the following
+probabilistic interpretation:</p>
+<div class="math">
+<p><img src="../_images/math/64cab16343a50d0adc0b798757bd3789d973a293.png" alt="p(x_i|h_i) = \mathcal{N}(Wh_i + \mu, \Psi)"/></p>
+</div><p>For a complete probabilistic model we also need a prior distribution for the
+latent variable <img class="math" src="../_images/math/8189a5b5a0917b8c93350827be4038af1839139d.png" alt="h"/>. The most straightforward assumption (based on the nice
+properties of the Gaussian distribution) is <img class="math" src="../_images/math/e2858fd4d2ef68a75ae012c965618025685a1f4d.png" alt="h \sim \mathcal{N}(0,
+\mathbf{I})"/>.  This yields a Gaussian as the marginal distribution of <img class="math" src="../_images/math/26eeb5258ca5099acf8fe96b2a1049c48c89a5e6.png" alt="x"/>:</p>
+<div class="math">
+<p><img src="../_images/math/a77b6c40ff1908b5bbd288c386cd4b4ab28637b0.png" alt="p(x) = \mathcal{N}(\mu, WW^T + \Psi)"/></p>
+</div><p>Now, without any further assumptions the idea of having a latent variable <img class="math" src="../_images/math/8189a5b5a0917b8c93350827be4038af1839139d.png" alt="h"/>
+would be superfluous &#8211; <img class="math" src="../_images/math/26eeb5258ca5099acf8fe96b2a1049c48c89a5e6.png" alt="x"/> can be completely modelled with a mean
+and a covariance. We need to impose some more specific structure on one
+of these two parameters. A simple additional assumption regards the
+structure of the error covariance <img class="math" src="../_images/math/866f0204648be9ca6b10e14dd72295295dd53a79.png" alt="\Psi"/>:</p>
+<ul class="simple">
+<li><img class="math" src="../_images/math/77101e5fc6c2fb4b935bd72fd65f779dd78d3c5c.png" alt="\Psi = \sigma^2 \mathbf{I}"/>: This assumption leads to
+<a class="reference internal" href="generated/sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-class docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a>.</li>
+<li><img class="math" src="../_images/math/a9125baf25810d1fb373bd5fc11147857bdae2ab.png" alt="\Psi = diag(\psi_1, \psi_2, \dots, \psi_n)"/>: This model is called Factor
+Analysis, a classical statistical model. The matrix W is sometimtes called
+<cite>factor loading matrix</cite>.</li>
+</ul>
+<p>Both model essentially estimate a Gaussian with a low-rank covariance matrix.
+Because both models are probilistic they can be integrated in more complex
+models, e.g. Mixture of Factor Analysers. One gets very different models (e.g.
+<a class="reference internal" href="generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="sklearn.decomposition.FastICA"><tt class="xref py py-class docutils literal"><span class="pre">FastICA</span></tt></a>) if non-Gaussian priors on the latent variables are assumed.</p>
+<p>Factor Analysis <cite>can</cite> produce similar components (the columns of its loading
+matrix) to <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a>. However, one can not make any general statements
+about these components (e.g. whether they are orthogonal):</p>
+<p class="centered">
+<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img3" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
+ <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="fa_img3" src="../_images/plot_faces_decomposition_91.png" style="width: 360.0px; height: 270.6px;" /></a>
+</strong></p><p>The main advantage for Factor Analysis (over <a class="reference internal" href="generated/sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-class docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a> is that
+it can model the variance in every direction of the input space independently:</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="../_images/plot_faces_decomposition_81.png" src="../_images/plot_faces_decomposition_81.png" style="width: 150.0px; height: 168.75px;" /></a>
+</div>
+</div>
 <div class="section" id="independent-component-analysis-ica">
-<span id="ica"></span><h2>4.4.3. Independent component analysis (ICA)<a class="headerlink" href="#independent-component-analysis-ica" title="Permalink to this headline">¶</a></h2>
+<span id="ica"></span><h2>4.4.4. Independent component analysis (ICA)<a class="headerlink" href="#independent-component-analysis-ica" title="Permalink to this headline">¶</a></h2>
 <p>Independent component analysis separates a multivariate signal into
 additive subcomponents that are maximally independent. It is
 implemented in scikit-learn using the <a class="reference internal" href="generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="sklearn.decomposition.FastICA"><tt class="xref py py-class docutils literal"><span class="pre">Fast</span> <span class="pre">ICA</span></tt></a>
@@ -482,8 +542,8 @@ algorithm.</p>
 <p>ICA can also be used as yet another non linear decomposition that finds
 components with some sparsity:</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img3" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="ica_img3" src="../_images/plot_faces_decomposition_41.png" style="width: 360.0px; height: 270.6px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img4" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
+ <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="ica_img4" src="../_images/plot_faces_decomposition_41.png" style="width: 360.0px; height: 270.6px;" /></a>
 </strong></p><div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
@@ -494,7 +554,7 @@ components with some sparsity:</p>
 </div>
 </div>
 <div class="section" id="non-negative-matrix-factorization-nmf-or-nnmf">
-<span id="nmf"></span><h2>4.4.4. Non-negative matrix factorization (NMF or NNMF)<a class="headerlink" href="#non-negative-matrix-factorization-nmf-or-nnmf" title="Permalink to this headline">¶</a></h2>
+<span id="nmf"></span><h2>4.4.5. Non-negative matrix factorization (NMF or NNMF)<a class="headerlink" href="#non-negative-matrix-factorization-nmf-or-nnmf" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> is an alternative approach to decomposition that assumes that the
 data and the components are non-negative. <a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> can be plugged in
 instead of <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a> or its variants, in the cases where the data matrix
@@ -508,8 +568,8 @@ resulting in interpretable models. The following example displays 16
 sparse components found by <a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> from the images in the Olivetti
 faces dataset, in comparison with the PCA eigenfaces.</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img4" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="nmf_img4" src="../_images/plot_faces_decomposition_31.png" style="width: 360.0px; height: 270.6px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img5" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
+ <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="nmf_img5" src="../_images/plot_faces_decomposition_31.png" style="width: 360.0px; height: 270.6px;" /></a>
 </strong></p><p>The <tt class="xref py py-attr docutils literal"><span class="pre">init</span></tt> attribute determines the initialization method applied, which
 has a great impact on the performance of the method. <a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> implements
 the method Nonnegative Double Singular Value Decomposition. NNDSVD is based on
@@ -523,9 +583,9 @@ recommended in the dense case.</p>
 <p><a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> can also be initialized with random non-negative matrices, by
 passing an integer seed or a <cite>RandomState</cite> to <tt class="xref py py-attr docutils literal"><span class="pre">init</span></tt>.</p>
 <p>In <a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a>, sparseness can be enforced by setting the attribute
-<tt class="xref py py-attr docutils literal"><span class="pre">sparseness</span></tt> to <cite>data</cite> or <cite>components</cite>. Sparse components lead to
-localized features, and sparse data leads to a more efficient representation
-of the data.</p>
+<tt class="xref py py-attr docutils literal"><span class="pre">sparseness</span></tt> to <tt class="docutils literal"><span class="pre">&quot;data&quot;</span></tt> or <tt class="docutils literal"><span class="pre">&quot;components&quot;</span></tt>. Sparse components lead to
+localized features, and sparse data leads to a more efficient representation of
+the data.</p>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
@@ -542,7 +602,7 @@ D. Lee, S. Seung, 1999</li>
 P. Hoyer, 2004</li>
 <li><a class="reference external" href="http://www.csie.ntu.edu.tw/~cjlin/nmf/">&#8220;Projected gradient methods for non-negative matrix factorization&#8221;</a>
 C.-J. Lin, 2007</li>
-<li><a class="reference external" href="http://www.cs.rpi.edu/~boutsc/files/nndsvd.pdf">&#8220;SVD based initialization: A head start for nonnegative
+<li><a class="reference external" href="http://scgroup.hpclab.ceid.upatras.gr/faculty/stratis/Papers/HPCLAB020107.pdf">&#8220;SVD based initialization: A head start for nonnegative
 matrix factorization&#8221;</a>
 C. Boutsidis, E. Gallopoulos, 2008</li>
 </ul>

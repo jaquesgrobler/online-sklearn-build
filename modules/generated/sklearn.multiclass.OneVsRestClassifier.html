@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.19.2. sklearn.multiclass.OneVsRestClassifier &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.21.2. sklearn.multiclass.OneVsRestClassifier &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.19.3. sklearn.multiclass.OneVsOneClassifier" href="sklearn.multiclass.OneVsOneClassifier.html" />
-    <link rel="prev" title="8.18.3. sklearn.mixture.VBGMM" href="sklearn.mixture.VBGMM.html" />
+    <link rel="next" title="8.21.3. sklearn.multiclass.OneVsOneClassifier" href="sklearn.multiclass.OneVsOneClassifier.html" />
+    <link rel="prev" title="8.20.3. sklearn.mixture.VBGMM" href="sklearn.mixture.VBGMM.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.mixture.VBGMM.html" title="8.18.3. sklearn.mixture.VBGMM"
+	<a href="sklearn.mixture.VBGMM.html" title="8.20.3. sklearn.mixture.VBGMM"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.18.3. sklearn....
+	    8.20.3. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.18.3. sklearn.mixture.VBGMM
+	    8.20.3. sklearn.mixture.VBGMM
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.multiclass.OneVsOneClassifier.html" title="8.19.3. sklearn.multiclass.OneVsOneClassifier"
+	<a href="sklearn.multiclass.OneVsOneClassifier.html" title="8.21.3. sklearn.multiclass.OneVsOneClassifier"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.19.3. sklearn....
+	    8.21.3. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.3. sklearn.multiclass.OneVsOneClassifier
+	    8.21.3. sklearn.multiclass.OneVsOneClassifier
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.19.2. sklearn.multiclass.OneVsRestClassifier</a></li>
+<li><a class="reference internal" href="#">8.21.2. sklearn.multiclass.OneVsRestClassifier</a></li>
 </ul>
 
     
@@ -162,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-multiclass-onevsrestclassifier">
-<h1>8.19.2. sklearn.multiclass.OneVsRestClassifier<a class="headerlink" href="#sklearn-multiclass-onevsrestclassifier" title="Permalink to this headline">¶</a></h1>
+<h1>8.21.2. sklearn.multiclass.OneVsRestClassifier<a class="headerlink" href="#sklearn-multiclass-onevsrestclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.multiclass.OneVsRestClassifier">
 <em class="property">class </em><tt class="descclassname">sklearn.multiclass.</tt><tt class="descname">OneVsRestClassifier</tt><big>(</big><em>estimator</em><big>)</big><a class="headerlink" href="#sklearn.multiclass.OneVsRestClassifier" title="Permalink to this definition">¶</a></dt>
@@ -238,10 +242,13 @@ vice-versa.</td>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.multiclass.OneVsRestClassifier.predict" title="sklearn.multiclass.OneVsRestClassifier.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
 <td>Predict multi-class targets using underlying estimators.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt>(X,&nbsp;y)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.multiclass.OneVsRestClassifier.predict_proba" title="sklearn.multiclass.OneVsRestClassifier.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
+<td>Probability estimates.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt>(X,&nbsp;y)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.multiclass.OneVsRestClassifier.set_params" title="sklearn.multiclass.OneVsRestClassifier.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.multiclass.OneVsRestClassifier.set_params" title="sklearn.multiclass.OneVsRestClassifier.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
 </tr>
 </tbody>
@@ -323,6 +330,35 @@ contained subobjects that are estimators.</p>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>y</strong> : array-like, shape = [n_samples]</p>
 <blockquote class="last">
 <div><p>Predicted multi-class targets.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.multiclass.OneVsRestClassifier.predict_proba">
+<tt class="descname">predict_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.multiclass.OneVsRestClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Probability estimates.</p>
+<p>The returned estimates for all classes are ordered by label of classes.</p>
+<p>Note that in the multilabel case, each sample can have any number of
+labels. This returns the marginal probability that the given sample has
+the label in question. For example, it is entirely consistent that two
+labels both have a 90% probability of applying to a given sample.</p>
+<p>In the single label multiclass case, the rows of the returned matrix
+sum to 1.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>T</strong> : array-like, shape = [n_samples, n_classes]</p>
+<blockquote class="last">
+<div><p>Returns the probability of the sample for each class in the model,
+where classes are ordered as they are in <cite>self.classes_</cite>.</p>
 </div></blockquote>
 </td>
 </tr>

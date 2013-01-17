@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.15.1.11. sklearn.linear_model.MultiTaskElasticNet &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.17.15. sklearn.linear_model.MultiTaskElasticNet &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.15.1.12. sklearn.linear_model.Lars" href="sklearn.linear_model.Lars.html" />
-    <link rel="prev" title="8.15.1.10. sklearn.linear_model.MultiTaskLasso" href="sklearn.linear_model.MultiTaskLasso.html" />
+    <link rel="next" title="8.17.16. sklearn.linear_model.OrthogonalMatchingPursuit" href="sklearn.linear_model.OrthogonalMatchingPursuit.html" />
+    <link rel="prev" title="8.17.14. sklearn.linear_model.MultiTaskLasso" href="sklearn.linear_model.MultiTaskLasso.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.linear_model.MultiTaskLasso.html" title="8.15.1.10. sklearn.linear_model.MultiTaskLasso"
+	<a href="sklearn.linear_model.MultiTaskLasso.html" title="8.17.14. sklearn.linear_model.MultiTaskLasso"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.15.1.10. sklea...
+	    8.17.14. sklearn...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.15.1.10. sklearn.linear_model.MultiTaskLasso
+	    8.17.14. sklearn.linear_model.MultiTaskLasso
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.linear_model.Lars.html" title="8.15.1.12. sklearn.linear_model.Lars"
+	<a href="sklearn.linear_model.OrthogonalMatchingPursuit.html" title="8.17.16. sklearn.linear_model.OrthogonalMatchingPursuit"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.15.1.12. sklea...
+	    8.17.16. sklearn...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.15.1.12. sklearn.linear_model.Lars
+	    8.17.16. sklearn.linear_model.OrthogonalMatchingPursuit
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.15.1.11. sklearn.linear_model.MultiTaskElasticNet</a></li>
+<li><a class="reference internal" href="#">8.17.15. sklearn.linear_model.MultiTaskElasticNet</a></li>
 </ul>
 
     
@@ -162,14 +166,15 @@
           <div class="body">
             
   <div class="section" id="sklearn-linear-model-multitaskelasticnet">
-<h1>8.15.1.11. sklearn.linear_model.MultiTaskElasticNet<a class="headerlink" href="#sklearn-linear-model-multitaskelasticnet" title="Permalink to this headline">¶</a></h1>
+<h1>8.17.15. sklearn.linear_model.MultiTaskElasticNet<a class="headerlink" href="#sklearn-linear-model-multitaskelasticnet" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.linear_model.MultiTaskElasticNet">
-<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">MultiTaskElasticNet</tt><big>(</big><em>alpha=1.0</em>, <em>rho=0.5</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>max_iter=1000</em>, <em>tol=0.0001</em>, <em>warm_start=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.MultiTaskElasticNet" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">MultiTaskElasticNet</tt><big>(</big><em>alpha=1.0</em>, <em>l1_ratio=0.5</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>max_iter=1000</em>, <em>tol=0.0001</em>, <em>warm_start=False</em>, <em>rho=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.MultiTaskElasticNet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multi-task ElasticNet model trained with L1/L2 mixed-norm as regularizer</p>
 <p>The optimization objective for Lasso is:</p>
 <div class="highlight-python"><pre>(1 / (2 * n_samples)) * ||Y - XW||^Fro_2
-+ alpha * rho * ||W||_21 + 0.5 * alpha * (1 - rho) * ||W||_Fro^2</pre>
++ alpha * l1_ratio * ||W||_21
++ 0.5 * alpha * (1 - l1_ratio) * ||W||_Fro^2</pre>
 </div>
 <p>Where:</p>
 <div class="highlight-python"><pre>||W||_21 = \sum_i \sqrt{\sum_j w_{ij}^2}</pre>
@@ -183,11 +188,12 @@
 <blockquote>
 <div><p>Constant that multiplies the L1/L2 term. Defaults to 1.0</p>
 </div></blockquote>
-<p><strong>rho</strong> : float</p>
+<p><strong>l1_ratio</strong> : float</p>
 <blockquote>
-<div><p>The ElasticNet mixing parameter, with 0 &lt; rho &lt;= 1. For rho = 0
-the penalty is an L1/L2 penalty. For rho = 1 it is an L1 penalty.
-For 0 &lt; rho &lt; 1, the penalty is a combination of L1/L2 and L2</p>
+<div><p>The ElasticNet mixing parameter, with 0 &lt; l1_ratio &lt;= 1.
+For l1_ratio = 0 the penalty is an L1/L2 penalty. For l1_ratio = 1 it
+is an L1 penalty.
+For 0 &lt; l1_ratio &lt; 1, the penalty is a combination of L1/L2 and L2.</p>
 </div></blockquote>
 <p><strong>fit_intercept</strong> : boolean</p>
 <blockquote>
@@ -237,7 +243,7 @@ should be directly passed as a fortran contiguous numpy array.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
 <span class="gp">... </span>
 <span class="go">MultiTaskElasticNet(alpha=0.1, copy_X=True, fit_intercept=True,</span>
-<span class="go">        max_iter=1000, normalize=False, rho=0.5, tol=0.0001,</span>
+<span class="go">        l1_ratio=0.5, max_iter=1000, normalize=False, rho=None, tol=0.0001,</span>
 <span class="go">        warm_start=False)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
 <span class="go">[[ 0.45663524  0.45612256]</span>
@@ -293,7 +299,7 @@ should be directly passed as a fortran contiguous numpy array.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.linear_model.MultiTaskElasticNet.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>alpha=1.0</em>, <em>rho=0.5</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>max_iter=1000</em>, <em>tol=0.0001</em>, <em>warm_start=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.MultiTaskElasticNet.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>alpha=1.0</em>, <em>l1_ratio=0.5</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>max_iter=1000</em>, <em>tol=0.0001</em>, <em>warm_start=False</em>, <em>rho=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.MultiTaskElasticNet.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -467,7 +473,7 @@ component of a nested object.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.linear_model.Lars.html">
+      <a href="sklearn.linear_model.OrthogonalMatchingPursuit.html">
         Next
       </a>
     </div>

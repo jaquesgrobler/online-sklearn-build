@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="index.html" />
     <link rel="next" title="Demonstration of sampling from HMM" href="plot_hmm_sampling.html" />
     <link rel="prev" title="Pipelining: chaining a PCA and a logistic regression" href="plot_digits_pipe.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -171,10 +175,12 @@ weights of an SVM. We can see that univariate feature selection
 selects the informative features and that these have larger SVM weights.</p>
 <p>In the total set of features, only the 4 first ones are significant. We
 can see that they have the highest score with univariate feature
-selection. The SVM attributes small weights to these features, but these
-weight are non zero. Applying univariate feature selection before the SVM
+selection. The SVM assigns a large weight to one of these features, but also
+Selects many of the non-informative features.
+Applying univariate feature selection before the SVM
 increases the SVM weight attributed to the significant features, and will
 thus improve classification.</p>
+<img alt="../_images/plot_feature_selection_1.png" class="align-center" src="../_images/plot_feature_selection_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_feature_selection.py"><tt class="xref download docutils literal"><span class="pre">plot_feature_selection.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -187,42 +193,51 @@ thus improve classification.</p>
 <span class="c">###############################################################################</span>
 <span class="c"># import some data to play with</span>
 
-<span class="c"># The IRIS dataset</span>
+<span class="c"># The iris dataset</span>
 <span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
 
 <span class="c"># Some noisy data not correlated</span>
-<span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="mi">35</span><span class="p">))</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="mi">20</span><span class="p">))</span>
 
 <span class="c"># Add the noisy data to the informative features</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">E</span><span class="p">))</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">E</span><span class="p">))</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
 
 <span class="c">###############################################################################</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 
-<span class="n">x_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">X_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Univariate feature selection with F-test for feature scoring</span>
 <span class="c"># We use the default selection function: the 10% most significant features</span>
 <span class="n">selector</span> <span class="o">=</span> <span class="n">SelectPercentile</span><span class="p">(</span><span class="n">f_classif</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">selector</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">selector</span><span class="o">.</span><span class="n">scores_</span><span class="p">)</span>
+<span class="n">selector</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">selector</span><span class="o">.</span><span class="n">pvalues_</span><span class="p">)</span>
 <span class="n">scores</span> <span class="o">/=</span> <span class="n">scores</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_indices</span> <span class="o">-</span> <span class="o">.</span><span class="mi">45</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">width</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="s">r&#39;Univariate score ($-Log(p_{value})$)&#39;</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">X_indices</span> <span class="o">-</span> <span class="o">.</span><span class="mi">45</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">width</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span>
+       <span class="n">label</span><span class="o">=</span><span class="s">r&#39;Univariate score ($-Log(p_{value})$)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Compare to the weights of an SVM</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 <span class="n">svm_weights</span> <span class="o">=</span> <span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">svm_weights</span> <span class="o">/=</span> <span class="n">svm_weights</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_indices</span> <span class="o">-</span> <span class="o">.</span><span class="mi">15</span><span class="p">,</span> <span class="n">svm_weights</span><span class="p">,</span> <span class="n">width</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;SVM weight&#39;</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">X_indices</span> <span class="o">-</span> <span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="n">svm_weights</span><span class="p">,</span> <span class="n">width</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;SVM weight&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="n">clf_selected</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span>
+<span class="n">clf_selected</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">selector</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">svm_weights_selected</span> <span class="o">=</span> <span class="p">(</span><span class="n">clf_selected</span><span class="o">.</span><span class="n">coef_</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">svm_weights_selected</span> <span class="o">/=</span> <span class="n">svm_weights_selected</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">X_indices</span><span class="p">[</span><span class="n">selector</span><span class="o">.</span><span class="n">get_support</span><span class="p">()]</span> <span class="o">-</span> <span class="o">.</span><span class="mo">05</span><span class="p">,</span> <span class="n">svm_weights_selected</span><span class="p">,</span> <span class="n">width</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span>
+       <span class="n">label</span><span class="o">=</span><span class="s">&#39;SVM weights after selection&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
+
 
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Comparing feature selection&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Feature number&#39;</span><span class="p">)</span>
@@ -232,6 +247,7 @@ thus improve classification.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.13 seconds</p>
 </div>
 
 

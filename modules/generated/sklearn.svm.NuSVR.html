@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.26.1.5. sklearn.svm.NuSVR &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.29.1.5. sklearn.svm.NuSVR &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.26.1.6. sklearn.svm.OneClassSVM" href="sklearn.svm.OneClassSVM.html" />
-    <link rel="prev" title="8.26.1.4. sklearn.svm.SVR" href="sklearn.svm.SVR.html" />
+    <link rel="next" title="8.29.1.6. sklearn.svm.OneClassSVM" href="sklearn.svm.OneClassSVM.html" />
+    <link rel="prev" title="8.29.1.4. sklearn.svm.SVR" href="sklearn.svm.SVR.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.svm.SVR.html" title="8.26.1.4. sklearn.svm.SVR"
+	<a href="sklearn.svm.SVR.html" title="8.29.1.4. sklearn.svm.SVR"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.26.1.4. sklear...
+	    8.29.1.4. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.26.1.4. sklearn.svm.SVR
+	    8.29.1.4. sklearn.svm.SVR
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.svm.OneClassSVM.html" title="8.26.1.6. sklearn.svm.OneClassSVM"
+	<a href="sklearn.svm.OneClassSVM.html" title="8.29.1.6. sklearn.svm.OneClassSVM"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.26.1.6. sklear...
+	    8.29.1.6. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.26.1.6. sklearn.svm.OneClassSVM
+	    8.29.1.6. sklearn.svm.OneClassSVM
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.26.1.5. sklearn.svm.NuSVR</a></li>
+<li><a class="reference internal" href="#">8.29.1.5. sklearn.svm.NuSVR</a></li>
 </ul>
 
     
@@ -162,10 +166,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-svm-nusvr">
-<h1>8.26.1.5. sklearn.svm.NuSVR<a class="headerlink" href="#sklearn-svm-nusvr" title="Permalink to this headline">¶</a></h1>
+<h1>8.29.1.5. sklearn.svm.NuSVR<a class="headerlink" href="#sklearn-svm-nusvr" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.svm.NuSVR">
-<em class="property">class </em><tt class="descclassname">sklearn.svm.</tt><tt class="descname">NuSVR</tt><big>(</big><em>nu=0.5</em>, <em>C=1.0</em>, <em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>shrinking=True</em>, <em>probability=False</em>, <em>tol=0.001</em>, <em>cache_size=200</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#sklearn.svm.NuSVR" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.svm.</tt><tt class="descname">NuSVR</tt><big>(</big><em>nu=0.5</em>, <em>C=1.0</em>, <em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>shrinking=True</em>, <em>probability=False</em>, <em>tol=0.001</em>, <em>cache_size=200</em>, <em>verbose=False</em>, <em>max_iter=-1</em><big>)</big><a class="headerlink" href="#sklearn.svm.NuSVR" title="Permalink to this definition">¶</a></dt>
 <dd><p>Nu Support Vector Regression.</p>
 <p>Similar to NuSVC, for regression, uses a parameter nu to control
 the number of support vectors. However, unlike NuSVC, where nu
@@ -188,8 +192,10 @@ default 0.5 will be taken.  Only available if impl=&#8217;nu_svc&#8217;.</p>
 <p><strong>kernel</strong> : string, optional (default=&#8217;rbf&#8217;)</p>
 <blockquote>
 <div><p>Specifies the kernel type to be used in the algorithm.
-one of &#8216;linear&#8217;, &#8216;poly&#8217;, &#8216;rbf&#8217;, &#8216;sigmoid&#8217;, &#8216;precomputed&#8217;.
-If none is given &#8216;rbf&#8217; will be used.</p>
+It must be one of &#8216;linear&#8217;, &#8216;poly&#8217;, &#8216;rbf&#8217;, &#8216;sigmoid&#8217;, &#8216;precomputed&#8217; or
+a callable.
+If none is given, &#8216;rbf&#8217; will be used. If a callable is given it is
+used to precompute the kernel matrix.</p>
 </div></blockquote>
 <p><strong>degree</strong> : int, optional (default=3)</p>
 <blockquote>
@@ -215,19 +221,23 @@ to calling predict_proba.</p>
 <blockquote>
 <div><p>Whether to use the shrinking heuristic.</p>
 </div></blockquote>
-<p><strong>tol: float, optional (default=1e-3)</strong> :</p>
+<p><strong>tol</strong> : float, optional (default=1e-3)</p>
 <blockquote>
 <div><p>Tolerance for stopping criterion.</p>
 </div></blockquote>
-<p><strong>cache_size: float, optional</strong> :</p>
+<p><strong>cache_size</strong> : float, optional</p>
 <blockquote>
 <div><p>Specify the size of the kernel cache (in MB)</p>
 </div></blockquote>
 <p><strong>verbose</strong> : bool, default: False</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Enable verbose output. Note that this setting takes advantage of a
 per-process runtime setting in libsvm that, if enabled, may not work
 properly in a multithreaded context.</p>
+</div></blockquote>
+<p><strong>max_iter</strong> : int, optional (default=-1)</p>
+<blockquote class="last">
+<div><p>Hard limit on iterations within solver, or -1 for no limit.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -250,9 +260,10 @@ properly in a multithreaded context.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">NuSVR</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">nu</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  
 <span class="go">NuSVR(C=1.0, cache_size=200, coef0=0.0, degree=3, gamma=0.0, kernel=&#39;rbf&#39;,</span>
-<span class="go">   nu=0.1, probability=False, shrinking=True, tol=0.001, verbose=False)</span>
+<span class="go">   max_iter=-1, nu=0.1, probability=False, shrinking=True, tol=0.001,</span>
+<span class="go">   verbose=False)</span>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
@@ -299,7 +310,7 @@ problem). This is only available in the case of linear kernel.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.NuSVR.decision_function" title="sklearn.svm.NuSVR.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
 <td>Distance of the samples X to the separating hyperplane.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.svm.NuSVR.fit" title="sklearn.svm.NuSVR.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;class_weight,&nbsp;sample_weight])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.svm.NuSVR.fit" title="sklearn.svm.NuSVR.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;sample_weight])</td>
 <td>Fit the SVM model according to the given training data.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.NuSVR.get_params" title="sklearn.svm.NuSVR.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
@@ -318,7 +329,7 @@ problem). This is only available in the case of linear kernel.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.svm.NuSVR.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>nu=0.5</em>, <em>C=1.0</em>, <em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>shrinking=True</em>, <em>probability=False</em>, <em>tol=0.001</em>, <em>cache_size=200</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#sklearn.svm.NuSVR.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>nu=0.5</em>, <em>C=1.0</em>, <em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>shrinking=True</em>, <em>probability=False</em>, <em>tol=0.001</em>, <em>cache_size=200</em>, <em>verbose=False</em>, <em>max_iter=-1</em><big>)</big><a class="headerlink" href="#sklearn.svm.NuSVR.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -345,7 +356,7 @@ in the model.</p>
 
 <dl class="method">
 <dt id="sklearn.svm.NuSVR.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>class_weight=None</em>, <em>sample_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.svm.NuSVR.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>sample_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.svm.NuSVR.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit the SVM model according to the given training data.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

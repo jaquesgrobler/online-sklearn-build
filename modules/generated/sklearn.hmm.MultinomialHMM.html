@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.11.2. sklearn.hmm.MultinomialHMM &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.12.2. sklearn.hmm.MultinomialHMM &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.11.3. sklearn.hmm.GMMHMM" href="sklearn.hmm.GMMHMM.html" />
-    <link rel="prev" title="8.11.1. sklearn.hmm.GaussianHMM" href="sklearn.hmm.GaussianHMM.html" />
+    <link rel="next" title="8.12.3. sklearn.hmm.GMMHMM" href="sklearn.hmm.GMMHMM.html" />
+    <link rel="prev" title="8.12.1. sklearn.hmm.GaussianHMM" href="sklearn.hmm.GaussianHMM.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.hmm.GaussianHMM.html" title="8.11.1. sklearn.hmm.GaussianHMM"
+	<a href="sklearn.hmm.GaussianHMM.html" title="8.12.1. sklearn.hmm.GaussianHMM"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.11.1. sklearn....
+	    8.12.1. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.11.1. sklearn.hmm.GaussianHMM
+	    8.12.1. sklearn.hmm.GaussianHMM
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.hmm.GMMHMM.html" title="8.11.3. sklearn.hmm.GMMHMM"
+	<a href="sklearn.hmm.GMMHMM.html" title="8.12.3. sklearn.hmm.GMMHMM"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.11.3. sklearn....
+	    8.12.3. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.11.3. sklearn.hmm.GMMHMM
+	    8.12.3. sklearn.hmm.GMMHMM
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.11.2. sklearn.hmm.MultinomialHMM</a></li>
+<li><a class="reference internal" href="#">8.12.2. sklearn.hmm.MultinomialHMM</a></li>
 </ul>
 
     
@@ -162,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-hmm-multinomialhmm">
-<h1>8.11.2. sklearn.hmm.MultinomialHMM<a class="headerlink" href="#sklearn-hmm-multinomialhmm" title="Permalink to this headline">¶</a></h1>
+<h1>8.12.2. sklearn.hmm.MultinomialHMM<a class="headerlink" href="#sklearn-hmm-multinomialhmm" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.hmm.MultinomialHMM">
 <em class="property">class </em><tt class="descclassname">sklearn.hmm.</tt><tt class="descname">MultinomialHMM</tt><big>(</big><em>n_components=1</em>, <em>startprob=None</em>, <em>transmat=None</em>, <em>startprob_prior=None</em>, <em>transmat_prior=None</em>, <em>algorithm='viterbi'</em>, <em>random_state=None</em>, <em>n_iter=10</em>, <em>thresh=0.01</em>, <em>params='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'</em>, <em>init_params='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM" title="Permalink to this definition">¶</a></dt>
@@ -250,8 +254,8 @@ covars, etc.  Defaults to all parameters.</td>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.eval" title="sklearn.hmm.MultinomialHMM.eval"><tt class="xref py py-obj docutils literal"><span class="pre">eval</span></tt></a>(obs)</td>
 <td>Compute the log probability under the model and compute posteriors</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.fit" title="sklearn.hmm.MultinomialHMM.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(obs,&nbsp;**kwargs)</td>
-<td>Estimate model parameters.</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt>(obs,&nbsp;**kwargs)</td>
+<td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.get_params" title="sklearn.hmm.MultinomialHMM.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for the estimator</td>
@@ -385,38 +389,6 @@ observation</p>
 <dd>Find most likely state sequence corresponding to a <cite>obs</cite></dd>
 </dl>
 </div>
-</dd></dl>
-
-<dl class="method">
-<dt id="sklearn.hmm.MultinomialHMM.fit">
-<tt class="descname">fit</tt><big>(</big><em>obs</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Estimate model parameters.</p>
-<p>An initialization step is performed before entering the EM
-algorithm. If you want to avoid this step, set the keyword
-argument init_params to the empty string &#8216;&#8217;. Likewise, if you
-would like just to do an initialization, call this method with
-n_iter=0.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : list</p>
-<blockquote class="last">
-<div><p>List of array-like observation sequences (shape (n_i, n_features)).</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>In general, <cite>logprob</cite> should be non-decreasing unless
-aggressive pruning is used.  Decreasing <cite>logprob</cite> is generally
-a sign of overfitting (e.g. a covariance parameter getting too
-small).  You can fix this by getting more training data, or
-decreasing <cite>covars_prior</cite>.</p>
-<p><strong>Please note that setting parameters in the `fit` method is
-deprecated and will be removed in the next release.
-Set it on initialization instead.</strong></p>
 </dd></dl>
 
 <dl class="method">

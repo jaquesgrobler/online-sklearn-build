@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Density Estimation for a mixture of Gaussians" href="plot_gmm_pdf.html" />
     <link rel="prev" title="Gaussian Mixture Model Ellipsoids" href="plot_gmm.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -175,6 +179,7 @@ test data.</p>
 crosses. The iris dataset is four-dimensional. Only the first two
 dimensions are shown here, and thus some points are separated in other
 dimensions.</p>
+<img alt="../../_images/plot_gmm_classifier_1.png" class="align-center" src="../../_images/plot_gmm_classifier_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_gmm_classifier.py"><tt class="xref download docutils literal"><span class="pre">plot_gmm_classifier.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -209,7 +214,7 @@ dimensions.</p>
 
 <span class="c"># Break up the dataset into non-overlapping training (75%) and testing</span>
 <span class="c"># (25%) sets.</span>
-<span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">n_folds</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="c"># Only take the first fold.</span>
 <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">skf</span><span class="p">))</span>
 
@@ -224,7 +229,7 @@ dimensions.</p>
 <span class="c"># Try GMMs using different types of covariances.</span>
 <span class="n">classifiers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">covar_type</span><span class="p">,</span> <span class="n">GMM</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span>
                     <span class="n">covariance_type</span><span class="o">=</span><span class="n">covar_type</span><span class="p">,</span> <span class="n">init_params</span><span class="o">=</span><span class="s">&#39;wc&#39;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
-                    <span class="k">for</span> <span class="n">covar_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;spherical&#39;</span><span class="p">,</span> <span class="s">&#39;diag&#39;</span><span class="p">,</span> <span class="s">&#39;tied&#39;</span><span class="p">,</span> <span class="s">&#39;full&#39;</span><span class="p">])</span>
+                   <span class="k">for</span> <span class="n">covar_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;spherical&#39;</span><span class="p">,</span> <span class="s">&#39;diag&#39;</span><span class="p">,</span> <span class="s">&#39;tied&#39;</span><span class="p">,</span> <span class="s">&#39;full&#39;</span><span class="p">])</span>
 
 <span class="n">n_classifiers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">classifiers</span><span class="p">)</span>
 
@@ -248,7 +253,7 @@ dimensions.</p>
     <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s">&#39;rgb&#39;</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span> <span class="o">==</span> <span class="n">n</span><span class="p">]</span>
         <span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+                   <span class="n">label</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
     <span class="c"># Plot the test data with crosses</span>
     <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s">&#39;rgb&#39;</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">n</span><span class="p">]</span>
@@ -257,12 +262,12 @@ dimensions.</p>
     <span class="n">y_train_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
     <span class="n">train_accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_train_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">y_train</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span> <span class="o">*</span> <span class="mi">100</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s">&#39;Train accuracy: </span><span class="si">%.1f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">train_accuracy</span><span class="p">,</span>
-                    <span class="n">transform</span><span class="o">=</span><span class="n">h</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">h</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
 
     <span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
     <span class="n">test_accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_test_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">y_test</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span> <span class="o">*</span> <span class="mi">100</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s">&#39;Test accuracy: </span><span class="si">%.1f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">test_accuracy</span><span class="p">,</span>
-                    <span class="n">transform</span><span class="o">=</span><span class="n">h</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">h</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
 
     <span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
@@ -274,6 +279,7 @@ dimensions.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.29 seconds</p>
 </div>
 
 

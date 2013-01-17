@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Empirical evaluation of the impact of k-means initialization" href="plot_kmeans_stability_low_dim_dense.html" />
     <link rel="prev" title="Feature agglomeration vs. univariate selection" href="plot_feature_agglomeration_vs_univariate_selection.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -201,6 +205,16 @@ definitions and discussions of the metrics):</p>
 </tr>
 </tbody>
 </table>
+<img alt="../../_images/plot_kmeans_digits_1.png" class="align-center" src="../../_images/plot_kmeans_digits_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>n_digits: 10,          n_samples 1797,         n_features 64
+_______________________________________________________________________________
+init    time  inertia    homo   compl  v-meas     ARI AMI  silhouette
+k-means++   0.61s    69432   0.602   0.650   0.625   0.465   0.598    0.146
+   random   0.53s    69694   0.669   0.710   0.689   0.553   0.666    0.147
+PCA-based   0.05s    71820   0.673   0.715   0.693   0.567   0.670    0.150
+_______________________________________________________________________________</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_kmeans_digits.py"><tt class="xref download docutils literal"><span class="pre">plot_kmeans_digits.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -225,29 +239,28 @@ definitions and discussions of the metrics):</p>
 
 <span class="n">sample_size</span> <span class="o">=</span> <span class="mi">300</span>
 
-<span class="k">print</span> <span class="s">&quot;n_digits: </span><span class="si">%d</span><span class="s">, </span><span class="se">\t</span><span class="s"> n_samples </span><span class="si">%d</span><span class="s">, </span><span class="se">\t</span><span class="s"> n_features </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_digits</span><span class="p">,</span>
-                                                        <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;n_digits: </span><span class="si">%d</span><span class="s">, </span><span class="se">\t</span><span class="s"> n_samples </span><span class="si">%d</span><span class="s">, </span><span class="se">\t</span><span class="s"> n_features </span><span class="si">%d</span><span class="s">&quot;</span>
+      <span class="o">%</span> <span class="p">(</span><span class="n">n_digits</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
 
 
-<span class="k">print</span> <span class="mi">79</span> <span class="o">*</span> <span class="s">&#39;_&#39;</span>
-<span class="k">print</span> <span class="p">(</span><span class="s">&#39;</span><span class="si">% 9s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="s">&#39;init&#39;</span>
-      <span class="s">&#39;    time  inertia    homo   compl  v-meas     ARI     AMI  silhouette&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="mi">79</span> <span class="o">*</span> <span class="s">&#39;_&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="si">% 9s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="s">&#39;init&#39;</span>
+      <span class="s">&#39;    time  inertia    homo   compl  v-meas     ARI AMI  silhouette&#39;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">bench_k_means</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
     <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="k">print</span> <span class="s">&#39;</span><span class="si">% 9s</span><span class="s">   </span><span class="si">%.2f</span><span class="s">s    </span><span class="si">%i</span><span class="s">   </span><span class="si">%.3f</span><span class="s">   </span><span class="si">%.3f</span><span class="s">   </span><span class="si">%.3f</span><span class="s">   </span><span class="si">%.3f</span><span class="s">   </span><span class="si">%.3f</span><span class="s">    </span><span class="si">%.3f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span>
-         <span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">),</span> <span class="n">estimator</span><span class="o">.</span><span class="n">inertia_</span><span class="p">,</span>
-         <span class="n">metrics</span><span class="o">.</span><span class="n">homogeneity_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">labels_</span><span class="p">),</span>
-         <span class="n">metrics</span><span class="o">.</span><span class="n">completeness_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">labels_</span><span class="p">),</span>
-         <span class="n">metrics</span><span class="o">.</span><span class="n">v_measure_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">labels_</span><span class="p">),</span>
-         <span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">labels_</span><span class="p">),</span>
-         <span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span>  <span class="n">estimator</span><span class="o">.</span><span class="n">labels_</span><span class="p">),</span>
-         <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span>
-                                  <span class="n">metric</span><span class="o">=</span><span class="s">&#39;euclidean&#39;</span><span class="p">,</span>
-                                  <span class="n">sample_size</span><span class="o">=</span><span class="n">sample_size</span><span class="p">),</span>
-         <span class="p">)</span>
+        <span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">),</span> <span class="n">estimator</span><span class="o">.</span><span class="n">inertia_</span><span class="p">,</span>
+        <span class="n">metrics</span><span class="o">.</span><span class="n">homogeneity_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">labels_</span><span class="p">),</span>
+        <span class="n">metrics</span><span class="o">.</span><span class="n">completeness_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">labels_</span><span class="p">),</span>
+        <span class="n">metrics</span><span class="o">.</span><span class="n">v_measure_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">labels_</span><span class="p">),</span>
+        <span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">labels_</span><span class="p">),</span>
+        <span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span>  <span class="n">estimator</span><span class="o">.</span><span class="n">labels_</span><span class="p">),</span>
+        <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span>
+                                 <span class="n">metric</span><span class="o">=</span><span class="s">&#39;euclidean&#39;</span><span class="p">,</span>
+                                 <span class="n">sample_size</span><span class="o">=</span><span class="n">sample_size</span><span class="p">),)</span>
 
 <span class="n">bench_k_means</span><span class="p">(</span><span class="n">KMeans</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_digits</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
               <span class="n">name</span><span class="o">=</span><span class="s">&quot;k-means++&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
@@ -305,6 +318,7 @@ definitions and discussions of the metrics):</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  2.13 seconds</p>
 </div>
 
 

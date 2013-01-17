@@ -31,7 +31,9 @@
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Lasso and Elastic Net" href="plot_lasso_coordinate_descent_path.html" />
-    <link rel="prev" title="Isotonic Regression" href="plot_isotonic_regression.html" />
+    <link rel="prev" title="Logistic Regression 3-class Classifier" href="plot_iris_logistic.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_isotonic_regression.html" title="Isotonic Regression"
+	<a href="plot_iris_logistic.html" title="Logistic Regression 3-class Classifier"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Isotonic Regress...
+	    Logistic Regress...
 	    </span>
 	    <span class="hiddenrellink">
-	    Isotonic Regression
+	    Logistic Regression 3-class Classifier
 	    </span>
 	    
 	    </a>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -163,6 +167,20 @@
             
   <div class="section" id="lasso-and-elastic-net-for-sparse-signals">
 <span id="example-linear-model-plot-lasso-and-elasticnet-py"></span><h1>Lasso and Elastic Net for Sparse Signals<a class="headerlink" href="#lasso-and-elastic-net-for-sparse-signals" title="Permalink to this headline">¶</a></h1>
+<p>Estimates Lasso and Elastic-Net regression models on a manually generated
+sparse signal corrupted with an additive noise. Estimated coefficients are
+compared with the ground-truth.</p>
+<img alt="../../_images/plot_lasso_and_elasticnet_1.png" class="align-center" src="../../_images/plot_lasso_and_elasticnet_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Lasso(alpha=0.1, copy_X=True, fit_intercept=True, max_iter=1000,
+   normalize=False, positive=False, precompute=auto, tol=0.0001,
+   warm_start=False)
+r^2 on test data : 0.384710
+ElasticNet(alpha=0.1, copy_X=True, fit_intercept=True, l1_ratio=0.7,
+      max_iter=1000, normalize=False, positive=False, precompute=auto,
+      rho=None, tol=0.0001, warm_start=False)
+r^2 on test data : 0.240176</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lasso_and_elasticnet.py"><tt class="xref download docutils literal"><span class="pre">plot_lasso_and_elasticnet.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -218,11 +236,12 @@
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Lasso coefficients&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coef</span><span class="p">,</span> <span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;original coefficients&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&#39;best&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Lasso R^2: </span><span class="si">%f</span><span class="s">, Elastic Net R^2: </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r2_score_lasso</span><span class="p">,</span>
-    <span class="n">r2_score_enet</span><span class="p">))</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Lasso R^2: </span><span class="si">%f</span><span class="s">, Elastic Net R^2: </span><span class="si">%f</span><span class="s">&quot;</span>
+         <span class="o">%</span> <span class="p">(</span><span class="n">r2_score_lasso</span><span class="p">,</span> <span class="n">r2_score_enet</span><span class="p">))</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.09 seconds</p>
 </div>
 
 
@@ -244,7 +263,7 @@
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_isotonic_regression.html">
+      <a href="plot_iris_logistic.html">
         Previous
       </a>
     </div>

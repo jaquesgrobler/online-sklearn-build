@@ -1,9 +1,9 @@
 
 .. raw:: html
-    
-    
+
+
     <style type="text/css">
-    
+
     div#sidebarbutton {
         display: none;
     }
@@ -14,6 +14,7 @@
         width: auto;
         height: 200px;
         width: 180px;
+        padding-bottom: 50px
     }
 
     .figure img {
@@ -51,6 +52,16 @@ General-purpose and introductory examples for the scikit.
    :hidden:
 
    ./plot_classification_probability
+
+.. figure:: ./images/thumb/plot_classifier_comparison.png
+   :target: ./plot_classifier_comparison.html
+
+   :ref:`example_plot_classifier_comparison.py`
+
+.. toctree::
+   :hidden:
+
+   ./plot_classifier_comparison
 
 .. figure:: ./images/thumb/plot_confusion_matrix.png
    :target: ./plot_confusion_matrix.html
@@ -102,25 +113,25 @@ General-purpose and introductory examples for the scikit.
 
    ./plot_hmm_sampling
 
-.. figure:: ./images/thumb/plot_hmm_stock_analysis.png
-   :target: ./plot_hmm_stock_analysis.html
+.. figure:: ./images/thumb/plot_isotonic_regression.png
+   :target: ./plot_isotonic_regression.html
 
-   :ref:`example_plot_hmm_stock_analysis.py`
-
-.. toctree::
-   :hidden:
-
-   ./plot_hmm_stock_analysis
-
-.. figure:: ./images/thumb/plot_iris_classifiers.png
-   :target: ./plot_iris_classifiers.html
-
-   :ref:`example_plot_iris_classifiers.py`
+   :ref:`example_plot_isotonic_regression.py`
 
 .. toctree::
    :hidden:
 
-   ./plot_iris_classifiers
+   ./plot_isotonic_regression
+
+.. figure:: ./images/thumb/plot_johnson_lindenstrauss_bound.png
+   :target: ./plot_johnson_lindenstrauss_bound.html
+
+   :ref:`example_plot_johnson_lindenstrauss_bound.py`
+
+.. toctree::
+   :hidden:
+
+   ./plot_johnson_lindenstrauss_bound
 
 .. figure:: ./images/thumb/plot_kernel_approximation.png
    :target: ./plot_kernel_approximation.html
@@ -262,6 +273,16 @@ General-purpose and introductory examples for the scikit.
 
    ./feature_selection_pipeline
 
+.. figure:: ./images/thumb/feature_stacker.png
+   :target: ./feature_stacker.html
+
+   :ref:`example_feature_stacker.py`
+
+.. toctree::
+   :hidden:
+
+   ./feature_stacker
+
 .. figure:: ./images/thumb/grid_search_digits.png
    :target: ./grid_search_digits.html
 
@@ -281,6 +302,16 @@ General-purpose and introductory examples for the scikit.
    :hidden:
 
    ./grid_search_text_feature_extraction
+
+.. figure:: ./images/thumb/hashing_vs_dict_vectorizer.png
+   :target: ./hashing_vs_dict_vectorizer.html
+
+   :ref:`example_hashing_vs_dict_vectorizer.py`
+
+.. toctree::
+   :hidden:
+
+   ./hashing_vs_dict_vectorizer
 
 .. figure:: ./images/thumb/mlcomp_sparse_document_classification.png
    :target: ./mlcomp_sparse_document_classification.html
@@ -308,6 +339,16 @@ Applications to real world problems with some medium sized datasets or
 interactive user interface.
 
 
+
+.. figure:: applications/images/thumb/plot_hmm_stock_analysis.png
+   :target: ./applications/plot_hmm_stock_analysis.html
+
+   :ref:`example_applications_plot_hmm_stock_analysis.py`
+
+.. toctree::
+   :hidden:
+
+   applications/plot_hmm_stock_analysis
 
 .. figure:: applications/images/thumb/plot_outlier_detection_housing.png
    :target: ./applications/plot_outlier_detection_housing.html
@@ -890,6 +931,26 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
    ensemble/plot_gradient_boosting_regularization
 
+.. figure:: ensemble/images/thumb/plot_partial_dependence.png
+   :target: ./ensemble/plot_partial_dependence.html
+
+   :ref:`example_ensemble_plot_partial_dependence.py`
+
+.. toctree::
+   :hidden:
+
+   ensemble/plot_partial_dependence
+
+.. figure:: ensemble/images/thumb/plot_random_forest_embedding.png
+   :target: ./ensemble/plot_random_forest_embedding.html
+
+   :ref:`example_ensemble_plot_random_forest_embedding.py`
+
+.. toctree::
+   :hidden:
+
+   ensemble/plot_random_forest_embedding
+
 
 .. raw:: html
 
@@ -1037,16 +1098,6 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
    linear_model/plot_iris_logistic
 
-.. figure:: linear_model/images/thumb/plot_isotonic_regression.png
-   :target: ./linear_model/plot_isotonic_regression.html
-
-   :ref:`example_linear_model_plot_isotonic_regression.py`
-
-.. toctree::
-   :hidden:
-
-   linear_model/plot_isotonic_regression
-
 .. figure:: linear_model/images/thumb/plot_lasso_and_elasticnet.png
    :target: ./linear_model/plot_lasso_and_elasticnet.html
 
@@ -1187,6 +1238,16 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
    linear_model/plot_ridge_path
 
+.. figure:: linear_model/images/thumb/plot_sgd_comparison.png
+   :target: ./linear_model/plot_sgd_comparison.html
+
+   :ref:`example_linear_model_plot_sgd_comparison.py`
+
+.. toctree::
+   :hidden:
+
+   linear_model/plot_sgd_comparison
+
 .. figure:: linear_model/images/thumb/plot_sgd_iris.png
    :target: ./linear_model/plot_sgd_iris.html
 
@@ -1313,6 +1374,16 @@ Examples concerning the :mod:`sklearn.manifold` package.
    :hidden:
 
    manifold/plot_lle_digits
+
+.. figure:: manifold/images/thumb/plot_manifold_sphere.png
+   :target: ./manifold/plot_manifold_sphere.html
+
+   :ref:`example_manifold_plot_manifold_sphere.py`
+
+.. toctree::
+   :hidden:
+
+   manifold/plot_manifold_sphere
 
 .. figure:: manifold/images/thumb/plot_mds.png
    :target: ./manifold/plot_mds.html

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.3.5. sklearn.metrics.homogeneity_score &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.19.3.5. sklearn.metrics.homogeneity_score &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.3.6. sklearn.metrics.mutual_info_score" href="sklearn.metrics.mutual_info_score.html" />
-    <link rel="prev" title="8.17.3.4. sklearn.metrics.homogeneity_completeness_v_measure" href="sklearn.metrics.homogeneity_completeness_v_measure.html" />
+    <link rel="next" title="8.19.3.6. sklearn.metrics.mutual_info_score" href="sklearn.metrics.mutual_info_score.html" />
+    <link rel="prev" title="8.19.3.4. sklearn.metrics.homogeneity_completeness_v_measure" href="sklearn.metrics.homogeneity_completeness_v_measure.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.homogeneity_completeness_v_measure.html" title="8.17.3.4. sklearn.metrics.homogeneity_completeness_v_measure"
+	<a href="sklearn.metrics.homogeneity_completeness_v_measure.html" title="8.19.3.4. sklearn.metrics.homogeneity_completeness_v_measure"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.17.3.4. sklear...
+	    8.19.3.4. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.3.4. sklearn.metrics.homogeneity_completeness_v_measure
+	    8.19.3.4. sklearn.metrics.homogeneity_completeness_v_measure
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.mutual_info_score.html" title="8.17.3.6. sklearn.metrics.mutual_info_score"
+	<a href="sklearn.metrics.mutual_info_score.html" title="8.19.3.6. sklearn.metrics.mutual_info_score"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.17.3.6. sklear...
+	    8.19.3.6. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.3.6. sklearn.metrics.mutual_info_score
+	    8.19.3.6. sklearn.metrics.mutual_info_score
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.17.3.5. sklearn.metrics.homogeneity_score</a></li>
+<li><a class="reference internal" href="#">8.19.3.5. sklearn.metrics.homogeneity_score</a></li>
 </ul>
 
     
@@ -162,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-homogeneity-score">
-<h1>8.17.3.5. sklearn.metrics.homogeneity_score<a class="headerlink" href="#sklearn-metrics-homogeneity-score" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.3.5. sklearn.metrics.homogeneity_score<a class="headerlink" href="#sklearn-metrics-homogeneity-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.homogeneity_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">homogeneity_score</tt><big>(</big><em>labels_true</em>, <em>labels_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.homogeneity_score" title="Permalink to this definition">¶</a></dt>
@@ -172,8 +176,9 @@ contain only data points which are members of a single class.</p>
 <p>This metric is independent of the absolute values of the labels:
 a permutation of the class or cluster label values won&#8217;t change the
 score value in any way.</p>
-<p>This metric is not symmetric: switching <cite>label_true</cite> with <cite>label_pred</cite>
-will return the completeness_score which will be different in general.</p>
+<p>This metric is not symmetric: switching <tt class="docutils literal"><span class="pre">label_true</span></tt> with <tt class="docutils literal"><span class="pre">label_pred</span></tt>
+will return the <a class="reference internal" href="sklearn.metrics.completeness_score.html#sklearn.metrics.completeness_score" title="sklearn.metrics.completeness_score"><tt class="xref py py-func docutils literal"><span class="pre">completeness_score</span></tt></a> which will be different in
+general.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -201,11 +206,13 @@ will return the completeness_score which will be different in general.</p>
 <p class="last"><a class="reference internal" href="sklearn.metrics.completeness_score.html#sklearn.metrics.completeness_score" title="sklearn.metrics.completeness_score"><tt class="xref py py-obj docutils literal"><span class="pre">completeness_score</span></tt></a>, <a class="reference internal" href="sklearn.metrics.v_measure_score.html#sklearn.metrics.v_measure_score" title="sklearn.metrics.v_measure_score"><tt class="xref py py-obj docutils literal"><span class="pre">v_measure_score</span></tt></a></p>
 </div>
 <p class="rubric">References</p>
-<ul class="simple">
-<li>Andrew Rosenberg and Julia Hirschberg <cite>V-Measure: A conditional
-entropy-based external cluster evaluation measure</cite>, 2007
-<a class="reference external" href="http://acl.ldc.upenn.edu/D/D07/D07-1043.pdf">http://acl.ldc.upenn.edu/D/D07/D07-1043.pdf</a></li>
-</ul>
+<table class="docutils citation" frame="void" id="r100" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R100]</a></td><td><a class="reference external" href="http://acl.ldc.upenn.edu/D/D07/D07-1043.pdf">Andrew Rosenberg and Julia Hirschberg, 2007. V-Measure: A
+conditional entropy-based external cluster evaluation measure</a></td></tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
 <p>Perfect labelings are homegenous:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics.cluster</span> <span class="kn">import</span> <span class="n">homogeneity_score</span>
@@ -215,18 +222,22 @@ entropy-based external cluster evaluation measure</cite>, 2007
 </div>
 <p>Non-pefect labelings that futher split classes into more clusters can be
 perfectly homogeneous:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">homogeneity_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="go">1.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">homogeneity_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="go">1.0</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">homogeneity_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+<span class="gp">... </span>                                                 
+<span class="go">1.0...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">homogeneity_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="gp">... </span>                                                 
+<span class="go">1.0...</span>
 </pre></div>
 </div>
 <p>Clusters that include samples from different classes do not make for an
 homogeneous labeling:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">homogeneity_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="go">0.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">homogeneity_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="go">0.0</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">homogeneity_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="gp">... </span>                                                 
+<span class="go">0.0...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">homogeneity_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+<span class="gp">... </span>                                                 
+<span class="go">0.0...</span>
 </pre></div>
 </div>
 </dd></dl>

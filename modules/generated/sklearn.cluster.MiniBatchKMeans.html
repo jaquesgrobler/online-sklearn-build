@@ -32,6 +32,8 @@
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.1.1.5. sklearn.cluster.MeanShift" href="sklearn.cluster.MeanShift.html" />
     <link rel="prev" title="8.1.1.3. sklearn.cluster.KMeans" href="sklearn.cluster.KMeans.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -272,23 +276,26 @@ neighbor.</td>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.fit_predict" title="sklearn.cluster.MiniBatchKMeans.fit_predict"><tt class="xref py py-obj docutils literal"><span class="pre">fit_predict</span></tt></a>(X)</td>
 <td>Compute cluster centers and predict cluster index for each sample.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.get_params" title="sklearn.cluster.MiniBatchKMeans.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.fit_transform" title="sklearn.cluster.MiniBatchKMeans.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
+<td>Compute clustering and transform X to cluster-distance space.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.get_params" title="sklearn.cluster.MiniBatchKMeans.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for the estimator</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.partial_fit" title="sklearn.cluster.MiniBatchKMeans.partial_fit"><tt class="xref py py-obj docutils literal"><span class="pre">partial_fit</span></tt></a>(X[,&nbsp;y])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.partial_fit" title="sklearn.cluster.MiniBatchKMeans.partial_fit"><tt class="xref py py-obj docutils literal"><span class="pre">partial_fit</span></tt></a>(X[,&nbsp;y])</td>
 <td>Update k means estimate on a single mini-batch X.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.predict" title="sklearn.cluster.MiniBatchKMeans.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.predict" title="sklearn.cluster.MiniBatchKMeans.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
 <td>Predict the closest cluster each sample in X belongs to.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.score" title="sklearn.cluster.MiniBatchKMeans.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.score" title="sklearn.cluster.MiniBatchKMeans.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X)</td>
 <td>Opposite of the value of X on the K-means objective.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.set_params" title="sklearn.cluster.MiniBatchKMeans.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.set_params" title="sklearn.cluster.MiniBatchKMeans.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.transform" title="sklearn.cluster.MiniBatchKMeans.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X[,&nbsp;y])</td>
-<td>Transform the data to a cluster-distance space</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.MiniBatchKMeans.transform" title="sklearn.cluster.MiniBatchKMeans.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X[,&nbsp;y])</td>
+<td>Transform X to a cluster-distance space</td>
 </tr>
 </tbody>
 </table>
@@ -321,6 +328,13 @@ neighbor.</td>
 <dd><p>Compute cluster centers and predict cluster index for each sample.</p>
 <p>Convenience method; equivalent to calling fit(X) followed by
 predict(X).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.cluster.MiniBatchKMeans.fit_transform">
+<tt class="descname">fit_transform</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute clustering and transform X to cluster-distance space.</p>
+<p>Equivalent to fit(X).transform(X), but more efficiently implemented.</p>
 </dd></dl>
 
 <dl class="method">
@@ -432,7 +446,7 @@ component of a nested object.</p>
 <dl class="method">
 <dt id="sklearn.cluster.MiniBatchKMeans.transform">
 <tt class="descname">transform</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform the data to a cluster-distance space</p>
+<dd><p>Transform X to a cluster-distance space</p>
 <p>In the new space, each dimension is the distance to the cluster
 centers.  Note that even if X is sparse, the array returned by
 <cite>transform</cite> will typically be dense.</p>

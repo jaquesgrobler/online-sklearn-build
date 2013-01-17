@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Demo of affinity propagation clustering algorithm" href="plot_affinity_propagation.html" />
     <link rel="prev" title="Wikipedia principal eigenvector" href="../applications/wikipedia_principal_eigenvector.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -175,6 +179,30 @@ clusters.</p>
 <p>Only adjusted measures can hence safely be used as a consensus index
 to evaluate the average stability of clustering algorithms for a given
 value of k on various overlapping sub-samples of the dataset.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../../_images/plot_adjusted_for_chance_measures_2.png"><img alt="../../_images/plot_adjusted_for_chance_measures_2.png" src="../../_images/plot_adjusted_for_chance_measures_2.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_adjusted_for_chance_measures_1.png"><img alt="../../_images/plot_adjusted_for_chance_measures_1.png" src="../../_images/plot_adjusted_for_chance_measures_1.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+</ul>
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Computing adjusted_rand_score for 10 values of n_clusters and n_samples=100
+done in 0.175s
+Computing v_measure_score for 10 values of n_clusters and n_samples=100
+done in 0.030s
+Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=100
+done in 0.770s
+Computing mutual_info_score for 10 values of n_clusters and n_samples=100
+done in 0.020s
+Computing adjusted_rand_score for 10 values of n_clusters and n_samples=1000
+done in 0.192s
+Computing v_measure_score for 10 values of n_clusters and n_samples=1000
+done in 0.057s
+Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=1000
+done in 0.396s
+Computing mutual_info_score for 10 values of n_clusters and n_samples=1000
+done in 0.036s</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_adjusted_for_chance_measures.py"><tt class="xref download docutils literal"><span class="pre">plot_adjusted_for_chance_measures.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -279,6 +307,7 @@ value of k on various overlapping sub-samples of the dataset.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  1.86 seconds</p>
 </div>
 
 

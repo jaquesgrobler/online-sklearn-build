@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="index.html" />
     <link rel="next" title="Classification of text documents using sparse features" href="document_classification_20newsgroups.html" />
     <link rel="prev" title="Receiver operating characteristic (ROC) with cross validation" href="plot_roc_crossval.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -169,6 +173,10 @@ increases the performance on train decreases while the performance on test
 is optimal within a range of values of the regularization parameter.
 The example with an Elastic-Net regression model and the performance is
 measured using the explained variance a.k.a. R^2.</p>
+<img alt="../_images/plot_train_error_vs_test_error_1.png" class="align-center" src="../_images/plot_train_error_vs_test_error_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Optimal regularization parameter : 0.000335292414925</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_train_error_vs_test_error.py"><tt class="xref download docutils literal"><span class="pre">plot_train_error_vs_test_error.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -218,8 +226,8 @@ measured using the explained variance a.k.a. R^2.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">train_errors</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Train&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">test_errors</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Test&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">alpha_optim</span><span class="p">,</span> <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">test_errors</span><span class="p">),</span>
-                        <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Optimum on test&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">alpha_optim</span><span class="p">,</span> <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">test_errors</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span>
+          <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Optimum on test&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&#39;lower left&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Regularization parameter&#39;</span><span class="p">)</span>
@@ -234,6 +242,7 @@ measured using the explained variance a.k.a. R^2.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  6.63 seconds</p>
 </div>
 
 

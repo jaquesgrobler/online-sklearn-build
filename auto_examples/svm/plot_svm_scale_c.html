@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Support Vector Classification (SVC): scaling the regularization parameter &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Scaling the regularization parameter for SVCs &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="SVM: Weighted samples" href="plot_weighted_samples.html" />
     <link rel="prev" title="Support Vector Regression (SVR) using linear and non-linear kernels" href="plot_svm_regression.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">Support Vector Classification (SVC): scaling the regularization parameter</a><ul>
+<li><a class="reference internal" href="#">Scaling the regularization parameter for SVCs</a><ul>
 <li><a class="reference internal" href="#l1-penalty-case">L1-penalty case</a></li>
 <li><a class="reference internal" href="#l2-penalty-case">L2-penalty case</a></li>
 <li><a class="reference internal" href="#simulations">Simulations</a></li>
@@ -166,8 +170,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="support-vector-classification-svc-scaling-the-regularization-parameter">
-<span id="example-svm-plot-svm-scale-c-py"></span><h1>Support Vector Classification (SVC): scaling the regularization parameter<a class="headerlink" href="#support-vector-classification-svc-scaling-the-regularization-parameter" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="scaling-the-regularization-parameter-for-svcs">
+<span id="example-svm-plot-svm-scale-c-py"></span><h1>Scaling the regularization parameter for SVCs<a class="headerlink" href="#scaling-the-regularization-parameter-for-svcs" title="Permalink to this headline">¶</a></h1>
 <p>The following example illustrates the effect of scaling the
 regularization parameter when using <a class="reference internal" href="../../modules/svm.html#svm"><em>Support Vector Machines</em></a> for
 <a class="reference internal" href="../../modules/svm.html#svm-classification"><em>classification</em></a>.
@@ -231,6 +235,7 @@ is not scaled.</p>
 behind this is the <cite>L1</cite> case works better on sparse data, while <cite>L2</cite>
 is better suited to the non-sparse case.</p>
 </div>
+<img alt="../../_images/plot_svm_scale_c_1.png" class="align-center" src="../../_images/plot_svm_scale_c_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_svm_scale_c.py"><tt class="xref download docutils literal"><span class="pre">plot_svm_scale_c.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -258,7 +263,8 @@ is better suited to the non-sparse case.</p>
 
 <span class="c"># L1 data (only 5 informative features)</span>
 <span class="n">X_1</span><span class="p">,</span> <span class="n">y_1</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span>
-           <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                                        <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                                        <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c"># L2 data: non sparse, but less features</span>
 <span class="n">y_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span> <span class="o">-</span> <span class="n">rnd</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_samples</span><span class="p">))</span>
@@ -283,8 +289,8 @@ is better suited to the non-sparse case.</p>
         <span class="c"># To get nice curve, we need a large number of iterations to</span>
         <span class="c"># reduce the variance</span>
         <span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span>
-                        <span class="n">cv</span><span class="o">=</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">,</span>
-                                        <span class="n">n_iterations</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+                            <span class="n">cv</span><span class="o">=</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">,</span>
+                                            <span class="n">n_iter</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
         <span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
         <span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">grid</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">]</span>
 
@@ -306,6 +312,7 @@ is better suited to the non-sparse case.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  18.00 seconds</p>
 </div>
 </div>
 

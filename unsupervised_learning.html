@@ -31,7 +31,9 @@
     <link rel="top" title="scikit-learn 0.13-git documentation" href="index.html" />
     <link rel="up" title="&lt;no title&gt;" href="user_guide.html" />
     <link rel="next" title="4.1. Gaussian mixture models" href="modules/mixture.html" />
-    <link rel="prev" title="3.13. Linear and Quadratic Discriminant Analysis" href="modules/lda_qda.html" />
+    <link rel="prev" title="3.14. Isotonic regression" href="modules/isotonic.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="modules/lda_qda.html" title="3.13. Linear and Quadratic Discriminant Analysis"
+	<a href="modules/isotonic.html" title="3.14. Isotonic regression"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    3.13. Linear and...
+	    3.14. Isotonic r...
 	    </span>
 	    <span class="hiddenrellink">
-	    3.13. Linear and Quadratic Discriminant Analysis
+	    3.14. Isotonic regression
 	    </span>
 	    
 	    </a>
@@ -138,7 +142,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -248,16 +252,20 @@
 <li class="toctree-l3"><a class="reference internal" href="modules/manifold.html#id3">4.2.5.1. Complexity</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="modules/manifold.html#local-tangent-space-alignment">4.2.6. Local Tangent Space Alignment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/manifold.html#spectral-embedding">4.2.6. Spectral Embedding</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/manifold.html#id4">4.2.6.1. Complexity</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="modules/manifold.html#multi-dimensional-scaling-mds">4.2.7. Multi-dimensional Scaling (MDS)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modules/manifold.html#metric-mds">4.2.7.1. Metric MDS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/manifold.html#nonmetric-mds">4.2.7.2. Nonmetric MDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/manifold.html#local-tangent-space-alignment">4.2.7. Local Tangent Space Alignment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/manifold.html#id5">4.2.7.1. Complexity</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="modules/manifold.html#tips-on-practical-use">4.2.8. Tips on practical use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/manifold.html#multi-dimensional-scaling-mds">4.2.8. Multi-dimensional Scaling (MDS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/manifold.html#metric-mds">4.2.8.1. Metric MDS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/manifold.html#nonmetric-mds">4.2.8.2. Nonmetric MDS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/manifold.html#tips-on-practical-use">4.2.9. Tips on practical use</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules/clustering.html">4.3. Clustering</a><ul>
@@ -268,7 +276,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/clustering.html#affinity-propagation">4.3.3. Affinity propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/clustering.html#mean-shift">4.3.4. Mean Shift</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/clustering.html#spectral-clustering">4.3.5. Spectral clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/clustering.html#spectral-clustering">4.3.5. Spectral clustering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#different-label-assignement-strategies">4.3.5.1. Different label assignement strategies</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="modules/clustering.html#hierarchical-clustering">4.3.6. Hierarchical clustering</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#adding-connectivity-constraints">4.3.6.1. Adding connectivity constraints</a></li>
 </ul>
@@ -326,8 +337,9 @@
 <li class="toctree-l3"><a class="reference internal" href="modules/decomposition.html#mini-batch-dictionary-learning">4.4.2.3. Mini-batch dictionary learning</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="modules/decomposition.html#independent-component-analysis-ica">4.4.3. Independent component analysis (ICA)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/decomposition.html#non-negative-matrix-factorization-nmf-or-nnmf">4.4.4. Non-negative matrix factorization (NMF or NNMF)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/decomposition.html#factor-analysis">4.4.3. Factor Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/decomposition.html#independent-component-analysis-ica">4.4.4. Independent component analysis (ICA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/decomposition.html#non-negative-matrix-factorization-nmf-or-nnmf">4.4.5. Non-negative matrix factorization (NMF or NNMF)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules/covariance.html">4.5. Covariance estimation</a><ul>
@@ -386,7 +398,7 @@
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="modules/lda_qda.html">
+      <a href="modules/isotonic.html">
         Previous
       </a>
     </div>

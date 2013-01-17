@@ -31,7 +31,9 @@
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.4.2.2. sklearn.datasets.make_classification" href="sklearn.datasets.make_classification.html" />
-    <link rel="prev" title="8.4.1.17. sklearn.datasets.load_svmlight_file" href="sklearn.datasets.load_svmlight_file.html" />
+    <link rel="prev" title="8.4.1.19. sklearn.datasets.dump_svmlight_file" href="sklearn.datasets.dump_svmlight_file.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.datasets.load_svmlight_file.html" title="8.4.1.17. sklearn.datasets.load_svmlight_file"
+	<a href="sklearn.datasets.dump_svmlight_file.html" title="8.4.1.19. sklearn.datasets.dump_svmlight_file"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.4.1.17. sklear...
+	    8.4.1.19. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.4.1.17. sklearn.datasets.load_svmlight_file
+	    8.4.1.19. sklearn.datasets.dump_svmlight_file
 	    </span>
 	    
 	    </a>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -222,7 +226,7 @@ by <cite>np.random</cite>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets.samples_generator</span> <span class="kn">import</span> <span class="n">make_blobs</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="gp">... </span>                  <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(10, 2)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
 <span class="go">array([0, 0, 1, 0, 2, 2, 2, 1, 1, 0])</span>
@@ -251,7 +255,7 @@ by <cite>np.random</cite>.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.datasets.load_svmlight_file.html">
+      <a href="sklearn.datasets.dump_svmlight_file.html">
         Previous
       </a>
     </div>

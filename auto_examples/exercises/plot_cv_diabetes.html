@@ -31,7 +31,9 @@
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Cross-validation on Digits Dataset Exercise" href="plot_cv_digits.html" />
-    <link rel="prev" title="Gradient Boosting regularization" href="../ensemble/plot_gradient_boosting_regularization.html" />
+    <link rel="prev" title="Hashing feature transformation using Totally Random Trees" href="../ensemble/plot_random_forest_embedding.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="../ensemble/plot_gradient_boosting_regularization.html" title="Gradient Boosting regularization"
+	<a href="../ensemble/plot_random_forest_embedding.html" title="Hashing feature transformation using Totally Random Trees"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Gradient Boostin...
+	    Hashing feature ...
 	    </span>
 	    <span class="hiddenrellink">
-	    Gradient Boosting regularization
+	    Hashing feature transformation using Totally Random Trees
 	    </span>
 	    
 	    </a>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -165,6 +169,21 @@
 <span id="example-exercises-plot-cv-diabetes-py"></span><h1>Cross-validation on diabetes Dataset Exercise<a class="headerlink" href="#cross-validation-on-diabetes-dataset-exercise" title="Permalink to this headline">¶</a></h1>
 <p>This exercise is used in the <a class="reference internal" href="../../tutorial/statistical_inference/model_selection.html#cv-estimators-tut"><em>Cross-validated estimators</em></a> part of the
 <a class="reference internal" href="../../tutorial/statistical_inference/model_selection.html#model-selection-tut"><em>Model selection: choosing estimators and their parameters</em></a> section of the <a class="reference internal" href="../../tutorial/statistical_inference/index.html#stat-learn-tut-index"><em>A tutorial on statistical-learning for scientific data processing</em></a>.</p>
+<img alt="../../_images/plot_cv_diabetes_1.png" class="align-center" src="../../_images/plot_cv_diabetes_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Answer to the bonus question: how much can you trust
+the selection of alpha?
+
+Alpha parameters maximising the generalization score on different
+subsets of the data:
+[fold 0] alpha: 0.10405, score: 0.53573
+[fold 1] alpha: 0.05968, score: 0.16277
+[fold 2] alpha: 0.18139, score: 0.41034
+
+Answer: Not very much since we obtained different alphas for different
+subsets of the data and moreover, the scores for these alphas differ
+quite substantially.</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_cv_diabetes.py"><tt class="xref download docutils literal"><span class="pre">plot_cv_diabetes.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -174,12 +193,12 @@
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">linear_model</span>
 
 <span class="n">diabetes</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span><span class="p">()</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">data</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">target</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="mi">150</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">150</span><span class="p">]</span>
 
 <span class="n">lasso</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">Lasso</span><span class="p">()</span>
 
-<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
 
 <span class="n">scores</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 <span class="n">scores_std</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -190,24 +209,46 @@
     <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">this_scores</span><span class="p">))</span>
     <span class="n">scores_std</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">this_scores</span><span class="p">))</span>
 
-<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="o">.</span><span class="mi">7</span><span class="p">])</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scores_std</span><span class="p">)</span> <span class="o">/</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&#39;b--&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scores_std</span><span class="p">)</span> <span class="o">/</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&#39;b--&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
+<span class="c"># plot error lines showing +/- std. errors of the scores</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scores_std</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)),</span>
+            <span class="s">&#39;b--&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scores_std</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)),</span>
+            <span class="s">&#39;b--&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;CV score&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;alpha&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;.5&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2e-4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="s">&#39;.489&#39;</span><span class="p">)</span>
 
 <span class="c">##############################################################################</span>
 <span class="c"># Bonus: how much can you trust the selection of alpha?</span>
+
+<span class="c"># To answer this question we use the LassoCV object that sets its alpha</span>
+<span class="c"># parameter automatically from the data by internal cross-validation (i.e. it</span>
+<span class="c"># performs cross-validation on the training data it receives).</span>
+<span class="c"># We use external cross-validation to see how much the automatically obtained</span>
+<span class="c"># alphas differ across different cross-validation folds.</span>
+<span class="n">lasso_cv</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LassoCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">alphas</span><span class="p">)</span>
 <span class="n">k_fold</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">KFold</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
-<span class="k">print</span> <span class="p">[</span><span class="n">lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">train</span><span class="p">])</span><span class="o">.</span><span class="n">alpha</span> <span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">k_fold</span><span class="p">]</span>
+
+<span class="k">print</span> <span class="s">&quot;Answer to the bonus question: how much can you trust&quot;</span>
+<span class="k">print</span> <span class="s">&quot;the selection of alpha?&quot;</span>
+<span class="k">print</span>
+<span class="k">print</span> <span class="s">&quot;Alpha parameters maximising the generalization score on different&quot;</span>
+<span class="k">print</span> <span class="s">&quot;subsets of the data:&quot;</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">k_fold</span><span class="p">):</span>
+    <span class="n">lasso_cv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">train</span><span class="p">])</span>
+    <span class="k">print</span> <span class="s">&quot;[fold {0}] alpha: {1:.5f}, score: {2:.5f}&quot;</span><span class="o">.</span>\
+        <span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">lasso_cv</span><span class="o">.</span><span class="n">alpha_</span><span class="p">,</span> <span class="n">lasso_cv</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">test</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test</span><span class="p">]))</span>
+<span class="k">print</span>
+<span class="k">print</span> <span class="s">&quot;Answer: Not very much since we obtained different alphas for different&quot;</span>
+<span class="k">print</span> <span class="s">&quot;subsets of the data and moreover, the scores for these alphas differ&quot;</span>
+<span class="k">print</span> <span class="s">&quot;quite substantially.&quot;</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  3.51 seconds</p>
 </div>
 
 
@@ -229,7 +270,7 @@
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="../ensemble/plot_gradient_boosting_regularization.html">
+      <a href="../ensemble/plot_random_forest_embedding.html">
         Previous
       </a>
     </div>

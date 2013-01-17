@@ -32,6 +32,8 @@
     <link rel="up" title="4. Unsupervised learning" href="../unsupervised_learning.html" />
     <link rel="next" title="4.6. Novelty and Outlier Detection" href="outlier_detection.html" />
     <link rel="prev" title="4.4. Decomposing signals in components (matrix factorization problems)" href="decomposition.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -205,14 +209,14 @@ one may want to use the <cite>assume_centered</cite> parameter accurately.</p>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
-<li>See <a class="reference internal" href="../auto_examples/covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Ledoit-Wolf vs Covariance simple estimation</em></a> for
+<li>See <a class="reference internal" href="../auto_examples/covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood</em></a> for
 an example on how to fit an <a class="reference internal" href="generated/sklearn.covariance.EmpiricalCovariance.html#sklearn.covariance.EmpiricalCovariance" title="sklearn.covariance.EmpiricalCovariance"><tt class="xref py py-class docutils literal"><span class="pre">EmpiricalCovariance</span></tt></a> object
 to data.</li>
 </ul>
 </div>
 </div>
 <div class="section" id="shrunk-covariance">
-<h2>4.5.2. Shrunk Covariance<a class="headerlink" href="#shrunk-covariance" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>4.5.2. Shrunk Covariance<a class="headerlink" href="#shrunk-covariance" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="basic-shrinkage">
 <h3>4.5.2.1. Basic shrinkage<a class="headerlink" href="#basic-shrinkage" title="Permalink to this headline">¶</a></h3>
 <p>Despite being an unbiased estimator of the covariance matrix, the
@@ -221,27 +225,28 @@ eigenvalues of the covariance matrix, so the precision matrix obtained
 from its inversion is not accurate. Sometimes, it even occurs that the
 empirical covariance matrix cannot be inverted for numerical
 reasons. To avoid such an inversion problem, a transformation of the
-empirical covariance matrix has been introduced: the <cite>shrinkage</cite>. It
-consists in reducing the ratio between the smallest and the largest
-eigenvalue of the empirical covariance matrix. This can be done by
-simply shifting every eigenvalue according to a given offset, which is
-equivalent of finding the l2-penalized Maximum Likelihood Estimator of
-the covariance matrix, or by reducing the highest eigenvalue while
-increasing the smallest with the help of a convex transformation :
-<img class="math" src="../_images/math/91de73cae1c74c249735028bbabb1850c0be4a54.png" alt="\Sigma_{\rm shrunk} = (1-\alpha)\hat{\Sigma} +
-\alpha\frac{{\rm Tr}\hat{\Sigma}}{p}\rm Id"/>.  The latter approach has been
-implemented in scikit-learn.</p>
-<p>A convex transformation (with a user-defined shrinkage coefficient)
-can be directly applied to a pre-computed covariance with the
-<a class="reference internal" href="generated/sklearn.covariance.shrunk_covariance.html#sklearn.covariance.shrunk_covariance" title="sklearn.covariance.shrunk_covariance"><tt class="xref py py-func docutils literal"><span class="pre">shrunk_covariance</span></tt></a> method. Also, a shrunk estimator of the
-covariance can be fitted to data with a <a class="reference internal" href="generated/sklearn.covariance.ShrunkCovariance.html#sklearn.covariance.ShrunkCovariance" title="sklearn.covariance.ShrunkCovariance"><tt class="xref py py-class docutils literal"><span class="pre">ShrunkCovariance</span></tt></a>
-object and its <a class="reference internal" href="generated/sklearn.covariance.ShrunkCovariance.html#sklearn.covariance.ShrunkCovariance.fit" title="sklearn.covariance.ShrunkCovariance.fit"><tt class="xref py py-meth docutils literal"><span class="pre">ShrunkCovariance.fit</span></tt></a> method.  Again, depending
-whether the data are centered or not, the result will be different, so
-one may want to use the <cite>assume_centered</cite> parameter accurately.</p>
+empirical covariance matrix has been introduced: the <cite>shrinkage</cite>.</p>
+<p>In the scikit-learn, this transformation (with a user-defined shrinkage
+coefficient) can be directly applied to a pre-computed covariance with
+the <a class="reference internal" href="generated/sklearn.covariance.shrunk_covariance.html#sklearn.covariance.shrunk_covariance" title="sklearn.covariance.shrunk_covariance"><tt class="xref py py-func docutils literal"><span class="pre">shrunk_covariance</span></tt></a> method. Also, a shrunk estimator of the
+covariance can be fitted to data with a <a class="reference internal" href="generated/sklearn.covariance.ShrunkCovariance.html#sklearn.covariance.ShrunkCovariance" title="sklearn.covariance.ShrunkCovariance"><tt class="xref py py-class docutils literal"><span class="pre">ShrunkCovariance</span></tt></a> object
+and its <a class="reference internal" href="generated/sklearn.covariance.ShrunkCovariance.html#sklearn.covariance.ShrunkCovariance.fit" title="sklearn.covariance.ShrunkCovariance.fit"><tt class="xref py py-meth docutils literal"><span class="pre">ShrunkCovariance.fit</span></tt></a> method.  Again, depending whether
+the data are centered or not, the result will be different, so one may
+want to use the <cite>assume_centered</cite> parameter accurately.</p>
+<p>Mathematically, this shrinkage consists in reducing the ratio between the
+smallest and the largest eigenvalue of the empirical covariance matrix.
+It can be done by simply shifting every eigenvalue according to a given
+offset, which is equivalent of finding the l2-penalized Maximum
+Likelihood Estimator of the covariance matrix. In practice, shrinkage
+boils down to a simple a convex transformation : <img class="math" src="../_images/math/ef5698bc0ecc7e9dd647b02169e1d1f10ec615eb.png" alt="\Sigma_{\rm
+shrunk} = (1-\alpha)\hat{\Sigma} + \alpha\frac{{\rm
+Tr}\hat{\Sigma}}{p}\rm Id"/>.</p>
+<p>Choosing the amount of shrinkage, <img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> amounts to setting a
+bias/variance trade-off, and is discussed below.</p>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
-<li>See <a class="reference internal" href="../auto_examples/covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Ledoit-Wolf vs Covariance simple estimation</em></a> for
+<li>See <a class="reference internal" href="../auto_examples/covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood</em></a> for
 an example on how to fit a <a class="reference internal" href="generated/sklearn.covariance.ShrunkCovariance.html#sklearn.covariance.ShrunkCovariance" title="sklearn.covariance.ShrunkCovariance"><tt class="xref py py-class docutils literal"><span class="pre">ShrunkCovariance</span></tt></a> object
 to data.</li>
 </ul>
@@ -252,31 +257,28 @@ to data.</li>
 <p>In their 2004 paper [1], O. Ledoit and M. Wolf propose a formula so as
 to compute the optimal shrinkage coefficient <img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> that
 minimizes the Mean Squared Error between the estimated and the real
-covariance matrix in terms of Frobenius norm.</p>
+covariance matrix.</p>
 <p>The Ledoit-Wolf estimator of the covariance matrix can be computed on
 a sample with the <a class="reference internal" href="generated/sklearn.covariance.ledoit_wolf.html#sklearn.covariance.ledoit_wolf" title="sklearn.covariance.ledoit_wolf"><tt class="xref py py-meth docutils literal"><span class="pre">ledoit_wolf</span></tt></a> function of the
 <cite>sklearn.covariance</cite> package, or it can be otherwise obtained by
 fitting a <a class="reference internal" href="generated/sklearn.covariance.LedoitWolf.html#sklearn.covariance.LedoitWolf" title="sklearn.covariance.LedoitWolf"><tt class="xref py py-class docutils literal"><span class="pre">LedoitWolf</span></tt></a> object to the same sample.</p>
-<dl class="docutils">
-<dt>[1] O. Ledoit and M. Wolf, &#8220;A Well-Conditioned Estimator for Large-Dimensional</dt>
-<dd>Covariance Matrices&#8221;, Journal of Multivariate Analysis, Volume 88, Issue 2,
-February 2004, pages 365-411.</dd>
-</dl>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
-<li>See <a class="reference internal" href="../auto_examples/covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Ledoit-Wolf vs Covariance simple estimation</em></a> for
+<li>See <a class="reference internal" href="../auto_examples/covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood</em></a> for
 an example on how to fit a <a class="reference internal" href="generated/sklearn.covariance.LedoitWolf.html#sklearn.covariance.LedoitWolf" title="sklearn.covariance.LedoitWolf"><tt class="xref py py-class docutils literal"><span class="pre">LedoitWolf</span></tt></a> object to data and
 for visualizing the performances of the Ledoit-Wolf estimator in
 terms of likelihood.</li>
 </ul>
 </div>
-<div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/covariance/plot_covariance_estimation.html"><img alt="../_images/plot_covariance_estimation_11.png" src="../_images/plot_covariance_estimation_11.png" style="width: 520.0px; height: 390.0px;" /></a>
-</div>
+<dl class="docutils">
+<dt>[1] O. Ledoit and M. Wolf, &#8220;A Well-Conditioned Estimator for Large-Dimensional</dt>
+<dd>Covariance Matrices&#8221;, Journal of Multivariate Analysis, Volume 88, Issue 2,
+February 2004, pages 365-411.</dd>
+</dl>
 </div>
 <div class="section" id="oracle-approximating-shrinkage">
-<span id="id1"></span><h3>4.5.2.3. Oracle Approximating Shrinkage<a class="headerlink" href="#oracle-approximating-shrinkage" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>4.5.2.3. Oracle Approximating Shrinkage<a class="headerlink" href="#oracle-approximating-shrinkage" title="Permalink to this headline">¶</a></h3>
 <p>Under the assumption that the data are Gaussian distributed, Chen et
 al. [2] derived a formula aimed at choosing a shrinkage coefficient that
 yields a smaller Mean Squared Error than the one given by Ledoit and
@@ -285,10 +287,12 @@ Shrinkage Approximating estimator of the covariance.</p>
 <p>The OAS estimator of the covariance matrix can be computed on a sample
 with the <a class="reference internal" href="generated/sklearn.covariance.oas.html#sklearn.covariance.oas" title="sklearn.covariance.oas"><tt class="xref py py-meth docutils literal"><span class="pre">oas</span></tt></a> function of the <cite>sklearn.covariance</cite>
 package, or it can be otherwise obtained by fitting an <a class="reference internal" href="generated/sklearn.covariance.OAS.html#sklearn.covariance.OAS" title="sklearn.covariance.OAS"><tt class="xref py py-class docutils literal"><span class="pre">OAS</span></tt></a>
-object to the same sample.  The formula we used to implement the OAS
-does not correspond to the one given in the article. It has been taken
-from the MATLAB program available from the author&#8217;s webpage
-(<a class="reference external" href="https://tbayes.eecs.umich.edu/yilun/covestimation">https://tbayes.eecs.umich.edu/yilun/covestimation</a>).</p>
+object to the same sample.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/covariance/plot_covariance_estimation.html"><img alt="../_images/plot_covariance_estimation_11.png" src="../_images/plot_covariance_estimation_11.png" style="width: 520.0px; height: 390.0px;" /></a>
+<p class="caption">Bias-variance trade-off when setting the shrinkage: comparing the
+choices of Ledoit-Wolf and OAS estimators</p>
+</div>
 <dl class="docutils">
 <dt>[2] Chen et al., &#8220;Shrinkage Algorithms for MMSE Covariance Estimation&#8221;,</dt>
 <dd>IEEE Trans. on Sign. Proc., Volume 58, Issue 10, October 2010.</dd>
@@ -296,7 +300,7 @@ from the MATLAB program available from the author&#8217;s webpage
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
-<li>See <a class="reference internal" href="../auto_examples/covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Ledoit-Wolf vs Covariance simple estimation</em></a> for
+<li>See <a class="reference internal" href="../auto_examples/covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood</em></a> for
 an example on how to fit an <a class="reference internal" href="generated/sklearn.covariance.OAS.html#sklearn.covariance.OAS" title="sklearn.covariance.OAS"><tt class="xref py py-class docutils literal"><span class="pre">OAS</span></tt></a> object
 to data.</li>
 <li>See <a class="reference internal" href="../auto_examples/covariance/plot_lw_vs_oas.html#example-covariance-plot-lw-vs-oas-py"><em>Ledoit-Wolf vs OAS estimation</em></a> to visualize the
@@ -310,7 +314,7 @@ an <a class="reference internal" href="generated/sklearn.covariance.OAS.html#skl
 </div>
 </div>
 <div class="section" id="sparse-inverse-covariance">
-<span id="id2"></span><h2>4.5.3. Sparse inverse covariance<a class="headerlink" href="#sparse-inverse-covariance" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>4.5.3. Sparse inverse covariance<a class="headerlink" href="#sparse-inverse-covariance" title="Permalink to this headline">¶</a></h2>
 <p>The matrix inverse of the covariance matrix, often called the precision
 matrix, is proportional to the partial correlation matrix. It gives the
 partial independence relationship. In other words, if two features are
@@ -403,7 +407,7 @@ the Minimum Covariance Determinant [3].</p>
 <div class="section" id="minimum-covariance-determinant">
 <h3>4.5.4.1. Minimum Covariance Determinant<a class="headerlink" href="#minimum-covariance-determinant" title="Permalink to this headline">¶</a></h3>
 <p>The Minimum Covariance Determinant estimator is a robust estimator of
-a data set&#8217;s covariance introduced by P.J.Rousseuw in [3].  The idea
+a data set&#8217;s covariance introduced by P.J.Rousseeuw in [3].  The idea
 is to find a given proportion (h) of &#8220;good&#8221; observations which are not
 outliers and compute their empirical covariance matrix.  This
 empirical covariance matrix is then rescaled to compensate the
@@ -412,7 +416,7 @@ computed the Minimum Covariance Determinant estimator, one can give
 weights to observations according to their Mahalanobis distance,
 leading the a reweighted estimate of the covariance matrix of the data
 set (&#8220;reweighting step&#8221;).</p>
-<p>Rousseuw and Van Driessen [4] developed the FastMCD algorithm in order
+<p>Rousseeuw and Van Driessen [4] developed the FastMCD algorithm in order
 to compute the Minimum Covariance Determinant. This algorithm is used
 in scikit-learn when fitting an MCD object to data. The FastMCD
 algorithm also computes a robust estimate of the data set location at
@@ -449,7 +453,7 @@ visualize the difference between <a class="reference internal" href="generated/s
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Influence of outliers on location and covariance estimates</th>
-<th class="head">Separating inliers from outliers using a Mahalonis distance</th>
+<th class="head">Separating inliers from outliers using a Mahalanobis distance</th>
 </tr>
 </thead>
 <tbody valign="top">

@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="index.html" />
     <link rel="next" title="PLS Partial Least Squares" href="plot_pls.html" />
     <link rel="prev" title="Multilabel classification" href="plot_multilabel.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -168,6 +172,10 @@ in repeating the classification procedure after randomizing, permuting,
 the labels. The p-value is then given by the percentage of runs for
 which the score obtained is greater than the classification score
 obtained in the first place.</p>
+<img alt="../_images/plot_permutation_test_for_classification_1.png" class="align-center" src="../_images/plot_permutation_test_for_classification_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Classification score 0.393333333333 (pvalue : 0.0792079207921)</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_permutation_test_for_classification.py"><tt class="xref download docutils literal"><span class="pre">plot_permutation_test_for_classification.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author:  Alexandre Gramfort &lt;alexandre.gramfort@inria.fr&gt;</span>
 <span class="c"># License: BSD</span>
@@ -180,7 +188,7 @@ obtained in the first place.</p>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span><span class="p">,</span> <span class="n">permutation_test_score</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">zero_one_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 
 
 <span class="c">##############################################################################</span>
@@ -200,9 +208,8 @@ obtained in the first place.</p>
 <span class="n">svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span>
 <span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="n">score</span><span class="p">,</span> <span class="n">permutation_scores</span><span class="p">,</span> <span class="n">pvalue</span> <span class="o">=</span> <span class="n">permutation_test_score</span><span class="p">(</span><span class="n">svm</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
-                                            <span class="n">zero_one_score</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
-                                            <span class="n">n_permutations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">score</span><span class="p">,</span> <span class="n">permutation_scores</span><span class="p">,</span> <span class="n">pvalue</span> <span class="o">=</span> <span class="n">permutation_test_score</span><span class="p">(</span>
+    <span class="n">svm</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_permutations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="s">&quot;Classification score </span><span class="si">%s</span><span class="s"> (pvalue : </span><span class="si">%s</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">pvalue</span><span class="p">)</span>
 
@@ -227,6 +234,7 @@ obtained in the first place.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  10.56 seconds</p>
 </div>
 
 

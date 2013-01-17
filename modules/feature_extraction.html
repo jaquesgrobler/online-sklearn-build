@@ -32,6 +32,8 @@
     <link rel="up" title="6. Dataset transformations" href="../data_transforms.html" />
     <link rel="next" title="6.3. Kernel Approximation" href="kernel_approximation.html" />
     <link rel="prev" title="6.1. Preprocessing data" href="preprocessing.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,26 +146,30 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
 <li><a class="reference internal" href="#">6.2. Feature extraction</a><ul>
 <li><a class="reference internal" href="#loading-features-from-dicts">6.2.1. Loading features from dicts</a></li>
-<li><a class="reference internal" href="#text-feature-extraction">6.2.2. Text feature extraction</a><ul>
-<li><a class="reference internal" href="#the-bag-of-words-representation">6.2.2.1. The Bag of Words representation</a></li>
-<li><a class="reference internal" href="#sparsity">6.2.2.2. Sparsity</a></li>
-<li><a class="reference internal" href="#common-vectorizer-usage">6.2.2.3. Common Vectorizer usage</a></li>
-<li><a class="reference internal" href="#tfidf-term-weighting">6.2.2.4. Tf–idf term weighting</a></li>
-<li><a class="reference internal" href="#applications-and-examples">6.2.2.5. Applications and examples</a></li>
-<li><a class="reference internal" href="#limitations-of-the-bag-of-words-representation">6.2.2.6. Limitations of the Bag of Words representation</a></li>
-<li><a class="reference internal" href="#customizing-the-vectorizer-classes">6.2.2.7. Customizing the vectorizer classes</a></li>
+<li><a class="reference internal" href="#feature-hashing">6.2.2. Feature hashing</a><ul>
+<li><a class="reference internal" href="#implementation-details">6.2.2.1. Implementation details</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#image-feature-extraction">6.2.3. Image feature extraction</a><ul>
-<li><a class="reference internal" href="#patch-extraction">6.2.3.1. Patch extraction</a></li>
-<li><a class="reference internal" href="#connectivity-graph-of-an-image">6.2.3.2. Connectivity graph of an image</a></li>
+<li><a class="reference internal" href="#text-feature-extraction">6.2.3. Text feature extraction</a><ul>
+<li><a class="reference internal" href="#the-bag-of-words-representation">6.2.3.1. The Bag of Words representation</a></li>
+<li><a class="reference internal" href="#sparsity">6.2.3.2. Sparsity</a></li>
+<li><a class="reference internal" href="#common-vectorizer-usage">6.2.3.3. Common Vectorizer usage</a></li>
+<li><a class="reference internal" href="#tfidf-term-weighting">6.2.3.4. Tf–idf term weighting</a></li>
+<li><a class="reference internal" href="#applications-and-examples">6.2.3.5. Applications and examples</a></li>
+<li><a class="reference internal" href="#limitations-of-the-bag-of-words-representation">6.2.3.6. Limitations of the Bag of Words representation</a></li>
+<li><a class="reference internal" href="#customizing-the-vectorizer-classes">6.2.3.7. Customizing the vectorizer classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-feature-extraction">6.2.4. Image feature extraction</a><ul>
+<li><a class="reference internal" href="#patch-extraction">6.2.4.1. Patch extraction</a></li>
+<li><a class="reference internal" href="#connectivity-graph-of-an-image">6.2.4.2. Connectivity graph of an image</a></li>
 </ul>
 </li>
 </ul>
@@ -253,7 +261,7 @@ suitable for feeding into a classifier (maybe after being piped into a
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pos_vectorized</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">pos_window</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pos_vectorized</span>                     
 <span class="go">&lt;1x6 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
-<span class="go">    with 6 stored elements in COOrdinate format&gt;</span>
+<span class="go">    with 6 stored elements in Compressed Sparse Row format&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pos_vectorized</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 <span class="go">array([[ 1.,  1.,  1.,  1.,  1.,  1.]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
@@ -267,10 +275,97 @@ of the time. So as to make the resulting data structure able to fit in
 memory the <tt class="docutils literal"><span class="pre">DictVectorizer</span></tt> class uses a <tt class="docutils literal"><span class="pre">scipy.sparse</span></tt> matrix by
 default instead of a <tt class="docutils literal"><span class="pre">numpy.ndarray</span></tt>.</p>
 </div>
+<div class="section" id="feature-hashing">
+<span id="id2"></span><h2>6.2.2. Feature hashing<a class="headerlink" href="#feature-hashing" title="Permalink to this headline">¶</a></h2>
+<p>The class <a class="reference internal" href="generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="sklearn.feature_extraction.FeatureHasher"><tt class="xref py py-class docutils literal"><span class="pre">FeatureHasher</span></tt></a> is a high-speed, low-memory vectorizer that
+uses a technique known as
+<a class="reference external" href="https://en.wikipedia.org/wiki/Feature_hashing">feature hashing</a>,
+or the &#8220;hashing trick&#8221;.
+Instead of building a hash table of the features encountered in training,
+as the vectorizers do, instances of <a class="reference internal" href="generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="sklearn.feature_extraction.FeatureHasher"><tt class="xref py py-class docutils literal"><span class="pre">FeatureHasher</span></tt></a>
+apply a hash function to the features
+to determine their column index in sample matrices directly.
+The result is increased speed and reduced memory usage,
+at the expense of inspectability;
+the hasher does not remember what the input features looked like
+and has no <tt class="docutils literal"><span class="pre">inverse_transform</span></tt> method.</p>
+<p>Since the hash function might cause collisions between (unrelated) features,
+a signed hash function is used and the sign of the hash value
+determines the sign of the value stored in the output matrix for a feature;
+this way, collisions are likely to cancel out rather than accumulate error,
+and the expected mean of any output feature&#8217;s value is zero</p>
+<p>If <tt class="docutils literal"><span class="pre">non_negative=True</span></tt> is passed to the constructor,
+the absolute value is taken.
+This undoes some of the collision handling,
+but allows the output to be passed to estimators like <tt class="xref py py-class docutils literal"><span class="pre">MultinomialNB</span></tt>
+or <tt class="docutils literal"><span class="pre">chi2</span></tt> feature selectors that expect non-negative inputs.</p>
+<p><a class="reference internal" href="generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="sklearn.feature_extraction.FeatureHasher"><tt class="xref py py-class docutils literal"><span class="pre">FeatureHasher</span></tt></a> accepts either mappings
+(like Python&#8217;s <tt class="docutils literal"><span class="pre">dict</span></tt> and its variants in the <tt class="docutils literal"><span class="pre">collections</span></tt> module),
+<tt class="docutils literal"><span class="pre">(feature,</span> <span class="pre">value)</span></tt> pairs, or strings,
+depending on the constructor parameter <tt class="docutils literal"><span class="pre">input_type</span></tt>.
+Mapping are treated as lists of <tt class="docutils literal"><span class="pre">(feature,</span> <span class="pre">value)</span></tt> pairs,
+while single strings have an implicit value of 1.
+If a feature occurs multiple times in a sample, the values will be summed.
+Feature hashing can be employed in document classification,
+but unlike <a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">text.CountVectorizer</span></tt></a>,
+<a class="reference internal" href="generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="sklearn.feature_extraction.FeatureHasher"><tt class="xref py py-class docutils literal"><span class="pre">FeatureHasher</span></tt></a> does not do word
+splitting or any other preprocessing except Unicode-to-UTF-8 encoding.
+The output from <a class="reference internal" href="generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="sklearn.feature_extraction.FeatureHasher"><tt class="xref py py-class docutils literal"><span class="pre">FeatureHasher</span></tt></a> is always a <tt class="docutils literal"><span class="pre">scipy.sparse</span></tt> matrix
+in the CSR format.</p>
+<p>As an example, consider a word-level natural language processing task
+that needs features extracted from <tt class="docutils literal"><span class="pre">(token,</span> <span class="pre">part_of_speech)</span></tt> pairs.
+One could use a Python generator function to extract features:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">token_features</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">part_of_speech</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="s">&quot;numeric&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="s">&quot;token={}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+        <span class="k">yield</span> <span class="s">&quot;token,pos={},{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">part_of_speech</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">token</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="s">&quot;uppercase_initial&quot;</span>
+    <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="s">&quot;all_uppercase&quot;</span>
+    <span class="k">yield</span> <span class="s">&quot;pos={}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">part_of_speech</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, the <tt class="docutils literal"><span class="pre">raw_X</span></tt> to be fed to <tt class="docutils literal"><span class="pre">FeatureHasher.transform</span></tt>
+can be constructed using:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">raw_X</span> <span class="o">=</span> <span class="p">(</span><span class="n">token_features</span><span class="p">(</span><span class="n">tok</span><span class="p">,</span> <span class="n">pos_tagger</span><span class="p">(</span><span class="n">tok</span><span class="p">))</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and fed to a hasher with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">hasher</span> <span class="o">=</span> <span class="n">FeatureHasher</span><span class="p">(</span><span class="n">input_type</span><span class="o">=</span><span class="n">string</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">hasher</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">raw_X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>to get a <tt class="docutils literal"><span class="pre">scipy.sparse</span></tt> matrix <tt class="docutils literal"><span class="pre">X</span></tt>.</p>
+<p>Note the use of a generator comprehension,
+which introduces laziness into the feature extraction:
+tokens are only processed on demand from the hasher.</p>
+<div class="section" id="implementation-details">
+<h3>6.2.2.1. Implementation details<a class="headerlink" href="#implementation-details" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="sklearn.feature_extraction.FeatureHasher"><tt class="xref py py-class docutils literal"><span class="pre">FeatureHasher</span></tt></a> uses the signed 32-bit variant of MurmurHash3.
+As a result (and because of limitations in <tt class="docutils literal"><span class="pre">scipy.sparse</span></tt>),
+the maximum number of features supported is currently <img class="math" src="../_images/math/4827481aa2c0da445faf499be37ad07877db93ec.png" alt="2^{31} - 1"/>.</p>
+<p>The original formulation of the hashing trick by Weinberger et al.
+used two separate hash functions <img class="math" src="../_images/math/8189a5b5a0917b8c93350827be4038af1839139d.png" alt="h"/> and <img class="math" src="../_images/math/ccfd1641d037d427d9dbf42cdd54b485a03eafe9.png" alt="\xi"/>
+to determine the column index and sign of a feature, respectively.
+The present implementation works under the assumption
+that the sign bit of MurmurHash3 is independent of its other bits.</p>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li>Kilian Weinberger, Anirban Dasgupta, John Langford, Alex Smola and
+Josh Attenberg (2009). <a class="reference external" href="http://alex.smola.org/papers/2009/Weinbergeretal09.pdf">Feature hashing for large scale multitask learning</a>. Proc. ICML.</li>
+<li><a class="reference external" href="http://code.google.com/p/smhasher/wiki/MurmurHash3">MurmurHash3</a>.</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="section" id="text-feature-extraction">
-<span id="id2"></span><h2>6.2.2. Text feature extraction<a class="headerlink" href="#text-feature-extraction" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>6.2.3. Text feature extraction<a class="headerlink" href="#text-feature-extraction" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="the-bag-of-words-representation">
-<h3>6.2.2.1. The Bag of Words representation<a class="headerlink" href="#the-bag-of-words-representation" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.3.1. The Bag of Words representation<a class="headerlink" href="#the-bag-of-words-representation" title="Permalink to this headline">¶</a></h3>
 <p>Text Analysis is a major application field for machine learning
 algorithms. However the raw data, a sequence of symbols cannot be fed
 directly to the algorithms themselves as most of them expect numerical
@@ -302,7 +397,7 @@ occurrences while completely ignoring the relative position information
 of the words in the document.</p>
 </div>
 <div class="section" id="sparsity">
-<h3>6.2.2.2. Sparsity<a class="headerlink" href="#sparsity" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.3.2. Sparsity<a class="headerlink" href="#sparsity" title="Permalink to this headline">¶</a></h3>
 <p>As most documents will typically use a very subset of a the words used in
 the corpus, the resulting matrix will have many feature values that are
 zeros (typically more than 99% of them).</p>
@@ -315,7 +410,7 @@ use a sparse representation such as the implementations available in the
 <tt class="docutils literal"><span class="pre">scipy.sparse</span></tt> package.</p>
 </div>
 <div class="section" id="common-vectorizer-usage">
-<h3>6.2.2.3. Common Vectorizer usage<a class="headerlink" href="#common-vectorizer-usage" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.3.3. Common Vectorizer usage<a class="headerlink" href="#common-vectorizer-usage" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a> implements both tokenization and occurrence
 counting in a single class:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
@@ -329,7 +424,7 @@ reasonable (please see  the <a class="reference internal" href="classes.html#tex
 <span class="go">        charset_error=&#39;strict&#39;, dtype=&lt;type &#39;long&#39;&gt;, input=&#39;content&#39;,</span>
 <span class="go">        lowercase=True, max_df=1.0, max_features=None, max_n=None, min_df=1,</span>
 <span class="go">        min_n=None, ngram_range=(1, 1), preprocessor=None, stop_words=None,</span>
-<span class="go">        strip_accents=None, token_pattern=u&#39;\\b\\w\\w+\\b&#39;, tokenizer=None,</span>
+<span class="go">        strip_accents=None, token_pattern=u&#39;(?u)\\b\\w\\w+\\b&#39;, tokenizer=None,</span>
 <span class="go">        vocabulary=None)</span>
 </pre></div>
 </div>
@@ -413,7 +508,7 @@ last document:</p>
 </div>
 </div>
 <div class="section" id="tfidf-term-weighting">
-<span id="tfidf"></span><h3>6.2.2.4. Tf–idf term weighting<a class="headerlink" href="#tfidf-term-weighting" title="Permalink to this headline">¶</a></h3>
+<span id="tfidf"></span><h3>6.2.3.4. Tf–idf term weighting<a class="headerlink" href="#tfidf-term-weighting" title="Permalink to this headline">¶</a></h3>
 <p>In a large text corpus, some words will be very present (e.g. &#8220;the&#8221;, &#8220;a&#8221;,
 &#8220;is&#8221; in English) hence carrying very little meaningul information about
 the actual contents of the document. If we were to feed the direct count
@@ -496,7 +591,7 @@ feature extractor with a classifier:</p>
 </div></blockquote>
 </div>
 <div class="section" id="applications-and-examples">
-<h3>6.2.2.5. Applications and examples<a class="headerlink" href="#applications-and-examples" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.3.5. Applications and examples<a class="headerlink" href="#applications-and-examples" title="Permalink to this headline">¶</a></h3>
 <p>The bag of words representation is quite simplistic but surprisingly
 useful in practice.</p>
 <p>In particular in a <strong>supervised setting</strong> it can be successfully combined
@@ -524,7 +619,7 @@ using <a class="reference internal" href="decomposition.html#nmf"><em>Non-negati
 </div></blockquote>
 </div>
 <div class="section" id="limitations-of-the-bag-of-words-representation">
-<h3>6.2.2.6. Limitations of the Bag of Words representation<a class="headerlink" href="#limitations-of-the-bag-of-words-representation" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.3.6. Limitations of the Bag of Words representation<a class="headerlink" href="#limitations-of-the-bag-of-words-representation" title="Permalink to this headline">¶</a></h3>
 <p>A collection of unigrams (what bag of words is) cannot capture phrases
 and multi-word expressions, effectively disregarding any word order
 dependence. Additionally, bag of words model doesn&#8217;t account for potential
@@ -589,7 +684,7 @@ into account. Many such models will thus be casted as &#8220;Structured output&#
 problems which are currently outside of the scope of scikit-learn.</p>
 </div>
 <div class="section" id="customizing-the-vectorizer-classes">
-<h3>6.2.2.7. Customizing the vectorizer classes<a class="headerlink" href="#customizing-the-vectorizer-classes" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.3.7. Customizing the vectorizer classes<a class="headerlink" href="#customizing-the-vectorizer-classes" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to customize the behavior by passing a callable
 to the vectorizer constructor:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_tokenizer</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
@@ -622,9 +717,9 @@ that do not use an explicit word separator such as whitespace.</p>
 </div>
 </div>
 <div class="section" id="image-feature-extraction">
-<h2>6.2.3. Image feature extraction<a class="headerlink" href="#image-feature-extraction" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.4. Image feature extraction<a class="headerlink" href="#image-feature-extraction" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="patch-extraction">
-<h3>6.2.3.1. Patch extraction<a class="headerlink" href="#patch-extraction" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.4.1. Patch extraction<a class="headerlink" href="#patch-extraction" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="generated/sklearn.feature_extraction.image.extract_patches_2d.html#sklearn.feature_extraction.image.extract_patches_2d" title="sklearn.feature_extraction.image.extract_patches_2d"><tt class="xref py py-func docutils literal"><span class="pre">extract_patches_2d</span></tt></a> function extracts patches from an image stored
 as a two-dimensional array, or three-dimensional with color information along
 the third axis. For rebuilding an image from all its patches, use
@@ -675,7 +770,7 @@ implemented as an estimator, so it can be used in pipelines. See:</p>
 </div>
 </div>
 <div class="section" id="connectivity-graph-of-an-image">
-<h3>6.2.3.2. Connectivity graph of an image<a class="headerlink" href="#connectivity-graph-of-an-image" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.4.2. Connectivity graph of an image<a class="headerlink" href="#connectivity-graph-of-an-image" title="Permalink to this headline">¶</a></h3>
 <p>Several estimators in the scikit-learn can use connectivity information between
 features or samples. For instance Ward clustering
 (<a class="reference internal" href="clustering.html#hierarchical-clustering"><em>Hierarchical clustering</em></a>) can cluster together only neighboring pixels

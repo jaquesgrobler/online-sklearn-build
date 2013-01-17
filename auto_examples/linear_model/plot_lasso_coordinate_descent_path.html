@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Lasso path using LARS" href="plot_lasso_lars.html" />
     <link rel="prev" title="Lasso and Elastic Net for Sparse Signals" href="plot_lasso_and_elasticnet.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -166,6 +170,20 @@
 <p>Lasso and elastic net (L1 and L2 penalisation) implemented using a
 coordinate descent.</p>
 <p>The coefficients can be forced to be positive.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../../_images/plot_lasso_coordinate_descent_path_1.png"><img alt="../../_images/plot_lasso_coordinate_descent_path_1.png" src="../../_images/plot_lasso_coordinate_descent_path_1.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lasso_coordinate_descent_path_3.png"><img alt="../../_images/plot_lasso_coordinate_descent_path_3.png" src="../../_images/plot_lasso_coordinate_descent_path_3.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lasso_coordinate_descent_path_2.png"><img alt="../../_images/plot_lasso_coordinate_descent_path_2.png" src="../../_images/plot_lasso_coordinate_descent_path_2.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+</ul>
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Computing regularization path using the lasso...
+Computing regularization path using the positive lasso...
+Computing regularization path using the elastic net...
+Computing regularization path using the positve elastic net...</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lasso_coordinate_descent_path.py"><tt class="xref download docutils literal"><span class="pre">plot_lasso_coordinate_descent_path.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -248,11 +266,12 @@ coordinate descent.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;weights&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Elastic-Net and positive Elastic-Net&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="n">l1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">l2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="s">&#39;Elastic-Net&#39;</span><span class="p">,</span> <span class="s">&#39;positive Elastic-Net&#39;</span><span class="p">),</span>
-           <span class="n">loc</span><span class="o">=</span><span class="s">&#39;lower left&#39;</span><span class="p">)</span>
+          <span class="n">loc</span><span class="o">=</span><span class="s">&#39;lower left&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.33 seconds</p>
 </div>
 
 

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.24.3. sklearn.preprocessing.Binarizer &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.26.1. sklearn.preprocessing.Binarizer &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.24.4. sklearn.preprocessing.LabelBinarizer" href="sklearn.preprocessing.LabelBinarizer.html" />
-    <link rel="prev" title="8.24.2. sklearn.preprocessing.Normalizer" href="sklearn.preprocessing.Normalizer.html" />
+    <link rel="next" title="8.26.2. sklearn.preprocessing.KernelCenterer" href="sklearn.preprocessing.KernelCenterer.html" />
+    <link rel="prev" title="8.25.2. sklearn.pipeline.FeatureUnion" href="sklearn.pipeline.FeatureUnion.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.preprocessing.Normalizer.html" title="8.24.2. sklearn.preprocessing.Normalizer"
+	<a href="sklearn.pipeline.FeatureUnion.html" title="8.25.2. sklearn.pipeline.FeatureUnion"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.24.2. sklearn....
+	    8.25.2. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.24.2. sklearn.preprocessing.Normalizer
+	    8.25.2. sklearn.pipeline.FeatureUnion
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.preprocessing.LabelBinarizer.html" title="8.24.4. sklearn.preprocessing.LabelBinarizer"
+	<a href="sklearn.preprocessing.KernelCenterer.html" title="8.26.2. sklearn.preprocessing.KernelCenterer"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.24.4. sklearn....
+	    8.26.2. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.24.4. sklearn.preprocessing.LabelBinarizer
+	    8.26.2. sklearn.preprocessing.KernelCenterer
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.24.3. sklearn.preprocessing.Binarizer</a></li>
+<li><a class="reference internal" href="#">8.26.1. sklearn.preprocessing.Binarizer</a></li>
 </ul>
 
     
@@ -162,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-preprocessing-binarizer">
-<h1>8.24.3. sklearn.preprocessing.Binarizer<a class="headerlink" href="#sklearn-preprocessing-binarizer" title="Permalink to this headline">¶</a></h1>
+<h1>8.26.1. sklearn.preprocessing.Binarizer<a class="headerlink" href="#sklearn-preprocessing-binarizer" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.preprocessing.Binarizer">
 <em class="property">class </em><tt class="descclassname">sklearn.preprocessing.</tt><tt class="descname">Binarizer</tt><big>(</big><em>threshold=0.0</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#sklearn.preprocessing.Binarizer" title="Permalink to this definition">¶</a></dt>
@@ -262,10 +266,6 @@ and returns a transformed version of X.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>This method just calls fit and transform consecutively, i.e., it is not
-an optimized implementation of fit_transform, unlike other transformers
-such as PCA.</p>
 </dd></dl>
 
 <dl class="method">
@@ -348,12 +348,12 @@ un-necessary copy.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.preprocessing.Normalizer.html">
+      <a href="sklearn.pipeline.FeatureUnion.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.preprocessing.LabelBinarizer.html">
+      <a href="sklearn.preprocessing.KernelCenterer.html">
         Next
       </a>
     </div>

@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Kernel PCA" href="plot_kernel_pca.html" />
     <link rel="prev" title="FastICA on 2D point clouds" href="plot_ica_vs_pca.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -165,8 +169,11 @@
 <span id="example-decomposition-plot-image-denoising-py"></span><h1>Image denoising using dictionary learning<a class="headerlink" href="#image-denoising-using-dictionary-learning" title="Permalink to this headline">¶</a></h1>
 <p>An example comparing the effect of reconstructing noisy fragments
 of Lena using online <a class="reference internal" href="../../modules/decomposition.html#dictionarylearning"><em>Dictionary Learning</em></a> and various transform methods.</p>
-<p>The dictionary is fitted on the non-distorted left half of the image, and
-subsequently used to reconstruct the right half.</p>
+<p>The dictionary is fitted on the distorted left half of the image, and
+subsequently used to reconstruct the right half. Note that even better
+performance could be achieved by fitting to an undistorted (i.e.
+noiseless) image, but here we start from the assumption that it is not
+available.</p>
 <p>A common practice for evaluating the results of image denoising is by looking
 at the difference between the reconstruction and the original image. If the
 reconstruction is perfect this will look like gaussian noise.</p>
@@ -180,6 +187,41 @@ difference is reminiscent of the local intensity value of the original image.</p
 it can produce a suggestive output with very high speed, and thus be useful
 for other tasks such as object classification, where performance is not
 necessarily related to visualisation.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_1.png"><img alt="../../_images/plot_image_denoising_1.png" src="../../_images/plot_image_denoising_1.png" style="width: 197.4px; height: 188.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_5.png"><img alt="../../_images/plot_image_denoising_5.png" src="../../_images/plot_image_denoising_5.png" style="width: 235.0px; height: 155.1px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_4.png"><img alt="../../_images/plot_image_denoising_4.png" src="../../_images/plot_image_denoising_4.png" style="width: 235.0px; height: 155.1px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_2.png"><img alt="../../_images/plot_image_denoising_2.png" src="../../_images/plot_image_denoising_2.png" style="width: 235.0px; height: 155.1px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_3.png"><img alt="../../_images/plot_image_denoising_3.png" src="../../_images/plot_image_denoising_3.png" style="width: 235.0px; height: 155.1px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_6.png"><img alt="../../_images/plot_image_denoising_6.png" src="../../_images/plot_image_denoising_6.png" style="width: 235.0px; height: 155.1px;" /></a>
+</li>
+</ul>
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Distorting image...
+Extracting reference patches...
+done in 0.06s.
+Learning the dictionary...
+done in 6.33s.
+Extracting noisy patches...
+done in 0.02s.
+Orthogonal Matching Pursuit
+1 atom ...
+done in 3.65s.
+Orthogonal Matching Pursuit
+2 atoms ...
+done in 5.92s.
+Least-angle regression
+5 atoms ...
+done in 34.24s.
+Thresholding
+ alpha=0.1 ...
+done in 0.52s.</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_image_denoising.py"><tt class="xref download docutils literal"><span class="pre">plot_image_denoising.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -209,8 +251,8 @@ necessarily related to visualisation.</p>
 <span class="n">distorted</span> <span class="o">=</span> <span class="n">lena</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">distorted</span><span class="p">[:,</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">+=</span> <span class="mf">0.075</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="c"># Extract all clean patches from the left half of the image</span>
-<span class="k">print</span> <span class="s">&#39;Extracting clean patches...&#39;</span>
+<span class="c"># Extract all reference patches from the left half of the image</span>
+<span class="k">print</span> <span class="s">&#39;Extracting reference patches...&#39;</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">patch_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">extract_patches_2d</span><span class="p">(</span><span class="n">distorted</span><span class="p">[:,</span> <span class="p">:</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="n">patch_size</span><span class="p">)</span>
@@ -220,11 +262,11 @@ necessarily related to visualisation.</p>
 <span class="k">print</span> <span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 
 <span class="c">###############################################################################</span>
-<span class="c"># Learn the dictionary from clean patches</span>
+<span class="c"># Learn the dictionary from reference patches</span>
 
 <span class="k">print</span> <span class="s">&#39;Learning the dictionary... &#39;</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">dico</span> <span class="o">=</span> <span class="n">MiniBatchDictionaryLearning</span><span class="p">(</span><span class="n">n_atoms</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">dico</span> <span class="o">=</span> <span class="n">MiniBatchDictionaryLearning</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">V</span> <span class="o">=</span> <span class="n">dico</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">components_</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
 <span class="k">print</span> <span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="n">dt</span>
@@ -283,7 +325,7 @@ necessarily related to visualisation.</p>
     <span class="p">(</span><span class="s">&#39;Orthogonal Matching Pursuit</span><span class="se">\n</span><span class="s">2 atoms&#39;</span><span class="p">,</span> <span class="s">&#39;omp&#39;</span><span class="p">,</span>
      <span class="p">{</span><span class="s">&#39;transform_n_nonzero_coefs&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}),</span>
     <span class="p">(</span><span class="s">&#39;Least-angle regression</span><span class="se">\n</span><span class="s">5 atoms&#39;</span><span class="p">,</span> <span class="s">&#39;lars&#39;</span><span class="p">,</span>
-                            <span class="p">{</span><span class="s">&#39;transform_n_nonzero_coefs&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}),</span>
+     <span class="p">{</span><span class="s">&#39;transform_n_nonzero_coefs&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}),</span>
     <span class="p">(</span><span class="s">&#39;Thresholding</span><span class="se">\n</span><span class="s"> alpha=0.1&#39;</span><span class="p">,</span> <span class="s">&#39;threshold&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;transform_alpha&#39;</span><span class="p">:</span> <span class="o">.</span><span class="mi">1</span><span class="p">})]</span>
 
 <span class="n">reconstructions</span> <span class="o">=</span> <span class="p">{}</span>
@@ -314,6 +356,7 @@ necessarily related to visualisation.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  55.61 seconds</p>
 </div>
 
 

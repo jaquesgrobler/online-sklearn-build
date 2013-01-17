@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Multi-dimensional scaling" href="plot_mds.html" />
+    <link rel="next" title="Manifold Learning methods on a severed sphere" href="plot_manifold_sphere.html" />
     <link rel="prev" title="Comparison of Manifold Learning methods" href="plot_compare_methods.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_mds.html" title="Multi-dimensional scaling"
+	<a href="plot_manifold_sphere.html" title="Manifold Learning methods on a severed sphere"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Multi-dimensiona...
+	    Manifold Learnin...
 	    </span>
 	    <span class="hiddenrellink">
-	    Multi-dimensional scaling
+	    Manifold Learning methods on a severed sphere
 	    </span>
 	    
 	    </a>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -164,10 +168,55 @@
   <div class="section" id="manifold-learning-on-handwritten-digits-locally-linear-embedding-isomap">
 <span id="example-manifold-plot-lle-digits-py"></span><h1>Manifold learning on handwritten digits: Locally Linear Embedding, Isomap...<a class="headerlink" href="#manifold-learning-on-handwritten-digits-locally-linear-embedding-isomap" title="Permalink to this headline">¶</a></h1>
 <p>An illustration of various embeddings on the digits dataset.</p>
+<p>The RandomTreesEmbedding, from the <a class="reference internal" href="../../modules/classes.html#module-sklearn.ensemble" title="sklearn.ensemble"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.ensemble</span></tt></a> module, is not
+technically a manifold embedding method, as it learn a high-dimensional
+representation on wich we apply a dimensionality reduction method.
+However, it is often useful to cast a dataset into a representation in
+which the classes are linearly-seperable.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_6.png"><img alt="../../_images/plot_lle_digits_6.png" src="../../_images/plot_lle_digits_6.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_9.png"><img alt="../../_images/plot_lle_digits_9.png" src="../../_images/plot_lle_digits_9.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_5.png"><img alt="../../_images/plot_lle_digits_5.png" src="../../_images/plot_lle_digits_5.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_7.png"><img alt="../../_images/plot_lle_digits_7.png" src="../../_images/plot_lle_digits_7.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_2.png"><img alt="../../_images/plot_lle_digits_2.png" src="../../_images/plot_lle_digits_2.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_4.png"><img alt="../../_images/plot_lle_digits_4.png" src="../../_images/plot_lle_digits_4.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_8.png"><img alt="../../_images/plot_lle_digits_8.png" src="../../_images/plot_lle_digits_8.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_1.png"><img alt="../../_images/plot_lle_digits_1.png" src="../../_images/plot_lle_digits_1.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_3.png"><img alt="../../_images/plot_lle_digits_3.png" src="../../_images/plot_lle_digits_3.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+</ul>
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Computing random projection
+Computing PCA projection
+Computing LDA projection
+Computing Isomap embedding
+Done.
+Computing LLE embedding
+Done. Reconstruction error: 1.28472e-06
+Computing modified LLE embedding
+Done. Reconstruction error: 0.359941
+Computing Hessian LLE embedding
+Done. Reconstruction error: 0.212096
+Computing LTSA embedding
+Done. Reconstruction error: 0.212075
+Computing MDS embedding
+Done. Stress: 141100635.430415
+Computing Totally Random Trees embedding
+Computing Spectral embedding</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lle_digits.py"><tt class="xref download docutils literal"><span class="pre">plot_lle_digits.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Authors: Fabian Pedregosa &lt;fabian.pedregosa@inria.fr&gt;</span>
 <span class="c">#          Olivier Grisel &lt;olivier.grisel@ensta.org&gt;</span>
 <span class="c">#          Mathieu Blondel &lt;mathieu@mblondel.org&gt;</span>
+<span class="c">#          Gael Varoquaux</span>
 <span class="c"># License: BSD, (C) INRIA 2011</span>
 
 <span class="k">print</span> <span class="n">__doc__</span>
@@ -176,8 +225,8 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">offsetbox</span>
-<span class="kn">from</span> <span class="nn">sklearn.utils.fixes</span> <span class="kn">import</span> <span class="n">qr_economic</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">manifold</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">decomposition</span><span class="p">,</span> <span class="n">lda</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="p">(</span><span class="n">manifold</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">decomposition</span><span class="p">,</span> <span class="n">ensemble</span><span class="p">,</span> <span class="n">lda</span><span class="p">,</span>
+                     <span class="n">random_projection</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
 
 <span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">(</span><span class="n">n_class</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
@@ -220,13 +269,14 @@
 
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># Plot images of the digits</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span> <span class="o">*</span> <span class="n">N</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">N</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+<span class="n">n_img_per_row</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span> <span class="o">*</span> <span class="n">n_img_per_row</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">n_img_per_row</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_img_per_row</span><span class="p">):</span>
     <span class="n">ix</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_img_per_row</span><span class="p">):</span>
         <span class="n">iy</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="n">img</span><span class="p">[</span><span class="n">ix</span><span class="p">:</span><span class="n">ix</span> <span class="o">+</span> <span class="mi">8</span><span class="p">,</span> <span class="n">iy</span><span class="p">:</span><span class="n">iy</span> <span class="o">+</span> <span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">N</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">img</span><span class="p">[</span><span class="n">ix</span><span class="p">:</span><span class="n">ix</span> <span class="o">+</span> <span class="mi">8</span><span class="p">,</span> <span class="n">iy</span><span class="p">:</span><span class="n">iy</span> <span class="o">+</span> <span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">n_img_per_row</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
 <span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
@@ -236,9 +286,8 @@
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># Random 2D projection using a random unitary matrix</span>
 <span class="k">print</span> <span class="s">&quot;Computing random projection&quot;</span>
-<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">Q</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">qr_economic</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_features</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
-<span class="n">X_projected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">rp</span> <span class="o">=</span> <span class="n">random_projection</span><span class="o">.</span><span class="n">SparseRandomProjection</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_projected</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_projected</span><span class="p">,</span> <span class="s">&quot;Random Projection of the digits&quot;</span><span class="p">)</span>
 
 
@@ -249,8 +298,8 @@
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_pca</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">RandomizedPCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span>
-    <span class="s">&quot;Principal Components projection of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
-    <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+               <span class="s">&quot;Principal Components projection of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
+               <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># Projection on to the first 2 linear discriminant components</span>
@@ -261,8 +310,8 @@
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_lda</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">LDA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_lda</span><span class="p">,</span>
-    <span class="s">&quot;Linear Discriminant projection of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
-    <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+               <span class="s">&quot;Linear Discriminant projection of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
+               <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 
 <span class="c">#----------------------------------------------------------------------</span>
@@ -272,8 +321,8 @@
 <span class="n">X_iso</span> <span class="o">=</span> <span class="n">manifold</span><span class="o">.</span><span class="n">Isomap</span><span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Done.&quot;</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_iso</span><span class="p">,</span>
-    <span class="s">&quot;Isomap projection of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
-    <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+               <span class="s">&quot;Isomap projection of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
+               <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 
 <span class="c">#----------------------------------------------------------------------</span>
@@ -285,8 +334,8 @@
 <span class="n">X_lle</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Done. Reconstruction error: </span><span class="si">%g</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">clf</span><span class="o">.</span><span class="n">reconstruction_error_</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_lle</span><span class="p">,</span>
-    <span class="s">&quot;Locally Linear Embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
-    <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+               <span class="s">&quot;Locally Linear Embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
+               <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 
 <span class="c">#----------------------------------------------------------------------</span>
@@ -298,8 +347,8 @@
 <span class="n">X_mlle</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Done. Reconstruction error: </span><span class="si">%g</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">clf</span><span class="o">.</span><span class="n">reconstruction_error_</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_mlle</span><span class="p">,</span>
-    <span class="s">&quot;Modified Locally Linear Embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
-    <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+               <span class="s">&quot;Modified Locally Linear Embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
+               <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 
 <span class="c">#----------------------------------------------------------------------</span>
@@ -311,8 +360,8 @@
 <span class="n">X_hlle</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Done. Reconstruction error: </span><span class="si">%g</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">clf</span><span class="o">.</span><span class="n">reconstruction_error_</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_hlle</span><span class="p">,</span>
-    <span class="s">&quot;Hessian Locally Linear Embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
-    <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+               <span class="s">&quot;Hessian Locally Linear Embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
+               <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 
 <span class="c">#----------------------------------------------------------------------</span>
@@ -324,23 +373,50 @@
 <span class="n">X_ltsa</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Done. Reconstruction error: </span><span class="si">%g</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">clf</span><span class="o">.</span><span class="n">reconstruction_error_</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_ltsa</span><span class="p">,</span>
-    <span class="s">&quot;Local Tangent Space Alignment of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
-    <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+               <span class="s">&quot;Local Tangent Space Alignment of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
+               <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># MDS  embedding of the digits dataset</span>
 <span class="k">print</span> <span class="s">&quot;Computing MDS embedding&quot;</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">manifold</span><span class="o">.</span><span class="n">MDS</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">X_mds</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">euclidean_distances</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">X_mds</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Done. Stress: </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">clf</span><span class="o">.</span><span class="n">stress_</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_mds</span><span class="p">,</span>
-    <span class="s">&quot;MDS embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
-    <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+               <span class="s">&quot;MDS embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
+               <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+
+<span class="c">#----------------------------------------------------------------------</span>
+<span class="c"># Random Trees embedding of the digits dataset</span>
+<span class="k">print</span> <span class="s">&quot;Computing Totally Random Trees embedding&quot;</span>
+<span class="n">hasher</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">RandomTreesEmbedding</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                       <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="n">X_transformed</span> <span class="o">=</span> <span class="n">hasher</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">RandomizedPCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_reduced</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_transformed</span><span class="p">)</span>
+
+<span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_reduced</span><span class="p">,</span>
+               <span class="s">&quot;Random forest embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
+               <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+
+<span class="c">#----------------------------------------------------------------------</span>
+<span class="c"># Spectral embedding of the digits dataset</span>
+<span class="k">print</span> <span class="s">&quot;Computing Spectral embedding&quot;</span>
+<span class="n">embedder</span> <span class="o">=</span> <span class="n">manifold</span><span class="o">.</span><span class="n">SpectralEmbedding</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                      <span class="n">eigen_solver</span><span class="o">=</span><span class="s">&quot;arpack&quot;</span><span class="p">)</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="n">X_se</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_se</span><span class="p">,</span>
+               <span class="s">&quot;Spectral embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
+               <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  15.70 seconds</p>
 </div>
 
 
@@ -367,7 +443,7 @@
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_mds.html">
+      <a href="plot_manifold_sphere.html">
         Next
       </a>
     </div>

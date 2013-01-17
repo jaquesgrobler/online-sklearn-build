@@ -32,6 +32,8 @@
     <link rel="up" title="4. Unsupervised learning" href="../unsupervised_learning.html" />
     <link rel="next" title="4.4. Decomposing signals in components (matrix factorization problems)" href="decomposition.html" />
     <link rel="prev" title="4.2. Manifold learning" href="manifold.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -155,7 +159,10 @@
 </li>
 <li><a class="reference internal" href="#affinity-propagation">4.3.3. Affinity propagation</a></li>
 <li><a class="reference internal" href="#mean-shift">4.3.4. Mean Shift</a></li>
-<li><a class="reference internal" href="#spectral-clustering">4.3.5. Spectral clustering</a></li>
+<li><a class="reference internal" href="#spectral-clustering">4.3.5. Spectral clustering</a><ul>
+<li><a class="reference internal" href="#different-label-assignement-strategies">4.3.5.1. Different label assignement strategies</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#hierarchical-clustering">4.3.6. Hierarchical clustering</a><ul>
 <li><a class="reference internal" href="#adding-connectivity-constraints">4.3.6.1. Adding connectivity constraints</a></li>
 </ul>
@@ -318,22 +325,51 @@ model with equal covariance per component.</p>
 <p>The <a class="reference internal" href="generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans"><tt class="xref py py-class docutils literal"><span class="pre">KMeans</span></tt></a> algorithm clusters data by trying to separate samples
 in n groups of equal variance, minimizing a criterion known as the
 &#8216;inertia&#8217; of the groups. This algorithm requires the number of cluster to
-be specified. It scales well to large number of samples, however its
-results may be dependent on an initialisation. As a result, the computation is
-often done several times, with different initialisation of the centroids.</p>
-<p>K-means is often referred to as Lloyd&#8217;s algorithm. After initialization,
-k-means consists of looping between two major steps. First the Voronoi diagram
+be specified. It scales well to large number of samples and has been used
+across a large range of application areas in many different fields. It is
+also equivalent to the expectation-maximization algorithm when setting the
+covariance matrix to be diagonal, equal and small. The K-means algorithm
+aims to choose centroids <img class="math" src="../_images/math/c3355896da590fc491a10150a50416687626d7cc.png" alt="C"/> that minimise the within cluster sum of
+squares objective function with a dataset <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/> with <img class="math" src="../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n"/> samples:</p>
+<div class="math">
+<p><img src="../_images/math/eb370e2b1002b07a6a41a827e6cc85de073bce71.png" alt="J(X, C) = \sum_{i=0}^{n}\min_{\mu_j \in C}(||x_j - \mu_i||^2)"/></p>
+</div><p>K-means is often referred to as Lloyd&#8217;s algorithm. In basic terms, the
+algorithm has three steps. The first step chooses the initial centroids, with
+the most basic method being to choose <img class="math" src="../_images/math/8c325612684d41304b9751c175df7bcc0f61f64f.png" alt="k"/> samples from the dataset
+<img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/>. After initialization, k-means consists of looping between the other
+two major steps. The first steps assigns each sample to its nearest centroid.
+The second step creates new centroids by taking the mean value of all of the
+samples assigned to each previous centroid. The difference between the old
+and the new centroids is the inertia and the algorithm repeats these last two
+steps until this value is less than a threshold. In other words, it repeats
+until the centroids do not move significantly.</p>
+<p>The algorithm can be identified through the concept of <a class="reference external" href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagrams</a>. First the Voronoi diagram
 of the points is calculated using the current centroids. Each segment in the
 Voronoi diagram becomes a separate cluster. Secondly, the centroids are updated
 to the mean of each segment. The algorithm then repeats this until a stopping
-criteria is fulfilled. Usually, as in this implementation, the algorithm
-stops when the relative increment in the results between iterations is less than
-the given tolerance value.</p>
+criterion is fulfilled. Usually, as in this implementation, the algorithm stops
+when the relative decrease in the objective function between iterations is less
+than the given tolerance value.</p>
+<p>Given enough time, K-means will always converge, however this may be to a local
+minimum. This is highly dependent on the the initialisation of the centroids.
+As a result, the computation is often done several times, with different
+initialisation of the centroids. One method to help address this issue is the
+k-means++ initialisation algorithm, which has been implemented in
+scikit-learn (use the <tt class="docutils literal"><span class="pre">init='kmeans++'</span></tt> parameter). This initialises the
+centroids to be (generally) distant from each other, leading to provably better
+results than random initialisation.</p>
 <p>A parameter can be given to allow K-means to be run in parallel, called
 <cite>n_jobs</cite>. Giving this parameter a positive value uses that many processors
 (default=1). A value of -1 uses all processors, with -2 using one less, and so
 on. Parallelization generally speeds up computation at the cost of memory (in
 this case, multiple copies of centroids need to be stored, one for each job).</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The parallel version of K-Means is broken on OS X when numpy uses the
+Accelerate Framework. This is expected behavior: Accelerate can be called
+after a fork but you need to execv the subprocess with the python binary
+(which multiprocessing does not do under posix).</p>
+</div>
 <p>K-means can be used for vector quantization. This is achieved using the
 transform method of a trained model of <a class="reference internal" href="generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans"><tt class="xref py py-class docutils literal"><span class="pre">KMeans</span></tt></a>.</p>
 <div class="topic">
@@ -356,7 +392,7 @@ the <a class="reference internal" href="generated/sklearn.cluster.KMeans.html#sk
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../auto_examples/cluster/plot_mini_batch_kmeans.html#example-cluster-plot-mini-batch-kmeans-py"><em>A demo of the K Means clustering algorithm</em></a>: Comparison of KMeans and
+<li><a class="reference internal" href="../auto_examples/cluster/plot_mini_batch_kmeans.html#example-cluster-plot-mini-batch-kmeans-py"><em>Comparison of the K-Means clustering and MiniBatchKMeans Algorithms</em></a>: Comparison of KMeans and
 MiniBatchKMeans</li>
 <li><a class="reference internal" href="../auto_examples/document_clustering.html#example-document-clustering-py"><em>Clustering text documents using k-means</em></a>: Document clustering using sparse
 MiniBatchKMeans</li>
@@ -450,6 +486,32 @@ from a noisy background using spectral clustering.</li>
 to split the image of lena in regions.</li>
 </ul>
 </div>
+<div class="section" id="different-label-assignement-strategies">
+<h3>4.3.5.1. Different label assignement strategies<a class="headerlink" href="#different-label-assignement-strategies" title="Permalink to this headline">¶</a></h3>
+<p>Different label assignement strategies can be used, corresponding to the
+<cite>assign_labels</cite> parameter of <a class="reference internal" href="generated/sklearn.cluster.SpectralClustering.html#sklearn.cluster.SpectralClustering" title="sklearn.cluster.SpectralClustering"><tt class="xref py py-class docutils literal"><span class="pre">SpectralClustering</span></tt></a>.
+The <cite>kmeans</cite> strategie can match finer details of the data, but it can be
+more unstable. In particular, unless you control the <cite>random_state</cite>, it
+may not be reproducible from run-to-run, as it depends on a random
+initialization. On the other hand, the <cite>discretize</cite> strategy is 100%
+reproducible, but it tends to create parcels of fairly even and
+geometrical shape.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><cite>assign_labels=&#8221;kmeans&#8221;</cite></th>
+<th class="head"><cite>assign_labels=&#8221;discretize&#8221;</cite></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="../auto_examples/cluster/plot_lena_segmentation.html"><img alt="lena_kmeans" src="../_images/plot_lena_segmentation_11.png" style="width: 325.0px; height: 325.0px;" /></a></td>
+<td><a class="reference external" href="../auto_examples/cluster/plot_lena_segmentation.html"><img alt="lena_discretize" src="../_images/plot_lena_segmentation_21.png" style="width: 325.0px; height: 325.0px;" /></a></td>
+</tr>
+</tbody>
+</table>
 <div class="topic">
 <p class="topic-title first">References:</p>
 <ul class="simple">
@@ -462,6 +524,7 @@ Marina Meila, Jianbo Shi, 2001</li>
 <li><a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.19.8100">&#8220;On Spectral Clustering: Analysis and an algorithm&#8221;</a>
 Andrew Y. Ng, Michael I. Jordan, Yair Weiss, 2001</li>
 </ul>
+</div>
 </div>
 </div>
 <div class="section" id="hierarchical-clustering">
@@ -521,17 +584,47 @@ Ward hierarchical clustering.</li>
 </div>
 <div class="section" id="dbscan">
 <span id="id7"></span><h2>4.3.7. DBSCAN<a class="headerlink" href="#dbscan" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference internal" href="generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN" title="sklearn.cluster.DBSCAN"><tt class="xref py py-class docutils literal"><span class="pre">DBSCAN</span></tt></a> algorithm clusters data by finding core points which have
-many neighbours within a given radius. After a core point is found, the cluster
-is expanded by adding its neighbours to the current cluster and recursively
-checking if any are core points. Formally, a point is considered a core point
-if it has more than min_points points which are of a similarity greater than
-the given threshold eps. This is shown in the figure below, where the color
-indicates cluster membership and large circles indicate core points found by
-the algorithm. Moreover, the algorithm can detect outliers, indicated by black
-points below. The outliers are defined as points which do not belong to
-any current cluster and do not have enough close neighbours to start a
-new cluster.</p>
+<p>The <a class="reference internal" href="generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN" title="sklearn.cluster.DBSCAN"><tt class="xref py py-class docutils literal"><span class="pre">DBSCAN</span></tt></a> algorithm views clusters as areas of high density
+separated by areas of low density. Due to this rather generic view, clusters
+found by DBSCAN can be any shape, as opposed to k-means which assumes that
+clusters are convex shaped. The central component to the DBSCAN is the concept
+of <em>core samples</em>, which are samples that are in areas of high density. A
+cluster is therefore a set of core samples, each highly similar to each other
+and a set of non-core samples that are similar to a core sample (but are not
+themselves core samples). There are two parameters to the algorithm,
+<cite>min_points</cite> and <cite>eps</cite>, which define formally what we mean when we say <em>dense</em>.
+A higher <cite>min_points</cite> or lower <cite>eps</cite> indicate higher density necessary to form
+a cluster.</p>
+<p>More formally, we define a core sample as being a sample in the dataset such
+that there exists <cite>min_samples</cite> other samples with a similarity higher than
+<cite>eps</cite> to it, which are defined as <em>neighbors</em> of the core sample. This tells
+us that the core sample is in a dense area of the vector space. A cluster
+is a set of core samples, that can be built by recursively by taking a core
+sample, finding all of its neighbors that are core samples, finding all of
+<em>their</em> neighbors that are core samples, and so on. A cluster also has a
+set of non-core samples, which are samples that are neighbors of a core sample
+in the cluster but are not themselves core samples. Intuitively, these samples
+are on the fringes of a cluster.</p>
+<p>Any core sample is part of a cluster, by definition. Further, any cluster has
+at least <cite>min_samples</cite> points in it, following the definition of a core
+sample. For any sample that is not a core sample, and does not have a
+similarity higher than <cite>eps</cite> to a core sample, it is considered an outlier by
+the algorithm.</p>
+<p>The algorithm is non-deterministic, however the core samples themselves will
+always belong to the same clusters (although the labels themselves may be
+different). The non-determinism comes from deciding on which cluster a
+non-core sample belongs to. A non-core sample can be have a similarity higher
+than <cite>eps</cite> to two core samples in different classes. Following from the
+triangular inequality, those two core samples would be less similar than
+<cite>eps</cite> from each other &#8211; else they would be in the same class. The non-core
+sample is simply assigned to which ever cluster is generated first, where
+the order is determined randomly within the code. Other than the ordering of,
+the dataset, the algorithm is deterministic, making the results relatively
+stable between iterations on the same data.</p>
+<p>In the figure below, the color indicates cluster membership, with large circles
+indicating core samples found by the algorithm. Smaller circles are non-core
+samples that are still part of a cluster. Moreover, the outliers are indicated
+by black points below.</p>
 <p class="centered">
 <strong><a class="reference external image-reference" href="../auto_examples/cluster/plot_dbscan.html"><img alt="dbscan_results" src="../_images/plot_dbscan_11.png" style="width: 400.0px; height: 300.0px;" /></a>
 </strong></p><div class="topic">

@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="index.html" />
     <link rel="next" title="Precision-Recall" href="plot_precision_recall.html" />
     <link rel="prev" title="Test with permutations the significance of a classification score" href="plot_permutation_test_for_classification.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -176,6 +180,52 @@ dataset X and dataset Y are maximaly correlated (points lie around the
 first diagonal). This is also true for components 2 in both dataset,
 however, the correlation across datasets for different components is
 weak: the point cloud is very spherical.</p>
+<img alt="../_images/plot_pls_1.png" class="align-center" src="../_images/plot_pls_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Corr(X)
+[[ 1.    0.5  -0.07  0.04]
+ [ 0.5   1.    0.07  0.06]
+ [-0.07  0.07  1.    0.5 ]
+ [ 0.04  0.06  0.5   1.  ]]
+Corr(Y)
+[[ 1.    0.46 -0.04  0.01]
+ [ 0.46  1.   -0.04 -0.02]
+ [-0.04 -0.04  1.    0.54]
+ [ 0.01 -0.02  0.54  1.  ]]
+True B (such that: Y = XB + Err)
+[[1 1 1]
+ [2 2 2]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]]
+Estimated B
+[[ 1.   1.   1. ]
+ [ 2.   2.1  2. ]
+ [ 0.  -0.   0. ]
+ [-0.   0.  -0. ]
+ [-0.1  0.  -0. ]
+ [ 0.  -0.   0. ]
+ [ 0.   0.  -0. ]
+ [ 0.   0.   0. ]
+ [-0.   0.   0. ]
+ [-0.  -0.  -0. ]]
+Estimated betas
+[[ 1.]
+ [ 2.]
+ [ 0.]
+ [-0.]
+ [-0.]
+ [-0.]
+ [-0.]
+ [ 0.]
+ [ 0.]
+ [ 0.]]</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_pls.py"><tt class="xref download docutils literal"><span class="pre">plot_pls.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -247,8 +297,8 @@ weak: the point cloud is very spherical.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test_r</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test_r</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">&quot;*r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;test&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;X comp. 1&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;X comp. 2&quot;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;X comp. 1 vs X comp. 2 (test corr = </span><span class="si">%.2f</span><span class="s">)&#39;</span> <span class="o">%</span> \
-    <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X_test_r</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test_r</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;X comp. 1 vs X comp. 2 (test corr = </span><span class="si">%.2f</span><span class="s">)&#39;</span>
+         <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X_test_r</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test_r</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&quot;best&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
@@ -258,8 +308,8 @@ weak: the point cloud is very spherical.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y_test_r</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y_test_r</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">&quot;*r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;test&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;Y comp. 1&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;Y comp. 2&quot;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Y comp. 1 vs Y comp. 2 , (test corr = </span><span class="si">%.2f</span><span class="s">)&#39;</span> <span class="o">%</span> \
-    <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">Y_test_r</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y_test_r</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Y comp. 1 vs Y comp. 2 , (test corr = </span><span class="si">%.2f</span><span class="s">)&#39;</span>
+         <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">Y_test_r</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y_test_r</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&quot;best&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
@@ -307,6 +357,7 @@ weak: the point cloud is very spherical.</p>
 <span class="n">X_test_r</span><span class="p">,</span> <span class="n">Y_test_r</span> <span class="o">=</span> <span class="n">plsca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.25 seconds</p>
 </div>
 
 

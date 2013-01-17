@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. An Introduction to machine learning with scikit-learn &mdash; scikit-learn 0.13-git documentation</title>
+    <title>1. An introduction to machine learning with scikit-learn &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -32,6 +32,8 @@
     <link rel="up" title="2. Tutorials: From the bottom up with scikit-learn" href="../index.html" />
     <link rel="next" title="2.2. A tutorial on statistical-learning for scientific data processing" href="../statistical_inference/index.html" />
     <link rel="prev" title="2. Tutorials: From the bottom up with scikit-learn" href="../index.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,15 +146,15 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">1. An Introduction to machine learning with scikit-learn</a><ul>
+<li><a class="reference internal" href="#">1. An introduction to machine learning with scikit-learn</a><ul>
 <li><a class="reference internal" href="#machine-learning-the-problem-setting">1.1. Machine learning: the problem setting</a></li>
 <li><a class="reference internal" href="#loading-an-example-dataset">1.2. Loading an example dataset</a></li>
-<li><a class="reference internal" href="#learning-and-predicting">1.3. Learning and Predicting</a></li>
+<li><a class="reference internal" href="#learning-and-predicting">1.3. Learning and predicting</a></li>
 <li><a class="reference internal" href="#model-persistence">1.4. Model persistence</a></li>
 </ul>
 </li>
@@ -168,7 +172,7 @@
           <div class="body">
             
   <div class="section" id="an-introduction-to-machine-learning-with-scikit-learn">
-<span id="introduction"></span><h1>1. An Introduction to machine learning with scikit-learn<a class="headerlink" href="#an-introduction-to-machine-learning-with-scikit-learn" title="Permalink to this headline">¶</a></h1>
+<span id="introduction"></span><h1>1. An introduction to machine learning with scikit-learn<a class="headerlink" href="#an-introduction-to-machine-learning-with-scikit-learn" title="Permalink to this headline">¶</a></h1>
 <div class="topic">
 <p class="topic-title first">Section contents</p>
 <p>In this section, we introduce the <a class="reference external" href="http://en.wikipedia.org/wiki/Machine_learning">machine learning</a>
@@ -179,18 +183,17 @@ simple learning example.</p>
 <h2>1.1. Machine learning: the problem setting<a class="headerlink" href="#machine-learning-the-problem-setting" title="Permalink to this headline">¶</a></h2>
 <p>In general, a learning problem considers a set of n
 <a class="reference external" href="http://en.wikipedia.org/wiki/Sample_(statistics)">samples</a> of
-data and try to predict properties of unknown data. If each sample is
-more than a single number, and for instance a multi-dimensional entry
+data and then tries to predict properties of unknown data. If each sample is
+more than a single number and, for instance, a multi-dimensional entry
 (aka <a class="reference external" href="http://en.wikipedia.org/wiki/Multivariate_random_variable">multivariate</a>
-data), is it said to have several attributes,
-or <strong>features</strong>.</p>
+data), is it said to have several attributes or <strong>features</strong>.</p>
 <p>We can separate learning problems in a few large categories:</p>
 <blockquote>
 <div><ul>
 <li><p class="first"><a class="reference external" href="http://en.wikipedia.org/wiki/Supervised_learning">supervised learning</a>,
 in which the data comes with additional attributes that we want to predict
 (<a class="reference internal" href="../../supervised_learning.html#supervised-learning"><em>Click here</em></a>
-to go to the Scikit-Learn supervised learning page).This problem
+to go to the scikit-learn supervised learning page).This problem
 can be either:</p>
 <blockquote>
 <div><ul class="simple">
@@ -198,9 +201,12 @@ can be either:</p>
 samples belong to two or more classes and we
 want to learn from already labeled data how to predict the class
 of unlabeled data. An example of classification problem would
-be the digit recognition example, in which the aim is to assign
-each input vector to one of a finite number of discrete
-categories.</li>
+be the handwritten digit recognition example, in which the aim is
+to assign each input vector to one of a finite number of discrete
+categories.  Another way to think of classification is as a discrete
+(as opposed to continuous) form of supervised learning where one has a
+limited number of categories and for each of the n samples provided,
+one is to try to label them with the correct category or class.</li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Regression_analysis">regression</a>:
 if the desired output consists of one or more
 continuous variables, then the task is called <em>regression</em>. An
@@ -216,7 +222,7 @@ may be to discover groups of similar examples within the data, where
 it is called <a class="reference external" href="http://en.wikipedia.org/wiki/Cluster_analysis">clustering</a>,
 or to determine the distribution of data within the input space, known as
 <a class="reference external" href="http://en.wikipedia.org/wiki/Density_estimation">density estimation</a>, or
-to project the data from a high-dimensional space down to two or thee
+to project the data from a high-dimensional space down to two or three
 dimensions for the purpose of <em>visualization</em>
 (<a class="reference internal" href="../../unsupervised_learning.html#unsupervised-learning"><em>Click here</em></a>
 to go to the Scikit-Learn unsupervised learning page).</p>
@@ -228,8 +234,8 @@ to go to the Scikit-Learn unsupervised learning page).</p>
 <p>Machine learning is about learning some properties of a data set
 and applying them to new data. This is why a common practice in
 machine learning to evaluate an algorithm is to split the data
-at hand in two sets, one that we call a <strong>training set</strong> on which
-we learn data properties, and one that we call a <strong>testing set</strong>,
+at hand into two sets, one that we call the <strong>training set</strong> on which
+we learn data properties and one that we call the <strong>testing set</strong>
 on which we test these properties.</p>
 </div>
 </div>
@@ -291,16 +297,16 @@ the <cite>scikit-learn</cite>.</p>
 </div>
 </div>
 <div class="section" id="learning-and-predicting">
-<h2>1.3. Learning and Predicting<a class="headerlink" href="#learning-and-predicting" title="Permalink to this headline">¶</a></h2>
-<p>In the case of the digits dataset, the task is to predict the value of a
-hand-written digit from an image. We are given samples of each of the 10
-possible classes on which we <em>fit</em> an
+<h2>1.3. Learning and predicting<a class="headerlink" href="#learning-and-predicting" title="Permalink to this headline">¶</a></h2>
+<p>In the case of the digits dataset, the task is to predict, given an image,
+which digit it represents. We are given samples of each of the 10
+possible classes (the digits zero through nine) on which we <em>fit</em> an
 <a class="reference external" href="http://en.wikipedia.org/wiki/Estimator">estimator</a> to be able to <em>predict</em>
-the labels corresponding to new data.</p>
-<p>In <cite>scikit-learn</cite>, an <strong>estimator</strong> is just a plain Python class that
-implements the methods <cite>fit(X, Y)</cite> and <cite>predict(T)</cite>.</p>
-<p>An example of estimator is the class <tt class="docutils literal"><span class="pre">sklearn.svm.SVC</span></tt> that
-implements <a class="reference external" href="http://en.wikipedia.org/wiki/Support_vector_machine">Support Vector Classification</a>. The
+the classes to which unseen samples belong.</p>
+<p>In <cite>scikit-learn</cite>, an estimator for classification is a Python object that
+implements the methods <cite>fit(X, y)</cite> and <cite>predict(T)</cite>.</p>
+<p>An example of an estimator is the class <tt class="docutils literal"><span class="pre">sklearn.svm.SVC</span></tt> that
+implements <a class="reference external" href="http://en.wikipedia.org/wiki/Support_vector_machine">support vector classification</a>. The
 constructor of an estimator takes as arguments the parameters of the
 model, but for the time being, we will consider the estimator as a black
 box:</p>
@@ -319,17 +325,17 @@ be fitted to the model, that is, it must <cite>learn</cite> from the model. This
 done by passing our training set to the <tt class="docutils literal"><span class="pre">fit</span></tt> method. As a training
 set, let us use all the images of our dataset apart from the last
 one:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  
 <span class="go">SVC(C=100.0, cache_size=200, class_weight=None, coef0=0.0, degree=3,</span>
-<span class="go">  gamma=0.001, kernel=&#39;rbf&#39;, probability=False, shrinking=True, tol=0.001,</span>
-<span class="go">  verbose=False)</span>
+<span class="go">  gamma=0.001, kernel=&#39;rbf&#39;, max_iter=-1, probability=False, shrinking=True,</span>
+<span class="go">  tol=0.001, verbose=False)</span>
 </pre></div>
 </div>
 <p>Now you can predict new values, in particular, we can ask to the
 classifier what is the digit of our last image in the <cite>digits</cite> dataset,
 which we have not used to train the classifier:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="go">array([ 8.])</span>
+<span class="go">array([8])</span>
 </pre></div>
 </div>
 <p>The corresponding image is the following:</p>
@@ -349,16 +355,16 @@ persistence model, namely <a class="reference external" href="http://docs.python
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  
 <span class="go">SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, degree=3, gamma=0.0,</span>
-<span class="go">  kernel=&#39;rbf&#39;, probability=False, shrinking=True, tol=0.001,</span>
+<span class="go">  kernel=&#39;rbf&#39;, max_iter=-1, probability=False, shrinking=True, tol=0.001,</span>
 <span class="go">  verbose=False)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pickle</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">clf</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf2</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">array([ 0.])</span>
+<span class="go">array([0])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">0</span>
 </pre></div>

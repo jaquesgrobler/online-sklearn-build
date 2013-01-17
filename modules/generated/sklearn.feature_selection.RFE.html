@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.8.6. sklearn.feature_selection.RFE &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.9.6. sklearn.feature_selection.RFE &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.8.7. sklearn.feature_selection.RFECV" href="sklearn.feature_selection.RFECV.html" />
-    <link rel="prev" title="8.8.5. sklearn.feature_selection.SelectFwe" href="sklearn.feature_selection.SelectFwe.html" />
+    <link rel="next" title="8.9.7. sklearn.feature_selection.RFECV" href="sklearn.feature_selection.RFECV.html" />
+    <link rel="prev" title="8.9.5. sklearn.feature_selection.SelectFwe" href="sklearn.feature_selection.SelectFwe.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.feature_selection.SelectFwe.html" title="8.8.5. sklearn.feature_selection.SelectFwe"
+	<a href="sklearn.feature_selection.SelectFwe.html" title="8.9.5. sklearn.feature_selection.SelectFwe"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.8.5. sklearn.f...
+	    8.9.5. sklearn.f...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.8.5. sklearn.feature_selection.SelectFwe
+	    8.9.5. sklearn.feature_selection.SelectFwe
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.feature_selection.RFECV.html" title="8.8.7. sklearn.feature_selection.RFECV"
+	<a href="sklearn.feature_selection.RFECV.html" title="8.9.7. sklearn.feature_selection.RFECV"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.8.7. sklearn.f...
+	    8.9.7. sklearn.f...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.8.7. sklearn.feature_selection.RFECV
+	    8.9.7. sklearn.feature_selection.RFECV
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.8.6. sklearn.feature_selection.RFE</a></li>
+<li><a class="reference internal" href="#">8.9.6. sklearn.feature_selection.RFE</a></li>
 </ul>
 
     
@@ -162,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-feature-selection-rfe">
-<h1>8.8.6. sklearn.feature_selection.RFE<a class="headerlink" href="#sklearn-feature-selection-rfe" title="Permalink to this headline">¶</a></h1>
+<h1>8.9.6. sklearn.feature_selection.RFE<a class="headerlink" href="#sklearn-feature-selection-rfe" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_selection.RFE">
 <em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">RFE</tt><big>(</big><em>estimator</em>, <em>n_features_to_select=None</em>, <em>step=1</em>, <em>estimator_params={}</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.RFE" title="Permalink to this definition">¶</a></dt>
@@ -210,10 +214,10 @@ Useful for doing grid searches.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r61" rules="none">
+<table class="docutils citation" frame="void" id="r87" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R61]</a></td><td>Guyon, I., Weston, J., Barnhill, S., &amp; Vapnik, V., &#8220;Gene selection
+<tr><td class="label"><a class="fn-backref" href="#id1">[R87]</a></td><td>Guyon, I., Weston, J., Barnhill, S., &amp; Vapnik, V., &#8220;Gene selection
 for cancer classification using support vector machines&#8221;,
 Mach. Learn., 46(1-3), 389&#8211;422, 2002.</td></tr>
 </tbody>
@@ -308,11 +312,11 @@ features.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array of shape [n_samples, n_features]</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = [n_samples, n_features]</p>
 <blockquote>
 <div><p>The training input samples.</p>
 </div></blockquote>
-<p><strong>y</strong> : array of shape [n_samples]</p>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
 <blockquote class="last">
 <div><p>The target values.</p>
 </div></blockquote>

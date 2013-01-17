@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Classification of text documents: using a MLComp dataset" href="mlcomp_sparse_document_classification.html" />
+    <link rel="next" title="FeatureHasher and DictVectorizer Comparison" href="hashing_vs_dict_vectorizer.html" />
     <link rel="prev" title="Parameter estimation using grid search with a nested cross-validation" href="grid_search_digits.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="mlcomp_sparse_document_classification.html" title="Classification of text documents: using a MLComp dataset"
+	<a href="hashing_vs_dict_vectorizer.html" title="FeatureHasher and DictVectorizer Comparison"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Classification o...
+	    FeatureHasher an...
 	    </span>
 	    <span class="hiddenrellink">
-	    Classification of text documents: using a MLComp dataset
+	    FeatureHasher and DictVectorizer Comparison
 	    </span>
 	    
 	    </a>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -246,9 +250,9 @@ Best parameters set:
     <span class="p">(</span><span class="s">&#39;clf&#39;</span><span class="p">,</span> <span class="n">SGDClassifier</span><span class="p">()),</span>
 <span class="p">])</span>
 
-<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
 <span class="c"># uncommenting more parameters will give better exploring power but will</span>
 <span class="c"># increase processing time in a combinatorial way</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">&#39;vect__max_df&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
 <span class="c">#    &#39;vect__max_features&#39;: (None, 5000, 10000, 50000),</span>
     <span class="s">&#39;vect__max_n&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>  <span class="c"># words or bigrams</span>
@@ -309,7 +313,7 @@ Best parameters set:
       </a>
     </div>
     <div class="buttonNext">
-      <a href="mlcomp_sparse_document_classification.html">
+      <a href="hashing_vs_dict_vectorizer.html">
         Next
       </a>
     </div>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.1.2. sklearn.metrics.roc_curve &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.19.1.15. sklearn.metrics.roc_curve &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.1.3. sklearn.metrics.auc" href="sklearn.metrics.auc.html" />
-    <link rel="prev" title="8.17.1.1. sklearn.metrics.confusion_matrix" href="sklearn.metrics.confusion_matrix.html" />
+    <link rel="next" title="8.19.1.16. sklearn.metrics.zero_one_loss" href="sklearn.metrics.zero_one_loss.html" />
+    <link rel="prev" title="8.19.1.14. sklearn.metrics.recall_score" href="sklearn.metrics.recall_score.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.confusion_matrix.html" title="8.17.1.1. sklearn.metrics.confusion_matrix"
+	<a href="sklearn.metrics.recall_score.html" title="8.19.1.14. sklearn.metrics.recall_score"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.17.1.1. sklear...
+	    8.19.1.14. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.1.1. sklearn.metrics.confusion_matrix
+	    8.19.1.14. sklearn.metrics.recall_score
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.auc.html" title="8.17.1.3. sklearn.metrics.auc"
+	<a href="sklearn.metrics.zero_one_loss.html" title="8.19.1.16. sklearn.metrics.zero_one_loss"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.17.1.3. sklear...
+	    8.19.1.16. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.1.3. sklearn.metrics.auc
+	    8.19.1.16. sklearn.metrics.zero_one_loss
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.17.1.2. sklearn.metrics.roc_curve</a></li>
+<li><a class="reference internal" href="#">8.19.1.15. sklearn.metrics.roc_curve</a></li>
 </ul>
 
     
@@ -162,11 +166,11 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-roc-curve">
-<h1>8.17.1.2. sklearn.metrics.roc_curve<a class="headerlink" href="#sklearn-metrics-roc-curve" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.1.15. sklearn.metrics.roc_curve<a class="headerlink" href="#sklearn-metrics-roc-curve" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.roc_curve">
-<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">roc_curve</tt><big>(</big><em>y_true</em>, <em>y_score</em><big>)</big><a class="headerlink" href="#sklearn.metrics.roc_curve" title="Permalink to this definition">¶</a></dt>
-<dd><p>compute Receiver operating characteristic (ROC)</p>
+<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">roc_curve</tt><big>(</big><em>y_true</em>, <em>y_score</em>, <em>pos_label=None</em><big>)</big><a class="headerlink" href="#sklearn.metrics.roc_curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute Receiver operating characteristic (ROC)</p>
 <p>Note: this implementation is restricted to the binary classification task.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -174,35 +178,40 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>true binary labels</p>
+<div><p>True binary labels in range {0, 1} or {-1, 1}.  If labels are not
+binary, pos_label should be explictly given.</p>
 </div></blockquote>
 <p><strong>y_score</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>target scores, can either be probability estimates of
-the positive class, confidence values, or binary decisions.</p>
+<div><p>Target scores, can either be probability estimates of the positive
+class, confidence values, or binary decisions.</p>
+</div></blockquote>
+<p><strong>pos_label</strong> : int</p>
+<blockquote>
+<div><p>Label considered as positive and others are considered negative.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>fpr</strong> : array, shape = [&gt;2]</p>
 <blockquote>
-<div><p>False Positive Rates</p>
+<div><p>False Positive Rates.</p>
 </div></blockquote>
 <p><strong>tpr</strong> : array, shape = [&gt;2]</p>
 <blockquote>
-<div><p>True Positive Rates</p>
+<div><p>True Positive Rates.</p>
 </div></blockquote>
 <p><strong>thresholds</strong> : array, shape = [&gt;2]</p>
 <blockquote class="last">
-<div><p>Thresholds on y_score used to compute fpr and tpr.</p>
-<p><em>Note</em>: Since the thresholds are sorted from low to high values,
-they are reversed upon returning them to ensure they
-correspond to both fpr and tpr, which are sorted in reversed order
-during their calculation.</p>
+<div><p>Thresholds on <tt class="docutils literal"><span class="pre">y_score</span></tt> used to compute <tt class="docutils literal"><span class="pre">fpr</span></tt> and <tt class="docutils literal"><span class="pre">fpr</span></tt>.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>Since the thresholds are sorted from low to high values, they
+are reversed upon returning them to ensure they correspond to both <tt class="docutils literal"><span class="pre">fpr</span></tt>
+and <tt class="docutils literal"><span class="pre">tpr</span></tt>, which are sorted in reversed order during their calculation.</p>
 <p class="rubric">References</p>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Receiver_operating_characteristic">http://en.wikipedia.org/wiki/Receiver_operating_characteristic</a></p>
 <p class="rubric">Examples</p>
@@ -210,7 +219,7 @@ during their calculation.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">roc_curve</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">roc_curve</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fpr</span>
 <span class="go">array([ 0. ,  0.5,  0.5,  1. ])</span>
 </pre></div>
@@ -238,12 +247,12 @@ during their calculation.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.metrics.confusion_matrix.html">
+      <a href="sklearn.metrics.recall_score.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.metrics.auc.html">
+      <a href="sklearn.metrics.zero_one_loss.html">
         Next
       </a>
     </div>

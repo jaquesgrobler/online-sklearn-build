@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.1.4. sklearn.metrics.precision_score &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.19.1.13. sklearn.metrics.precision_score &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.1.5. sklearn.metrics.recall_score" href="sklearn.metrics.recall_score.html" />
-    <link rel="prev" title="8.17.1.3. sklearn.metrics.auc" href="sklearn.metrics.auc.html" />
+    <link rel="next" title="8.19.1.14. sklearn.metrics.recall_score" href="sklearn.metrics.recall_score.html" />
+    <link rel="prev" title="8.19.1.12. sklearn.metrics.precision_recall_fscore_support" href="sklearn.metrics.precision_recall_fscore_support.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.auc.html" title="8.17.1.3. sklearn.metrics.auc"
+	<a href="sklearn.metrics.precision_recall_fscore_support.html" title="8.19.1.12. sklearn.metrics.precision_recall_fscore_support"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.17.1.3. sklear...
+	    8.19.1.12. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.1.3. sklearn.metrics.auc
+	    8.19.1.12. sklearn.metrics.precision_recall_fscore_support
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.recall_score.html" title="8.17.1.5. sklearn.metrics.recall_score"
+	<a href="sklearn.metrics.recall_score.html" title="8.19.1.14. sklearn.metrics.recall_score"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.17.1.5. sklear...
+	    8.19.1.14. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.1.5. sklearn.metrics.recall_score
+	    8.19.1.14. sklearn.metrics.recall_score
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.17.1.4. sklearn.metrics.precision_score</a></li>
+<li><a class="reference internal" href="#">8.19.1.13. sklearn.metrics.precision_score</a></li>
 </ul>
 
     
@@ -162,15 +166,15 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-precision-score">
-<h1>8.17.1.4. sklearn.metrics.precision_score<a class="headerlink" href="#sklearn-metrics-precision-score" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.1.13. sklearn.metrics.precision_score<a class="headerlink" href="#sklearn-metrics-precision-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.precision_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">precision_score</tt><big>(</big><em>y_true</em>, <em>y_pred</em>, <em>labels=None</em>, <em>pos_label=1</em>, <em>average='weighted'</em><big>)</big><a class="headerlink" href="#sklearn.metrics.precision_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the precision</p>
-<p>The precision is the ratio <img class="math" src="../../_images/math/8619a477265f0add9d03256c5e1f092a373b0f78.png" alt="tp / (tp + fp)"/> where tp is the
-number of true positives and fp the number of false positives. The
-precision is intuitively the ability of the classifier not to
-label as positive a sample that is negative.</p>
+<p>The precision is the ratio <tt class="docutils literal"><span class="pre">tp</span> <span class="pre">/</span> <span class="pre">(tp</span> <span class="pre">+</span> <span class="pre">fp)</span></tt> where <tt class="docutils literal"><span class="pre">tp</span></tt> is the number of
+true positives and <tt class="docutils literal"><span class="pre">fp</span></tt> the number of false positives. The precision is
+intuitively the ability of the classifier not to label as positive a sample
+that is negative.</p>
 <p>The best value is 1 and the worst value is 0.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -178,53 +182,78 @@ label as positive a sample that is negative.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>True targets</p>
+<div><p>Ground truth (correct) target values.</p>
 </div></blockquote>
 <p><strong>y_pred</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>Predicted targets</p>
+<div><p>Estimated targets as returned by a classifier.</p>
 </div></blockquote>
 <p><strong>labels</strong> : array</p>
 <blockquote>
-<div><p>Integer array of labels</p>
+<div><p>Integer array of labels.</p>
 </div></blockquote>
 <p><strong>pos_label</strong> : int</p>
 <blockquote>
-<div><p>In the binary classification case, give the label of the positive
-class (default is 1). Everything else but &#8216;pos_label&#8217;
-is considered to belong to the negative class.
-Set to None in the case of multiclass classification.</p>
+<div><p>In the binary classification case, give the label of the positive class
+(default is 1). Everything else but <tt class="docutils literal"><span class="pre">pos_label</span></tt> is considered to
+belong to the negative class.  Set to <tt class="docutils literal"><span class="pre">None</span></tt> in the case of
+multiclass classification.</p>
 </div></blockquote>
-<p><strong>average</strong> : string, [None, &#8216;micro&#8217;, &#8216;macro&#8217;, &#8216;weighted&#8217;(default)]</p>
+<p><strong>average</strong> : string, [None, &#8216;micro&#8217;, &#8216;macro&#8217;, &#8216;weighted&#8217; (default)]</p>
 <blockquote>
-<div><p>In the multiclass classification case, this determines the
-type of averaging performed on the data.</p>
+<div><p>In the multiclass classification case, this determines the type of
+averaging performed on the data.</p>
 <dl class="docutils">
-<dt>macro:</dt>
+<dt><tt class="docutils literal"><span class="pre">None</span></tt>:</dt>
+<dd><p class="first last">Do not perform any averaging, return the scores for each class.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">'macro'</span></tt>:</dt>
 <dd><p class="first last">Average over classes (does not take imbalance into account).</p>
 </dd>
-<dt>micro:</dt>
-<dd><p class="first last">Average over instances (takes imbalance into account).
-This implies that <tt class="docutils literal"><span class="pre">precision</span> <span class="pre">==</span> <span class="pre">recall</span> <span class="pre">==</span> <span class="pre">f1</span></tt></p>
+<dt><tt class="docutils literal"><span class="pre">'micro'</span></tt>:</dt>
+<dd><p class="first last">Average over instances (takes imbalance into account).  This
+implies that <tt class="docutils literal"><span class="pre">precision</span> <span class="pre">==</span> <span class="pre">recall</span> <span class="pre">==</span> <span class="pre">F1</span></tt>.</p>
 </dd>
-<dt>weighted:</dt>
-<dd><p class="first last">Average weighted by support (takes imbalance into account).
-Can result in f1 score that is not between precision and recall.</p>
+<dt><tt class="docutils literal"><span class="pre">'weighted'</span></tt>:</dt>
+<dd><p class="first last">Average weighted by support (takes imbalance into account).  Can
+result in F-score that is not between precision and recall.</p>
 </dd>
 </dl>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>precision</strong> : float</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>precision</strong> : float (if average is not None) or array of float, shape =        [n_unique_labels]</p>
 <blockquote class="last">
-<div><p>Precision of the positive class in binary classification or
-weighted average of the precision of each class for the
-multiclass task</p>
+<div><p>Precision of the positive class in binary classification or weighted
+average of the precision of each class for the multiclass task.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<p>In the binary case:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+<p>In the multiclass case:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;macro&#39;</span><span class="p">)</span>  
+<span class="go">0.22...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">)</span>  
+<span class="go">0.33...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">)</span>        
+<span class="go">0.22...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>  
+<span class="go">array([ 0.66...,  0.        ,  0.        ])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -248,7 +277,7 @@ multiclass task</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.metrics.auc.html">
+      <a href="sklearn.metrics.precision_recall_fscore_support.html">
         Previous
       </a>
     </div>

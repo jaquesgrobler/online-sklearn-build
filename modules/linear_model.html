@@ -32,6 +32,8 @@
     <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
     <link rel="next" title="3.2. Support Vector Machines" href="svm.html" />
     <link rel="prev" title="3. Supervised learning" href="../supervised_learning.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -181,7 +185,7 @@
 <li><a class="reference internal" href="#logistic-regression">3.1.10. Logistic regression</a></li>
 <li><a class="reference internal" href="#stochastic-gradient-descent-sgd">3.1.11. Stochastic Gradient Descent - SGD</a></li>
 <li><a class="reference internal" href="#perceptron">3.1.12. Perceptron</a></li>
-<li><a class="reference internal" href="#isotonic-regression">3.1.13. Isotonic regression</a></li>
+<li><a class="reference internal" href="#passive-aggressive-algorithms">3.1.13. Passive Aggressive Algorithms</a></li>
 </ul>
 </li>
 </ul>
@@ -272,8 +276,9 @@ arrays X, y and will store the coefficients <img class="math" src="../_images/ma
 its <cite>coef_</cite> member:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">Ridge</span> <span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span> <span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="go">Ridge(alpha=0.5, copy_X=True, fit_intercept=True, normalize=False, tol=0.001)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span> <span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> 
+<span class="go">Ridge(alpha=0.5, copy_X=True, fit_intercept=True, max_iter=None,</span>
+<span class="go">      normalize=False, solver=&#39;auto&#39;, tol=0.001)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
 <span class="go">array([ 0.34545455,  0.34545455])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span> 
@@ -687,7 +692,7 @@ by MacKay, David J. C.</li>
 <div class="section" id="automatic-relevance-determination-ard">
 <h3>3.1.9.2. Automatic Relevance Determination - ARD<a class="headerlink" href="#automatic-relevance-determination-ard" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/sklearn.linear_model.ARDRegression.html#sklearn.linear_model.ARDRegression" title="sklearn.linear_model.ARDRegression"><tt class="xref py py-class docutils literal"><span class="pre">ARDRegression</span></tt></a> is very similar to <a class="reference internal" href="#id6">Bayesian Ridge Regression</a>,
-but can lead to sparser weights <img class="math" src="../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w"/> <a class="footnote-reference" href="#id8" id="id7">[1]</a>.
+but can lead to sparser weights <img class="math" src="../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w"/> <a class="footnote-reference" href="#id9" id="id7">[1]</a> <a class="footnote-reference" href="#id10" id="id8">[2]</a>.
 <a class="reference internal" href="generated/sklearn.linear_model.ARDRegression.html#sklearn.linear_model.ARDRegression" title="sklearn.linear_model.ARDRegression"><tt class="xref py py-class docutils literal"><span class="pre">ARDRegression</span></tt></a> poses a different prior over <img class="math" src="../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w"/>, by dropping the
 assumption of the Gaussian being spherical.</p>
 <p>Instead, the distribution over <img class="math" src="../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w"/> is assumed to be an axis-parallel,
@@ -699,7 +704,7 @@ centered on zero and with a precision <img class="math" src="../_images/math/40a
 </div><p>with <img class="math" src="../_images/math/c163c3841f9914167253079de0b0e677a423936b.png" alt="diag \; (A) = \lambda = \{\lambda_{1},...,\lambda_{p}\}"/>.</p>
 <p>In constrast to <a class="reference internal" href="#id6">Bayesian Ridge Regression</a>, each coordinate of <img class="math" src="../_images/math/9f7ea74f912169b3f3153d3fd6c9f5d6b3717549.png" alt="w_{i}"/>
 has its own standard deviation <img class="math" src="../_images/math/f9092807df2606b64909623baacf32bf722daff7.png" alt="\lambda_i"/>. The prior over all
-<img class="math" src="../_images/math/f9092807df2606b64909623baacf32bf722daff7.png" alt="\lambda_i"/> is choosen to be the same gamma distribution given by
+<img class="math" src="../_images/math/f9092807df2606b64909623baacf32bf722daff7.png" alt="\lambda_i"/> is chosen to be the same gamma distribution given by
 hyperparameters <img class="math" src="../_images/math/72519e3a9009a9367ff40876072dda5c24c4dfdf.png" alt="\lambda_1"/> and <img class="math" src="../_images/math/ee145dd82bf7803729dba9ca823eae73a80d6698.png" alt="\lambda_2"/>.</p>
 <div class="figure align-center">
 <a class="reference external image-reference" href="../auto_examples/linear_model/plot_ard.html"><img alt="../_images/plot_ard_11.png" src="../_images/plot_ard_11.png" style="width: 300.0px; height: 250.0px;" /></a>
@@ -712,17 +717,23 @@ hyperparameters <img class="math" src="../_images/math/72519e3a9009a9367ff408760
 </div>
 <div class="topic">
 <p class="topic-title first">References:</p>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[1]</a></td><td>David Wipf and Srikantan Nagarajan: <a class="reference external" href="http://books.nips.cc/papers/files/nips20/NIPS2007_0976.pdf">A new view of automatic relevance determination.</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id7">[1]</a></td><td>Christopher M. Bishop: Pattern Recognition and Machine Learning, Chapter 7.2.1</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[2]</a></td><td>David Wipf and Srikantan Nagarajan: <a class="reference external" href="http://books.nips.cc/papers/files/nips20/NIPS2007_0976.pdf">A new view of automatic relevance determination.</a></td></tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
 <div class="section" id="logistic-regression">
-<span id="id9"></span><h2>3.1.10. Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>3.1.10. Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h2>
 <p>Logistic regression, despite its name, is a linear model for classification
 rather than regression.
 As such, it minimizes a &#8220;hit or miss&#8221; cost function
@@ -780,20 +791,23 @@ learning. By default:</p>
 train than SGD with the hinge loss and that the resulting models are
 sparser.</p>
 </div>
-<div class="section" id="isotonic-regression">
-<h2>3.1.13. Isotonic regression<a class="headerlink" href="#isotonic-regression" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="xref py py-class docutils literal"><span class="pre">IsotonicRegression</span></tt> fits a non-decreasing function to the data.
-It solves the following problem:</p>
-<blockquote>
-<div><p>minimize <img class="math" src="../_images/math/122f033eb22d613ca3bd4f96c787c59d07251a1b.png" alt="\sum_i w_i (y_i - \hat{y}_i)^2"/></p>
-<p>subject to <img class="math" src="../_images/math/e2cd2de6d9733453d6548e1a97dce93a8c30d8c5.png" alt="\hat{y}_{min} = \hat{y}_1 \le \hat{y}_2 ... \le \hat{y}_n = \hat{y}_{max}"/></p>
-</div></blockquote>
-<p>where each <img class="math" src="../_images/math/535b2bfbb0a587e261a0d0af9b7b53e42629b14d.png" alt="w_i"/> is strictly positive and each <img class="math" src="../_images/math/6e6ceb79ebc4bf613298e0144eae25dd73de9be3.png" alt="y_i"/> is an
-arbitrary real number. It yields the vector which is composed of non-decreasing
-elements the closest in terms of mean squared error. In practice this list
-of elements forms a function that is piecewise linear.</p>
-<div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/images/plot_isotonic_regression.html"><img alt="../_images/plot_isotonic_regression_11.png" src="../_images/plot_isotonic_regression_11.png" /></a>
+<div class="section" id="passive-aggressive-algorithms">
+<h2>3.1.13. Passive Aggressive Algorithms<a class="headerlink" href="#passive-aggressive-algorithms" title="Permalink to this headline">¶</a></h2>
+<p>The passive-aggressive algorithms are a family of algorithms for large-scale
+learning. They are similar to the Pereptron in that they do not require a
+learning rate. However, contrary to the Perceptron, they include a
+regularization parameter <tt class="docutils literal"><span class="pre">C</span></tt>.</p>
+<p>For classification, <a class="reference internal" href="generated/sklearn.linear_model.PassiveAggressiveClassifier.html#sklearn.linear_model.PassiveAggressiveClassifier" title="sklearn.linear_model.PassiveAggressiveClassifier"><tt class="xref py py-class docutils literal"><span class="pre">PassiveAggressiveClassifier</span></tt></a> can be used with
+<tt class="docutils literal"><span class="pre">loss='hinge'</span></tt> (PA-I) or <tt class="docutils literal"><span class="pre">loss='squared_hinge'</span></tt> (PA-II).  For regression,
+<a class="reference internal" href="generated/sklearn.linear_model.PassiveAggressiveRegressor.html#sklearn.linear_model.PassiveAggressiveRegressor" title="sklearn.linear_model.PassiveAggressiveRegressor"><tt class="xref py py-class docutils literal"><span class="pre">PassiveAggressiveRegressor</span></tt></a> can be used with
+<tt class="docutils literal"><span class="pre">loss='epsilon_insensitive'</span></tt> (PA-I) or
+<tt class="docutils literal"><span class="pre">loss='squared_epsilon_insensitive'</span></tt> (PA-II).</p>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://jmlr.csail.mit.edu/papers/volume7/crammer06a/crammer06a.pdf">&#8220;Online Passive-Aggressive Algorithms&#8221;</a>
+K. Crammer, O. Dekel, J. Keshat, S. Shalev-Shwartz, Y. Singer - JMLR 7 (2006)</li>
+</ul>
 </div>
 </div>
 </div>

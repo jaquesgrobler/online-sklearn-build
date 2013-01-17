@@ -31,6 +31,8 @@
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
     <link rel="next" title="2. How to optimize for speed" href="performance.html" />
     <link rel="prev" title="Multi-output Decision Tree Regression" href="../auto_examples/tree/plot_tree_regression_multioutput.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -44,6 +46,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -125,7 +129,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -153,7 +157,8 @@
 <li><a class="reference internal" href="#estimators">1.6.2. Estimators</a><ul>
 <li><a class="reference internal" href="#instantiation">1.6.2.1. Instantiation</a></li>
 <li><a class="reference internal" href="#fitting">1.6.2.2. Fitting</a></li>
-<li><a class="reference internal" href="#optional-arguments">1.6.2.3. Optional Arguments</a></li>
+<li><a class="reference internal" href="#estimated-attributes">1.6.2.3. Estimated Attributes</a></li>
+<li><a class="reference internal" href="#optional-arguments">1.6.2.4. Optional Arguments</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#unresolved-api-issues">1.6.3. Unresolved API issues</a></li>
@@ -303,7 +308,8 @@ dimensionality: n_features is expected to be lower than 100&#8221;.</p>
 <p>You can also check for common programming errors with the following tools:</p>
 <blockquote>
 <div><ul>
-<li><p class="first">Code with a good unittest coverage (at least 80%), check with:</p>
+<li><p class="first">Code with a good unittest coverage (at least 90%, better 100%), check
+with:</p>
 <div class="highlight-python"><pre>$ pip install nose coverage
 $ nosetests --with-coverage path/to/tests_for_package</pre>
 </div>
@@ -337,6 +343,13 @@ and Cython optimizations.</p>
 all of those guidelines, but we expect that enforcing those constraints
 on all new contributions will get the overall code base quality in the
 right direction.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For two very well documented and more detailed guides on development
+workflow, please pay a visit to the <a class="reference external" href="http://docs.scipy.org/doc/numpy/dev/gitwash/development_workflow.html">Scipy Development Workflow</a> -
+and the <a class="reference external" href="http://astropy.readthedocs.org/en/latest/development/workflow/development_workflow.html">Astropy Workflow for Developers</a>
+sections.</p>
 </div>
 </div>
 <div class="section" id="easy-issues">
@@ -569,7 +582,8 @@ together than separately, implements:</p>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Model:</th><td class="field-body"><p class="first">A model that can give a goodness of fit or a likelihood of unseen
+<tr class="field-even field"><th class="field-name">Model:</th><td class="field-body"><p class="first">A model that can give a <a class="reference external" href="https://en.wikipedia.org/wiki/Goodness_of_fit">goodness of fit</a>
+measure or a likelihood of unseen
 data, implements (higher is better):</p>
 <div class="last highlight-python"><div class="highlight"><pre><span class="n">score</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
@@ -607,7 +621,10 @@ data as an argument, as this is left to the <tt class="docutils literal"><span c
 with a default value. In other words, a user should be able to instantiate
 an estimator without passing any arguments to it. The arguments should all
 correspond to hyperparameters describing the model or the optimisation
-problem the estimator tries to solve.</p>
+problem the estimator tries to solve. These initial arguments (or parameters)
+are always remembered by the estimator.
+Also note that they should not be documented under the <cite>Attributes</cite> section,
+but rather under the <cite>Parameters</cite> section for that estimator.</p>
 <p>In addition, <strong>every keyword argument accepted by ``__init__`` should
 correspond to an attribute on the instance</strong>. Scikit-learn relies on this to
 find the relevant attributes to set on an estimator when doing model selection.</p>
@@ -689,12 +706,19 @@ an affinity matrix which are precomputed from the data matrix <tt class="docutil
 data dependent. A tolerance stopping criterion <tt class="docutils literal"><span class="pre">tol</span></tt> is not directly
 data dependent (although the optimal value according to some scoring
 function probably is).</p>
-<p>Any attribute that ends with <tt class="docutils literal"><span class="pre">_</span></tt> is expected to be overridden when
+</div>
+<div class="section" id="estimated-attributes">
+<h4>1.6.2.3. Estimated Attributes<a class="headerlink" href="#estimated-attributes" title="Permalink to this headline">¶</a></h4>
+<p>Attributes that have been estimated from the data must always have a name
+ending with trailing underscore, for example the coefficients of
+some regression estimator would be stored in a <cite>coef_</cite> attribute after
+<cite>fit()</cite> has been called.</p>
+<p>The last-mentioned attributes are expected to be overridden when
 you call <tt class="docutils literal"><span class="pre">fit</span></tt> a second time without taking any previous value into
 account: <strong>fit should be idempotent</strong>.</p>
 </div>
 <div class="section" id="optional-arguments">
-<h4>1.6.2.3. Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline">¶</a></h4>
+<h4>1.6.2.4. Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline">¶</a></h4>
 <p>In iterative algorithms, the number of iterations should be specified by
 an integer called <tt class="docutils literal"><span class="pre">n_iter</span></tt>.</p>
 </div>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.15.1.19. sklearn.linear_model.Perceptron &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.17.19. sklearn.linear_model.Perceptron &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.15.1.20. sklearn.linear_model.SGDClassifier" href="sklearn.linear_model.SGDClassifier.html" />
-    <link rel="prev" title="8.15.1.18. sklearn.linear_model.OrthogonalMatchingPursuit" href="sklearn.linear_model.OrthogonalMatchingPursuit.html" />
+    <link rel="next" title="8.17.20. sklearn.linear_model.RandomizedLasso" href="sklearn.linear_model.RandomizedLasso.html" />
+    <link rel="prev" title="8.17.18. sklearn.linear_model.PassiveAggressiveRegressor" href="sklearn.linear_model.PassiveAggressiveRegressor.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.linear_model.OrthogonalMatchingPursuit.html" title="8.15.1.18. sklearn.linear_model.OrthogonalMatchingPursuit"
+	<a href="sklearn.linear_model.PassiveAggressiveRegressor.html" title="8.17.18. sklearn.linear_model.PassiveAggressiveRegressor"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.15.1.18. sklea...
+	    8.17.18. sklearn...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.15.1.18. sklearn.linear_model.OrthogonalMatchingPursuit
+	    8.17.18. sklearn.linear_model.PassiveAggressiveRegressor
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.linear_model.SGDClassifier.html" title="8.15.1.20. sklearn.linear_model.SGDClassifier"
+	<a href="sklearn.linear_model.RandomizedLasso.html" title="8.17.20. sklearn.linear_model.RandomizedLasso"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.15.1.20. sklea...
+	    8.17.20. sklearn...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.15.1.20. sklearn.linear_model.SGDClassifier
+	    8.17.20. sklearn.linear_model.RandomizedLasso
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.15.1.19. sklearn.linear_model.Perceptron</a></li>
+<li><a class="reference internal" href="#">8.17.19. sklearn.linear_model.Perceptron</a></li>
 </ul>
 
     
@@ -162,10 +166,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-linear-model-perceptron">
-<h1>8.15.1.19. sklearn.linear_model.Perceptron<a class="headerlink" href="#sklearn-linear-model-perceptron" title="Permalink to this headline">¶</a></h1>
+<h1>8.17.19. sklearn.linear_model.Perceptron<a class="headerlink" href="#sklearn-linear-model-perceptron" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.linear_model.Perceptron">
-<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">Perceptron</tt><big>(</big><em>penalty=None</em>, <em>alpha=0.0001</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>eta0=1.0</em>, <em>n_jobs=1</em>, <em>seed=0</em>, <em>class_weight=None</em>, <em>warm_start=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">Perceptron</tt><big>(</big><em>penalty=None</em>, <em>alpha=0.0001</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>eta0=1.0</em>, <em>n_jobs=1</em>, <em>random_state=0</em>, <em>class_weight=None</em>, <em>warm_start=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perceptron</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -195,7 +199,7 @@ Defaults to 5.</p>
 <div><p>Whether or not the training data should be shuffled after each epoch.
 Defaults to False.</p>
 </div></blockquote>
-<p><strong>seed: int, optional</strong> :</p>
+<p><strong>random_state: int seed, RandomState instance, or None (default)</strong> :</p>
 <blockquote>
 <div><p>The seed of the pseudo random number generator to use when
 shuffling the data.</p>
@@ -271,7 +275,7 @@ eta0=1, learning_rate=&#8221;constant&#8221;, penalty=None)</cite>.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.Perceptron.decision_function" title="sklearn.linear_model.Perceptron.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
-<td>Predict signed &#8216;distance&#8217; to the hyperplane (aka confidence score).</td>
+<td>Predict confidence scores for samples.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.Perceptron.fit" title="sklearn.linear_model.Perceptron.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;coef_init,&nbsp;intercept_init,&nbsp;...])</td>
 <td>Fit linear model with Stochastic Gradient Descent.</td>
@@ -282,17 +286,11 @@ eta0=1, learning_rate=&#8221;constant&#8221;, penalty=None)</cite>.</p>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.Perceptron.get_params" title="sklearn.linear_model.Perceptron.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for the estimator</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.Perceptron.partial_fit" title="sklearn.linear_model.Perceptron.partial_fit"><tt class="xref py py-obj docutils literal"><span class="pre">partial_fit</span></tt></a>(X,&nbsp;y[,&nbsp;classes,&nbsp;class_weight,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.Perceptron.partial_fit" title="sklearn.linear_model.Perceptron.partial_fit"><tt class="xref py py-obj docutils literal"><span class="pre">partial_fit</span></tt></a>(X,&nbsp;y[,&nbsp;classes,&nbsp;sample_weight])</td>
 <td>Fit linear model with Stochastic Gradient Descent.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.Perceptron.predict" title="sklearn.linear_model.Perceptron.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
-<td>Predict using the linear model.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.Perceptron.predict_log_proba" title="sklearn.linear_model.Perceptron.predict_log_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_log_proba</span></tt></a>(X)</td>
-<td>Log of probability estimates.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.Perceptron.predict_proba" title="sklearn.linear_model.Perceptron.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
-<td>Probability estimates.</td>
+<td>Predict class labels for samples in X.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.Perceptron.score" title="sklearn.linear_model.Perceptron.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
 <td>Returns the mean accuracy on the given test data and labels.</td>
@@ -307,23 +305,29 @@ eta0=1, learning_rate=&#8221;constant&#8221;, penalty=None)</cite>.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.linear_model.Perceptron.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>penalty=None</em>, <em>alpha=0.0001</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>eta0=1.0</em>, <em>n_jobs=1</em>, <em>seed=0</em>, <em>class_weight=None</em>, <em>warm_start=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>penalty=None</em>, <em>alpha=0.0001</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>eta0=1.0</em>, <em>n_jobs=1</em>, <em>random_state=0</em>, <em>class_weight=None</em>, <em>warm_start=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="sklearn.linear_model.Perceptron.decision_function">
 <tt class="descname">decision_function</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron.decision_function" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict signed &#8216;distance&#8217; to the hyperplane (aka confidence score).</p>
+<dd><p>Predict confidence scores for samples.</p>
+<p>The confidence score for a sample is the signed distance of that
+sample to the hyperplane.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Samples.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>array, shape = [n_samples] if n_classes == 2 else [n_samples,n_classes]</strong> :</p>
 <blockquote class="last">
-<div><p>The signed &#8216;distances&#8217; to the hyperplane(s).</p>
+<div><p>Confidence scores per (sample, class) combination. In the binary
+case, confidence score for the &#8220;positive&#8221; class.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -397,10 +401,6 @@ and returns a transformed version of X.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>This method just calls fit and transform consecutively, i.e., it is not
-an optimized implementation of fit_transform, unlike other transformers
-such as PCA.</p>
 </dd></dl>
 
 <dl class="method">
@@ -424,7 +424,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="sklearn.linear_model.Perceptron.partial_fit">
-<tt class="descname">partial_fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>classes=None</em>, <em>class_weight=None</em>, <em>sample_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron.partial_fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">partial_fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>classes=None</em>, <em>sample_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron.partial_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit linear model with Stochastic Gradient Descent.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -464,72 +464,25 @@ If not provided, uniform weights are assumed.</p>
 <dl class="method">
 <dt id="sklearn.linear_model.Perceptron.predict">
 <tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict using the linear model.</p>
+<dd><p>Predict class labels for samples in X.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Samples.</p>
+</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>array, shape = [n_samples]</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array, shape = [n_samples]</p>
 <blockquote class="last">
-<div><p>Array containing the predicted class labels.</p>
+<div><p>Predicted class label per sample.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sklearn.linear_model.Perceptron.predict_log_proba">
-<tt class="descname">predict_log_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron.predict_log_proba" title="Permalink to this definition">¶</a></dt>
-<dd><p>Log of probability estimates.</p>
-<p>Log probability estimates are only supported for binary classification.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>T</strong> : array-like, shape = [n_samples, n_classes]</p>
-<blockquote class="last">
-<div><p>Returns the log-probability of the sample for each class in the
-model, where classes are ordered as they are in <a href="#id1"><span class="problematic" id="id2">self.classes_</span></a>.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sklearn.linear_model.Perceptron.predict_proba">
-<tt class="descname">predict_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron.predict_proba" title="Permalink to this definition">¶</a></dt>
-<dd><p>Probability estimates.</p>
-<p>Probability estimates are only supported for binary classification.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = [n_samples, n_features]</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>array, shape = [n_samples, n_classes]</strong> :</p>
-<blockquote class="last">
-<div><p>Returns the probability of the sample for each class in the model,
-where classes are ordered as they are in <a href="#id3"><span class="problematic" id="id4">self.classes_</span></a>.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">References</p>
-<p>The justification for the formula in the loss=&#8221;modified_huber&#8221;
-case is in the appendix B in:
-<a class="reference external" href="http://jmlr.csail.mit.edu/papers/volume2/zhang02c/zhang02c.pdf">http://jmlr.csail.mit.edu/papers/volume2/zhang02c/zhang02c.pdf</a></p>
 </dd></dl>
 
 <dl class="method">
@@ -614,12 +567,12 @@ available, the object attribute <tt class="docutils literal"><span class="pre">t
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.linear_model.OrthogonalMatchingPursuit.html">
+      <a href="sklearn.linear_model.PassiveAggressiveRegressor.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.linear_model.SGDClassifier.html">
+      <a href="sklearn.linear_model.RandomizedLasso.html">
         Next
       </a>
     </div>

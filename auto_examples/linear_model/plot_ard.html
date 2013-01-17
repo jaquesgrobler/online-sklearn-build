@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Bayesian Ridge Regression" href="plot_bayesian_ridge.html" />
     <link rel="prev" title="Gaussian Processes regression: goodness-of-fit on the ‘diabetes’ dataset" href="../gaussian_process/gp_diabetes_dataset.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -170,6 +174,14 @@ weights are slightly shifted toward zeros, wich stabilises them.</p>
 prior is implied on the weights.</p>
 <p>The estimation of the model is done by iteratively maximizing the
 marginal log-likelihood of the observations.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../../_images/plot_ard_2.png"><img alt="../../_images/plot_ard_2.png" src="../../_images/plot_ard_2.png" style="width: 282.0px; height: 235.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_ard_3.png"><img alt="../../_images/plot_ard_3.png" src="../../_images/plot_ard_3.png" style="width: 282.0px; height: 235.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_ard_1.png"><img alt="../../_images/plot_ard_1.png" src="../../_images/plot_ard_1.png" style="width: 282.0px; height: 235.0px;" /></a>
+</li>
+</ul>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_ard.py"><tt class="xref download docutils literal"><span class="pre">plot_ard.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -224,7 +236,7 @@ marginal log-likelihood of the observations.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Histogram of the weights&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="n">relevant_features</span><span class="p">],</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">relevant_features</span><span class="p">)),</span>
-         <span class="s">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;Relevant features&quot;</span><span class="p">)</span>
+        <span class="s">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;Relevant features&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;Features&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;Values of the weights&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -237,6 +249,7 @@ marginal log-likelihood of the observations.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.40 seconds</p>
 </div>
 
 

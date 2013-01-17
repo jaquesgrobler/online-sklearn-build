@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.15.1.2. sklearn.linear_model.Ridge &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.17.22. sklearn.linear_model.Ridge &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.15.1.3. sklearn.linear_model.RidgeClassifier" href="sklearn.linear_model.RidgeClassifier.html" />
-    <link rel="prev" title="8.15.1.1. sklearn.linear_model.LinearRegression" href="sklearn.linear_model.LinearRegression.html" />
+    <link rel="next" title="8.17.23. sklearn.linear_model.RidgeClassifier" href="sklearn.linear_model.RidgeClassifier.html" />
+    <link rel="prev" title="8.17.21. sklearn.linear_model.RandomizedLogisticRegression" href="sklearn.linear_model.RandomizedLogisticRegression.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.linear_model.LinearRegression.html" title="8.15.1.1. sklearn.linear_model.LinearRegression"
+	<a href="sklearn.linear_model.RandomizedLogisticRegression.html" title="8.17.21. sklearn.linear_model.RandomizedLogisticRegression"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.15.1.1. sklear...
+	    8.17.21. sklearn...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.15.1.1. sklearn.linear_model.LinearRegression
+	    8.17.21. sklearn.linear_model.RandomizedLogisticRegression
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.linear_model.RidgeClassifier.html" title="8.15.1.3. sklearn.linear_model.RidgeClassifier"
+	<a href="sklearn.linear_model.RidgeClassifier.html" title="8.17.23. sklearn.linear_model.RidgeClassifier"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.15.1.3. sklear...
+	    8.17.23. sklearn...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.15.1.3. sklearn.linear_model.RidgeClassifier
+	    8.17.23. sklearn.linear_model.RidgeClassifier
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.15.1.2. sklearn.linear_model.Ridge</a></li>
+<li><a class="reference internal" href="#">8.17.22. sklearn.linear_model.Ridge</a></li>
 </ul>
 
     
@@ -162,16 +166,16 @@
           <div class="body">
             
   <div class="section" id="sklearn-linear-model-ridge">
-<h1>8.15.1.2. sklearn.linear_model.Ridge<a class="headerlink" href="#sklearn-linear-model-ridge" title="Permalink to this headline">¶</a></h1>
+<h1>8.17.22. sklearn.linear_model.Ridge<a class="headerlink" href="#sklearn-linear-model-ridge" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.linear_model.Ridge">
-<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">Ridge</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>tol=0.001</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Ridge" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">Ridge</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>max_iter=None</em>, <em>tol=0.001</em>, <em>solver='auto'</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Ridge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Linear least squares with l2 regularization.</p>
 <p>This model solves a regression model where the loss function is
 the linear least squares function and regularization is given by
 the l2-norm. Also known as Ridge Regression or Tikhonov regularization.
 This estimator has built-in support for multi-variate regression
-(i.e., when y is a 2d-array of shape [n_samples, n_responses]).</p>
+(i.e., when y is a 2d-array of shape [n_samples, n_targets]).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -183,19 +187,41 @@ and reduce the variance of the estimates.  Alpha corresponds to
 <tt class="docutils literal"><span class="pre">(2*C)^-1</span></tt> in other linear models such as LogisticRegression or
 LinearSVC.</p>
 </div></blockquote>
+<p><strong>copy_X</strong> : boolean, optional, default True</p>
+<blockquote>
+<div><p>If True, X will be copied; else, it may be overwritten.</p>
+</div></blockquote>
 <p><strong>fit_intercept</strong> : boolean</p>
 <blockquote>
 <div><p>Whether to calculate the intercept for this model. If set
 to false, no intercept will be used in calculations
 (e.g. data is expected to be already centered).</p>
 </div></blockquote>
+<p><strong>max_iter</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximum number of iterations for conjugate gradient solver.
+The default value is determined by scipy.sparse.linalg.</p>
+</div></blockquote>
 <p><strong>normalize</strong> : boolean, optional</p>
 <blockquote>
 <div><p>If True, the regressors X are normalized</p>
 </div></blockquote>
-<p><strong>copy_X</strong> : boolean, optional, default True</p>
+<p><strong>solver</strong> : {&#8216;auto&#8217;, &#8216;dense_cholesky&#8217;, &#8216;lsqr&#8217;, &#8216;sparse_cg&#8217;}</p>
 <blockquote>
-<div><p>If True, X will be copied; else, it may be overwritten.</p>
+<div><p>Solver to use in the computational routines:</p>
+<ul class="simple">
+<li>&#8216;auto&#8217; chooses the solver automatically based on the type of data.</li>
+<li>&#8216;dense_cholesky&#8217; uses the standard scipy.linalg.solve function to
+obtain a closed-form solution.</li>
+<li>&#8216;sparse_cg&#8217; uses the conjugate gradient solver as found in
+scipy.sparse.linalg.cg. As an iterative algorithm, this solver is
+more appropriate than &#8216;dense_cholesky&#8217; for large-scale data
+(possibility to set <cite>tol</cite> and <cite>max_iter</cite>).</li>
+<li>&#8216;lsqr&#8217; uses the dedicated regularized least-squares routine
+scipy.sparse.linalg.lsqr. It is the fatest but may not be available
+in old scipy versions. It also uses an iterative procedure.</li>
+</ul>
+<p>All three solvers support both dense and sparse data.</p>
 </div></blockquote>
 <p><strong>tol</strong> : float</p>
 <blockquote class="last">
@@ -218,20 +244,20 @@ to false, no intercept will be used in calculations
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> 
-<span class="go">Ridge(alpha=1.0, copy_X=True, fit_intercept=True, normalize=False,</span>
-<span class="go">   tol=0.001)</span>
+<span class="go">Ridge(alpha=1.0, copy_X=True, fit_intercept=True, max_iter=None,</span>
+<span class="go">      normalize=False, solver=&#39;auto&#39;, tol=0.001)</span>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
-<col width="70%" />
-<col width="21%" />
+<col width="69%" />
+<col width="22%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><cite>coef_</cite></td>
-<td>array, shape = [n_features] or [n_responses, n_features]</td>
+<td>array, shape = [n_features] or [n_targets, n_features]</td>
 <td>Weight vector(s).</td>
 </tr>
 </tbody>
@@ -265,7 +291,7 @@ to false, no intercept will be used in calculations
 </table>
 <dl class="method">
 <dt id="sklearn.linear_model.Ridge.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>tol=0.001</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Ridge.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>max_iter=None</em>, <em>tol=0.001</em>, <em>solver='auto'</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Ridge.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -291,7 +317,7 @@ to false, no intercept will be used in calculations
 
 <dl class="method">
 <dt id="sklearn.linear_model.Ridge.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>sample_weight=1.0</em>, <em>solver='auto'</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Ridge.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>sample_weight=1.0</em>, <em>solver=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Ridge.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit Ridge regression model</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -301,22 +327,13 @@ to false, no intercept will be used in calculations
 <blockquote>
 <div><p>Training data</p>
 </div></blockquote>
-<p><strong>y</strong> : array-like, shape = [n_samples] or [n_samples, n_responses]</p>
+<p><strong>y</strong> : array-like, shape = [n_samples] or [n_samples, n_targets]</p>
 <blockquote>
 <div><p>Target values</p>
 </div></blockquote>
 <p><strong>sample_weight</strong> : float or numpy array of shape [n_samples]</p>
 <blockquote>
 <div><p>Individual weights for each sample</p>
-</div></blockquote>
-<p><strong>solver</strong> : {&#8216;auto&#8217;, &#8216;dense_cholesky&#8217;, &#8216;sparse_cg&#8217;}</p>
-<blockquote>
-<div><p>Solver to use in the computational
-routines. &#8216;dense_cholesky&#8217; will use the standard
-scipy.linalg.solve function, &#8216;sparse_cg&#8217; will use the
-conjugate gradient solver as found in
-scipy.sparse.linalg.cg while &#8216;auto&#8217; will chose the most
-appropriate depending on the matrix X.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -434,7 +451,7 @@ component of a nested object.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.linear_model.LinearRegression.html">
+      <a href="sklearn.linear_model.RandomizedLogisticRegression.html">
         Previous
       </a>
     </div>

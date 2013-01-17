@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Nearest Neighbors Classification" href="../neighbors/plot_classification.html" />
     <link rel="prev" title="Gaussian Mixture Model Selection" href="plot_gmm_selection.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -172,6 +176,7 @@ little structure. The fits by the dirichlet process, however, show
 that the model can either learn a global structure for the data (small
 alpha) or easily interpolate to finding relevant local structure
 (large alpha), never falling into the problems shown by the GMM class.</p>
+<img alt="../../_images/plot_gmm_sin_1.png" class="align-center" src="../../_images/plot_gmm_sin_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_gmm_sin.py"><tt class="xref download docutils literal"><span class="pre">plot_gmm_sin.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">itertools</span>
 
@@ -200,15 +205,14 @@ alpha) or easily interpolate to finding relevant local structure
 
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span>
-        <span class="p">(</span><span class="n">mixture</span><span class="o">.</span><span class="n">GMM</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s">&#39;full&#39;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> \
-             <span class="s">&quot;Expectation-maximization&quot;</span><span class="p">),</span>
-        <span class="p">(</span><span class="n">mixture</span><span class="o">.</span><span class="n">DPGMM</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s">&#39;full&#39;</span><span class="p">,</span>
-                       <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">mixture</span><span class="o">.</span><span class="n">GMM</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s">&#39;full&#39;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+         <span class="s">&quot;Expectation-maximization&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">mixture</span><span class="o">.</span><span class="n">DPGMM</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s">&#39;full&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                       <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
          <span class="s">&quot;Dirichlet Process,alpha=0.01&quot;</span><span class="p">),</span>
-        <span class="p">(</span><span class="n">mixture</span><span class="o">.</span><span class="n">DPGMM</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s">&#39;diag&#39;</span><span class="p">,</span>
-                       <span class="n">alpha</span><span class="o">=</span><span class="mf">100.</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
-         <span class="s">&quot;Dirichlet Process,alpha=100.&quot;</span><span class="p">)</span>
-        <span class="p">]):</span>
+        <span class="p">(</span><span class="n">mixture</span><span class="o">.</span><span class="n">DPGMM</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s">&#39;diag&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">100.</span><span class="p">,</span>
+                       <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+         <span class="s">&quot;Dirichlet Process,alpha=100.&quot;</span><span class="p">)]):</span>
 
     <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="n">splot</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>
@@ -241,6 +245,7 @@ alpha) or easily interpolate to finding relevant local structure
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.49 seconds</p>
 </div>
 
 

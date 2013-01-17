@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.15.1.9. sklearn.linear_model.ElasticNetCV &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.17.4. sklearn.linear_model.ElasticNetCV &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.15.1.10. sklearn.linear_model.MultiTaskLasso" href="sklearn.linear_model.MultiTaskLasso.html" />
-    <link rel="prev" title="8.15.2.2. sklearn.linear_model.ElasticNet" href="sklearn.linear_model.ElasticNet.html" />
+    <link rel="next" title="8.17.5. sklearn.linear_model.Lars" href="sklearn.linear_model.Lars.html" />
+    <link rel="prev" title="8.17.3. sklearn.linear_model.ElasticNet" href="sklearn.linear_model.ElasticNet.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.linear_model.ElasticNet.html" title="8.15.2.2. sklearn.linear_model.ElasticNet"
+	<a href="sklearn.linear_model.ElasticNet.html" title="8.17.3. sklearn.linear_model.ElasticNet"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.15.2.2. sklear...
+	    8.17.3. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.15.2.2. sklearn.linear_model.ElasticNet
+	    8.17.3. sklearn.linear_model.ElasticNet
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.linear_model.MultiTaskLasso.html" title="8.15.1.10. sklearn.linear_model.MultiTaskLasso"
+	<a href="sklearn.linear_model.Lars.html" title="8.17.5. sklearn.linear_model.Lars"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.15.1.10. sklea...
+	    8.17.5. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.15.1.10. sklearn.linear_model.MultiTaskLasso
+	    8.17.5. sklearn.linear_model.Lars
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.15.1.9. sklearn.linear_model.ElasticNetCV</a></li>
+<li><a class="reference internal" href="#">8.17.4. sklearn.linear_model.ElasticNetCV</a></li>
 </ul>
 
     
@@ -162,26 +166,26 @@
           <div class="body">
             
   <div class="section" id="sklearn-linear-model-elasticnetcv">
-<h1>8.15.1.9. sklearn.linear_model.ElasticNetCV<a class="headerlink" href="#sklearn-linear-model-elasticnetcv" title="Permalink to this headline">¶</a></h1>
+<h1>8.17.4. sklearn.linear_model.ElasticNetCV<a class="headerlink" href="#sklearn-linear-model-elasticnetcv" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.linear_model.ElasticNetCV">
-<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">ElasticNetCV</tt><big>(</big><em>rho=0.5</em>, <em>eps=0.001</em>, <em>n_alphas=100</em>, <em>alphas=None</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>precompute='auto'</em>, <em>max_iter=1000</em>, <em>tol=0.0001</em>, <em>cv=None</em>, <em>copy_X=True</em>, <em>verbose=0</em>, <em>n_jobs=1</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.ElasticNetCV" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">ElasticNetCV</tt><big>(</big><em>l1_ratio=0.5</em>, <em>eps=0.001</em>, <em>n_alphas=100</em>, <em>alphas=None</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>precompute='auto'</em>, <em>max_iter=1000</em>, <em>tol=0.0001</em>, <em>cv=None</em>, <em>copy_X=True</em>, <em>verbose=0</em>, <em>n_jobs=1</em>, <em>rho=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.ElasticNetCV" title="Permalink to this definition">¶</a></dt>
 <dd><p>Elastic Net model with iterative fitting along a regularization path</p>
 <p>The best model is selected by cross-validation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>rho</strong> : float, optional</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>l1_ratio</strong> : float, optional</p>
 <blockquote>
 <div><p>float between 0 and 1 passed to ElasticNet (scaling between
-l1 and l2 penalties). For rho = 0
-the penalty is an L1 penalty. For rho = 1 it is an L1 penalty.
-For 0 &lt; rho &lt; 1, the penalty is a combination of L1 and L2
+l1 and l2 penalties). For l1_ratio = 0
+the penalty is an L2 penalty. For l1_ratio = 1 it is an L1 penalty.
+For 0 &lt; l1_ratio &lt; 1, the penalty is a combination of L1 and L2
 This parameter can be a list, in which case the different
 values are tested by cross-validation and the one giving the best
 prediction score is used. Note that a good choice of list of
-values for rho is often to put more values close to 1
+values for l1_ratio is often to put more values close to 1
 (i.e. Lasso) and less close to 0 (i.e. Ridge), as in [.1, .5, .7,
 .9, .95, .99, 1]</p>
 </div></blockquote>
@@ -230,7 +234,7 @@ sklearn.cross_validation module for the list of possible objects</p>
 <blockquote class="last">
 <div><p>Number of CPUs to use during the cross validation. If &#8216;-1&#8217;, use
 all the CPUs. Note that this is used only if multiple values for
-rho are given.</p>
+l1_ratio are given.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -245,11 +249,12 @@ rho are given.</p>
 for an example.</p>
 <p>To avoid unnecessary memory duplication the X argument of the fit method
 should be directly passed as a fortran contiguous numpy array.</p>
-<p>The parameter rho corresponds to alpha in the glmnet R package
+<p>The parameter l1_ratio corresponds to alpha in the glmnet R package
 while alpha corresponds to the lambda parameter in glmnet.
 More specifically, the optimization objective is:</p>
 <div class="highlight-python"><pre>1 / (2 * n_samples) * ||y - Xw||^2_2 +
-+ alpha * rho * ||w||_1 + 0.5 * alpha * (1 - rho) * ||w||^2_2</pre>
++ alpha * l1_ratio * ||w||_1
++ 0.5 * alpha * (1 - l1_ratio) * ||w||^2_2</pre>
 </div>
 <p>If you are interested in controlling the L1 and L2 penalty
 separately, keep in mind that this is equivalent to:</p>
@@ -257,14 +262,13 @@ separately, keep in mind that this is equivalent to:</p>
 </pre></div>
 </div>
 <p>for:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">alpha</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="ow">and</span> <span class="n">rho</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python"><pre>alpha = a + b and l1_ratio = a / (a + b).</pre>
 </div>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
-<col width="34%" />
+<col width="36%" />
 <col width="55%" />
 </colgroup>
 <tbody valign="top">
@@ -272,23 +276,23 @@ separately, keep in mind that this is equivalent to:</p>
 <td>float</td>
 <td>The amount of penalization choosen by cross validation</td>
 </tr>
-<tr class="row-even"><td><cite>rho_</cite></td>
+<tr class="row-even"><td><cite>l1_ratio_</cite></td>
 <td>float</td>
 <td>The compromise between l1 and l2 penalization choosen by
 cross validation</td>
 </tr>
 <tr class="row-odd"><td><cite>coef_</cite></td>
 <td>array, shape = (n_features,)</td>
-<td>parameter vector (w in the cost function formula)</td>
+<td>Parameter vector (w in the cost function formula),</td>
 </tr>
 <tr class="row-even"><td><cite>intercept_</cite></td>
 <td>float</td>
-<td>independent term in decision function.</td>
+<td>Independent term in the decision function.</td>
 </tr>
 <tr class="row-odd"><td><cite>mse_path_</cite></td>
-<td>array, shape = (n_rho, n_alpha, n_folds)</td>
-<td>mean square error for the test set on each fold, varying rho and
-alpha</td>
+<td>array, shape = (n_l1_ratio, n_alpha, n_folds)</td>
+<td>Mean square error for the test set on each fold, varying l1_ratio and
+alpha.</td>
 </tr>
 </tbody>
 </table>
@@ -308,7 +312,7 @@ alpha</td>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.ElasticNetCV.get_params" title="sklearn.linear_model.ElasticNetCV.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for the estimator</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.ElasticNetCV.path" title="sklearn.linear_model.ElasticNetCV.path"><tt class="xref py py-obj docutils literal"><span class="pre">path</span></tt></a>(X,&nbsp;y[,&nbsp;rho,&nbsp;eps,&nbsp;n_alphas,&nbsp;alphas,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.ElasticNetCV.path" title="sklearn.linear_model.ElasticNetCV.path"><tt class="xref py py-obj docutils literal"><span class="pre">path</span></tt></a>(X,&nbsp;y[,&nbsp;l1_ratio,&nbsp;eps,&nbsp;n_alphas,&nbsp;...])</td>
 <td>Compute Elastic-Net path with coordinate descent</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.ElasticNetCV.predict" title="sklearn.linear_model.ElasticNetCV.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
@@ -324,7 +328,7 @@ alpha</td>
 </table>
 <dl class="method">
 <dt id="sklearn.linear_model.ElasticNetCV.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>rho=0.5</em>, <em>eps=0.001</em>, <em>n_alphas=100</em>, <em>alphas=None</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>precompute='auto'</em>, <em>max_iter=1000</em>, <em>tol=0.0001</em>, <em>cv=None</em>, <em>copy_X=True</em>, <em>verbose=0</em>, <em>n_jobs=1</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.ElasticNetCV.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>l1_ratio=0.5</em>, <em>eps=0.001</em>, <em>n_alphas=100</em>, <em>alphas=None</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>precompute='auto'</em>, <em>max_iter=1000</em>, <em>tol=0.0001</em>, <em>cv=None</em>, <em>copy_X=True</em>, <em>verbose=0</em>, <em>n_jobs=1</em>, <em>rho=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.ElasticNetCV.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -393,11 +397,12 @@ contained subobjects that are estimators.</p>
 
 <dl class="staticmethod">
 <dt id="sklearn.linear_model.ElasticNetCV.path">
-<em class="property">static </em><tt class="descname">path</tt><big>(</big><em>X</em>, <em>y</em>, <em>rho=0.5</em>, <em>eps=0.001</em>, <em>n_alphas=100</em>, <em>alphas=None</em>, <em>precompute='auto'</em>, <em>Xy=None</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>verbose=False</em>, <em>**params</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.ElasticNetCV.path" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><tt class="descname">path</tt><big>(</big><em>X</em>, <em>y</em>, <em>l1_ratio=0.5</em>, <em>eps=0.001</em>, <em>n_alphas=100</em>, <em>alphas=None</em>, <em>precompute='auto'</em>, <em>Xy=None</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>verbose=False</em>, <em>rho=None</em>, <em>**params</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.ElasticNetCV.path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Elastic-Net path with coordinate descent</p>
 <p>The Elastic Net optimization function is:</p>
 <div class="highlight-python"><pre>1 / (2 * n_samples) * ||y - Xw||^2_2 +
-+ alpha * rho * ||w||_1 + 0.5 * alpha * (1 - rho) * ||w||^2_2</pre>
++ alpha * l1_ratio * ||w||_1
++ 0.5 * alpha * (1 - l1_ratio) * ||w||^2_2</pre>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -412,10 +417,10 @@ unnecessary memory duplication</p>
 <blockquote>
 <div><p>Target values</p>
 </div></blockquote>
-<p><strong>rho</strong> : float, optional</p>
+<p><strong>l1_ratio</strong> : float, optional</p>
 <blockquote>
 <div><p>float between 0 and 1 passed to ElasticNet (scaling between
-l1 and l2 penalties). rho=1 corresponds to the Lasso</p>
+l1 and l2 penalties). l1_ratio=1 corresponds to the Lasso</p>
 </div></blockquote>
 <p><strong>eps</strong> : float</p>
 <blockquote>
@@ -570,7 +575,7 @@ component of a nested object.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.linear_model.MultiTaskLasso.html">
+      <a href="sklearn.linear_model.Lars.html">
         Next
       </a>
     </div>

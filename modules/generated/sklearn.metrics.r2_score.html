@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.2.1. sklearn.metrics.r2_score &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.19.2.4. sklearn.metrics.r2_score &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.2.2. sklearn.metrics.mean_squared_error" href="sklearn.metrics.mean_squared_error.html" />
-    <link rel="prev" title="8.17.1.15. sklearn.metrics.hinge_loss" href="sklearn.metrics.hinge_loss.html" />
+    <link rel="next" title="8.19.3.1. sklearn.metrics.adjusted_mutual_info_score" href="sklearn.metrics.adjusted_mutual_info_score.html" />
+    <link rel="prev" title="8.19.2.3. sklearn.metrics.mean_squared_error" href="sklearn.metrics.mean_squared_error.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.hinge_loss.html" title="8.17.1.15. sklearn.metrics.hinge_loss"
+	<a href="sklearn.metrics.mean_squared_error.html" title="8.19.2.3. sklearn.metrics.mean_squared_error"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.17.1.15. sklea...
+	    8.19.2.3. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.1.15. sklearn.metrics.hinge_loss
+	    8.19.2.3. sklearn.metrics.mean_squared_error
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.mean_squared_error.html" title="8.17.2.2. sklearn.metrics.mean_squared_error"
+	<a href="sklearn.metrics.adjusted_mutual_info_score.html" title="8.19.3.1. sklearn.metrics.adjusted_mutual_info_score"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.17.2.2. sklear...
+	    8.19.3.1. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.2.2. sklearn.metrics.mean_squared_error
+	    8.19.3.1. sklearn.metrics.adjusted_mutual_info_score
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.17.2.1. sklearn.metrics.r2_score</a></li>
+<li><a class="reference internal" href="#">8.19.2.4. sklearn.metrics.r2_score</a></li>
 </ul>
 
     
@@ -162,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-r2-score">
-<h1>8.17.2.1. sklearn.metrics.r2_score<a class="headerlink" href="#sklearn-metrics-r2-score" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.2.4. sklearn.metrics.r2_score<a class="headerlink" href="#sklearn-metrics-r2-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.r2_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">r2_score</tt><big>(</big><em>y_true</em>, <em>y_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.r2_score" title="Permalink to this definition">¶</a></dt>
@@ -172,8 +176,14 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like</p>
-<p><strong>y_pred</strong> : array-like</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like of shape = [n_samples] or [n_samples, n_outputs]</p>
+<blockquote>
+<div><p>Ground truth (correct) target values.</p>
+</div></blockquote>
+<p><strong>y_pred</strong> : array-like of shape = [n_samples] or [n_samples, n_outputs]</p>
+<blockquote>
+<div><p>Estimated target values.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>z</strong> : float</p>
@@ -188,6 +198,18 @@
 <p>This is not a symmetric function.</p>
 <p class="rubric">References</p>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Coefficient_of_determination">http://en.wikipedia.org/wiki/Coefficient_of_determination</a></p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>  
+<span class="go">0.948...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>  
+<span class="go">0.938...</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -211,12 +233,12 @@
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.metrics.hinge_loss.html">
+      <a href="sklearn.metrics.mean_squared_error.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.metrics.mean_squared_error.html">
+      <a href="sklearn.metrics.adjusted_mutual_info_score.html">
         Next
       </a>
     </div>

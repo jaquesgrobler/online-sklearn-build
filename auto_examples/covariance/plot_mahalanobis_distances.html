@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Outlier detection with several methods." href="plot_outlier_detection.html" />
     <link rel="prev" title="Ledoit-Wolf vs OAS estimation" href="plot_lw_vs_oas.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -203,6 +207,7 @@ are represented in the boxplot, as Wilson and Hilferty suggest [2]</p>
 <dd>Proceedings of the National Academy of Sciences of the United States
 of America, 17, 684-688.</dd>
 </dl>
+<img alt="../../_images/plot_mahalanobis_distances_1.png" class="align-center" src="../../_images/plot_mahalanobis_distances_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_mahalanobis_distances.py"><tt class="xref download docutils literal"><span class="pre">plot_mahalanobis_distances.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -258,13 +263,12 @@ of America, 17, 684-688.</dd>
 <span class="n">mahal_robust_cov</span> <span class="o">=</span> <span class="n">robust_cov</span><span class="o">.</span><span class="n">mahalanobis</span><span class="p">(</span><span class="n">zz</span><span class="p">)</span>
 <span class="n">mahal_robust_cov</span> <span class="o">=</span> <span class="n">mahal_robust_cov</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">robust_contour</span> <span class="o">=</span> <span class="n">subfig1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mahal_robust_cov</span><span class="p">),</span>
-                                <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">YlOrBr_r</span><span class="p">,</span>
-                                <span class="n">linestyles</span><span class="o">=</span><span class="s">&#39;dotted&#39;</span><span class="p">)</span>
+                                 <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">YlOrBr_r</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s">&#39;dotted&#39;</span><span class="p">)</span>
 
-<span class="n">subfig1</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">emp_cov_contour</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                <span class="n">robust_contour</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">inlier_plot</span><span class="p">,</span> <span class="n">outlier_plot</span><span class="p">],</span>
-                <span class="p">[</span><span class="s">&#39;MLE dist&#39;</span><span class="p">,</span> <span class="s">&#39;robust dist&#39;</span><span class="p">,</span> <span class="s">&#39;inliers&#39;</span><span class="p">,</span> <span class="s">&#39;outliers&#39;</span><span class="p">],</span>
-                <span class="n">loc</span><span class="o">=</span><span class="s">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">subfig1</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">emp_cov_contour</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">robust_contour</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">inlier_plot</span><span class="p">,</span> <span class="n">outlier_plot</span><span class="p">],</span>
+               <span class="p">[</span><span class="s">&#39;MLE dist&#39;</span><span class="p">,</span> <span class="s">&#39;robust dist&#39;</span><span class="p">,</span> <span class="s">&#39;inliers&#39;</span><span class="p">,</span> <span class="s">&#39;outliers&#39;</span><span class="p">],</span>
+               <span class="n">loc</span><span class="o">=</span><span class="s">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
 
@@ -297,6 +301,7 @@ of America, 17, 684-688.</dd>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.27 seconds</p>
 </div>
 
 

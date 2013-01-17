@@ -32,6 +32,8 @@
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.3.8. sklearn.cross_validation.ShuffleSplit" href="sklearn.cross_validation.ShuffleSplit.html" />
     <link rel="prev" title="8.3.6. sklearn.cross_validation.LeavePOut" href="sklearn.cross_validation.LeavePOut.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -165,7 +169,7 @@
 <h1>8.3.7. sklearn.cross_validation.StratifiedKFold<a class="headerlink" href="#sklearn-cross-validation-stratifiedkfold" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.cross_validation.StratifiedKFold">
-<em class="property">class </em><tt class="descclassname">sklearn.cross_validation.</tt><tt class="descname">StratifiedKFold</tt><big>(</big><em>y</em>, <em>k</em>, <em>indices=True</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.StratifiedKFold" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.cross_validation.</tt><tt class="descname">StratifiedKFold</tt><big>(</big><em>y</em>, <em>n_folds=3</em>, <em>indices=True</em>, <em>k=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.StratifiedKFold" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stratified K-Folds cross validation iterator</p>
 <p>Provides train/test indices to split data in train test sets.</p>
 <p>This cross-validation object is a variation of KFold, which
@@ -175,15 +179,15 @@ the percentage of samples for each class.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y: array, [n_samples]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y</strong> : array-like, [n_samples]</p>
 <blockquote>
-<div><p>Samples to split in K folds</p>
+<div><p>Samples to split in K folds.</p>
 </div></blockquote>
-<p><strong>k: int</strong> :</p>
+<p><strong>n_folds</strong> : int, default=3</p>
 <blockquote>
-<div><p>Number of folds</p>
+<div><p>Number of folds.</p>
 </div></blockquote>
-<p><strong>indices: boolean, optional (default True)</strong> :</p>
+<p><strong>indices</strong> : boolean, optional (default True)</p>
 <blockquote class="last">
 <div><p>Return train/test split as arrays of indices, rather than a boolean
 mask array. Integer indices are required when dealing with sparse
@@ -200,11 +204,11 @@ complementary.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">skf</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">skf</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n_folds</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">skf</span><span class="p">)</span>
 <span class="go">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">skf</span><span class="p">)</span>
-<span class="go">sklearn.cross_validation.StratifiedKFold(labels=[0 0 1 1], k=2)</span>
+<span class="go">sklearn.cross_validation.StratifiedKFold(labels=[0 0 1 1], n_folds=2)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">skf</span><span class="p">:</span>
 <span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="s">&quot;TRAIN: </span><span class="si">%s</span><span class="s"> TEST: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">))</span>
 <span class="gp">... </span>   <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
@@ -215,7 +219,7 @@ complementary.</p>
 </div>
 <dl class="method">
 <dt id="sklearn.cross_validation.StratifiedKFold.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>y</em>, <em>k</em>, <em>indices=True</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.StratifiedKFold.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>y</em>, <em>n_folds=3</em>, <em>indices=True</em>, <em>k=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.StratifiedKFold.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

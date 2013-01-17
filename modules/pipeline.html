@@ -29,9 +29,11 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
-    <link rel="up" title="5. Model Selection" href="../model_selection.html" />
-    <link rel="next" title="6. Dataset transformations" href="../data_transforms.html" />
-    <link rel="prev" title="8.6.6. sklearn.ensemble.GradientBoostingRegressor" href="generated/sklearn.ensemble.GradientBoostingRegressor.html" />
+    <link rel="up" title="5. Model selection and evaluation" href="../model_selection.html" />
+    <link rel="next" title="5.5. Model evaluation" href="model_evaluation.html" />
+    <link rel="prev" title="8.7.7. sklearn.ensemble.GradientBoostingRegressor" href="generated/sklearn.ensemble.GradientBoostingRegressor.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="generated/sklearn.ensemble.GradientBoostingRegressor.html" title="8.6.6. sklearn.ensemble.GradientBoostingRegressor"
+	<a href="generated/sklearn.ensemble.GradientBoostingRegressor.html" title="8.7.7. sklearn.ensemble.GradientBoostingRegressor"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.6.6. sklearn.e...
+	    8.7.7. sklearn.e...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.6.6. sklearn.ensemble.GradientBoostingRegressor
+	    8.7.7. sklearn.ensemble.GradientBoostingRegressor
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="../data_transforms.html" title="6. Dataset transformations"
+	<a href="model_evaluation.html" title="5.5. Model evaluation"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    6. Dataset trans...
+	    5.5. Model evalu...
 	    </span>
 	    <span class="hiddenrellink">
-	    6. Dataset transformations
+	    5.5. Model evaluation
 	    </span>
 	    
 	    </a>
@@ -125,14 +129,14 @@
 	&nbsp;
 	</div>
 	<div class="rellink">
-	<a href="../model_selection.html" title="5. Model Selection" >
+	<a href="../model_selection.html" title="5. Model selection and evaluation" >
 	Up
 	<br>
 	<span class="smallrellink">
-	5. Model Selecti...
+	5. Model selecti...
 	</span>
 	<span class="hiddenrellink">
-	5. Model Selection
+	5. Model selection and evaluation
 	</span>
 	
 	</a>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -150,6 +154,10 @@
 <li><a class="reference internal" href="#">5.3. Pipeline: chaining estimators</a><ul>
 <li><a class="reference internal" href="#usage">5.3.1. Usage</a></li>
 <li><a class="reference internal" href="#notes">5.3.2. Notes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#featureunion-combining-feature-extractors">5.4. FeatureUnion: Combining feature extractors</a><ul>
+<li><a class="reference internal" href="#id1">5.4.1. Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -193,8 +201,8 @@ is an estimator object:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> 
 <span class="go">Pipeline(steps=[(&#39;reduce_dim&#39;, PCA(copy=True, n_components=None,</span>
 <span class="go">    whiten=False)), (&#39;svm&#39;, SVC(C=1.0, cache_size=200, class_weight=None,</span>
-<span class="go">    coef0=0.0, degree=3, gamma=0.0, kernel=&#39;rbf&#39;, probability=False,</span>
-<span class="go">    shrinking=True, tol=0.001, verbose=False))])</span>
+<span class="go">    coef0=0.0, degree=3, gamma=0.0, kernel=&#39;rbf&#39;, max_iter=-1,</span>
+<span class="go">    probability=False, shrinking=True, tol=0.001, verbose=False))])</span>
 </pre></div>
 </div>
 <p>The estimators of the pipeline are stored as a list in the <tt class="docutils literal"><span class="pre">steps</span></tt> attribute:</p>
@@ -209,10 +217,11 @@ is an estimator object:</p>
 </div>
 <p>Parameters of the estimators in the pipeline can be accessed using the
 <tt class="docutils literal"><span class="pre">&lt;estimator&gt;__&lt;parameter&gt;</span></tt> syntax:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">svm__C</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c"># NORMALIZE_WHITESPACE</span>
-<span class="go">Pipeline(steps=[(&#39;reduce_dim&#39;, PCA(copy=True, n_components=None, whiten=False)), (&#39;svm&#39;, SVC(C=10, cache_size=200, class_weight=None, coef0=0.0, degree=3, gamma=0.0,</span>
-<span class="go">  kernel=&#39;rbf&#39;, probability=False, shrinking=True, tol=0.001,</span>
-<span class="go">  verbose=False))])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">svm__C</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> 
+<span class="go">Pipeline(steps=[(&#39;reduce_dim&#39;, PCA(copy=True, n_components=None,</span>
+<span class="go">    whiten=False)), (&#39;svm&#39;, SVC(C=10, cache_size=200, class_weight=None,</span>
+<span class="go">    coef0=0.0, degree=3, gamma=0.0, kernel=&#39;rbf&#39;, max_iter=-1,</span>
+<span class="go">    probability=False, shrinking=True, tol=0.001, verbose=False))])</span>
 </pre></div>
 </div>
 <p>This is particularly important for doing grid searches:</p>
@@ -243,6 +252,49 @@ as a classifier. If the last estimator is a transformer, again, so is the
 pipeline.</p>
 </div>
 </div>
+<div class="section" id="featureunion-combining-feature-extractors">
+<span id="feature-union"></span><h1>5.4. FeatureUnion: Combining feature extractors<a class="headerlink" href="#featureunion-combining-feature-extractors" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="generated/sklearn.pipeline.FeatureUnion.html#sklearn.pipeline.FeatureUnion" title="sklearn.pipeline.FeatureUnion"><tt class="xref py py-class docutils literal"><span class="pre">FeatureUnion</span></tt></a> combines several transformer objects into a new
+transformer that combines their output. A <a class="reference internal" href="generated/sklearn.pipeline.FeatureUnion.html#sklearn.pipeline.FeatureUnion" title="sklearn.pipeline.FeatureUnion"><tt class="xref py py-class docutils literal"><span class="pre">FeatureUnion</span></tt></a> takes
+a list of transformer objects. During fitting, each of these
+is fit to the data independently. For transforming data, the
+transformers are applied in parallel, and the sample vectors they output
+are concatenated end-to-end into larger vectors.</p>
+<p><a class="reference internal" href="generated/sklearn.pipeline.FeatureUnion.html#sklearn.pipeline.FeatureUnion" title="sklearn.pipeline.FeatureUnion"><tt class="xref py py-class docutils literal"><span class="pre">FeatureUnion</span></tt></a> serves the same purposes as <a class="reference internal" href="generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline"><tt class="xref py py-class docutils literal"><span class="pre">Pipeline</span></tt></a> -
+convenience and joint parameter estimation and validation.</p>
+<p><a class="reference internal" href="generated/sklearn.pipeline.FeatureUnion.html#sklearn.pipeline.FeatureUnion" title="sklearn.pipeline.FeatureUnion"><tt class="xref py py-class docutils literal"><span class="pre">FeatureUnion</span></tt></a> and <a class="reference internal" href="generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline"><tt class="xref py py-class docutils literal"><span class="pre">Pipeline</span></tt></a> can be combined to
+create complex models.</p>
+<p>(A <a class="reference internal" href="generated/sklearn.pipeline.FeatureUnion.html#sklearn.pipeline.FeatureUnion" title="sklearn.pipeline.FeatureUnion"><tt class="xref py py-class docutils literal"><span class="pre">FeatureUnion</span></tt></a> has no way of checking whether two transformers
+might produce identical features. It only produces a union when the
+feature sets are disjoint, and making sure they are is the caller&#8217;s
+responsibility.)</p>
+<div class="section" id="id1">
+<h2>5.4.1. Usage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference internal" href="generated/sklearn.pipeline.FeatureUnion.html#sklearn.pipeline.FeatureUnion" title="sklearn.pipeline.FeatureUnion"><tt class="xref py py-class docutils literal"><span class="pre">FeatureUnion</span></tt></a> is built using a list of <tt class="docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></tt> pairs,
+where the <tt class="docutils literal"><span class="pre">key</span></tt> is the name you want to give to a given transformation
+(an arbitrary string; it only serves as an identifier)
+and <tt class="docutils literal"><span class="pre">value</span></tt> is an estimator object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">FeatureUnion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">KernelPCA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">estimators</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;linear_pca&#39;</span><span class="p">,</span> <span class="n">PCA</span><span class="p">()),</span> <span class="p">(</span><span class="s">&#39;kernel_pca&#39;</span><span class="p">,</span> <span class="n">KernelPCA</span><span class="p">())]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">combined</span> <span class="o">=</span> <span class="n">FeatureUnion</span><span class="p">(</span><span class="n">estimators</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">combined</span> 
+<span class="go">FeatureUnion(n_jobs=1, transformer_list=[(&#39;linear_pca&#39;, PCA(copy=True,</span>
+<span class="go">    n_components=None, whiten=False)), (&#39;kernel_pca&#39;, KernelPCA(alpha=1.0,</span>
+<span class="go">    coef0=1, degree=3, eigen_solver=&#39;auto&#39;, fit_inverse_transform=False,</span>
+<span class="go">    gamma=0, kernel=&#39;linear&#39;, max_iter=None, n_components=None, tol=0))],</span>
+<span class="go">    transformer_weights=None)</span>
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/feature_stacker.html#example-feature-stacker-py"><em>Concatenating multiple feature extraction methods</em></a></li>
+</ul>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -268,7 +320,7 @@ pipeline.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="../data_transforms.html">
+      <a href="model_evaluation.html">
         Next
       </a>
     </div>

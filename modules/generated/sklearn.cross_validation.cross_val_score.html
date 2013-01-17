@@ -32,6 +32,8 @@
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.3.12. sklearn.cross_validation.permutation_test_score" href="sklearn.cross_validation.permutation_test_score.html" />
     <link rel="prev" title="8.3.10. sklearn.cross_validation.train_test_split" href="sklearn.cross_validation.train_test_split.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -171,44 +175,45 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>estimator: estimator object implementing &#8216;fit&#8217;</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>estimator</strong> : estimator object implementing &#8216;fit&#8217;</p>
 <blockquote>
-<div><p>The object to use to fit the data</p>
+<div><p>The object to use to fit the data.</p>
 </div></blockquote>
-<p><strong>X: array-like of shape at least 2D</strong> :</p>
+<p><strong>X</strong> : array-like of shape at least 2D</p>
 <blockquote>
 <div><p>The data to fit.</p>
 </div></blockquote>
-<p><strong>y: array-like, optional</strong> :</p>
+<p><strong>y</strong> : array-like, optional</p>
 <blockquote>
 <div><p>The target variable to try to predict in the case of
 supervised learning.</p>
 </div></blockquote>
-<p><strong>score_func: callable, optional</strong> :</p>
+<p><strong>score_func</strong> : callable, optional</p>
 <blockquote>
-<div><p>callable, has priority over the score function in the estimator.
+<div><p>Score function to use for evaluation.
+Has priority over the score function in the estimator.
 In a non-supervised setting, where y is None, it takes the test
 data (X_test) as its only argument. In a supervised setting it takes
 the test target (y_true) and the test prediction (y_pred) as arguments.</p>
 </div></blockquote>
-<p><strong>cv: cross-validation generator, optional</strong> :</p>
+<p><strong>cv</strong> : cross-validation generator, optional</p>
 <blockquote>
 <div><p>A cross-validation generator. If None, a 3-fold cross
 validation is used or 3-fold stratified cross-validation
 when y is supplied and estimator is a classifier.</p>
 </div></blockquote>
-<p><strong>n_jobs: integer, optional</strong> :</p>
+<p><strong>n_jobs</strong> : integer, optional</p>
 <blockquote>
 <div><p>The number of CPUs to use to do the computation. -1 means
 &#8216;all CPUs&#8217;.</p>
 </div></blockquote>
-<p><strong>verbose: integer, optional</strong> :</p>
+<p><strong>verbose</strong> : integer, optional</p>
 <blockquote>
-<div><p>The verbosity level</p>
+<div><p>The verbosity level.</p>
 </div></blockquote>
 <p><strong>fit_params</strong> : dict, optional</p>
 <blockquote class="last">
-<div><p>parameters to pass to the fit method</p>
+<div><p>Parameters to pass to the fit method of the estimator.</p>
 </div></blockquote>
 </td>
 </tr>

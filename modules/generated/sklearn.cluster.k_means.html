@@ -32,6 +32,8 @@
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.1.2.3. sklearn.cluster.ward_tree" href="sklearn.cluster.ward_tree.html" />
     <link rel="prev" title="8.1.2.1. sklearn.cluster.estimate_bandwidth" href="sklearn.cluster.estimate_bandwidth.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -171,26 +175,26 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like of floats, shape (n_samples, n_features)</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like or sparse matrix, shape (n_samples, n_features)</p>
 <blockquote>
 <div><p>The observations to cluster.</p>
 </div></blockquote>
-<p><strong>n_clusters: int</strong> :</p>
+<p><strong>n_clusters</strong> : int</p>
 <blockquote>
 <div><p>The number of clusters to form as well as the number of
 centroids to generate.</p>
 </div></blockquote>
-<p><strong>max_iter: int, optional, default 300</strong> :</p>
+<p><strong>max_iter</strong> : int, optional, default 300</p>
 <blockquote>
 <div><p>Maximum number of iterations of the k-means algorithm to run.</p>
 </div></blockquote>
-<p><strong>n_init: int, optional, default: 10</strong> :</p>
+<p><strong>n_init</strong> : int, optional, default: 10</p>
 <blockquote>
 <div><p>Number of time the k-means algorithm will be run with different
 centroid seeds. The final results will be the best output of
 n_init consecutive runs in terms of inertia.</p>
 </div></blockquote>
-<p><strong>init: {&#8216;k-means++&#8217;, &#8216;random&#8217;, or ndarray, or a callable}, optional</strong> :</p>
+<p><strong>init</strong> : {&#8216;k-means++&#8217;, &#8216;random&#8217;, or ndarray, or a callable}, optional</p>
 <blockquote>
 <div><p>Method for initialization, default to &#8216;k-means++&#8217;:</p>
 <p>&#8216;k-means++&#8217; : selects initial cluster centers for k-mean
@@ -203,21 +207,21 @@ and gives the initial centers.</p>
 <p>If a callable is passed, it should take arguments X, k and
 and a random state and return an initialization.</p>
 </div></blockquote>
-<p><strong>tol: float, optional</strong> :</p>
+<p><strong>tol</strong> : float, optional</p>
 <blockquote>
 <div><p>The relative increment in the results before declaring convergence.</p>
 </div></blockquote>
-<p><strong>verbose: boolean, optional</strong> :</p>
+<p><strong>verbose</strong> : boolean, optional</p>
 <blockquote>
-<div><p>Verbosity mode</p>
+<div><p>Verbosity mode.</p>
 </div></blockquote>
-<p><strong>random_state: integer or numpy.RandomState, optional</strong> :</p>
+<p><strong>random_state</strong> : integer or numpy.RandomState, optional</p>
 <blockquote>
 <div><p>The generator used to initialize the centers. If an integer is
 given, it fixes the seed. Defaults to the global numpy random
 number generator.</p>
 </div></blockquote>
-<p><strong>copy_x: boolean, optional</strong> :</p>
+<p><strong>copy_x</strong> : boolean, optional</p>
 <blockquote>
 <div><p>When pre-computing distances it is more numerically accurate to center
 the data first.  If copy_x is True, then the original data is not
@@ -225,28 +229,28 @@ modified.  If False, the original data is modified, and put back before
 the function returns, but small numerical differences may be introduced
 by subtracting and then adding the data mean.</p>
 </div></blockquote>
-<p><strong>n_jobs: int</strong> :</p>
+<p><strong>n_jobs</strong> : int</p>
 <blockquote>
 <div><p>The number of jobs to use for the computation. This works by breaking
 down the pairwise matrix into n_jobs even slices and computing them in
 parallel.</p>
 <p>If -1 all CPUs are used. If 1 is given, no parallel computing code is
 used at all, which is useful for debuging. For n_jobs below -1,
-(n_cpus + 1 - n_jobs) are used. Thus for n_jobs = -2, all CPUs but one
+(n_cpus + 1 + n_jobs) are used. Thus for n_jobs = -2, all CPUs but one
 are used.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>centroid: float ndarray with shape (k, n_features)</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>centroid</strong> : float ndarray with shape (k, n_features)</p>
 <blockquote>
 <div><p>Centroids found at the last iteration of k-means.</p>
 </div></blockquote>
-<p><strong>label: integer ndarray with shape (n_samples,)</strong> :</p>
+<p><strong>label</strong> : integer ndarray with shape (n_samples,)</p>
 <blockquote>
 <div><p>label[i] is the code or index of the centroid the
 i&#8217;th observation is closest to.</p>
 </div></blockquote>
-<p><strong>inertia: float</strong> :</p>
+<p><strong>inertia</strong> : float</p>
 <blockquote class="last">
 <div><p>The final value of the inertia criterion (sum of squared distances to
 the closest centroid for all observations in the training set).</p>

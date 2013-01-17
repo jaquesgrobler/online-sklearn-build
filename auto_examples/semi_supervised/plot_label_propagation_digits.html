@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Label Propagation digits active learning" href="plot_label_propagation_digits_active_learning.html" />
     <link rel="prev" title="Nearest Neighbors regression" href="../neighbors/plot_regression.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -171,6 +175,35 @@ be trained using all points, but only 30 will be labeled. Results
 in the form of a confusion matrix and a series of metrics over each
 class will be very good.</p>
 <p>At the end, the top 10 most uncertain predictions will be shown.</p>
+<img alt="../../_images/plot_label_propagation_digits_1.png" class="align-center" src="../../_images/plot_label_propagation_digits_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Label Spreading model: 30 labeled &amp; 300 unlabeled points (330 total)
+             precision    recall  f1-score   support
+
+          0       1.00      1.00      1.00        23
+          1       0.58      0.54      0.56        28
+          2       0.96      0.93      0.95        29
+          3       0.00      0.00      0.00        28
+          4       0.91      0.80      0.85        25
+          5       0.96      0.79      0.87        33
+          6       0.97      0.97      0.97        36
+          7       0.89      1.00      0.94        34
+          8       0.48      0.83      0.61        29
+          9       0.54      0.77      0.64        35
+
+avg / total       0.73      0.77      0.74       300
+
+Confusion matrix
+[[23  0  0  0  0  0  0  0  0]
+ [ 0 15  1  0  0  1  0 11  0]
+ [ 0  0 27  0  0  0  2  0  0]
+ [ 0  5  0 20  0  0  0  0  0]
+ [ 0  0  0  0 26  0  0  1  6]
+ [ 0  1  0  0  0 35  0  0  0]
+ [ 0  0  0  0  0  0 34  0  0]
+ [ 0  5  0  0  0  0  0 24  0]
+ [ 0  0  0  2  1  0  2  3 27]]</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_label_propagation_digits.py"><tt class="xref download docutils literal"><span class="pre">plot_label_propagation_digits.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -210,16 +243,15 @@ class will be very good.</p>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Learn with LabelSpreading</span>
-<span class="n">lp_model</span> <span class="o">=</span> <span class="n">label_propagation</span><span class="o">.</span><span class="n">LabelSpreading</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">max_iters</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">lp_model</span> <span class="o">=</span> <span class="n">label_propagation</span><span class="o">.</span><span class="n">LabelSpreading</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">lp_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">predicted_labels</span> <span class="o">=</span> <span class="n">lp_model</span><span class="o">.</span><span class="n">transduction_</span><span class="p">[</span><span class="n">unlabeled_set</span><span class="p">]</span>
 <span class="n">true_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">unlabeled_set</span><span class="p">]</span>
 
-<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">true_labels</span><span class="p">,</span> <span class="n">predicted_labels</span><span class="p">,</span>
-        <span class="n">labels</span><span class="o">=</span><span class="n">lp_model</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">true_labels</span><span class="p">,</span> <span class="n">predicted_labels</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">lp_model</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="s">&quot;Label Spreading model: </span><span class="si">%d</span><span class="s"> labeled &amp; </span><span class="si">%d</span><span class="s"> unlabeled points (</span><span class="si">%d</span><span class="s"> total)&quot;</span> <span class="o">%</span> \
-        <span class="p">(</span><span class="n">n_labeled_points</span><span class="p">,</span> <span class="n">n_total_samples</span> <span class="o">-</span> <span class="n">n_labeled_points</span><span class="p">,</span> <span class="n">n_total_samples</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Label Spreading model: </span><span class="si">%d</span><span class="s"> labeled &amp; </span><span class="si">%d</span><span class="s"> unlabeled points (</span><span class="si">%d</span><span class="s"> total)&quot;</span> <span class="o">%</span>
+      <span class="p">(</span><span class="n">n_labeled_points</span><span class="p">,</span> <span class="n">n_total_samples</span> <span class="o">-</span> <span class="n">n_labeled_points</span><span class="p">,</span> <span class="n">n_total_samples</span><span class="p">))</span>
 
 <span class="k">print</span> <span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span><span class="p">(</span><span class="n">true_labels</span><span class="p">,</span> <span class="n">predicted_labels</span><span class="p">)</span>
 
@@ -249,6 +281,7 @@ class will be very good.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.50 seconds</p>
 </div>
 
 

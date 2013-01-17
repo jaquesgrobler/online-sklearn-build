@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.6.1. sklearn.ensemble.RandomForestClassifier &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.7.1. sklearn.ensemble.RandomForestClassifier &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.6.2. sklearn.ensemble.RandomForestRegressor" href="sklearn.ensemble.RandomForestRegressor.html" />
-    <link rel="prev" title="8.5.16. sklearn.decomposition.sparse_encode" href="sklearn.decomposition.sparse_encode.html" />
+    <link rel="next" title="8.7.2. sklearn.ensemble.RandomTreesEmbedding" href="sklearn.ensemble.RandomTreesEmbedding.html" />
+    <link rel="prev" title="8.6.2. sklearn.dummy.DummyRegressor" href="sklearn.dummy.DummyRegressor.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.decomposition.sparse_encode.html" title="8.5.16. sklearn.decomposition.sparse_encode"
+	<a href="sklearn.dummy.DummyRegressor.html" title="8.6.2. sklearn.dummy.DummyRegressor"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.5.16. sklearn....
+	    8.6.2. sklearn.d...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.5.16. sklearn.decomposition.sparse_encode
+	    8.6.2. sklearn.dummy.DummyRegressor
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.ensemble.RandomForestRegressor.html" title="8.6.2. sklearn.ensemble.RandomForestRegressor"
+	<a href="sklearn.ensemble.RandomTreesEmbedding.html" title="8.7.2. sklearn.ensemble.RandomTreesEmbedding"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.6.2. sklearn.e...
+	    8.7.2. sklearn.e...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.6.2. sklearn.ensemble.RandomForestRegressor
+	    8.7.2. sklearn.ensemble.RandomTreesEmbedding
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.6.1. sklearn.ensemble.RandomForestClassifier</a></li>
+<li><a class="reference internal" href="#">8.7.1. sklearn.ensemble.RandomForestClassifier</a></li>
 </ul>
 
     
@@ -162,10 +166,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-ensemble-randomforestclassifier">
-<h1>8.6.1. sklearn.ensemble.RandomForestClassifier<a class="headerlink" href="#sklearn-ensemble-randomforestclassifier" title="Permalink to this headline">¶</a></h1>
+<h1>8.7.1. sklearn.ensemble.RandomForestClassifier<a class="headerlink" href="#sklearn-ensemble-randomforestclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.ensemble.RandomForestClassifier">
-<em class="property">class </em><tt class="descclassname">sklearn.ensemble.</tt><tt class="descname">RandomForestClassifier</tt><big>(</big><em>n_estimators=10</em>, <em>criterion='gini'</em>, <em>max_depth=None</em>, <em>min_samples_split=1</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features='auto'</em>, <em>bootstrap=True</em>, <em>compute_importances=False</em>, <em>oob_score=False</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.RandomForestClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.ensemble.</tt><tt class="descname">RandomForestClassifier</tt><big>(</big><em>n_estimators=10</em>, <em>criterion='gini'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features='auto'</em>, <em>bootstrap=True</em>, <em>compute_importances=False</em>, <em>oob_score=False</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.RandomForestClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>A random forest classifier.</p>
 <p>A random forest is a meta estimator that fits a number of classifical
 decision trees on various sub-samples of the dataset and use averaging
@@ -184,6 +188,22 @@ to improve the predictive accuracy and control over-fitting.</p>
 &#8220;gini&#8221; for the Gini impurity and &#8220;entropy&#8221; for the information gain.
 Note: this parameter is tree-specific.</p>
 </div></blockquote>
+<p><strong>max_features</strong> : int, string or None, optional (default=&#8221;auto&#8221;)</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>The number of features to consider when looking for the best split:</dt>
+<dd><ul class="first last simple">
+<li>If &#8220;auto&#8221;, then <cite>max_features=sqrt(n_features)</cite> on
+classification tasks and <cite>max_features=n_features</cite> on regression
+problems.</li>
+<li>If &#8220;sqrt&#8221;, then <cite>max_features=sqrt(n_features)</cite>.</li>
+<li>If &#8220;log2&#8221;, then <cite>max_features=log2(n_features)</cite>.</li>
+<li>If None, then <cite>max_features=n_features</cite>.</li>
+</ul>
+</dd>
+</dl>
+<p>Note: this parameter is tree-specific.</p>
+</div></blockquote>
 <p><strong>max_depth</strong> : integer or None, optional (default=None)</p>
 <blockquote>
 <div><p>The maximum depth of the tree. If None, then nodes are expanded until
@@ -191,7 +211,7 @@ all leaves are pure or until all leaves contain less than
 min_samples_split samples.
 Note: this parameter is tree-specific.</p>
 </div></blockquote>
-<p><strong>min_samples_split</strong> : integer, optional (default=1)</p>
+<p><strong>min_samples_split</strong> : integer, optional (default=2)</p>
 <blockquote>
 <div><p>The minimum number of samples required to split an internal node.
 Note: this parameter is tree-specific.</p>
@@ -214,22 +234,6 @@ the partitions are always represented as copies of the original
 data. Otherwise, partitions are represented as bit masks (aka
 sample masks).
 Note: this parameter is tree-specific.</p>
-</div></blockquote>
-<p><strong>max_features</strong> : int, string or None, optional (default=&#8221;auto&#8221;)</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>The number of features to consider when looking for the best split:</dt>
-<dd><ul class="first last simple">
-<li>If &#8220;auto&#8221;, then <cite>max_features=sqrt(n_features)</cite> on
-classification tasks and <cite>max_features=n_features</cite> on regression
-problems.</li>
-<li>If &#8220;sqrt&#8221;, then <cite>max_features=sqrt(n_features)</cite>.</li>
-<li>If &#8220;log2&#8221;, then <cite>max_features=log2(n_features)</cite>.</li>
-<li>If None, then <cite>max_features=n_features</cite>.</li>
-</ul>
-</dd>
-</dl>
-<p>Note: this parameter is tree-specific.</p>
 </div></blockquote>
 <p><strong>bootstrap</strong> : boolean, optional (default=True)</p>
 <blockquote>
@@ -259,7 +263,7 @@ by <cite>np.random</cite>.</p>
 </div></blockquote>
 <p><strong>verbose</strong> : int, optional (default=0)</p>
 <blockquote class="last">
-<div><p>Controlls the verbosity of the tree building process.</p>
+<div><p>Controls the verbosity of the tree building process.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -270,10 +274,10 @@ by <cite>np.random</cite>.</p>
 <p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">DecisionTreeClassifier</span></tt>, <a class="reference internal" href="sklearn.ensemble.ExtraTreesClassifier.html#sklearn.ensemble.ExtraTreesClassifier" title="sklearn.ensemble.ExtraTreesClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">ExtraTreesClassifier</span></tt></a></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r59" rules="none">
+<table class="docutils citation" frame="void" id="r83" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R59]</a></td><td><ol class="first last upperalpha simple" start="12">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R83]</a></td><td><ol class="first last upperalpha simple" start="12">
 <li>Breiman, &#8220;Random Forests&#8221;, Machine Learning, 45(1), 5-32, 2001.</li>
 </ol>
 </td></tr>
@@ -282,17 +286,27 @@ by <cite>np.random</cite>.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="30%" />
-<col width="25%" />
-<col width="46%" />
+<col width="37%" />
+<col width="22%" />
+<col width="41%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><cite>estimators_</cite>: list of DecisionTreeClassifier</td>
 <td>&nbsp;</td>
 <td>The collection of fitted sub-estimators.</td>
 </tr>
+<tr class="row-even"><td><cite>classes_</cite>: array of shape = [n_classes] or a list of such arrays</td>
+<td>&nbsp;</td>
+<td>The classes labels (single output problem), or a list of arrays of
+class labels (multi-output problem).</td>
+</tr>
+<tr class="row-odd"><td><cite>n_classes_</cite>: int or list</td>
+<td>&nbsp;</td>
+<td>The number of classes (single output problem), or a list containing the
+number of classes for each output (multi-output problem).</td>
+</tr>
 <tr class="row-even"><td><cite>feature_importances_</cite></td>
-<td>array, shape = [n_features]</td>
+<td>array of shape = [n_features]</td>
 <td>The feature importances (the higher, the more important the feature).</td>
 </tr>
 <tr class="row-odd"><td><cite>oob_score_</cite></td>
@@ -300,7 +314,7 @@ by <cite>np.random</cite>.</p>
 <td>Score of the training dataset obtained using an out-of-bag estimate.</td>
 </tr>
 <tr class="row-even"><td><cite>oob_decision_function_</cite></td>
-<td>array, shape = [n_samples, n_classes]</td>
+<td>array of shape = [n_samples, n_classes]</td>
 <td>Decision function computed with out-of-bag estimate on the training
 set.</td>
 </tr>
@@ -313,43 +327,71 @@ set.</td>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.fit" title="sklearn.ensemble.RandomForestClassifier.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.apply" title="sklearn.ensemble.RandomForestClassifier.apply"><tt class="xref py py-obj docutils literal"><span class="pre">apply</span></tt></a>(X)</td>
+<td>Apply trees in the forest to X, return leaf indices.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.fit" title="sklearn.ensemble.RandomForestClassifier.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;sample_weight])</td>
 <td>Build a forest of trees from the training set (X, y).</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.fit_transform" title="sklearn.ensemble.RandomForestClassifier.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.fit_transform" title="sklearn.ensemble.RandomForestClassifier.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
 <td>Fit to data, then transform it</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.get_params" title="sklearn.ensemble.RandomForestClassifier.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.get_params" title="sklearn.ensemble.RandomForestClassifier.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for the estimator</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.predict" title="sklearn.ensemble.RandomForestClassifier.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.predict" title="sklearn.ensemble.RandomForestClassifier.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
 <td>Predict class for X.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.predict_log_proba" title="sklearn.ensemble.RandomForestClassifier.predict_log_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_log_proba</span></tt></a>(X)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.predict_log_proba" title="sklearn.ensemble.RandomForestClassifier.predict_log_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_log_proba</span></tt></a>(X)</td>
 <td>Predict class log-probabilities for X.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.predict_proba" title="sklearn.ensemble.RandomForestClassifier.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.predict_proba" title="sklearn.ensemble.RandomForestClassifier.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
 <td>Predict class probabilities for X.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.score" title="sklearn.ensemble.RandomForestClassifier.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.score" title="sklearn.ensemble.RandomForestClassifier.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
 <td>Returns the mean accuracy on the given test data and labels.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.set_params" title="sklearn.ensemble.RandomForestClassifier.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.set_params" title="sklearn.ensemble.RandomForestClassifier.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.transform" title="sklearn.ensemble.RandomForestClassifier.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X[,&nbsp;threshold])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.transform" title="sklearn.ensemble.RandomForestClassifier.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X[,&nbsp;threshold])</td>
 <td>Reduce X to its most important features.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="sklearn.ensemble.RandomForestClassifier.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_estimators=10</em>, <em>criterion='gini'</em>, <em>max_depth=None</em>, <em>min_samples_split=1</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features='auto'</em>, <em>bootstrap=True</em>, <em>compute_importances=False</em>, <em>oob_score=False</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.RandomForestClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_estimators=10</em>, <em>criterion='gini'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features='auto'</em>, <em>bootstrap=True</em>, <em>compute_importances=False</em>, <em>oob_score=False</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.RandomForestClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="sklearn.ensemble.RandomForestClassifier.apply">
+<tt class="descname">apply</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.RandomForestClassifier.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply trees in the forest to X, return leaf indices.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Input data.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X_leaves</strong> : array_like, shape = [n_samples, n_estimators]</p>
+<blockquote class="last">
+<div><p>For each datapoint x in X and for each tree in the forest,
+return the index of the leaf x ends up in.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="sklearn.ensemble.RandomForestClassifier.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.RandomForestClassifier.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>sample_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.RandomForestClassifier.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a forest of trees from the training set (X, y).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -363,6 +405,14 @@ set.</td>
 <blockquote>
 <div><p>The target values (integers that correspond to classes in
 classification, real numbers in regression).</p>
+</div></blockquote>
+<p><strong>sample_weight</strong> : array-like, shape = [n_samples] or None</p>
+<blockquote>
+<div><p>Sample weights. If None, then samples are equally weighted. Splits
+that would create child nodes with net zero or negative weight are
+ignored while searching for a split in each node. In the case of
+classification, splits are also ignored if they would result in any
+single class carrying a negative weight in either child node.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -404,10 +454,6 @@ and returns a transformed version of X.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>This method just calls fit and transform consecutively, i.e., it is not
-an optimized implementation of fit_transform, unlike other transformers
-such as PCA.</p>
 </dd></dl>
 
 <dl class="method">
@@ -611,12 +657,12 @@ available, the object attribute <tt class="docutils literal"><span class="pre">t
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.decomposition.sparse_encode.html">
+      <a href="sklearn.dummy.DummyRegressor.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.ensemble.RandomForestRegressor.html">
+      <a href="sklearn.ensemble.RandomTreesEmbedding.html">
         Next
       </a>
     </div>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.16.4. sklearn.manifold.locally_linear_embedding &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.18.5. sklearn.manifold.locally_linear_embedding &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.1.1. sklearn.metrics.confusion_matrix" href="sklearn.metrics.confusion_matrix.html" />
-    <link rel="prev" title="8.16.3. sklearn.manifold.MDS" href="sklearn.manifold.MDS.html" />
+    <link rel="next" title="8.18.6. sklearn.manifold.spectral_embedding" href="sklearn.manifold.spectral_embedding.html" />
+    <link rel="prev" title="8.18.4. sklearn.manifold.SpectralEmbedding" href="sklearn.manifold.SpectralEmbedding.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.manifold.MDS.html" title="8.16.3. sklearn.manifold.MDS"
+	<a href="sklearn.manifold.SpectralEmbedding.html" title="8.18.4. sklearn.manifold.SpectralEmbedding"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.16.3. sklearn....
+	    8.18.4. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.16.3. sklearn.manifold.MDS
+	    8.18.4. sklearn.manifold.SpectralEmbedding
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.confusion_matrix.html" title="8.17.1.1. sklearn.metrics.confusion_matrix"
+	<a href="sklearn.manifold.spectral_embedding.html" title="8.18.6. sklearn.manifold.spectral_embedding"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.17.1.1. sklear...
+	    8.18.6. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.1.1. sklearn.metrics.confusion_matrix
+	    8.18.6. sklearn.manifold.spectral_embedding
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.16.4. sklearn.manifold.locally_linear_embedding</a></li>
+<li><a class="reference internal" href="#">8.18.5. sklearn.manifold.locally_linear_embedding</a></li>
 </ul>
 
     
@@ -162,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-manifold-locally-linear-embedding">
-<h1>8.16.4. sklearn.manifold.locally_linear_embedding<a class="headerlink" href="#sklearn-manifold-locally-linear-embedding" title="Permalink to this headline">¶</a></h1>
+<h1>8.18.5. sklearn.manifold.locally_linear_embedding<a class="headerlink" href="#sklearn-manifold-locally-linear-embedding" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.manifold.locally_linear_embedding">
 <tt class="descclassname">sklearn.manifold.</tt><tt class="descname">locally_linear_embedding</tt><big>(</big><em>X</em>, <em>n_neighbors</em>, <em>n_components</em>, <em>reg=0.001</em>, <em>eigen_solver='auto'</em>, <em>tol=1e-06</em>, <em>max_iter=100</em>, <em>method='standard'</em>, <em>hessian_tol=0.0001</em>, <em>modified_tol=1e-12</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.manifold.locally_linear_embedding" title="Permalink to this definition">¶</a></dt>
@@ -220,17 +224,17 @@ Not used if eigen_solver==&#8217;dense&#8217;.</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>standard <span class="classifier-delimiter">:</span> <span class="classifier">use the standard locally linear embedding algorithm.</span></dt>
-<dd><p class="first last">see reference <a class="reference internal" href="#r67">[R67]</a></p>
+<dd><p class="first last">see reference <a class="reference internal" href="#r93">[R93]</a></p>
 </dd>
 <dt>hessian <span class="classifier-delimiter">:</span> <span class="classifier">use the Hessian eigenmap method.  This method requires</span></dt>
 <dd><p class="first last">n_neighbors &gt; n_components * (1 + (n_components + 1) / 2.
-see reference <a class="reference internal" href="#r68">[R68]</a></p>
+see reference <a class="reference internal" href="#r94">[R94]</a></p>
 </dd>
 <dt>modified <span class="classifier-delimiter">:</span> <span class="classifier">use the modified locally linear embedding algorithm.</span></dt>
-<dd><p class="first last">see reference <a class="reference internal" href="#r69">[R69]</a></p>
+<dd><p class="first last">see reference <a class="reference internal" href="#r95">[R95]</a></p>
 </dd>
 <dt>ltsa <span class="classifier-delimiter">:</span> <span class="classifier">use local tangent space alignment algorithm</span></dt>
-<dd><p class="first last">see reference <a class="reference internal" href="#r70">[R70]</a></p>
+<dd><p class="first last">see reference <a class="reference internal" href="#r96">[R96]</a></p>
 </dd>
 </dl>
 </div></blockquote>
@@ -265,33 +269,33 @@ iterations.  Defaults to numpy.random.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r67" rules="none">
+<table class="docutils citation" frame="void" id="r93" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R67]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> <cite>Roweis, S. &amp; Saul, L. Nonlinear dimensionality reduction
+<tr><td class="label">[R93]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> <cite>Roweis, S. &amp; Saul, L. Nonlinear dimensionality reduction
 by locally linear embedding.  Science 290:2323 (2000).</cite></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r68" rules="none">
+<table class="docutils citation" frame="void" id="r94" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R68]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> <cite>Donoho, D. &amp; Grimes, C. Hessian eigenmaps: Locally
+<tr><td class="label">[R94]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> <cite>Donoho, D. &amp; Grimes, C. Hessian eigenmaps: Locally
 linear embedding techniques for high-dimensional data.
 Proc Natl Acad Sci U S A.  100:5591 (2003).</cite></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r69" rules="none">
+<table class="docutils citation" frame="void" id="r95" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R69]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> <cite>Zhang, Z. &amp; Wang, J. MLLE: Modified Locally Linear
+<tr><td class="label">[R95]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> <cite>Zhang, Z. &amp; Wang, J. MLLE: Modified Locally Linear
 Embedding Using Multiple Weights.</cite>
 <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.70.382">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.70.382</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r70" rules="none">
+<table class="docutils citation" frame="void" id="r96" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R70]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id8">2</a>)</em> <cite>Zhang, Z. &amp; Zha, H. Principal manifolds and nonlinear
+<tr><td class="label">[R96]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id8">2</a>)</em> <cite>Zhang, Z. &amp; Zha, H. Principal manifolds and nonlinear
 dimensionality reduction via tangent space alignment.
 Journal of Shanghai Univ.  8:406 (2004)</cite></td></tr>
 </tbody>
@@ -319,12 +323,12 @@ Journal of Shanghai Univ.  8:406 (2004)</cite></td></tr>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.manifold.MDS.html">
+      <a href="sklearn.manifold.SpectralEmbedding.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.metrics.confusion_matrix.html">
+      <a href="sklearn.manifold.spectral_embedding.html">
         Next
       </a>
     </div>

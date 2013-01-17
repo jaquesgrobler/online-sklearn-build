@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.1.9. sklearn.metrics.average_precision_score &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.19.1.4. sklearn.metrics.average_precision_score &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.1.10. sklearn.metrics.precision_recall_fscore_support" href="sklearn.metrics.precision_recall_fscore_support.html" />
-    <link rel="prev" title="8.17.1.8. sklearn.metrics.auc_score" href="sklearn.metrics.auc_score.html" />
+    <link rel="next" title="8.19.1.5. sklearn.metrics.classification_report" href="sklearn.metrics.classification_report.html" />
+    <link rel="prev" title="8.19.1.3. sklearn.metrics.auc_score" href="sklearn.metrics.auc_score.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.auc_score.html" title="8.17.1.8. sklearn.metrics.auc_score"
+	<a href="sklearn.metrics.auc_score.html" title="8.19.1.3. sklearn.metrics.auc_score"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.17.1.8. sklear...
+	    8.19.1.3. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.1.8. sklearn.metrics.auc_score
+	    8.19.1.3. sklearn.metrics.auc_score
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.precision_recall_fscore_support.html" title="8.17.1.10. sklearn.metrics.precision_recall_fscore_support"
+	<a href="sklearn.metrics.classification_report.html" title="8.19.1.5. sklearn.metrics.classification_report"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.17.1.10. sklea...
+	    8.19.1.5. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.1.10. sklearn.metrics.precision_recall_fscore_support
+	    8.19.1.5. sklearn.metrics.classification_report
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.17.1.9. sklearn.metrics.average_precision_score</a></li>
+<li><a class="reference internal" href="#">8.19.1.4. sklearn.metrics.average_precision_score</a></li>
 </ul>
 
     
@@ -162,11 +166,11 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-average-precision-score">
-<h1>8.17.1.9. sklearn.metrics.average_precision_score<a class="headerlink" href="#sklearn-metrics-average-precision-score" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.1.4. sklearn.metrics.average_precision_score<a class="headerlink" href="#sklearn-metrics-average-precision-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.average_precision_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">average_precision_score</tt><big>(</big><em>y_true</em>, <em>y_score</em><big>)</big><a class="headerlink" href="#sklearn.metrics.average_precision_score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute average precision (AP) from prediction scores.</p>
+<dd><p>Compute average precision (AP) from prediction scores</p>
 <p>This score corresponds to the area under the precision-recall curve.</p>
 <p>Note: this implementation is restricted to the binary classification task.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -175,12 +179,12 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>true binary labels</p>
+<div><p>True binary labels.</p>
 </div></blockquote>
 <p><strong>y_score</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>target scores, can either be probability estimates of
-the positive class, confidence values, or binary decisions.</p>
+<div><p>Target scores, can either be probability estimates of the positive
+class, confidence values, or binary decisions.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -198,6 +202,15 @@ the positive class, confidence values, or binary decisions.</p>
 </div>
 <p class="rubric">References</p>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Information_retrieval#Average_precision">http://en.wikipedia.org/wiki/Information_retrieval#Average_precision</a></p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">average_precision_score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">average_precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">)</span>  
+<span class="go">0.79...</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -226,7 +239,7 @@ the positive class, confidence values, or binary decisions.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.metrics.precision_recall_fscore_support.html">
+      <a href="sklearn.metrics.classification_report.html">
         Next
       </a>
     </div>

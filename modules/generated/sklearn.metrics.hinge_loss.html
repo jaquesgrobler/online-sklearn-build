@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.1.15. sklearn.metrics.hinge_loss &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.19.1.9. sklearn.metrics.hinge_loss &mdash; scikit-learn 0.13-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.2.1. sklearn.metrics.r2_score" href="sklearn.metrics.r2_score.html" />
-    <link rel="prev" title="8.17.1.14. sklearn.metrics.zero_one" href="sklearn.metrics.zero_one.html" />
+    <link rel="next" title="8.19.1.10. sklearn.metrics.matthews_corrcoef" href="sklearn.metrics.matthews_corrcoef.html" />
+    <link rel="prev" title="8.19.1.8. sklearn.metrics.fbeta_score" href="sklearn.metrics.fbeta_score.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -91,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.zero_one.html" title="8.17.1.14. sklearn.metrics.zero_one"
+	<a href="sklearn.metrics.fbeta_score.html" title="8.19.1.8. sklearn.metrics.fbeta_score"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.17.1.14. sklea...
+	    8.19.1.8. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.1.14. sklearn.metrics.zero_one
+	    8.19.1.8. sklearn.metrics.fbeta_score
 	    </span>
 	    
 	    </a>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.r2_score.html" title="8.17.2.1. sklearn.metrics.r2_score"
+	<a href="sklearn.metrics.matthews_corrcoef.html" title="8.19.1.10. sklearn.metrics.matthews_corrcoef"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.17.2.1. sklear...
+	    8.19.1.10. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.17.2.1. sklearn.metrics.r2_score
+	    8.19.1.10. sklearn.metrics.matthews_corrcoef
 	    </span>
 	    
 	    </a>
@@ -142,12 +146,12 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.17.1.15. sklearn.metrics.hinge_loss</a></li>
+<li><a class="reference internal" href="#">8.19.1.9. sklearn.metrics.hinge_loss</a></li>
 </ul>
 
     
@@ -162,32 +166,54 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-hinge-loss">
-<h1>8.17.1.15. sklearn.metrics.hinge_loss<a class="headerlink" href="#sklearn-metrics-hinge-loss" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.1.9. sklearn.metrics.hinge_loss<a class="headerlink" href="#sklearn-metrics-hinge-loss" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.hinge_loss">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">hinge_loss</tt><big>(</big><em>y_true</em>, <em>pred_decision</em>, <em>pos_label=1</em>, <em>neg_label=-1</em><big>)</big><a class="headerlink" href="#sklearn.metrics.hinge_loss" title="Permalink to this definition">¶</a></dt>
-<dd><p>Cumulated hinge loss (non-regularized).</p>
-<p>Assuming labels in y_true are encoded with +1 and -1,
-when a prediction mistake is made, margin = y_true * pred_decision
-is always negative (since the signs disagree), therefore 1 - margin
-is always greater than 1. The cumulated hinge loss therefore
-upperbounds the number of mistakes made by the classifier.</p>
+<dd><p>Average hinge loss (non-regularized)</p>
+<p>Assuming labels in y_true are encoded with +1 and -1, when a prediction
+mistake is made, <tt class="docutils literal"><span class="pre">margin</span> <span class="pre">=</span> <span class="pre">y_true</span> <span class="pre">*</span> <span class="pre">pred_decision</span></tt> is always negative
+(since the signs disagree), implying <tt class="docutils literal"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">margin</span></tt> is always greater than
+1.  The cumulated hinge loss is therefore an upper bound of the number of
+mistakes made by the classifier.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>True target (integers)</p>
+<div><p>True target (integers).</p>
 </div></blockquote>
 <p><strong>pred_decision</strong> : array, shape = [n_samples] or [n_samples, n_classes]</p>
-<blockquote class="last">
-<div><p>Predicted decisions, as output by decision_function (floats)</p>
+<blockquote>
+<div><p>Predicted decisions, as output by decision_function (floats).</p>
 </div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>loss</strong> : float</p>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">References</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Hinge_loss">http://en.wikipedia.org/wiki/Hinge_loss</a></p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">hinge_loss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">est</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">LinearSVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">est</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">LinearSVC(C=1.0, class_weight=None, dual=True, fit_intercept=True,</span>
+<span class="go">     intercept_scaling=1, loss=&#39;l2&#39;, multi_class=&#39;ovr&#39;, penalty=&#39;l2&#39;,</span>
+<span class="go">     random_state=0, tol=0.0001, verbose=0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pred_decision</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">decision_function</span><span class="p">([[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pred_decision</span>  
+<span class="go">array([-2.18...,  2.36...,  0.09...])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hinge_loss</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">pred_decision</span><span class="p">)</span>  
+<span class="go">0.30...</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -211,12 +237,12 @@ upperbounds the number of mistakes made by the classifier.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.metrics.zero_one.html">
+      <a href="sklearn.metrics.fbeta_score.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.metrics.r2_score.html">
+      <a href="sklearn.metrics.matthews_corrcoef.html">
         Next
       </a>
     </div>

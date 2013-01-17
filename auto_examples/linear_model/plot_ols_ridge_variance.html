@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Orthogonal Matching Pursuit" href="plot_omp.html" />
     <link rel="prev" title="Sparsity Example: Fitting only features 1 and 2" href="plot_ols_3d.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -176,6 +180,12 @@ Despite the few data points in each dimension, the slope
 of the prediction is much more stable and the variance
 in the line itself is greatly reduced, in comparison to that
 of the standard linear regression</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../../_images/plot_ols_ridge_variance_1.png"><img alt="../../_images/plot_ols_ridge_variance_1.png" src="../../_images/plot_ols_ridge_variance_1.png" style="width: 188.0px; height: 141.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_ols_ridge_variance_2.png"><img alt="../../_images/plot_ols_ridge_variance_2.png" src="../../_images/plot_ols_ridge_variance_2.png" style="width: 188.0px; height: 141.0px;" /></a>
+</li>
+</ul>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_ols_ridge_variance.py"><tt class="xref download docutils literal"><span class="pre">plot_ols_ridge_variance.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -196,10 +206,8 @@ of the standard linear regression</p>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="n">classifiers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">ols</span><span class="o">=</span><span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">(),</span>
-    <span class="n">ridge</span><span class="o">=</span><span class="n">linear_model</span><span class="o">.</span><span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
-    <span class="p">)</span>
+<span class="n">classifiers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ols</span><span class="o">=</span><span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">(),</span>
+                   <span class="n">ridge</span><span class="o">=</span><span class="n">linear_model</span><span class="o">.</span><span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="n">fignum</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">clf</span> <span class="ow">in</span> <span class="n">classifiers</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
@@ -229,6 +237,7 @@ of the standard linear regression</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.17 seconds</p>
 </div>
 
 

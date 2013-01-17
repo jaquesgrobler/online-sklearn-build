@@ -30,8 +30,10 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="A demo of the K Means clustering algorithm" href="plot_mini_batch_kmeans.html" />
+    <link rel="next" title="Comparison of the K-Means clustering and MiniBatchKMeans Algorithms" href="plot_mini_batch_kmeans.html" />
     <link rel="prev" title="A demo of structured Ward hierarchical clustering on Lena image" href="plot_lena_ward_segmentation.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -108,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_mini_batch_kmeans.html" title="A demo of the K Means clustering algorithm"
+	<a href="plot_mini_batch_kmeans.html" title="Comparison of the K-Means clustering and MiniBatchKMeans Algorithms"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    A demo of the K ...
+	    Comparison of th...
 	    </span>
 	    <span class="hiddenrellink">
-	    A demo of the K Means clustering algorithm
+	    Comparison of the K-Means clustering and MiniBatchKMeans Algorithms
 	    </span>
 	    
 	    </a>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -167,6 +171,10 @@
 <p>Dorin Comaniciu and Peter Meer, &#8220;Mean Shift: A robust approach toward
 feature space analysis&#8221;. IEEE Transactions on Pattern Analysis and
 Machine Intelligence. 2002. pp. 603-619.</p>
+<img alt="../../_images/plot_mean_shift_1.png" class="align-center" src="../../_images/plot_mean_shift_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>number of estimated clusters : 3</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_mean_shift.py"><tt class="xref download docutils literal"><span class="pre">plot_mean_shift.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -209,11 +217,12 @@ Machine Intelligence. 2002. pp. 603-619.</p>
     <span class="n">cluster_center</span> <span class="o">=</span> <span class="n">cluster_centers</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">my_members</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">my_members</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">col</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span><span class="p">)</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cluster_center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cluster_center</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
-                                    <span class="n">markeredgecolor</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+            <span class="n">markeredgecolor</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Estimated number of clusters: </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n_clusters_</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.37 seconds</p>
 </div>
 
 

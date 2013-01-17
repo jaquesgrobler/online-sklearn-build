@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Polynomial interpolation" href="plot_polynomial_interpolation.html" />
     <link rel="prev" title="Ordinary Least Squares and Ridge Regression Variance" href="plot_ols_ridge_variance.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -165,6 +169,7 @@
 <span id="example-linear-model-plot-omp-py"></span><h1>Orthogonal Matching Pursuit<a class="headerlink" href="#orthogonal-matching-pursuit" title="Permalink to this headline">¶</a></h1>
 <p>Using orthogonal matching pursuit for recovering a sparse signal from a noisy
 measurement encoded with a dictionary</p>
+<img alt="../../_images/plot_omp_1.png" class="align-center" src="../../_images/plot_omp_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_omp.py"><tt class="xref download docutils literal"><span class="pre">plot_omp.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -174,18 +179,18 @@ measurement encoded with a dictionary</p>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_sparse_coded_signal</span>
 
 <span class="n">n_components</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">100</span>
-<span class="n">n_atoms</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">n_nonzero_coefs</span> <span class="o">=</span> <span class="mi">17</span>
 
 <span class="c"># generate the data</span>
 <span class="c">###################</span>
 
 <span class="c"># y = Dx</span>
-<span class="c"># |x|_0 = n_atoms</span>
+<span class="c"># |x|_0 = n_nonzero_coefs</span>
 
 <span class="n">y</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">make_sparse_coded_signal</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                                    <span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">,</span>
                                    <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span>
-                                   <span class="n">n_nonzero_coefs</span><span class="o">=</span><span class="n">n_atoms</span><span class="p">,</span>
+                                   <span class="n">n_nonzero_coefs</span><span class="o">=</span><span class="n">n_nonzero_coefs</span><span class="p">,</span>
                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">idx</span><span class="p">,</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()</span>
@@ -203,7 +208,7 @@ measurement encoded with a dictionary</p>
 
 <span class="c"># plot the noise-free reconstruction</span>
 <span class="c">####################################</span>
-<span class="n">x_r</span> <span class="o">=</span> <span class="n">orthogonal_mp</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_atoms</span><span class="p">)</span>
+<span class="n">x_r</span> <span class="o">=</span> <span class="n">orthogonal_mp</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_nonzero_coefs</span><span class="p">)</span>
 <span class="n">idx_r</span><span class="p">,</span> <span class="o">=</span> <span class="n">x_r</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
@@ -212,7 +217,7 @@ measurement encoded with a dictionary</p>
 
 <span class="c"># plot the noisy reconstruction</span>
 <span class="c">###############################</span>
-<span class="n">x_r</span> <span class="o">=</span> <span class="n">orthogonal_mp</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">y_noisy</span><span class="p">,</span> <span class="n">n_atoms</span><span class="p">)</span>
+<span class="n">x_r</span> <span class="o">=</span> <span class="n">orthogonal_mp</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">y_noisy</span><span class="p">,</span> <span class="n">n_nonzero_coefs</span><span class="p">)</span>
 <span class="n">idx_r</span><span class="p">,</span> <span class="o">=</span> <span class="n">x_r</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
@@ -225,6 +230,7 @@ measurement encoded with a dictionary</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.21 seconds</p>
 </div>
 
 

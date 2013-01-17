@@ -32,6 +32,8 @@
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Compressive sensing: tomography reconstruction with L1 prior (Lasso)" href="plot_tomography_l1_reconstruction.html" />
     <link rel="prev" title="Species distribution modeling" href="plot_species_distribution_modeling.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +47,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -142,7 +146,7 @@
     for scikit-learn <strong>version 0.13-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
@@ -214,6 +218,21 @@ visualization is crucial here to display the graph. One of the challenge
 is to position the labels minimizing overlap. For this we use an
 heuristic based on the direction of the nearest neighbor along each
 axis.</p>
+<img alt="../../_images/plot_stock_market_1.png" class="align-center" src="../../_images/plot_stock_market_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Cluster 1: Pepsi, Coca Cola, Kellogg
+Cluster 2: Apple, Amazon, Yahoo
+Cluster 3: GlaxoSmithKline, Novartis, Sanofi-Aventis
+Cluster 4: Comcast, Time Warner, Cablevision
+Cluster 5: ConocoPhillips, Chevron, Total, Valero Energy, Exxon
+Cluster 6: Walgreen, CVS
+Cluster 7: Kraft Foods
+Cluster 8: Navistar, Sony, Marriott, Caterpillar, Canon, Toyota, Honda, Mitsubishi, Xerox, Unilever
+Cluster 9: Kimberly-Clark, Colgate-Palmolive, Procter Gamble
+Cluster 10: American express, Ryder, Goldman Sachs, Wal-Mart, General Electrics, Pfizer, 3M, Wells Fargo, DuPont de Nemours, Bank of America, AIG, Home Depot, News Corp, Ford, JPMorgan Chase, Mc Donalds
+Cluster 11: Microsoft, SAP, IBM, Texas instruments, HP, Dell, Cisco
+Cluster 12: Raytheon, Boeing, Lookheed Martin, General Dynamics, Northrop Grumman</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_stock_market.py"><tt class="xref download docutils literal"><span class="pre">plot_stock_market.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -238,68 +257,67 @@ axis.</p>
 <span class="n">d2</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mo">01</span><span class="p">,</span> <span class="mo">01</span><span class="p">)</span>
 
 <span class="n">symbol_dict</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">&#39;TOT&#39;</span><span class="p">:</span> <span class="s">&#39;Total&#39;</span><span class="p">,</span>
-        <span class="s">&#39;XOM&#39;</span><span class="p">:</span> <span class="s">&#39;Exxon&#39;</span><span class="p">,</span>
-        <span class="s">&#39;CVX&#39;</span><span class="p">:</span> <span class="s">&#39;Chevron&#39;</span><span class="p">,</span>
-        <span class="s">&#39;COP&#39;</span><span class="p">:</span> <span class="s">&#39;ConocoPhillips&#39;</span><span class="p">,</span>
-        <span class="s">&#39;VLO&#39;</span><span class="p">:</span> <span class="s">&#39;Valero Energy&#39;</span><span class="p">,</span>
-        <span class="s">&#39;MSFT&#39;</span><span class="p">:</span> <span class="s">&#39;Microsoft&#39;</span><span class="p">,</span>
-        <span class="s">&#39;IBM&#39;</span><span class="p">:</span> <span class="s">&#39;IBM&#39;</span><span class="p">,</span>
-        <span class="s">&#39;TWX&#39;</span><span class="p">:</span> <span class="s">&#39;Time Warner&#39;</span><span class="p">,</span>
-        <span class="s">&#39;CMCSA&#39;</span><span class="p">:</span> <span class="s">&#39;Comcast&#39;</span><span class="p">,</span>
-        <span class="s">&#39;CVC&#39;</span><span class="p">:</span> <span class="s">&#39;Cablevision&#39;</span><span class="p">,</span>
-        <span class="s">&#39;YHOO&#39;</span><span class="p">:</span> <span class="s">&#39;Yahoo&#39;</span><span class="p">,</span>
-        <span class="s">&#39;DELL&#39;</span><span class="p">:</span> <span class="s">&#39;Dell&#39;</span><span class="p">,</span>
-        <span class="s">&#39;HPQ&#39;</span><span class="p">:</span> <span class="s">&#39;HP&#39;</span><span class="p">,</span>
-        <span class="s">&#39;AMZN&#39;</span><span class="p">:</span> <span class="s">&#39;Amazon&#39;</span><span class="p">,</span>
-        <span class="s">&#39;TM&#39;</span><span class="p">:</span> <span class="s">&#39;Toyota&#39;</span><span class="p">,</span>
-        <span class="s">&#39;CAJ&#39;</span><span class="p">:</span> <span class="s">&#39;Canon&#39;</span><span class="p">,</span>
-        <span class="s">&#39;MTU&#39;</span><span class="p">:</span> <span class="s">&#39;Mitsubishi&#39;</span><span class="p">,</span>
-        <span class="s">&#39;SNE&#39;</span><span class="p">:</span> <span class="s">&#39;Sony&#39;</span><span class="p">,</span>
-        <span class="s">&#39;F&#39;</span><span class="p">:</span> <span class="s">&#39;Ford&#39;</span><span class="p">,</span>
-        <span class="s">&#39;HMC&#39;</span><span class="p">:</span> <span class="s">&#39;Honda&#39;</span><span class="p">,</span>
-        <span class="s">&#39;NAV&#39;</span><span class="p">:</span> <span class="s">&#39;Navistar&#39;</span><span class="p">,</span>
-        <span class="s">&#39;NOC&#39;</span><span class="p">:</span> <span class="s">&#39;Northrop Grumman&#39;</span><span class="p">,</span>
-        <span class="s">&#39;BA&#39;</span><span class="p">:</span> <span class="s">&#39;Boeing&#39;</span><span class="p">,</span>
-        <span class="s">&#39;KO&#39;</span><span class="p">:</span> <span class="s">&#39;Coca Cola&#39;</span><span class="p">,</span>
-        <span class="s">&#39;MMM&#39;</span><span class="p">:</span> <span class="s">&#39;3M&#39;</span><span class="p">,</span>
-        <span class="s">&#39;MCD&#39;</span><span class="p">:</span> <span class="s">&#39;Mc Donalds&#39;</span><span class="p">,</span>
-        <span class="s">&#39;PEP&#39;</span><span class="p">:</span> <span class="s">&#39;Pepsi&#39;</span><span class="p">,</span>
-        <span class="s">&#39;KFT&#39;</span><span class="p">:</span> <span class="s">&#39;Kraft Foods&#39;</span><span class="p">,</span>
-        <span class="s">&#39;K&#39;</span><span class="p">:</span> <span class="s">&#39;Kellogg&#39;</span><span class="p">,</span>
-        <span class="s">&#39;UN&#39;</span><span class="p">:</span> <span class="s">&#39;Unilever&#39;</span><span class="p">,</span>
-        <span class="s">&#39;MAR&#39;</span><span class="p">:</span> <span class="s">&#39;Marriott&#39;</span><span class="p">,</span>
-        <span class="s">&#39;PG&#39;</span><span class="p">:</span> <span class="s">&#39;Procter Gamble&#39;</span><span class="p">,</span>
-        <span class="s">&#39;CL&#39;</span><span class="p">:</span> <span class="s">&#39;Colgate-Palmolive&#39;</span><span class="p">,</span>
-        <span class="s">&#39;NWS&#39;</span><span class="p">:</span> <span class="s">&#39;News Corp&#39;</span><span class="p">,</span>
-        <span class="s">&#39;GE&#39;</span><span class="p">:</span> <span class="s">&#39;General Electrics&#39;</span><span class="p">,</span>
-        <span class="s">&#39;WFC&#39;</span><span class="p">:</span> <span class="s">&#39;Wells Fargo&#39;</span><span class="p">,</span>
-        <span class="s">&#39;JPM&#39;</span><span class="p">:</span> <span class="s">&#39;JPMorgan Chase&#39;</span><span class="p">,</span>
-        <span class="s">&#39;AIG&#39;</span><span class="p">:</span> <span class="s">&#39;AIG&#39;</span><span class="p">,</span>
-        <span class="s">&#39;AXP&#39;</span><span class="p">:</span> <span class="s">&#39;American express&#39;</span><span class="p">,</span>
-        <span class="s">&#39;BAC&#39;</span><span class="p">:</span> <span class="s">&#39;Bank of America&#39;</span><span class="p">,</span>
-        <span class="s">&#39;GS&#39;</span><span class="p">:</span> <span class="s">&#39;Goldman Sachs&#39;</span><span class="p">,</span>
-        <span class="s">&#39;AAPL&#39;</span><span class="p">:</span> <span class="s">&#39;Apple&#39;</span><span class="p">,</span>
-        <span class="s">&#39;SAP&#39;</span><span class="p">:</span> <span class="s">&#39;SAP&#39;</span><span class="p">,</span>
-        <span class="s">&#39;CSCO&#39;</span><span class="p">:</span> <span class="s">&#39;Cisco&#39;</span><span class="p">,</span>
-        <span class="s">&#39;TXN&#39;</span><span class="p">:</span> <span class="s">&#39;Texas instruments&#39;</span><span class="p">,</span>
-        <span class="s">&#39;XRX&#39;</span><span class="p">:</span> <span class="s">&#39;Xerox&#39;</span><span class="p">,</span>
-        <span class="s">&#39;LMT&#39;</span><span class="p">:</span> <span class="s">&#39;Lookheed Martin&#39;</span><span class="p">,</span>
-        <span class="s">&#39;WMT&#39;</span><span class="p">:</span> <span class="s">&#39;Wal-Mart&#39;</span><span class="p">,</span>
-        <span class="s">&#39;WAG&#39;</span><span class="p">:</span> <span class="s">&#39;Walgreen&#39;</span><span class="p">,</span>
-        <span class="s">&#39;HD&#39;</span><span class="p">:</span> <span class="s">&#39;Home Depot&#39;</span><span class="p">,</span>
-        <span class="s">&#39;GSK&#39;</span><span class="p">:</span> <span class="s">&#39;GlaxoSmithKline&#39;</span><span class="p">,</span>
-        <span class="s">&#39;PFE&#39;</span><span class="p">:</span> <span class="s">&#39;Pfizer&#39;</span><span class="p">,</span>
-        <span class="s">&#39;SNY&#39;</span><span class="p">:</span> <span class="s">&#39;Sanofi-Aventis&#39;</span><span class="p">,</span>
-        <span class="s">&#39;NVS&#39;</span><span class="p">:</span> <span class="s">&#39;Novartis&#39;</span><span class="p">,</span>
-        <span class="s">&#39;KMB&#39;</span><span class="p">:</span> <span class="s">&#39;Kimberly-Clark&#39;</span><span class="p">,</span>
-        <span class="s">&#39;R&#39;</span><span class="p">:</span> <span class="s">&#39;Ryder&#39;</span><span class="p">,</span>
-        <span class="s">&#39;GD&#39;</span><span class="p">:</span> <span class="s">&#39;General Dynamics&#39;</span><span class="p">,</span>
-        <span class="s">&#39;RTN&#39;</span><span class="p">:</span> <span class="s">&#39;Raytheon&#39;</span><span class="p">,</span>
-        <span class="s">&#39;CVS&#39;</span><span class="p">:</span> <span class="s">&#39;CVS&#39;</span><span class="p">,</span>
-        <span class="s">&#39;CAT&#39;</span><span class="p">:</span> <span class="s">&#39;Caterpillar&#39;</span><span class="p">,</span>
-        <span class="s">&#39;DD&#39;</span><span class="p">:</span> <span class="s">&#39;DuPont de Nemours&#39;</span><span class="p">,</span>
-    <span class="p">}</span>
+    <span class="s">&#39;TOT&#39;</span><span class="p">:</span> <span class="s">&#39;Total&#39;</span><span class="p">,</span>
+    <span class="s">&#39;XOM&#39;</span><span class="p">:</span> <span class="s">&#39;Exxon&#39;</span><span class="p">,</span>
+    <span class="s">&#39;CVX&#39;</span><span class="p">:</span> <span class="s">&#39;Chevron&#39;</span><span class="p">,</span>
+    <span class="s">&#39;COP&#39;</span><span class="p">:</span> <span class="s">&#39;ConocoPhillips&#39;</span><span class="p">,</span>
+    <span class="s">&#39;VLO&#39;</span><span class="p">:</span> <span class="s">&#39;Valero Energy&#39;</span><span class="p">,</span>
+    <span class="s">&#39;MSFT&#39;</span><span class="p">:</span> <span class="s">&#39;Microsoft&#39;</span><span class="p">,</span>
+    <span class="s">&#39;IBM&#39;</span><span class="p">:</span> <span class="s">&#39;IBM&#39;</span><span class="p">,</span>
+    <span class="s">&#39;TWX&#39;</span><span class="p">:</span> <span class="s">&#39;Time Warner&#39;</span><span class="p">,</span>
+    <span class="s">&#39;CMCSA&#39;</span><span class="p">:</span> <span class="s">&#39;Comcast&#39;</span><span class="p">,</span>
+    <span class="s">&#39;CVC&#39;</span><span class="p">:</span> <span class="s">&#39;Cablevision&#39;</span><span class="p">,</span>
+    <span class="s">&#39;YHOO&#39;</span><span class="p">:</span> <span class="s">&#39;Yahoo&#39;</span><span class="p">,</span>
+    <span class="s">&#39;DELL&#39;</span><span class="p">:</span> <span class="s">&#39;Dell&#39;</span><span class="p">,</span>
+    <span class="s">&#39;HPQ&#39;</span><span class="p">:</span> <span class="s">&#39;HP&#39;</span><span class="p">,</span>
+    <span class="s">&#39;AMZN&#39;</span><span class="p">:</span> <span class="s">&#39;Amazon&#39;</span><span class="p">,</span>
+    <span class="s">&#39;TM&#39;</span><span class="p">:</span> <span class="s">&#39;Toyota&#39;</span><span class="p">,</span>
+    <span class="s">&#39;CAJ&#39;</span><span class="p">:</span> <span class="s">&#39;Canon&#39;</span><span class="p">,</span>
+    <span class="s">&#39;MTU&#39;</span><span class="p">:</span> <span class="s">&#39;Mitsubishi&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SNE&#39;</span><span class="p">:</span> <span class="s">&#39;Sony&#39;</span><span class="p">,</span>
+    <span class="s">&#39;F&#39;</span><span class="p">:</span> <span class="s">&#39;Ford&#39;</span><span class="p">,</span>
+    <span class="s">&#39;HMC&#39;</span><span class="p">:</span> <span class="s">&#39;Honda&#39;</span><span class="p">,</span>
+    <span class="s">&#39;NAV&#39;</span><span class="p">:</span> <span class="s">&#39;Navistar&#39;</span><span class="p">,</span>
+    <span class="s">&#39;NOC&#39;</span><span class="p">:</span> <span class="s">&#39;Northrop Grumman&#39;</span><span class="p">,</span>
+    <span class="s">&#39;BA&#39;</span><span class="p">:</span> <span class="s">&#39;Boeing&#39;</span><span class="p">,</span>
+    <span class="s">&#39;KO&#39;</span><span class="p">:</span> <span class="s">&#39;Coca Cola&#39;</span><span class="p">,</span>
+    <span class="s">&#39;MMM&#39;</span><span class="p">:</span> <span class="s">&#39;3M&#39;</span><span class="p">,</span>
+    <span class="s">&#39;MCD&#39;</span><span class="p">:</span> <span class="s">&#39;Mc Donalds&#39;</span><span class="p">,</span>
+    <span class="s">&#39;PEP&#39;</span><span class="p">:</span> <span class="s">&#39;Pepsi&#39;</span><span class="p">,</span>
+    <span class="s">&#39;KFT&#39;</span><span class="p">:</span> <span class="s">&#39;Kraft Foods&#39;</span><span class="p">,</span>
+    <span class="s">&#39;K&#39;</span><span class="p">:</span> <span class="s">&#39;Kellogg&#39;</span><span class="p">,</span>
+    <span class="s">&#39;UN&#39;</span><span class="p">:</span> <span class="s">&#39;Unilever&#39;</span><span class="p">,</span>
+    <span class="s">&#39;MAR&#39;</span><span class="p">:</span> <span class="s">&#39;Marriott&#39;</span><span class="p">,</span>
+    <span class="s">&#39;PG&#39;</span><span class="p">:</span> <span class="s">&#39;Procter Gamble&#39;</span><span class="p">,</span>
+    <span class="s">&#39;CL&#39;</span><span class="p">:</span> <span class="s">&#39;Colgate-Palmolive&#39;</span><span class="p">,</span>
+    <span class="s">&#39;NWS&#39;</span><span class="p">:</span> <span class="s">&#39;News Corp&#39;</span><span class="p">,</span>
+    <span class="s">&#39;GE&#39;</span><span class="p">:</span> <span class="s">&#39;General Electrics&#39;</span><span class="p">,</span>
+    <span class="s">&#39;WFC&#39;</span><span class="p">:</span> <span class="s">&#39;Wells Fargo&#39;</span><span class="p">,</span>
+    <span class="s">&#39;JPM&#39;</span><span class="p">:</span> <span class="s">&#39;JPMorgan Chase&#39;</span><span class="p">,</span>
+    <span class="s">&#39;AIG&#39;</span><span class="p">:</span> <span class="s">&#39;AIG&#39;</span><span class="p">,</span>
+    <span class="s">&#39;AXP&#39;</span><span class="p">:</span> <span class="s">&#39;American express&#39;</span><span class="p">,</span>
+    <span class="s">&#39;BAC&#39;</span><span class="p">:</span> <span class="s">&#39;Bank of America&#39;</span><span class="p">,</span>
+    <span class="s">&#39;GS&#39;</span><span class="p">:</span> <span class="s">&#39;Goldman Sachs&#39;</span><span class="p">,</span>
+    <span class="s">&#39;AAPL&#39;</span><span class="p">:</span> <span class="s">&#39;Apple&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SAP&#39;</span><span class="p">:</span> <span class="s">&#39;SAP&#39;</span><span class="p">,</span>
+    <span class="s">&#39;CSCO&#39;</span><span class="p">:</span> <span class="s">&#39;Cisco&#39;</span><span class="p">,</span>
+    <span class="s">&#39;TXN&#39;</span><span class="p">:</span> <span class="s">&#39;Texas instruments&#39;</span><span class="p">,</span>
+    <span class="s">&#39;XRX&#39;</span><span class="p">:</span> <span class="s">&#39;Xerox&#39;</span><span class="p">,</span>
+    <span class="s">&#39;LMT&#39;</span><span class="p">:</span> <span class="s">&#39;Lookheed Martin&#39;</span><span class="p">,</span>
+    <span class="s">&#39;WMT&#39;</span><span class="p">:</span> <span class="s">&#39;Wal-Mart&#39;</span><span class="p">,</span>
+    <span class="s">&#39;WAG&#39;</span><span class="p">:</span> <span class="s">&#39;Walgreen&#39;</span><span class="p">,</span>
+    <span class="s">&#39;HD&#39;</span><span class="p">:</span> <span class="s">&#39;Home Depot&#39;</span><span class="p">,</span>
+    <span class="s">&#39;GSK&#39;</span><span class="p">:</span> <span class="s">&#39;GlaxoSmithKline&#39;</span><span class="p">,</span>
+    <span class="s">&#39;PFE&#39;</span><span class="p">:</span> <span class="s">&#39;Pfizer&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SNY&#39;</span><span class="p">:</span> <span class="s">&#39;Sanofi-Aventis&#39;</span><span class="p">,</span>
+    <span class="s">&#39;NVS&#39;</span><span class="p">:</span> <span class="s">&#39;Novartis&#39;</span><span class="p">,</span>
+    <span class="s">&#39;KMB&#39;</span><span class="p">:</span> <span class="s">&#39;Kimberly-Clark&#39;</span><span class="p">,</span>
+    <span class="s">&#39;R&#39;</span><span class="p">:</span> <span class="s">&#39;Ryder&#39;</span><span class="p">,</span>
+    <span class="s">&#39;GD&#39;</span><span class="p">:</span> <span class="s">&#39;General Dynamics&#39;</span><span class="p">,</span>
+    <span class="s">&#39;RTN&#39;</span><span class="p">:</span> <span class="s">&#39;Raytheon&#39;</span><span class="p">,</span>
+    <span class="s">&#39;CVS&#39;</span><span class="p">:</span> <span class="s">&#39;CVS&#39;</span><span class="p">,</span>
+    <span class="s">&#39;CAT&#39;</span><span class="p">:</span> <span class="s">&#39;Caterpillar&#39;</span><span class="p">,</span>
+    <span class="s">&#39;DD&#39;</span><span class="p">:</span> <span class="s">&#39;DuPont de Nemours&#39;</span><span class="p">}</span>
 
 <span class="n">symbols</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">symbol_dict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span><span class="o">.</span><span class="n">T</span>
 
@@ -378,7 +396,7 @@ axis.</p>
 <span class="c"># Add a label to each node. The challenge here is that we want to</span>
 <span class="c"># position the labels to avoid overlap with other labels</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
-    <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">embedding</span><span class="o">.</span><span class="n">T</span><span class="p">)):</span>
+        <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">embedding</span><span class="o">.</span><span class="n">T</span><span class="p">)):</span>
 
     <span class="n">dx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">embedding</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">dx</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -413,6 +431,7 @@ axis.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  7.07 seconds</p>
 </div>
 </div>
 
