@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -168,7 +174,6 @@
   <div class="section" id="linear-and-quadratic-discriminant-analysis-with-confidence-ellipsoid">
 <span id="example-plot-lda-qda-py"></span><h1>Linear and Quadratic Discriminant Analysis with confidence ellipsoid<a class="headerlink" href="#linear-and-quadratic-discriminant-analysis-with-confidence-ellipsoid" title="Permalink to this headline">¶</a></h1>
 <p>Plot the confidence ellipsoids of each class and decision boundary</p>
-<img alt="../_images/plot_lda_qda_1.png" class="align-center" src="../_images/plot_lda_qda_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_lda_qda.py"><tt class="xref download docutils literal"><span class="pre">plot_lda_qda.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -230,10 +235,8 @@
     <span class="n">tp</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">y_pred</span><span class="p">)</span>  <span class="c"># True Positive</span>
     <span class="n">tp0</span><span class="p">,</span> <span class="n">tp1</span> <span class="o">=</span> <span class="n">tp</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="n">tp</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">X0</span><span class="p">,</span> <span class="n">X1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="c"># pep8 moans about next 2 lines:</span>
-    <span class="c"># E712 comparison to False should be &#39;if cond is False:&#39; or &#39;if not cond:&#39;</span>
-    <span class="n">X0_tp</span><span class="p">,</span> <span class="n">X0_fp</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">tp0</span><span class="p">],</span> <span class="n">X0</span><span class="p">[</span><span class="n">tp0</span> <span class="o">!=</span> <span class="bp">True</span><span class="p">]</span>
-    <span class="n">X1_tp</span><span class="p">,</span> <span class="n">X1_fp</span> <span class="o">=</span> <span class="n">X1</span><span class="p">[</span><span class="n">tp1</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="n">tp1</span> <span class="o">!=</span> <span class="bp">True</span><span class="p">]</span>
+    <span class="n">X0_tp</span><span class="p">,</span> <span class="n">X0_fp</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">tp0</span><span class="p">],</span> <span class="n">X0</span><span class="p">[</span><span class="o">~</span><span class="n">tp0</span><span class="p">]</span>
+    <span class="n">X1_tp</span><span class="p">,</span> <span class="n">X1_fp</span> <span class="o">=</span> <span class="n">X1</span><span class="p">[</span><span class="n">tp1</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="o">~</span><span class="n">tp1</span><span class="p">]</span>
     <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
     <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 
@@ -309,7 +312,6 @@
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.35 seconds</p>
 </div>
 
 
@@ -321,7 +323,7 @@
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/auto_examples/plot_lda_qda.txt"

@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -184,6 +190,10 @@ histograms.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like of shape (n_samples_X, n_features)</p>
 <p><strong>Y</strong> : array of shape (n_samples_Y, n_features)</p>
+<p><strong>gamma</strong> : float, default=1.</p>
+<blockquote>
+<div><p>Scaling parameter of the chi2 kernel.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>kernel_matrix</strong> : array of shape (n_samples_X, n_samples_Y)</p>
@@ -221,7 +231,7 @@ International Journal of Computer Vision 2007
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.metrics.pairwise.chi2_kernel.txt"

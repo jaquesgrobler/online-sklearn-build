@@ -1,7 +1,7 @@
 """
-==============================================
-Scaling the regularization parameter for SVCs
-==============================================
+=========================================================================
+Support Vector Classification (SVC): scaling the regularization parameter
+=========================================================================
 
 The following example illustrates the effect of scaling the
 regularization parameter when using :ref:`svm` for

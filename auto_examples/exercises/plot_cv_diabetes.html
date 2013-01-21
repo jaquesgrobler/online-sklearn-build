@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -169,21 +175,6 @@
 <span id="example-exercises-plot-cv-diabetes-py"></span><h1>Cross-validation on diabetes Dataset Exercise<a class="headerlink" href="#cross-validation-on-diabetes-dataset-exercise" title="Permalink to this headline">¶</a></h1>
 <p>This exercise is used in the <a class="reference internal" href="../../tutorial/statistical_inference/model_selection.html#cv-estimators-tut"><em>Cross-validated estimators</em></a> part of the
 <a class="reference internal" href="../../tutorial/statistical_inference/model_selection.html#model-selection-tut"><em>Model selection: choosing estimators and their parameters</em></a> section of the <a class="reference internal" href="../../tutorial/statistical_inference/index.html#stat-learn-tut-index"><em>A tutorial on statistical-learning for scientific data processing</em></a>.</p>
-<img alt="../../_images/plot_cv_diabetes_1.png" class="align-center" src="../../_images/plot_cv_diabetes_1.png" />
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Answer to the bonus question: how much can you trust
-the selection of alpha?
-
-Alpha parameters maximising the generalization score on different
-subsets of the data:
-[fold 0] alpha: 0.10405, score: 0.53573
-[fold 1] alpha: 0.05968, score: 0.16277
-[fold 2] alpha: 0.18139, score: 0.41034
-
-Answer: Not very much since we obtained different alphas for different
-subsets of the data and moreover, the scores for these alphas differ
-quite substantially.</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_cv_diabetes.py"><tt class="xref download docutils literal"><span class="pre">plot_cv_diabetes.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -248,7 +239,6 @@ quite substantially.</pre>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  3.51 seconds</p>
 </div>
 
 
@@ -260,7 +250,7 @@ quite substantially.</pre>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/auto_examples/exercises/plot_cv_diabetes.txt"

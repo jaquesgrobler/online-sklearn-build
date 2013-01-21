@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -234,36 +240,6 @@ in the input space does not make sense: it does not allow for dimensionality
 reduction in this case.</p>
 <p>On the twenty newsgroups on the other hand the dimensionality can be decreased
 from 56436 down to 10000 while reasonably preserving pairwise distances.</p>
-<ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_4.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_4.png" src="../_images/plot_johnson_lindenstrauss_bound_4.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_2.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_2.png" src="../_images/plot_johnson_lindenstrauss_bound_2.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_1.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_1.png" src="../_images/plot_johnson_lindenstrauss_bound_1.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_7.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_7.png" src="../_images/plot_johnson_lindenstrauss_bound_7.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_3.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_3.png" src="../_images/plot_johnson_lindenstrauss_bound_3.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_5.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_5.png" src="../_images/plot_johnson_lindenstrauss_bound_5.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_6.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_6.png" src="../_images/plot_johnson_lindenstrauss_bound_6.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_8.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_8.png" src="../_images/plot_johnson_lindenstrauss_bound_8.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-</ul>
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Embedding 500 samples with dim 64 using various random projections
-Projected 500 samples from 64 to 300 in 0.007s
-Random matrix with size: 0.027MB
-Mean distances rate: 1.01 (0.08)
-Projected 500 samples from 64 to 1000 in 0.017s
-Random matrix with size: 0.095MB
-Mean distances rate: 1.01 (0.05)
-Projected 500 samples from 64 to 10000 in 0.168s
-Random matrix with size: 0.957MB
-Mean distances rate: 1.00 (0.01)</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_johnson_lindenstrauss_bound.py"><tt class="xref download docutils literal"><span class="pre">plot_johnson_lindenstrauss_bound.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
@@ -375,7 +351,6 @@ Mean distances rate: 1.00 (0.01)</pre>
     <span class="c"># as vertical lines / region</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  6.92 seconds</p>
 </div>
 </div>
 
@@ -388,7 +363,7 @@ Mean distances rate: 1.00 (0.01)</pre>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/auto_examples/plot_johnson_lindenstrauss_bound.txt"

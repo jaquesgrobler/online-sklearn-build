@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -170,7 +176,7 @@
 <dl class="function">
 <dt id="sklearn.manifold.spectral_embedding">
 <tt class="descclassname">sklearn.manifold.</tt><tt class="descname">spectral_embedding</tt><big>(</big><em>adjacency</em>, <em>n_components=8</em>, <em>eigen_solver=None</em>, <em>random_state=None</em>, <em>eigen_tol=0.0</em>, <em>norm_laplacian=True</em>, <em>drop_first=True</em>, <em>mode=None</em><big>)</big><a class="headerlink" href="#sklearn.manifold.spectral_embedding" title="Permalink to this definition">¶</a></dt>
-<dd><p>Project the sample on the first eigen vectors of the graph Laplacian</p>
+<dd><p>Project the sample on the first eigen vectors of the graph Laplacian.</p>
 <p>The adjacency matrix is used to compute a normalized graph Laplacian
 whose spectrum (especially the eigen vectors associated to the
 smallest eigen values) has an interpretation in terms of minimal
@@ -198,7 +204,7 @@ so that the eigen vector decomposition works as expected.</p>
 <blockquote>
 <div><p>The eigenvalue decomposition strategy to use. AMG requires pyamg
 to be installed. It can be faster on very large, sparse problems,
-but may also lead to instabilities</p>
+but may also lead to instabilities.</p>
 </div></blockquote>
 <p><strong>random_state</strong> : int seed, RandomState instance, or None (default)</p>
 <blockquote>
@@ -206,12 +212,12 @@ but may also lead to instabilities</p>
 lobpcg eigen vectors decomposition when eigen_solver == &#8216;amg&#8217;.
 By default, arpack is used.</p>
 </div></blockquote>
-<p><strong>eigen_tol</strong> : float, optional, default: 0.0</p>
+<p><strong>eigen_tol</strong> : float, optional, default=0.0</p>
 <blockquote>
 <div><p>Stopping criterion for eigendecomposition of the Laplacian matrix
 when using arpack eigen_solver.</p>
 </div></blockquote>
-<p><strong>drop_first</strong> : bool, optional, default: True</p>
+<p><strong>drop_first</strong> : bool, optional, default=True</p>
 <blockquote>
 <div><p>Whether to drop the first eigenvector. For spectral embedding, this
 should be True as the first eigenvector should be constant vector for
@@ -220,9 +226,9 @@ False to retain the first eigenvector.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>embedding</strong> : array, shape: (n_samples, n_components)</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>embedding</strong> : array, shape=(n_samples, n_components)</p>
 <blockquote class="last">
-<div><p>The reduced samples</p>
+<div><p>The reduced samples.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -230,15 +236,16 @@ False to retain the first eigenvector.</p>
 </table>
 <p class="rubric">Notes</p>
 <p>Spectral embedding is most useful when the graph has one connected
-component. If there graph has many components, the first few
-eigenvectors will simply uncover the connected components of the graph.</p>
+component. If there graph has many components, the first few eigenvectors
+will simply uncover the connected components of the graph.</p>
 <p class="rubric">References</p>
-<p>[1] <a class="reference external" href="http://en.wikipedia.org/wiki/LOBPCG">http://en.wikipedia.org/wiki/LOBPCG</a>
-[2] Toward the Optimal Preconditioned Eigensolver: Locally Optimal</p>
-<blockquote>
-<div>Block Preconditioned Conjugate Gradient Method
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/LOBPCG">http://en.wikipedia.org/wiki/LOBPCG</a></li>
+<li>Toward the Optimal Preconditioned Eigensolver: Locally Optimal
+Block Preconditioned Conjugate Gradient Method
 Andrew V. Knyazev
-<a class="reference external" href="http://dx.doi.org/10.1137%2FS1064827500366124">http://dx.doi.org/10.1137%2FS1064827500366124</a></div></blockquote>
+<a class="reference external" href="http://dx.doi.org/10.1137%2FS1064827500366124">http://dx.doi.org/10.1137%2FS1064827500366124</a></li>
+</ul>
 </dd></dl>
 
 </div>
@@ -252,7 +259,7 @@ Andrew V. Knyazev
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.manifold.spectral_embedding.txt"

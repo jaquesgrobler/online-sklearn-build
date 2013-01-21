@@ -1,9 +1,4 @@
-"""
-===========================================
-FeatureHasher and DictVectorizer Comparison
-===========================================
-
-Compares FeatureHasher and DictVectorizer by using both to vectorize
+"""Compares FeatureHasher and DictVectorizer by using both to vectorize
 text documents.
 
 The example demonstrates syntax and speed only; it doesn't actually do

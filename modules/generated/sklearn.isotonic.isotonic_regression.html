@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -171,10 +177,10 @@
 <dt id="sklearn.isotonic.isotonic_regression">
 <tt class="descclassname">sklearn.isotonic.</tt><tt class="descname">isotonic_regression</tt><big>(</big><em>y</em>, <em>weight=None</em>, <em>y_min=None</em>, <em>y_max=None</em><big>)</big><a class="headerlink" href="#sklearn.isotonic.isotonic_regression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solve the isotonic regression model:</p>
-<blockquote>
-<div><p>min sum w[i] (y[i] - y_[i]) ** 2</p>
-<p>subject to y_min = y_[1] &lt;= y_[2] ... &lt;= y_[n] = y_max</p>
-</div></blockquote>
+<div class="highlight-python"><pre>min sum w[i] (y[i] - y_[i]) ** 2
+
+subject to y_min = y_[1] &lt;= y_[2] ... &lt;= y_[n] = y_max</pre>
+</div>
 <dl class="docutils">
 <dt>where:</dt>
 <dd><ul class="first last simple">
@@ -188,28 +194,28 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y: iterable of floating-point values</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y</strong> : iterable of floating-point values</p>
 <blockquote>
-<div><p>The data</p>
+<div><p>The data.</p>
 </div></blockquote>
-<p><strong>weight: iterable of floating-point values, optional, default: None</strong> :</p>
+<p><strong>weight</strong> : iterable of floating-point values, optional, default: None</p>
 <blockquote>
 <div><p>Weights on each point of the regression.
-If None, weight is set to 1 (equal weights)</p>
+If None, weight is set to 1 (equal weights).</p>
 </div></blockquote>
-<p><strong>y_min: optional, default: None</strong> :</p>
+<p><strong>y_min</strong> : optional, default: None</p>
 <blockquote>
-<div><p>if not None, set the lowest value of the fit to y_min</p>
+<div><p>If not None, set the lowest value of the fit to y_min.</p>
 </div></blockquote>
-<p><strong>y_max: optional, default: None</strong> :</p>
+<p><strong>y_max</strong> : optional, default: None</p>
 <blockquote>
-<div><p>if not None, set the highest value of the fit to y_max</p>
+<div><p>If not None, set the highest value of the fit to y_max.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>y_: list of floating-point values</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>`y_`</strong> : list of floating-point values</p>
 <blockquote class="last">
-<div><p>Isotonic fit of y</p>
+<div><p>Isotonic fit of y.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -231,7 +237,7 @@ by Michael J. Best and Nilotpal Chakravarti, section 3.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.isotonic.isotonic_regression.txt"

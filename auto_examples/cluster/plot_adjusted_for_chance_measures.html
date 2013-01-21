@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -179,30 +185,6 @@ clusters.</p>
 <p>Only adjusted measures can hence safely be used as a consensus index
 to evaluate the average stability of clustering algorithms for a given
 value of k on various overlapping sub-samples of the dataset.</p>
-<ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_adjusted_for_chance_measures_2.png"><img alt="../../_images/plot_adjusted_for_chance_measures_2.png" src="../../_images/plot_adjusted_for_chance_measures_2.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_adjusted_for_chance_measures_1.png"><img alt="../../_images/plot_adjusted_for_chance_measures_1.png" src="../../_images/plot_adjusted_for_chance_measures_1.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-</ul>
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Computing adjusted_rand_score for 10 values of n_clusters and n_samples=100
-done in 0.175s
-Computing v_measure_score for 10 values of n_clusters and n_samples=100
-done in 0.030s
-Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=100
-done in 0.770s
-Computing mutual_info_score for 10 values of n_clusters and n_samples=100
-done in 0.020s
-Computing adjusted_rand_score for 10 values of n_clusters and n_samples=1000
-done in 0.192s
-Computing v_measure_score for 10 values of n_clusters and n_samples=1000
-done in 0.057s
-Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=1000
-done in 0.396s
-Computing mutual_info_score for 10 values of n_clusters and n_samples=1000
-done in 0.036s</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_adjusted_for_chance_measures.py"><tt class="xref download docutils literal"><span class="pre">plot_adjusted_for_chance_measures.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -307,7 +289,6 @@ done in 0.036s</pre>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  1.86 seconds</p>
 </div>
 
 
@@ -319,7 +300,7 @@ done in 0.036s</pre>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/auto_examples/cluster/plot_adjusted_for_chance_measures.txt"

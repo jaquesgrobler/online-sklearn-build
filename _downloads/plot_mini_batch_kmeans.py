@@ -1,7 +1,7 @@
 """
-====================================================================
-Comparison of the K-Means clustering and MiniBatchKMeans Algorithms
-====================================================================
+=====================================================
+A demo of the K Means clustering algorithm
+=====================================================
 
 We want to compare the performance of the MiniBatchKMeans and KMeans:
 the MiniBatchKMeans is faster, but gives slightly different results (see

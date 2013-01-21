@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -181,7 +187,7 @@ analyzer does simple stop word filtering for English.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>input: string {&#8216;filename&#8217;, &#8216;file&#8217;, &#8216;content&#8217;}</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>input</strong> : string {&#8216;filename&#8217;, &#8216;file&#8217;, &#8216;content&#8217;}</p>
 <blockquote>
 <div><p>If filename, the sequence passed as an argument to fit is
 expected to be a list of filenames that need reading to fetch
@@ -191,19 +197,19 @@ object) it is called to fetch the bytes in memory.</p>
 <p>Otherwise the input is expected to be the sequence strings or
 bytes items are expected to be analyzed directly.</p>
 </div></blockquote>
-<p><strong>charset: string, &#8216;utf-8&#8217; by default.</strong> :</p>
+<p><strong>charset</strong> : string, &#8216;utf-8&#8217; by default.</p>
 <blockquote>
 <div><p>If bytes or files are given to analyze, this charset is used to
 decode.</p>
 </div></blockquote>
-<p><strong>charset_error: {&#8216;strict&#8217;, &#8216;ignore&#8217;, &#8216;replace&#8217;}</strong> :</p>
+<p><strong>charset_error</strong> : {&#8216;strict&#8217;, &#8216;ignore&#8217;, &#8216;replace&#8217;}</p>
 <blockquote>
 <div><p>Instruction on what to do if a byte sequence is given to analyze that
 contains characters not of the given <cite>charset</cite>. By default, it is
 &#8216;strict&#8217;, meaning that a UnicodeDecodeError will be raised. Other
 values are &#8216;ignore&#8217; and &#8216;replace&#8217;.</p>
 </div></blockquote>
-<p><strong>strip_accents: {&#8216;ascii&#8217;, &#8216;unicode&#8217;, None}</strong> :</p>
+<p><strong>strip_accents</strong> : {&#8216;ascii&#8217;, &#8216;unicode&#8217;, None}</p>
 <blockquote>
 <div><p>Remove accents during the preprocessing step.
 &#8216;ascii&#8217; is a fast method that only works on characters that have
@@ -211,7 +217,7 @@ an direct ASCII mapping.
 &#8216;unicode&#8217; is a slightly slower method that works on any characters.
 None (default) does nothing.</p>
 </div></blockquote>
-<p><strong>analyzer: string, {&#8216;word&#8217;, &#8216;char&#8217;, &#8216;char_wb&#8217;} or callable</strong> :</p>
+<p><strong>analyzer</strong> : string, {&#8216;word&#8217;, &#8216;char&#8217;, &#8216;char_wb&#8217;} or callable</p>
 <blockquote>
 <div><p>Whether the feature should be made of word or character n-grams.
 Option &#8216;char_wb&#8217; creates character n-grams only from text inside
@@ -219,23 +225,23 @@ word boundaries.</p>
 <p>If a callable is passed it is used to extract the sequence of features
 out of the raw, unprocessed input.</p>
 </div></blockquote>
-<p><strong>preprocessor: callable or None (default)</strong> :</p>
+<p><strong>preprocessor</strong> : callable or None (default)</p>
 <blockquote>
 <div><p>Override the preprocessing (string transformation) stage while
 preserving the tokenizing and n-grams generation steps.</p>
 </div></blockquote>
-<p><strong>tokenizer: callable or None (default)</strong> :</p>
+<p><strong>tokenizer</strong> : callable or None (default)</p>
 <blockquote>
 <div><p>Override the string tokenization step while preserving the
 preprocessing and n-grams generation steps.</p>
 </div></blockquote>
-<p><strong>ngram_range: tuple (min_n, max_n)</strong> :</p>
+<p><strong>ngram_range</strong> : tuple (min_n, max_n)</p>
 <blockquote>
 <div><p>The lower and upper boundary of the range of n-values for different
 n-grams to be extracted. All values of n such that min_n &lt;= n &lt;= max_n
 will be used.</p>
 </div></blockquote>
-<p><strong>stop_words: string {&#8216;english&#8217;}, list, or None (default)</strong> :</p>
+<p><strong>stop_words</strong> : string {&#8216;english&#8217;}, list, or None (default)</p>
 <blockquote>
 <div><p>If a string, it is passed to _check_stop_list and the appropriate stop
 list is returned is currently the only
@@ -246,11 +252,11 @@ will be removed from the resulting tokens.</p>
 in the range [0.7, 1.0) to automatically detect and filter stop
 words based on intra corpus document frequency of terms.</p>
 </div></blockquote>
-<p><strong>lowercase: boolean, default True</strong> :</p>
+<p><strong>lowercase</strong> : boolean, default True</p>
 <blockquote>
 <div><p>Convert all characters to lowercase befor tokenizing.</p>
 </div></blockquote>
-<p><strong>token_pattern: string</strong> :</p>
+<p><strong>token_pattern</strong> : string</p>
 <blockquote>
 <div><p>Regular expression denoting what constitutes a &#8220;token&#8221;, only used
 if <cite>tokenize == &#8216;word&#8217;</cite>. The default regexp select tokens of 2
@@ -280,19 +286,19 @@ This parameter is ignored if vocabulary is not None.</p>
 max_features ordered by term frequency across the corpus.</p>
 <p>This parameter is ignored if vocabulary is not None.</p>
 </div></blockquote>
-<p><strong>vocabulary: Mapping or iterable, optional</strong> :</p>
+<p><strong>vocabulary</strong> : Mapping or iterable, optional</p>
 <blockquote>
 <div><p>Either a Mapping (e.g., a dict) where keys are terms and values are
 indices in the feature matrix, or an iterable over terms. If not
 given, a vocabulary is determined from the input documents.</p>
 </div></blockquote>
-<p><strong>binary: boolean, False by default.</strong> :</p>
+<p><strong>binary</strong> : boolean, False by default.</p>
 <blockquote>
 <div><p>If True, all non zero counts are set to 1. This is useful for discrete
 probabilistic models that model binary events rather than integer
 counts.</p>
 </div></blockquote>
-<p><strong>dtype: type, optional</strong> :</p>
+<p><strong>dtype</strong> : type, optional</p>
 <blockquote class="last">
 <div><p>Type of the matrix returned by fit_transform() or transform().</p>
 </div></blockquote>
@@ -321,10 +327,10 @@ counts.</p>
 <td>Decode the input into a string of unicode symbols</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_extraction.text.CountVectorizer.fit" title="sklearn.feature_extraction.text.CountVectorizer.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(raw_documents[,&nbsp;y])</td>
-<td>Learn a vocabulary dictionary of all tokens in the raw documents</td>
+<td>Learn a vocabulary dictionary of all tokens in the raw documents.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_extraction.text.CountVectorizer.fit_transform" title="sklearn.feature_extraction.text.CountVectorizer.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(raw_documents[,&nbsp;y])</td>
-<td>Learn the vocabulary dictionary and return the count vectors</td>
+<td>Learn the vocabulary dictionary and return the count vectors.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_extraction.text.CountVectorizer.get_feature_names" title="sklearn.feature_extraction.text.CountVectorizer.get_feature_names"><tt class="xref py py-obj docutils literal"><span class="pre">get_feature_names</span></tt></a>()</td>
 <td>Array mapping from feature integer indices to feature name</td>
@@ -379,14 +385,14 @@ counts.</p>
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.CountVectorizer.fit">
 <tt class="descname">fit</tt><big>(</big><em>raw_documents</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.CountVectorizer.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learn a vocabulary dictionary of all tokens in the raw documents</p>
+<dd><p>Learn a vocabulary dictionary of all tokens in the raw documents.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>raw_documents: iterable</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>raw_documents</strong> : iterable</p>
 <blockquote>
-<div><p>an iterable which yields either str, unicode or file objects</p>
+<div><p>An iterable which yields either str, unicode or file objects.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -400,19 +406,19 @@ counts.</p>
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.CountVectorizer.fit_transform">
 <tt class="descname">fit_transform</tt><big>(</big><em>raw_documents</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.CountVectorizer.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learn the vocabulary dictionary and return the count vectors</p>
+<dd><p>Learn the vocabulary dictionary and return the count vectors.</p>
 <p>This is more efficient than calling fit followed by transform.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>raw_documents: iterable</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>raw_documents</strong> : iterable</p>
 <blockquote>
-<div><p>an iterable which yields either str, unicode or file objects</p>
+<div><p>An iterable which yields either str, unicode or file objects.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>vectors: array, [n_samples, n_features]</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>vectors</strong> : array, [n_samples, n_features]</p>
 </td>
 </tr>
 </tbody>
@@ -498,13 +504,13 @@ fitted with fit or the one provided in the constructor.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>raw_documents: iterable</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>raw_documents</strong> : iterable</p>
 <blockquote>
-<div><p>an iterable which yields either str, unicode or file objects</p>
+<div><p>An iterable which yields either str, unicode or file objects.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>vectors: sparse matrix, [n_samples, n_features]</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>vectors</strong> : sparse matrix, [n_samples, n_features]</p>
 </td>
 </tr>
 </tbody>
@@ -524,7 +530,7 @@ fitted with fit or the one provided in the constructor.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.feature_extraction.text.CountVectorizer.txt"

@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -169,7 +175,7 @@
 <h1>8.9.4. sklearn.feature_selection.SelectFdr<a class="headerlink" href="#sklearn-feature-selection-selectfdr" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_selection.SelectFdr">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectFdr</tt><big>(</big><em>score_func=&lt;function f_classif at 0x41a9140&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectFdr</tt><big>(</big><em>score_func=&lt;function f_classif at 0x33d3758&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter: Select the p-values for an estimated false discovery rate</p>
 <p>This uses the Benjamini-Hochberg procedure. <tt class="docutils literal"><span class="pre">alpha</span></tt> is the target false
 discovery rate.</p>
@@ -193,16 +199,16 @@ discovery rate.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="12%" />
-<col width="47%" />
-<col width="41%" />
+<col width="15%" />
+<col width="46%" />
+<col width="40%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a href="#id1"><span class="problematic" id="id2">scores_</span></a></td>
+<tr class="row-odd"><td><cite>scores_</cite></td>
 <td>array-like, shape=(n_features,)</td>
 <td>Scores of features.</td>
 </tr>
-<tr class="row-even"><td><a href="#id3"><span class="problematic" id="id4">pvalues_</span></a></td>
+<tr class="row-even"><td><cite>pvalues_</cite></td>
 <td>array-like, shape=(n_features,)</td>
 <td>p-values of feature scores.</td>
 </tr>
@@ -240,7 +246,7 @@ discovery rate.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFdr.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x41a9140&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x33d3758&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -347,7 +353,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.feature_selection.SelectFdr.txt"

@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -175,35 +181,6 @@ be trained using all points, but only 30 will be labeled. Results
 in the form of a confusion matrix and a series of metrics over each
 class will be very good.</p>
 <p>At the end, the top 10 most uncertain predictions will be shown.</p>
-<img alt="../../_images/plot_label_propagation_digits_1.png" class="align-center" src="../../_images/plot_label_propagation_digits_1.png" />
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Label Spreading model: 30 labeled &amp; 300 unlabeled points (330 total)
-             precision    recall  f1-score   support
-
-          0       1.00      1.00      1.00        23
-          1       0.58      0.54      0.56        28
-          2       0.96      0.93      0.95        29
-          3       0.00      0.00      0.00        28
-          4       0.91      0.80      0.85        25
-          5       0.96      0.79      0.87        33
-          6       0.97      0.97      0.97        36
-          7       0.89      1.00      0.94        34
-          8       0.48      0.83      0.61        29
-          9       0.54      0.77      0.64        35
-
-avg / total       0.73      0.77      0.74       300
-
-Confusion matrix
-[[23  0  0  0  0  0  0  0  0]
- [ 0 15  1  0  0  1  0 11  0]
- [ 0  0 27  0  0  0  2  0  0]
- [ 0  5  0 20  0  0  0  0  0]
- [ 0  0  0  0 26  0  0  1  6]
- [ 0  1  0  0  0 35  0  0  0]
- [ 0  0  0  0  0  0 34  0  0]
- [ 0  5  0  0  0  0  0 24  0]
- [ 0  0  0  2  1  0  2  3 27]]</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_label_propagation_digits.py"><tt class="xref download docutils literal"><span class="pre">plot_label_propagation_digits.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -281,7 +258,6 @@ Confusion matrix
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.50 seconds</p>
 </div>
 
 
@@ -293,7 +269,7 @@ Confusion matrix
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/auto_examples/semi_supervised/plot_label_propagation_digits.txt"

@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -173,10 +179,6 @@ increases the performance on train decreases while the performance on test
 is optimal within a range of values of the regularization parameter.
 The example with an Elastic-Net regression model and the performance is
 measured using the explained variance a.k.a. R^2.</p>
-<img alt="../_images/plot_train_error_vs_test_error_1.png" class="align-center" src="../_images/plot_train_error_vs_test_error_1.png" />
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Optimal regularization parameter : 0.000335292414925</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_train_error_vs_test_error.py"><tt class="xref download docutils literal"><span class="pre">plot_train_error_vs_test_error.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -202,7 +204,7 @@ measured using the explained variance a.k.a. R^2.</p>
 <span class="c">###############################################################################</span>
 <span class="c"># Compute train and test errors</span>
 <span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
-<span class="n">enet</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">ElasticNet</span><span class="p">(</span><span class="n">rho</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">enet</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">ElasticNet</span><span class="p">(</span><span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 <span class="n">train_errors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 <span class="n">test_errors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="n">alphas</span><span class="p">:</span>
@@ -242,7 +244,6 @@ measured using the explained variance a.k.a. R^2.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  6.63 seconds</p>
 </div>
 
 
@@ -254,7 +255,7 @@ measured using the explained variance a.k.a. R^2.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/auto_examples/plot_train_error_vs_test_error.txt"

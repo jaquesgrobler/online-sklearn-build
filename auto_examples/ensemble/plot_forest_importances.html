@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -172,20 +178,6 @@ features on an artifical classification task. The red bars are the feature
 importances of the forest, along with their inter-trees variability.</p>
 <p>As expected, the plot suggests that 3 features are informative, while the
 remaining are not.</p>
-<img alt="../../_images/plot_forest_importances_1.png" class="align-center" src="../../_images/plot_forest_importances_1.png" />
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Feature ranking:
-1. feature 1 (0.251764)
-2. feature 0 (0.200486)
-3. feature 2 (0.171010)
-4. feature 5 (0.055133)
-5. feature 7 (0.055120)
-6. feature 8 (0.054825)
-7. feature 9 (0.053174)
-8. feature 3 (0.052988)
-9. feature 6 (0.052828)
-10. feature 4 (0.052671)</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_forest_importances.py"><tt class="xref download docutils literal"><span class="pre">plot_forest_importances.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -232,7 +224,6 @@ remaining are not.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  2.92 seconds</p>
 </div>
 
 
@@ -244,7 +235,7 @@ remaining are not.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/auto_examples/ensemble/plot_forest_importances.txt"

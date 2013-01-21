@@ -51,6 +51,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -226,7 +232,7 @@
 <div><ul class="simple">
 <li>zero_one loss has option for normalized output that reports the fraction
 of misclassifications, rather than the raw number of misclassifications.
-By <a href="#id34"><span class="problematic" id="id35">`Kyle Beauchamp`_</span></a>.</li>
+By Kyle Beauchamp.</li>
 <li><a class="reference internal" href="modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="sklearn.tree.DecisionTreeClassifier"><tt class="xref py py-class docutils literal"><span class="pre">tree.DecisionTreeClassifier</span></tt></a> and all derived ensemble models now
 support sample weighting, by <a class="reference external" href="http://noel.dawe.me">Noel Dawe</a>  and <a class="reference external" href="http://www.montefiore.ulg.ac.be/~glouppe/">Gilles Louppe</a>.</li>
 <li>Speedup improvement when using bootstrap samples in forests of randomized
@@ -313,6 +319,8 @@ positives of a given class in earlier releases.</li>
 <li>Improve narrative documentation and consistency in
 <a class="reference internal" href="modules/classes.html#module-sklearn.metrics" title="sklearn.metrics"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.metrics</span></tt></a> for regression and classification metrics
 by <a class="reference external" href="http://www.ajoly.org">Arnaud Joly</a>.</li>
+<li>Fixed a bug in <a class="reference internal" href="modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.svm.SVC</span></tt></a> when using csr-matrices with
+unsorted indices by Xinfan Meng and <a class="reference external" href="http://peekaboo-vision.blogspot.com">Andreas Müller</a>.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1577,7 +1585,7 @@ David Huard, Dave Morrill, Ed Schofield, Travis Oliphant, Pearu Peterson.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="_sources/whats_new.txt"

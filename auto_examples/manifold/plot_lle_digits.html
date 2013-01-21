@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -173,45 +179,6 @@ technically a manifold embedding method, as it learn a high-dimensional
 representation on wich we apply a dimensionality reduction method.
 However, it is often useful to cast a dataset into a representation in
 which the classes are linearly-seperable.</p>
-<ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_6.png"><img alt="../../_images/plot_lle_digits_6.png" src="../../_images/plot_lle_digits_6.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_9.png"><img alt="../../_images/plot_lle_digits_9.png" src="../../_images/plot_lle_digits_9.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_5.png"><img alt="../../_images/plot_lle_digits_5.png" src="../../_images/plot_lle_digits_5.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_7.png"><img alt="../../_images/plot_lle_digits_7.png" src="../../_images/plot_lle_digits_7.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_2.png"><img alt="../../_images/plot_lle_digits_2.png" src="../../_images/plot_lle_digits_2.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_4.png"><img alt="../../_images/plot_lle_digits_4.png" src="../../_images/plot_lle_digits_4.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_8.png"><img alt="../../_images/plot_lle_digits_8.png" src="../../_images/plot_lle_digits_8.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_1.png"><img alt="../../_images/plot_lle_digits_1.png" src="../../_images/plot_lle_digits_1.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_3.png"><img alt="../../_images/plot_lle_digits_3.png" src="../../_images/plot_lle_digits_3.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-</ul>
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Computing random projection
-Computing PCA projection
-Computing LDA projection
-Computing Isomap embedding
-Done.
-Computing LLE embedding
-Done. Reconstruction error: 1.28472e-06
-Computing modified LLE embedding
-Done. Reconstruction error: 0.359941
-Computing Hessian LLE embedding
-Done. Reconstruction error: 0.212096
-Computing LTSA embedding
-Done. Reconstruction error: 0.212075
-Computing MDS embedding
-Done. Stress: 141100635.430415
-Computing Totally Random Trees embedding
-Computing Spectral embedding</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lle_digits.py"><tt class="xref download docutils literal"><span class="pre">plot_lle_digits.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Authors: Fabian Pedregosa &lt;fabian.pedregosa@inria.fr&gt;</span>
 <span class="c">#          Olivier Grisel &lt;olivier.grisel@ensta.org&gt;</span>
@@ -227,7 +194,6 @@ Computing Spectral embedding</pre>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">offsetbox</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="p">(</span><span class="n">manifold</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">decomposition</span><span class="p">,</span> <span class="n">ensemble</span><span class="p">,</span> <span class="n">lda</span><span class="p">,</span>
                      <span class="n">random_projection</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
 
 <span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">(</span><span class="n">n_class</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span>
@@ -416,7 +382,6 @@ Computing Spectral embedding</pre>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  15.70 seconds</p>
 </div>
 
 
@@ -428,7 +393,7 @@ Computing Spectral embedding</pre>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/auto_examples/manifold/plot_lle_digits.txt"

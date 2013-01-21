@@ -30,7 +30,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Isotonic Regression" href="plot_isotonic_regression.html" />
+    <link rel="next" title="Gaussian HMM of stock data" href="plot_hmm_stock_analysis.html" />
     <link rel="prev" title="Univariate Feature Selection" href="plot_feature_selection.html" />
 
 
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -112,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_isotonic_regression.html" title="Isotonic Regression"
+	<a href="plot_hmm_stock_analysis.html" title="Gaussian HMM of stock data"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Isotonic Regress...
+	    Gaussian HMM of ...
 	    </span>
 	    <span class="hiddenrellink">
-	    Isotonic Regression
+	    Gaussian HMM of stock data
 	    </span>
 	    
 	    </a>
@@ -172,7 +178,6 @@ we use a 4-components with specified mean and covariance.</p>
 <p>The plot show the sequence of observations generated with the transitions
 between them. We can see that, as specified by our transition matrix,
 there are no transition between component 1 and 3.</p>
-<img alt="../_images/plot_hmm_sampling_1.png" class="align-center" src="../_images/plot_hmm_sampling_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_hmm_sampling.py"><tt class="xref download docutils literal"><span class="pre">plot_hmm_sampling.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -224,7 +229,6 @@ there are no transition between component 1 and 3.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.13 seconds</p>
 </div>
 
 
@@ -236,7 +240,7 @@ there are no transition between component 1 and 3.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/auto_examples/plot_hmm_sampling.txt"
@@ -251,7 +255,7 @@ there are no transition between component 1 and 3.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_isotonic_regression.html">
+      <a href="plot_hmm_stock_analysis.html">
         Next
       </a>
     </div>

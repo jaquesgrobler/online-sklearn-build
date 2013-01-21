@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p><b>Attention</b>: Please help us to improve the scikit-learn
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -152,7 +158,8 @@
     <h3>This page</h3>
 	<ul>
 <li><a class="reference internal" href="#">6.5. Metrics, Affinities and Kernels</a><ul>
-<li><a class="reference internal" href="#chi-squared-kernel">6.5.1. Chi Squared Kernel</a></li>
+<li><a class="reference internal" href="#cosine-similarity">6.5.1. Cosine similarity</a></li>
+<li><a class="reference internal" href="#chi-squared-kernel">6.5.2. Chi Squared Kernel</a></li>
 </ul>
 </li>
 </ul>
@@ -197,8 +204,34 @@ kernel:</p>
 <li><tt class="docutils literal"><span class="pre">S</span> <span class="pre">=</span> <span class="pre">1.</span> <span class="pre">/</span> <span class="pre">(D</span> <span class="pre">/</span> <span class="pre">np.max(D))</span></tt></li>
 </ol>
 </div></blockquote>
+<div class="section" id="cosine-similarity">
+<h2>6.5.1. Cosine similarity<a class="headerlink" href="#cosine-similarity" title="Permalink to this headline">¶</a></h2>
+<p><tt class="xref py py-func docutils literal"><span class="pre">cosine_similarity</span></tt> computes the L2-normalized dot product of vectors.
+That is, if <img class="math" src="../_images/math/26eeb5258ca5099acf8fe96b2a1049c48c89a5e6.png" alt="x"/> and <img class="math" src="../_images/math/092e364e1d9d19ad5fffb0b46ef4cc7f2da02c1c.png" alt="y"/> are row vectors,
+their cosine similarity <img class="math" src="../_images/math/8c325612684d41304b9751c175df7bcc0f61f64f.png" alt="k"/> is defined as:</p>
+<div class="math">
+<p><img src="../_images/math/bbe33a0b4c631d4d4196ca6e4d42612c7716b7e5.png" alt="k(x, y) = \frac{x \dot y^\top}{\|x\| \|y\|}"/></p>
+</div><p>This is called cosine similarity, because Euclidean (L2) normalization
+projects the vectors onto the unit sphere,
+and their dot product is then the cosine of the angle between the points
+denoted by the vectors.</p>
+<p>This kernel is a popular choice for computing the similarity of documents
+represented as tf-idf vectors.
+<tt class="xref py py-func docutils literal"><span class="pre">cosine_similarity</span></tt> accepts <tt class="docutils literal"><span class="pre">scipy.sparse</span></tt> matrices.
+(Note that the tf-idf functionality in <tt class="docutils literal"><span class="pre">sklearn.feature_extraction.text</span></tt>
+can produce normalized vectors, in which case <tt class="xref py py-func docutils literal"><span class="pre">cosine_similarity</span></tt>
+is equivalent to <a class="reference internal" href="generated/sklearn.metrics.pairwise.linear_kernel.html#sklearn.metrics.pairwise.linear_kernel" title="sklearn.metrics.pairwise.linear_kernel"><tt class="xref py py-func docutils literal"><span class="pre">linear_kernel</span></tt></a>, only slower.)</p>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li>C.D. Manning, P. Raghavan and H. Schütze (2008). Introduction to
+Information Retrieval. Cambridge University Press.
+<a class="reference external" href="http://nlp.stanford.edu/IR-book/html/htmledition/the-vector-space-model-for-scoring-1.html">http://nlp.stanford.edu/IR-book/html/htmledition/the-vector-space-model-for-scoring-1.html</a></li>
+</ul>
+</div>
+</div>
 <div class="section" id="chi-squared-kernel">
-<h2>6.5.1. Chi Squared Kernel<a class="headerlink" href="#chi-squared-kernel" title="Permalink to this headline">¶</a></h2>
+<h2>6.5.2. Chi Squared Kernel<a class="headerlink" href="#chi-squared-kernel" title="Permalink to this headline">¶</a></h2>
 <p>The chi squared kernel is a very popular choice for training non-linear SVMs in
 Computer Vision applications.
 It can be computed using <a class="reference internal" href="generated/sklearn.metrics.pairwise.chi2_kernel.html#sklearn.metrics.pairwise.chi2_kernel" title="sklearn.metrics.pairwise.chi2_kernel"><tt class="xref py py-func docutils literal"><span class="pre">chi2_kernel</span></tt></a> and then passed to an
@@ -254,7 +287,7 @@ International Journal of Computer Vision 2007
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/metrics.txt"
