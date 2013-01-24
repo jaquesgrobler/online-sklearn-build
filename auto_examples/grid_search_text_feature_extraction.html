@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -257,16 +251,16 @@ Best parameters set:
 <span class="p">])</span>
 
 <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c"># uncommenting more parameters will give better exploring power but will</span>
-    <span class="c"># increase processing time in a combinatorial way</span>
+<span class="c"># uncommenting more parameters will give better exploring power but will</span>
+<span class="c"># increase processing time in a combinatorial way</span>
     <span class="s">&#39;vect__max_df&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
-    <span class="c">#&#39;vect__max_features&#39;: (None, 5000, 10000, 50000),</span>
+<span class="c">#    &#39;vect__max_features&#39;: (None, 5000, 10000, 50000),</span>
     <span class="s">&#39;vect__max_n&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>  <span class="c"># words or bigrams</span>
-    <span class="c">#&#39;tfidf__use_idf&#39;: (True, False),</span>
-    <span class="c">#&#39;tfidf__norm&#39;: (&#39;l1&#39;, &#39;l2&#39;),</span>
+<span class="c">#    &#39;tfidf__use_idf&#39;: (True, False),</span>
+<span class="c">#    &#39;tfidf__norm&#39;: (&#39;l1&#39;, &#39;l2&#39;),</span>
     <span class="s">&#39;clf__alpha&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.00001</span><span class="p">,</span> <span class="mf">0.000001</span><span class="p">),</span>
     <span class="s">&#39;clf__penalty&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;l2&#39;</span><span class="p">,</span> <span class="s">&#39;elasticnet&#39;</span><span class="p">),</span>
-    <span class="c">#&#39;clf__n_iter&#39;: (10, 50, 80),</span>
+<span class="c">#    &#39;clf__n_iter&#39;: (10, 50, 80),</span>
 <span class="p">}</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>

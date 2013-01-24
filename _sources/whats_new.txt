@@ -8,9 +8,12 @@
 Changelog
 ---------
 
+   - Hyperlinks to documentation in example code on the website by
+     `Martin Luessi`_.
+
    - zero_one loss has option for normalized output that reports the fraction
      of misclassifications, rather than the raw number of misclassifications.
-     By Kyle Beauchamp.
+     By `Kyle Beauchamp`_.
 
    - :class:`tree.DecisionTreeClassifier` and all derived ensemble models now
      support sample weighting, by `Noel Dawe`_  and `Gilles Louppe`_.
@@ -130,9 +133,6 @@ Changelog
    - Improve narrative documentation and consistency in
      :mod:`sklearn.metrics` for regression and classification metrics
      by `Arnaud Joly`_.
-
-   - Fixed a bug in :class:`sklearn.svm.SVC` when using csr-matrices with
-     unsorted indices by Xinfan Meng and `Andreas Müller`_.
 
 API changes summary
 -------------------
@@ -1661,3 +1661,5 @@ David Huard, Dave Morrill, Ed Schofield, Travis Oliphant, Pearu Peterson.
 .. _Noel Dawe: http://noel.dawe.me
 
 .. _Arnaud Joly: http://www.ajoly.org
+
+.. _Martin Luessi: https://github.com/mluessi

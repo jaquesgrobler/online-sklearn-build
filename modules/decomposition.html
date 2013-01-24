@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -214,7 +208,7 @@ data based on the amount of variance it explains. As such it implements a
 <p>Below is an example of the iris dataset, which is comprised of 4
 features, projected on the 2 dimensions that explain most variance:</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/decomposition/plot_pca_vs_lda.html"><img alt="../_images/plot_pca_vs_lda_11.png" src="../_images/plot_pca_vs_lda_11.png" style="width: 600.0px; height: 450.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/decomposition/plot_pca_vs_lda.html"><img alt="modules/../auto_examples/decomposition/images/plot_pca_vs_lda_1.png" src="modules/../auto_examples/decomposition/images/plot_pca_vs_lda_1.png" /></a>
 </div>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
@@ -247,8 +241,8 @@ singular vectors reshaped as portraits. Since we only require the top
 and <img class="math" src="../_images/math/d5fbc26726fbf10c7b27ceadd3ba8d2ae5db153a.png" alt="n_{features} = 64 \times 64 = 4096"/>, the computation time it
 less than 1s:</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="orig_img" src="../_images/plot_faces_decomposition_11.png" style="width: 360.0px; height: 270.6px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="orig_img" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_1.png" /></a>
+ <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_2.png" /></a>
 </strong></p><p><a class="reference internal" href="generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA" title="sklearn.decomposition.RandomizedPCA"><tt class="xref py py-class docutils literal"><span class="pre">RandomizedPCA</span></tt></a> can hence be used as a drop in replacement for
 <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a> minor the exception that we need to give it the size of
 the lower dimensional space <cite>n_components</cite> as mandatory input parameter.</p>
@@ -291,7 +285,7 @@ applications including denoising, compression and structured prediction
 (kernel dependency estimation). <a class="reference internal" href="generated/sklearn.decomposition.KernelPCA.html#sklearn.decomposition.KernelPCA" title="sklearn.decomposition.KernelPCA"><tt class="xref py py-class docutils literal"><span class="pre">KernelPCA</span></tt></a> supports both
 <cite>transform</cite> and <cite>inverse_transform</cite>.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/decomposition/plot_kernel_pca.html"><img alt="../_images/plot_kernel_pca_11.png" src="../_images/plot_kernel_pca_11.png" style="width: 600.0px; height: 450.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/decomposition/plot_kernel_pca.html"><img alt="modules/../auto_examples/decomposition/images/plot_kernel_pca_1.png" src="modules/../auto_examples/decomposition/images/plot_kernel_pca_1.png" /></a>
 </div>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
@@ -331,8 +325,8 @@ norms that take into account adjacency and different kinds of structure; see see
 <a class="reference internal" href="#jen09">[Jen09]</a> for a review of such methods. For more details on how to use Sparse PCA,
 see the <cite>Examples</cite> section below.</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="spca_img" src="../_images/plot_faces_decomposition_51.png" style="width: 360.0px; height: 270.6px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_2.png" /></a>
+ <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="spca_img" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_5.png" /></a>
 </strong></p><p>Note that there are many different formulations for the Sparse PCA
 problem. The one implemented here is based on <a class="reference internal" href="#mrl09">[Mrl09]</a> . The optimization
 problem solved is a PCA problem (dictionary learning) with an
@@ -440,15 +434,15 @@ dictionary fixed, and then updating the dictionary to best fit the sparse code.<
              \text{subject to\,} &amp; ||V_k||_2 = 1 \text{ for all }
              0 \leq k &lt; n_{atoms}"/></p>
 </div><p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img2" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="dict_img2" src="../_images/plot_faces_decomposition_61.png" style="width: 360.0px; height: 270.6px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img2" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_2.png" /></a>
+ <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="dict_img2" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_6.png" /></a>
 </strong></p><p>After using such a procedure to fit the dictionary, the transform is simply a
 sparse coding step that shares the same implementation with all dictionary
 learning objects (see <a class="reference internal" href="#sparsecoder"><em>Sparse coding with a precomputed dictionary</em></a>).</p>
 <p>The following image shows how a dictionary learned from 4x4 pixel image patches
 extracted from part of the image of Lena looks like.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/decomposition/plot_image_denoising.html"><img alt="../_images/plot_image_denoising_11.png" src="../_images/plot_image_denoising_11.png" style="width: 210.0px; height: 200.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/decomposition/plot_image_denoising.html"><img alt="modules/../auto_examples/decomposition/images/plot_image_denoising_1.png" src="modules/../auto_examples/decomposition/images/plot_image_denoising_1.png" /></a>
 </div>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
@@ -526,12 +520,12 @@ models, e.g. Mixture of Factor Analysers. One gets very different models (e.g.
 matrix) to <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a>. However, one can not make any general statements
 about these components (e.g. whether they are orthogonal):</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img3" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="fa_img3" src="../_images/plot_faces_decomposition_91.png" style="width: 360.0px; height: 270.6px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img3" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_2.png" /></a>
+ <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="fa_img3" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_9.png" /></a>
 </strong></p><p>The main advantage for Factor Analysis (over <a class="reference internal" href="generated/sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-class docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a> is that
 it can model the variance in every direction of the input space independently:</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="../_images/plot_faces_decomposition_81.png" src="../_images/plot_faces_decomposition_81.png" style="width: 150.0px; height: 168.75px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="modules/../auto_examples/decomposition/images/plot_faces_decomposition_8.png" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_8.png" /></a>
 </div>
 </div>
 <div class="section" id="independent-component-analysis-ica">
@@ -543,13 +537,13 @@ algorithm.</p>
 <p>It is classically used to separate mixed signals (a problem known as
 <em>blind source separation</em>), as in the example below:</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/decomposition/plot_ica_blind_source_separation.html"><img alt="../_images/plot_ica_blind_source_separation_11.png" src="../_images/plot_ica_blind_source_separation_11.png" style="width: 480.0px; height: 360.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/decomposition/plot_ica_blind_source_separation.html"><img alt="modules/../auto_examples/decomposition/images/plot_ica_blind_source_separation_1.png" src="modules/../auto_examples/decomposition/images/plot_ica_blind_source_separation_1.png" /></a>
 </div>
 <p>ICA can also be used as yet another non linear decomposition that finds
 components with some sparsity:</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img4" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="ica_img4" src="../_images/plot_faces_decomposition_41.png" style="width: 360.0px; height: 270.6px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img4" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_2.png" /></a>
+ <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="ica_img4" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_4.png" /></a>
 </strong></p><div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
@@ -574,8 +568,8 @@ resulting in interpretable models. The following example displays 16
 sparse components found by <a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> from the images in the Olivetti
 faces dataset, in comparison with the PCA eigenfaces.</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img5" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="nmf_img5" src="../_images/plot_faces_decomposition_31.png" style="width: 360.0px; height: 270.6px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img5" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_2.png" /></a>
+ <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="nmf_img5" src="modules/../auto_examples/decomposition/images/plot_faces_decomposition_3.png" /></a>
 </strong></p><p>The <tt class="xref py py-attr docutils literal"><span class="pre">init</span></tt> attribute determines the initialization method applied, which
 has a great impact on the performance of the method. <a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> implements
 the method Nonnegative Double Singular Value Decomposition. NNDSVD is based on

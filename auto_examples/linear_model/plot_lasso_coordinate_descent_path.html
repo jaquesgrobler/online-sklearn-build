@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -192,7 +186,7 @@ coordinate descent.</p>
 <span class="n">X</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">data</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">target</span>
 
-<span class="n">X</span> <span class="o">/=</span> <span class="n">X</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c"># Standardize data (easier to set the l1_ratio parameter)</span>
+<span class="n">X</span> <span class="o">/=</span> <span class="n">X</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c"># Standardize data (easier to set the rho parameter)</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Compute paths</span>
@@ -210,12 +204,12 @@ coordinate descent.</p>
 <span class="n">coefs_positive_lasso</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 
 <span class="k">print</span> <span class="s">&quot;Computing regularization path using the elastic net...&quot;</span>
-<span class="n">models</span> <span class="o">=</span> <span class="n">enet_path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">models</span> <span class="o">=</span> <span class="n">enet_path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 <span class="n">alphas_enet</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">alpha</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 <span class="n">coefs_enet</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 
 <span class="k">print</span> <span class="s">&quot;Computing regularization path using the positve elastic net...&quot;</span>
-<span class="n">models</span> <span class="o">=</span> <span class="n">enet_path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">models</span> <span class="o">=</span> <span class="n">enet_path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">alphas_positive_enet</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">alpha</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 <span class="n">coefs_positive_enet</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 

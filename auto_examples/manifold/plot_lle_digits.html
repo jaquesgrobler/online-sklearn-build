@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -194,6 +188,7 @@ which the classes are linearly-seperable.</p>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">offsetbox</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="p">(</span><span class="n">manifold</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">decomposition</span><span class="p">,</span> <span class="n">ensemble</span><span class="p">,</span> <span class="n">lda</span><span class="p">,</span>
                      <span class="n">random_projection</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
 
 <span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">(</span><span class="n">n_class</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span>

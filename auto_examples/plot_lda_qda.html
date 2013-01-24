@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -235,8 +229,8 @@
     <span class="n">tp</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">y_pred</span><span class="p">)</span>  <span class="c"># True Positive</span>
     <span class="n">tp0</span><span class="p">,</span> <span class="n">tp1</span> <span class="o">=</span> <span class="n">tp</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="n">tp</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">X0</span><span class="p">,</span> <span class="n">X1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">X0_tp</span><span class="p">,</span> <span class="n">X0_fp</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">tp0</span><span class="p">],</span> <span class="n">X0</span><span class="p">[</span><span class="o">~</span><span class="n">tp0</span><span class="p">]</span>
-    <span class="n">X1_tp</span><span class="p">,</span> <span class="n">X1_fp</span> <span class="o">=</span> <span class="n">X1</span><span class="p">[</span><span class="n">tp1</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="o">~</span><span class="n">tp1</span><span class="p">]</span>
+    <span class="n">X0_tp</span><span class="p">,</span> <span class="n">X0_fp</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">tp0</span><span class="p">],</span> <span class="n">X0</span><span class="p">[</span><span class="n">tp0</span> <span class="o">!=</span> <span class="bp">True</span><span class="p">]</span>
+    <span class="n">X1_tp</span><span class="p">,</span> <span class="n">X1_fp</span> <span class="o">=</span> <span class="n">X1</span><span class="p">[</span><span class="n">tp1</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="n">tp1</span> <span class="o">!=</span> <span class="bp">True</span><span class="p">]</span>
     <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
     <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 

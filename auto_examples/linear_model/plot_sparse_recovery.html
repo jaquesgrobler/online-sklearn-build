@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -207,8 +201,6 @@ precision-recall.</p>
 <span class="c"># Author: Alexandre Gramfort and Gael Varoquaux</span>
 <span class="c"># License: BSD</span>
 
-<span class="kn">import</span> <span class="nn">warnings</span>
-
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
@@ -297,11 +289,7 @@ precision-recall.</p>
 
     <span class="c"># Use 6-fold cross-validation rather than the default 3-fold: it leads to</span>
     <span class="c"># a better choice of alpha:</span>
-    <span class="c"># Stop the user warnings outputs- they are not necessary for the example</span>
-    <span class="c"># as it is specifically set up to be challenging.</span>
-    <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s">&#39;ignore&#39;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
-        <span class="n">lars_cv</span> <span class="o">=</span> <span class="n">LassoLarsCV</span><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">lars_cv</span> <span class="o">=</span> <span class="n">LassoLarsCV</span><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
     <span class="c"># Run the RandomizedLasso: we use a paths going down to .1*alpha_max</span>
     <span class="c"># to avoid exploring the regime in which very noisy variables enter</span>
