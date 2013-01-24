@@ -13,8 +13,54 @@ For more information on how to get stock prices with matplotlib, please refer
 to date_demo1.py of matplotlib.
 
 
+
+.. image:: images/plot_hmm_stock_analysis_1.png
+    :align: center
+
+
+**Script output**::
+
+  fitting to HMM and decoding ... done
+  
+  Transition matrix
+  [[  9.76684487e-01   5.96764356e-17   2.38113735e-03   2.09343714e-02
+      4.42081152e-09]
+   [  1.73437059e-15   6.26973136e-01   3.30310671e-02   2.39760386e-02
+      3.16019759e-01]
+   [  7.79044213e-04   2.92272859e-02   8.20750864e-01   1.31357148e-05
+      1.49229670e-01]
+   [  2.63409227e-01   3.22209149e-01   3.59802031e-18   4.14381623e-01
+      7.65919479e-17]
+   [  4.00325927e-03   1.18494359e-01   1.54415255e-01   3.57111709e-03
+      7.19516010e-01]]
+  
+  means and vars of each hidden state
+  0th hidden state
+  mean =  [  2.80215331e-02   4.96953817e+07]
+  var =  [  8.85497555e-01   2.50137142e+14]
+  
+  1th hidden state
+  mean =  [  3.73592558e-02   1.10507565e+08]
+  var =  [  1.97309151e-01   8.81932346e+14]
+  
+  2th hidden state
+  mean =  [  6.32655954e-03   4.91385049e+07]
+  var =  [  5.05806310e-02   1.09764893e+14]
+  
+  3th hidden state
+  mean =  [ -7.71067332e-01   1.48888396e+08]
+  var =  [  6.16882667e+00   1.02292035e+16]
+  
+  4th hidden state
+  mean =  [  1.16218715e-02   6.99444137e+07]
+  var =  [  1.24151111e-01   1.52992253e+14]
+
+
+
 **Python source code:** :download:`plot_hmm_stock_analysis.py <plot_hmm_stock_analysis.py>`
 
 .. literalinclude:: plot_hmm_stock_analysis.py
     :lines: 11-
+
+**Total running time of the example:**  69.52 seconds
     
