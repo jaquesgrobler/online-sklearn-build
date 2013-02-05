@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.10.1. sklearn.gaussian_process.GaussianProcess &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.10.1. sklearn.gaussian_process.GaussianProcess &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.10.2. sklearn.gaussian_process.correlation_models.absolute_exponential" href="sklearn.gaussian_process.correlation_models.absolute_exponential.html" />
     <link rel="prev" title="8.9.10. sklearn.feature_selection.f_regression" href="sklearn.feature_selection.f_regression.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -350,25 +356,22 @@ experiments.  Technometrics, 34(1) 15&#8211;25.</cite>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.arg_max_reduced_likelihood_function" title="sklearn.gaussian_process.GaussianProcess.arg_max_reduced_likelihood_function"><tt class="xref py py-obj docutils literal"><span class="pre">arg_max_reduced_likelihood_function</span></tt></a>(*args,&nbsp;...)</td>
-<td>DEPRECATED: to be removed in 0.14, access <tt class="docutils literal"><span class="pre">self.theta_</span></tt> etc. directly  after fit.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.fit" title="sklearn.gaussian_process.GaussianProcess.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.fit" title="sklearn.gaussian_process.GaussianProcess.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
 <td>The Gaussian Process model fitting method.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.get_params" title="sklearn.gaussian_process.GaussianProcess.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.get_params" title="sklearn.gaussian_process.GaussianProcess.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for the estimator</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.predict" title="sklearn.gaussian_process.GaussianProcess.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X[,&nbsp;eval_MSE,&nbsp;batch_size])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.predict" title="sklearn.gaussian_process.GaussianProcess.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X[,&nbsp;eval_MSE,&nbsp;batch_size])</td>
 <td>This function evaluates the Gaussian Process model at x.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.reduced_likelihood_function" title="sklearn.gaussian_process.GaussianProcess.reduced_likelihood_function"><tt class="xref py py-obj docutils literal"><span class="pre">reduced_likelihood_function</span></tt></a>([theta])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.reduced_likelihood_function" title="sklearn.gaussian_process.GaussianProcess.reduced_likelihood_function"><tt class="xref py py-obj docutils literal"><span class="pre">reduced_likelihood_function</span></tt></a>([theta])</td>
 <td>This function determines the BLUP parameters and evaluates the reduced</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.score" title="sklearn.gaussian_process.GaussianProcess.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.score" title="sklearn.gaussian_process.GaussianProcess.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
 <td>Returns the coefficient of determination R^2 of the prediction.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.set_params" title="sklearn.gaussian_process.GaussianProcess.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.gaussian_process.GaussianProcess.set_params" title="sklearn.gaussian_process.GaussianProcess.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
 </tr>
 </tbody>
@@ -377,12 +380,6 @@ experiments.  Technometrics, 34(1) 15&#8211;25.</cite>
 <dt id="sklearn.gaussian_process.GaussianProcess.__init__">
 <tt class="descname">__init__</tt><big>(</big><em>regr='constant'</em>, <em>corr='squared_exponential'</em>, <em>beta0=None</em>, <em>storage_mode='full'</em>, <em>verbose=False</em>, <em>theta0=0.1</em>, <em>thetaL=None</em>, <em>thetaU=None</em>, <em>optimizer='fmin_cobyla'</em>, <em>random_start=1</em>, <em>normalize=True</em>, <em>nugget=2.2204460492503131e-15</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.gaussian_process.GaussianProcess.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="sklearn.gaussian_process.GaussianProcess.arg_max_reduced_likelihood_function">
-<tt class="descname">arg_max_reduced_likelihood_function</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#sklearn.gaussian_process.GaussianProcess.arg_max_reduced_likelihood_function" title="Permalink to this definition">¶</a></dt>
-<dd><p>DEPRECATED: to be removed in 0.14, access <tt class="docutils literal"><span class="pre">self.theta_</span></tt> etc. directly  after fit.</p>
-</dd></dl>
 
 <dl class="method">
 <dt id="sklearn.gaussian_process.GaussianProcess.fit">
@@ -540,19 +537,13 @@ Kriging.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="sklearn.gaussian_process.GaussianProcess.reduced_likelihood_function_value">
-<tt class="descname">reduced_likelihood_function_value</tt><a class="headerlink" href="#sklearn.gaussian_process.GaussianProcess.reduced_likelihood_function_value" title="Permalink to this definition">¶</a></dt>
-<dd><p>DEPRECATED: <tt class="docutils literal"><span class="pre">reduced_likelihood_function_value</span></tt> is deprecated and willbe removed in 0.14, please use <tt class="docutils literal"><span class="pre">reduced_likelihood_function_value_</span></tt> instead.</p>
-</dd></dl>
-
 <dl class="method">
 <dt id="sklearn.gaussian_process.GaussianProcess.score">
 <tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.gaussian_process.GaussianProcess.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the coefficient of determination R^2 of the prediction.</p>
-<p>The coefficient R^2 is defined as (1 - u/v), where u is the
-regression sum of squares ((y - y_pred) ** 2).sum() and v is the
-residual sum of squares ((y_true - y_true.mean()) ** 2).sum().
+<p>The coefficient R^2 is defined as (1 - u/v), where u is the regression
+sum of squares ((y_true - y_pred) ** 2).sum() and v is the residual
+sum of squares ((y_true - y_true.mean()) ** 2).sum().
 Best possible score is 1.0, lower values are worse.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -588,12 +579,6 @@ component of a nested object.</p>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="sklearn.gaussian_process.GaussianProcess.theta">
-<tt class="descname">theta</tt><a class="headerlink" href="#sklearn.gaussian_process.GaussianProcess.theta" title="Permalink to this definition">¶</a></dt>
-<dd><p>DEPRECATED: <tt class="docutils literal"><span class="pre">theta</span></tt> is deprecated and will be removed in 0.14, please use <tt class="docutils literal"><span class="pre">theta_</span></tt> instead.</p>
 </dd></dl>
 
 </dd></dl>

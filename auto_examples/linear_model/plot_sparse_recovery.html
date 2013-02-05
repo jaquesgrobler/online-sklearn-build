@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sparse recovery: feature selection for sparse linear models &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Sparse recovery: feature selection for sparse linear models &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Lasso on dense and sparse data" href="lasso_dense_vs_sparse_data.html" />
     <link rel="prev" title="SGD: Weighted samples" href="plot_sgd_weighted_samples.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -196,11 +202,11 @@ F-test.</p>
 feature selection methods, using the area under curve (AUC) of the
 precision-recall.</p>
 <ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_sparse_recovery_1.png"><img alt="../../_images/plot_sparse_recovery_1.png" src="../../_images/plot_sparse_recovery_1.png" style="width: 376.0px; height: 282.0px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_sparse_recovery_3.png"><img alt="../../_images/plot_sparse_recovery_3.png" src="../../_images/plot_sparse_recovery_3.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_sparse_recovery_2.png"><img alt="../../_images/plot_sparse_recovery_2.png" src="../../_images/plot_sparse_recovery_2.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_sparse_recovery_3.png"><img alt="../../_images/plot_sparse_recovery_3.png" src="../../_images/plot_sparse_recovery_3.png" style="width: 376.0px; height: 282.0px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_sparse_recovery_1.png"><img alt="../../_images/plot_sparse_recovery_1.png" src="../../_images/plot_sparse_recovery_1.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_sparse_recovery_4.png"><img alt="../../_images/plot_sparse_recovery_4.png" src="../../_images/plot_sparse_recovery_4.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
@@ -210,6 +216,8 @@ precision-recall.</p>
 
 <span class="c"># Author: Alexandre Gramfort and Gael Varoquaux</span>
 <span class="c"># License: BSD</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -255,14 +263,14 @@ precision-recall.</p>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_features</span><span class="p">,</span> <span class="n">block_size</span><span class="p">):</span>
         <span class="n">corr</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">block_size</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">block_size</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">conditionning</span>
     <span class="n">corr</span><span class="o">.</span><span class="n">flat</span><span class="p">[::</span><span class="n">n_features</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">corr</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span>
+    <span class="n">corr</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.linalg.cholesky.html#scipy.linalg.cholesky"><span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span></a><span class="p">(</span><span class="n">corr</span><span class="p">)</span>
 
     <span class="c"># Our design</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
     <span class="n">X</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.dot.html#numpy.dot"><span class="n">np</span><span class="o">.</span><span class="n">dot</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">corr</span><span class="p">)</span>
     <span class="c"># Keep [Wainwright2006] (26c) constant</span>
     <span class="n">X</span><span class="p">[:</span><span class="n">n_relevant_features</span><span class="p">]</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span>
-        <span class="n">linalg</span><span class="o">.</span><span class="n">svdvals</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="n">n_relevant_features</span><span class="p">]))</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.linalg.svdvals.html#scipy.linalg.svdvals"><span class="n">linalg</span><span class="o">.</span><span class="n">svdvals</span></a><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="n">n_relevant_features</span><span class="p">]))</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
     <span class="n">X</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler"><span class="n">StandardScaler</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
 
     <span class="c"># The output variable</span>
@@ -299,7 +307,11 @@ precision-recall.</p>
 
     <span class="c"># Use 6-fold cross-validation rather than the default 3-fold: it leads to</span>
     <span class="c"># a better choice of alpha:</span>
-    <a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">lars_cv</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">LassoLarsCV</span></a><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="c"># Stop the user warnings outputs- they are not necessary for the example</span>
+    <span class="c"># as it is specifically set up to be challenging.</span>
+    <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s">&#39;ignore&#39;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
+        <a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">lars_cv</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">LassoLarsCV</span></a><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
     <span class="c"># Run the RandomizedLasso: we use a paths going down to .1*alpha_max</span>
     <span class="c"># to avoid exploring the regime in which very noisy variables enter</span>
@@ -334,7 +346,7 @@ precision-recall.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  47.37 seconds</p>
+<p><strong>Total running time of the example:</strong>  7.51 seconds</p>
 </div>
 
 

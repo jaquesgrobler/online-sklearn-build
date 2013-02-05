@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Multi-dimensional scaling &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Multi-dimensional scaling &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Swiss Roll reduction with LLE" href="plot_swissroll.html" />
     <link rel="prev" title="Manifold Learning methods on a severed sphere" href="plot_manifold_sphere.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -200,14 +206,13 @@ shifted to avoid overlapping.</p>
 <span class="n">noise</span><span class="p">[</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">noise</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">noise</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">similarities</span> <span class="o">+=</span> <span class="n">noise</span>
 
-<a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">mds</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">manifold</span><span class="o">.</span><span class="n">MDS</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span>
-                   <span class="n">eps</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+<a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">mds</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">manifold</span><span class="o">.</span><span class="n">MDS</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
                    <span class="n">dissimilarity</span><span class="o">=</span><span class="s">&quot;precomputed&quot;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">pos</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">mds</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">similarities</span><span class="p">)</span><span class="o">.</span><span class="n">embedding_</span>
 
-<a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">nmds</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">manifold</span><span class="o">.</span><span class="n">MDS</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-                    <span class="n">max_iter</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span>
-                    <span class="n">eps</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">nmds</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">manifold</span><span class="o">.</span><span class="n">MDS</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">,</span>
+                    <span class="n">dissimilarity</span><span class="o">=</span><span class="s">&quot;precomputed&quot;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">npos</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">nmds</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">similarities</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span>
 
 <span class="c"># Rescale the data</span>
@@ -250,7 +255,7 @@ shifted to avoid overlapping.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  3.01 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.18 seconds</p>
 </div>
 
 

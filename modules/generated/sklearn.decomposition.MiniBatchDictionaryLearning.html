@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.5.13. sklearn.decomposition.MiniBatchDictionaryLearning &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.5.13. sklearn.decomposition.MiniBatchDictionaryLearning &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.5.14. sklearn.decomposition.fastica" href="sklearn.decomposition.fastica.html" />
     <link rel="prev" title="8.5.12. sklearn.decomposition.DictionaryLearning" href="sklearn.decomposition.DictionaryLearning.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -169,7 +175,7 @@
 <h1>8.5.13. sklearn.decomposition.MiniBatchDictionaryLearning<a class="headerlink" href="#sklearn-decomposition-minibatchdictionarylearning" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.decomposition.MiniBatchDictionaryLearning">
-<em class="property">class </em><tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">MiniBatchDictionaryLearning</tt><big>(</big><em>n_components=None</em>, <em>alpha=1</em>, <em>n_iter=1000</em>, <em>fit_algorithm='lars'</em>, <em>n_jobs=1</em>, <em>batch_size=3</em>, <em>shuffle=True</em>, <em>dict_init=None</em>, <em>transform_algorithm='omp'</em>, <em>transform_n_nonzero_coefs=None</em>, <em>transform_alpha=None</em>, <em>verbose=False</em>, <em>split_sign=False</em>, <em>random_state=None</em>, <em>n_atoms=None</em>, <em>chunk_size=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.MiniBatchDictionaryLearning" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">MiniBatchDictionaryLearning</tt><big>(</big><em>n_components=None</em>, <em>alpha=1</em>, <em>n_iter=1000</em>, <em>fit_algorithm='lars'</em>, <em>n_jobs=1</em>, <em>batch_size=3</em>, <em>shuffle=True</em>, <em>dict_init=None</em>, <em>transform_algorithm='omp'</em>, <em>transform_n_nonzero_coefs=None</em>, <em>transform_alpha=None</em>, <em>verbose=False</em>, <em>split_sign=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.MiniBatchDictionaryLearning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mini-batch dictionary learning</p>
 <p>Finds a dictionary (a set of atoms) that can best be used to represent data
 using a sparse code.</p>
@@ -315,7 +321,7 @@ for sparse coding (<a class="reference external" href="http://www.di.ens.fr/sier
 </table>
 <dl class="method">
 <dt id="sklearn.decomposition.MiniBatchDictionaryLearning.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_components=None</em>, <em>alpha=1</em>, <em>n_iter=1000</em>, <em>fit_algorithm='lars'</em>, <em>n_jobs=1</em>, <em>batch_size=3</em>, <em>shuffle=True</em>, <em>dict_init=None</em>, <em>transform_algorithm='omp'</em>, <em>transform_n_nonzero_coefs=None</em>, <em>transform_alpha=None</em>, <em>verbose=False</em>, <em>split_sign=False</em>, <em>random_state=None</em>, <em>n_atoms=None</em>, <em>chunk_size=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.MiniBatchDictionaryLearning.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_components=None</em>, <em>alpha=1</em>, <em>n_iter=1000</em>, <em>fit_algorithm='lars'</em>, <em>n_jobs=1</em>, <em>batch_size=3</em>, <em>shuffle=True</em>, <em>dict_init=None</em>, <em>transform_algorithm='omp'</em>, <em>transform_n_nonzero_coefs=None</em>, <em>transform_alpha=None</em>, <em>verbose=False</em>, <em>split_sign=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.MiniBatchDictionaryLearning.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

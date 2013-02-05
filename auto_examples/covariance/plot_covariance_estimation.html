@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Ledoit-Wolf vs OAS estimation" href="plot_lw_vs_oas.html" />
     <link rel="prev" title="Hierarchical clustering: structured vs unstructured ward" href="../cluster/plot_ward_structured_vs_unstructured.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -235,7 +241,7 @@ computationally costly.</p>
 <span class="c"># settings</span>
 <span class="n">real_cov</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.dot.html#numpy.dot"><span class="n">np</span><span class="o">.</span><span class="n">dot</span></a><span class="p">(</span><span class="n">coloring_matrix</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">coloring_matrix</span><span class="p">)</span>
 <span class="n">emp_cov</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.covariance.empirical_covariance.html#sklearn.covariance.empirical_covariance"><span class="n">empirical_covariance</span></a><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">loglik_real</span> <span class="o">=</span> <span class="o">-</span><span class="n">log_likelihood</span><span class="p">(</span><span class="n">emp_cov</span><span class="p">,</span> <span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">real_cov</span><span class="p">))</span>
+<span class="n">loglik_real</span> <span class="o">=</span> <span class="o">-</span><span class="n">log_likelihood</span><span class="p">(</span><span class="n">emp_cov</span><span class="p">,</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.linalg.inv.html#scipy.linalg.inv"><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span></a><span class="p">(</span><span class="n">real_cov</span><span class="p">))</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Compare different approaches to setting the parameter</span>
@@ -290,7 +296,7 @@ computationally costly.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  1.17 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.23 seconds</p>
 </div>
 
 

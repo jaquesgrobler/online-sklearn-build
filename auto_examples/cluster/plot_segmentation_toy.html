@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Spectral clustering for image segmentation &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Spectral clustering for image segmentation &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,10 +28,10 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Hierarchical clustering: structured vs unstructured ward" href="plot_ward_structured_vs_unstructured.html" />
-    <link rel="prev" title="A demo of the K Means clustering algorithm" href="plot_mini_batch_kmeans.html" />
+    <link rel="prev" title="Comparison of the K-Means clustering and MiniBatchKMeans Algorithms" href="plot_mini_batch_kmeans.html" />
 
 
 <script type="text/javascript">
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -95,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_mini_batch_kmeans.html" title="A demo of the K Means clustering algorithm"
+	<a href="plot_mini_batch_kmeans.html" title="Comparison of the K-Means clustering and MiniBatchKMeans Algorithms"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    A demo of the K ...
+	    Comparison of th...
 	    </span>
 	    <span class="hiddenrellink">
-	    A demo of the K Means clustering algorithm
+	    Comparison of the K-Means clustering and MiniBatchKMeans Algorithms
 	    </span>
 	    
 	    </a>
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -184,13 +190,13 @@ a Voronoi partition of the graph.</p>
 outline of the objects. In this example, we are interested in
 separating the objects one from the other, and not from the background.</p>
 <ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_segmentation_toy_1.png"><img alt="../../_images/plot_segmentation_toy_1.png" src="../../_images/plot_segmentation_toy_1.png" style="width: 282.0px; height: 282.0px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_segmentation_toy_3.png"><img alt="../../_images/plot_segmentation_toy_3.png" src="../../_images/plot_segmentation_toy_3.png" style="width: 282.0px; height: 282.0px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_segmentation_toy_2.png"><img alt="../../_images/plot_segmentation_toy_2.png" src="../../_images/plot_segmentation_toy_2.png" style="width: 282.0px; height: 282.0px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_segmentation_toy_3.png"><img alt="../../_images/plot_segmentation_toy_3.png" src="../../_images/plot_segmentation_toy_3.png" style="width: 282.0px; height: 282.0px;" /></a>
-</li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_segmentation_toy_4.png"><img alt="../../_images/plot_segmentation_toy_4.png" src="../../_images/plot_segmentation_toy_4.png" style="width: 282.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_segmentation_toy_1.png"><img alt="../../_images/plot_segmentation_toy_1.png" src="../../_images/plot_segmentation_toy_1.png" style="width: 282.0px; height: 282.0px;" /></a>
 </li>
 </ul>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_segmentation_toy.py"><tt class="xref download docutils literal"><span class="pre">plot_segmentation_toy.py</span></tt></a></p>
@@ -232,15 +238,15 @@ separating the objects one from the other, and not from the background.</p>
 
 <span class="c"># Convert the image into a graph with the value of the gradient on the</span>
 <span class="c"># edges.</span>
-<span class="n">graph</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">img_to_graph</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+<a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">img_to_graph</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
 
 <span class="c"># Take a decreasing function of the gradient: we take it weakly</span>
 <span class="c"># dependant from the gradient the segmentation is close to a voronoi</span>
-<span class="n">graph</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">graph</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">graph</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 
 <span class="c"># Force the solver to be arpack, since amg is numerically</span>
 <span class="c"># unstable on this example</span>
-<span class="n">labels</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.spectral_clustering.html#sklearn.cluster.spectral_clustering"><span class="n">spectral_clustering</span></a><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">eigen_solver</span><span class="o">=</span><span class="s">&#39;arpack&#39;</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.spectral_clustering.html#sklearn.cluster.spectral_clustering"><span class="n">spectral_clustering</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">eigen_solver</span><span class="o">=</span><span class="s">&#39;arpack&#39;</span><span class="p">)</span>
 <span class="n">label_im</span> <span class="o">=</span> <span class="o">-</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.ones.html#numpy.ones"><span class="n">np</span><span class="o">.</span><span class="n">ones</span></a><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">label_im</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span>
 
@@ -255,10 +261,10 @@ separating the objects one from the other, and not from the background.</p>
 
 <span class="n">img</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="o">*</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-<span class="n">graph</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">img_to_graph</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
-<span class="n">graph</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">graph</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">graph</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">img_to_graph</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+<a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 
-<span class="n">labels</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.spectral_clustering.html#sklearn.cluster.spectral_clustering"><span class="n">spectral_clustering</span></a><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">eigen_solver</span><span class="o">=</span><span class="s">&#39;arpack&#39;</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.spectral_clustering.html#sklearn.cluster.spectral_clustering"><span class="n">spectral_clustering</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">eigen_solver</span><span class="o">=</span><span class="s">&#39;arpack&#39;</span><span class="p">)</span>
 <span class="n">label_im</span> <span class="o">=</span> <span class="o">-</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.ones.html#numpy.ones"><span class="n">np</span><span class="o">.</span><span class="n">ones</span></a><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">label_im</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span>
 
@@ -268,7 +274,7 @@ separating the objects one from the other, and not from the background.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  8.83 seconds</p>
+<p><strong>Total running time of the example:</strong>  1.68 seconds</p>
 </div>
 
 

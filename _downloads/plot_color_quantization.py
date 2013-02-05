@@ -39,7 +39,7 @@ n_colors = 64
 china = load_sample_image("china.jpg")
 
 # Convert to floats instead of the default 8 bits integer coding. Dividing by
-# 255 is important so that pl.imshow behaves works well on foat data (need to
+# 255 is important so that pl.imshow behaves works well on float data (need to
 # be in the range [0-1]
 china = np.array(china, dtype=np.float64) / 255
 
@@ -101,4 +101,15 @@ ax = pl.axes([0, 0, 1, 1])
 pl.axis('off')
 pl.title('Quantized image (64 colors, Random)')
 pl.imshow(recreate_image(codebook_random, labels_random, w, h))
+
+# histogram
+pl.figure(4)
+pl.clf()
+pl.axes([.01, .01, .98, .98])
+pl.hist(image_array[:,1], bins=256, alpha=0.5)
+pl.hist(image_array[:,0], bins=256, alpha=0.5)
+pl.hist(image_array[:,2], bins=256, alpha=0.5)
+pl.yticks(())
+pl.xticks(())
+
 pl.show()

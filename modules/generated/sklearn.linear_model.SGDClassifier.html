@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.26. sklearn.linear_model.SGDClassifier &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.17.26. sklearn.linear_model.SGDClassifier &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.17.27. sklearn.linear_model.SGDRegressor" href="sklearn.linear_model.SGDRegressor.html" />
     <link rel="prev" title="8.17.25. sklearn.linear_model.RidgeCV" href="sklearn.linear_model.RidgeCV.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -169,7 +175,7 @@
 <h1>8.17.26. sklearn.linear_model.SGDClassifier<a class="headerlink" href="#sklearn-linear-model-sgdclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.linear_model.SGDClassifier">
-<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">SGDClassifier</tt><big>(</big><em>loss='hinge'</em>, <em>penalty='l2'</em>, <em>alpha=0.0001</em>, <em>l1_ratio=0.15</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>epsilon=0.1</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>learning_rate='optimal'</em>, <em>eta0=0.0</em>, <em>power_t=0.5</em>, <em>class_weight=None</em>, <em>warm_start=False</em>, <em>rho=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.SGDClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">SGDClassifier</tt><big>(</big><em>loss='hinge'</em>, <em>penalty='l2'</em>, <em>alpha=0.0001</em>, <em>l1_ratio=0.15</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>epsilon=0.1</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>learning_rate='optimal'</em>, <em>eta0=0.0</em>, <em>power_t=0.5</em>, <em>class_weight=None</em>, <em>warm_start=False</em>, <em>rho=None</em>, <em>seed=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.SGDClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Linear model fitted by minimizing a regularized empirical loss with SGD.</p>
 <p>SGD stands for Stochastic Gradient Descent: the gradient of the loss is
 estimated each sample at a time and the model is updated along the way with
@@ -295,8 +301,8 @@ initialization, otherwise, just erase the previous solution.</p>
 <span class="go">SGDClassifier(alpha=0.0001, class_weight=None, epsilon=0.1, eta0=0.0,</span>
 <span class="go">        fit_intercept=True, l1_ratio=0.15, learning_rate=&#39;optimal&#39;,</span>
 <span class="go">        loss=&#39;hinge&#39;, n_iter=5, n_jobs=1, penalty=&#39;l2&#39;, power_t=0.5,</span>
-<span class="go">        random_state=None, rho=None, shuffle=False, verbose=0,</span>
-<span class="go">        warm_start=False)</span>
+<span class="go">        random_state=None, rho=None, shuffle=False,</span>
+<span class="go">        verbose=0, warm_start=False)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]))</span>
 <span class="go">[1]</span>
 </pre></div>
@@ -367,7 +373,7 @@ initialization, otherwise, just erase the previous solution.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.linear_model.SGDClassifier.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>loss='hinge'</em>, <em>penalty='l2'</em>, <em>alpha=0.0001</em>, <em>l1_ratio=0.15</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>epsilon=0.1</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>learning_rate='optimal'</em>, <em>eta0=0.0</em>, <em>power_t=0.5</em>, <em>class_weight=None</em>, <em>warm_start=False</em>, <em>rho=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.SGDClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>loss='hinge'</em>, <em>penalty='l2'</em>, <em>alpha=0.0001</em>, <em>l1_ratio=0.15</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>epsilon=0.1</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>learning_rate='optimal'</em>, <em>eta0=0.0</em>, <em>power_t=0.5</em>, <em>class_weight=None</em>, <em>warm_start=False</em>, <em>rho=None</em>, <em>seed=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.SGDClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -621,6 +627,12 @@ case is in the appendix B in:
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.linear_model.SGDClassifier.seed">
+<tt class="descname">seed</tt><a class="headerlink" href="#sklearn.linear_model.SGDClassifier.seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: Parameter &#8216;seed&#8217; war renamed to &#8216;random_state&#8217; for consistency and will be removed in 0.15</p>
 </dd></dl>
 
 <dl class="method">

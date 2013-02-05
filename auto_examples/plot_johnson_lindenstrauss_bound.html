@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>The Johnson-Lindenstrauss bound for embedding with random projections &mdash; scikit-learn 0.13-git documentation</title>
+    <title>The Johnson-Lindenstrauss bound for embedding with random projections &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
     <link rel="next" title="Explicit feature map approximation for RBF kernels" href="plot_kernel_approximation.html" />
     <link rel="prev" title="Isotonic Regression" href="plot_isotonic_regression.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
@@ -235,34 +241,34 @@ reduction in this case.</p>
 <p>On the twenty newsgroups on the other hand the dimensionality can be decreased
 from 56436 down to 10000 while reasonably preserving pairwise distances.</p>
 <ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_1.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_1.png" src="../_images/plot_johnson_lindenstrauss_bound_1.png" style="width: 376.0px; height: 282.0px;" /></a>
+<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_4.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_4.png" src="../_images/plot_johnson_lindenstrauss_bound_4.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_2.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_2.png" src="../_images/plot_johnson_lindenstrauss_bound_2.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_3.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_3.png" src="../_images/plot_johnson_lindenstrauss_bound_3.png" style="width: 376.0px; height: 282.0px;" /></a>
+<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_1.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_1.png" src="../_images/plot_johnson_lindenstrauss_bound_1.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_4.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_4.png" src="../_images/plot_johnson_lindenstrauss_bound_4.png" style="width: 376.0px; height: 282.0px;" /></a>
+<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_7.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_7.png" src="../_images/plot_johnson_lindenstrauss_bound_7.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_3.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_3.png" src="../_images/plot_johnson_lindenstrauss_bound_3.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_5.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_5.png" src="../_images/plot_johnson_lindenstrauss_bound_5.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_6.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_6.png" src="../_images/plot_johnson_lindenstrauss_bound_6.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_7.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_7.png" src="../_images/plot_johnson_lindenstrauss_bound_7.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../_images/plot_johnson_lindenstrauss_bound_8.png"><img alt="../_images/plot_johnson_lindenstrauss_bound_8.png" src="../_images/plot_johnson_lindenstrauss_bound_8.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 </ul>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Embedding 500 samples with dim 64 using various random projections
-Projected 500 samples from 64 to 300 in 0.049s
+Projected 500 samples from 64 to 300 in 0.006s
 Random matrix with size: 0.028MB
-Mean distances rate: 0.99 (0.08)
-Projected 500 samples from 64 to 1000 in 0.082s
-Random matrix with size: 0.095MB
-Mean distances rate: 0.99 (0.05)
-Projected 500 samples from 64 to 10000 in 0.899s
-Random matrix with size: 0.962MB
-Mean distances rate: 1.01 (0.01)</pre>
+Mean distances rate: 1.02 (0.09)
+Projected 500 samples from 64 to 1000 in 0.017s
+Random matrix with size: 0.096MB
+Mean distances rate: 0.99 (0.04)
+Projected 500 samples from 64 to 10000 in 0.165s
+Random matrix with size: 0.963MB
+Mean distances rate: 1.00 (0.01)</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_johnson_lindenstrauss_bound.py"><tt class="xref download docutils literal"><span class="pre">plot_johnson_lindenstrauss_bound.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
@@ -375,7 +381,7 @@ Mean distances rate: 1.01 (0.01)</pre>
     <span class="c"># as vertical lines / region</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  34.08 seconds</p>
+<p><strong>Total running time of the example:</strong>  6.95 seconds</p>
 </div>
 </div>
 

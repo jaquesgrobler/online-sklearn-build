@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.23. sklearn.linear_model.RidgeClassifier &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.17.23. sklearn.linear_model.RidgeClassifier &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.17.24. sklearn.linear_model.RidgeClassifierCV" href="sklearn.linear_model.RidgeClassifierCV.html" />
     <link rel="prev" title="8.17.22. sklearn.linear_model.Ridge" href="sklearn.linear_model.Ridge.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -203,9 +209,9 @@ already centered).</p>
 <div><p>Maximum number of iterations for conjugate gradient solver.
 The default value is determined by scipy.sparse.linalg.</p>
 </div></blockquote>
-<p><strong>normalize</strong> : boolean, optional</p>
+<p><strong>normalize</strong> : boolean, optional, default False</p>
 <blockquote>
-<div><p>If True, the regressors X are normalized</p>
+<div><p>If True, the regressors X will be normalized before regression.</p>
 </div></blockquote>
 <p><strong>solver</strong> : {&#8216;auto&#8217;, &#8216;dense_cholesky&#8217;, &#8216;lsqr&#8217;, &#8216;sparse_cg&#8217;}</p>
 <blockquote>
@@ -257,7 +263,7 @@ advantage of the multi-variate response support in Ridge.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.RidgeClassifier.decision_function" title="sklearn.linear_model.RidgeClassifier.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
 <td>Predict confidence scores for samples.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.RidgeClassifier.fit" title="sklearn.linear_model.RidgeClassifier.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;solver])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.RidgeClassifier.fit" title="sklearn.linear_model.RidgeClassifier.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
 <td>Fit Ridge regression model.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.RidgeClassifier.get_params" title="sklearn.linear_model.RidgeClassifier.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
@@ -308,7 +314,7 @@ case, confidence score for the &#8220;positive&#8221; class.</p>
 
 <dl class="method">
 <dt id="sklearn.linear_model.RidgeClassifier.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>solver=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RidgeClassifier.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RidgeClassifier.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit Ridge regression model.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

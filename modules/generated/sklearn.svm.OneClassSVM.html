@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.29.1.6. sklearn.svm.OneClassSVM &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.29.1.6. sklearn.svm.OneClassSVM &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.29.1.7. sklearn.svm.l1_min_c" href="sklearn.svm.l1_min_c.html" />
     <link rel="prev" title="8.29.1.5. sklearn.svm.NuSVR" href="sklearn.svm.NuSVR.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -283,7 +289,7 @@ problem). This is only available in the case of linear kernel.</p>
 <td>Get parameters for the estimator</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.svm.OneClassSVM.predict" title="sklearn.svm.OneClassSVM.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
-<td>Perform classification or regression samples in X.</td>
+<td>Perform regression on samples in X.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.OneClassSVM.set_params" title="sklearn.svm.OneClassSVM.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
@@ -366,10 +372,7 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.svm.OneClassSVM.predict">
 <tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.svm.OneClassSVM.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform classification or regression samples in X.</p>
-<p>For a classification model, the predicted class for each
-sample in X is returned.  For a regression model, the function
-value of X calculated is returned.</p>
+<dd><p>Perform regression on samples in X.</p>
 <p>For an one-class model, +1 or -1 is returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

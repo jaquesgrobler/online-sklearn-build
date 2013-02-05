@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Hashing feature transformation using Totally Random Trees &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Hashing feature transformation using Totally Random Trees &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Cross-validation on diabetes Dataset Exercise" href="../exercises/plot_cv_diabetes.html" />
     <link rel="prev" title="Partial Dependence Plots" href="plot_partial_dependence.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -199,15 +205,15 @@ original data.</p>
 
 <span class="c"># use RandomTreesEmbedding to transform data</span>
 <a href="../../modules/generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding"><span class="n">hasher</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding"><span class="n">RandomTreesEmbedding</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">X_transformed</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding"><span class="n">hasher</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">X_transformed</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding"><span class="n">hasher</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="c"># Visualize result using PCA</span>
 <a href="../../modules/generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA"><span class="n">pca</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA"><span class="n">RandomizedPCA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">X_reduced</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA"><span class="n">pca</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_transformed</span><span class="p">)</span>
+<span class="n">X_reduced</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA"><span class="n">pca</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">X_transformed</span></a><span class="p">)</span>
 
 <span class="c"># Learn a Naive Bayes classifier on the transformed data</span>
 <a href="../../modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB"><span class="n">nb</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB"><span class="n">BernoulliNB</span></a><span class="p">()</span>
-<a href="../../modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB"><span class="n">nb</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_transformed</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a href="../../modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB"><span class="n">nb</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">X_transformed</span></a><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 
 <span class="c"># Learn an ExtraTreesClassifier for comparison</span>
@@ -227,7 +233,7 @@ original data.</p>
 <span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplot"><span class="n">pl</span><span class="o">.</span><span class="n">subplot</span></a><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_reduced</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_reduced</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;PCA reduction (2d) of transformed data (</span><span class="si">%d</span><span class="s">d)&quot;</span> <span class="o">%</span>
-             <span class="n">X_transformed</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+             <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">X_transformed</span></a><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(())</span>
 
@@ -239,8 +245,8 @@ original data.</p>
 <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.meshgrid.html#numpy.meshgrid"><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
 
 <span class="c"># transform grid using RandomTreesEmbedding</span>
-<span class="n">transformed_grid</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding"><span class="n">hasher</span></a><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
-<span class="n">y_grid_pred</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB"><span class="n">nb</span></a><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">transformed_grid</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">transformed_grid</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding"><span class="n">hasher</span></a><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<span class="n">y_grid_pred</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB"><span class="n">nb</span></a><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">transformed_grid</span></a><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplot"><span class="n">pl</span><span class="o">.</span><span class="n">subplot</span></a><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Naive Bayes on Transformed data&quot;</span><span class="p">)</span>
@@ -267,7 +273,7 @@ original data.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  4.69 seconds</p>
+<p><strong>Total running time of the example:</strong>  1.03 seconds</p>
 </div>
 
 

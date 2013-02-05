@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8. Reference &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8. Reference &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="&lt;no title&gt;" href="../user_guide.html" />
     <link rel="next" title="8.1.1.1. sklearn.cluster.AffinityPropagation" href="generated/sklearn.cluster.AffinityPropagation.html" />
     <link rel="prev" title="7. Dataset loading utilities" href="../datasets/index.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -139,7 +145,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
@@ -918,12 +924,15 @@ build feature vectors from text documents.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.CountVectorizer</span></tt></a>([...])</td>
-<td>Convert a collection of raw documents to a matrix of token counts</td>
+<td>Convert a collection of text documents to a matrix of token counts</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.feature_extraction.text.TfidfTransformer.html#sklearn.feature_extraction.text.TfidfTransformer" title="sklearn.feature_extraction.text.TfidfTransformer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.TfidfTransformer</span></tt></a>([...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.feature_extraction.text.HashingVectorizer.html#sklearn.feature_extraction.text.HashingVectorizer" title="sklearn.feature_extraction.text.HashingVectorizer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.HashingVectorizer</span></tt></a>([...])</td>
+<td>Convert a collection of text documents to a matrix of token occurrences</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.feature_extraction.text.TfidfTransformer.html#sklearn.feature_extraction.text.TfidfTransformer" title="sklearn.feature_extraction.text.TfidfTransformer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.TfidfTransformer</span></tt></a>([...])</td>
 <td>Transform a count matrix to a normalized tf or tf–idf representation</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.feature_extraction.text.TfidfVectorizer.html#sklearn.feature_extraction.text.TfidfVectorizer" title="sklearn.feature_extraction.text.TfidfVectorizer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.TfidfVectorizer</span></tt></a>([...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.feature_extraction.text.TfidfVectorizer.html#sklearn.feature_extraction.text.TfidfVectorizer" title="sklearn.feature_extraction.text.TfidfVectorizer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.TfidfVectorizer</span></tt></a>([...])</td>
 <td>Convert a collection of raw documents to a matrix of TF-IDF features.</td>
 </tr>
 </tbody>
@@ -1101,7 +1110,7 @@ make it more stable, this module will be removed in version 0.11.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.isotonic.isotonic_regression.html#sklearn.isotonic.isotonic_regression" title="sklearn.isotonic.isotonic_regression"><tt class="xref py py-obj docutils literal"><span class="pre">isotonic.isotonic_regression</span></tt></a>(y[,&nbsp;weight,&nbsp;...])</td>
-<td>Solve the isotonic regression model:      min sum w[i] (y[i] - y_[i]) ** 2      subject to y_min = y_[1] &lt;= y_[2] ...</td>
+<td>Solve the isotonic regression model::      min sum w[i] (y[i] - y_[i]) ** 2      subject to y_min = y_[1] &lt;= y_[2] ...</td>
 </tr>
 </tbody>
 </table>
@@ -1324,7 +1333,7 @@ implements Stochastic Gradient Descent related algorithms.</p>
 <td>Perform a Locally Linear Embedding analysis on the data.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.manifold.spectral_embedding.html#sklearn.manifold.spectral_embedding" title="sklearn.manifold.spectral_embedding"><tt class="xref py py-obj docutils literal"><span class="pre">manifold.spectral_embedding</span></tt></a>(adjacency[,&nbsp;...])</td>
-<td>Project the sample on the first eigen vectors of the graph Laplacian</td>
+<td>Project the sample on the first eigen vectors of the graph Laplacian.</td>
 </tr>
 </tbody>
 </table>
@@ -1597,10 +1606,10 @@ case.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.multiclass.OneVsRestClassifier.html#sklearn.multiclass.OneVsRestClassifier" title="sklearn.multiclass.OneVsRestClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">multiclass.OneVsRestClassifier</span></tt></a>(estimator)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.multiclass.OneVsRestClassifier.html#sklearn.multiclass.OneVsRestClassifier" title="sklearn.multiclass.OneVsRestClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">multiclass.OneVsRestClassifier</span></tt></a>(estimator[,&nbsp;...])</td>
 <td>One-vs-the-rest (OvR) multiclass/multilabel strategy</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.multiclass.OneVsOneClassifier.html#sklearn.multiclass.OneVsOneClassifier" title="sklearn.multiclass.OneVsOneClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">multiclass.OneVsOneClassifier</span></tt></a>(estimator)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.multiclass.OneVsOneClassifier.html#sklearn.multiclass.OneVsOneClassifier" title="sklearn.multiclass.OneVsOneClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">multiclass.OneVsOneClassifier</span></tt></a>(estimator[,&nbsp;...])</td>
 <td>One-vs-one multiclass strategy</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.multiclass.OutputCodeClassifier.html#sklearn.multiclass.OutputCodeClassifier" title="sklearn.multiclass.OutputCodeClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">multiclass.OutputCodeClassifier</span></tt></a>(estimator[,&nbsp;...])</td>
@@ -1614,13 +1623,13 @@ case.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.multiclass.fit_ovr.html#sklearn.multiclass.fit_ovr" title="sklearn.multiclass.fit_ovr"><tt class="xref py py-obj docutils literal"><span class="pre">multiclass.fit_ovr</span></tt></a>(estimator,&nbsp;X,&nbsp;y)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.multiclass.fit_ovr.html#sklearn.multiclass.fit_ovr" title="sklearn.multiclass.fit_ovr"><tt class="xref py py-obj docutils literal"><span class="pre">multiclass.fit_ovr</span></tt></a>(estimator,&nbsp;X,&nbsp;y[,&nbsp;n_jobs])</td>
 <td>Fit a one-vs-the-rest strategy.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.multiclass.predict_ovr.html#sklearn.multiclass.predict_ovr" title="sklearn.multiclass.predict_ovr"><tt class="xref py py-obj docutils literal"><span class="pre">multiclass.predict_ovr</span></tt></a>(estimators,&nbsp;...)</td>
 <td>Make predictions using the one-vs-the-rest strategy.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.multiclass.fit_ovo.html#sklearn.multiclass.fit_ovo" title="sklearn.multiclass.fit_ovo"><tt class="xref py py-obj docutils literal"><span class="pre">multiclass.fit_ovo</span></tt></a>(estimator,&nbsp;X,&nbsp;y)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.multiclass.fit_ovo.html#sklearn.multiclass.fit_ovo" title="sklearn.multiclass.fit_ovo"><tt class="xref py py-obj docutils literal"><span class="pre">multiclass.fit_ovo</span></tt></a>(estimator,&nbsp;X,&nbsp;y[,&nbsp;n_jobs])</td>
 <td>Fit a one-vs-one strategy.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.multiclass.predict_ovo.html#sklearn.multiclass.predict_ovo" title="sklearn.multiclass.predict_ovo"><tt class="xref py py-obj docutils literal"><span class="pre">multiclass.predict_ovo</span></tt></a>(estimators,&nbsp;classes,&nbsp;X)</td>

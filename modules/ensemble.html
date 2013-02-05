@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.9. Ensemble methods &mdash; scikit-learn 0.13-git documentation</title>
+    <title>3.9. Ensemble methods &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
     <link rel="next" title="3.10. Multiclass and multilabel algorithms" href="multiclass.html" />
     <link rel="prev" title="3.8. Decision Trees" href="tree.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
@@ -398,7 +404,7 @@ the matching feature to the prediction function.</p>
 </div>
 </div>
 <div class="section" id="totally-random-trees-embedding">
-<span id="random-hashing"></span><h3>3.9.1.6. Totally Random Trees Embedding<a class="headerlink" href="#totally-random-trees-embedding" title="Permalink to this headline">¶</a></h3>
+<span id="random-trees-embedding"></span><h3>3.9.1.6. Totally Random Trees Embedding<a class="headerlink" href="#totally-random-trees-embedding" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding" title="sklearn.ensemble.RandomTreesEmbedding"><tt class="xref py py-class docutils literal"><span class="pre">RandomTreesEmbedding</span></tt></a> implements an unsupervised transformation of the
 data.  Using a forest of completely random trees, <a class="reference internal" href="generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding" title="sklearn.ensemble.RandomTreesEmbedding"><tt class="xref py py-class docutils literal"><span class="pre">RandomTreesEmbedding</span></tt></a>
 encodes the data by the indices of the leaves a data point ends up in.  This
@@ -416,13 +422,9 @@ the transformation performs an implicit, non-parametric density estimation.</p>
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
 <li><a class="reference internal" href="../auto_examples/ensemble/plot_random_forest_embedding.html#example-ensemble-plot-random-forest-embedding-py"><em>Hashing feature transformation using Totally Random Trees</em></a></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
 <li><a class="reference internal" href="../auto_examples/manifold/plot_lle_digits.html#example-manifold-plot-lle-digits-py"><em>Manifold learning on handwritten digits: Locally Linear Embedding, Isomap...</em></a> compares non-linear
 dimensionality reduction technics on handwritten digits.</li>
 </ul>
-</div></blockquote>
 </div>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>

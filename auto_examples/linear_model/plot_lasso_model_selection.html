@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Lasso model selection: Cross-Validation / AIC / BIC &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Lasso model selection: Cross-Validation / AIC / BIC &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Logit function" href="plot_logistic.html" />
     <link rel="prev" title="Lasso path using LARS" href="plot_lasso_lars.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -200,9 +206,9 @@ evaluate the performance of a method for which a parameter is chosen by
 cross-validation: this choice of parameter may not be optimal for unseen
 data.</p>
 <ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_lasso_model_selection_1.png"><img alt="../../_images/plot_lasso_model_selection_1.png" src="../../_images/plot_lasso_model_selection_1.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_lasso_model_selection_2.png"><img alt="../../_images/plot_lasso_model_selection_2.png" src="../../_images/plot_lasso_model_selection_2.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lasso_model_selection_1.png"><img alt="../../_images/plot_lasso_model_selection_1.png" src="../../_images/plot_lasso_model_selection_1.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_lasso_model_selection_3.png"><img alt="../../_images/plot_lasso_model_selection_3.png" src="../../_images/plot_lasso_model_selection_3.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
@@ -284,7 +290,7 @@ Computing regularization path using the Lars lasso...</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">m_log_alphas</span><span class="p">,</span> <a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">model</span></a><span class="o">.</span><span class="n">mse_path_</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">m_log_alphas</span><span class="p">,</span> <a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">model</span></a><span class="o">.</span><span class="n">mse_path_</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="s">&#39;k&#39;</span><span class="p">,</span>
         <span class="n">label</span><span class="o">=</span><span class="s">&#39;Average across the folds&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axvline"><span class="n">pl</span><span class="o">.</span><span class="n">axvline</span></a><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">model</span></a><span class="o">.</span><span class="n">alpha</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axvline"><span class="n">pl</span><span class="o">.</span><span class="n">axvline</span></a><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">model</span></a><span class="o">.</span><span class="n">alpha_</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span>
            <span class="n">label</span><span class="o">=</span><span class="s">&#39;alpha: CV estimate&#39;</span><span class="p">)</span>
 
 <a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">pl</span><span class="o">.</span><span class="n">legend</span></a><span class="p">()</span>
@@ -312,7 +318,7 @@ Computing regularization path using the Lars lasso...</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">m_log_alphas</span><span class="p">,</span> <a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">model</span></a><span class="o">.</span><span class="n">cv_mse_path_</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">m_log_alphas</span><span class="p">,</span> <a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">model</span></a><span class="o">.</span><span class="n">cv_mse_path_</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="s">&#39;k&#39;</span><span class="p">,</span>
         <span class="n">label</span><span class="o">=</span><span class="s">&#39;Average across the folds&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axvline"><span class="n">pl</span><span class="o">.</span><span class="n">axvline</span></a><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">model</span></a><span class="o">.</span><span class="n">alpha</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axvline"><span class="n">pl</span><span class="o">.</span><span class="n">axvline</span></a><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">model</span></a><span class="o">.</span><span class="n">alpha_</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span>
            <span class="n">label</span><span class="o">=</span><span class="s">&#39;alpha CV&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">pl</span><span class="o">.</span><span class="n">legend</span></a><span class="p">()</span>
 
@@ -326,7 +332,7 @@ Computing regularization path using the Lars lasso...</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  11.77 seconds</p>
+<p><strong>Total running time of the example:</strong>  2.52 seconds</p>
 </div>
 
 

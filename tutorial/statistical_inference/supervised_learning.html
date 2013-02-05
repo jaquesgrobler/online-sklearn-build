@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.2.2. Supervised learning: predicting an output variable from high-dimensional observations &mdash; scikit-learn 0.13-git documentation</title>
+    <title>2.2.2. Supervised learning: predicting an output variable from high-dimensional observations &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="2.2. A tutorial on statistical-learning for scientific data processing" href="index.html" />
     <link rel="next" title="2.2.3. Model selection: choosing estimators and their parameters" href="model_selection.html" />
     <link rel="prev" title="2.2.1. Statistical learning: the setting and the estimator object in the scikit-learn" href="settings.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -260,7 +266,7 @@ estimator on <strong>new data</strong>. This is why datasets are often split int
 <span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">,</span> <span class="n">iris_y_train</span><span class="p">)</span>
 <span class="go">KNeighborsClassifier(algorithm=&#39;auto&#39;, leaf_size=30, n_neighbors=5, p=2,</span>
-<span class="go">           warn_on_equidistant=True, weights=&#39;uniform&#39;)</span>
+<span class="go">           weights=&#39;uniform&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">)</span>
 <span class="go">array([1, 2, 1, 0, 0, 0, 2, 1, 2, 0])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">iris_y_test</span>

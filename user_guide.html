@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>User guide: contents &mdash; scikit-learn 0.13-git documentation</title>
+    <title>User guide: contents &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="index.html" />
     <link rel="next" title="1. Installing scikit-learn" href="install.html" />
     <link rel="prev" title="User Guide" href="index.html" />
 
@@ -51,6 +51,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -126,7 +132,7 @@
 	<!-- Ad a link to the 'up' page -->
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="about.html#citing-scikit-learn">Citing</a></h3>
@@ -549,11 +555,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/manifold.html#spectral-embedding">4.2.6. Spectral Embedding</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/manifold.html#id4">4.2.6.1. Complexity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/manifold.html#id5">4.2.6.1. Complexity</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/manifold.html#local-tangent-space-alignment">4.2.7. Local Tangent Space Alignment</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/manifold.html#id5">4.2.7.1. Complexity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/manifold.html#id6">4.2.7.1. Complexity</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/manifold.html#multi-dimensional-scaling-mds">4.2.8. Multi-dimensional Scaling (MDS)</a><ul>
@@ -570,7 +576,7 @@
 <li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#mini-batch-k-means">4.3.2.1. Mini Batch K-Means</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#affinity-propagation">4.3.3. Affinity propagation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#affinity-propagation">4.3.3. Affinity Propagation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#mean-shift">4.3.4. Mean Shift</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#spectral-clustering">4.3.5. Spectral clustering</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#different-label-assignement-strategies">4.3.5.1. Different label assignement strategies</a></li>
@@ -793,7 +799,8 @@
 <li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#tfidf-term-weighting">6.2.3.4. Tf–idf term weighting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#applications-and-examples">6.2.3.5. Applications and examples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#limitations-of-the-bag-of-words-representation">6.2.3.6. Limitations of the Bag of Words representation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#customizing-the-vectorizer-classes">6.2.3.7. Customizing the vectorizer classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#vectorizing-a-large-text-corpus-with-the-hashing-trick">6.2.3.7. Vectorizing a large text corpus with the hashing trick</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#customizing-the-vectorizer-classes">6.2.3.8. Customizing the vectorizer classes</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/feature_extraction.html#image-feature-extraction">6.2.4. Image feature extraction</a><ul>
@@ -818,7 +825,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/metrics.html">6.5. Metrics, Affinities and Kernels</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modules/metrics.html#chi-squared-kernel">6.5.1. Chi Squared Kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/metrics.html#cosine-similarity">6.5.1. Cosine similarity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/metrics.html#chi-squared-kernel">6.5.2. Chi Squared Kernel</a></li>
 </ul>
 </li>
 </ul>
@@ -996,8 +1004,9 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/classes.html#module-sklearn.feature_extraction.text">8.8.4. From text</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.feature_extraction.text.CountVectorizer.html">8.8.4.1. sklearn.feature_extraction.text.CountVectorizer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html">8.8.4.2. sklearn.feature_extraction.text.TfidfTransformer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html">8.8.4.3. sklearn.feature_extraction.text.TfidfVectorizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.feature_extraction.text.HashingVectorizer.html">8.8.4.2. sklearn.feature_extraction.text.HashingVectorizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html">8.8.4.3. sklearn.feature_extraction.text.TfidfTransformer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html">8.8.4.4. sklearn.feature_extraction.text.TfidfVectorizer</a></li>
 </ul>
 </li>
 </ul>

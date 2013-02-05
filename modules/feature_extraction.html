@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>6.2. Feature extraction &mdash; scikit-learn 0.13-git documentation</title>
+    <title>6.2. Feature extraction &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="6. Dataset transformations" href="../data_transforms.html" />
     <link rel="next" title="6.3. Kernel Approximation" href="kernel_approximation.html" />
     <link rel="prev" title="6.1. Preprocessing data" href="preprocessing.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
@@ -164,7 +170,8 @@
 <li><a class="reference internal" href="#tfidf-term-weighting">6.2.3.4. Tf–idf term weighting</a></li>
 <li><a class="reference internal" href="#applications-and-examples">6.2.3.5. Applications and examples</a></li>
 <li><a class="reference internal" href="#limitations-of-the-bag-of-words-representation">6.2.3.6. Limitations of the Bag of Words representation</a></li>
-<li><a class="reference internal" href="#customizing-the-vectorizer-classes">6.2.3.7. Customizing the vectorizer classes</a></li>
+<li><a class="reference internal" href="#vectorizing-a-large-text-corpus-with-the-hashing-trick">6.2.3.7. Vectorizing a large text corpus with the hashing trick</a></li>
+<li><a class="reference internal" href="#customizing-the-vectorizer-classes">6.2.3.8. Customizing the vectorizer classes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#image-feature-extraction">6.2.4. Image feature extraction</a><ul>
@@ -422,10 +429,10 @@ reasonable (please see  the <a class="reference internal" href="classes.html#tex
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span>                            
 <span class="go">CountVectorizer(analyzer=&#39;word&#39;, binary=False, charset=&#39;utf-8&#39;,</span>
 <span class="go">        charset_error=&#39;strict&#39;, dtype=&lt;type &#39;long&#39;&gt;, input=&#39;content&#39;,</span>
-<span class="go">        lowercase=True, max_df=1.0, max_features=None, max_n=None, min_df=1,</span>
-<span class="go">        min_n=None, ngram_range=(1, 1), preprocessor=None, stop_words=None,</span>
-<span class="go">        strip_accents=None, token_pattern=u&#39;(?u)\\b\\w\\w+\\b&#39;, tokenizer=None,</span>
-<span class="go">        vocabulary=None)</span>
+<span class="go">        lowercase=True, max_df=1.0, max_features=None, min_df=1,</span>
+<span class="go">        ngram_range=(1, 1), preprocessor=None, stop_words=None,</span>
+<span class="go">        strip_accents=None, token_pattern=u&#39;(?u)\\b\\w\\w+\\b&#39;,</span>
+<span class="go">        tokenizer=None, vocabulary=None)</span>
 </pre></div>
 </div>
 <p>Let&#8217;s use it to tokenize and count the word occurrences of a minimalistic
@@ -683,8 +690,83 @@ the local structure of sentences and paragraphs should thus be taken
 into account. Many such models will thus be casted as &#8220;Structured output&#8221;
 problems which are currently outside of the scope of scikit-learn.</p>
 </div>
+<div class="section" id="vectorizing-a-large-text-corpus-with-the-hashing-trick">
+<span id="hashing-vectorizer"></span><h3>6.2.3.7. Vectorizing a large text corpus with the hashing trick<a class="headerlink" href="#vectorizing-a-large-text-corpus-with-the-hashing-trick" title="Permalink to this headline">¶</a></h3>
+<p>The above vectorization scheme is simple but the fact that it holds an <strong>in-
+memory mapping from the string tokens to the integer feature indices</strong> (the
+<tt class="docutils literal"><span class="pre">vocabulary_</span></tt> attribute) causes several <strong>problems when dealing with large
+datasets</strong>:</p>
+<ul class="simple">
+<li>the larger the corpus, the larger the vocabulary will grow and hence the
+memory use too,</li>
+<li>fitting requires the allocation of intermediate data structures
+of size proportional to that of the original dataset.</li>
+<li>building the word-mapping requires a full pass over the dataset hence it is
+not possible to fit text classifiers in a strictly online manner.</li>
+<li>pickling and un-pickling vectorizers with a large <tt class="docutils literal"><span class="pre">vocabulary_</span></tt> can be very
+slow (typically much slower than pickling / un-pickling flat data structures
+such as a NumPy array of the same size),</li>
+<li>it is not easily possible to split the vectorization work into concurrent sub
+tasks as the <tt class="docutils literal"><span class="pre">vocabulary_</span></tt> attribute would have to be a shared state with a
+fine grained synchronization barrier: the mapping from token string to
+feature index is dependent on ordering of the first occurrence of each token
+hence would have to be shared, potentially harming the concurrent workers&#8217;
+performance to the point of making them slower than the sequential variant.</li>
+</ul>
+<p>It is possible to overcome those limitations by combining the &#8220;hashing trick&#8221;
+(<a class="reference internal" href="#feature-hashing"><em>Feature hashing</em></a>) implemented by the
+<a class="reference internal" href="generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="sklearn.feature_extraction.FeatureHasher"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.feature_extraction.FeatureHasher</span></tt></a> class and the text
+preprocessing and tokenization features of the <a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a>.</p>
+<p>This combination is implementing in <a class="reference internal" href="generated/sklearn.feature_extraction.text.HashingVectorizer.html#sklearn.feature_extraction.text.HashingVectorizer" title="sklearn.feature_extraction.text.HashingVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">HashingVectorizer</span></tt></a>,
+a transformer class that is mostly API compatible with <a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a>.
+<a class="reference internal" href="generated/sklearn.feature_extraction.text.HashingVectorizer.html#sklearn.feature_extraction.text.HashingVectorizer" title="sklearn.feature_extraction.text.HashingVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">HashingVectorizer</span></tt></a> is stateless,
+meaning that you don&#8217;t have to call <tt class="docutils literal"><span class="pre">fit</span></tt> on it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">HashingVectorizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span> <span class="o">=</span> <span class="n">HashingVectorizer</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
+<span class="gp">... </span>                                      
+<span class="go">&lt;4x10 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
+<span class="go">    with 16 stored elements in Compressed Sparse Row format&gt;</span>
+</pre></div>
+</div>
+<p>You can see that 16 non-zero feature tokens where extracted in the vector
+output: this is less than the 19 non-zeros extracted previously by the
+<a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a> on the same toy corpus. The discrepancy comes from
+hash function collisions because of the low value of the <tt class="docutils literal"><span class="pre">n_features</span></tt> parameter.</p>
+<p>In a real world setting, the <tt class="docutils literal"><span class="pre">n_features</span></tt> parameter can be left to its
+default value of <tt class="docutils literal"><span class="pre">2</span> <span class="pre">**</span> <span class="pre">20</span></tt> (roughly one million possible features). If memory
+or downstream models size is an issue selecting a lower value such as <tt class="docutils literal"><span class="pre">2</span> <span class="pre">**</span>
+<span class="pre">18</span></tt> might help without introducing too many additional collisions on typical
+text classification tasks.</p>
+<p>Note that the dimensionality does not affect the CPU training time of
+algorithms which operate on CSR matrices (<tt class="docutils literal"><span class="pre">LinearSVC(dual=True)</span></tt>,
+<tt class="docutils literal"><span class="pre">Perceptron</span></tt>, <tt class="docutils literal"><span class="pre">SGDClassifier</span></tt>, <tt class="docutils literal"><span class="pre">PassiveAggressive</span></tt>) but it does for
+algorithm that work with CSC matrices (<tt class="docutils literal"><span class="pre">LinearSVC(dual=False)</span></tt>, <tt class="docutils literal"><span class="pre">Lasso()</span></tt>,
+etc).</p>
+<p>Let&#8217;s try again with the default setting:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span> <span class="o">=</span> <span class="n">HashingVectorizer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
+<span class="gp">... </span>                                      
+<span class="go">&lt;4x1048576 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
+<span class="go">    with 19 stored elements in Compressed Sparse Row format&gt;</span>
+</pre></div>
+</div>
+<p>We no longer get the collisions, but this comes at the expense of a much larger
+dimensionality of the output space.
+Of course, other terms than the 19 used here
+might still collide with each other.</p>
+<p>The <a class="reference internal" href="generated/sklearn.feature_extraction.text.HashingVectorizer.html#sklearn.feature_extraction.text.HashingVectorizer" title="sklearn.feature_extraction.text.HashingVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">HashingVectorizer</span></tt></a> also comes with the following limitations:</p>
+<ul class="simple">
+<li>it is not possible to invert the model (no <tt class="docutils literal"><span class="pre">inverse_transform</span></tt> method),
+nor to access the original string representation of the features,
+because of the one-way nature of the hash function that performs the mapping.</li>
+<li>it does not provide IDF weighting as that would introduce statefulness in the
+model. A <a class="reference internal" href="generated/sklearn.feature_extraction.text.TfidfTransformer.html#sklearn.feature_extraction.text.TfidfTransformer" title="sklearn.feature_extraction.text.TfidfTransformer"><tt class="xref py py-class docutils literal"><span class="pre">TfidfTransformer</span></tt></a> can be appended to it in a pipeline if
+required.</li>
+</ul>
+</div>
 <div class="section" id="customizing-the-vectorizer-classes">
-<h3>6.2.3.7. Customizing the vectorizer classes<a class="headerlink" href="#customizing-the-vectorizer-classes" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.3.8. Customizing the vectorizer classes<a class="headerlink" href="#customizing-the-vectorizer-classes" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to customize the behavior by passing a callable
 to the vectorizer constructor:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_tokenizer</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>

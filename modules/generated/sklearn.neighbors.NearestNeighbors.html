@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.23.1. sklearn.neighbors.NearestNeighbors &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.23.1. sklearn.neighbors.NearestNeighbors &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.23.2. sklearn.neighbors.KNeighborsClassifier" href="sklearn.neighbors.KNeighborsClassifier.html" />
     <link rel="prev" title="8.22.3. sklearn.naive_bayes.BernoulliNB" href="sklearn.naive_bayes.BernoulliNB.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -169,7 +175,7 @@
 <h1>8.23.1. sklearn.neighbors.NearestNeighbors<a class="headerlink" href="#sklearn-neighbors-nearestneighbors" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.neighbors.NearestNeighbors">
-<em class="property">class </em><tt class="descclassname">sklearn.neighbors.</tt><tt class="descname">NearestNeighbors</tt><big>(</big><em>n_neighbors=5</em>, <em>radius=1.0</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>warn_on_equidistant=True</em>, <em>p=2</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.NearestNeighbors" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.neighbors.</tt><tt class="descname">NearestNeighbors</tt><big>(</big><em>n_neighbors=5</em>, <em>radius=1.0</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>p=2</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.NearestNeighbors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unsupervised learner for implementing neighbor searches.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -203,15 +209,6 @@ this parameter, using brute force.</p>
 speed of the construction and query, as well as the memory
 required to store the tree.  The optimal value depends on the
 nature of the problem.</p>
-</div></blockquote>
-<p><strong>warn_on_equidistant</strong> : boolean, optional.  Defaults to True.</p>
-<blockquote>
-<div><p>Generate a warning if equidistant neighbors are discarded.
-For classification or regression based on k-neighbors, if
-neighbor k and neighbor k+1 have identical distances but
-different labels, then the result will be dependent on the
-ordering of the training data.
-If the fit method is <tt class="docutils literal"><span class="pre">'kd_tree'</span></tt>, no warnings will be generated.</p>
 </div></blockquote>
 <p><strong>p: integer, optional (default = 2)</strong> :</p>
 <blockquote class="last">
@@ -283,7 +280,7 @@ for a discussion of the choice of <tt class="docutils literal"><span class="pre"
 </table>
 <dl class="method">
 <dt id="sklearn.neighbors.NearestNeighbors.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_neighbors=5</em>, <em>radius=1.0</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>warn_on_equidistant=True</em>, <em>p=2</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.NearestNeighbors.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_neighbors=5</em>, <em>radius=1.0</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>p=2</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.NearestNeighbors.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

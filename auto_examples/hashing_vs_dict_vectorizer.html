@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>&lt;no title&gt; &mdash; scikit-learn 0.13-git documentation</title>
+    <title>FeatureHasher and DictVectorizer Comparison &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
     <link rel="next" title="Classification of text documents: using a MLComp dataset" href="mlcomp_sparse_document_classification.html" />
     <link rel="prev" title="Sample pipeline for text feature extraction and evaluation" href="grid_search_text_feature_extraction.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,14 +149,15 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
-	<ul class="simple">
+	<ul>
+<li><a class="reference internal" href="#">FeatureHasher and DictVectorizer Comparison</a></li>
 </ul>
 
     
@@ -164,7 +171,9 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <p id="example-hashing-vs-dict-vectorizer-py">Compares FeatureHasher and DictVectorizer by using both to vectorize
+  <div class="section" id="featurehasher-and-dictvectorizer-comparison">
+<span id="example-hashing-vs-dict-vectorizer-py"></span><h1>FeatureHasher and DictVectorizer Comparison<a class="headerlink" href="#featurehasher-and-dictvectorizer-comparison" title="Permalink to this headline">¶</a></h1>
+<p>Compares FeatureHasher and DictVectorizer by using both to vectorize
 text documents.</p>
 <p>The example demonstrates syntax and speed only; it doesn&#8217;t actually do
 anything useful with the extracted vectors. See the example scripts
@@ -220,7 +229,7 @@ for FeatureHasher is to be expected due to hash collisions.</p>
     <span class="s">&#39;talk.religion.misc&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 <span class="c"># Uncomment the following line to use a larger set (11k+ documents)</span>
-<span class="c">#categories=None</span>
+<span class="c">#categories = None</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Usage: </span><span class="si">%s</span><span class="s"> [n_features_for_hashing]&quot;</span> <span class="o">%</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -235,16 +244,19 @@ for FeatureHasher is to be expected due to hash collisions.</p>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;not a valid number of features: </span><span class="si">%r</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
+
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Loading 20 newsgroups training data&quot;</span><span class="p">)</span>
 <span class="n">raw_data</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;train&#39;</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_data</span><span class="p">))</span>
+<span class="n">data_size_mb</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents - </span><span class="si">%0.3f</span><span class="s">MB&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">raw_data</span><span class="p">),</span> <span class="n">data_size_mb</span><span class="p">))</span>
 <span class="k">print</span><span class="p">()</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;DictVectorizer&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">DictVectorizer</span><span class="p">()</span>
 <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">token_freqs</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s at </span><span class="si">%0.3f</span><span class="s">MB/s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">data_size_mb</span> <span class="o">/</span> <span class="n">duration</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Found </span><span class="si">%d</span><span class="s"> unique terms&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()))</span>
 <span class="k">print</span><span class="p">()</span>
 
@@ -252,7 +264,8 @@ for FeatureHasher is to be expected due to hash collisions.</p>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">hasher</span> <span class="o">=</span> <span class="n">FeatureHasher</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">hasher</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">token_freqs</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s at </span><span class="si">%0.3f</span><span class="s">MB/s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">data_size_mb</span> <span class="o">/</span> <span class="n">duration</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Found </span><span class="si">%d</span><span class="s"> unique terms&quot;</span> <span class="o">%</span> <span class="n">n_nonzero_columns</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
 <span class="k">print</span><span class="p">()</span>
 
@@ -260,9 +273,11 @@ for FeatureHasher is to be expected due to hash collisions.</p>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">hasher</span> <span class="o">=</span> <span class="n">FeatureHasher</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span> <span class="n">input_type</span><span class="o">=</span><span class="s">&quot;string&quot;</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">hasher</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">tokens</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s at </span><span class="si">%0.3f</span><span class="s">MB/s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">data_size_mb</span> <span class="o">/</span> <span class="n">duration</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Found </span><span class="si">%d</span><span class="s"> unique terms&quot;</span> <span class="o">%</span> <span class="n">n_nonzero_columns</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
 </pre></div>
+</div>
 </div>
 
 

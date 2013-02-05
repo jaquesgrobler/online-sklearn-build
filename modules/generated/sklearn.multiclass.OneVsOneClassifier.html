@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.21.3. sklearn.multiclass.OneVsOneClassifier &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.21.3. sklearn.multiclass.OneVsOneClassifier &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.21.4. sklearn.multiclass.OutputCodeClassifier" href="sklearn.multiclass.OutputCodeClassifier.html" />
     <link rel="prev" title="8.21.2. sklearn.multiclass.OneVsRestClassifier" href="sklearn.multiclass.OneVsRestClassifier.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -169,7 +175,7 @@
 <h1>8.21.3. sklearn.multiclass.OneVsOneClassifier<a class="headerlink" href="#sklearn-multiclass-onevsoneclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.multiclass.OneVsOneClassifier">
-<em class="property">class </em><tt class="descclassname">sklearn.multiclass.</tt><tt class="descname">OneVsOneClassifier</tt><big>(</big><em>estimator</em><big>)</big><a class="headerlink" href="#sklearn.multiclass.OneVsOneClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.multiclass.</tt><tt class="descname">OneVsOneClassifier</tt><big>(</big><em>estimator</em>, <em>n_jobs=1</em><big>)</big><a class="headerlink" href="#sklearn.multiclass.OneVsOneClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>One-vs-one multiclass strategy</p>
 <p>This strategy consists in fitting one classifier per class pair.
 At prediction time, the class which received the most votes is selected.
@@ -185,8 +191,15 @@ dataset is used <cite>n_classes</cite> times.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>estimator</strong> : estimator object</p>
-<blockquote class="last">
+<blockquote>
 <div><p>An estimator object implementing <cite>fit</cite> and <cite>predict</cite>.</p>
+</div></blockquote>
+<p><strong>n_jobs</strong> : int, optional, default: 1</p>
+<blockquote class="last">
+<div><p>The number of jobs to use for the computation. If -1 all CPUs are used.
+If 1 is given, no parallel computing code is used at all, which is
+useful for debugging. For n_jobs below -1, (n_cpus + 1 + n_jobs) are
+used. Thus for n_jobs = -2, all CPUs but one are used.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -236,7 +249,7 @@ dataset is used <cite>n_classes</cite> times.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.multiclass.OneVsOneClassifier.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>estimator</em><big>)</big><a class="headerlink" href="#sklearn.multiclass.OneVsOneClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>estimator</em>, <em>n_jobs=1</em><big>)</big><a class="headerlink" href="#sklearn.multiclass.OneVsOneClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

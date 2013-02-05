@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Adjustment for chance in clustering performance evaluation &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Adjustment for chance in clustering performance evaluation &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Demo of affinity propagation clustering algorithm" href="plot_affinity_propagation.html" />
     <link rel="prev" title="Wikipedia principal eigenvector" href="../applications/wikipedia_principal_eigenvector.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -180,28 +186,28 @@ clusters.</p>
 to evaluate the average stability of clustering algorithms for a given
 value of k on various overlapping sub-samples of the dataset.</p>
 <ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_adjusted_for_chance_measures_1.png"><img alt="../../_images/plot_adjusted_for_chance_measures_1.png" src="../../_images/plot_adjusted_for_chance_measures_1.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_adjusted_for_chance_measures_2.png"><img alt="../../_images/plot_adjusted_for_chance_measures_2.png" src="../../_images/plot_adjusted_for_chance_measures_2.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_adjusted_for_chance_measures_1.png"><img alt="../../_images/plot_adjusted_for_chance_measures_1.png" src="../../_images/plot_adjusted_for_chance_measures_1.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 </ul>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Computing adjusted_rand_score for 10 values of n_clusters and n_samples=100
-done in 0.817s
+done in 0.159s
 Computing v_measure_score for 10 values of n_clusters and n_samples=100
-done in 0.141s
+done in 0.029s
 Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=100
-done in 3.891s
+done in 0.788s
 Computing mutual_info_score for 10 values of n_clusters and n_samples=100
-done in 0.096s
+done in 0.020s
 Computing adjusted_rand_score for 10 values of n_clusters and n_samples=1000
-done in 0.877s
+done in 0.185s
 Computing v_measure_score for 10 values of n_clusters and n_samples=1000
-done in 0.258s
+done in 0.057s
 Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=1000
-done in 1.853s
+done in 0.391s
 Computing mutual_info_score for 10 values of n_clusters and n_samples=1000
-done in 0.161s</pre>
+done in 0.036s</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_adjusted_for_chance_measures.py"><tt class="xref download docutils literal"><span class="pre">plot_adjusted_for_chance_measures.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
@@ -307,7 +313,7 @@ done in 0.161s</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  8.84 seconds</p>
+<p><strong>Total running time of the example:</strong>  1.84 seconds</p>
 </div>
 
 

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.2. Support Vector Machines &mdash; scikit-learn 0.13-git documentation</title>
+    <title>3.2. Support Vector Machines &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
     <link rel="next" title="3.3. Stochastic Gradient Descent" href="sgd.html" />
     <link rel="prev" title="3.1. Generalized Linear Models" href="linear_model.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
@@ -225,10 +231,6 @@ sparse (any <tt class="docutils literal"><span class="pre">scipy.sparse</span></
 an SVM to make predictions for sparse data, it must have been fit on such
 data. For optimal performance, use C-ordered <tt class="docutils literal"><span class="pre">numpy.ndarray</span></tt> (dense) or
 <tt class="docutils literal"><span class="pre">scipy.sparse.csr_matrix</span></tt> (sparse) with <tt class="docutils literal"><span class="pre">dtype=float64</span></tt>.</p>
-<p>In previous versions of scikit-learn, sparse input support existed only
-in the <tt class="docutils literal"><span class="pre">sklearn.svm.sparse</span></tt> module which duplicated the <tt class="docutils literal"><span class="pre">sklearn.svm</span></tt>
-interface. This module still exists for backward compatibility, but is
-deprecated and will be removed in scikit-learn 0.12.</p>
 <div class="section" id="classification">
 <span id="svm-classification"></span><h2>3.2.1. Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><tt class="xref py py-class docutils literal"><span class="pre">SVC</span></tt></a>, <a class="reference internal" href="generated/sklearn.svm.NuSVC.html#sklearn.svm.NuSVC" title="sklearn.svm.NuSVC"><tt class="xref py py-class docutils literal"><span class="pre">NuSVC</span></tt></a> and <a class="reference internal" href="generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><tt class="xref py py-class docutils literal"><span class="pre">LinearSVC</span></tt></a> are classes

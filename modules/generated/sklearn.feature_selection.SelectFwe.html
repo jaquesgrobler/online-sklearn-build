@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.9.5. sklearn.feature_selection.SelectFwe &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.9.5. sklearn.feature_selection.SelectFwe &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.9.6. sklearn.feature_selection.RFE" href="sklearn.feature_selection.RFE.html" />
     <link rel="prev" title="8.9.4. sklearn.feature_selection.SelectFdr" href="sklearn.feature_selection.SelectFdr.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -169,7 +175,7 @@
 <h1>8.9.5. sklearn.feature_selection.SelectFwe<a class="headerlink" href="#sklearn-feature-selection-selectfwe" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_selection.SelectFwe">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectFwe</tt><big>(</big><em>score_func=&lt;function f_classif at 0x336f5f0&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectFwe</tt><big>(</big><em>score_func=&lt;function f_classif at 0x3e22500&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter: Select the p-values corresponding to Family-wise error rate</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -191,16 +197,16 @@
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="12%" />
-<col width="47%" />
-<col width="41%" />
+<col width="15%" />
+<col width="46%" />
+<col width="40%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a href="#id1"><span class="problematic" id="id2">scores_</span></a></td>
+<tr class="row-odd"><td><cite>scores_</cite></td>
 <td>array-like, shape=(n_features,)</td>
 <td>Scores of features.</td>
 </tr>
-<tr class="row-even"><td><a href="#id3"><span class="problematic" id="id4">pvalues_</span></a></td>
+<tr class="row-even"><td><cite>pvalues_</cite></td>
 <td>array-like, shape=(n_features,)</td>
 <td>p-values of feature scores.</td>
 </tr>
@@ -238,7 +244,7 @@
 </table>
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFwe.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x336f5f0&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x3e22500&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

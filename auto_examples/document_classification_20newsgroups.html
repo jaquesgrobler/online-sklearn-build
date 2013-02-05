@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Classification of text documents using sparse features &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Classification of text documents using sparse features &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
     <link rel="next" title="Clustering text documents using k-means" href="document_clustering.html" />
     <link rel="prev" title="Train error vs Test error" href="plot_train_error_vs_test_error.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
@@ -191,6 +197,7 @@ automatically downloaded, then cached.</p>
 
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_20newsgroups</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">HashingVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span><span class="p">,</span> <span class="n">chi2</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">RidgeClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
@@ -227,6 +234,13 @@ automatically downloaded, then cached.</p>
 <span class="n">op</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--all_categories&quot;</span><span class="p">,</span>
               <span class="n">action</span><span class="o">=</span><span class="s">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&quot;all_categories&quot;</span><span class="p">,</span>
               <span class="n">help</span><span class="o">=</span><span class="s">&quot;Whether to use all categories or not.&quot;</span><span class="p">)</span>
+<span class="n">op</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--use_hashing&quot;</span><span class="p">,</span>
+              <span class="n">action</span><span class="o">=</span><span class="s">&quot;store_true&quot;</span><span class="p">,</span>
+              <span class="n">help</span><span class="o">=</span><span class="s">&quot;Use a hashing vectorizer.&quot;</span><span class="p">)</span>
+<span class="n">op</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--n_features&quot;</span><span class="p">,</span>
+              <span class="n">action</span><span class="o">=</span><span class="s">&quot;store&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">16</span><span class="p">,</span>
+              <span class="n">help</span><span class="o">=</span><span class="s">&quot;n_features when using the hashing vectorizer.&quot;</span><span class="p">)</span>
+
 
 <span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -262,8 +276,17 @@ automatically downloaded, then cached.</p>
 
 <span class="n">categories</span> <span class="o">=</span> <span class="n">data_train</span><span class="o">.</span><span class="n">target_names</span>    <span class="c"># for case categories == None</span>
 
-<span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents (training set)&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents (testing set)&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">size_mb</span><span class="p">(</span><span class="n">docs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>
+
+<span class="n">data_train_size_mb</span> <span class="o">=</span> <span class="n">size_mb</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data_test_size_mb</span> <span class="o">=</span> <span class="n">size_mb</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents - </span><span class="si">%0.3f</span><span class="s">MB (training set)&quot;</span> <span class="o">%</span> <span class="p">(</span>
+    <span class="nb">len</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">data_train_size_mb</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents - </span><span class="si">%0.3f</span><span class="s">MB (training set)&quot;</span> <span class="o">%</span> <span class="p">(</span>
+    <span class="nb">len</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">data_test_size_mb</span><span class="p">))</span>
 <span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> categories&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span>
 <span class="k">print</span>
 
@@ -272,17 +295,24 @@ automatically downloaded, then cached.</p>
 
 <span class="k">print</span> <span class="s">&quot;Extracting features from the training dataset using a sparse vectorizer&quot;</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">sublinear_tf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_df</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-                             <span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">)</span>
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">use_hashing</span><span class="p">:</span>
+    <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">HashingVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">,</span> <span class="n">non_negative</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                   <span class="n">n_features</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">n_features</span><span class="p">)</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">sublinear_tf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_df</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                                 <span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">)</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s at </span><span class="si">%0.3f</span><span class="s">MB/s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">data_train_size_mb</span> <span class="o">/</span> <span class="n">duration</span><span class="p">))</span>
 <span class="k">print</span> <span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">, n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
 <span class="k">print</span>
 
 <span class="k">print</span> <span class="s">&quot;Extracting features from the test dataset using the same vectorizer&quot;</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s at </span><span class="si">%0.3f</span><span class="s">MB/s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">data_test_size_mb</span> <span class="o">/</span> <span class="n">duration</span><span class="p">))</span>
 <span class="k">print</span> <span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">, n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
 <span class="k">print</span>
 
@@ -303,7 +333,10 @@ automatically downloaded, then cached.</p>
 
 
 <span class="c"># mapping from integer feature name to original token string</span>
-<span class="n">feature_names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">use_hashing</span><span class="p">:</span>
+    <span class="n">feature_names</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">feature_names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">())</span>
 
 
 <span class="c">###############################################################################</span>
@@ -329,7 +362,7 @@ automatically downloaded, then cached.</p>
         <span class="k">print</span> <span class="s">&quot;dimensionality: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">print</span> <span class="s">&quot;density: </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">density</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">print_top10</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">print_top10</span> <span class="ow">and</span> <span class="n">feature_names</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">print</span> <span class="s">&quot;top 10 keywords per class:&quot;</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">category</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">categories</span><span class="p">):</span>
                 <span class="n">top10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>

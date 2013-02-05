@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Support Vector Classification (SVC): scaling the regularization parameter &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Scaling the regularization parameter for SVCs &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="SVM: Weighted samples" href="plot_weighted_samples.html" />
     <link rel="prev" title="Support Vector Regression (SVR) using linear and non-linear kernels" href="plot_svm_regression.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -151,7 +157,7 @@
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">Support Vector Classification (SVC): scaling the regularization parameter</a><ul>
+<li><a class="reference internal" href="#">Scaling the regularization parameter for SVCs</a><ul>
 <li><a class="reference internal" href="#l1-penalty-case">L1-penalty case</a></li>
 <li><a class="reference internal" href="#l2-penalty-case">L2-penalty case</a></li>
 <li><a class="reference internal" href="#simulations">Simulations</a></li>
@@ -170,8 +176,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="support-vector-classification-svc-scaling-the-regularization-parameter">
-<span id="example-svm-plot-svm-scale-c-py"></span><h1>Support Vector Classification (SVC): scaling the regularization parameter<a class="headerlink" href="#support-vector-classification-svc-scaling-the-regularization-parameter" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="scaling-the-regularization-parameter-for-svcs">
+<span id="example-svm-plot-svm-scale-c-py"></span><h1>Scaling the regularization parameter for SVCs<a class="headerlink" href="#scaling-the-regularization-parameter-for-svcs" title="Permalink to this headline">¶</a></h1>
 <p>The following example illustrates the effect of scaling the
 regularization parameter when using <a class="reference internal" href="../../modules/svm.html#svm"><em>Support Vector Machines</em></a> for
 <a class="reference internal" href="../../modules/svm.html#svm-classification"><em>classification</em></a>.
@@ -235,12 +241,7 @@ is not scaled.</p>
 behind this is the <cite>L1</cite> case works better on sparse data, while <cite>L2</cite>
 is better suited to the non-sparse case.</p>
 </div>
-<ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_svm_scale_c_0.png"><img alt="../../_images/plot_svm_scale_c_0.png" src="../../_images/plot_svm_scale_c_0.png" style="width: 423.0px; height: 470.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_svm_scale_c_1.png"><img alt="../../_images/plot_svm_scale_c_1.png" src="../../_images/plot_svm_scale_c_1.png" style="width: 423.0px; height: 470.0px;" /></a>
-</li>
-</ul>
+<img alt="../../_images/plot_svm_scale_c_1.png" class="align-center" src="../../_images/plot_svm_scale_c_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_svm_scale_c.py"><tt class="xref download docutils literal"><span class="pre">plot_svm_scale_c.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -317,7 +318,7 @@ is better suited to the non-sparse case.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  94.84 seconds</p>
+<p><strong>Total running time of the example:</strong>  19.88 seconds</p>
 </div>
 </div>
 

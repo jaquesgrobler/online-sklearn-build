@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Linear and Quadratic Discriminant Analysis with confidence ellipsoid &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Linear and Quadratic Discriminant Analysis with confidence ellipsoid &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
     <link rel="next" title="Multilabel classification" href="plot_multilabel.html" />
     <link rel="prev" title="Explicit feature map approximation for RBF kernels" href="plot_kernel_approximation.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
@@ -230,8 +236,8 @@
     <span class="n">tp</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">y_pred</span><span class="p">)</span>  <span class="c"># True Positive</span>
     <span class="n">tp0</span><span class="p">,</span> <span class="n">tp1</span> <span class="o">=</span> <span class="n">tp</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="n">tp</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">X0</span><span class="p">,</span> <span class="n">X1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">X0_tp</span><span class="p">,</span> <span class="n">X0_fp</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">tp0</span><span class="p">],</span> <span class="n">X0</span><span class="p">[</span><span class="n">tp0</span> <span class="o">!=</span> <span class="bp">True</span><span class="p">]</span>
-    <span class="n">X1_tp</span><span class="p">,</span> <span class="n">X1_fp</span> <span class="o">=</span> <span class="n">X1</span><span class="p">[</span><span class="n">tp1</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="n">tp1</span> <span class="o">!=</span> <span class="bp">True</span><span class="p">]</span>
+    <span class="n">X0_tp</span><span class="p">,</span> <span class="n">X0_fp</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">tp0</span><span class="p">],</span> <span class="n">X0</span><span class="p">[</span><span class="o">~</span><span class="n">tp0</span><span class="p">]</span>
+    <span class="n">X1_tp</span><span class="p">,</span> <span class="n">X1_fp</span> <span class="o">=</span> <span class="n">X1</span><span class="p">[</span><span class="n">tp1</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="o">~</span><span class="n">tp1</span><span class="p">]</span>
     <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
     <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 
@@ -265,8 +271,8 @@
 
 
 <span class="k">def</span> <span class="nf">plot_ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-    <span class="n">v</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
-    <span class="n">u</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">v</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.linalg.eigh.html#scipy.linalg.eigh"><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span></a><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.linalg.norm.html#scipy.linalg.norm"><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span></a><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">angle</span> <span class="o">=</span> <span class="mi">180</span> <span class="o">*</span> <span class="n">angle</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>  <span class="c"># convert to degrees</span>
     <span class="c"># filled gaussian at 2 standard deviation</span>
@@ -307,7 +313,7 @@
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  1.51 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.34 seconds</p>
 </div>
 
 

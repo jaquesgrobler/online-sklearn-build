@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Manifold learning on handwritten digits: Locally Linear Embedding, Isomap... &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Manifold learning on handwritten digits: Locally Linear Embedding, Isomap... &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Manifold Learning methods on a severed sphere" href="plot_manifold_sphere.html" />
     <link rel="prev" title="Comparison of Manifold Learning methods" href="plot_compare_methods.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -174,29 +180,23 @@ representation on wich we apply a dimensionality reduction method.
 However, it is often useful to cast a dataset into a representation in
 which the classes are linearly-seperable.</p>
 <ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_1.png"><img alt="../../_images/plot_lle_digits_1.png" src="../../_images/plot_lle_digits_1.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_2.png"><img alt="../../_images/plot_lle_digits_2.png" src="../../_images/plot_lle_digits_2.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_3.png"><img alt="../../_images/plot_lle_digits_3.png" src="../../_images/plot_lle_digits_3.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_4.png"><img alt="../../_images/plot_lle_digits_4.png" src="../../_images/plot_lle_digits_4.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_5.png"><img alt="../../_images/plot_lle_digits_5.png" src="../../_images/plot_lle_digits_5.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_6.png"><img alt="../../_images/plot_lle_digits_6.png" src="../../_images/plot_lle_digits_6.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_7.png"><img alt="../../_images/plot_lle_digits_7.png" src="../../_images/plot_lle_digits_7.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_8.png"><img alt="../../_images/plot_lle_digits_8.png" src="../../_images/plot_lle_digits_8.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_9.png"><img alt="../../_images/plot_lle_digits_9.png" src="../../_images/plot_lle_digits_9.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_10.png"><img alt="../../_images/plot_lle_digits_10.png" src="../../_images/plot_lle_digits_10.png" style="width: 376.0px; height: 282.0px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_5.png"><img alt="../../_images/plot_lle_digits_5.png" src="../../_images/plot_lle_digits_5.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_11.png"><img alt="../../_images/plot_lle_digits_11.png" src="../../_images/plot_lle_digits_11.png" style="width: 376.0px; height: 282.0px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_7.png"><img alt="../../_images/plot_lle_digits_7.png" src="../../_images/plot_lle_digits_7.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_12.png"><img alt="../../_images/plot_lle_digits_12.png" src="../../_images/plot_lle_digits_12.png" style="width: 376.0px; height: 282.0px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_2.png"><img alt="../../_images/plot_lle_digits_2.png" src="../../_images/plot_lle_digits_2.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_4.png"><img alt="../../_images/plot_lle_digits_4.png" src="../../_images/plot_lle_digits_4.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_8.png"><img alt="../../_images/plot_lle_digits_8.png" src="../../_images/plot_lle_digits_8.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_1.png"><img alt="../../_images/plot_lle_digits_1.png" src="../../_images/plot_lle_digits_1.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_3.png"><img alt="../../_images/plot_lle_digits_3.png" src="../../_images/plot_lle_digits_3.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 </ul>
 <p><strong>Script output</strong>:</p>
@@ -233,7 +233,6 @@ Computing Spectral embedding</pre>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">offsetbox</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="p">(</span><span class="n">manifold</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">decomposition</span><span class="p">,</span> <span class="n">ensemble</span><span class="p">,</span> <span class="n">lda</span><span class="p">,</span>
                      <span class="n">random_projection</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
 
 <span class="n">digits</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits"><span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span></a><span class="p">(</span><span class="n">n_class</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span>
@@ -399,9 +398,9 @@ Computing Spectral embedding</pre>
 <a href="../../modules/generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding"><span class="n">hasher</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding"><span class="n">ensemble</span><span class="o">.</span><span class="n">RandomTreesEmbedding</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                        <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">X_transformed</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding"><span class="n">hasher</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">X_transformed</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding"><span class="n">hasher</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <a href="../../modules/generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA"><span class="n">pca</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA"><span class="n">decomposition</span><span class="o">.</span><span class="n">RandomizedPCA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">X_reduced</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA"><span class="n">pca</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_transformed</span><span class="p">)</span>
+<span class="n">X_reduced</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA"><span class="n">pca</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">X_transformed</span></a><span class="p">)</span>
 
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_reduced</span><span class="p">,</span>
                <span class="s">&quot;Random forest embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
@@ -422,7 +421,7 @@ Computing Spectral embedding</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  69.54 seconds</p>
+<p><strong>Total running time of the example:</strong>  15.42 seconds</p>
 </div>
 
 

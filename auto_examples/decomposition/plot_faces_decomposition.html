@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Faces dataset decompositions &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Faces dataset decompositions &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Blind source separation using FastICA" href="plot_ica_blind_source_separation.html" />
     <link rel="prev" title="Plot randomly generated classification dataset" href="../datasets/plot_random_dataset.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -167,46 +173,46 @@
             
   <div class="section" id="faces-dataset-decompositions">
 <span id="example-decomposition-plot-faces-decomposition-py"></span><h1>Faces dataset decompositions<a class="headerlink" href="#faces-dataset-decompositions" title="Permalink to this headline">¶</a></h1>
-<p>This example applies to <a class="reference internal" href="../../datasets/olivetti_faces.html#olivetti-faces"><em>The Olivetti faces dataset</em></a> different unsupervised
+<p>This example applies to <a class="reference internal" href="../../datasets/index.html#olivetti-faces"><em>The Olivetti faces dataset</em></a> different unsupervised
 matrix decomposition (dimension reduction) methods from the module
 <a class="reference internal" href="../../modules/classes.html#module-sklearn.decomposition" title="sklearn.decomposition"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.decomposition</span></tt></a> (see the documentation chapter
 <a class="reference internal" href="../../modules/decomposition.html#decompositions"><em>Decomposing signals in components (matrix factorization problems)</em></a>) .</p>
 <ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_1.png"><img alt="../../_images/plot_faces_decomposition_1.png" src="../../_images/plot_faces_decomposition_1.png" style="width: 282.0px; height: 211.97px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_2.png"><img alt="../../_images/plot_faces_decomposition_2.png" src="../../_images/plot_faces_decomposition_2.png" style="width: 282.0px; height: 211.97px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_9.png"><img alt="../../_images/plot_faces_decomposition_9.png" src="../../_images/plot_faces_decomposition_9.png" style="width: 282.0px; height: 211.97px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_3.png"><img alt="../../_images/plot_faces_decomposition_3.png" src="../../_images/plot_faces_decomposition_3.png" style="width: 282.0px; height: 211.97px;" /></a>
 </li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_8.png"><img alt="../../_images/plot_faces_decomposition_8.png" src="../../_images/plot_faces_decomposition_8.png" style="width: 94.0px; height: 105.75px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_2.png"><img alt="../../_images/plot_faces_decomposition_2.png" src="../../_images/plot_faces_decomposition_2.png" style="width: 282.0px; height: 211.97px;" /></a>
+</li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_4.png"><img alt="../../_images/plot_faces_decomposition_4.png" src="../../_images/plot_faces_decomposition_4.png" style="width: 282.0px; height: 211.97px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_7.png"><img alt="../../_images/plot_faces_decomposition_7.png" src="../../_images/plot_faces_decomposition_7.png" style="width: 282.0px; height: 211.97px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_1.png"><img alt="../../_images/plot_faces_decomposition_1.png" src="../../_images/plot_faces_decomposition_1.png" style="width: 282.0px; height: 211.97px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_5.png"><img alt="../../_images/plot_faces_decomposition_5.png" src="../../_images/plot_faces_decomposition_5.png" style="width: 282.0px; height: 211.97px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_6.png"><img alt="../../_images/plot_faces_decomposition_6.png" src="../../_images/plot_faces_decomposition_6.png" style="width: 282.0px; height: 211.97px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_7.png"><img alt="../../_images/plot_faces_decomposition_7.png" src="../../_images/plot_faces_decomposition_7.png" style="width: 282.0px; height: 211.97px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_8.png"><img alt="../../_images/plot_faces_decomposition_8.png" src="../../_images/plot_faces_decomposition_8.png" style="width: 94.0px; height: 105.75px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_9.png"><img alt="../../_images/plot_faces_decomposition_9.png" src="../../_images/plot_faces_decomposition_9.png" style="width: 282.0px; height: 211.97px;" /></a>
-</li>
 </ul>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Dataset consists of 400 faces
 Extracting the top 6 Eigenfaces - RandomizedPCA...
-done in 0.833s
+done in 0.187s
 Extracting the top 6 Non-negative components - NMF...
-done in 3.677s
+done in 0.806s
 Extracting the top 6 Independent components - FastICA...
-done in 5.420s
+done in 1.074s
 Extracting the top 6 Sparse comp. - MiniBatchSparsePCA...
-done in 6.889s
+done in 1.286s
 Extracting the top 6 MiniBatchDictionaryLearning...
-done in 5.087s
+done in 0.957s
 Extracting the top 6 Cluster centers - MiniBatchKMeans...
-done in 1.144s
+done in 0.236s
 Extracting the top 6 Factor Analysis components - FA...
-done in 14.109s</pre>
+done in 2.897s</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_faces_decomposition.py"><tt class="xref download docutils literal"><span class="pre">plot_faces_decomposition.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
@@ -334,7 +340,7 @@ done in 14.109s</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  48.63 seconds</p>
+<p><strong>Total running time of the example:</strong>  9.54 seconds</p>
 </div>
 
 

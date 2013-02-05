@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sample pipeline for text feature extraction and evaluation &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Sample pipeline for text feature extraction and evaluation &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,9 +28,9 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="&lt;no title&gt;" href="hashing_vs_dict_vectorizer.html" />
+    <link rel="next" title="FeatureHasher and DictVectorizer Comparison" href="hashing_vs_dict_vectorizer.html" />
     <link rel="prev" title="Parameter estimation using grid search with a nested cross-validation" href="grid_search_digits.html" />
 
 
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -112,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="hashing_vs_dict_vectorizer.html" title="&lt;no title&gt;"
+	<a href="hashing_vs_dict_vectorizer.html" title="FeatureHasher and DictVectorizer Comparison"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    <no title>
+	    FeatureHasher an...
 	    </span>
 	    <span class="hiddenrellink">
-	    <no title>
+	    FeatureHasher and DictVectorizer Comparison
 	    </span>
 	    
 	    </a>
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
@@ -250,17 +256,17 @@ Best parameters set:
     <span class="p">(</span><span class="s">&#39;clf&#39;</span><span class="p">,</span> <span class="n">SGDClassifier</span><span class="p">()),</span>
 <span class="p">])</span>
 
-<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
 <span class="c"># uncommenting more parameters will give better exploring power but will</span>
 <span class="c"># increase processing time in a combinatorial way</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">&#39;vect__max_df&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
-<span class="c">#    &#39;vect__max_features&#39;: (None, 5000, 10000, 50000),</span>
+    <span class="c">#&#39;vect__max_features&#39;: (None, 5000, 10000, 50000),</span>
     <span class="s">&#39;vect__max_n&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>  <span class="c"># words or bigrams</span>
-<span class="c">#    &#39;tfidf__use_idf&#39;: (True, False),</span>
-<span class="c">#    &#39;tfidf__norm&#39;: (&#39;l1&#39;, &#39;l2&#39;),</span>
+    <span class="c">#&#39;tfidf__use_idf&#39;: (True, False),</span>
+    <span class="c">#&#39;tfidf__norm&#39;: (&#39;l1&#39;, &#39;l2&#39;),</span>
     <span class="s">&#39;clf__alpha&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.00001</span><span class="p">,</span> <span class="mf">0.000001</span><span class="p">),</span>
     <span class="s">&#39;clf__penalty&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;l2&#39;</span><span class="p">,</span> <span class="s">&#39;elasticnet&#39;</span><span class="p">),</span>
-<span class="c">#    &#39;clf__n_iter&#39;: (10, 50, 80),</span>
+    <span class="c">#&#39;clf__n_iter&#39;: (10, 50, 80),</span>
 <span class="p">}</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.19. sklearn.linear_model.Perceptron &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.17.19. sklearn.linear_model.Perceptron &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.17.20. sklearn.linear_model.RandomizedLasso" href="sklearn.linear_model.RandomizedLasso.html" />
     <link rel="prev" title="8.17.18. sklearn.linear_model.PassiveAggressiveRegressor" href="sklearn.linear_model.PassiveAggressiveRegressor.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -169,7 +175,7 @@
 <h1>8.17.19. sklearn.linear_model.Perceptron<a class="headerlink" href="#sklearn-linear-model-perceptron" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.linear_model.Perceptron">
-<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">Perceptron</tt><big>(</big><em>penalty=None</em>, <em>alpha=0.0001</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>eta0=1.0</em>, <em>n_jobs=1</em>, <em>random_state=0</em>, <em>class_weight=None</em>, <em>warm_start=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">Perceptron</tt><big>(</big><em>penalty=None</em>, <em>alpha=0.0001</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>eta0=1.0</em>, <em>n_jobs=1</em>, <em>random_state=0</em>, <em>class_weight=None</em>, <em>warm_start=False</em>, <em>seed=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perceptron</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -305,7 +311,7 @@ eta0=1, learning_rate=&#8221;constant&#8221;, penalty=None)</cite>.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.linear_model.Perceptron.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>penalty=None</em>, <em>alpha=0.0001</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>eta0=1.0</em>, <em>n_jobs=1</em>, <em>random_state=0</em>, <em>class_weight=None</em>, <em>warm_start=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>penalty=None</em>, <em>alpha=0.0001</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>eta0=1.0</em>, <em>n_jobs=1</em>, <em>random_state=0</em>, <em>class_weight=None</em>, <em>warm_start=False</em>, <em>seed=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.Perceptron.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -508,6 +514,12 @@ If not provided, uniform weights are assumed.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.linear_model.Perceptron.seed">
+<tt class="descname">seed</tt><a class="headerlink" href="#sklearn.linear_model.Perceptron.seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: Parameter &#8216;seed&#8217; war renamed to &#8216;random_state&#8217; for consistency and will be removed in 0.15</p>
 </dd></dl>
 
 <dl class="method">

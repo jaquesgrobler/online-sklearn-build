@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.13.1. sklearn.isotonic.IsotonicRegression &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.13.1. sklearn.isotonic.IsotonicRegression &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.13.2. sklearn.isotonic.isotonic_regression" href="sklearn.isotonic.isotonic_regression.html" />
     <link rel="prev" title="8.12.3. sklearn.hmm.GMMHMM" href="sklearn.hmm.GMMHMM.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -171,19 +177,20 @@
 <dt id="sklearn.isotonic.IsotonicRegression">
 <em class="property">class </em><tt class="descclassname">sklearn.isotonic.</tt><tt class="descname">IsotonicRegression</tt><big>(</big><em>y_min=None</em>, <em>y_max=None</em><big>)</big><a class="headerlink" href="#sklearn.isotonic.IsotonicRegression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Isotonic regression model.</p>
+<p>The isotonic regression optimization problem is defined by:</p>
+<div class="highlight-python"><pre>min sum w_i (y[i] - y_[i]) ** 2
+
+subject to y_[i] &lt;= y_[j] whenever X[i] &lt;= X[j]
+and min(y_) = y_min, max(y_) = y_max</pre>
+</div>
 <dl class="docutils">
-<dt>The isotonic regression optimization problem is defined by::</dt>
-<dd><p class="first">min sum w_i (y[i] - y_[i]) ** 2</p>
-<p class="last">subject to y_[i] &lt;= y_[j] whenever X[i] &lt;= X[j]
-and min(<a href="#id1"><span class="problematic" id="id2">y_</span></a>) = y_min, max(<a href="#id3"><span class="problematic" id="id4">y_</span></a>) = y_max</p>
-</dd>
 <dt>where:</dt>
 <dd><ul class="first last simple">
-<li>y[i] are inputs (real numbers)</li>
-<li>y_[i] are fitted</li>
-<li>X specifies the order.
-If X is non-decreasing then <a href="#id5"><span class="problematic" id="id6">y_</span></a> is non-decreasing.</li>
-<li>w[i] are optional strictly positive weights (default to 1.0)</li>
+<li><tt class="docutils literal"><span class="pre">y[i]</span></tt> are inputs (real numbers)</li>
+<li><tt class="docutils literal"><span class="pre">y_[i]</span></tt> are fitted</li>
+<li><tt class="docutils literal"><span class="pre">X</span></tt> specifies the order.
+If <tt class="docutils literal"><span class="pre">X</span></tt> is non-decreasing then <tt class="docutils literal"><span class="pre">y_</span></tt> is non-decreasing.</li>
+<li><tt class="docutils literal"><span class="pre">w[i]</span></tt> are optional strictly positive weights (default to 1.0)</li>
 </ul>
 </dd>
 </dl>
@@ -191,11 +198,11 @@ If X is non-decreasing then <a href="#id5"><span class="problematic" id="id6">y_
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_min: optional, default: None</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_min</strong> : optional, default: None</p>
 <blockquote>
 <div><p>If not None, set the lowest value of the fit to y_min.</p>
 </div></blockquote>
-<p><strong>y_max: optional, default: None</strong> :</p>
+<p><strong>y_max</strong> : optional, default: None</p>
 <blockquote class="last">
 <div><p>If not None, set the highest value of the fit to y_max.</p>
 </div></blockquote>
@@ -211,14 +218,17 @@ Vol. 14, No. 2 (May, 1989), pp. 303-308</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="55%" />
+<col width="9%" />
 <col width="45%" />
+<col width="47%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><cite>X_</cite>: ndarray (n_samples, )</td>
+<tr class="row-odd"><td><cite>X_</cite></td>
+<td>ndarray (n_samples, )</td>
 <td>A copy of the input X.</td>
 </tr>
-<tr class="row-even"><td><cite>y_</cite>: ndarray (n_samples, )</td>
+<tr class="row-even"><td><cite>y_</cite></td>
+<td>ndarray (n_samples, )</td>
 <td>Isotonic fit of y.</td>
 </tr>
 </tbody>
@@ -266,29 +276,32 @@ Vol. 14, No. 2 (May, 1989), pp. 303-308</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like, shape=(n_samples,)</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape=(n_samples,)</p>
 <blockquote>
-<div><p>training data</p>
+<div><p>Training data.</p>
 </div></blockquote>
-<p><strong>y: array-like, shape=(n_samples,)</strong> :</p>
+<p><strong>y</strong> : array-like, shape=(n_samples,)</p>
 <blockquote>
-<div><p>training target</p>
+<div><p>Training target.</p>
 </div></blockquote>
-<p><strong>weight: array-like, shape=(n_samples,), optional, default: None</strong> :</p>
+<p><strong>weight</strong> : array-like, shape=(n_samples,), optional, default: None</p>
 <blockquote>
-<div><p>weights. If set to None, all weights will be set to 1 (equal
-weights)</p>
+<div><p>Weights. If set to None, all weights will be set to 1 (equal
+weights).</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>self: object</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>self</strong> : object</p>
 <blockquote class="last">
-<div><p>returns an instance of self</p>
+<div><p>Returns an instance of self.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>X is stored for future use, as <cite>transform</cite> needs X to interpolate
+new input data.</p>
 </dd></dl>
 
 <dl class="method">
@@ -299,29 +312,33 @@ weights)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like, shape=(n_samples,)</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape=(n_samples,)</p>
 <blockquote>
-<div><p>training data</p>
+<div><p>Training data.</p>
 </div></blockquote>
-<p><strong>y: array-like, shape=(n_samples,)</strong> :</p>
+<p><strong>y</strong> : array-like, shape=(n_samples,)</p>
 <blockquote>
-<div><p>training target</p>
+<div><p>Training target.</p>
 </div></blockquote>
-<p><strong>weight: array-like, shape=(n_samples,), optional, default: None</strong> :</p>
+<p><strong>weight</strong> : array-like, shape=(n_samples,), optional, default: None</p>
 <blockquote>
-<div><p>weights. If set to None, all weights will be equal to 1 (equal
-weights)</p>
+<div><p>Weights. If set to None, all weights will be equal to 1 (equal
+weights).</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>y_: array, shape=(n_samples,)</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>`y_`</strong> : array, shape=(n_samples,)</p>
 <blockquote class="last">
-<div><p>The transformed data</p>
+<div><p>The transformed data.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>X doesn&#8217;t influence the result of <cite>fit_transform</cite>. It is however stored
+for future use, as <cite>transform</cite> needs X to interpolate new input
+data.</p>
 </dd></dl>
 
 <dl class="method">
@@ -351,13 +368,13 @@ contained subobjects that are estimators.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>T: array-like, shape=(n_samples,)</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>T</strong> : array-like, shape=(n_samples,)</p>
 <blockquote>
 <div><p>Data to transform.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>T_: array, shape=(n_samples,)</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>`T_`</strong> : array, shape=(n_samples,)</p>
 <blockquote class="last">
 <div><p>Transformed data.</p>
 </div></blockquote>
@@ -371,9 +388,9 @@ contained subobjects that are estimators.</p>
 <dt id="sklearn.isotonic.IsotonicRegression.score">
 <tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.isotonic.IsotonicRegression.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the coefficient of determination R^2 of the prediction.</p>
-<p>The coefficient R^2 is defined as (1 - u/v), where u is the
-regression sum of squares ((y - y_pred) ** 2).sum() and v is the
-residual sum of squares ((y_true - y_true.mean()) ** 2).sum().
+<p>The coefficient R^2 is defined as (1 - u/v), where u is the regression
+sum of squares ((y_true - y_pred) ** 2).sum() and v is the residual
+sum of squares ((y_true - y_true.mean()) ** 2).sum().
 Best possible score is 1.0, lower values are worse.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -419,13 +436,13 @@ component of a nested object.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>T: array-like, shape=(n_samples,)</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>T</strong> : array-like, shape=(n_samples,)</p>
 <blockquote>
-<div><p>data to transform</p>
+<div><p>Data to transform.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>T_: array, shape=(n_samples,)</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>`T_`</strong> : array, shape=(n_samples,)</p>
 <blockquote class="last">
 <div><p>The transformed data</p>
 </div></blockquote>

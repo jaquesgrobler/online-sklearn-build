@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>5.5. Model evaluation &mdash; scikit-learn 0.13-git documentation</title>
+    <title>5.5. Model evaluation &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="5. Model selection and evaluation" href="../model_selection.html" />
     <link rel="next" title="6. Dataset transformations" href="../data_transforms.html" />
     <link rel="prev" title="5.3. Pipeline: chaining estimators" href="pipeline.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
@@ -240,6 +246,41 @@ functions to measure classification performance.</p>
 </tbody>
 </table>
 <p>Others also work in the multiclass case:</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-obj docutils literal"><span class="pre">accuracy_score</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>Accuracy classification score</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report" title="sklearn.metrics.classification_report"><tt class="xref py py-obj docutils literal"><span class="pre">classification_report</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<td>Build a text report showing the main classification metrics</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix" title="sklearn.metrics.confusion_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">confusion_matrix</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;labels])</td>
+<td>Compute confusion matrix to evaluate the accuracy of a classification</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score"><tt class="xref py py-obj docutils literal"><span class="pre">f1_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;labels,&nbsp;...])</td>
+<td>Compute the F1 score, also known as balanced F-score or F-measure</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.fbeta_score.html#sklearn.metrics.fbeta_score" title="sklearn.metrics.fbeta_score"><tt class="xref py py-obj docutils literal"><span class="pre">fbeta_score</span></tt></a>(y_true,&nbsp;y_pred,&nbsp;beta[,&nbsp;labels,&nbsp;...])</td>
+<td>Compute the F-beta score</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support" title="sklearn.metrics.precision_recall_fscore_support"><tt class="xref py py-obj docutils literal"><span class="pre">precision_recall_fscore_support</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>Compute precision, recall, F-measure and support for each class</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-obj docutils literal"><span class="pre">precision_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;labels,&nbsp;...])</td>
+<td>Compute the precision</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-obj docutils literal"><span class="pre">recall_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;labels,&nbsp;...])</td>
+<td>Compute the recall</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">zero_one_loss</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;normalize])</td>
+<td>Zero-One classification loss</td>
+</tr>
+</tbody>
+</table>
 <p>Some metrics might require probability estimates of the positive class,
 confidence values or binary decisions value.</p>
 <p>In the following sub-sections, we will describe each of those functions.</p>
@@ -886,7 +927,7 @@ evaluate Lasso and Elastic Net on sparse signals.</li>
 function for more information see the <a class="reference internal" href="clustering.html#clustering-evaluation"><em>Clustering performance evaluation</em></a> section.</p>
 </div>
 <div class="section" id="dummy-estimators">
-<h2>5.5.4. Dummy estimators<a class="headerlink" href="#dummy-estimators" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>5.5.4. Dummy estimators<a class="headerlink" href="#dummy-estimators" title="Permalink to this headline">¶</a></h2>
 <p>When doing supervised learning, a simple sanity check consists in comparing one&#8217;s
 estimator against simple rules of thumb.
 <a class="reference internal" href="generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier"><tt class="xref py py-class docutils literal"><span class="pre">DummyClassifier</span></tt></a> implements three such simple strategies for

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Train error vs Test error &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Train error vs Test error &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
     <link rel="next" title="Classification of text documents using sparse features" href="document_classification_20newsgroups.html" />
     <link rel="prev" title="Receiver operating characteristic (ROC) with cross validation" href="plot_roc_crossval.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
@@ -202,7 +208,7 @@ measured using the explained variance a.k.a. R^2.</p>
 <span class="c">###############################################################################</span>
 <span class="c"># Compute train and test errors</span>
 <span class="n">alphas</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.logspace.html#numpy.logspace"><span class="n">np</span><span class="o">.</span><span class="n">logspace</span></a><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
-<a href="../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">enet</span></a> <span class="o">=</span> <a href="../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">linear_model</span><span class="o">.</span><span class="n">ElasticNet</span></a><span class="p">(</span><span class="n">rho</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<a href="../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">enet</span></a> <span class="o">=</span> <a href="../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">linear_model</span><span class="o">.</span><span class="n">ElasticNet</span></a><span class="p">(</span><span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 <span class="n">train_errors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 <span class="n">test_errors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="n">alphas</span><span class="p">:</span>
@@ -242,7 +248,7 @@ measured using the explained variance a.k.a. R^2.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  28.01 seconds</p>
+<p><strong>Total running time of the example:</strong>  6.58 seconds</p>
 </div>
 
 

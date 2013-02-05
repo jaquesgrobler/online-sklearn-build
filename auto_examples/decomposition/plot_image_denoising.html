@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Image denoising using dictionary learning &mdash; scikit-learn 0.13-git documentation</title>
+    <title>Image denoising using dictionary learning &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Kernel PCA" href="plot_kernel_pca.html" />
     <link rel="prev" title="FastICA on 2D point clouds" href="plot_ica_vs_pca.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -190,13 +196,13 @@ necessarily related to visualisation.</p>
 <ul class="horizontal">
 <li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_1.png"><img alt="../../_images/plot_image_denoising_1.png" src="../../_images/plot_image_denoising_1.png" style="width: 197.4px; height: 188.0px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_2.png"><img alt="../../_images/plot_image_denoising_2.png" src="../../_images/plot_image_denoising_2.png" style="width: 235.0px; height: 155.1px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_3.png"><img alt="../../_images/plot_image_denoising_3.png" src="../../_images/plot_image_denoising_3.png" style="width: 235.0px; height: 155.1px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_5.png"><img alt="../../_images/plot_image_denoising_5.png" src="../../_images/plot_image_denoising_5.png" style="width: 235.0px; height: 155.1px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_4.png"><img alt="../../_images/plot_image_denoising_4.png" src="../../_images/plot_image_denoising_4.png" style="width: 235.0px; height: 155.1px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_5.png"><img alt="../../_images/plot_image_denoising_5.png" src="../../_images/plot_image_denoising_5.png" style="width: 235.0px; height: 155.1px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_2.png"><img alt="../../_images/plot_image_denoising_2.png" src="../../_images/plot_image_denoising_2.png" style="width: 235.0px; height: 155.1px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_3.png"><img alt="../../_images/plot_image_denoising_3.png" src="../../_images/plot_image_denoising_3.png" style="width: 235.0px; height: 155.1px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_6.png"><img alt="../../_images/plot_image_denoising_6.png" src="../../_images/plot_image_denoising_6.png" style="width: 235.0px; height: 155.1px;" /></a>
 </li>
@@ -204,23 +210,23 @@ necessarily related to visualisation.</p>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Distorting image...
 Extracting reference patches...
-done in 0.24s.
+done in 0.06s.
 Learning the dictionary...
-done in 33.51s.
+done in 6.14s.
 Extracting noisy patches...
-done in 0.08s.
+done in 0.02s.
 Orthogonal Matching Pursuit
 1 atom ...
-done in 19.04s.
+done in 3.56s.
 Orthogonal Matching Pursuit
 2 atoms ...
-done in 30.57s.
+done in 5.62s.
 Least-angle regression
 5 atoms ...
-done in 183.08s.
+done in 33.65s.
 Thresholding
  alpha=0.1 ...
-done in 2.53s.</pre>
+done in 0.52s.</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_image_denoising.py"><tt class="xref download docutils literal"><span class="pre">plot_image_denoising.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
@@ -356,7 +362,7 @@ done in 2.53s.</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  294.09 seconds</p>
+<p><strong>Total running time of the example:</strong>  54.28 seconds</p>
 </div>
 
 

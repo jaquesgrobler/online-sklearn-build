@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.29.1.5. sklearn.svm.NuSVR &mdash; scikit-learn 0.13-git documentation</title>
+    <title>8.29.1.5. sklearn.svm.NuSVR &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.29.1.6. sklearn.svm.OneClassSVM" href="sklearn.svm.OneClassSVM.html" />
     <link rel="prev" title="8.29.1.4. sklearn.svm.SVR" href="sklearn.svm.SVR.html" />
@@ -52,6 +52,12 @@
 
   </head>
   <body>
+     <div class="survey-wrapper">
+       <p>Please help us to improve <b>scikit-learn</b>
+	 by completing this quick survey.
+         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
+           Click here..</a></p></p>
+     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -143,7 +149,7 @@
 	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
@@ -317,7 +323,7 @@ problem). This is only available in the case of linear kernel.</p>
 <td>Get parameters for the estimator</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.svm.NuSVR.predict" title="sklearn.svm.NuSVR.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
-<td>Perform classification or regression samples in X.</td>
+<td>Perform regression on samples in X.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.NuSVR.score" title="sklearn.svm.NuSVR.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
 <td>Returns the coefficient of determination R^2 of the prediction.</td>
@@ -369,7 +375,7 @@ and n_features is the number of features.</p>
 </div></blockquote>
 <p><strong>y</strong> : array-like, shape = [n_samples]</p>
 <blockquote>
-<div><p>Target values (integers in classification, real numbers in
+<div><p>Target values (class labels in classification, real numbers in
 regression)</p>
 </div></blockquote>
 <p><strong>sample_weight</strong> : array-like, shape = [n_samples], optional</p>
@@ -415,10 +421,7 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.svm.NuSVR.predict">
 <tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.svm.NuSVR.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform classification or regression samples in X.</p>
-<p>For a classification model, the predicted class for each
-sample in X is returned.  For a regression model, the function
-value of X calculated is returned.</p>
+<dd><p>Perform regression on samples in X.</p>
 <p>For an one-class model, +1 or -1 is returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -436,9 +439,9 @@ value of X calculated is returned.</p>
 <dt id="sklearn.svm.NuSVR.score">
 <tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.svm.NuSVR.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the coefficient of determination R^2 of the prediction.</p>
-<p>The coefficient R^2 is defined as (1 - u/v), where u is the
-regression sum of squares ((y - y_pred) ** 2).sum() and v is the
-residual sum of squares ((y_true - y_true.mean()) ** 2).sum().
+<p>The coefficient R^2 is defined as (1 - u/v), where u is the regression
+sum of squares ((y_true - y_pred) ** 2).sum() and v is the residual
+sum of squares ((y_true - y_true.mean()) ** 2).sum().
 Best possible score is 1.0, lower values are worse.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
