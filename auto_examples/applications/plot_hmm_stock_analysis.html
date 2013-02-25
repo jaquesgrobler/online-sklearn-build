@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Outlier detection on a real data set" href="plot_outlier_detection_housing.html" />
-    <link rel="prev" title="Classification of text documents: using a MLComp dataset" href="../mlcomp_sparse_document_classification.html" />
+    <link rel="next" title="Compressive sensing: tomography reconstruction with L1 prior (Lasso)" href="plot_tomography_l1_reconstruction.html" />
+    <link rel="prev" title="Outlier detection on a real data set" href="plot_outlier_detection_housing.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="../mlcomp_sparse_document_classification.html" title="Classification of text documents: using a MLComp dataset"
+	<a href="plot_outlier_detection_housing.html" title="Outlier detection on a real data set"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Classification o...
+	    Outlier detectio...
 	    </span>
 	    <span class="hiddenrellink">
-	    Classification of text documents: using a MLComp dataset
+	    Outlier detection on a real data set
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_outlier_detection_housing.html" title="Outlier detection on a real data set"
+	<a href="plot_tomography_l1_reconstruction.html" title="Compressive sensing: tomography reconstruction with L1 prior (Lasso)"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Outlier detectio...
+	    Compressive sens...
 	    </span>
 	    <span class="hiddenrellink">
-	    Outlier detection on a real data set
+	    Compressive sensing: tomography reconstruction with L1 prior (Lasso)
 	    </span>
 	    
 	    </a>
@@ -179,43 +179,43 @@ For more information on how to get stock prices with matplotlib, please refer
 to date_demo1.py of matplotlib.</p>
 <img alt="../../_images/plot_hmm_stock_analysis_1.png" class="align-center" src="../../_images/plot_hmm_stock_analysis_1.png" />
 <p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>fitting to HMM and decoding ... done
+<div class="highlight-python"><pre>fitting to HMM and decoding ...done
 
 Transition matrix
-[[  9.76676644e-01   2.09416493e-02   2.30227515e-09   2.38170444e-03
-    3.99995920e-18]
- [  2.63669873e-01   4.14410761e-01   2.53090012e-17   3.59940430e-18
-    3.21919365e-01]
- [  4.00308890e-03   3.57616577e-03   7.19377169e-01   1.54499879e-01
-    1.18543697e-01]
- [  7.83002978e-04   1.73866478e-06   1.49036402e-01   8.20952941e-01
-    2.92259153e-02]
- [  1.00333306e-16   2.39560558e-02   3.16180642e-01   3.31423727e-02
-    6.26720929e-01]]
+[[  8.20956495e-01   2.92253830e-02   1.49033264e-01   7.83144150e-04
+    1.71296787e-06]
+ [  3.31439184e-02   6.26715444e-01   3.16184975e-01   1.01208670e-16
+    2.39556632e-02]
+ [  1.54501370e-01   1.18544659e-01   7.19374706e-01   4.00300393e-03
+    3.57626127e-03]
+ [  2.38173039e-03   4.03447289e-18   2.30919021e-09   9.76676541e-01
+    2.09417260e-02]
+ [  3.59944205e-18   3.21916203e-01   2.54976664e-17   2.63673695e-01
+    4.14410102e-01]]
 
 means and vars of each hidden state
 0th hidden state
-mean =  [  2.80202093e-02   4.96954119e+07]
-var =  [  8.85416041e-01   2.50133278e+14]
+mean =  [  6.33705677e-03   4.91500160e+07]
+var =  [  5.06340859e-02   1.09830441e+14]
 
 1th hidden state
-mean =  [ -7.71447431e-01   1.48858463e+08]
-var =  [  6.17310849e+00   1.02345451e+16]
+mean =  [  3.73397838e-02   1.10538342e+08]
+var =  [  1.97413886e-01   8.82431456e+14]
 
 2th hidden state
-mean =  [  1.16307152e-02   6.99635324e+07]
-var =  [  1.24184297e-01   1.53047648e+14]
+mean =  [  1.16309295e-02   6.99638794e+07]
+var =  [  1.24184849e-01   1.53048961e+14]
 
 3th hidden state
-mean =  [  6.33688891e-03   4.91498195e+07]
-var =  [  5.06331116e-02   1.09829314e+14]
+mean =  [  2.80201582e-02   4.96954139e+07]
+var =  [  8.85415530e-01   2.50133313e+14]
 
 4th hidden state
-mean =  [  3.73399604e-02   1.10537743e+08]
-var =  [  1.97411764e-01   8.82427121e+14]</pre>
+mean =  [ -7.71454579e-01   1.48858211e+08]
+var =  [  6.17316974e+00   1.02346363e+16]</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_hmm_stock_analysis.py"><tt class="xref download docutils literal"><span class="pre">plot_hmm_stock_analysis.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -223,6 +223,9 @@ var =  [  1.97411764e-01   8.82427121e+14]</pre>
 <span class="kn">from</span> <span class="nn">matplotlib.finance</span> <span class="kn">import</span> <span class="n">quotes_historical_yahoo</span>
 <span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="kn">import</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.YearLocator"><span class="n">YearLocator</span></a><span class="p">,</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.MonthLocator"><span class="n">MonthLocator</span></a><span class="p">,</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.DateFormatter"><span class="n">DateFormatter</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.hmm</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">GaussianHMM</span></a>
+
+
+<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Downloading the data</span>
@@ -250,7 +253,7 @@ var =  [  1.97411764e-01   8.82427121e+14]</pre>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Run Gaussian HMM</span>
-<span class="k">print</span> <span class="s">&quot;fitting to HMM and decoding ...&quot;</span><span class="p">,</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;fitting to HMM and decoding ...&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
 <span class="n">n_components</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="c"># make an HMM instance and execute fit</span>
@@ -261,20 +264,20 @@ var =  [  1.97411764e-01   8.82427121e+14]</pre>
 <span class="c"># predict the optimal sequence of internal hidden state</span>
 <span class="n">hidden_states</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="s">&quot;done</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># print trained parameters and plot</span>
-<span class="k">print</span> <span class="s">&quot;Transition matrix&quot;</span>
-<span class="k">print</span> <a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">transmat_</span>
-<span class="k">print</span> <span class="s">&quot;&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Transition matrix&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">transmat_</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
 
-<span class="k">print</span> <span class="s">&quot;means and vars of each hidden state&quot;</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">n_components</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s">th hidden state&quot;</span> <span class="o">%</span> <span class="n">i</span>
-    <span class="k">print</span> <span class="s">&quot;mean = &quot;</span><span class="p">,</span> <a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="k">print</span> <span class="s">&quot;var = &quot;</span><span class="p">,</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.diag.html#numpy.diag"><span class="n">np</span><span class="o">.</span><span class="n">diag</span></a><span class="p">(</span><a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">covars_</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    <span class="k">print</span> <span class="s">&quot;&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;means and vars of each hidden state&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_components</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">th hidden state&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;mean = &quot;</span><span class="p">,</span> <a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;var = &quot;</span><span class="p">,</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.diag.html#numpy.diag"><span class="n">np</span><span class="o">.</span><span class="n">diag</span></a><span class="p">(</span><a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">covars_</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="k">print</span><span class="p">()</span>
 
 <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.YearLocator"><span class="n">years</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.YearLocator"><span class="n">YearLocator</span></a><span class="p">()</span>   <span class="c"># every year</span>
 <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.MonthLocator"><span class="n">months</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.MonthLocator"><span class="n">MonthLocator</span></a><span class="p">()</span>  <span class="c"># every month</span>
@@ -282,7 +285,7 @@ var =  [  1.97411764e-01   8.82427121e+14]</pre>
 <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">pl</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">n_components</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_components</span><span class="p">):</span>
     <span class="c"># use fancy indexing to plot data in each state</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">hidden_states</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot_date</span><span class="p">(</span><span class="n">dates</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">close_v</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">th hidden state&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
@@ -303,7 +306,7 @@ var =  [  1.97411764e-01   8.82427121e+14]</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  13.64 seconds</p>
+<p><strong>Total running time of the example:</strong>  15.06 seconds</p>
 </div>
 
 
@@ -325,12 +328,12 @@ var =  [  1.97411764e-01   8.82427121e+14]</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="../mlcomp_sparse_document_classification.html">
+      <a href="plot_outlier_detection_housing.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_outlier_detection_housing.html">
+      <a href="plot_tomography_l1_reconstruction.html">
         Next
       </a>
     </div>

@@ -175,7 +175,7 @@
 <h1>8.8.4.2. sklearn.feature_extraction.text.HashingVectorizer<a class="headerlink" href="#sklearn-feature-extraction-text-hashingvectorizer" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_extraction.text.HashingVectorizer">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_extraction.text.</tt><tt class="descname">HashingVectorizer</tt><big>(</big><em>input='content'</em>, <em>charset='utf-8'</em>, <em>charset_error='strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>analyzer='word'</em>, <em>n_features=1048576</em>, <em>binary=False</em>, <em>norm='l2'</em>, <em>non_negative=False</em>, <em>dtype=&lt;type 'numpy.float64'&gt;</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.HashingVectorizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_extraction.text.</tt><tt class="descname">HashingVectorizer</tt><big>(</big><em>input=u'content'</em>, <em>charset=u'utf-8'</em>, <em>charset_error=u'strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>analyzer=u'word'</em>, <em>n_features=1048576</em>, <em>binary=False</em>, <em>norm=u'l2'</em>, <em>non_negative=False</em>, <em>dtype=&lt;type 'numpy.float64'&gt;</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.HashingVectorizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a collection of text documents to a matrix of token occurrences</p>
 <p>It turns a collection of text documents into a scipy.sparse matrix holding
 token occurrence counts (or binary occurrence information), possibly
@@ -265,8 +265,8 @@ will be used.</p>
 <p><strong>stop_words: string {&#8216;english&#8217;}, list, or None (default)</strong> :</p>
 <blockquote>
 <div><p>If a string, it is passed to _check_stop_list and the appropriate stop
-list is returned is currently the only
-supported string value.</p>
+list is returned. &#8216;english&#8217; is currently the only supported string
+value.</p>
 <p>If a list, that list is assumed to contain stop words, all of which
 will be removed from the resulting tokens.</p>
 </div></blockquote>
@@ -361,7 +361,7 @@ mean 0, assuming a good hash function.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.HashingVectorizer.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>input='content'</em>, <em>charset='utf-8'</em>, <em>charset_error='strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>analyzer='word'</em>, <em>n_features=1048576</em>, <em>binary=False</em>, <em>norm='l2'</em>, <em>non_negative=False</em>, <em>dtype=&lt;type 'numpy.float64'&gt;</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.HashingVectorizer.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>input=u'content'</em>, <em>charset=u'utf-8'</em>, <em>charset_error=u'strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>analyzer=u'word'</em>, <em>n_features=1048576</em>, <em>binary=False</em>, <em>norm=u'l2'</em>, <em>non_negative=False</em>, <em>dtype=&lt;type 'numpy.float64'&gt;</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.HashingVectorizer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

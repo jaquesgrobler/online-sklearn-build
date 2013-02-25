@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Manifold Learning methods on a severed sphere" href="plot_manifold_sphere.html" />
-    <link rel="prev" title="Comparison of Manifold Learning methods" href="plot_compare_methods.html" />
+    <link rel="next" title="Density Estimation for a mixture of Gaussians" href="../mixture/plot_gmm_pdf.html" />
+    <link rel="prev" title="Manifold Learning methods on a severed sphere" href="plot_manifold_sphere.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_compare_methods.html" title="Comparison of Manifold Learning methods"
+	<a href="plot_manifold_sphere.html" title="Manifold Learning methods on a severed sphere"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Comparison of Ma...
+	    Manifold Learnin...
 	    </span>
 	    <span class="hiddenrellink">
-	    Comparison of Manifold Learning methods
+	    Manifold Learning methods on a severed sphere
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_manifold_sphere.html" title="Manifold Learning methods on a severed sphere"
+	<a href="../mixture/plot_gmm_pdf.html" title="Density Estimation for a mixture of Gaussians"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Manifold Learnin...
+	    Density Estimati...
 	    </span>
 	    <span class="hiddenrellink">
-	    Manifold Learning methods on a severed sphere
+	    Density Estimation for a mixture of Gaussians
 	    </span>
 	    
 	    </a>
@@ -225,7 +225,7 @@ Computing Spectral embedding</pre>
 <span class="c">#          Gael Varoquaux</span>
 <span class="c"># License: BSD, (C) INRIA 2011</span>
 
-<span class="k">print</span> <span class="n">__doc__</span>
+<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -290,7 +290,7 @@ Computing Spectral embedding</pre>
 
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># Random 2D projection using a random unitary matrix</span>
-<span class="k">print</span> <span class="s">&quot;Computing random projection&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing random projection&quot;</span><span class="p">)</span>
 <a href="../../modules/generated/sklearn.random_projection.SparseRandomProjection.html#sklearn.random_projection.SparseRandomProjection"><span class="n">rp</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.random_projection.SparseRandomProjection.html#sklearn.random_projection.SparseRandomProjection"><span class="n">random_projection</span><span class="o">.</span><span class="n">SparseRandomProjection</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">X_projected</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.random_projection.SparseRandomProjection.html#sklearn.random_projection.SparseRandomProjection"><span class="n">rp</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_projected</span><span class="p">,</span> <span class="s">&quot;Random Projection of the digits&quot;</span><span class="p">)</span>
@@ -299,7 +299,7 @@ Computing Spectral embedding</pre>
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># Projection on to the first 2 principal components</span>
 
-<span class="k">print</span> <span class="s">&quot;Computing PCA projection&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing PCA projection&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_pca</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA"><span class="n">decomposition</span><span class="o">.</span><span class="n">RandomizedPCA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span>
@@ -309,7 +309,7 @@ Computing Spectral embedding</pre>
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># Projection on to the first 2 linear discriminant components</span>
 
-<span class="k">print</span> <span class="s">&quot;Computing LDA projection&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing LDA projection&quot;</span><span class="p">)</span>
 <span class="n">X2</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">X2</span><span class="o">.</span><span class="n">flat</span><span class="p">[::</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.01</span>  <span class="c"># Make X invertible</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
@@ -321,10 +321,10 @@ Computing Spectral embedding</pre>
 
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># Isomap projection of the digits dataset</span>
-<span class="k">print</span> <span class="s">&quot;Computing Isomap embedding&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing Isomap embedding&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_iso</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.Isomap.html#sklearn.manifold.Isomap"><span class="n">manifold</span><span class="o">.</span><span class="n">Isomap</span></a><span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Done.&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Done.&quot;</span><span class="p">)</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_iso</span><span class="p">,</span>
                <span class="s">&quot;Isomap projection of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
                <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
@@ -332,12 +332,12 @@ Computing Spectral embedding</pre>
 
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># Locally linear embedding of the digits dataset</span>
-<span class="k">print</span> <span class="s">&quot;Computing LLE embedding&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing LLE embedding&quot;</span><span class="p">)</span>
 <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.LocallyLinearEmbedding.html#sklearn.manifold.LocallyLinearEmbedding"><span class="n">manifold</span><span class="o">.</span><span class="n">LocallyLinearEmbedding</span></a><span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                                       <span class="n">method</span><span class="o">=</span><span class="s">&#39;standard&#39;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_lle</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Done. Reconstruction error: </span><span class="si">%g</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">reconstruction_error_</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Done. Reconstruction error: </span><span class="si">%g</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">reconstruction_error_</span><span class="p">)</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_lle</span><span class="p">,</span>
                <span class="s">&quot;Locally Linear Embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
                <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
@@ -345,12 +345,12 @@ Computing Spectral embedding</pre>
 
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># Modified Locally linear embedding of the digits dataset</span>
-<span class="k">print</span> <span class="s">&quot;Computing modified LLE embedding&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing modified LLE embedding&quot;</span><span class="p">)</span>
 <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.LocallyLinearEmbedding.html#sklearn.manifold.LocallyLinearEmbedding"><span class="n">manifold</span><span class="o">.</span><span class="n">LocallyLinearEmbedding</span></a><span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                                       <span class="n">method</span><span class="o">=</span><span class="s">&#39;modified&#39;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_mlle</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Done. Reconstruction error: </span><span class="si">%g</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">reconstruction_error_</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Done. Reconstruction error: </span><span class="si">%g</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">reconstruction_error_</span><span class="p">)</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_mlle</span><span class="p">,</span>
                <span class="s">&quot;Modified Locally Linear Embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
                <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
@@ -358,12 +358,12 @@ Computing Spectral embedding</pre>
 
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># HLLE embedding of the digits dataset</span>
-<span class="k">print</span> <span class="s">&quot;Computing Hessian LLE embedding&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing Hessian LLE embedding&quot;</span><span class="p">)</span>
 <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.LocallyLinearEmbedding.html#sklearn.manifold.LocallyLinearEmbedding"><span class="n">manifold</span><span class="o">.</span><span class="n">LocallyLinearEmbedding</span></a><span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                                       <span class="n">method</span><span class="o">=</span><span class="s">&#39;hessian&#39;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_hlle</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Done. Reconstruction error: </span><span class="si">%g</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">reconstruction_error_</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Done. Reconstruction error: </span><span class="si">%g</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">reconstruction_error_</span><span class="p">)</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_hlle</span><span class="p">,</span>
                <span class="s">&quot;Hessian Locally Linear Embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
                <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
@@ -371,30 +371,30 @@ Computing Spectral embedding</pre>
 
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># LTSA embedding of the digits dataset</span>
-<span class="k">print</span> <span class="s">&quot;Computing LTSA embedding&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing LTSA embedding&quot;</span><span class="p">)</span>
 <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.LocallyLinearEmbedding.html#sklearn.manifold.LocallyLinearEmbedding"><span class="n">manifold</span><span class="o">.</span><span class="n">LocallyLinearEmbedding</span></a><span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                                       <span class="n">method</span><span class="o">=</span><span class="s">&#39;ltsa&#39;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_ltsa</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Done. Reconstruction error: </span><span class="si">%g</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">reconstruction_error_</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Done. Reconstruction error: </span><span class="si">%g</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">reconstruction_error_</span><span class="p">)</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_ltsa</span><span class="p">,</span>
                <span class="s">&quot;Local Tangent Space Alignment of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
                <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># MDS  embedding of the digits dataset</span>
-<span class="k">print</span> <span class="s">&quot;Computing MDS embedding&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing MDS embedding&quot;</span><span class="p">)</span>
 <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">manifold</span><span class="o">.</span><span class="n">MDS</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_mds</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Done. Stress: </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">stress_</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Done. Stress: </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">clf</span></a><span class="o">.</span><span class="n">stress_</span><span class="p">)</span>
 <span class="n">plot_embedding</span><span class="p">(</span><span class="n">X_mds</span><span class="p">,</span>
                <span class="s">&quot;MDS embedding of the digits (time </span><span class="si">%.2f</span><span class="s">s)&quot;</span> <span class="o">%</span>
                <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># Random Trees embedding of the digits dataset</span>
-<span class="k">print</span> <span class="s">&quot;Computing Totally Random Trees embedding&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing Totally Random Trees embedding&quot;</span><span class="p">)</span>
 <a href="../../modules/generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding"><span class="n">hasher</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding"><span class="n">ensemble</span><span class="o">.</span><span class="n">RandomTreesEmbedding</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                        <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
@@ -408,7 +408,7 @@ Computing Spectral embedding</pre>
 
 <span class="c">#----------------------------------------------------------------------</span>
 <span class="c"># Spectral embedding of the digits dataset</span>
-<span class="k">print</span> <span class="s">&quot;Computing Spectral embedding&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing Spectral embedding&quot;</span><span class="p">)</span>
 <a href="../../modules/generated/sklearn.manifold.SpectralEmbedding.html#sklearn.manifold.SpectralEmbedding"><span class="n">embedder</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.SpectralEmbedding.html#sklearn.manifold.SpectralEmbedding"><span class="n">manifold</span><span class="o">.</span><span class="n">SpectralEmbedding</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                       <span class="n">eigen_solver</span><span class="o">=</span><span class="s">&quot;arpack&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
@@ -421,7 +421,7 @@ Computing Spectral embedding</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  15.42 seconds</p>
+<p><strong>Total running time of the example:</strong>  15.54 seconds</p>
 </div>
 
 
@@ -443,12 +443,12 @@ Computing Spectral embedding</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_compare_methods.html">
+      <a href="plot_manifold_sphere.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_manifold_sphere.html">
+      <a href="../mixture/plot_gmm_pdf.html">
         Next
       </a>
     </div>

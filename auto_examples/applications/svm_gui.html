@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Topics extraction with Non-Negative Matrix Factorization" href="topics_extraction_with_nmf.html" />
-    <link rel="prev" title="Faces recognition example using eigenfaces and SVMs" href="face_recognition.html" />
+    <link rel="next" title="A demo of the mean-shift clustering algorithm" href="../cluster/plot_mean_shift.html" />
+    <link rel="prev" title="Wikipedia principal eigenvector" href="wikipedia_principal_eigenvector.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="face_recognition.html" title="Faces recognition example using eigenfaces and SVMs"
+	<a href="wikipedia_principal_eigenvector.html" title="Wikipedia principal eigenvector"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Faces recognitio...
+	    Wikipedia princi...
 	    </span>
 	    <span class="hiddenrellink">
-	    Faces recognition example using eigenfaces and SVMs
+	    Wikipedia principal eigenvector
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="topics_extraction_with_nmf.html" title="Topics extraction with Non-Negative Matrix Factorization"
+	<a href="../cluster/plot_mean_shift.html" title="A demo of the mean-shift clustering algorithm"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Topics extractio...
+	    A demo of the me...
 	    </span>
 	    <span class="hiddenrellink">
-	    Topics extraction with Non-Negative Matrix Factorization
+	    A demo of the mean-shift clustering algorithm
 	    </span>
 	    
 	    </a>
@@ -180,9 +180,9 @@ the decision region induced by different kernels and parameter settings.</p>
 negative examples click the right button.</p>
 <p>If all examples are from the same class, it uses a one-class SVM.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/svm_gui.py"><tt class="xref download docutils literal"><span class="pre">svm_gui.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
 
-<span class="k">print</span> <span class="n">__doc__</span>
+<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Peter Prettenhoer &lt;peter.prettenhofer@gmail.com&gt;</span>
 <span class="c">#</span>
@@ -202,6 +202,7 @@ negative examples click the right button.</p>
 
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">dump_svmlight_file</span>
+<span class="kn">from</span> <span class="nn">sklearn.externals.six.moves</span> <span class="kn">import</span> <span class="nb">xrange</span>
 
 <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span>
 <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span>
@@ -248,7 +249,7 @@ negative examples click the right button.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">fitted</span> <span class="o">=</span> <span class="bp">False</span>
 
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&quot;fit the model&quot;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;fit the model&quot;</span><span class="p">)</span>
         <span class="n">train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="n">X</span> <span class="o">=</span> <span class="n">train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">train</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
@@ -267,7 +268,7 @@ negative examples click the right button.</p>
                           <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="n">coef0</span><span class="o">=</span><span class="n">coef0</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">)</span>
             <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="s">&#39;score&#39;</span><span class="p">):</span>
-            <span class="k">print</span> <span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
         <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">,</span> <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decision_surface</span><span class="p">(</span><span class="n">clf</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">set_surface</span><span class="p">((</span><span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">,</span> <span class="n">Z</span><span class="p">))</span>
@@ -517,12 +518,12 @@ negative examples click the right button.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="face_recognition.html">
+      <a href="wikipedia_principal_eigenvector.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="topics_extraction_with_nmf.html">
+      <a href="../cluster/plot_mean_shift.html">
         Next
       </a>
     </div>

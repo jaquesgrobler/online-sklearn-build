@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Clustering text documents using k-means" href="document_clustering.html" />
-    <link rel="prev" title="Train error vs Test error" href="plot_train_error_vs_test_error.html" />
+    <link rel="next" title="Topics extraction with Non-Negative Matrix Factorization" href="applications/topics_extraction_with_nmf.html" />
+    <link rel="prev" title="Explicit feature map approximation for RBF kernels" href="plot_kernel_approximation.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_train_error_vs_test_error.html" title="Train error vs Test error"
+	<a href="plot_kernel_approximation.html" title="Explicit feature map approximation for RBF kernels"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Train error vs T...
+	    Explicit feature...
 	    </span>
 	    <span class="hiddenrellink">
-	    Train error vs Test error
+	    Explicit feature map approximation for RBF kernels
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="document_clustering.html" title="Clustering text documents using k-means"
+	<a href="applications/topics_extraction_with_nmf.html" title="Topics extraction with Non-Negative Matrix Factorization"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Clustering text ...
+	    Topics extractio...
 	    </span>
 	    <span class="hiddenrellink">
-	    Clustering text documents using k-means
+	    Topics extraction with Non-Negative Matrix Factorization
 	    </span>
 	    
 	    </a>
@@ -188,6 +188,8 @@ automatically downloaded, then cached.</p>
 <span class="c">#         Lars Buitinck &lt;L.J.Buitinck@uva.nl&gt;</span>
 <span class="c"># License: Simplified BSD</span>
 
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">optparse</span> <span class="kn">import</span> <span class="n">OptionParser</span>
@@ -247,9 +249,9 @@ automatically downloaded, then cached.</p>
     <span class="n">op</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;this script takes no arguments.&quot;</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="n">__doc__</span>
+<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 <span class="n">op</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
-<span class="k">print</span>
+<span class="k">print</span><span class="p">()</span>
 
 
 <span class="c">###############################################################################</span>
@@ -264,15 +266,15 @@ automatically downloaded, then cached.</p>
         <span class="s">&#39;sci.space&#39;</span><span class="p">,</span>
     <span class="p">]</span>
 
-<span class="k">print</span> <span class="s">&quot;Loading 20 newsgroups dataset for categories:&quot;</span>
-<span class="k">print</span> <span class="n">categories</span> <span class="k">if</span> <span class="n">categories</span> <span class="k">else</span> <span class="s">&quot;all&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Loading 20 newsgroups dataset for categories:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">categories</span> <span class="k">if</span> <span class="n">categories</span> <span class="k">else</span> <span class="s">&quot;all&quot;</span><span class="p">)</span>
 
 <span class="n">data_train</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;train&#39;</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span>
                                 <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="n">data_test</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;test&#39;</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span>
                                <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&#39;data loaded&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;data loaded&#39;</span><span class="p">)</span>
 
 <span class="n">categories</span> <span class="o">=</span> <span class="n">data_train</span><span class="o">.</span><span class="n">target_names</span>    <span class="c"># for case categories == None</span>
 
@@ -287,13 +289,13 @@ automatically downloaded, then cached.</p>
     <span class="nb">len</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">data_train_size_mb</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents - </span><span class="si">%0.3f</span><span class="s">MB (training set)&quot;</span> <span class="o">%</span> <span class="p">(</span>
     <span class="nb">len</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">data_test_size_mb</span><span class="p">))</span>
-<span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> categories&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span>
-<span class="k">print</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> categories&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">categories</span><span class="p">))</span>
+<span class="k">print</span><span class="p">()</span>
 
 <span class="c"># split a training set and a test set</span>
 <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">data_train</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">data_test</span><span class="o">.</span><span class="n">target</span>
 
-<span class="k">print</span> <span class="s">&quot;Extracting features from the training dataset using a sparse vectorizer&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Extracting features from the training dataset using a sparse vectorizer&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">use_hashing</span><span class="p">:</span>
     <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">HashingVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">,</span> <span class="n">non_negative</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
@@ -305,26 +307,26 @@ automatically downloaded, then cached.</p>
     <span class="n">X_train</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s at </span><span class="si">%0.3f</span><span class="s">MB/s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">data_train_size_mb</span> <span class="o">/</span> <span class="n">duration</span><span class="p">))</span>
-<span class="k">print</span> <span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">, n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">print</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">, n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
 
-<span class="k">print</span> <span class="s">&quot;Extracting features from the test dataset using the same vectorizer&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Extracting features from the test dataset using the same vectorizer&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s at </span><span class="si">%0.3f</span><span class="s">MB/s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">data_test_size_mb</span> <span class="o">/</span> <span class="n">duration</span><span class="p">))</span>
-<span class="k">print</span> <span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">, n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">print</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">, n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">select_chi2</span><span class="p">:</span>
-    <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Extracting </span><span class="si">%d</span><span class="s"> best features by a chi-squared test&quot;</span> <span class="o">%</span>
-           <span class="n">opts</span><span class="o">.</span><span class="n">select_chi2</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Extracting </span><span class="si">%d</span><span class="s"> best features by a chi-squared test&quot;</span> <span class="o">%</span>
+          <span class="n">opts</span><span class="o">.</span><span class="n">select_chi2</span><span class="p">)</span>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
     <span class="n">ch2</span> <span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">select_chi2</span><span class="p">)</span>
     <span class="n">X_train</span> <span class="o">=</span> <span class="n">ch2</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
     <span class="n">X_test</span> <span class="o">=</span> <span class="n">ch2</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
-    <span class="k">print</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">()</span>
 
 
 <span class="k">def</span> <span class="nf">trim</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
@@ -342,44 +344,44 @@ automatically downloaded, then cached.</p>
 <span class="c">###############################################################################</span>
 <span class="c"># Benchmark classifiers</span>
 <span class="k">def</span> <span class="nf">benchmark</span><span class="p">(</span><span class="n">clf</span><span class="p">):</span>
-    <span class="k">print</span> <span class="mi">80</span> <span class="o">*</span> <span class="s">&#39;_&#39;</span>
-    <span class="k">print</span> <span class="s">&quot;Training: &quot;</span>
-    <span class="k">print</span> <span class="n">clf</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;_&#39;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Training: &quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">clf</span><span class="p">)</span>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
     <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
     <span class="n">train_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
-    <span class="k">print</span> <span class="s">&quot;train time: </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="n">train_time</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;train time: </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="n">train_time</span><span class="p">)</span>
 
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
     <span class="n">pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
     <span class="n">test_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
-    <span class="k">print</span> <span class="s">&quot;test time:  </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="n">test_time</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;test time:  </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="n">test_time</span><span class="p">)</span>
 
     <span class="n">score</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">&quot;f1-score:   </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">score</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;f1-score:   </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">score</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="s">&#39;coef_&#39;</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&quot;dimensionality: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">print</span> <span class="s">&quot;density: </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">density</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;dimensionality: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;density: </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">density</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">print_top10</span> <span class="ow">and</span> <span class="n">feature_names</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s">&quot;top 10 keywords per class:&quot;</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot;top 10 keywords per class:&quot;</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">category</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">categories</span><span class="p">):</span>
                 <span class="n">top10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
-                <span class="k">print</span> <span class="n">trim</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span>
-                    <span class="n">category</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feature_names</span><span class="p">[</span><span class="n">top10</span><span class="p">])))</span>
-        <span class="k">print</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">trim</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span>
+                      <span class="o">%</span> <span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feature_names</span><span class="p">[</span><span class="n">top10</span><span class="p">]))))</span>
+        <span class="k">print</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">print_report</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;classification report:&quot;</span>
-        <span class="k">print</span> <span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span>
-                                            <span class="n">target_names</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;classification report:&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span>
+                                            <span class="n">target_names</span><span class="o">=</span><span class="n">categories</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">print_cm</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;confusion matrix:&quot;</span>
-        <span class="k">print</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;confusion matrix:&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">))</span>
 
-    <span class="k">print</span>
+    <span class="k">print</span><span class="p">()</span>
     <span class="n">clf_descr</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">clf</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;(&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">clf_descr</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">train_time</span><span class="p">,</span> <span class="n">test_time</span>
 
@@ -390,13 +392,13 @@ automatically downloaded, then cached.</p>
         <span class="p">(</span><span class="n">Perceptron</span><span class="p">(</span><span class="n">n_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">),</span> <span class="s">&quot;Perceptron&quot;</span><span class="p">),</span>
         <span class="p">(</span><span class="n">PassiveAggressiveClassifier</span><span class="p">(</span><span class="n">n_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">),</span> <span class="s">&quot;Passive-Aggressive&quot;</span><span class="p">),</span>
         <span class="p">(</span><span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="s">&quot;kNN&quot;</span><span class="p">)):</span>
-    <span class="k">print</span> <span class="mi">80</span> <span class="o">*</span> <span class="s">&#39;=&#39;</span>
-    <span class="k">print</span> <span class="n">name</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;=&#39;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">clf</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">penalty</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&quot;l2&quot;</span><span class="p">,</span> <span class="s">&quot;l1&quot;</span><span class="p">]:</span>
-    <span class="k">print</span> <span class="mi">80</span> <span class="o">*</span> <span class="s">&#39;=&#39;</span>
-    <span class="k">print</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s"> penalty&quot;</span> <span class="o">%</span> <span class="n">penalty</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;=&#39;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> penalty&quot;</span> <span class="o">%</span> <span class="n">penalty</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
     <span class="c"># Train Liblinear model</span>
     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="n">penalty</span><span class="p">,</span>
                                             <span class="n">dual</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)))</span>
@@ -406,19 +408,19 @@ automatically downloaded, then cached.</p>
                                            <span class="n">penalty</span><span class="o">=</span><span class="n">penalty</span><span class="p">)))</span>
 
 <span class="c"># Train SGD with Elastic Net penalty</span>
-<span class="k">print</span> <span class="mi">80</span> <span class="o">*</span> <span class="s">&#39;=&#39;</span>
-<span class="k">print</span> <span class="s">&quot;Elastic-Net penalty&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;=&#39;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Elastic-Net penalty&quot;</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">SGDClassifier</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mo">0001</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
                                        <span class="n">penalty</span><span class="o">=</span><span class="s">&quot;elasticnet&quot;</span><span class="p">)))</span>
 
 <span class="c"># Train NearestCentroid without threshold</span>
-<span class="k">print</span> <span class="mi">80</span> <span class="o">*</span> <span class="s">&#39;=&#39;</span>
-<span class="k">print</span> <span class="s">&quot;NearestCentroid (aka Rocchio classifier)&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;=&#39;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;NearestCentroid (aka Rocchio classifier)&quot;</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">NearestCentroid</span><span class="p">()))</span>
 
 <span class="c"># Train sparse Naive Bayes classifiers</span>
-<span class="k">print</span> <span class="mi">80</span> <span class="o">*</span> <span class="s">&#39;=&#39;</span>
-<span class="k">print</span> <span class="s">&quot;Naive Bayes&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;=&#39;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Naive Bayes&quot;</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">MultinomialNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mo">01</span><span class="p">)))</span>
 <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">BernoulliNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mo">01</span><span class="p">)))</span>
 
@@ -437,8 +439,8 @@ automatically downloaded, then cached.</p>
         <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformer_</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">LinearSVC</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="mi">80</span> <span class="o">*</span> <span class="s">&#39;=&#39;</span>
-<span class="k">print</span> <span class="s">&quot;LinearSVC with L1-based feature selection&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;=&#39;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;LinearSVC with L1-based feature selection&quot;</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">L1LinearSVC</span><span class="p">()))</span>
 
 
@@ -446,12 +448,13 @@ automatically downloaded, then cached.</p>
 
 <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
 
 <span class="n">clf_names</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">training_time</span><span class="p">,</span> <span class="n">test_time</span> <span class="o">=</span> <span class="n">results</span>
 <span class="n">training_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">training_time</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">training_time</span><span class="p">)</span>
 <span class="n">test_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_time</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">test_time</span><span class="p">)</span>
 
+<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Score&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;score&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">indices</span> <span class="o">+</span> <span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">training_time</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;training time&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
@@ -459,6 +462,8 @@ automatically downloaded, then cached.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&#39;best&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=.</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=.</span><span class="mi">95</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">bottom</span><span class="o">=.</span><span class="mo">05</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">clf_names</span><span class="p">):</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-.</span><span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
@@ -487,12 +492,12 @@ automatically downloaded, then cached.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_train_error_vs_test_error.html">
+      <a href="plot_kernel_approximation.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="document_clustering.html">
+      <a href="applications/topics_extraction_with_nmf.html">
         Next
       </a>
     </div>

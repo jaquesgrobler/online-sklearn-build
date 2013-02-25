@@ -238,6 +238,21 @@
 <div><ul class="simple">
 <li>Hyperlinks to documentation in example code on the website by
 <a class="reference external" href="https://github.com/mluessi">Martin Luessi</a>.</li>
+<li><a class="reference internal" href="modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">grid_search.GridSearchCV</span></tt></a> and
+<a class="reference internal" href="modules/generated/sklearn.cross_validation.cross_val_score.html#sklearn.cross_validation.cross_val_score" title="sklearn.cross_validation.cross_val_score"><tt class="xref py py-func docutils literal"><span class="pre">cross_validation.cross_val_score</span></tt></a> now support the use of advanced
+scoring function such as area under the ROC curve and f-beta scores.
+See <a class="reference internal" href="modules/model_evaluation.html#score-func-objects"><em>Scoring objects: defining your scoring rules</em></a> for details. By <a class="reference external" href="http://peekaboo-vision.blogspot.com">Andreas Müller</a>.
+Passing a function from <a class="reference internal" href="modules/classes.html#module-sklearn.metrics" title="sklearn.metrics"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.metrics</span></tt></a> as <tt class="docutils literal"><span class="pre">score_func</span></tt> is
+deprecated.</li>
+<li>Added <tt class="xref py py-class docutils literal"><span class="pre">ensemble.AdaBoostClassifier</span></tt> and
+<tt class="xref py py-class docutils literal"><span class="pre">ensemble.AdaBoostRegressor</span></tt>, by <a class="reference external" href="http://noel.dawe.me">Noel Dawe</a>  and
+<a class="reference external" href="http://www.montefiore.ulg.ac.be/~glouppe/">Gilles Louppe</a>. See the <a class="reference internal" href="modules/ensemble.html#adaboost"><em>AdaBoost</em></a> section of the user
+guide for details and examples.</li>
+<li>Feature importances in <a class="reference internal" href="modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="sklearn.tree.DecisionTreeClassifier"><tt class="xref py py-class docutils literal"><span class="pre">tree.DecisionTreeClassifier</span></tt></a>,
+<a class="reference internal" href="modules/generated/sklearn.tree.DecisionTreeRegressor.html#sklearn.tree.DecisionTreeRegressor" title="sklearn.tree.DecisionTreeRegressor"><tt class="xref py py-class docutils literal"><span class="pre">tree.DecisionTreeRegressor</span></tt></a> and all derived ensemble estimators
+are now computed on the fly when accessing  the <tt class="docutils literal"><span class="pre">feature_importances_</span></tt>
+attribute. Setting <tt class="docutils literal"><span class="pre">compute_importances=True</span></tt> is no longer required.
+By <a class="reference external" href="http://www.montefiore.ulg.ac.be/~glouppe/">Gilles Louppe</a>.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1119,7 +1134,7 @@ release and includes the new modules <a class="reference internal" href="modules
 as well as several new algorithms and documentation improvements.</p>
 <p>This release also includes the dictionary-learning work developed by
 <a class="reference external" href="http://vene.ro">Vlad Niculae</a> as part of the <a class="reference external" href="http://code.google.com/soc/">Google Summer of Code</a> program.</p>
-<p><div style="text-align: center; margin: 0px 0 -5px 0;"> <a class="reference external" href="auto_examples/linear_model/plot_omp.html"><img alt="banner2" src="_images/plot_omp.png" /></a> <a class="reference external" href="auto_examples/manifold/plot_compare_methods.html"><img alt="banner1" src="_images/plot_compare_methods.png" /></a> <a class="reference external" href="auto_examples/decomposition/plot_kernel_pca.html"><img alt="banner3" src="_images/plot_kernel_pca.png" /></a> </div></p>
+<p><div style="text-align: center; margin: 0px 0 -5px 0;"> <a class="reference external" href="auto_examples/linear_model/plot_omp.html"><img alt="banner2" src="_images/plot_omp1.png" /></a> <a class="reference external" href="auto_examples/manifold/plot_compare_methods.html"><img alt="banner1" src="_images/plot_compare_methods1.png" /></a> <a class="reference external" href="auto_examples/decomposition/plot_kernel_pca.html"><img alt="banner3" src="_images/plot_kernel_pca1.png" /></a> </div></p>
 <div class="section" id="id20">
 <h2>Changelog<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -1311,7 +1326,7 @@ enhacements and bug fixes.</p>
 <li>New <a class="reference internal" href="modules/clustering.html#hierarchical-clustering"><em>Hierarchical clustering</em></a> module by Vincent Michel,
 <a class="reference external" href="http://parietal.saclay.inria.fr/Members/bertrand-thirion">Bertrand Thirion</a>, <a class="reference external" href="http://alexandre.gramfort.net">Alexandre Gramfort</a> and <a class="reference external" href="http://gael-varoquaux.info">Gael Varoquaux</a>.</li>
 <li><a class="reference internal" href="modules/decomposition.html#kernel-pca"><em>Kernel PCA</em></a> implementation by <a class="reference external" href="http://www.mblondel.org/journal/">Mathieu Blondel</a></li>
-<li><a class="reference internal" href="datasets/index.html#labeled-faces-in-the-wild"><em>The Labeled Faces in the Wild face recognition dataset</em></a> by <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a>.</li>
+<li><a class="reference internal" href="datasets/labeled_faces.html#labeled-faces-in-the-wild"><em>The Labeled Faces in the Wild face recognition dataset</em></a> by <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a>.</li>
 <li>New <a class="reference internal" href="modules/pls.html#pls"><em>Partial Least Squares</em></a> module by <a class="reference external" href="http://www.lnao.fr/spip.php?rubrique30">Edouard Duchesnay</a>.</li>
 <li><a class="reference internal" href="modules/decomposition.html#nmf"><em>Non-negative matrix factorization (NMF or NNMF)</em></a> module <a class="reference external" href="http://vene.ro">Vlad Niculae</a></li>
 <li>Implementation of the <a class="reference internal" href="modules/covariance.html#oracle-approximating-shrinkage"><em>Oracle Approximating Shrinkage</em></a> algorithm by

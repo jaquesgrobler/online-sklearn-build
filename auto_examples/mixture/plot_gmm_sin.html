@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Nearest Neighbors Classification" href="../neighbors/plot_classification.html" />
-    <link rel="prev" title="Gaussian Mixture Model Selection" href="plot_gmm_selection.html" />
+    <link rel="next" title="Gaussian Mixture Model Selection" href="plot_gmm_selection.html" />
+    <link rel="prev" title="Gaussian Mixture Model Ellipsoids" href="plot_gmm.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_gmm_selection.html" title="Gaussian Mixture Model Selection"
+	<a href="plot_gmm.html" title="Gaussian Mixture Model Ellipsoids"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
 	    Gaussian Mixture...
 	    </span>
 	    <span class="hiddenrellink">
-	    Gaussian Mixture Model Selection
+	    Gaussian Mixture Model Ellipsoids
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="../neighbors/plot_classification.html" title="Nearest Neighbors Classification"
+	<a href="plot_gmm_selection.html" title="Gaussian Mixture Model Selection"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Nearest Neighbor...
+	    Gaussian Mixture...
 	    </span>
 	    <span class="hiddenrellink">
-	    Nearest Neighbors Classification
+	    Gaussian Mixture Model Selection
 	    </span>
 	    
 	    </a>
@@ -192,6 +192,7 @@ alpha) or easily interpolate to finding relevant local structure
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="kn">as</span> <span class="nn">mpl</span>
 
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">mixture</span>
+<span class="kn">from</span> <span class="nn">sklearn.externals.six.moves</span> <span class="kn">import</span> <span class="nb">xrange</span>
 
 <span class="c"># Number of samples per component</span>
 <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">100</span>
@@ -251,7 +252,7 @@ alpha) or easily interpolate to finding relevant local structure
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.49 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.57 seconds</p>
 </div>
 
 
@@ -273,12 +274,12 @@ alpha) or easily interpolate to finding relevant local structure
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_gmm_selection.html">
+      <a href="plot_gmm.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="../neighbors/plot_classification.html">
+      <a href="plot_gmm_selection.html">
         Next
       </a>
     </div>

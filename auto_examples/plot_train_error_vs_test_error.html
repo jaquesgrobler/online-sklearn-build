@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Classification of text documents using sparse features" href="document_classification_20newsgroups.html" />
-    <link rel="prev" title="Receiver operating characteristic (ROC) with cross validation" href="plot_roc_crossval.html" />
+    <link rel="next" title="Univariate Feature Selection" href="plot_feature_selection.html" />
+    <link rel="prev" title="Parameter estimation using grid search with a nested cross-validation" href="grid_search_digits.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_roc_crossval.html" title="Receiver operating characteristic (ROC) with cross validation"
+	<a href="grid_search_digits.html" title="Parameter estimation using grid search with a nested cross-validation"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Receiver operati...
+	    Parameter estima...
 	    </span>
 	    <span class="hiddenrellink">
-	    Receiver operating characteristic (ROC) with cross validation
+	    Parameter estimation using grid search with a nested cross-validation
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="document_classification_20newsgroups.html" title="Classification of text documents using sparse features"
+	<a href="plot_feature_selection.html" title="Univariate Feature Selection"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Classification o...
+	    Univariate Featu...
 	    </span>
 	    <span class="hiddenrellink">
-	    Classification of text documents using sparse features
+	    Univariate Feature Selection
 	    </span>
 	    
 	    </a>
@@ -184,7 +184,7 @@ measured using the explained variance a.k.a. R^2.</p>
 <div class="highlight-python"><pre>Optimal regularization parameter : 0.000335292414925</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_train_error_vs_test_error.py"><tt class="xref download docutils literal"><span class="pre">plot_train_error_vs_test_error.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Alexandre Gramfort &lt;alexandre.gramfort@inria.fr&gt;</span>
 <span class="c"># License: BSD Style.</span>
@@ -219,7 +219,7 @@ measured using the explained variance a.k.a. R^2.</p>
 
 <span class="n">i_alpha_optim</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.argmax.html#numpy.argmax"><span class="n">np</span><span class="o">.</span><span class="n">argmax</span></a><span class="p">(</span><span class="n">test_errors</span><span class="p">)</span>
 <span class="n">alpha_optim</span> <span class="o">=</span> <span class="n">alphas</span><span class="p">[</span><span class="n">i_alpha_optim</span><span class="p">]</span>
-<span class="k">print</span> <span class="s">&quot;Optimal regularization parameter : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">alpha_optim</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Optimal regularization parameter : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">alpha_optim</span><span class="p">)</span>
 
 <span class="c"># Estimate the coef_ on full data with optimal regularization parameter</span>
 <a href="../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">enet</span></a><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha_optim</span><span class="p">)</span>
@@ -248,7 +248,7 @@ measured using the explained variance a.k.a. R^2.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  6.58 seconds</p>
+<p><strong>Total running time of the example:</strong>  6.70 seconds</p>
 </div>
 
 
@@ -270,12 +270,12 @@ measured using the explained variance a.k.a. R^2.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_roc_crossval.html">
+      <a href="grid_search_digits.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="document_classification_20newsgroups.html">
+      <a href="plot_feature_selection.html">
         Next
       </a>
     </div>

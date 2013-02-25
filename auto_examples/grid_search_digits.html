@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Sample pipeline for text feature extraction and evaluation" href="grid_search_text_feature_extraction.html" />
-    <link rel="prev" title="Concatenating multiple feature extraction methods" href="feature_stacker.html" />
+    <link rel="next" title="Train error vs Test error" href="plot_train_error_vs_test_error.html" />
+    <link rel="prev" title="Receiver operating characteristic (ROC) with cross validation" href="plot_roc_crossval.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="feature_stacker.html" title="Concatenating multiple feature extraction methods"
+	<a href="plot_roc_crossval.html" title="Receiver operating characteristic (ROC) with cross validation"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Concatenating mu...
+	    Receiver operati...
 	    </span>
 	    <span class="hiddenrellink">
-	    Concatenating multiple feature extraction methods
+	    Receiver operating characteristic (ROC) with cross validation
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="grid_search_text_feature_extraction.html" title="Sample pipeline for text feature extraction and evaluation"
+	<a href="plot_train_error_vs_test_error.html" title="Train error vs Test error"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Sample pipeline ...
+	    Train error vs T...
 	    </span>
 	    <span class="hiddenrellink">
-	    Sample pipeline for text feature extraction and evaluation
+	    Train error vs Test error
 	    </span>
 	    
 	    </a>
@@ -182,15 +182,15 @@ the model selection step.</p>
 <p>More details on tools available for model selection can be found in the
 sections on <a class="reference internal" href="../modules/cross_validation.html#cross-validation"><em>Cross-Validation: evaluating estimator performance</em></a> and <a class="reference internal" href="../modules/grid_search.html#grid-search"><em>Grid Search: setting estimator parameters</em></a>.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/grid_search_digits.py"><tt class="xref download docutils literal"><span class="pre">grid_search_digits.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">recall_score</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Loading the Digits dataset</span>
 <span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">()</span>
@@ -210,37 +210,34 @@ sections on <a class="reference internal" href="../modules/cross_validation.html
                      <span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]},</span>
                     <span class="p">{</span><span class="s">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;linear&#39;</span><span class="p">],</span> <span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]}]</span>
 
-<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s">&#39;precision&#39;</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;recall&#39;</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">),</span>
-<span class="p">]</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;precision&#39;</span><span class="p">,</span> <span class="s">&#39;recall&#39;</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">score_name</span><span class="p">,</span> <span class="n">score_func</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&quot;# Tuning hyper-parameters for </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">score_name</span>
-    <span class="k">print</span>
+<span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;# Tuning hyper-parameters for </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">score</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">()</span>
 
-    <span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">tuned_parameters</span><span class="p">,</span> <span class="n">score_func</span><span class="o">=</span><span class="n">score_func</span><span class="p">)</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">tuned_parameters</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">score</span><span class="p">)</span>
     <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="k">print</span> <span class="s">&quot;Best parameters set found on development set:&quot;</span>
-    <span class="k">print</span>
-    <span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span>
-    <span class="k">print</span>
-    <span class="k">print</span> <span class="s">&quot;Grid scores on development set:&quot;</span>
-    <span class="k">print</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Best parameters set found on development set:&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Grid scores on development set:&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">params</span><span class="p">,</span> <span class="n">mean_score</span><span class="p">,</span> <span class="n">scores</span> <span class="ow">in</span> <span class="n">clf</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;</span><span class="si">%0.3f</span><span class="s"> (+/-</span><span class="si">%0.03f</span><span class="s">) for </span><span class="si">%r</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span>
-            <span class="n">mean_score</span><span class="p">,</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-    <span class="k">print</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%0.3f</span><span class="s"> (+/-</span><span class="si">%0.03f</span><span class="s">) for </span><span class="si">%r</span><span class="s">&quot;</span>
+              <span class="o">%</span> <span class="p">(</span><span class="n">mean_score</span><span class="p">,</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">()</span>
 
-    <span class="k">print</span> <span class="s">&quot;Detailed classification report:&quot;</span>
-    <span class="k">print</span>
-    <span class="k">print</span> <span class="s">&quot;The model is trained on the full development set.&quot;</span>
-    <span class="k">print</span> <span class="s">&quot;The scores are computed on the full evaluation set.&quot;</span>
-    <span class="k">print</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Detailed classification report:&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;The model is trained on the full development set.&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;The scores are computed on the full evaluation set.&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">()</span>
     <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-    <span class="k">print</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-    <span class="k">print</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">()</span>
 
 <span class="c"># Note the problem is too easy: the hyperparameter plateau is too flat and the</span>
 <span class="c"># output model is the same for precision and recall with ties in quality.</span>
@@ -267,12 +264,12 @@ sections on <a class="reference internal" href="../modules/cross_validation.html
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="feature_stacker.html">
+      <a href="plot_roc_crossval.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="grid_search_text_feature_extraction.html">
+      <a href="plot_train_error_vs_test_error.html">
         Next
       </a>
     </div>

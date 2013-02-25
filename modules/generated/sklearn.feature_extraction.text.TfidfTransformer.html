@@ -175,7 +175,7 @@
 <h1>8.8.4.3. sklearn.feature_extraction.text.TfidfTransformer<a class="headerlink" href="#sklearn-feature-extraction-text-tfidftransformer" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_extraction.text.TfidfTransformer">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_extraction.text.</tt><tt class="descname">TfidfTransformer</tt><big>(</big><em>norm='l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfTransformer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_extraction.text.</tt><tt class="descname">TfidfTransformer</tt><big>(</big><em>norm=u'l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfTransformer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform a count matrix to a normalized tf or tf–idf representation</p>
 <p>Tf means term-frequency while tf–idf means term-frequency times inverse
 document-frequency. This is a common term weighting scheme in information
@@ -186,8 +186,10 @@ very frequently in a given corpus and that are hence empirically less
 informative than features that occur in a small fraction of the training
 corpus.</p>
 <p>In the SMART notation used in IR, this class implements several tf–idf
-variants. Tf is always &#8220;n&#8221; (natural), idf is &#8220;t&#8221; iff use_idf is given,
-&#8220;n&#8221; otherwise, and normalization is &#8220;c&#8221; iff norm=&#8217;l2&#8217;, &#8220;n&#8221; iff norm=None.</p>
+variants:</p>
+<p>Tf is &#8220;n&#8221; (natural) by default, &#8220;l&#8221; (logarithmic) when sublinear_tf=True.
+Idf is &#8220;t&#8221; idf is &#8220;t&#8221; when use_idf is given, &#8220;n&#8221; (none) otherwise.
+Normalization is &#8220;c&#8221; (cosine) when norm=&#8217;l2&#8217;, &#8220;n&#8221; (none) when norm=None.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -256,7 +258,7 @@ pp. 121–125.</cite></td></tr>
 </table>
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.TfidfTransformer.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>norm='l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfTransformer.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>norm=u'l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfTransformer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

@@ -175,7 +175,7 @@
 <h1>8.3.12. sklearn.cross_validation.permutation_test_score<a class="headerlink" href="#sklearn-cross-validation-permutation-test-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.cross_validation.permutation_test_score">
-<tt class="descclassname">sklearn.cross_validation.</tt><tt class="descname">permutation_test_score</tt><big>(</big><em>estimator</em>, <em>X</em>, <em>y</em>, <em>score_func</em>, <em>cv=None</em>, <em>n_permutations=100</em>, <em>n_jobs=1</em>, <em>labels=None</em>, <em>random_state=0</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.permutation_test_score" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.cross_validation.</tt><tt class="descname">permutation_test_score</tt><big>(</big><em>estimator</em>, <em>X</em>, <em>y</em>, <em>scoring=None</em>, <em>cv=None</em>, <em>n_permutations=100</em>, <em>n_jobs=1</em>, <em>labels=None</em>, <em>random_state=0</em>, <em>verbose=0</em>, <em>score_func=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.permutation_test_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the significance of a cross-validated score with permutations</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -194,13 +194,12 @@
 <div><p>The target variable to try to predict in the case of
 supervised learning.</p>
 </div></blockquote>
-<p><strong>score_func</strong> : callable</p>
+<p><strong>scoring</strong> : string or object, optional</p>
 <blockquote>
-<div><p>Callable taking as arguments the test targets (y_test) and
-the predicted targets (y_pred) and returns a float. The score
-functions are expected to return a bigger value for a better result
-otherwise the returned value does not correspond to a p-value (see
-Returns below for further details).</p>
+<div><p>Either one of either a string (&#8220;zero_one&#8221;, &#8220;f1&#8221;, &#8220;roc_auc&#8221;, ... for
+classification, &#8220;mse&#8221;, &#8220;r2&#8221;, ... for regression) or a callable.
+See &#8216;Scoring objects&#8217; in the model evaluation section of the user guide
+for details.</p>
 </div></blockquote>
 <p><strong>cv</strong> : integer or crossvalidation generator, optional</p>
 <blockquote>

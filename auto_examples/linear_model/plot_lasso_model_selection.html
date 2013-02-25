@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Logit function" href="plot_logistic.html" />
-    <link rel="prev" title="Lasso path using LARS" href="plot_lasso_lars.html" />
+    <link rel="next" title="Sparse recovery: feature selection for sparse linear models" href="plot_sparse_recovery.html" />
+    <link rel="prev" title="Lasso and Elastic Net" href="plot_lasso_coordinate_descent_path.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_lasso_lars.html" title="Lasso path using LARS"
+	<a href="plot_lasso_coordinate_descent_path.html" title="Lasso and Elastic Net"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Lasso path using...
+	    Lasso and Elasti...
 	    </span>
 	    <span class="hiddenrellink">
-	    Lasso path using LARS
+	    Lasso and Elastic Net
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_logistic.html" title="Logit function"
+	<a href="plot_sparse_recovery.html" title="Sparse recovery: feature selection for sparse linear models"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Logit function
+	    Sparse recovery:...
 	    </span>
 	    <span class="hiddenrellink">
-	    Logit function
+	    Sparse recovery: feature selection for sparse linear models
 	    </span>
 	    
 	    </a>
@@ -218,7 +218,7 @@ data.</p>
 Computing regularization path using the Lars lasso...</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lasso_model_selection.py"><tt class="xref download docutils literal"><span class="pre">plot_lasso_model_selection.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Olivier Grisel, Gael Varoquaux, Alexandre Gramfort</span>
 <span class="c"># License: BSD Style.</span>
@@ -277,7 +277,7 @@ Computing regularization path using the Lars lasso...</pre>
 <span class="c"># LassoCV: coordinate descent</span>
 
 <span class="c"># Compute paths</span>
-<span class="k">print</span> <span class="s">&quot;Computing regularization path using the coordinate descent lasso...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing regularization path using the coordinate descent lasso...&quot;</span><span class="p">)</span>
 <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">model</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV"><span class="n">LassoCV</span></a><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">t_lasso_cv</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t1</span>
@@ -306,7 +306,7 @@ Computing regularization path using the Lars lasso...</pre>
 <span class="c"># LassoLarsCV: least angle regression</span>
 
 <span class="c"># Compute paths</span>
-<span class="k">print</span> <span class="s">&quot;Computing regularization path using the Lars lasso...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing regularization path using the Lars lasso...&quot;</span><span class="p">)</span>
 <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">model</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV"><span class="n">LassoLarsCV</span></a><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">t_lasso_lars_cv</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t1</span>
@@ -332,7 +332,7 @@ Computing regularization path using the Lars lasso...</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  2.52 seconds</p>
+<p><strong>Total running time of the example:</strong>  2.58 seconds</p>
 </div>
 
 
@@ -354,12 +354,12 @@ Computing regularization path using the Lars lasso...</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_lasso_lars.html">
+      <a href="plot_lasso_coordinate_descent_path.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_logistic.html">
+      <a href="plot_sparse_recovery.html">
         Next
       </a>
     </div>

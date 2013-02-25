@@ -185,7 +185,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#module-sklearn.ensemble">8.7. <tt class="docutils literal"><span class="pre">sklearn.ensemble</span></tt>: Ensemble Methods</a><ul>
-<li><a class="reference internal" href="#module-sklearn.ensemble.partial_dependence">8.7.8. partial dependence</a><ul>
+<li><a class="reference internal" href="#module-sklearn.ensemble.partial_dependence">8.7.10. partial dependence</a><ul>
 </ul>
 </li>
 </ul>
@@ -230,16 +230,19 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#sklearn-metrics-metrics">8.19. <tt class="docutils literal"><span class="pre">sklearn.metrics</span></tt>: Metrics</a><ul>
-<li><a class="reference internal" href="#classification-metrics">8.19.1. Classification metrics</a><ul>
+<li><a class="reference internal" href="#model-selection-interface">8.19.1. Model Selection Interface</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#regression-metrics">8.19.2. Regression metrics</a><ul>
+<li><a class="reference internal" href="#classification-metrics">8.19.2. Classification metrics</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#clustering-metrics">8.19.3. Clustering metrics</a><ul>
+<li><a class="reference internal" href="#regression-metrics">8.19.3. Regression metrics</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-sklearn.metrics.pairwise">8.19.4. Pairwise metrics</a><ul>
+<li><a class="reference internal" href="#clustering-metrics">8.19.4. Clustering metrics</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.metrics.pairwise">8.19.5. Pairwise metrics</a><ul>
 </ul>
 </li>
 </ul>
@@ -345,31 +348,32 @@ uses.</p>
 <li><a class="reference internal" href="#module-sklearn.linear_model" id="id24"><a class="reference internal" href="#module-sklearn.linear_model" title="sklearn.linear_model"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.linear_model</span></tt></a>: Generalized Linear Models</a></li>
 <li><a class="reference internal" href="#module-sklearn.manifold" id="id25"><a class="reference internal" href="#module-sklearn.manifold" title="sklearn.manifold"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.manifold</span></tt></a>: Manifold Learning</a></li>
 <li><a class="reference internal" href="#sklearn-metrics-metrics" id="id26"><a class="reference internal" href="#module-sklearn.metrics" title="sklearn.metrics"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.metrics</span></tt></a>: Metrics</a><ul>
-<li><a class="reference internal" href="#classification-metrics" id="id27">Classification metrics</a></li>
-<li><a class="reference internal" href="#regression-metrics" id="id28">Regression metrics</a></li>
-<li><a class="reference internal" href="#clustering-metrics" id="id29">Clustering metrics</a></li>
-<li><a class="reference internal" href="#module-sklearn.metrics.pairwise" id="id30">Pairwise metrics</a></li>
+<li><a class="reference internal" href="#model-selection-interface" id="id27">Model Selection Interface</a></li>
+<li><a class="reference internal" href="#classification-metrics" id="id28">Classification metrics</a></li>
+<li><a class="reference internal" href="#regression-metrics" id="id29">Regression metrics</a></li>
+<li><a class="reference internal" href="#clustering-metrics" id="id30">Clustering metrics</a></li>
+<li><a class="reference internal" href="#module-sklearn.metrics.pairwise" id="id31">Pairwise metrics</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-sklearn.mixture" id="id31"><a class="reference internal" href="#module-sklearn.mixture" title="sklearn.mixture"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.mixture</span></tt></a>: Gaussian Mixture Models</a></li>
-<li><a class="reference internal" href="#module-sklearn.multiclass" id="id32"><a class="reference internal" href="#module-sklearn.multiclass" title="sklearn.multiclass"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.multiclass</span></tt></a>: Multiclass and multilabel classification</a><ul>
-<li><a class="reference internal" href="#multiclass-and-multilabel-classification-strategies" id="id33">Multiclass and multilabel classification strategies</a></li>
+<li><a class="reference internal" href="#module-sklearn.mixture" id="id32"><a class="reference internal" href="#module-sklearn.mixture" title="sklearn.mixture"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.mixture</span></tt></a>: Gaussian Mixture Models</a></li>
+<li><a class="reference internal" href="#module-sklearn.multiclass" id="id33"><a class="reference internal" href="#module-sklearn.multiclass" title="sklearn.multiclass"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.multiclass</span></tt></a>: Multiclass and multilabel classification</a><ul>
+<li><a class="reference internal" href="#multiclass-and-multilabel-classification-strategies" id="id34">Multiclass and multilabel classification strategies</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-sklearn.naive_bayes" id="id34"><a class="reference internal" href="#module-sklearn.naive_bayes" title="sklearn.naive_bayes"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.naive_bayes</span></tt></a>: Naive Bayes</a></li>
-<li><a class="reference internal" href="#module-sklearn.neighbors" id="id35"><a class="reference internal" href="#module-sklearn.neighbors" title="sklearn.neighbors"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.neighbors</span></tt></a>: Nearest Neighbors</a></li>
-<li><a class="reference internal" href="#module-sklearn.pls" id="id36"><a class="reference internal" href="#module-sklearn.pls" title="sklearn.pls"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pls</span></tt></a>: Partial Least Squares</a></li>
-<li><a class="reference internal" href="#module-sklearn.pipeline" id="id37"><a class="reference internal" href="#module-sklearn.pipeline" title="sklearn.pipeline"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pipeline</span></tt></a>: Pipeline</a></li>
-<li><a class="reference internal" href="#module-sklearn.preprocessing" id="id38"><a class="reference internal" href="#module-sklearn.preprocessing" title="sklearn.preprocessing"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.preprocessing</span></tt></a>: Preprocessing and Normalization</a></li>
-<li><a class="reference internal" href="#module-sklearn.qda" id="id39"><a class="reference internal" href="#module-sklearn.qda" title="sklearn.qda"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.qda</span></tt></a>: Quadratic Discriminant Analysis</a></li>
-<li><a class="reference internal" href="#module-sklearn.random_projection" id="id40"><a class="reference internal" href="#module-sklearn.random_projection" title="sklearn.random_projection"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.random_projection</span></tt></a>: Random projection</a></li>
-<li><a class="reference internal" href="#module-sklearn.svm" id="id41"><a class="reference internal" href="#module-sklearn.svm" title="sklearn.svm"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.svm</span></tt></a>: Support Vector Machines</a><ul>
-<li><a class="reference internal" href="#estimators" id="id42">Estimators</a></li>
-<li><a class="reference internal" href="#low-level-methods" id="id43">Low-level methods</a></li>
+<li><a class="reference internal" href="#module-sklearn.naive_bayes" id="id35"><a class="reference internal" href="#module-sklearn.naive_bayes" title="sklearn.naive_bayes"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.naive_bayes</span></tt></a>: Naive Bayes</a></li>
+<li><a class="reference internal" href="#module-sklearn.neighbors" id="id36"><a class="reference internal" href="#module-sklearn.neighbors" title="sklearn.neighbors"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.neighbors</span></tt></a>: Nearest Neighbors</a></li>
+<li><a class="reference internal" href="#module-sklearn.pls" id="id37"><a class="reference internal" href="#module-sklearn.pls" title="sklearn.pls"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pls</span></tt></a>: Partial Least Squares</a></li>
+<li><a class="reference internal" href="#module-sklearn.pipeline" id="id38"><a class="reference internal" href="#module-sklearn.pipeline" title="sklearn.pipeline"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pipeline</span></tt></a>: Pipeline</a></li>
+<li><a class="reference internal" href="#module-sklearn.preprocessing" id="id39"><a class="reference internal" href="#module-sklearn.preprocessing" title="sklearn.preprocessing"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.preprocessing</span></tt></a>: Preprocessing and Normalization</a></li>
+<li><a class="reference internal" href="#module-sklearn.qda" id="id40"><a class="reference internal" href="#module-sklearn.qda" title="sklearn.qda"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.qda</span></tt></a>: Quadratic Discriminant Analysis</a></li>
+<li><a class="reference internal" href="#module-sklearn.random_projection" id="id41"><a class="reference internal" href="#module-sklearn.random_projection" title="sklearn.random_projection"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.random_projection</span></tt></a>: Random projection</a></li>
+<li><a class="reference internal" href="#module-sklearn.svm" id="id42"><a class="reference internal" href="#module-sklearn.svm" title="sklearn.svm"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.svm</span></tt></a>: Support Vector Machines</a><ul>
+<li><a class="reference internal" href="#estimators" id="id43">Estimators</a></li>
+<li><a class="reference internal" href="#low-level-methods" id="id44">Low-level methods</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-sklearn.tree" id="id44"><a class="reference internal" href="#module-sklearn.tree" title="sklearn.tree"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.tree</span></tt></a>: Decision Trees</a></li>
-<li><a class="reference internal" href="#module-sklearn.utils" id="id45"><a class="reference internal" href="#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a>: Utilities</a></li>
+<li><a class="reference internal" href="#module-sklearn.tree" id="id45"><a class="reference internal" href="#module-sklearn.tree" title="sklearn.tree"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.tree</span></tt></a>: Decision Trees</a></li>
+<li><a class="reference internal" href="#module-sklearn.utils" id="id46"><a class="reference internal" href="#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a>: Utilities</a></li>
 </ul>
 </div>
 <div class="section" id="module-sklearn.cluster">
@@ -830,6 +834,12 @@ classification and regression.</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.ensemble.ExtraTreesRegressor.html#sklearn.ensemble.ExtraTreesRegressor" title="sklearn.ensemble.ExtraTreesRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.ExtraTreesRegressor</span></tt></a>([n_estimators,&nbsp;...])</td>
 <td>An extra-trees regressor.</td>
 </tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.AdaBoostClassifier</span></tt>(...[,&nbsp;criterion])</td>
+<td>An AdaBoost classifier.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.AdaBoostRegressor</span></tt>(...[,&nbsp;criterion,&nbsp;...])</td>
+<td>An AdaBoost regressor.</td>
+</tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.ensemble.GradientBoostingClassifier.html#sklearn.ensemble.GradientBoostingClassifier" title="sklearn.ensemble.GradientBoostingClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.GradientBoostingClassifier</span></tt></a>([loss,&nbsp;...])</td>
 <td>Gradient Boosting for classification.</td>
 </tr>
@@ -847,7 +857,7 @@ classification and regression.</p>
 </tbody>
 </table>
 <div class="section" id="module-sklearn.ensemble.partial_dependence">
-<span id="partial-dependence"></span><h3><a class="toc-backref" href="#id12">8.7.8. partial dependence</a><a class="headerlink" href="#module-sklearn.ensemble.partial_dependence" title="Permalink to this headline">¶</a></h3>
+<span id="partial-dependence"></span><h3><a class="toc-backref" href="#id12">8.7.10. partial dependence</a><a class="headerlink" href="#module-sklearn.ensemble.partial_dependence" title="Permalink to this headline">¶</a></h3>
 <p>Partial dependence plots for tree ensembles.</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -1340,12 +1350,26 @@ implements Stochastic Gradient Descent related algorithms.</p>
 </div>
 <div class="section" id="sklearn-metrics-metrics">
 <span id="metrics-ref"></span><h2><a class="toc-backref" href="#id26">8.19. <a class="reference internal" href="#module-sklearn.metrics" title="sklearn.metrics"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.metrics</span></tt></a>: Metrics</a><a class="headerlink" href="#sklearn-metrics-metrics" title="Permalink to this headline">¶</a></h2>
-<p>See the <a class="reference internal" href="model_evaluation.html#model-evaluation"><em>Model evaluation</em></a> section and the <a class="reference internal" href="metrics.html#metrics"><em>Metrics, Affinities and Kernels</em></a> section of the
+<p>See the <a class="reference internal" href="model_evaluation.html#model-evaluation"><em>Model evaluation</em></a> section and the <a class="reference internal" href="metrics.html#metrics"><em>Pairwise metrics, Affinities and Kernels</em></a> section of the
 user guide for further details.</p>
 <span class="target" id="module-sklearn.metrics"></span><p>The <a class="reference internal" href="#module-sklearn.metrics" title="sklearn.metrics"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.metrics</span></tt></a> module includes score functions, performance metrics
 and pairwise metrics and distance computations.</p>
+<div class="section" id="model-selection-interface">
+<h3><a class="toc-backref" href="#id27">8.19.1. Model Selection Interface</a><a class="headerlink" href="#model-selection-interface" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.Scorer.html#sklearn.metrics.Scorer" title="sklearn.metrics.Scorer"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.Scorer</span></tt></a>(score_func[,&nbsp;...])</td>
+<td>Flexible scores for any estimator.</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="classification-metrics">
-<h3><a class="toc-backref" href="#id27">8.19.1. Classification metrics</a><a class="headerlink" href="#classification-metrics" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id28">8.19.2. Classification metrics</a><a class="headerlink" href="#classification-metrics" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -1404,7 +1428,7 @@ and pairwise metrics and distance computations.</p>
 </table>
 </div>
 <div class="section" id="regression-metrics">
-<h3><a class="toc-backref" href="#id28">8.19.2. Regression metrics</a><a class="headerlink" href="#regression-metrics" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id29">8.19.3. Regression metrics</a><a class="headerlink" href="#regression-metrics" title="Permalink to this headline">¶</a></h3>
 <p>See the <a class="reference internal" href="model_evaluation.html#regression-metrics"><em>Regression metrics</em></a> section of the user guide for further
 details.</p>
 <table border="1" class="longtable docutils">
@@ -1429,7 +1453,7 @@ details.</p>
 </table>
 </div>
 <div class="section" id="clustering-metrics">
-<h3><a class="toc-backref" href="#id29">8.19.3. Clustering metrics</a><a class="headerlink" href="#clustering-metrics" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id30">8.19.4. Clustering metrics</a><a class="headerlink" href="#clustering-metrics" title="Permalink to this headline">¶</a></h3>
 <p>See the <a class="reference internal" href="clustering.html#clustering-evaluation"><em>Clustering performance evaluation</em></a> section of the user guide for further
 details.</p>
 <span class="target" id="module-sklearn.metrics.cluster"></span><p>The <a class="reference internal" href="#module-sklearn.metrics.cluster" title="sklearn.metrics.cluster"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.metrics.cluster</span></tt></a> submodule contains evaluation metrics for
@@ -1478,7 +1502,7 @@ cluster analysis results. There are two forms of evaluation:</p>
 </table>
 </div>
 <div class="section" id="module-sklearn.metrics.pairwise">
-<span id="pairwise-metrics"></span><h3><a class="toc-backref" href="#id30">8.19.4. Pairwise metrics</a><a class="headerlink" href="#module-sklearn.metrics.pairwise" title="Permalink to this headline">¶</a></h3>
+<span id="pairwise-metrics"></span><h3><a class="toc-backref" href="#id31">8.19.5. Pairwise metrics</a><a class="headerlink" href="#module-sklearn.metrics.pairwise" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="#module-sklearn.metrics.pairwise" title="sklearn.metrics.pairwise"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.metrics.pairwise</span></tt></a> submodule implements utilities to evaluate
 pairwise distances or affinity of sets of samples.</p>
 <p>This module contains both distance metrics and kernels. A brief summary is
@@ -1519,7 +1543,7 @@ kernel:</p>
 <td>Computes the exponential chi-squared kernel X and Y.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.pairwise.distance_metrics.html#sklearn.metrics.pairwise.distance_metrics" title="sklearn.metrics.pairwise.distance_metrics"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.pairwise.distance_metrics</span></tt></a>()</td>
-<td>Valid metrics for pairwise_distances</td>
+<td>Valid metrics for pairwise_distances.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.pairwise.euclidean_distances.html#sklearn.metrics.pairwise.euclidean_distances" title="sklearn.metrics.pairwise.euclidean_distances"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.pairwise.euclidean_distances</span></tt></a>(X[,&nbsp;Y,&nbsp;...])</td>
 <td>Considering the rows of X (and Y=X) as vectors, compute the</td>
@@ -1550,7 +1574,7 @@ kernel:</p>
 </div>
 </div>
 <div class="section" id="module-sklearn.mixture">
-<span id="sklearn-mixture-gaussian-mixture-models"></span><span id="mixture-ref"></span><h2><a class="toc-backref" href="#id31">8.20. <a class="reference internal" href="#module-sklearn.mixture" title="sklearn.mixture"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.mixture</span></tt></a>: Gaussian Mixture Models</a><a class="headerlink" href="#module-sklearn.mixture" title="Permalink to this headline">¶</a></h2>
+<span id="sklearn-mixture-gaussian-mixture-models"></span><span id="mixture-ref"></span><h2><a class="toc-backref" href="#id32">8.20. <a class="reference internal" href="#module-sklearn.mixture" title="sklearn.mixture"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.mixture</span></tt></a>: Gaussian Mixture Models</a><a class="headerlink" href="#module-sklearn.mixture" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-sklearn.mixture" title="sklearn.mixture"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.mixture</span></tt></a> module implements mixture modeling algorithms.</p>
 <p><strong>User guide:</strong> See the <a class="reference internal" href="mixture.html#mixture"><em>Gaussian mixture models</em></a> section for further details.</p>
 <table border="1" class="longtable docutils">
@@ -1572,9 +1596,9 @@ kernel:</p>
 </table>
 </div>
 <div class="section" id="module-sklearn.multiclass">
-<span id="sklearn-multiclass-multiclass-and-multilabel-classification"></span><span id="multiclass-ref"></span><h2><a class="toc-backref" href="#id32">8.21. <a class="reference internal" href="#module-sklearn.multiclass" title="sklearn.multiclass"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.multiclass</span></tt></a>: Multiclass and multilabel classification</a><a class="headerlink" href="#module-sklearn.multiclass" title="Permalink to this headline">¶</a></h2>
+<span id="sklearn-multiclass-multiclass-and-multilabel-classification"></span><span id="multiclass-ref"></span><h2><a class="toc-backref" href="#id33">8.21. <a class="reference internal" href="#module-sklearn.multiclass" title="sklearn.multiclass"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.multiclass</span></tt></a>: Multiclass and multilabel classification</a><a class="headerlink" href="#module-sklearn.multiclass" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="multiclass-and-multilabel-classification-strategies">
-<h3><a class="toc-backref" href="#id33">8.21.1. Multiclass and multilabel classification strategies</a><a class="headerlink" href="#multiclass-and-multilabel-classification-strategies" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id34">8.21.1. Multiclass and multilabel classification strategies</a><a class="headerlink" href="#multiclass-and-multilabel-classification-strategies" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>This module implements multiclass learning algorithms:</dt>
 <dd><ul class="first last simple">
@@ -1645,7 +1669,7 @@ case.</p>
 </table>
 </div>
 <div class="section" id="module-sklearn.naive_bayes">
-<span id="sklearn-naive-bayes-naive-bayes"></span><span id="naive-bayes-ref"></span><h2><a class="toc-backref" href="#id34">8.22. <a class="reference internal" href="#module-sklearn.naive_bayes" title="sklearn.naive_bayes"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.naive_bayes</span></tt></a>: Naive Bayes</a><a class="headerlink" href="#module-sklearn.naive_bayes" title="Permalink to this headline">¶</a></h2>
+<span id="sklearn-naive-bayes-naive-bayes"></span><span id="naive-bayes-ref"></span><h2><a class="toc-backref" href="#id35">8.22. <a class="reference internal" href="#module-sklearn.naive_bayes" title="sklearn.naive_bayes"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.naive_bayes</span></tt></a>: Naive Bayes</a><a class="headerlink" href="#module-sklearn.naive_bayes" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-sklearn.naive_bayes" title="sklearn.naive_bayes"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.naive_bayes</span></tt></a> module implements Naive Bayes algorithms. These
 are supervised learning methods based on applying Bayes&#8217; theorem with strong
 (naive) feature independence assumptions.</p>
@@ -1669,7 +1693,7 @@ are supervised learning methods based on applying Bayes&#8217; theorem with stro
 </table>
 </div>
 <div class="section" id="module-sklearn.neighbors">
-<span id="sklearn-neighbors-nearest-neighbors"></span><span id="neighbors-ref"></span><h2><a class="toc-backref" href="#id35">8.23. <a class="reference internal" href="#module-sklearn.neighbors" title="sklearn.neighbors"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.neighbors</span></tt></a>: Nearest Neighbors</a><a class="headerlink" href="#module-sklearn.neighbors" title="Permalink to this headline">¶</a></h2>
+<span id="sklearn-neighbors-nearest-neighbors"></span><span id="neighbors-ref"></span><h2><a class="toc-backref" href="#id36">8.23. <a class="reference internal" href="#module-sklearn.neighbors" title="sklearn.neighbors"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.neighbors</span></tt></a>: Nearest Neighbors</a><a class="headerlink" href="#module-sklearn.neighbors" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-sklearn.neighbors" title="sklearn.neighbors"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.neighbors</span></tt></a> module implements the k-nearest neighbors
 algorithm.</p>
 <p><strong>User guide:</strong> See the <a class="reference internal" href="neighbors.html#neighbors"><em>Nearest Neighbors</em></a> section for further details.</p>
@@ -1718,7 +1742,7 @@ algorithm.</p>
 </table>
 </div>
 <div class="section" id="module-sklearn.pls">
-<span id="sklearn-pls-partial-least-squares"></span><span id="pls-ref"></span><h2><a class="toc-backref" href="#id36">8.24. <a class="reference internal" href="#module-sklearn.pls" title="sklearn.pls"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pls</span></tt></a>: Partial Least Squares</a><a class="headerlink" href="#module-sklearn.pls" title="Permalink to this headline">¶</a></h2>
+<span id="sklearn-pls-partial-least-squares"></span><span id="pls-ref"></span><h2><a class="toc-backref" href="#id37">8.24. <a class="reference internal" href="#module-sklearn.pls" title="sklearn.pls"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pls</span></tt></a>: Partial Least Squares</a><a class="headerlink" href="#module-sklearn.pls" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-sklearn.pls" title="sklearn.pls"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pls</span></tt></a> module implements Partial Least Squares (PLS).</p>
 <p><strong>User guide:</strong> See the <a class="reference internal" href="pls.html#pls"><em>Partial Least Squares</em></a> section for further details.</p>
 <table border="1" class="longtable docutils">
@@ -1743,7 +1767,7 @@ algorithm.</p>
 </table>
 </div>
 <div class="section" id="module-sklearn.pipeline">
-<span id="sklearn-pipeline-pipeline"></span><span id="pipeline-ref"></span><h2><a class="toc-backref" href="#id37">8.25. <a class="reference internal" href="#module-sklearn.pipeline" title="sklearn.pipeline"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pipeline</span></tt></a>: Pipeline</a><a class="headerlink" href="#module-sklearn.pipeline" title="Permalink to this headline">¶</a></h2>
+<span id="sklearn-pipeline-pipeline"></span><span id="pipeline-ref"></span><h2><a class="toc-backref" href="#id38">8.25. <a class="reference internal" href="#module-sklearn.pipeline" title="sklearn.pipeline"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pipeline</span></tt></a>: Pipeline</a><a class="headerlink" href="#module-sklearn.pipeline" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-sklearn.pipeline" title="sklearn.pipeline"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pipeline</span></tt></a> module implements utilites to build a composite
 estimator, as a chain of transforms and estimators.</p>
 <table border="1" class="longtable docutils">
@@ -1762,7 +1786,7 @@ estimator, as a chain of transforms and estimators.</p>
 </table>
 </div>
 <div class="section" id="module-sklearn.preprocessing">
-<span id="sklearn-preprocessing-preprocessing-and-normalization"></span><span id="preprocessing-ref"></span><h2><a class="toc-backref" href="#id38">8.26. <a class="reference internal" href="#module-sklearn.preprocessing" title="sklearn.preprocessing"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.preprocessing</span></tt></a>: Preprocessing and Normalization</a><a class="headerlink" href="#module-sklearn.preprocessing" title="Permalink to this headline">¶</a></h2>
+<span id="sklearn-preprocessing-preprocessing-and-normalization"></span><span id="preprocessing-ref"></span><h2><a class="toc-backref" href="#id39">8.26. <a class="reference internal" href="#module-sklearn.preprocessing" title="sklearn.preprocessing"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.preprocessing</span></tt></a>: Preprocessing and Normalization</a><a class="headerlink" href="#module-sklearn.preprocessing" title="Permalink to this headline">¶</a></h2>
 <p><strong>User guide:</strong> See the <a class="reference internal" href="preprocessing.html#preprocessing"><em>Preprocessing data</em></a> section for further details.</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -1805,20 +1829,23 @@ estimator, as a chain of transforms and estimators.</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.add_dummy_feature.html#sklearn.preprocessing.add_dummy_feature" title="sklearn.preprocessing.add_dummy_feature"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.add_dummy_feature</span></tt></a>(X[,&nbsp;value])</td>
 <td>Augment dataset with an additional dummy feature.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.binarize.html#sklearn.preprocessing.binarize" title="sklearn.preprocessing.binarize"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.binarize</span></tt></a>(X[,&nbsp;threshold,&nbsp;copy])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.balance_weights.html#sklearn.preprocessing.balance_weights" title="sklearn.preprocessing.balance_weights"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.balance_weights</span></tt></a>(y)</td>
+<td>Compute sample weights such that the class distribution of y becomes balanced.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.binarize.html#sklearn.preprocessing.binarize" title="sklearn.preprocessing.binarize"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.binarize</span></tt></a>(X[,&nbsp;threshold,&nbsp;copy])</td>
 <td>Boolean thresholding of array-like or scipy.sparse matrix</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.normalize.html#sklearn.preprocessing.normalize" title="sklearn.preprocessing.normalize"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.normalize</span></tt></a>(X[,&nbsp;norm,&nbsp;axis,&nbsp;copy])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.normalize.html#sklearn.preprocessing.normalize" title="sklearn.preprocessing.normalize"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.normalize</span></tt></a>(X[,&nbsp;norm,&nbsp;axis,&nbsp;copy])</td>
 <td>Normalize a dataset along any axis</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.scale.html#sklearn.preprocessing.scale" title="sklearn.preprocessing.scale"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.scale</span></tt></a>(X[,&nbsp;axis,&nbsp;with_mean,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.scale.html#sklearn.preprocessing.scale" title="sklearn.preprocessing.scale"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.scale</span></tt></a>(X[,&nbsp;axis,&nbsp;with_mean,&nbsp;...])</td>
 <td>Standardize a dataset along any axis</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="module-sklearn.qda">
-<span id="sklearn-qda-quadratic-discriminant-analysis"></span><h2><a class="toc-backref" href="#id39">8.27. <a class="reference internal" href="#module-sklearn.qda" title="sklearn.qda"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.qda</span></tt></a>: Quadratic Discriminant Analysis</a><a class="headerlink" href="#module-sklearn.qda" title="Permalink to this headline">¶</a></h2>
+<span id="sklearn-qda-quadratic-discriminant-analysis"></span><h2><a class="toc-backref" href="#id40">8.27. <a class="reference internal" href="#module-sklearn.qda" title="sklearn.qda"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.qda</span></tt></a>: Quadratic Discriminant Analysis</a><a class="headerlink" href="#module-sklearn.qda" title="Permalink to this headline">¶</a></h2>
 <p>Quadratic Discriminant Analysis</p>
 <p><strong>User guide:</strong> See the <a class="reference internal" href="lda_qda.html#lda-qda"><em>Linear and Quadratic Discriminant Analysis</em></a> section for further details.</p>
 <table border="1" class="longtable docutils">
@@ -1834,7 +1861,7 @@ estimator, as a chain of transforms and estimators.</p>
 </table>
 </div>
 <div class="section" id="module-sklearn.random_projection">
-<span id="sklearn-random-projection-random-projection"></span><span id="random-projection-ref"></span><h2><a class="toc-backref" href="#id40">8.28. <a class="reference internal" href="#module-sklearn.random_projection" title="sklearn.random_projection"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.random_projection</span></tt></a>: Random projection</a><a class="headerlink" href="#module-sklearn.random_projection" title="Permalink to this headline">¶</a></h2>
+<span id="sklearn-random-projection-random-projection"></span><span id="random-projection-ref"></span><h2><a class="toc-backref" href="#id41">8.28. <a class="reference internal" href="#module-sklearn.random_projection" title="sklearn.random_projection"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.random_projection</span></tt></a>: Random projection</a><a class="headerlink" href="#module-sklearn.random_projection" title="Permalink to this headline">¶</a></h2>
 <p>Random Projection transformers</p>
 <p>Random Projections are a simple and computationally efficient way to
 reduce the dimensionality of the data by trading a controlled amount
@@ -1881,11 +1908,11 @@ and can even be taken to be an orthogonal projection.</div></blockquote>
 </table>
 </div>
 <div class="section" id="module-sklearn.svm">
-<span id="sklearn-svm-support-vector-machines"></span><span id="svm-ref"></span><h2><a class="toc-backref" href="#id41">8.29. <a class="reference internal" href="#module-sklearn.svm" title="sklearn.svm"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.svm</span></tt></a>: Support Vector Machines</a><a class="headerlink" href="#module-sklearn.svm" title="Permalink to this headline">¶</a></h2>
+<span id="sklearn-svm-support-vector-machines"></span><span id="svm-ref"></span><h2><a class="toc-backref" href="#id42">8.29. <a class="reference internal" href="#module-sklearn.svm" title="sklearn.svm"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.svm</span></tt></a>: Support Vector Machines</a><a class="headerlink" href="#module-sklearn.svm" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-sklearn.svm" title="sklearn.svm"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.svm</span></tt></a> module includes Support Vector Machine algorithms.</p>
 <p><strong>User guide:</strong> See the <a class="reference internal" href="svm.html#svm"><em>Support Vector Machines</em></a> section for further details.</p>
 <div class="section" id="estimators">
-<h3><a class="toc-backref" href="#id42">8.29.1. Estimators</a><a class="headerlink" href="#estimators" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id43">8.29.1. Estimators</a><a class="headerlink" href="#estimators" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -1925,7 +1952,7 @@ and can even be taken to be an orthogonal projection.</div></blockquote>
 </table>
 </div>
 <div class="section" id="low-level-methods">
-<h3><a class="toc-backref" href="#id43">8.29.2. Low-level methods</a><a class="headerlink" href="#low-level-methods" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id44">8.29.2. Low-level methods</a><a class="headerlink" href="#low-level-methods" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -1952,7 +1979,7 @@ and can even be taken to be an orthogonal projection.</div></blockquote>
 </div>
 </div>
 <div class="section" id="module-sklearn.tree">
-<span id="sklearn-tree-decision-trees"></span><span id="tree-ref"></span><h2><a class="toc-backref" href="#id44">8.30. <a class="reference internal" href="#module-sklearn.tree" title="sklearn.tree"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.tree</span></tt></a>: Decision Trees</a><a class="headerlink" href="#module-sklearn.tree" title="Permalink to this headline">¶</a></h2>
+<span id="sklearn-tree-decision-trees"></span><span id="tree-ref"></span><h2><a class="toc-backref" href="#id45">8.30. <a class="reference internal" href="#module-sklearn.tree" title="sklearn.tree"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.tree</span></tt></a>: Decision Trees</a><a class="headerlink" href="#module-sklearn.tree" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-sklearn.tree" title="sklearn.tree"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.tree</span></tt></a> module includes decision tree-based models for
 classification and regression.</p>
 <p><strong>User guide:</strong> See the <a class="reference internal" href="tree.html#tree"><em>Decision Trees</em></a> section for further details.</p>
@@ -1989,7 +2016,7 @@ classification and regression.</p>
 </table>
 </div>
 <div class="section" id="module-sklearn.utils">
-<span id="sklearn-utils-utilities"></span><span id="utils-ref"></span><h2><a class="toc-backref" href="#id45">8.31. <a class="reference internal" href="#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a>: Utilities</a><a class="headerlink" href="#module-sklearn.utils" title="Permalink to this headline">¶</a></h2>
+<span id="sklearn-utils-utilities"></span><span id="utils-ref"></span><h2><a class="toc-backref" href="#id46">8.31. <a class="reference internal" href="#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a>: Utilities</a><a class="headerlink" href="#module-sklearn.utils" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a> module includes various utilites.</p>
 <p><strong>Developer guide:</strong> See the <a class="reference internal" href="../developers/utilities.html#developers-utils"><em>Utilities for Developers</em></a> page for further details.</p>
 <table border="1" class="longtable docutils">

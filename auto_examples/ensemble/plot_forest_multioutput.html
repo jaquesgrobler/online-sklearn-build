@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Prediction Intervals for Gradient Boosting Regression" href="plot_gradient_boosting_quantile.html" />
-    <link rel="prev" title="Plot the decision surfaces of ensembles of trees on the iris dataset" href="plot_forest_iris.html" />
+    <link rel="next" title="Gradient Boosting regularization" href="plot_gradient_boosting_regularization.html" />
+    <link rel="prev" title="Feature importances with forests of trees" href="plot_forest_importances.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_forest_iris.html" title="Plot the decision surfaces of ensembles of trees on the iris dataset"
+	<a href="plot_forest_importances.html" title="Feature importances with forests of trees"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Plot the decisio...
+	    Feature importan...
 	    </span>
 	    <span class="hiddenrellink">
-	    Plot the decision surfaces of ensembles of trees on the iris dataset
+	    Feature importances with forests of trees
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_gradient_boosting_quantile.html" title="Prediction Intervals for Gradient Boosting Regression"
+	<a href="plot_gradient_boosting_regularization.html" title="Gradient Boosting regularization"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Prediction Inter...
+	    Gradient Boostin...
 	    </span>
 	    <span class="hiddenrellink">
-	    Prediction Intervals for Gradient Boosting Regression
+	    Gradient Boosting regularization
 	    </span>
 	    
 	    </a>
@@ -179,7 +179,7 @@ The goal is to predict the lower half of a face given its upper half.</p>
 how the forest completes the lower half of those faces.</p>
 <img alt="../../_images/plot_forest_multioutput_1.png" class="align-center" src="../../_images/plot_forest_multioutput_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_forest_multioutput.py"><tt class="xref download docutils literal"><span class="pre">plot_forest_multioutput.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
@@ -217,7 +217,7 @@ how the forest completes the lower half of those faces.</p>
 <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">pl</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">n_faces</span><span class="p">,</span> <span class="mf">2.26</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.suptitle"><span class="n">pl</span><span class="o">.</span><span class="n">suptitle</span></a><span class="p">(</span><span class="s">&quot;Face completion with multi-output forests&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">n_faces</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">n_faces</span><span class="p">):</span>
     <span class="n">face_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="n">true_face</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.hstack.html#numpy.hstack"><span class="n">np</span><span class="o">.</span><span class="n">hstack</span></a><span class="p">((</span><span class="n">X_test</span><span class="p">[</span><span class="n">face_id</span><span class="p">],</span> <span class="n">Y_test</span><span class="p">[</span><span class="n">face_id</span><span class="p">]))</span>
@@ -238,7 +238,7 @@ how the forest completes the lower half of those faces.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  20.86 seconds</p>
+<p><strong>Total running time of the example:</strong>  20.19 seconds</p>
 </div>
 
 
@@ -260,12 +260,12 @@ how the forest completes the lower half of those faces.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_forest_iris.html">
+      <a href="plot_forest_importances.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_gradient_boosting_quantile.html">
+      <a href="plot_gradient_boosting_regularization.html">
         Next
       </a>
     </div>

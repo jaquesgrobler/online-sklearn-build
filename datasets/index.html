@@ -31,7 +31,7 @@
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="&lt;no title&gt;" href="../user_guide.html" />
     <link rel="next" title="8. Reference" href="../modules/classes.html" />
-    <link rel="prev" title="6.5. Metrics, Affinities and Kernels" href="../modules/metrics.html" />
+    <link rel="prev" title="6.5. Pairwise metrics, Affinities and Kernels" href="../modules/metrics.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="../modules/metrics.html" title="6.5. Metrics, Affinities and Kernels"
+	<a href="../modules/metrics.html" title="6.5. Pairwise metrics, Affinities and Kernels"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    6.5. Metrics, Af...
+	    6.5. Pairwise me...
 	    </span>
 	    <span class="hiddenrellink">
-	    6.5. Metrics, Affinities and Kernels
+	    6.5. Pairwise metrics, Affinities and Kernels
 	    </span>
 	    
 	    </a>
@@ -170,6 +170,7 @@
 <li><a class="reference internal" href="#examples">7.9.2. Examples</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#forest-covertypes">7.10. Forest covertypes</a></li>
 </ul>
 </li>
 </ul>
@@ -603,7 +604,7 @@ classification task (hence supervised learning):</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lfw_people</span> <span class="o">=</span> <span class="n">fetch_lfw_people</span><span class="p">(</span><span class="n">min_faces_per_person</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">resize</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">lfw_people</span><span class="o">.</span><span class="n">target_names</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="k">print</span> <span class="n">name</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go">Ariel Sharon</span>
 <span class="go">Colin Powell</span>
@@ -675,6 +676,21 @@ University of Massachusetts, Amherst, Technical Report 07-49, October, 2007.</li
 <h3>7.9.2. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="../auto_examples/applications/face_recognition.html#example-applications-face-recognition-py"><em>Faces recognition example using eigenfaces and SVMs</em></a></p>
 </div>
+</div>
+<div class="section" id="forest-covertypes">
+<span id="covtype"></span><h2>7.10. Forest covertypes<a class="headerlink" href="#forest-covertypes" title="Permalink to this headline">¶</a></h2>
+<p>The samples in this dataset correspond to 30×30m patches of forest in the US,
+collected for the task of predicting each patch&#8217;s cover type,
+i.e. the dominant species of tree.
+There are seven covertypes, making this a multiclass classification problem.
+Each sample has 54 features, described on the
+<a class="reference external" href="http://archive.ics.uci.edu/ml/datasets/Covertype">dataset&#8217;s homepage</a>.
+Some of the features are boolean indicators,
+while others are discrete or continuous measurements.</p>
+<p><tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_covtype</span></tt> will load the covertype dataset;
+it returns a <tt class="docutils literal"><span class="pre">Bunch</span></tt> object with the feature matrix in the <tt class="docutils literal"><span class="pre">data</span></tt> member
+and the target values in <tt class="docutils literal"><span class="pre">target</span></tt>.
+The dataset will be downloaded from the web if necessary.</p>
 </div>
 </div>
 

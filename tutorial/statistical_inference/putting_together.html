@@ -263,7 +263,7 @@ can predict variables. We can also create combined estimators:</p>
 
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="k">print</span> <span class="n">__doc__</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 <span class="kn">import</span> <span class="nn">logging</span>
@@ -276,6 +276,9 @@ can predict variables. We can also create combined estimators:</p>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">RandomizedPCA</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Display progress logs on stdout</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(asctime)s</span><span class="s"> </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>
@@ -299,10 +302,10 @@ can predict variables. We can also create combined estimators:</p>
 <span class="n">target_names</span> <span class="o">=</span> <span class="n">lfw_people</span><span class="o">.</span><span class="n">target_names</span>
 <span class="n">n_classes</span> <span class="o">=</span> <span class="n">target_names</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="k">print</span> <span class="s">&quot;Total dataset size:&quot;</span>
-<span class="k">print</span> <span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_samples</span>
-<span class="k">print</span> <span class="s">&quot;n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_features</span>
-<span class="k">print</span> <span class="s">&quot;n_classes: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_classes</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Total dataset size:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_samples</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_features</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;n_classes: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_classes</span><span class="p">)</span>
 
 
 <span class="c">###############################################################################</span>
@@ -318,45 +321,45 @@ can predict variables. We can also create combined estimators:</p>
 <span class="c"># dataset): unsupervised feature extraction / dimensionality reduction</span>
 <span class="n">n_components</span> <span class="o">=</span> <span class="mi">150</span>
 
-<span class="k">print</span> <span class="s">&quot;Extracting the top </span><span class="si">%d</span><span class="s"> eigenfaces from </span><span class="si">%d</span><span class="s"> faces&quot;</span> <span class="o">%</span> <span class="p">(</span>
-    <span class="n">n_components</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Extracting the top </span><span class="si">%d</span><span class="s"> eigenfaces from </span><span class="si">%d</span><span class="s"> faces&quot;</span>
+      <span class="o">%</span> <span class="p">(</span><span class="n">n_components</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">pca</span> <span class="o">=</span> <span class="n">RandomizedPCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">,</span> <span class="n">whiten</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 <span class="n">eigenfaces</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_components</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 
-<span class="k">print</span> <span class="s">&quot;Projecting the input data on the eigenfaces orthonormal basis&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Projecting the input data on the eigenfaces orthonormal basis&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_train_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">X_test_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 
 <span class="c">###############################################################################</span>
 <span class="c"># Train a SVM classification model</span>
 
-<span class="k">print</span> <span class="s">&quot;Fitting the classifier to the training set&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Fitting the classifier to the training set&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e3</span><span class="p">,</span> <span class="mf">5e3</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">,</span> <span class="mf">5e4</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">],</span>
               <span class="s">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">}</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">),</span> <span class="n">param_grid</span><span class="p">)</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Best estimator found by grid search:&quot;</span>
-<span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Best estimator found by grid search:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">)</span>
 
 
 <span class="c">###############################################################################</span>
 <span class="c"># Quantitative evaluation of the model quality on the test set</span>
 
-<span class="k">print</span> <span class="s">&quot;Predicting the people names on the testing set&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Predicting people&#39;s names on the test set&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_pca</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
-<span class="k">print</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">target_names</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">n_classes</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">target_names</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">n_classes</span><span class="p">)))</span>
 
 
 <span class="c">###############################################################################</span>

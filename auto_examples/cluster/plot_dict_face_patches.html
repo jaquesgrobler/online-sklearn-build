@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Feature agglomeration" href="plot_digits_agglomeration.html" />
-    <link rel="prev" title="Demo of DBSCAN clustering algorithm" href="plot_dbscan.html" />
+    <link rel="next" title="Vector Quantization Example" href="plot_lena_compress.html" />
+    <link rel="prev" title="Segmenting the picture of Lena in regions" href="plot_lena_segmentation.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_dbscan.html" title="Demo of DBSCAN clustering algorithm"
+	<a href="plot_lena_segmentation.html" title="Segmenting the picture of Lena in regions"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Demo of DBSCAN c...
+	    Segmenting the p...
 	    </span>
 	    <span class="hiddenrellink">
-	    Demo of DBSCAN clustering algorithm
+	    Segmenting the picture of Lena in regions
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_digits_agglomeration.html" title="Feature agglomeration"
+	<a href="plot_lena_compress.html" title="Vector Quantization Example"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Feature agglomer...
+	    Vector Quantizat...
 	    </span>
 	    <span class="hiddenrellink">
-	    Feature agglomeration
+	    Vector Quantization Example
 	    </span>
 	    
 	    </a>
@@ -215,10 +215,10 @@ Partial fit of 2100 out of 2400
 Partial fit of 2200 out of 2400
 Partial fit of 2300 out of 2400
 Partial fit of 2400 out of 2400
-done in 9.06s.</pre>
+done in 8.93s.</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_dict_face_patches.py"><tt class="xref download docutils literal"><span class="pre">plot_dict_face_patches.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">time</span>
 
@@ -235,7 +235,7 @@ done in 9.06s.</pre>
 <span class="c">###############################################################################</span>
 <span class="c"># Learn the dictionary of images</span>
 
-<span class="k">print</span> <span class="s">&#39;Learning the dictionary... &#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Learning the dictionary... &#39;</span><span class="p">)</span>
 <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <a href="../../modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans"><span class="n">kmeans</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans"><span class="n">MiniBatchKMeans</span></a><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">81</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">rng</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">patch_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
@@ -260,11 +260,11 @@ done in 9.06s.</pre>
             <a href="../../modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans"><span class="n">kmeans</span></a><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
             <span class="nb">buffer</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s">&#39;Partial fit of </span><span class="si">%4i</span><span class="s"> out of </span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span>
-                                                    <span class="mi">6</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">faces</span><span class="o">.</span><span class="n">images</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;Partial fit of </span><span class="si">%4i</span><span class="s"> out of </span><span class="si">%i</span><span class="s">&#39;</span>
+                  <span class="o">%</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="mi">6</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">faces</span><span class="o">.</span><span class="n">images</span><span class="p">)))</span>
 
 <span class="n">dt</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
-<span class="k">print</span> <span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="n">dt</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="n">dt</span><span class="p">)</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Plot the results</span>
@@ -284,7 +284,7 @@ done in 9.06s.</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  12.74 seconds</p>
+<p><strong>Total running time of the example:</strong>  12.51 seconds</p>
 </div>
 
 
@@ -306,12 +306,12 @@ done in 9.06s.</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_dbscan.html">
+      <a href="plot_lena_segmentation.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_digits_agglomeration.html">
+      <a href="plot_lena_compress.html">
         Next
       </a>
     </div>

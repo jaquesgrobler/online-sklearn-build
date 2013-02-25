@@ -175,7 +175,7 @@
 <h1>8.11.1. sklearn.grid_search.GridSearchCV<a class="headerlink" href="#sklearn-grid-search-gridsearchcv" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.grid_search.GridSearchCV">
-<em class="property">class </em><tt class="descclassname">sklearn.grid_search.</tt><tt class="descname">GridSearchCV</tt><big>(</big><em>estimator</em>, <em>param_grid</em>, <em>loss_func=None</em>, <em>score_func=None</em>, <em>fit_params=None</em>, <em>n_jobs=1</em>, <em>iid=True</em>, <em>refit=True</em>, <em>cv=None</em>, <em>verbose=0</em>, <em>pre_dispatch='2*n_jobs'</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.GridSearchCV" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.grid_search.</tt><tt class="descname">GridSearchCV</tt><big>(</big><em>estimator</em>, <em>param_grid</em>, <em>scoring=None</em>, <em>loss_func=None</em>, <em>score_func=None</em>, <em>fit_params=None</em>, <em>n_jobs=1</em>, <em>iid=True</em>, <em>refit=True</em>, <em>cv=None</em>, <em>verbose=0</em>, <em>pre_dispatch='2*n_jobs'</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.GridSearchCV" title="Permalink to this definition">¶</a></dt>
 <dd><p>Grid search on the parameters of a classifier</p>
 <p>Important members are fit, predict.</p>
 <p>GridSearchCV implements a &#8220;fit&#8221; method and a &#8220;predict&#8221; method like
@@ -185,28 +185,23 @@ used to predict is optimized by cross-validation.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>estimator: object type that implements the &#8220;fit&#8221; and &#8220;predict&#8221; methods</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>estimator</strong> : object type that implements the &#8220;fit&#8221; and &#8220;predict&#8221; methods</p>
 <blockquote>
 <div><p>A object of that type is instantiated for each grid point.</p>
 </div></blockquote>
-<p><strong>param_grid: dict or list of dictionaries</strong> :</p>
+<p><strong>param_grid</strong> : dict or list of dictionaries</p>
 <blockquote>
 <div><p>Dictionary with parameters names (string) as keys and lists of
 parameter settings to try as values, or a list of such
 dictionaries, in which case the grids spanned by each dictionary
 in the list are explored.</p>
 </div></blockquote>
-<p><strong>loss_func: callable, optional</strong> :</p>
+<p><strong>scoring</strong> : string or callable, optional</p>
 <blockquote>
-<div><p>function that takes 2 arguments and compares them in
-order to evaluate the performance of prediciton (small is good)
-if None is passed, the score of the estimator is maximized</p>
-</div></blockquote>
-<p><strong>score_func: callable, optional</strong> :</p>
-<blockquote>
-<div><p>A function that takes 2 arguments and compares them in
-order to evaluate the performance of prediction (high is good).
-If None is passed, the score of the estimator is maximized.</p>
+<div><p>Either one of either a string (&#8220;zero_one&#8221;, &#8220;f1&#8221;, &#8220;roc_auc&#8221;, ... for
+classification, &#8220;mse&#8221;, &#8220;r2&#8221;,... for regression) or a callable.
+See &#8216;Scoring objects&#8217; in the model evaluation section of the user guide
+for details.</p>
 </div></blockquote>
 <p><strong>fit_params</strong> : dict, optional</p>
 <blockquote>
@@ -272,9 +267,7 @@ this GridSearch instance after fitting.</p>
 </div>
 <p class="rubric">Notes</p>
 <p>The parameters selected are those that maximize the score of the left out
-data, unless an explicit score_func is passed in which case it is used
-instead. If a loss function loss_func is passed, it overrides the score
-functions and is minimized.</p>
+data, unless an explicit score is passed in which case it is used instead.</p>
 <p>If <cite>n_jobs</cite> was set to a value higher than one, the data is copied for each
 point in the grid (and not <cite>n_jobs</cite> times). This is done for efficiency
 reasons if individual jobs take very little time, but may raise errors if
@@ -350,7 +343,7 @@ on the left out data.</td>
 </table>
 <dl class="method">
 <dt id="sklearn.grid_search.GridSearchCV.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>estimator</em>, <em>param_grid</em>, <em>loss_func=None</em>, <em>score_func=None</em>, <em>fit_params=None</em>, <em>n_jobs=1</em>, <em>iid=True</em>, <em>refit=True</em>, <em>cv=None</em>, <em>verbose=0</em>, <em>pre_dispatch='2*n_jobs'</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.GridSearchCV.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>estimator</em>, <em>param_grid</em>, <em>scoring=None</em>, <em>loss_func=None</em>, <em>score_func=None</em>, <em>fit_params=None</em>, <em>n_jobs=1</em>, <em>iid=True</em>, <em>refit=True</em>, <em>cv=None</em>, <em>verbose=0</em>, <em>pre_dispatch='2*n_jobs'</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.GridSearchCV.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

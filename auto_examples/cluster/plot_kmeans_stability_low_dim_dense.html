@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Segmenting the picture of Lena in regions" href="plot_lena_segmentation.html" />
-    <link rel="prev" title="A demo of K-Means clustering on the handwritten digits data" href="plot_kmeans_digits.html" />
+    <link rel="next" title="A demo of K-Means clustering on the handwritten digits data" href="plot_kmeans_digits.html" />
+    <link rel="prev" title="Feature agglomeration vs. univariate selection" href="plot_feature_agglomeration_vs_univariate_selection.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_kmeans_digits.html" title="A demo of K-Means clustering on the handwritten digits data"
+	<a href="plot_feature_agglomeration_vs_univariate_selection.html" title="Feature agglomeration vs. univariate selection"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    A demo of K-Mean...
+	    Feature agglomer...
 	    </span>
 	    <span class="hiddenrellink">
-	    A demo of K-Means clustering on the handwritten digits data
+	    Feature agglomeration vs. univariate selection
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_lena_segmentation.html" title="Segmenting the picture of Lena in regions"
+	<a href="plot_kmeans_digits.html" title="A demo of K-Means clustering on the handwritten digits data"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Segmenting the p...
+	    A demo of K-Mean...
 	    </span>
 	    <span class="hiddenrellink">
-	    Segmenting the picture of Lena in regions
+	    A demo of K-Means clustering on the handwritten digits data
 	    </span>
 	    
 	    </a>
@@ -200,7 +200,7 @@ Evaluation of MiniBatchKMeans with k-means++ init
 Evaluation of MiniBatchKMeans with random init</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_kmeans_stability_low_dim_dense.py"><tt class="xref download docutils literal"><span class="pre">plot_kmeans_stability_low_dim_dense.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Olivier Grisel &lt;olivier.grisel@ensta.org&gt;</span>
 <span class="c"># License: Simplified BSD</span>
@@ -260,7 +260,7 @@ Evaluation of MiniBatchKMeans with random init</pre>
 <span class="p">]</span>
 
 <span class="k">for</span> <span class="n">factory</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">cases</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&quot;Evaluation of </span><span class="si">%s</span><span class="s"> with </span><span class="si">%s</span><span class="s"> init&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">init</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Evaluation of </span><span class="si">%s</span><span class="s"> with </span><span class="si">%s</span><span class="s"> init&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">init</span><span class="p">))</span>
     <span class="n">inertia</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.empty.html#numpy.empty"><span class="n">np</span><span class="o">.</span><span class="n">empty</span></a><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">n_init_range</span><span class="p">),</span> <span class="n">n_runs</span><span class="p">))</span>
 
     <span class="k">for</span> <span class="n">run_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_runs</span><span class="p">):</span>
@@ -298,7 +298,7 @@ Evaluation of MiniBatchKMeans with random init</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  4.33 seconds</p>
+<p><strong>Total running time of the example:</strong>  4.36 seconds</p>
 </div>
 
 
@@ -320,12 +320,12 @@ Evaluation of MiniBatchKMeans with random init</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_kmeans_digits.html">
+      <a href="plot_feature_agglomeration_vs_univariate_selection.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_lena_segmentation.html">
+      <a href="plot_kmeans_digits.html">
         Next
       </a>
     </div>

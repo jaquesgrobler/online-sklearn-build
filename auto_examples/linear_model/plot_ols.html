@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Sparsity Example: Fitting only features 1 and 2" href="plot_ols_3d.html" />
-    <link rel="prev" title="Joint feature selection with multi-task Lasso" href="plot_multi_task_lasso_support.html" />
+    <link rel="next" title="Joint feature selection with multi-task Lasso" href="plot_multi_task_lasso_support.html" />
+    <link rel="prev" title="Ordinary Least Squares and Ridge Regression Variance" href="plot_ols_ridge_variance.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_multi_task_lasso_support.html" title="Joint feature selection with multi-task Lasso"
+	<a href="plot_ols_ridge_variance.html" title="Ordinary Least Squares and Ridge Regression Variance"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Joint feature se...
+	    Ordinary Least S...
 	    </span>
 	    <span class="hiddenrellink">
-	    Joint feature selection with multi-task Lasso
+	    Ordinary Least Squares and Ridge Regression Variance
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_ols_3d.html" title="Sparsity Example: Fitting only features 1 and 2"
+	<a href="plot_multi_task_lasso_support.html" title="Joint feature selection with multi-task Lasso"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Sparsity Example...
+	    Joint feature se...
 	    </span>
 	    <span class="hiddenrellink">
-	    Sparsity Example: Fitting only features 1 and 2
+	    Joint feature selection with multi-task Lasso
 	    </span>
 	    
 	    </a>
@@ -183,13 +183,12 @@ the linear approximation.</p>
 calculated.</p>
 <img alt="../../_images/plot_ols_1.png" class="align-center" src="../../_images/plot_ols_1.png" />
 <p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Coefficients:
-[ 938.23786125]
+<div class="highlight-python"><pre>('Coefficients: \n', array([ 938.23786125]))
 Residual sum of squares: 2548.07
 Variance score: 0.47</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_ols.py"><tt class="xref download docutils literal"><span class="pre">plot_ols.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 
 <span class="c"># Code source: Jaques Grobler</span>
@@ -223,12 +222,12 @@ Variance score: 0.47</pre>
 <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">diabetes_X_train</span><span class="p">,</span> <span class="n">diabetes_y_train</span><span class="p">)</span>
 
 <span class="c"># The coefficients</span>
-<span class="k">print</span> <span class="s">&#39;Coefficients: </span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a><span class="o">.</span><span class="n">coef_</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Coefficients: </span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 <span class="c"># The mean square error</span>
-<span class="k">print</span> <span class="p">(</span><span class="s">&quot;Residual sum of squares: </span><span class="si">%.2f</span><span class="s">&quot;</span> <span class="o">%</span>
-       <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.mean.html#numpy.mean"><span class="n">np</span><span class="o">.</span><span class="n">mean</span></a><span class="p">((</span><a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">)</span> <span class="o">-</span> <span class="n">diabetes_y_test</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Residual sum of squares: </span><span class="si">%.2f</span><span class="s">&quot;</span>
+      <span class="o">%</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.mean.html#numpy.mean"><span class="n">np</span><span class="o">.</span><span class="n">mean</span></a><span class="p">((</span><a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">)</span> <span class="o">-</span> <span class="n">diabetes_y_test</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
 <span class="c"># Explained variance score: 1 is perfect prediction</span>
-<span class="k">print</span> <span class="p">(</span><span class="s">&#39;Variance score: </span><span class="si">%.2f</span><span class="s">&#39;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">,</span> <span class="n">diabetes_y_test</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Variance score: </span><span class="si">%.2f</span><span class="s">&#39;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">,</span> <span class="n">diabetes_y_test</span><span class="p">))</span>
 
 <span class="c"># Plot outputs</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">,</span> <span class="n">diabetes_y_test</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
@@ -263,12 +262,12 @@ Variance score: 0.47</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_multi_task_lasso_support.html">
+      <a href="plot_ols_ridge_variance.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_ols_3d.html">
+      <a href="plot_multi_task_lasso_support.html">
         Next
       </a>
     </div>

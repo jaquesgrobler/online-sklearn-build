@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Joint feature selection with multi-task Lasso" href="plot_multi_task_lasso_support.html" />
-    <link rel="prev" title="L1 Penalty and Sparsity in Logistic Regression" href="plot_logistic_l1_l2_sparsity.html" />
+    <link rel="next" title="Logistic Regression 3-class Classifier" href="plot_iris_logistic.html" />
+    <link rel="prev" title="Comparing various online solvers" href="plot_sgd_comparison.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_logistic_l1_l2_sparsity.html" title="L1 Penalty and Sparsity in Logistic Regression"
+	<a href="plot_sgd_comparison.html" title="Comparing various online solvers"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    L1 Penalty and S...
+	    Comparing variou...
 	    </span>
 	    <span class="hiddenrellink">
-	    L1 Penalty and Sparsity in Logistic Regression
+	    Comparing various online solvers
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_multi_task_lasso_support.html" title="Joint feature selection with multi-task Lasso"
+	<a href="plot_iris_logistic.html" title="Logistic Regression 3-class Classifier"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Joint feature se...
+	    Logistic Regress...
 	    </span>
 	    <span class="hiddenrellink">
-	    Joint feature selection with multi-task Lasso
+	    Logistic Regression 3-class Classifier
 	    </span>
 	    
 	    </a>
@@ -177,10 +177,10 @@
 <img alt="../../_images/plot_logistic_path_1.png" class="align-center" src="../../_images/plot_logistic_path_1.png" />
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Computing regularization path ...
-This took  0:00:00.025053</pre>
+('This took ', datetime.timedelta(0, 0, 21704))</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_logistic_path.py"><tt class="xref download docutils literal"><span class="pre">plot_logistic_path.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Alexandre Gramfort &lt;alexandre.gramfort@inria.fr&gt;</span>
 <span class="c"># License: BSD Style.</span>
@@ -208,7 +208,7 @@ This took  0:00:00.025053</pre>
 <span class="n">cs</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.svm.l1_min_c.html#sklearn.svm.l1_min_c"><span class="n">l1_min_c</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s">&#39;log&#39;</span><span class="p">)</span> <span class="o">*</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.logspace.html#numpy.logspace"><span class="n">np</span><span class="o">.</span><span class="n">logspace</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
 
-<span class="k">print</span> <span class="s">&quot;Computing regularization path ...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing regularization path ...&quot;</span><span class="p">)</span>
 <span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 <a href="../../modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression"><span class="n">clf</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression"><span class="n">linear_model</span><span class="o">.</span><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l1&#39;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
 <span class="n">coefs_</span> <span class="o">=</span> <span class="p">[]</span>
@@ -216,7 +216,7 @@ This took  0:00:00.025053</pre>
     <a href="../../modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression"><span class="n">clf</span></a><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
     <a href="../../modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression"><span class="n">clf</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="n">coefs_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><a href="../../modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression"><span class="n">clf</span></a><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-<span class="k">print</span> <span class="s">&quot;This took &quot;</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;This took &quot;</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
 
 <span class="n">coefs_</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span><span class="n">coefs_</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">cs</span><span class="p">),</span> <span class="n">coefs_</span><span class="p">)</span>
@@ -228,7 +228,7 @@ This took  0:00:00.025053</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.11 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.10 seconds</p>
 </div>
 
 
@@ -250,12 +250,12 @@ This took  0:00:00.025053</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_logistic_l1_l2_sparsity.html">
+      <a href="plot_sgd_comparison.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_multi_task_lasso_support.html">
+      <a href="plot_iris_logistic.html">
         Next
       </a>
     </div>

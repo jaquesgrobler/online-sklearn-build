@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Recursive feature elimination" href="plot_rfe_digits.html" />
-    <link rel="prev" title="PLS Partial Least Squares" href="plot_pls.html" />
+    <link rel="next" title="Isotonic Regression" href="plot_isotonic_regression.html" />
+    <link rel="prev" title="Confusion matrix" href="plot_confusion_matrix.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_pls.html" title="PLS Partial Least Squares"
+	<a href="plot_confusion_matrix.html" title="Confusion matrix"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    PLS Partial Leas...
+	    Confusion matrix
 	    </span>
 	    <span class="hiddenrellink">
-	    PLS Partial Least Squares
+	    Confusion matrix
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_rfe_digits.html" title="Recursive feature elimination"
+	<a href="plot_isotonic_regression.html" title="Isotonic Regression"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Recursive featur...
+	    Isotonic Regress...
 	    </span>
 	    <span class="hiddenrellink">
-	    Recursive feature elimination
+	    Isotonic Regression
 	    </span>
 	    
 	    </a>
@@ -180,7 +180,7 @@ of the output of a classifier.</p>
 <div class="highlight-python"><pre>Area Under Curve: 0.82</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_precision_recall.py"><tt class="xref download docutils literal"><span class="pre">plot_precision_recall.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
@@ -212,7 +212,7 @@ of the output of a classifier.</p>
 <span class="c"># Compute Precision-Recall and plot curve</span>
 <span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <a href="../modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve"><span class="n">precision_recall_curve</span></a><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">half</span><span class="p">:],</span> <span class="n">probas_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">area</span> <span class="o">=</span> <a href="../modules/generated/sklearn.metrics.auc.html#sklearn.metrics.auc"><span class="n">auc</span></a><span class="p">(</span><span class="n">recall</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Area Under Curve: </span><span class="si">%0.2f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">area</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Area Under Curve: </span><span class="si">%0.2f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">area</span><span class="p">)</span>
 
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.clf"><span class="n">pl</span><span class="o">.</span><span class="n">clf</span></a><span class="p">()</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">recall</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Precision-Recall curve&#39;</span><span class="p">)</span>
@@ -247,12 +247,12 @@ of the output of a classifier.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_pls.html">
+      <a href="plot_confusion_matrix.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_rfe_digits.html">
+      <a href="plot_isotonic_regression.html">
         Next
       </a>
     </div>

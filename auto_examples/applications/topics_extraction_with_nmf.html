@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Wikipedia principal eigenvector" href="wikipedia_principal_eigenvector.html" />
-    <link rel="prev" title="Libsvm GUI" href="svm_gui.html" />
+    <link rel="next" title="Outlier detection on a real data set" href="plot_outlier_detection_housing.html" />
+    <link rel="prev" title="Classification of text documents using sparse features" href="../document_classification_20newsgroups.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="svm_gui.html" title="Libsvm GUI"
+	<a href="../document_classification_20newsgroups.html" title="Classification of text documents using sparse features"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Libsvm GUI
+	    Classification o...
 	    </span>
 	    <span class="hiddenrellink">
-	    Libsvm GUI
+	    Classification of text documents using sparse features
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="wikipedia_principal_eigenvector.html" title="Wikipedia principal eigenvector"
+	<a href="plot_outlier_detection_housing.html" title="Outlier detection on a real data set"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Wikipedia princi...
+	    Outlier detectio...
 	    </span>
 	    <span class="hiddenrellink">
-	    Wikipedia principal eigenvector
+	    Outlier detection on a real data set
 	    </span>
 	    
 	    </a>
@@ -200,6 +200,8 @@ edu reply pain health david article medical medicine 16</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author: Olivier Grisel &lt;olivier.grisel@ensta.org&gt;</span>
 <span class="c"># License: Simplified BSD</span>
 
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction</span> <span class="kn">import</span> <span class="n">text</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">decomposition</span>
@@ -214,28 +216,28 @@ edu reply pain health david article medical medicine 16</p>
 <span class="c"># frequency with TF-IDF weighting (without top 5% stop words)</span>
 
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="k">print</span> <span class="s">&quot;Loading dataset and extracting TF-IDF features...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Loading dataset and extracting TF-IDF features...&quot;</span><span class="p">)</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">)</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">n_samples</span><span class="p">])</span>
 <span class="n">tfidf</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">TfidfTransformer</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 <span class="c"># Fit the NMF model</span>
-<span class="k">print</span> <span class="s">&quot;Fitting the NMF model on with n_samples=</span><span class="si">%d</span><span class="s"> and n_features=</span><span class="si">%d</span><span class="s">...&quot;</span> <span class="o">%</span> <span class="p">(</span>
-    <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Fitting the NMF model on with n_samples=</span><span class="si">%d</span><span class="s"> and n_features=</span><span class="si">%d</span><span class="s">...&quot;</span>
+      <span class="o">%</span> <span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
 <span class="n">nmf</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">NMF</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_topics</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">tfidf</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 <span class="c"># Inverse the vectorizer vocabulary to be able</span>
 <span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">topic_idx</span><span class="p">,</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nmf</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s">&quot;Topic #</span><span class="si">%d</span><span class="s">:&quot;</span> <span class="o">%</span> <span class="n">topic_idx</span>
-    <span class="k">print</span> <span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">topic</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:</span><span class="o">-</span><span class="n">n_top_words</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
-    <span class="k">print</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Topic #</span><span class="si">%d</span><span class="s">:&quot;</span> <span class="o">%</span> <span class="n">topic_idx</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">topic</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:</span><span class="o">-</span><span class="n">n_top_words</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]))</span>
+    <span class="k">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -259,12 +261,12 @@ edu reply pain health david article medical medicine 16</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="svm_gui.html">
+      <a href="../document_classification_20newsgroups.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="wikipedia_principal_eigenvector.html">
+      <a href="plot_outlier_detection_housing.html">
         Next
       </a>
     </div>

@@ -240,10 +240,10 @@ should be directly passed as a fortran contiguous numpy array.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
 <span class="go">MultiTaskLasso(alpha=0.1, copy_X=True, fit_intercept=True, max_iter=1000,</span>
 <span class="go">        normalize=False, tol=0.0001, warm_start=False)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 <span class="go">[[ 0.89393398  0.        ]</span>
 <span class="go"> [ 0.89393398  0.        ]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
 <span class="go">[ 0.10606602  0.10606602]</span>
 </pre></div>
 </div>

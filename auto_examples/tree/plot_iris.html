@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Decision Tree Regression" href="plot_tree_regression.html" />
-    <link rel="prev" title="SVM: Weighted samples" href="../svm/plot_weighted_samples.html" />
+    <link rel="next" title="1. Contributing" href="../../developers/index.html" />
+    <link rel="prev" title="Multi-output Decision Tree Regression" href="plot_tree_regression_multioutput.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="../svm/plot_weighted_samples.html" title="SVM: Weighted samples"
+	<a href="plot_tree_regression_multioutput.html" title="Multi-output Decision Tree Regression"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    SVM: Weighted sa...
+	    Multi-output Dec...
 	    </span>
 	    <span class="hiddenrellink">
-	    SVM: Weighted samples
+	    Multi-output Decision Tree Regression
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_tree_regression.html" title="Decision Tree Regression"
+	<a href="../../developers/index.html" title="1. Contributing"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Decision Tree Re...
+	    1. Contributing
 	    </span>
 	    <span class="hiddenrellink">
-	    Decision Tree Regression
+	    1. Contributing
 	    </span>
 	    
 	    </a>
@@ -180,7 +180,7 @@ boundaries made of combinations of simple thresholding rules inferred from
 the training samples.</p>
 <img alt="../../_images/plot_iris_11.png" class="align-center" src="../../_images/plot_iris_11.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_iris1.py"><tt class="xref download docutils literal"><span class="pre">plot_iris.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
@@ -234,7 +234,7 @@ the training samples.</p>
     <a href="http://matplotlib.org/api/axis_api.html#matplotlib.axis"><span class="n">pl</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s">&quot;tight&quot;</span><span class="p">)</span>
 
     <span class="c"># Plot the training points</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">xrange</span><span class="p">(</span><span class="n">n_classes</span><span class="p">),</span> <span class="n">plot_colors</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_classes</span><span class="p">),</span> <span class="n">plot_colors</span><span class="p">):</span>
         <span class="n">idx</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.where.html#numpy.where"><span class="n">np</span><span class="o">.</span><span class="n">where</span></a><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
         <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
                    <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
@@ -246,7 +246,7 @@ the training samples.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.48 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.50 seconds</p>
 </div>
 
 
@@ -268,12 +268,12 @@ the training samples.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="../svm/plot_weighted_samples.html">
+      <a href="plot_tree_regression_multioutput.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_tree_regression.html">
+      <a href="../../developers/index.html">
         Next
       </a>
     </div>

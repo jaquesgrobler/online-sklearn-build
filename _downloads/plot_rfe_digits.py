@@ -11,7 +11,7 @@ a digit classification task.
     See also :ref:`example_plot_rfe_with_cross_validation.py`
 
 """
-print __doc__
+print(__doc__)
 
 from sklearn.svm import SVC
 from sklearn.datasets import load_digits

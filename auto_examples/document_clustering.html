@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Pipeline Anova SVM" href="feature_selection_pipeline.html" />
-    <link rel="prev" title="Classification of text documents using sparse features" href="document_classification_20newsgroups.html" />
+    <link rel="next" title="Linear and Quadratic Discriminant Analysis with confidence ellipsoid" href="plot_lda_qda.html" />
+    <link rel="prev" title="PLS Partial Least Squares" href="plot_pls.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="document_classification_20newsgroups.html" title="Classification of text documents using sparse features"
+	<a href="plot_pls.html" title="PLS Partial Least Squares"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Classification o...
+	    PLS Partial Leas...
 	    </span>
 	    <span class="hiddenrellink">
-	    Classification of text documents using sparse features
+	    PLS Partial Least Squares
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="feature_selection_pipeline.html" title="Pipeline Anova SVM"
+	<a href="plot_lda_qda.html" title="Linear and Quadratic Discriminant Analysis with confidence ellipsoid"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Pipeline Anova S...
+	    Linear and Quadr...
 	    </span>
 	    <span class="hiddenrellink">
-	    Pipeline Anova SVM
+	    Linear and Quadratic Discriminant Analysis with confidence ellipsoid
 	    </span>
 	    
 	    </a>
@@ -208,13 +208,15 @@ datasets such as text data. Other measures such as V-measure and Adjusted Rand
 Index are information theoretic based evaluation scores: as they are only based
 on cluster assignements rather than distances, hence not affected by the curse
 of dimensionality.</p>
-<p>Note: as k-means is optimizing a non convex objective function, it will likely
+<p>Note: as k-means is optimizing a non-convex objective function, it will likely
 end up in a local optimum. Several runs with independent random init might be
 necessary to get a good convergence.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/document_clustering.py"><tt class="xref download docutils literal"><span class="pre">document_clustering.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author: Peter Prettenhofer &lt;peter.prettenhofer@gmail.com&gt;</span>
 <span class="c">#         Lars Buitinck &lt;L.J.Buitinck@uva.nl&gt;</span>
 <span class="c"># License: Simplified BSD</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_20newsgroups</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
@@ -252,7 +254,7 @@ necessary to get a good convergence.</p>
               <span class="n">help</span><span class="o">=</span><span class="s">&quot;Maximum number of features (dimensions)&quot;</span>
                    <span class="s">&quot;to extract from text.&quot;</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="n">__doc__</span>
+<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 <span class="n">op</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
 
 <span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
@@ -272,20 +274,20 @@ necessary to get a good convergence.</p>
 <span class="c"># Uncomment the following to do the analysis on all the categories</span>
 <span class="c">#categories = None</span>
 
-<span class="k">print</span> <span class="s">&quot;Loading 20 newsgroups dataset for categories:&quot;</span>
-<span class="k">print</span> <span class="n">categories</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Loading 20 newsgroups dataset for categories:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;all&#39;</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span>
                              <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> categories&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
-<span class="k">print</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> categories&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">target_names</span><span class="p">))</span>
+<span class="k">print</span><span class="p">()</span>
 
 <span class="n">labels</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">target</span>
 <span class="n">true_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="k">print</span> <span class="s">&quot;Extracting features from the training dataset using a sparse vectorizer&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Extracting features from the training dataset using a sparse vectorizer&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">use_hashing</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">use_idf</span><span class="p">:</span>
@@ -307,9 +309,9 @@ necessary to get a good convergence.</p>
                                  <span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">,</span> <span class="n">use_idf</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">use_idf</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">, n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">print</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">, n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
 
 
 <span class="c">###############################################################################</span>
@@ -323,21 +325,21 @@ necessary to get a good convergence.</p>
     <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">true_k</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="s">&quot;Clustering sparse data with </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">km</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Clustering sparse data with </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">km</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
-<span class="k">print</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+<span class="k">print</span><span class="p">()</span>
 
-<span class="k">print</span> <span class="s">&quot;Homogeneity: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">homogeneity_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Completeness: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">completeness_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;V-measure: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">v_measure_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Adjusted Rand-Index: </span><span class="si">%.3f</span><span class="s">&quot;</span> <span class="o">%</span> \
-    <span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Silhouette Coefficient: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Homogeneity: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">homogeneity_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Completeness: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">completeness_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;V-measure: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">v_measure_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Adjusted Rand-Index: </span><span class="si">%.3f</span><span class="s">&quot;</span>
+      <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Silhouette Coefficient: </span><span class="si">%0.3f</span><span class="s">&quot;</span>
+      <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
 
-<span class="k">print</span>
+<span class="k">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -361,12 +363,12 @@ necessary to get a good convergence.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="document_classification_20newsgroups.html">
+      <a href="plot_pls.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="feature_selection_pipeline.html">
+      <a href="plot_lda_qda.html">
         Next
       </a>
     </div>

@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Lasso path using LARS" href="plot_lasso_lars.html" />
-    <link rel="prev" title="Lasso and Elastic Net for Sparse Signals" href="plot_lasso_and_elasticnet.html" />
+    <link rel="next" title="Lasso model selection: Cross-Validation / AIC / BIC" href="plot_lasso_model_selection.html" />
+    <link rel="prev" title="Plot multi-class SGD on the iris dataset" href="plot_sgd_iris.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_lasso_and_elasticnet.html" title="Lasso and Elastic Net for Sparse Signals"
+	<a href="plot_sgd_iris.html" title="Plot multi-class SGD on the iris dataset"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Lasso and Elasti...
+	    Plot multi-class...
 	    </span>
 	    <span class="hiddenrellink">
-	    Lasso and Elastic Net for Sparse Signals
+	    Plot multi-class SGD on the iris dataset
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_lasso_lars.html" title="Lasso path using LARS"
+	<a href="plot_lasso_model_selection.html" title="Lasso model selection: Cross-Validation / AIC / BIC"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Lasso path using...
+	    Lasso model sele...
 	    </span>
 	    <span class="hiddenrellink">
-	    Lasso path using LARS
+	    Lasso model selection: Cross-Validation / AIC / BIC
 	    </span>
 	    
 	    </a>
@@ -191,7 +191,7 @@ Computing regularization path using the elastic net...
 Computing regularization path using the positve elastic net...</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lasso_coordinate_descent_path.py"><tt class="xref download docutils literal"><span class="pre">plot_lasso_coordinate_descent_path.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Alexandre Gramfort &lt;alexandre.gramfort@inria.fr&gt;</span>
 <span class="c"># License: BSD Style.</span>
@@ -213,22 +213,22 @@ Computing regularization path using the positve elastic net...</pre>
 
 <span class="n">eps</span> <span class="o">=</span> <span class="mf">5e-3</span>  <span class="c"># the smaller it is the longer is the path</span>
 
-<span class="k">print</span> <span class="s">&quot;Computing regularization path using the lasso...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing regularization path using the lasso...&quot;</span><span class="p">)</span>
 <span class="n">models</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.lasso_path.html#sklearn.linear_model.lasso_path"><span class="n">lasso_path</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">)</span>
 <span class="n">alphas_lasso</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a><span class="o">.</span><span class="n">alpha</span> <span class="k">for</span> <a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 <span class="n">coefs_lasso</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a><span class="o">.</span><span class="n">coef_</span> <span class="k">for</span> <a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 
-<span class="k">print</span> <span class="s">&quot;Computing regularization path using the positive lasso...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing regularization path using the positive lasso...&quot;</span><span class="p">)</span>
 <span class="n">models</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.lasso_path.html#sklearn.linear_model.lasso_path"><span class="n">lasso_path</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">alphas_positive_lasso</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a><span class="o">.</span><span class="n">alpha</span> <span class="k">for</span> <a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 <span class="n">coefs_positive_lasso</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a><span class="o">.</span><span class="n">coef_</span> <span class="k">for</span> <a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 
-<span class="k">print</span> <span class="s">&quot;Computing regularization path using the elastic net...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing regularization path using the elastic net...&quot;</span><span class="p">)</span>
 <span class="n">models</span> <span class="o">=</span> <span class="n">enet_path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 <span class="n">alphas_enet</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a><span class="o">.</span><span class="n">alpha</span> <span class="k">for</span> <a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 <span class="n">coefs_enet</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a><span class="o">.</span><span class="n">coef_</span> <span class="k">for</span> <a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 
-<span class="k">print</span> <span class="s">&quot;Computing regularization path using the positve elastic net...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing regularization path using the positve elastic net...&quot;</span><span class="p">)</span>
 <span class="n">models</span> <span class="o">=</span> <span class="n">enet_path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">alphas_positive_enet</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a><span class="o">.</span><span class="n">alpha</span> <span class="k">for</span> <a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 <span class="n">coefs_positive_enet</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a><span class="o">.</span><span class="n">coef_</span> <span class="k">for</span> <a href="../../modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet"><span class="n">model</span></a> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
@@ -299,12 +299,12 @@ Computing regularization path using the positve elastic net...</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_lasso_and_elasticnet.html">
+      <a href="plot_sgd_iris.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_lasso_lars.html">
+      <a href="plot_lasso_model_selection.html">
         Next
       </a>
     </div>

@@ -31,7 +31,7 @@
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Label Propagation digits active learning" href="plot_label_propagation_digits_active_learning.html" />
-    <link rel="prev" title="Nearest Neighbors regression" href="../neighbors/plot_regression.html" />
+    <link rel="prev" title="Decision boundary of label propagation versus SVM on the Iris dataset" href="plot_label_propagation_versus_svm_iris.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="../neighbors/plot_regression.html" title="Nearest Neighbors regression"
+	<a href="plot_label_propagation_versus_svm_iris.html" title="Decision boundary of label propagation versus SVM on the Iris dataset"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Nearest Neighbor...
+	    Decision boundar...
 	    </span>
 	    <span class="hiddenrellink">
-	    Nearest Neighbors regression
+	    Decision boundary of label propagation versus SVM on the Iris dataset
 	    </span>
 	    
 	    </a>
@@ -211,7 +211,7 @@ Confusion matrix
  [ 0  0  0  2  1  0  2  3 27]]</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_label_propagation_digits.py"><tt class="xref download docutils literal"><span class="pre">plot_label_propagation_digits.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Authors: Clay Woolam &lt;clay@woolam.org&gt;</span>
 <span class="c"># Licence: BSD</span>
@@ -259,10 +259,10 @@ Confusion matrix
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Label Spreading model: </span><span class="si">%d</span><span class="s"> labeled &amp; </span><span class="si">%d</span><span class="s"> unlabeled points (</span><span class="si">%d</span><span class="s"> total)&quot;</span> <span class="o">%</span>
       <span class="p">(</span><span class="n">n_labeled_points</span><span class="p">,</span> <span class="n">n_total_samples</span> <span class="o">-</span> <span class="n">n_labeled_points</span><span class="p">,</span> <span class="n">n_total_samples</span><span class="p">))</span>
 
-<span class="k">print</span> <a href="../../modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report"><span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span></a><span class="p">(</span><span class="n">true_labels</span><span class="p">,</span> <span class="n">predicted_labels</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><a href="../../modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report"><span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span></a><span class="p">(</span><span class="n">true_labels</span><span class="p">,</span> <span class="n">predicted_labels</span><span class="p">))</span>
 
-<span class="k">print</span> <span class="s">&quot;Confusion matrix&quot;</span>
-<span class="k">print</span> <span class="n">cm</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Confusion matrix&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
 
 <span class="c"># calculate uncertainty values for each transduced distribution</span>
 <span class="n">pred_entropies</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">entropy</span><span class="p">(</span><a href="../../modules/generated/sklearn.semi_supervised.LabelSpreading.html#sklearn.semi_supervised.LabelSpreading"><span class="n">lp_model</span></a><span class="o">.</span><span class="n">label_distributions_</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
@@ -287,7 +287,7 @@ Confusion matrix
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.49 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.52 seconds</p>
 </div>
 
 
@@ -309,7 +309,7 @@ Confusion matrix
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="../neighbors/plot_regression.html">
+      <a href="plot_label_propagation_versus_svm_iris.html">
         Previous
       </a>
     </div>

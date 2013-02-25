@@ -212,9 +212,9 @@ algorithms. The simplest clustering algorithm is
 <span class="gp">&gt;&gt;&gt; </span><span class="n">k_means</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">k_means</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_iris</span><span class="p">)</span> 
 <span class="go">KMeans(copy_x=True, init=&#39;k-means++&#39;, ...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">k_means</span><span class="o">.</span><span class="n">labels_</span><span class="p">[::</span><span class="mi">10</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">k_means</span><span class="o">.</span><span class="n">labels_</span><span class="p">[::</span><span class="mi">10</span><span class="p">])</span>
 <span class="go">[1 1 1 1 1 0 0 0 0 0 2 2 2 2 2]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">y_iris</span><span class="p">[::</span><span class="mi">10</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">y_iris</span><span class="p">[::</span><span class="mi">10</span><span class="p">])</span>
 <span class="go">[0 0 0 0 0 1 1 1 1 1 2 2 2 2 2]</span>
 </pre></div>
 </div>
@@ -267,6 +267,26 @@ For instance, this can be used to posterize an image:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lena_compressed</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">lena</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
+<table border="1" class="centered docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="../../auto_examples/cluster/plot_lena_compress.html"><img alt="lena" src="../../_images/plot_lena_compress_11.png" style="width: 180.0px; height: 132.0px;" /></a></td>
+<td><a class="reference external" href="../../auto_examples/cluster/plot_lena_compress.html"><img alt="lena_compressed" src="../../_images/plot_lena_compress_31.png" style="width: 180.0px; height: 132.0px;" /></a></td>
+<td><a class="reference external" href="../../auto_examples/cluster/plot_lena_compress.html"><img alt="lena_regular" src="../../_images/plot_lena_compress_21.png" style="width: 180.0px; height: 132.0px;" /></a></td>
+<td><a class="reference external" href="../../auto_examples/cluster/plot_lena_compress.html"><img alt="lena_histogram" src="../../_images/plot_lena_compress_41.png" style="width: 180.0px; height: 132.0px;" /></a></td>
+</tr>
+<tr class="row-even"><td>Raw image</td>
+<td>K-means quantization</td>
+<td>Equal bins</td>
+<td>Image histogram</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section" id="hierarchical-agglomerative-clustering-ward">
@@ -310,14 +330,14 @@ clustering an image:</p>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Compute clustering</span>
-<span class="k">print</span> <span class="s">&quot;Compute structured hierarchical clustering...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Compute structured hierarchical clustering...&quot;</span><span class="p">)</span>
 <span class="n">st</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c"># number of regions</span>
 <span class="n">ward</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="n">connectivity</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ward</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="n">lena</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Elaspsed time: &quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st</span>
-<span class="k">print</span> <span class="s">&quot;Number of pixels: &quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">.</span><span class="n">size</span>
-<span class="k">print</span> <span class="s">&quot;Number of clusters: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">size</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Elapsed time: &quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Number of pixels: &quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Number of clusters: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -383,7 +403,7 @@ data by projecting on a principal subspace.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pca</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">PCA</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="go">PCA(copy=True, n_components=None, whiten=False)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">)</span>  
 <span class="go">[  2.18565811e+00   1.19346747e+00   8.43026679e-32]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># As we can see, only the 2 first components are useful</span>

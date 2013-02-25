@@ -570,21 +570,25 @@ printable format, see <a class="reference internal" href="support.html#documenta
 <li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#totally-random-trees-embedding">3.9.1.6. Totally Random Trees Embedding</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#gradient-tree-boosting">3.9.2. Gradient Tree Boosting</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#classification">3.9.2.1. Classification</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#regression">3.9.2.2. Regression</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#mathematical-formulation">3.9.2.3. Mathematical formulation</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="modules/ensemble.html#loss-functions">3.9.2.3.1. Loss Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#adaboost">3.9.2. AdaBoost</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#usage">3.9.2.1. Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#regularization">3.9.2.4. Regularization</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="modules/ensemble.html#shrinkage">3.9.2.4.1. Shrinkage</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/ensemble.html#subsampling">3.9.2.4.2. Subsampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#gradient-tree-boosting">3.9.3. Gradient Tree Boosting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#classification">3.9.3.1. Classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#regression">3.9.3.2. Regression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#mathematical-formulation">3.9.3.3. Mathematical formulation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="modules/ensemble.html#loss-functions">3.9.3.3.1. Loss Functions</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#interpretation">3.9.2.5. Interpretation</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="modules/ensemble.html#feature-importance">3.9.2.5.1. Feature importance</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/ensemble.html#partial-dependence">3.9.2.5.2. Partial dependence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#regularization">3.9.3.4. Regularization</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="modules/ensemble.html#shrinkage">3.9.3.4.1. Shrinkage</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/ensemble.html#subsampling">3.9.3.4.2. Subsampling</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#interpretation">3.9.3.5. Interpretation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="modules/ensemble.html#feature-importance">3.9.3.5.1. Feature importance</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/ensemble.html#partial-dependence">3.9.3.5.2. Partial dependence</a></li>
 </ul>
 </li>
 </ul>
@@ -819,29 +823,19 @@ printable format, see <a class="reference internal" href="support.html#documenta
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/grid_search.html">5.2. Grid Search: setting estimator parameters</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#gridsearchcv">5.2.1. GridSearchCV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#gridsearchcv">5.2.1. GridSearchCV</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#scoring-functions-for-gridsearchcv">5.2.1.1. Scoring functions for GridSearchCV</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#examples">5.2.2. Examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#alternatives-to-brute-force-grid-search">5.2.3. Alternatives to brute force grid search</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#model-specific-cross-validation">5.2.3.1. Model specific cross-validation</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.RidgeCV.html">8.17.25. sklearn.linear_model.RidgeCV</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.RidgeClassifierCV.html">8.17.24. sklearn.linear_model.RidgeClassifierCV</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.LarsCV.html">8.17.6. sklearn.linear_model.LarsCV</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.LassoLarsCV.html">8.17.10. sklearn.linear_model.LassoLarsCV</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.LassoCV.html">8.17.8. sklearn.linear_model.LassoCV</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.ElasticNetCV.html">8.17.4. sklearn.linear_model.ElasticNetCV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#model-specific-cross-validation">5.2.3.1. Model specific cross-validation</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#information-criterion">5.2.3.2. Information Criterion</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.LassoLarsIC.html">8.17.11. sklearn.linear_model.LassoLarsIC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#information-criterion">5.2.3.2. Information Criterion</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#out-of-bag-estimates">5.2.3.3. Out of Bag Estimates</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.ensemble.RandomForestClassifier.html">8.7.1. sklearn.ensemble.RandomForestClassifier</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.ensemble.RandomForestRegressor.html">8.7.3. sklearn.ensemble.RandomForestRegressor</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.ensemble.ExtraTreesClassifier.html">8.7.4. sklearn.ensemble.ExtraTreesClassifier</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.ensemble.ExtraTreesRegressor.html">8.7.5. sklearn.ensemble.ExtraTreesRegressor</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">8.7.6. sklearn.ensemble.GradientBoostingClassifier</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">8.7.7. sklearn.ensemble.GradientBoostingRegressor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#out-of-bag-estimates">5.2.3.3. Out of Bag Estimates</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -883,7 +877,12 @@ printable format, see <a class="reference internal" href="support.html#documenta
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#clustering-metrics">5.5.3. Clustering metrics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#dummy-estimators">5.5.4. Dummy estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#scoring-objects-defining-your-scoring-rules">5.5.4. <cite>Scoring</cite> objects: defining your scoring rules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#creating-scoring-objects-from-score-functions">5.5.4.1. Creating scoring objects from score functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#implementing-your-own-scoring-object">5.5.4.2. Implementing your own scoring object</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#dummy-estimators">5.5.5. Dummy estimators</a></li>
 </ul>
 </li>
 </ul>
@@ -945,7 +944,7 @@ printable format, see <a class="reference internal" href="support.html#documenta
 <li class="toctree-l3"><a class="reference internal" href="modules/random_projection.html#sparse-random-projection">6.4.3. Sparse random projection</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="modules/metrics.html">6.5. Metrics, Affinities and Kernels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/metrics.html">6.5. Pairwise metrics, Affinities and Kernels</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/metrics.html#cosine-similarity">6.5.1. Cosine similarity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/metrics.html#chi-squared-kernel">6.5.2. Chi Squared Kernel</a></li>
 </ul>
@@ -969,6 +968,7 @@ printable format, see <a class="reference internal" href="support.html#documenta
 <li class="toctree-l3"><a class="reference internal" href="datasets/index.html#examples">7.9.2. Examples</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#forest-covertypes">7.10. Forest covertypes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules/classes.html">8. Reference</a><ul>
@@ -1103,11 +1103,13 @@ printable format, see <a class="reference internal" href="support.html#documenta
 <li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.ensemble.RandomForestRegressor.html">8.7.3. sklearn.ensemble.RandomForestRegressor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.ensemble.ExtraTreesClassifier.html">8.7.4. sklearn.ensemble.ExtraTreesClassifier</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.ensemble.ExtraTreesRegressor.html">8.7.5. sklearn.ensemble.ExtraTreesRegressor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">8.7.6. sklearn.ensemble.GradientBoostingClassifier</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">8.7.7. sklearn.ensemble.GradientBoostingRegressor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/classes.html#module-sklearn.ensemble.partial_dependence">8.7.8. partial dependence</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.ensemble.partial_dependence.partial_dependence.html">8.7.8.1. sklearn.ensemble.partial_dependence.partial_dependence</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.ensemble.partial_dependence.plot_partial_dependence.html">8.7.8.2. sklearn.ensemble.partial_dependence.plot_partial_dependence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.ensemble.AdaBoostClassifier.html">8.7.6. sklearn.ensemble.AdaBoostClassifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.ensemble.AdaBoostRegressor.html">8.7.7. sklearn.ensemble.AdaBoostRegressor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">8.7.8. sklearn.ensemble.GradientBoostingClassifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">8.7.9. sklearn.ensemble.GradientBoostingRegressor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/classes.html#module-sklearn.ensemble.partial_dependence">8.7.10. partial dependence</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.ensemble.partial_dependence.partial_dependence.html">8.7.10.1. sklearn.ensemble.partial_dependence.partial_dependence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.ensemble.partial_dependence.plot_partial_dependence.html">8.7.10.2. sklearn.ensemble.partial_dependence.plot_partial_dependence</a></li>
 </ul>
 </li>
 </ul>
@@ -1235,57 +1237,61 @@ printable format, see <a class="reference internal" href="support.html#documenta
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/classes.html#sklearn-metrics-metrics">8.19. <tt class="docutils literal"><span class="pre">sklearn.metrics</span></tt>: Metrics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modules/classes.html#classification-metrics">8.19.1. Classification metrics</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.accuracy_score.html">8.19.1.1. sklearn.metrics.accuracy_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.auc.html">8.19.1.2. sklearn.metrics.auc</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.auc_score.html">8.19.1.3. sklearn.metrics.auc_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.average_precision_score.html">8.19.1.4. sklearn.metrics.average_precision_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.classification_report.html">8.19.1.5. sklearn.metrics.classification_report</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.confusion_matrix.html">8.19.1.6. sklearn.metrics.confusion_matrix</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.f1_score.html">8.19.1.7. sklearn.metrics.f1_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.fbeta_score.html">8.19.1.8. sklearn.metrics.fbeta_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.hinge_loss.html">8.19.1.9. sklearn.metrics.hinge_loss</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.matthews_corrcoef.html">8.19.1.10. sklearn.metrics.matthews_corrcoef</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_curve.html">8.19.1.11. sklearn.metrics.precision_recall_curve</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_fscore_support.html">8.19.1.12. sklearn.metrics.precision_recall_fscore_support</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_score.html">8.19.1.13. sklearn.metrics.precision_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.recall_score.html">8.19.1.14. sklearn.metrics.recall_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.roc_curve.html">8.19.1.15. sklearn.metrics.roc_curve</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.zero_one_loss.html">8.19.1.16. sklearn.metrics.zero_one_loss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/classes.html#model-selection-interface">8.19.1. Model Selection Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.Scorer.html">8.19.1.1. sklearn.metrics.Scorer</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/classes.html#regression-metrics">8.19.2. Regression metrics</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.explained_variance_score.html">8.19.2.1. sklearn.metrics.explained_variance_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.mean_absolute_error.html">8.19.2.2. sklearn.metrics.mean_absolute_error</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.mean_squared_error.html">8.19.2.3. sklearn.metrics.mean_squared_error</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.r2_score.html">8.19.2.4. sklearn.metrics.r2_score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/classes.html#classification-metrics">8.19.2. Classification metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.accuracy_score.html">8.19.2.1. sklearn.metrics.accuracy_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.auc.html">8.19.2.2. sklearn.metrics.auc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.auc_score.html">8.19.2.3. sklearn.metrics.auc_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.average_precision_score.html">8.19.2.4. sklearn.metrics.average_precision_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.classification_report.html">8.19.2.5. sklearn.metrics.classification_report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.confusion_matrix.html">8.19.2.6. sklearn.metrics.confusion_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.f1_score.html">8.19.2.7. sklearn.metrics.f1_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.fbeta_score.html">8.19.2.8. sklearn.metrics.fbeta_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.hinge_loss.html">8.19.2.9. sklearn.metrics.hinge_loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.matthews_corrcoef.html">8.19.2.10. sklearn.metrics.matthews_corrcoef</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_curve.html">8.19.2.11. sklearn.metrics.precision_recall_curve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_fscore_support.html">8.19.2.12. sklearn.metrics.precision_recall_fscore_support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_score.html">8.19.2.13. sklearn.metrics.precision_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.recall_score.html">8.19.2.14. sklearn.metrics.recall_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.roc_curve.html">8.19.2.15. sklearn.metrics.roc_curve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.zero_one_loss.html">8.19.2.16. sklearn.metrics.zero_one_loss</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/classes.html#clustering-metrics">8.19.3. Clustering metrics</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.adjusted_mutual_info_score.html">8.19.3.1. sklearn.metrics.adjusted_mutual_info_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.adjusted_rand_score.html">8.19.3.2. sklearn.metrics.adjusted_rand_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.completeness_score.html">8.19.3.3. sklearn.metrics.completeness_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.homogeneity_completeness_v_measure.html">8.19.3.4. sklearn.metrics.homogeneity_completeness_v_measure</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.homogeneity_score.html">8.19.3.5. sklearn.metrics.homogeneity_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.mutual_info_score.html">8.19.3.6. sklearn.metrics.mutual_info_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.normalized_mutual_info_score.html">8.19.3.7. sklearn.metrics.normalized_mutual_info_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.silhouette_score.html">8.19.3.8. sklearn.metrics.silhouette_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.silhouette_samples.html">8.19.3.9. sklearn.metrics.silhouette_samples</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.v_measure_score.html">8.19.3.10. sklearn.metrics.v_measure_score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/classes.html#regression-metrics">8.19.3. Regression metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.explained_variance_score.html">8.19.3.1. sklearn.metrics.explained_variance_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.mean_absolute_error.html">8.19.3.2. sklearn.metrics.mean_absolute_error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.mean_squared_error.html">8.19.3.3. sklearn.metrics.mean_squared_error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.r2_score.html">8.19.3.4. sklearn.metrics.r2_score</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/classes.html#module-sklearn.metrics.pairwise">8.19.4. Pairwise metrics</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.additive_chi2_kernel.html">8.19.4.1. sklearn.metrics.pairwise.additive_chi2_kernel</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.chi2_kernel.html">8.19.4.2. sklearn.metrics.pairwise.chi2_kernel</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.distance_metrics.html">8.19.4.3. sklearn.metrics.pairwise.distance_metrics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.euclidean_distances.html">8.19.4.4. sklearn.metrics.pairwise.euclidean_distances</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.kernel_metrics.html">8.19.4.5. sklearn.metrics.pairwise.kernel_metrics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.linear_kernel.html">8.19.4.6. sklearn.metrics.pairwise.linear_kernel</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.manhattan_distances.html">8.19.4.7. sklearn.metrics.pairwise.manhattan_distances</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">8.19.4.8. sklearn.metrics.pairwise.pairwise_distances</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.pairwise_kernels.html">8.19.4.9. sklearn.metrics.pairwise.pairwise_kernels</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.polynomial_kernel.html">8.19.4.10. sklearn.metrics.pairwise.polynomial_kernel</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.rbf_kernel.html">8.19.4.11. sklearn.metrics.pairwise.rbf_kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/classes.html#clustering-metrics">8.19.4. Clustering metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.adjusted_mutual_info_score.html">8.19.4.1. sklearn.metrics.adjusted_mutual_info_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.adjusted_rand_score.html">8.19.4.2. sklearn.metrics.adjusted_rand_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.completeness_score.html">8.19.4.3. sklearn.metrics.completeness_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.homogeneity_completeness_v_measure.html">8.19.4.4. sklearn.metrics.homogeneity_completeness_v_measure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.homogeneity_score.html">8.19.4.5. sklearn.metrics.homogeneity_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.mutual_info_score.html">8.19.4.6. sklearn.metrics.mutual_info_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.normalized_mutual_info_score.html">8.19.4.7. sklearn.metrics.normalized_mutual_info_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.silhouette_score.html">8.19.4.8. sklearn.metrics.silhouette_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.silhouette_samples.html">8.19.4.9. sklearn.metrics.silhouette_samples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.v_measure_score.html">8.19.4.10. sklearn.metrics.v_measure_score</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules/classes.html#module-sklearn.metrics.pairwise">8.19.5. Pairwise metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.additive_chi2_kernel.html">8.19.5.1. sklearn.metrics.pairwise.additive_chi2_kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.chi2_kernel.html">8.19.5.2. sklearn.metrics.pairwise.chi2_kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.distance_metrics.html">8.19.5.3. sklearn.metrics.pairwise.distance_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.euclidean_distances.html">8.19.5.4. sklearn.metrics.pairwise.euclidean_distances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.kernel_metrics.html">8.19.5.5. sklearn.metrics.pairwise.kernel_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.linear_kernel.html">8.19.5.6. sklearn.metrics.pairwise.linear_kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.manhattan_distances.html">8.19.5.7. sklearn.metrics.pairwise.manhattan_distances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">8.19.5.8. sklearn.metrics.pairwise.pairwise_distances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.pairwise_kernels.html">8.19.5.9. sklearn.metrics.pairwise.pairwise_kernels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.polynomial_kernel.html">8.19.5.10. sklearn.metrics.pairwise.polynomial_kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.rbf_kernel.html">8.19.5.11. sklearn.metrics.pairwise.rbf_kernel</a></li>
 </ul>
 </li>
 </ul>
@@ -1349,9 +1355,10 @@ printable format, see <a class="reference internal" href="support.html#documenta
 <li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.preprocessing.OneHotEncoder.html">8.26.7. sklearn.preprocessing.OneHotEncoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.preprocessing.StandardScaler.html">8.26.8. sklearn.preprocessing.StandardScaler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.preprocessing.add_dummy_feature.html">8.26.9. sklearn.preprocessing.add_dummy_feature</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.preprocessing.binarize.html">8.26.10. sklearn.preprocessing.binarize</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.preprocessing.normalize.html">8.26.11. sklearn.preprocessing.normalize</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.preprocessing.scale.html">8.26.12. sklearn.preprocessing.scale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.preprocessing.balance_weights.html">8.26.10. sklearn.preprocessing.balance_weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.preprocessing.binarize.html">8.26.11. sklearn.preprocessing.binarize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.preprocessing.normalize.html">8.26.12. sklearn.preprocessing.normalize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.preprocessing.scale.html">8.26.13. sklearn.preprocessing.scale</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.qda">8.27. <tt class="docutils literal"><span class="pre">sklearn.qda</span></tt>: Quadratic Discriminant Analysis</a><ul>

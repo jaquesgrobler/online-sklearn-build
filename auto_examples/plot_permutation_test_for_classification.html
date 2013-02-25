@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="PLS Partial Least Squares" href="plot_pls.html" />
-    <link rel="prev" title="Multilabel classification" href="plot_multilabel.html" />
+    <link rel="next" title="Receiver operating characteristic (ROC) with cross validation" href="plot_roc_crossval.html" />
+    <link rel="prev" title="Pipelining: chaining a PCA and a logistic regression" href="plot_digits_pipe.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_multilabel.html" title="Multilabel classification"
+	<a href="plot_digits_pipe.html" title="Pipelining: chaining a PCA and a logistic regression"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Multilabel class...
+	    Pipelining: chai...
 	    </span>
 	    <span class="hiddenrellink">
-	    Multilabel classification
+	    Pipelining: chaining a PCA and a logistic regression
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_pls.html" title="PLS Partial Least Squares"
+	<a href="plot_roc_crossval.html" title="Receiver operating characteristic (ROC) with cross validation"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    PLS Partial Leas...
+	    Receiver operati...
 	    </span>
 	    <span class="hiddenrellink">
-	    PLS Partial Least Squares
+	    Receiver operating characteristic (ROC) with cross validation
 	    </span>
 	    
 	    </a>
@@ -186,7 +186,7 @@ obtained in the first place.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author:  Alexandre Gramfort &lt;alexandre.gramfort@inria.fr&gt;</span>
 <span class="c"># License: BSD</span>
 
-<span class="k">print</span> <span class="n">__doc__</span>
+<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
@@ -194,7 +194,6 @@ obtained in the first place.</p>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">SVC</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold"><span class="n">StratifiedKFold</span></a><span class="p">,</span> <a href="../modules/generated/sklearn.cross_validation.permutation_test_score.html#sklearn.cross_validation.permutation_test_score"><span class="n">permutation_test_score</span></a>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 
 
 <span class="c">##############################################################################</span>
@@ -215,9 +214,9 @@ obtained in the first place.</p>
 <a href="../modules/generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold"><span class="n">cv</span></a> <span class="o">=</span> <a href="../modules/generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold"><span class="n">StratifiedKFold</span></a><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="n">score</span><span class="p">,</span> <span class="n">permutation_scores</span><span class="p">,</span> <span class="n">pvalue</span> <span class="o">=</span> <a href="../modules/generated/sklearn.cross_validation.permutation_test_score.html#sklearn.cross_validation.permutation_test_score"><span class="n">permutation_test_score</span></a><span class="p">(</span>
-    <a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">svm</span></a><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <a href="../modules/generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold"><span class="n">cv</span></a><span class="o">=</span><a href="../modules/generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold"><span class="n">cv</span></a><span class="p">,</span> <span class="n">n_permutations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">svm</span></a><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">&quot;accuracy&quot;</span><span class="p">,</span> <a href="../modules/generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold"><span class="n">cv</span></a><span class="o">=</span><a href="../modules/generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold"><span class="n">cv</span></a><span class="p">,</span> <span class="n">n_permutations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="s">&quot;Classification score </span><span class="si">%s</span><span class="s"> (pvalue : </span><span class="si">%s</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">pvalue</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Classification score </span><span class="si">%s</span><span class="s"> (pvalue : </span><span class="si">%s</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">pvalue</span><span class="p">))</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># View histogram of permutation scores</span>
@@ -240,7 +239,7 @@ obtained in the first place.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  10.69 seconds</p>
+<p><strong>Total running time of the example:</strong>  10.78 seconds</p>
 </div>
 
 
@@ -262,12 +261,12 @@ obtained in the first place.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_multilabel.html">
+      <a href="plot_digits_pipe.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_pls.html">
+      <a href="plot_roc_crossval.html">
         Next
       </a>
     </div>

@@ -220,8 +220,8 @@ sample masks).</p>
 </div></blockquote>
 <p><strong>n_jobs</strong> : integer, optional (default=1)</p>
 <blockquote>
-<div><p>The number of jobs to run in parallel. If -1, then the number of jobs
-is set to the number of cores.</p>
+<div><p>The number of jobs to run in parallel for both <cite>fit</cite> and <cite>predict</cite>.
+If -1, then the number of jobs is set to the number of cores.</p>
 </div></blockquote>
 <p><strong>random_state</strong> : int, RandomState instance or None, optional (default=None)</p>
 <blockquote>
@@ -239,17 +239,17 @@ by <cite>np.random</cite>.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r85" rules="none">
+<table class="docutils citation" frame="void" id="r96" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R85]</a></td><td>P. Geurts, D. Ernst., and L. Wehenkel, &#8220;Extremely randomized trees&#8221;,
+<tr><td class="label"><a class="fn-backref" href="#id1">[R96]</a></td><td>P. Geurts, D. Ernst., and L. Wehenkel, &#8220;Extremely randomized trees&#8221;,
 Machine Learning, 63(1), 3-42, 2006.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r86" rules="none">
+<table class="docutils citation" frame="void" id="r97" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R86]</a></td><td>Moosmann, F. and Triggs, B. and Jurie, F.  &#8220;Fast discriminative
+<tr><td class="label"><a class="fn-backref" href="#id2">[R97]</a></td><td>Moosmann, F. and Triggs, B. and Jurie, F.  &#8220;Fast discriminative
 visual codebooks using randomized clustering forests&#8221;
 NIPS 2007</td></tr>
 </tbody>
@@ -318,6 +318,23 @@ NIPS 2007</td></tr>
 return the index of the leaf x ends up in.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.ensemble.RandomTreesEmbedding.feature_importances_">
+<tt class="descname">feature_importances_</tt><a class="headerlink" href="#sklearn.ensemble.RandomTreesEmbedding.feature_importances_" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Return the feature importances (the higher, the more important the</dt>
+<dd>feature).</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><strong>feature_importances_</strong> : array, shape = [n_features]</td>
 </tr>
 </tbody>
 </table>

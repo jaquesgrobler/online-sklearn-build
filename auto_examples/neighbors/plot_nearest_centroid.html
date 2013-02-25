@@ -30,7 +30,7 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Nearest Neighbors regression" href="plot_regression.html" />
+    <link rel="next" title="Label Propagation learning a complex structure" href="../semi_supervised/plot_label_propagation_structure.html" />
     <link rel="prev" title="Nearest Neighbors Classification" href="plot_classification.html" />
 
 
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_regression.html" title="Nearest Neighbors regression"
+	<a href="../semi_supervised/plot_label_propagation_structure.html" title="Label Propagation learning a complex structure"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Nearest Neighbor...
+	    Label Propagatio...
 	    </span>
 	    <span class="hiddenrellink">
-	    Nearest Neighbors regression
+	    Label Propagation learning a complex structure
 	    </span>
 	    
 	    </a>
@@ -182,11 +182,12 @@ It will plot the decision boundaries for each class.</p>
 </li>
 </ul>
 <p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>None 0.813333333333
-0.1 0.826666666667</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="mf">0.81333333333333335</span><span class="p">)</span>
+<span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.82666666666666666</span><span class="p">)</span>
+</pre></div>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_nearest_centroid.py"><tt class="xref download docutils literal"><span class="pre">plot_nearest_centroid.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
@@ -213,7 +214,7 @@ It will plot the decision boundaries for each class.</p>
     <a href="../../modules/generated/sklearn.neighbors.NearestCentroid.html#sklearn.neighbors.NearestCentroid"><span class="n">clf</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.neighbors.NearestCentroid.html#sklearn.neighbors.NearestCentroid"><span class="n">NearestCentroid</span></a><span class="p">(</span><span class="n">shrink_threshold</span><span class="o">=</span><span class="n">shrinkage</span><span class="p">)</span>
     <a href="../../modules/generated/sklearn.neighbors.NearestCentroid.html#sklearn.neighbors.NearestCentroid"><span class="n">clf</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="n">y_pred</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.neighbors.NearestCentroid.html#sklearn.neighbors.NearestCentroid"><span class="n">clf</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-    <span class="k">print</span> <span class="n">shrinkage</span><span class="p">,</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.mean.html#numpy.mean"><span class="n">np</span><span class="o">.</span><span class="n">mean</span></a><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">shrinkage</span><span class="p">,</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.mean.html#numpy.mean"><span class="n">np</span><span class="o">.</span><span class="n">mean</span></a><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">y_pred</span><span class="p">))</span>
     <span class="c"># Plot the decision boundary. For that, we will asign a color to each</span>
     <span class="c"># point in the mesh [x_min, m_max]x[y_min, y_max].</span>
     <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
@@ -263,7 +264,7 @@ It will plot the decision boundaries for each class.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_regression.html">
+      <a href="../semi_supervised/plot_label_propagation_structure.html">
         Next
       </a>
     </div>

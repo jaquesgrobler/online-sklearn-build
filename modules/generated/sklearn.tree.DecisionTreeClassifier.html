@@ -226,11 +226,6 @@ the partitions are always represented as copies of the original
 data. Otherwise, partitions are represented as bit masks (aka
 sample masks).</p>
 </div></blockquote>
-<p><strong>compute_importances</strong> : boolean, optional (default=False)</p>
-<blockquote>
-<div><p>Whether feature importances are computed and stored into the
-<tt class="docutils literal"><span class="pre">feature_importances_</span></tt> attribute when calling fit.</p>
-</div></blockquote>
 <p><strong>random_state</strong> : int, RandomState instance or None, optional (default=None)</p>
 <blockquote class="last">
 <div><p>If int, random_state is the seed used by the random number generator;
@@ -247,30 +242,30 @@ by <cite>np.random</cite>.</p>
 <p class="last"><a class="reference internal" href="sklearn.tree.DecisionTreeRegressor.html#sklearn.tree.DecisionTreeRegressor" title="sklearn.tree.DecisionTreeRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">DecisionTreeRegressor</span></tt></a></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r115" rules="none">
+<table class="docutils citation" frame="void" id="r122" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R115]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Decision_tree_learning">http://en.wikipedia.org/wiki/Decision_tree_learning</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[R122]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Decision_tree_learning">http://en.wikipedia.org/wiki/Decision_tree_learning</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r116" rules="none">
+<table class="docutils citation" frame="void" id="r123" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R116]</a></td><td>L. Breiman, J. Friedman, R. Olshen, and C. Stone, &#8220;Classification
+<tr><td class="label"><a class="fn-backref" href="#id2">[R123]</a></td><td>L. Breiman, J. Friedman, R. Olshen, and C. Stone, &#8220;Classification
 and Regression Trees&#8221;, Wadsworth, Belmont, CA, 1984.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r117" rules="none">
+<table class="docutils citation" frame="void" id="r124" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R117]</a></td><td>T. Hastie, R. Tibshirani and J. Friedman. &#8220;Elements of Statistical
+<tr><td class="label"><a class="fn-backref" href="#id3">[R124]</a></td><td>T. Hastie, R. Tibshirani and J. Friedman. &#8220;Elements of Statistical
 Learning&#8221;, Springer, 2009.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r118" rules="none">
+<table class="docutils citation" frame="void" id="r125" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R118]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> L. Breiman, and A. Cutler, &#8220;Random Forests&#8221;,
+<tr><td class="label"><a class="fn-backref" href="#id4">[R125]</a></td><td>L. Breiman, and A. Cutler, &#8220;Random Forests&#8221;,
 <a class="reference external" href="http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm">http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm</a></td></tr>
 </tbody>
 </table>
@@ -292,38 +287,6 @@ Learning&#8221;, Springer, 2009.</td></tr>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="16%" />
-<col width="40%" />
-<col width="44%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><cite>tree_</cite></td>
-<td>Tree object</td>
-<td>The underlying Tree object.</td>
-</tr>
-<tr class="row-even"><td><cite>classes_</cite></td>
-<td>array of shape = [n_classes] or a list of such arrays</td>
-<td>The classes labels (single output problem),
-or a list of arrays of class labels (multi-output problem).</td>
-</tr>
-<tr class="row-odd"><td><cite>n_classes_</cite></td>
-<td>int or list</td>
-<td>The number of classes (for single output problems),
-or a list containing the number of classes for each
-output (for multi-output problems).</td>
-</tr>
-<tr class="row-even"><td><cite>feature_importances_</cite></td>
-<td>array of shape = [n_features]</td>
-<td>The feature importances
-(the higher, the more important the feature).
-The importance of a feature is computed as the
-(normalized) total reduction of error brought by that
-feature.  It is also known as the Gini importance <a class="reference internal" href="#r118">[R118]</a>.</td>
-</tr>
-</tbody>
-</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -364,6 +327,23 @@ feature.  It is also known as the Gini importance <a class="reference internal" 
 <dt id="sklearn.tree.DecisionTreeClassifier.__init__">
 <tt class="descname">__init__</tt><big>(</big><em>criterion='gini'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features=None</em>, <em>compute_importances=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.tree.DecisionTreeClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.tree.DecisionTreeClassifier.feature_importances_">
+<tt class="descname">feature_importances_</tt><a class="headerlink" href="#sklearn.tree.DecisionTreeClassifier.feature_importances_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the feature importances.</p>
+<p>The importance of a feature is computed as the
+(normalized) total reduction of the criterion brought by that
+feature.  It is also known as the Gini importance <a href="#id6"><span class="problematic" id="id7"><span id="id5"></span>[4]_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><strong>feature_importances_</strong> : array, shape = [n_features]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="sklearn.tree.DecisionTreeClassifier.fit">

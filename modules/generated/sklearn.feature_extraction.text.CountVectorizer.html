@@ -175,7 +175,7 @@
 <h1>8.8.4.1. sklearn.feature_extraction.text.CountVectorizer<a class="headerlink" href="#sklearn-feature-extraction-text-countvectorizer" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_extraction.text.CountVectorizer">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_extraction.text.</tt><tt class="descname">CountVectorizer</tt><big>(</big><em>input='content'</em>, <em>charset='utf-8'</em>, <em>charset_error='strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>analyzer='word'</em>, <em>max_df=1.0</em>, <em>min_df=2</em>, <em>max_features=None</em>, <em>vocabulary=None</em>, <em>binary=False</em>, <em>dtype=&lt;type 'long'&gt;</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.CountVectorizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_extraction.text.</tt><tt class="descname">CountVectorizer</tt><big>(</big><em>input=u'content'</em>, <em>charset=u'utf-8'</em>, <em>charset_error=u'strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>analyzer=u'word'</em>, <em>max_df=1.0</em>, <em>min_df=2</em>, <em>max_features=None</em>, <em>vocabulary=None</em>, <em>binary=False</em>, <em>dtype=&lt;type 'long'&gt;</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.CountVectorizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a collection of text documents to a matrix of token counts</p>
 <p>This implementation produces a sparse representation of the counts using
 scipy.sparse.coo_matrix.</p>
@@ -244,8 +244,8 @@ will be used.</p>
 <p><strong>stop_words</strong> : string {&#8216;english&#8217;}, list, or None (default)</p>
 <blockquote>
 <div><p>If a string, it is passed to _check_stop_list and the appropriate stop
-list is returned is currently the only
-supported string value.</p>
+list is returned. &#8216;english&#8217; is currently the only supported string
+value.</p>
 <p>If a list, that list is assumed to contain stop words, all of which
 will be removed from the resulting tokens.</p>
 <p>If None, no stop words will be used. max_df can be set to a value
@@ -378,7 +378,7 @@ This is only available if no vocabulary was given.</td>
 </table>
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.CountVectorizer.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>input='content'</em>, <em>charset='utf-8'</em>, <em>charset_error='strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>analyzer='word'</em>, <em>max_df=1.0</em>, <em>min_df=2</em>, <em>max_features=None</em>, <em>vocabulary=None</em>, <em>binary=False</em>, <em>dtype=&lt;type 'long'&gt;</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.CountVectorizer.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>input=u'content'</em>, <em>charset=u'utf-8'</em>, <em>charset_error=u'strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>analyzer=u'word'</em>, <em>max_df=1.0</em>, <em>min_df=2</em>, <em>max_features=None</em>, <em>vocabulary=None</em>, <em>binary=False</em>, <em>dtype=&lt;type 'long'&gt;</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.CountVectorizer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

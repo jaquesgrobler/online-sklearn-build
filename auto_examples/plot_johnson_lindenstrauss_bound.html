@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Explicit feature map approximation for RBF kernels" href="plot_kernel_approximation.html" />
-    <link rel="prev" title="Isotonic Regression" href="plot_isotonic_regression.html" />
+    <link rel="next" title="Classification of text documents: using a MLComp dataset" href="mlcomp_sparse_document_classification.html" />
+    <link rel="prev" title="FeatureHasher and DictVectorizer Comparison" href="hashing_vs_dict_vectorizer.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_isotonic_regression.html" title="Isotonic Regression"
+	<a href="hashing_vs_dict_vectorizer.html" title="FeatureHasher and DictVectorizer Comparison"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Isotonic Regress...
+	    FeatureHasher an...
 	    </span>
 	    <span class="hiddenrellink">
-	    Isotonic Regression
+	    FeatureHasher and DictVectorizer Comparison
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_kernel_approximation.html" title="Explicit feature map approximation for RBF kernels"
+	<a href="mlcomp_sparse_document_classification.html" title="Classification of text documents: using a MLComp dataset"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Explicit feature...
+	    Classification o...
 	    </span>
 	    <span class="hiddenrellink">
-	    Explicit feature map approximation for RBF kernels
+	    Classification of text documents: using a MLComp dataset
 	    </span>
 	    
 	    </a>
@@ -260,15 +260,15 @@ from 56436 down to 10000 while reasonably preserving pairwise distances.</p>
 </ul>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Embedding 500 samples with dim 64 using various random projections
-Projected 500 samples from 64 to 300 in 0.006s
+Projected 500 samples from 64 to 300 in 0.018s
 Random matrix with size: 0.028MB
-Mean distances rate: 1.02 (0.09)
-Projected 500 samples from 64 to 1000 in 0.017s
+Mean distances rate: 1.00 (0.08)
+Projected 500 samples from 64 to 1000 in 0.016s
 Random matrix with size: 0.096MB
-Mean distances rate: 0.99 (0.04)
-Projected 500 samples from 64 to 10000 in 0.165s
-Random matrix with size: 0.963MB
-Mean distances rate: 1.00 (0.01)</pre>
+Mean distances rate: 1.01 (0.04)
+Projected 500 samples from 64 to 10000 in 0.172s
+Random matrix with size: 0.955MB
+Mean distances rate: 0.99 (0.01)</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_johnson_lindenstrauss_bound.py"><tt class="xref download docutils literal"><span class="pre">plot_johnson_lindenstrauss_bound.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
@@ -331,8 +331,8 @@ Mean distances rate: 1.00 (0.01)</pre>
     <span class="n">data</span> <span class="o">=</span> <a href="../modules/generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits"><span class="n">load_digits</span></a><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="mi">500</span><span class="p">]</span>
 
 <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">print</span> <span class="s">&quot;Embedding </span><span class="si">%d</span><span class="s"> samples with dim </span><span class="si">%d</span><span class="s"> using various random projections&quot;</span> <span class="o">%</span> <span class="p">(</span>
-    <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Embedding </span><span class="si">%d</span><span class="s"> samples with dim </span><span class="si">%d</span><span class="s"> using various random projections&quot;</span>
+      <span class="o">%</span> <span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
 
 <span class="n">n_components_range</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">])</span>
 <span class="n">dists</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
@@ -345,13 +345,12 @@ Mean distances rate: 1.00 (0.01)</pre>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
     <a href="../modules/generated/sklearn.random_projection.SparseRandomProjection.html#sklearn.random_projection.SparseRandomProjection"><span class="n">rp</span></a> <span class="o">=</span> <a href="../modules/generated/sklearn.random_projection.SparseRandomProjection.html#sklearn.random_projection.SparseRandomProjection"><span class="n">SparseRandomProjection</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">)</span>
     <span class="n">projected_data</span> <span class="o">=</span> <a href="../modules/generated/sklearn.random_projection.SparseRandomProjection.html#sklearn.random_projection.SparseRandomProjection"><span class="n">rp</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">&quot;Projected </span><span class="si">%d</span><span class="s"> samples from </span><span class="si">%d</span><span class="s"> to </span><span class="si">%d</span><span class="s"> in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span>
-        <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">,</span> <span class="n">n_components</span><span class="p">,</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Projected </span><span class="si">%d</span><span class="s"> samples from </span><span class="si">%d</span><span class="s"> to </span><span class="si">%d</span><span class="s"> in </span><span class="si">%0.3f</span><span class="s">s&quot;</span>
+          <span class="o">%</span> <span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">,</span> <span class="n">n_components</span><span class="p">,</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><a href="../modules/generated/sklearn.random_projection.SparseRandomProjection.html#sklearn.random_projection.SparseRandomProjection"><span class="n">rp</span></a><span class="p">,</span> <span class="s">&#39;components_&#39;</span><span class="p">):</span>
         <span class="n">n_bytes</span> <span class="o">=</span> <a href="../modules/generated/sklearn.random_projection.SparseRandomProjection.html#sklearn.random_projection.SparseRandomProjection"><span class="n">rp</span></a><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">nbytes</span>
         <span class="n">n_bytes</span> <span class="o">+=</span> <a href="../modules/generated/sklearn.random_projection.SparseRandomProjection.html#sklearn.random_projection.SparseRandomProjection"><span class="n">rp</span></a><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">nbytes</span>
-        <span class="k">print</span> <span class="s">&quot;Random matrix with size: </span><span class="si">%0.3f</span><span class="s">MB&quot;</span> <span class="o">%</span> <span class="p">(</span>
-            <span class="n">n_bytes</span> <span class="o">/</span> <span class="mf">1e6</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Random matrix with size: </span><span class="si">%0.3f</span><span class="s">MB&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_bytes</span> <span class="o">/</span> <span class="mf">1e6</span><span class="p">))</span>
 
     <span class="n">projected_dists</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span>
         <span class="n">projected_data</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="n">nonzero</span><span class="p">]</span>
@@ -366,8 +365,8 @@ Mean distances rate: 1.00 (0.01)</pre>
     <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s">&#39;Sample pairs counts&#39;</span><span class="p">)</span>
 
     <span class="n">rates</span> <span class="o">=</span> <span class="n">projected_dists</span> <span class="o">/</span> <span class="n">dists</span>
-    <span class="k">print</span> <span class="s">&quot;Mean distances rate: </span><span class="si">%0.2f</span><span class="s"> (</span><span class="si">%0.2f</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span>
-        <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.mean.html#numpy.mean"><span class="n">np</span><span class="o">.</span><span class="n">mean</span></a><span class="p">(</span><span class="n">rates</span><span class="p">),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.std.html#numpy.std"><span class="n">np</span><span class="o">.</span><span class="n">std</span></a><span class="p">(</span><span class="n">rates</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Mean distances rate: </span><span class="si">%0.2f</span><span class="s"> (</span><span class="si">%0.2f</span><span class="s">)&quot;</span>
+          <span class="o">%</span> <span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.mean.html#numpy.mean"><span class="n">np</span><span class="o">.</span><span class="n">mean</span></a><span class="p">(</span><span class="n">rates</span><span class="p">),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.std.html#numpy.std"><span class="n">np</span><span class="o">.</span><span class="n">std</span></a><span class="p">(</span><span class="n">rates</span><span class="p">)))</span>
 
     <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">pl</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
     <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.hist"><span class="n">pl</span><span class="o">.</span><span class="n">hist</span></a><span class="p">(</span><span class="n">rates</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">))</span>
@@ -381,7 +380,7 @@ Mean distances rate: 1.00 (0.01)</pre>
     <span class="c"># as vertical lines / region</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  6.95 seconds</p>
+<p><strong>Total running time of the example:</strong>  6.93 seconds</p>
 </div>
 </div>
 
@@ -404,12 +403,12 @@ Mean distances rate: 1.00 (0.01)</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_isotonic_regression.html">
+      <a href="hashing_vs_dict_vectorizer.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_kernel_approximation.html">
+      <a href="mlcomp_sparse_document_classification.html">
         Next
       </a>
     </div>

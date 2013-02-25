@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Partial Dependence Plots" href="plot_partial_dependence.html" />
-    <link rel="prev" title="Gradient Boosting regression" href="plot_gradient_boosting_regression.html" />
+    <link rel="next" title="Gradient Boosting regression" href="plot_gradient_boosting_regression.html" />
+    <link rel="prev" title="Face completion with multi-output forests" href="plot_forest_multioutput.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_gradient_boosting_regression.html" title="Gradient Boosting regression"
+	<a href="plot_forest_multioutput.html" title="Face completion with multi-output forests"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Gradient Boostin...
+	    Face completion ...
 	    </span>
 	    <span class="hiddenrellink">
-	    Gradient Boosting regression
+	    Face completion with multi-output forests
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_partial_dependence.html" title="Partial Dependence Plots"
+	<a href="plot_gradient_boosting_regression.html" title="Gradient Boosting regression"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Partial Dependen...
+	    Gradient Boostin...
 	    </span>
 	    <span class="hiddenrellink">
-	    Partial Dependence Plots
+	    Gradient Boosting regression
 	    </span>
 	    
 	    </a>
@@ -193,7 +193,7 @@ Learning Ed. 2&#8221;, Springer, 2009.</td></tr>
 </table>
 <img alt="../../_images/plot_gradient_boosting_regularization_1.png" class="align-center" src="../../_images/plot_gradient_boosting_regularization_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_gradient_boosting_regularization.py"><tt class="xref download docutils literal"><span class="pre">plot_gradient_boosting_regularization.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Peter Prettenhofer &lt;peter.prettenhofer@gmail.com&gt;</span>
 <span class="c">#</span>
@@ -203,10 +203,14 @@ Learning Ed. 2&#8221;, Springer, 2009.</td></tr>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">ensemble</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils.fixes</span> <span class="kn">import</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.unique.html#numpy.unique"><span class="n">unique</span></a>
 
 
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.datasets.make_hastie_10_2.html#sklearn.datasets.make_hastie_10_2"><span class="n">datasets</span><span class="o">.</span><span class="n">make_hastie_10_2</span></a><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">12000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c"># map labels from {-1, 1} to {0, 1}</span>
+<span class="n">labels</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.unique.html#numpy.unique"><span class="n">unique</span></a><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">2000</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">2000</span><span class="p">:]</span>
 <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="mi">2000</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">2000</span><span class="p">:]</span>
@@ -236,6 +240,7 @@ Learning Ed. 2&#8221;, Springer, 2009.</td></tr>
     <span class="n">test_deviance</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.zeros.html#numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">((</span><span class="n">params</span><span class="p">[</span><span class="s">&#39;n_estimators&#39;</span><span class="p">],),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">y_pred</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><a href="../../modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#sklearn.ensemble.GradientBoostingClassifier"><span class="n">clf</span></a><span class="o">.</span><span class="n">staged_decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)):</span>
+        <span class="c"># clf.loss_ assumes that y_test[i] in {0, 1}</span>
         <span class="n">test_deviance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#sklearn.ensemble.GradientBoostingClassifier"><span class="n">clf</span></a><span class="o">.</span><span class="n">loss_</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
     <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">((</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">test_deviance</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[::</span><span class="mi">5</span><span class="p">],</span> <span class="n">test_deviance</span><span class="p">[::</span><span class="mi">5</span><span class="p">],</span>
@@ -248,7 +253,7 @@ Learning Ed. 2&#8221;, Springer, 2009.</td></tr>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  15.32 seconds</p>
+<p><strong>Total running time of the example:</strong>  16.00 seconds</p>
 </div>
 
 
@@ -270,12 +275,12 @@ Learning Ed. 2&#8221;, Springer, 2009.</td></tr>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_gradient_boosting_regression.html">
+      <a href="plot_forest_multioutput.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_partial_dependence.html">
+      <a href="plot_gradient_boosting_regression.html">
         Next
       </a>
     </div>

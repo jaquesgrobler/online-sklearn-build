@@ -298,9 +298,9 @@ the hasher does not remember what the input features looked like
 and has no <tt class="docutils literal"><span class="pre">inverse_transform</span></tt> method.</p>
 <p>Since the hash function might cause collisions between (unrelated) features,
 a signed hash function is used and the sign of the hash value
-determines the sign of the value stored in the output matrix for a feature;
-this way, collisions are likely to cancel out rather than accumulate error,
-and the expected mean of any output feature&#8217;s value is zero</p>
+determines the sign of the value stored in the output matrix for a feature.
+This way, collisions are likely to cancel out rather than accumulate error,
+and the expected mean of any output feature&#8217;s value is zero.</p>
 <p>If <tt class="docutils literal"><span class="pre">non_negative=True</span></tt> is passed to the constructor,
 the absolute value is taken.
 This undoes some of the collision handling,
@@ -311,14 +311,19 @@ or <tt class="docutils literal"><span class="pre">chi2</span></tt> feature selec
 <tt class="docutils literal"><span class="pre">(feature,</span> <span class="pre">value)</span></tt> pairs, or strings,
 depending on the constructor parameter <tt class="docutils literal"><span class="pre">input_type</span></tt>.
 Mapping are treated as lists of <tt class="docutils literal"><span class="pre">(feature,</span> <span class="pre">value)</span></tt> pairs,
-while single strings have an implicit value of 1.
-If a feature occurs multiple times in a sample, the values will be summed.
-Feature hashing can be employed in document classification,
-but unlike <a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">text.CountVectorizer</span></tt></a>,
-<a class="reference internal" href="generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="sklearn.feature_extraction.FeatureHasher"><tt class="xref py py-class docutils literal"><span class="pre">FeatureHasher</span></tt></a> does not do word
-splitting or any other preprocessing except Unicode-to-UTF-8 encoding.
+while single strings have an implicit value of 1,
+so <tt class="docutils literal"><span class="pre">['feat1',</span> <span class="pre">'feat2',</span> <span class="pre">'feat3']</span></tt> is interpreted as
+<tt class="docutils literal"><span class="pre">[('feat1',</span> <span class="pre">1),</span> <span class="pre">('feat2',</span> <span class="pre">1),</span> <span class="pre">('feat3',</span> <span class="pre">1)]</span></tt>.
+If a single feature occurs multiple times in a sample,
+the associated values will be summed
+(so <tt class="docutils literal"><span class="pre">('feat',</span> <span class="pre">2)</span></tt> and <tt class="docutils literal"><span class="pre">('feat',</span> <span class="pre">3.5)</span></tt> become <tt class="docutils literal"><span class="pre">('feat',</span> <span class="pre">5.5)</span></tt>).
 The output from <a class="reference internal" href="generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="sklearn.feature_extraction.FeatureHasher"><tt class="xref py py-class docutils literal"><span class="pre">FeatureHasher</span></tt></a> is always a <tt class="docutils literal"><span class="pre">scipy.sparse</span></tt> matrix
 in the CSR format.</p>
+<p>Feature hashing can be employed in document classification,
+but unlike <a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">text.CountVectorizer</span></tt></a>,
+<a class="reference internal" href="generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="sklearn.feature_extraction.FeatureHasher"><tt class="xref py py-class docutils literal"><span class="pre">FeatureHasher</span></tt></a> does not do word
+splitting or any other preprocessing except Unicode-to-UTF-8 encoding;
+see <a class="reference internal" href="#hashing-vectorizer"><em>Vectorizing a large text corpus with the hashing trick</em></a>, below, for a combined tokenizer/hasher.</p>
 <p>As an example, consider a word-level natural language processing task
 that needs features extracted from <tt class="docutils literal"><span class="pre">(token,</span> <span class="pre">part_of_speech)</span></tt> pairs.
 One could use a Python generator function to extract features:</p>
@@ -359,6 +364,9 @@ used two separate hash functions <img class="math" src="../_images/math/8189a5b5
 to determine the column index and sign of a feature, respectively.
 The present implementation works under the assumption
 that the sign bit of MurmurHash3 is independent of its other bits.</p>
+<p>Since a simple modulo is used to transform the hash function to a column index,
+it is advisable to use a power of two as the <tt class="docutils literal"><span class="pre">n_features</span></tt> parameter;
+otherwise the features will not be mapped evenly to the columns.</p>
 <div class="topic">
 <p class="topic-title first">References:</p>
 <ul class="simple">
@@ -427,8 +435,8 @@ counting in a single class:</p>
 reasonable (please see  the <a class="reference internal" href="classes.html#text-feature-extraction-ref"><em>reference documentation</em></a> for the details):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span>                            
-<span class="go">CountVectorizer(analyzer=&#39;word&#39;, binary=False, charset=&#39;utf-8&#39;,</span>
-<span class="go">        charset_error=&#39;strict&#39;, dtype=&lt;type &#39;long&#39;&gt;, input=&#39;content&#39;,</span>
+<span class="go">CountVectorizer(analyzer=u&#39;word&#39;, binary=False, charset=u&#39;utf-8&#39;,</span>
+<span class="go">        charset_error=u&#39;strict&#39;, dtype=&lt;type &#39;long&#39;&gt;, input=u&#39;content&#39;,</span>
 <span class="go">        lowercase=True, max_df=1.0, max_features=None, min_df=1,</span>
 <span class="go">        ngram_range=(1, 1), preprocessor=None, stop_words=None,</span>
 <span class="go">        strip_accents=None, token_pattern=u&#39;(?u)\\b\\w\\w+\\b&#39;,</span>
@@ -533,8 +541,9 @@ classification and clustering.</p>
 class:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span>
-<span class="go">TfidfTransformer(norm=&#39;l2&#39;, smooth_idf=True, sublinear_tf=False, use_idf=True)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span>   
+<span class="go">TfidfTransformer(norm=u&#39;l2&#39;, smooth_idf=True, sublinear_tf=False,</span>
+<span class="go">                 use_idf=True)</span>
 </pre></div>
 </div>
 <p>Again please see the <a class="reference internal" href="classes.html#text-feature-extraction-ref"><em>reference documentation</em></a> for the details on all the parameters.</p>

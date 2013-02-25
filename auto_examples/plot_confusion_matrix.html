@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Recognizing hand-written digits" href="plot_digits_classification.html" />
-    <link rel="prev" title="Classifiers Comparison" href="plot_classifier_comparison.html" />
+    <link rel="next" title="Precision-Recall" href="plot_precision_recall.html" />
+    <link rel="prev" title="Recursive feature elimination with cross-validation" href="plot_rfe_with_cross_validation.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_classifier_comparison.html" title="Classifiers Comparison"
+	<a href="plot_rfe_with_cross_validation.html" title="Recursive feature elimination with cross-validation"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Classifiers Comp...
+	    Recursive featur...
 	    </span>
 	    <span class="hiddenrellink">
-	    Classifiers Comparison
+	    Recursive feature elimination with cross-validation
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_digits_classification.html" title="Recognizing hand-written digits"
+	<a href="plot_precision_recall.html" title="Precision-Recall"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Recognizing hand...
+	    Precision-Recall
 	    </span>
 	    <span class="hiddenrellink">
-	    Recognizing hand-written digits
+	    Precision-Recall
 	    </span>
 	    
 	    </a>
@@ -182,7 +182,7 @@ of the output of a classifier.</p>
  [ 0  1 19]]</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_confusion_matrix.py"><tt class="xref download docutils literal"><span class="pre">plot_confusion_matrix.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
@@ -207,7 +207,7 @@ of the output of a classifier.</p>
 <span class="c"># Compute confusion matrix</span>
 <span class="n">cm</span> <span class="o">=</span> <a href="../modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix"><span class="n">confusion_matrix</span></a><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">half</span><span class="p">:],</span> <span class="n">y_</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="n">cm</span>
+<span class="k">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
 
 <span class="c"># Show confusion matrix</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.matshow"><span class="n">pl</span><span class="o">.</span><span class="n">matshow</span></a><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
@@ -216,7 +216,7 @@ of the output of a classifier.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.15 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.14 seconds</p>
 </div>
 
 
@@ -238,12 +238,12 @@ of the output of a classifier.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_classifier_comparison.html">
+      <a href="plot_rfe_with_cross_validation.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_digits_classification.html">
+      <a href="plot_precision_recall.html">
         Next
       </a>
     </div>

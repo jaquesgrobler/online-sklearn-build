@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Online learning of a dictionary of parts of faces" href="plot_dict_face_patches.html" />
-    <link rel="prev" title="Color Quantization using K-Means" href="plot_color_quantization.html" />
+    <link rel="next" title="Spectral clustering for image segmentation" href="plot_segmentation_toy.html" />
+    <link rel="prev" title="Hierarchical clustering: structured vs unstructured ward" href="plot_ward_structured_vs_unstructured.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_color_quantization.html" title="Color Quantization using K-Means"
+	<a href="plot_ward_structured_vs_unstructured.html" title="Hierarchical clustering: structured vs unstructured ward"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Color Quantizati...
+	    Hierarchical clu...
 	    </span>
 	    <span class="hiddenrellink">
-	    Color Quantization using K-Means
+	    Hierarchical clustering: structured vs unstructured ward
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_dict_face_patches.html" title="Online learning of a dictionary of parts of faces"
+	<a href="plot_segmentation_toy.html" title="Spectral clustering for image segmentation"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Online learning ...
+	    Spectral cluster...
 	    </span>
 	    <span class="hiddenrellink">
-	    Online learning of a dictionary of parts of faces
+	    Spectral clustering for image segmentation
 	    </span>
 	    
 	    </a>
@@ -185,7 +185,7 @@ Adjusted Mutual Information: 0.559
 Silhouette Coefficient: 0.417</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_dbscan.py"><tt class="xref download docutils literal"><span class="pre">plot_dbscan.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance</span>
@@ -213,16 +213,16 @@ Silhouette Coefficient: 0.417</pre>
 <span class="c"># Number of clusters in labels, ignoring noise if present.</span>
 <span class="n">n_clusters_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">in</span> <span class="n">labels</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="s">&#39;Estimated number of clusters: </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n_clusters_</span>
-<span class="k">print</span> <span class="s">&quot;Homogeneity: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.metrics.homogeneity_score.html#sklearn.metrics.homogeneity_score"><span class="n">metrics</span><span class="o">.</span><span class="n">homogeneity_score</span></a><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Completeness: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.metrics.completeness_score.html#sklearn.metrics.completeness_score"><span class="n">metrics</span><span class="o">.</span><span class="n">completeness_score</span></a><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;V-measure: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.metrics.v_measure_score.html#sklearn.metrics.v_measure_score"><span class="n">metrics</span><span class="o">.</span><span class="n">v_measure_score</span></a><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Adjusted Rand Index: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> \
-    <a href="../../modules/generated/sklearn.metrics.adjusted_rand_score.html#sklearn.metrics.adjusted_rand_score"><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_rand_score</span></a><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Adjusted Mutual Information: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> \
-    <a href="../../modules/generated/sklearn.metrics.adjusted_mutual_info_score.html#sklearn.metrics.adjusted_mutual_info_score"><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span></a><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-<span class="k">print</span> <span class="p">(</span><span class="s">&quot;Silhouette Coefficient: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span>
-       <a href="../../modules/generated/sklearn.metrics.silhouette_score.html#sklearn.metrics.silhouette_score"><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span></a><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s">&#39;precomputed&#39;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Estimated number of clusters: </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n_clusters_</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Homogeneity: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.metrics.homogeneity_score.html#sklearn.metrics.homogeneity_score"><span class="n">metrics</span><span class="o">.</span><span class="n">homogeneity_score</span></a><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Completeness: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.metrics.completeness_score.html#sklearn.metrics.completeness_score"><span class="n">metrics</span><span class="o">.</span><span class="n">completeness_score</span></a><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;V-measure: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.metrics.v_measure_score.html#sklearn.metrics.v_measure_score"><span class="n">metrics</span><span class="o">.</span><span class="n">v_measure_score</span></a><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Adjusted Rand Index: </span><span class="si">%0.3f</span><span class="s">&quot;</span>
+      <span class="o">%</span> <a href="../../modules/generated/sklearn.metrics.adjusted_rand_score.html#sklearn.metrics.adjusted_rand_score"><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_rand_score</span></a><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Adjusted Mutual Information: </span><span class="si">%0.3f</span><span class="s">&quot;</span>
+      <span class="o">%</span> <a href="../../modules/generated/sklearn.metrics.adjusted_mutual_info_score.html#sklearn.metrics.adjusted_mutual_info_score"><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span></a><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Silhouette Coefficient: </span><span class="si">%0.3f</span><span class="s">&quot;</span>
+      <span class="o">%</span> <a href="../../modules/generated/sklearn.metrics.silhouette_score.html#sklearn.metrics.silhouette_score"><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span></a><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s">&#39;precomputed&#39;</span><span class="p">))</span>
 
 <span class="c">##############################################################################</span>
 <span class="c"># Plot result</span>
@@ -256,7 +256,7 @@ Silhouette Coefficient: 0.417</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  1.34 seconds</p>
+<p><strong>Total running time of the example:</strong>  1.29 seconds</p>
 </div>
 
 
@@ -278,12 +278,12 @@ Silhouette Coefficient: 0.417</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_color_quantization.html">
+      <a href="plot_ward_structured_vs_unstructured.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_dict_face_patches.html">
+      <a href="plot_segmentation_toy.html">
         Next
       </a>
     </div>

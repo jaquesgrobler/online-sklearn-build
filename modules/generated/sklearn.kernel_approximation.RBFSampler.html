@@ -175,7 +175,7 @@
 <h1>8.14.3. sklearn.kernel_approximation.RBFSampler<a class="headerlink" href="#sklearn-kernel-approximation-rbfsampler" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.kernel_approximation.RBFSampler">
-<em class="property">class </em><tt class="descclassname">sklearn.kernel_approximation.</tt><tt class="descname">RBFSampler</tt><big>(</big><em>gamma=1.0</em>, <em>n_components=100.0</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.kernel_approximation.RBFSampler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.kernel_approximation.</tt><tt class="descname">RBFSampler</tt><big>(</big><em>gamma=1.0</em>, <em>n_components=100</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.kernel_approximation.RBFSampler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Approximates feature map of an RBF kernel by Monte Carlo approximation
 of its Fourier transform.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -184,11 +184,11 @@ of its Fourier transform.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>gamma: float</strong> :</p>
 <blockquote>
-<div><p>parameter of RBF kernel: exp(-gamma * x**2)</p>
+<div><p>Parameter of RBF kernel: exp(-γ × x²)</p>
 </div></blockquote>
 <p><strong>n_components: int</strong> :</p>
 <blockquote>
-<div><p>number of Monte Carlo samples per original feature.
+<div><p>Number of Monte Carlo samples per original feature.
 Equals the dimensionality of the computed feature space.</p>
 </div></blockquote>
 <p><strong>random_state</strong> : {int, RandomState}, optional</p>
@@ -229,7 +229,7 @@ Benjamin Recht.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.kernel_approximation.RBFSampler.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>gamma=1.0</em>, <em>n_components=100.0</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.kernel_approximation.RBFSampler.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>gamma=1.0</em>, <em>n_components=100</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.kernel_approximation.RBFSampler.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

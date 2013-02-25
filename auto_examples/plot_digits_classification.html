@@ -31,7 +31,7 @@
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
     <link rel="next" title="Pipelining: chaining a PCA and a logistic regression" href="plot_digits_pipe.html" />
-    <link rel="prev" title="Confusion matrix" href="plot_confusion_matrix.html" />
+    <link rel="prev" title="Demonstration of sampling from HMM" href="plot_hmm_sampling.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_confusion_matrix.html" title="Confusion matrix"
+	<a href="plot_hmm_sampling.html" title="Demonstration of sampling from HMM"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Confusion matrix
+	    Demonstration of...
 	    </span>
 	    <span class="hiddenrellink">
-	    Confusion matrix
+	    Demonstration of sampling from HMM
 	    </span>
 	    
 	    </a>
@@ -211,7 +211,7 @@ Confusion matrix:
  [ 0  0  0  1  0  1  0  0  0 90]]</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_digits_classification.py"><tt class="xref download docutils literal"><span class="pre">plot_digits_classification.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Gael Varoquaux &lt;gael dot varoquaux at normalesup dot org&gt;</span>
 <span class="c"># License: Simplified BSD</span>
@@ -251,9 +251,9 @@ Confusion matrix:
 <span class="n">expected</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">n_samples</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:]</span>
 <span class="n">predicted</span> <span class="o">=</span> <a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">classifier</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">n_samples</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:])</span>
 
-<span class="k">print</span> <span class="s">&quot;Classification report for classifier </span><span class="si">%s</span><span class="s">:</span><span class="se">\n</span><span class="si">%s</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span>
-    <a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">classifier</span></a><span class="p">,</span> <a href="../modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report"><span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span></a><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">predicted</span><span class="p">))</span>
-<span class="k">print</span> <span class="s">&quot;Confusion matrix:</span><span class="se">\n</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix"><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span></a><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">predicted</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Classification report for classifier </span><span class="si">%s</span><span class="s">:</span><span class="se">\n</span><span class="si">%s</span><span class="se">\n</span><span class="s">&quot;</span>
+      <span class="o">%</span> <span class="p">(</span><a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">classifier</span></a><span class="p">,</span> <a href="../modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report"><span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span></a><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">predicted</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Confusion matrix:</span><span class="se">\n</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <a href="../modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix"><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span></a><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">predicted</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">prediction</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
         <span class="nb">zip</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">n_samples</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:],</span> <span class="n">predicted</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]):</span>
@@ -265,7 +265,7 @@ Confusion matrix:
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.60 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.62 seconds</p>
 </div>
 
 
@@ -287,7 +287,7 @@ Confusion matrix:
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_confusion_matrix.html">
+      <a href="plot_hmm_sampling.html">
         Previous
       </a>
     </div>

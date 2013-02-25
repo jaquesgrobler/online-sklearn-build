@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="L1 Penalty and Sparsity in Logistic Regression" href="plot_logistic_l1_l2_sparsity.html" />
-    <link rel="prev" title="Lasso model selection: Cross-Validation / AIC / BIC" href="plot_lasso_model_selection.html" />
+    <link rel="next" title="SGD: Penalties" href="plot_sgd_penalties.html" />
+    <link rel="prev" title="Joint feature selection with multi-task Lasso" href="plot_multi_task_lasso_support.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_lasso_model_selection.html" title="Lasso model selection: Cross-Validation / AIC / BIC"
+	<a href="plot_multi_task_lasso_support.html" title="Joint feature selection with multi-task Lasso"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Lasso model sele...
+	    Joint feature se...
 	    </span>
 	    <span class="hiddenrellink">
-	    Lasso model selection: Cross-Validation / AIC / BIC
+	    Joint feature selection with multi-task Lasso
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_logistic_l1_l2_sparsity.html" title="L1 Penalty and Sparsity in Logistic Regression"
+	<a href="plot_sgd_penalties.html" title="SGD: Penalties"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    L1 Penalty and S...
+	    SGD: Penalties
 	    </span>
 	    <span class="hiddenrellink">
-	    L1 Penalty and Sparsity in Logistic Regression
+	    SGD: Penalties
 	    </span>
 	    
 	    </a>
@@ -178,10 +178,10 @@ synthetic dataset, classify values as either 0 or 1,
 i.e. class one or two, using the logit-curve.</p>
 <img alt="../../_images/plot_logistic_1.png" class="align-center" src="../../_images/plot_logistic_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_logistic.py"><tt class="xref download docutils literal"><span class="pre">plot_logistic.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 
-<span class="c"># Code source: Gael Varoqueux</span>
+<span class="c"># Code source: Gael Varoquaux</span>
 <span class="c"># License: BSD</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -231,7 +231,7 @@ i.e. class one or two, using the logit-curve.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.09 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.08 seconds</p>
 </div>
 
 
@@ -253,12 +253,12 @@ i.e. class one or two, using the logit-curve.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_lasso_model_selection.html">
+      <a href="plot_multi_task_lasso_support.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_logistic_l1_l2_sparsity.html">
+      <a href="plot_sgd_penalties.html">
         Next
       </a>
     </div>

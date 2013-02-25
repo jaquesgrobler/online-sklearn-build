@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Demo of affinity propagation clustering algorithm" href="plot_affinity_propagation.html" />
-    <link rel="prev" title="Wikipedia principal eigenvector" href="../applications/wikipedia_principal_eigenvector.html" />
+    <link rel="next" title="Comparison of the K-Means clustering and MiniBatchKMeans Algorithms" href="plot_mini_batch_kmeans.html" />
+    <link rel="prev" title="A demo of K-Means clustering on the handwritten digits data" href="plot_kmeans_digits.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="../applications/wikipedia_principal_eigenvector.html" title="Wikipedia principal eigenvector"
+	<a href="plot_kmeans_digits.html" title="A demo of K-Means clustering on the handwritten digits data"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Wikipedia princi...
+	    A demo of K-Mean...
 	    </span>
 	    <span class="hiddenrellink">
-	    Wikipedia principal eigenvector
+	    A demo of K-Means clustering on the handwritten digits data
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_affinity_propagation.html" title="Demo of affinity propagation clustering algorithm"
+	<a href="plot_mini_batch_kmeans.html" title="Comparison of the K-Means clustering and MiniBatchKMeans Algorithms"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Demo of affinity...
+	    Comparison of th...
 	    </span>
 	    <span class="hiddenrellink">
-	    Demo of affinity propagation clustering algorithm
+	    Comparison of the K-Means clustering and MiniBatchKMeans Algorithms
 	    </span>
 	    
 	    </a>
@@ -193,24 +193,24 @@ value of k on various overlapping sub-samples of the dataset.</p>
 </ul>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Computing adjusted_rand_score for 10 values of n_clusters and n_samples=100
-done in 0.159s
+done in 0.163s
 Computing v_measure_score for 10 values of n_clusters and n_samples=100
-done in 0.029s
+done in 0.030s
 Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=100
-done in 0.788s
+done in 0.823s
 Computing mutual_info_score for 10 values of n_clusters and n_samples=100
 done in 0.020s
 Computing adjusted_rand_score for 10 values of n_clusters and n_samples=1000
-done in 0.185s
+done in 0.181s
 Computing v_measure_score for 10 values of n_clusters and n_samples=1000
-done in 0.057s
+done in 0.056s
 Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=1000
-done in 0.391s
+done in 0.397s
 Computing mutual_info_score for 10 values of n_clusters and n_samples=1000
-done in 0.036s</pre>
+done in 0.035s</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_adjusted_for_chance_measures.py"><tt class="xref download docutils literal"><span class="pre">plot_adjusted_for_chance_measures.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Olivier Grisel &lt;olivier.grisel@ensta.org&gt;</span>
 <span class="c"># License: Simplified BSD</span>
@@ -263,12 +263,12 @@ done in 0.036s</pre>
 <span class="n">plots</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">score_func</span> <span class="ow">in</span> <span class="n">score_funcs</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&quot;Computing </span><span class="si">%s</span><span class="s"> for </span><span class="si">%d</span><span class="s"> values of n_clusters and n_samples=</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span>
-        <span class="n">score_func</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_clusters_range</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing </span><span class="si">%s</span><span class="s"> for </span><span class="si">%d</span><span class="s"> values of n_clusters and n_samples=</span><span class="si">%d</span><span class="s">&quot;</span>
+          <span class="o">%</span> <span class="p">(</span><span class="n">score_func</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_clusters_range</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">))</span>
 
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
     <span class="n">scores</span> <span class="o">=</span> <span class="n">uniform_labelings_scores</span><span class="p">(</span><span class="n">score_func</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_clusters_range</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
     <span class="n">plots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.errorbar"><span class="n">pl</span><span class="o">.</span><span class="n">errorbar</span></a><span class="p">(</span>
         <span class="n">n_clusters_range</span><span class="p">,</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.median.html#numpy.median"><span class="n">np</span><span class="o">.</span><span class="n">median</span></a><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score_func</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
@@ -293,13 +293,13 @@ done in 0.036s</pre>
 <span class="n">plots</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">score_func</span> <span class="ow">in</span> <span class="n">score_funcs</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&quot;Computing </span><span class="si">%s</span><span class="s"> for </span><span class="si">%d</span><span class="s"> values of n_clusters and n_samples=</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span>
-        <span class="n">score_func</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_clusters_range</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing </span><span class="si">%s</span><span class="s"> for </span><span class="si">%d</span><span class="s"> values of n_clusters and n_samples=</span><span class="si">%d</span><span class="s">&quot;</span>
+          <span class="o">%</span> <span class="p">(</span><span class="n">score_func</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_clusters_range</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">))</span>
 
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
     <span class="n">scores</span> <span class="o">=</span> <span class="n">uniform_labelings_scores</span><span class="p">(</span><span class="n">score_func</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_clusters_range</span><span class="p">,</span>
                                       <span class="n">fixed_n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
     <span class="n">plots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.errorbar"><span class="n">pl</span><span class="o">.</span><span class="n">errorbar</span></a><span class="p">(</span>
         <span class="n">n_clusters_range</span><span class="p">,</span> <span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score_func</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
@@ -313,7 +313,7 @@ done in 0.036s</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  1.84 seconds</p>
+<p><strong>Total running time of the example:</strong>  1.88 seconds</p>
 </div>
 
 
@@ -335,12 +335,12 @@ done in 0.036s</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="../applications/wikipedia_principal_eigenvector.html">
+      <a href="plot_kmeans_digits.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_affinity_propagation.html">
+      <a href="plot_mini_batch_kmeans.html">
         Next
       </a>
     </div>

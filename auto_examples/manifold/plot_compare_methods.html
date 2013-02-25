@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Manifold learning on handwritten digits: Locally Linear Embedding, Isomap..." href="plot_lle_digits.html" />
-    <link rel="prev" title="Lasso on dense and sparse data" href="../linear_model/lasso_dense_vs_sparse_data.html" />
+    <link rel="next" title="Manifold Learning methods on a severed sphere" href="plot_manifold_sphere.html" />
+    <link rel="prev" title="Multi-dimensional scaling" href="plot_mds.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="../linear_model/lasso_dense_vs_sparse_data.html" title="Lasso on dense and sparse data"
+	<a href="plot_mds.html" title="Multi-dimensional scaling"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Lasso on dense a...
+	    Multi-dimensiona...
 	    </span>
 	    <span class="hiddenrellink">
-	    Lasso on dense and sparse data
+	    Multi-dimensional scaling
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_lle_digits.html" title="Manifold learning on handwritten digits: Locally Linear Embedding, Isomap..."
+	<a href="plot_manifold_sphere.html" title="Manifold Learning methods on a severed sphere"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Manifold learnin...
+	    Manifold Learnin...
 	    </span>
 	    <span class="hiddenrellink">
-	    Manifold learning on handwritten digits: Locally Linear Embedding, Isomap...
+	    Manifold Learning methods on a severed sphere
 	    </span>
 	    
 	    </a>
@@ -187,17 +187,17 @@ representation of the data in the low-dimensional space.</p>
 <img alt="../../_images/plot_compare_methods_1.png" class="align-center" src="../../_images/plot_compare_methods_1.png" />
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>standard: 0.15 sec
-ltsa: 0.31 sec
+ltsa: 0.32 sec
 hessian: 0.39 sec
 modified: 0.34 sec
-Isomap: 0.63 sec
-MDS: 4.5 sec
-SpectralEmbedding: 0.38 sec</pre>
+Isomap: 0.64 sec
+MDS: 4.4 sec
+SpectralEmbedding: 0.4 sec</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_compare_methods.py"><tt class="xref download docutils literal"><span class="pre">plot_compare_methods.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author: Jake Vanderplas -- &lt;vanderplas@astro.washington.edu&gt;</span>
 
-<span class="k">print</span> <span class="n">__doc__</span>
+<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 
@@ -237,7 +237,7 @@ SpectralEmbedding: 0.38 sec</pre>
                                         <span class="n">eigen_solver</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">,</span>
                                         <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-    <span class="k">print</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">methods</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">methods</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
     <span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">242</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>
     <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span><span class="p">)</span>
@@ -249,7 +249,7 @@ SpectralEmbedding: 0.38 sec</pre>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">Y</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.Isomap.html#sklearn.manifold.Isomap"><span class="n">manifold</span><span class="o">.</span><span class="n">Isomap</span></a><span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">n_components</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="k">print</span> <span class="s">&quot;Isomap: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Isomap: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">246</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&quot;Isomap (</span><span class="si">%.2g</span><span class="s"> sec)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
@@ -262,7 +262,7 @@ SpectralEmbedding: 0.38 sec</pre>
 <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">mds</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">manifold</span><span class="o">.</span><span class="n">MDS</span></a><span class="p">(</span><span class="n">n_components</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">Y</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS"><span class="n">mds</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="k">print</span> <span class="s">&quot;MDS: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;MDS: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">247</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&quot;MDS (</span><span class="si">%.2g</span><span class="s"> sec)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
@@ -276,7 +276,7 @@ SpectralEmbedding: 0.38 sec</pre>
                                 <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">)</span>
 <span class="n">Y</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.SpectralEmbedding.html#sklearn.manifold.SpectralEmbedding"><span class="n">se</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="k">print</span> <span class="s">&quot;SpectralEmbedding: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;SpectralEmbedding: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">248</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&quot;SpectralEmbedding (</span><span class="si">%.2g</span><span class="s"> sec)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
@@ -287,7 +287,7 @@ SpectralEmbedding: 0.38 sec</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  7.15 seconds</p>
+<p><strong>Total running time of the example:</strong>  7.11 seconds</p>
 </div>
 
 
@@ -309,12 +309,12 @@ SpectralEmbedding: 0.38 sec</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="../linear_model/lasso_dense_vs_sparse_data.html">
+      <a href="plot_mds.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_lle_digits.html">
+      <a href="plot_manifold_sphere.html">
         Next
       </a>
     </div>

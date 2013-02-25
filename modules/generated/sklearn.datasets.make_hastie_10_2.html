@@ -180,7 +180,8 @@
 Hastie et al. 2009, Example 10.2.</p>
 <p>The ten features are standard independent Gaussian and
 the target <tt class="docutils literal"><span class="pre">y</span></tt> is defined by:</p>
-<div class="highlight-python"><pre>y[i] = 1 if np.sum(X[i] &gt; 9.34 else -1</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">9.34</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -204,14 +205,19 @@ by <cite>np.random</cite>.</p>
 <div><p>The input samples.</p>
 </div></blockquote>
 <p><strong>y</strong> : array of shape [n_samples]</p>
-<blockquote>
+<blockquote class="last">
 <div><p>The output values.</p>
 </div></blockquote>
-<p><strong>**References</strong>:** :</p>
-<p><strong>.. [1] T. Hastie, R. Tibshirani and J. Friedman, &#8220;Elements of Statistical</strong> :</p>
-<p class="last"><strong>Learning Ed. 2&#8221;, Springer, 2009.</strong> :</p>
 </td>
 </tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r85" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R85]</a></td><td>T. Hastie, R. Tibshirani and J. Friedman, &#8220;Elements of Statistical
+Learning Ed. 2&#8221;, Springer, 2009.</td></tr>
 </tbody>
 </table>
 </dd></dl>

@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="SGD: Penalties" href="plot_sgd_penalties.html" />
-    <link rel="prev" title="SGD: Convex Loss Functions" href="plot_sgd_loss_functions.html" />
+    <link rel="next" title="Lasso path using LARS" href="plot_lasso_lars.html" />
+    <link rel="prev" title="Gaussian Processes regression: basic introductory example" href="../gaussian_process/plot_gp_regression.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_sgd_loss_functions.html" title="SGD: Convex Loss Functions"
+	<a href="../gaussian_process/plot_gp_regression.html" title="Gaussian Processes regression: basic introductory example"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    SGD: Convex Loss...
+	    Gaussian Process...
 	    </span>
 	    <span class="hiddenrellink">
-	    SGD: Convex Loss Functions
+	    Gaussian Processes regression: basic introductory example
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_sgd_penalties.html" title="SGD: Penalties"
+	<a href="plot_lasso_lars.html" title="Lasso path using LARS"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    SGD: Penalties
+	    Lasso path using...
 	    </span>
 	    <span class="hiddenrellink">
-	    SGD: Penalties
+	    Lasso path using LARS
 	    </span>
 	    
 	    </a>
@@ -178,29 +178,29 @@ gradient descent, we draw the linear least
 squares solution for a random set of points in the plane.</p>
 <img alt="../../_images/plot_sgd_ols_1.png" class="align-center" src="../../_images/plot_sgd_ols_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_sgd_ols.py"><tt class="xref download docutils literal"><span class="pre">plot_sgd_ols.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><span class="n">SGDRegressor</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.datasets.samples_generator</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression"><span class="n">make_regression</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><span class="n">SGDRegressor</span></a></a></a>
+<span class="kn">from</span> <span class="nn">sklearn.datasets.samples_generator</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression"><a href="../../modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression"><a href="../../modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression"><span class="n">make_regression</span></a></a></a>
 
 <span class="c"># this is our test set, it&#39;s just a straight line with some</span>
 <span class="c"># gaussian noise</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression"><span class="n">make_regression</span></a><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression"><a href="../../modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression"><a href="../../modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression"><span class="n">make_regression</span></a></a></a><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                        <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
 
 <span class="c"># run the classifier</span>
-<a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><span class="n">clf</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><span class="n">SGDRegressor</span></a><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><span class="n">clf</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><span class="n">clf</span></a></a></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><span class="n">SGDRegressor</span></a></a></a><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><span class="n">clf</span></a></a></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
 
 <span class="c"># and plot the result</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><span class="n">clf</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span></a></a></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a></a></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><a href="../../modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><span class="n">clf</span></a></a></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a></a></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.07 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.08 seconds</p>
 </div>
 
 
@@ -222,12 +222,12 @@ squares solution for a random set of points in the plane.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_sgd_loss_functions.html">
+      <a href="../gaussian_process/plot_gp_regression.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_sgd_penalties.html">
+      <a href="plot_lasso_lars.html">
         Next
       </a>
     </div>

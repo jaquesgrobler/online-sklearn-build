@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Confusion matrix" href="plot_confusion_matrix.html" />
-    <link rel="prev" title="Plot classification probability" href="plot_classification_probability.html" />
+    <link rel="next" title="PLS Partial Least Squares" href="plot_pls.html" />
+    <link rel="prev" title="Classification of text documents: using a MLComp dataset" href="mlcomp_sparse_document_classification.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_classification_probability.html" title="Plot classification probability"
+	<a href="mlcomp_sparse_document_classification.html" title="Classification of text documents: using a MLComp dataset"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Plot classificat...
+	    Classification o...
 	    </span>
 	    <span class="hiddenrellink">
-	    Plot classification probability
+	    Classification of text documents: using a MLComp dataset
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_confusion_matrix.html" title="Confusion matrix"
+	<a href="plot_pls.html" title="PLS Partial Least Squares"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Confusion matrix
+	    PLS Partial Leas...
 	    </span>
 	    <span class="hiddenrellink">
-	    Confusion matrix
+	    PLS Partial Least Squares
 	    </span>
 	    
 	    </a>
@@ -186,7 +186,7 @@ semi-transparent. The lower right shows the classification accuracy on the test
 set.</p>
 <img alt="../_images/plot_classifier_comparison_1.png" class="align-center" src="../_images/plot_classifier_comparison_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_classifier_comparison.py"><tt class="xref download docutils literal"><span class="pre">plot_classifier_comparison.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 
 <span class="c"># Code source: Gael Varoqueux</span>
@@ -203,7 +203,7 @@ set.</p>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier"><span class="n">KNeighborsClassifier</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">SVC</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier"><span class="n">DecisionTreeClassifier</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">,</span> <a href="../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">AdaBoostClassifier</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB"><span class="n">GaussianNB</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.lda</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.lda.LDA.html#sklearn.lda.LDA"><span class="n">LDA</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.qda</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.qda.QDA.html#sklearn.qda.QDA"><span class="n">QDA</span></a>
@@ -211,13 +211,14 @@ set.</p>
 <span class="n">h</span> <span class="o">=</span> <span class="o">.</span><span class="mo">02</span>  <span class="c"># step size in the mesh</span>
 
 <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Nearest Neighbors&quot;</span><span class="p">,</span> <span class="s">&quot;Linear SVM&quot;</span><span class="p">,</span> <span class="s">&quot;RBF SVM&quot;</span><span class="p">,</span> <span class="s">&quot;Decision Tree&quot;</span><span class="p">,</span>
-         <span class="s">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="s">&quot;Naive Bayes&quot;</span><span class="p">,</span> <span class="s">&quot;LDA&quot;</span><span class="p">,</span> <span class="s">&quot;QDA&quot;</span><span class="p">]</span>
+         <span class="s">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="s">&quot;AdaBoost&quot;</span><span class="p">,</span> <span class="s">&quot;Naive Bayes&quot;</span><span class="p">,</span> <span class="s">&quot;LDA&quot;</span><span class="p">,</span> <span class="s">&quot;QDA&quot;</span><span class="p">]</span>
 <span class="n">classifiers</span> <span class="o">=</span> <span class="p">[</span>
     <a href="../modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier"><span class="n">KNeighborsClassifier</span></a><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
     <a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">SVC</span></a><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&quot;linear&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.025</span><span class="p">),</span>
     <a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">SVC</span></a><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
     <a href="../modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier"><span class="n">DecisionTreeClassifier</span></a><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
     <a href="../modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <a href="../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">AdaBoostClassifier</span></a><span class="p">(),</span>
     <a href="../modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB"><span class="n">GaussianNB</span></a><span class="p">(),</span>
     <a href="../modules/generated/sklearn.lda.LDA.html#sklearn.lda.LDA"><span class="n">LDA</span></a><span class="p">(),</span>
     <a href="../modules/generated/sklearn.qda.QDA.html#sklearn.qda.QDA"><span class="n">QDA</span></a><span class="p">()]</span>
@@ -233,7 +234,7 @@ set.</p>
             <span class="n">linearly_separable</span>
             <span class="p">]</span>
 
-<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">figure</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">pl</span><span class="o">.</span><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">figure</span></a></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">figure</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">pl</span><span class="o">.</span><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">figure</span></a></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="c"># iterate over datasets</span>
 <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
@@ -297,7 +298,7 @@ set.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  4.36 seconds</p>
+<p><strong>Total running time of the example:</strong>  15.44 seconds</p>
 </div>
 
 
@@ -319,12 +320,12 @@ set.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_classification_probability.html">
+      <a href="mlcomp_sparse_document_classification.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_confusion_matrix.html">
+      <a href="plot_pls.html">
         Next
       </a>
     </div>

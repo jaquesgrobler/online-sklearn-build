@@ -11,7 +11,7 @@ evaluate the quality of the output of a classifier.
     See also :ref:`example_plot_roc_crossval.py`
 
 """
-print __doc__
+print(__doc__)
 
 import numpy as np
 import pylab as pl
@@ -46,7 +46,7 @@ probas_ = classifier.fit(X_train, y_train).predict_proba(X_test)
 # Compute ROC curve and area the curve
 fpr, tpr, thresholds = roc_curve(y_test, probas_[:, 1])
 roc_auc = auc(fpr, tpr)
-print "Area under the ROC curve : %f" % roc_auc
+print("Area under the ROC curve : %f" % roc_auc)
 
 # Plot ROC curve
 pl.clf()

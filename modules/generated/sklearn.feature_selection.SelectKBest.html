@@ -175,7 +175,7 @@
 <h1>8.9.2. sklearn.feature_selection.SelectKBest<a class="headerlink" href="#sklearn-feature-selection-selectkbest" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_selection.SelectKBest">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectKBest</tt><big>(</big><em>score_func=&lt;function f_classif at 0x3e22500&gt;</em>, <em>k=10</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectKBest" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectKBest</tt><big>(</big><em>score_func=&lt;function f_classif at 0x53ad938&gt;</em>, <em>k=10</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectKBest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select features according to the k highest scores.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -223,7 +223,7 @@ way.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.SelectKBest.fit" title="sklearn.feature_selection.SelectKBest.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
-<td>Evaluate the function</td>
+<td>Evaluate the score function on samples X with outputs y.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_selection.SelectKBest.fit_transform" title="sklearn.feature_selection.SelectKBest.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
 <td>Fit to data, then transform it</td>
@@ -247,13 +247,14 @@ way.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectKBest.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x3e22500&gt;</em>, <em>k=10</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectKBest.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x53ad938&gt;</em>, <em>k=10</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectKBest.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectKBest.fit">
 <tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectKBest.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluate the function</p>
+<dd><p>Evaluate the score function on samples X with outputs y.</p>
+<p>Records and selects features according to their scores.</p>
 </dd></dl>
 
 <dl class="method">

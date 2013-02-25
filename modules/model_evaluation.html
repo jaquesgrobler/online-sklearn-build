@@ -183,7 +183,12 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#clustering-metrics">5.5.3. Clustering metrics</a></li>
-<li><a class="reference internal" href="#dummy-estimators">5.5.4. Dummy estimators</a></li>
+<li><a class="reference internal" href="#scoring-objects-defining-your-scoring-rules">5.5.4. <cite>Scoring</cite> objects: defining your scoring rules</a><ul>
+<li><a class="reference internal" href="#creating-scoring-objects-from-score-functions">5.5.4.1. Creating scoring objects from score functions</a></li>
+<li><a class="reference internal" href="#implementing-your-own-scoring-object">5.5.4.2. Implementing your own scoring object</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dummy-estimators">5.5.5. Dummy estimators</a></li>
 </ul>
 </li>
 </ul>
@@ -201,19 +206,17 @@
             
   <div class="section" id="model-evaluation">
 <span id="id1"></span><h1>5.5. Model evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference internal" href="classes.html#module-sklearn.metrics" title="sklearn.metrics"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.metrics</span></tt></a> implements score functions, performance metrics,
-pairwise metrics and distance computations. Those functions are usefull to
-assess the performance of an estimator under a specific criterion. Note that
-in many cases, the <tt class="docutils literal"><span class="pre">score</span></tt> method of the underlying estimator is sufficient
-and appropriate.</p>
-<p>In this module, functions named as</p>
-<blockquote>
-<div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">*_score</span></tt> return a scalar value to maximize: the higher the better;</li>
-<li><tt class="docutils literal"><span class="pre">*_error</span></tt> or <tt class="docutils literal"><span class="pre">*_loss</span></tt> return a scalar value to minimize: the lower the
-better.</li>
-</ul>
-</div></blockquote>
+<p>The <a class="reference internal" href="classes.html#module-sklearn.metrics" title="sklearn.metrics"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.metrics</span></tt></a> module implements useful functions for assessing the
+performance of an estimator under a specific criterion.  Functions whose name
+ends with <tt class="docutils literal"><span class="pre">_score</span></tt> return a scalar value to maximize (the higher the better).
+Functions whose name ends with  <tt class="docutils literal"><span class="pre">_error</span></tt> or <tt class="docutils literal"><span class="pre">_loss</span></tt> return a scalar value
+to minimize (the lower the better).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Estimators usually define a <tt class="docutils literal"><span class="pre">score</span></tt> method which provides a suitable evaluation
+score for this estimator.</p>
+</div>
+<p>For pairwise metrics, see the <a class="reference internal" href="metrics.html#metrics"><em>Pairwise metrics, Affinities and Kernels</em></a> section.</p>
 <div class="section" id="classification-metrics">
 <span id="id2"></span><h2>5.5.1. Classification metrics<a class="headerlink" href="#classification-metrics" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="classes.html#module-sklearn.metrics" title="sklearn.metrics"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.metrics</span></tt></a> implements several losses, scores and utility
@@ -534,9 +537,9 @@ Correct absence of result</td>
 <span class="go">0.55...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  
 <span class="go">(array([ 0.66...,  1.        ]), array([ 1. ,  0.5]), array([ 0.71...,  0.83...]), array([2, 2]...))</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
@@ -822,7 +825,8 @@ variance is  estimated  as follow:</p>
 <div class="math">
 <p><img src="../_images/math/025507cf27584290db5ba58e7171cb684caac656.png" alt="\texttt{explained\_{}variance}(y, \hat{y}) = 1 - \frac{Var\{ y - \hat{y}\}}{Var\{y\}}"/></p>
 </div><p>The best possible score is 1.0, lower values are worse.</p>
-<p>Here a small example of usage of the <tt class="xref py py-func docutils literal"><span class="pre">explained_variance_scoreé</span></tt> function:</p>
+<p>Here a small example of usage of the <a class="reference internal" href="generated/sklearn.metrics.explained_variance_score.html#sklearn.metrics.explained_variance_score" title="sklearn.metrics.explained_variance_score"><tt class="xref py py-func docutils literal"><span class="pre">explained_variance_score</span></tt></a>
+function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">explained_variance_score</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
@@ -866,7 +870,8 @@ and <img class="math" src="../_images/math/6e6ceb79ebc4bf613298e0144eae25dd73de9
 (MSE) estimated over <img class="math" src="../_images/math/f64845215a9beeab0c363110bf2b7a6efa21bd61.png" alt="n_{\text{samples}}"/> is defined as</p>
 <div class="math">
 <p><img src="../_images/math/75e48507ed68f576f6bea4de66f5829d2f4a6ca3.png" alt="\text{MSE}(y, \hat{y}) = \frac{1}{n_\text{samples}} \sum_{i=0}^{n_\text{samples} - 1} (y_i - \hat{y}_i)^2."/></p>
-</div><p>Here a small example of usage of the <a class="reference internal" href="generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error" title="sklearn.metrics.mean_squared_error"><tt class="xref py py-func docutils literal"><span class="pre">mean_squared_error</span></tt></a> function:</p>
+</div><p>Here a small example of usage of the <a class="reference internal" href="generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error" title="sklearn.metrics.mean_squared_error"><tt class="xref py py-func docutils literal"><span class="pre">mean_squared_error</span></tt></a>
+function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
@@ -926,12 +931,130 @@ evaluate Lasso and Elastic Net on sparse signals.</li>
 <p>The <a class="reference internal" href="classes.html#module-sklearn.metrics" title="sklearn.metrics"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.metrics</span></tt></a> implements several losses, scores and utility
 function for more information see the <a class="reference internal" href="clustering.html#clustering-evaluation"><em>Clustering performance evaluation</em></a> section.</p>
 </div>
+<div class="section" id="scoring-objects-defining-your-scoring-rules">
+<span id="score-func-objects"></span><h2>5.5.4. <cite>Scoring</cite> objects: defining your scoring rules<a class="headerlink" href="#scoring-objects-defining-your-scoring-rules" title="Permalink to this headline">¶</a></h2>
+<p>While the above functions provide a simple interface for most use-cases, they
+can not directly be used for model selection and evaluation using
+<a class="reference internal" href="generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">grid_search.GridSearchCV</span></tt></a> and
+<a class="reference internal" href="generated/sklearn.cross_validation.cross_val_score.html#sklearn.cross_validation.cross_val_score" title="sklearn.cross_validation.cross_val_score"><tt class="xref py py-func docutils literal"><span class="pre">cross_validation.cross_val_score</span></tt></a>, as scoring functions have different
+signatures and might require additional parameters.</p>
+<p>Instead, <a class="reference internal" href="generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">grid_search.GridSearchCV</span></tt></a> and
+<a class="reference internal" href="generated/sklearn.cross_validation.cross_val_score.html#sklearn.cross_validation.cross_val_score" title="sklearn.cross_validation.cross_val_score"><tt class="xref py py-func docutils literal"><span class="pre">cross_validation.cross_val_score</span></tt></a> both take callables that implement
+estimator dependent functions. That allows for very flexible evaluation of
+models, for example taking complexity of the model into account.</p>
+<p>For scoring functions that take no additional parameters (which are most of
+them), you can simply provide a string as the <tt class="docutils literal"><span class="pre">scoring</span></tt> parameter. Possible
+values are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Scoring</th>
+<th class="head">Function</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Classification</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>&#8216;accuracy&#8217;</td>
+<td><a class="reference internal" href="generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.accuracy_score</span></tt></a></td>
+</tr>
+<tr class="row-even"><td>&#8216;average_precision&#8217;</td>
+<td><a class="reference internal" href="generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score" title="sklearn.metrics.average_precision_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.average_precision_score</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td>&#8216;f1&#8217;</td>
+<td><a class="reference internal" href="generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.f1_score</span></tt></a></td>
+</tr>
+<tr class="row-even"><td>&#8216;precision&#8217;</td>
+<td><a class="reference internal" href="generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.precision_score</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td>&#8216;recall&#8217;</td>
+<td><a class="reference internal" href="generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.recall_score</span></tt></a></td>
+</tr>
+<tr class="row-even"><td>&#8216;roc_auc&#8217;</td>
+<td><a class="reference internal" href="generated/sklearn.metrics.auc_score.html#sklearn.metrics.auc_score" title="sklearn.metrics.auc_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.auc_score</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td><strong>Clustering</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>&#8216;ari&#8217;`</td>
+<td><a class="reference internal" href="generated/sklearn.metrics.adjusted_rand_score.html#sklearn.metrics.adjusted_rand_score" title="sklearn.metrics.adjusted_rand_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.adjusted_rand_score</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td><strong>Regression</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>&#8216;mse&#8217;</td>
+<td><a class="reference internal" href="generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error" title="sklearn.metrics.mean_squared_error"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.mean_squared_error</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td>&#8216;r2&#8217;</td>
+<td><a class="reference internal" href="generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.r2_score</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>The corresponding scorer objects are stored in the dictionary
+<tt class="docutils literal"><span class="pre">sklearn.metrics.SCORERS</span></tt>.</p>
+<div class="section" id="creating-scoring-objects-from-score-functions">
+<h3>5.5.4.1. Creating scoring objects from score functions<a class="headerlink" href="#creating-scoring-objects-from-score-functions" title="Permalink to this headline">¶</a></h3>
+<p>If you want to use a scoring function that takes additional parameters, such as
+<a class="reference internal" href="generated/sklearn.metrics.fbeta_score.html#sklearn.metrics.fbeta_score" title="sklearn.metrics.fbeta_score"><tt class="xref py py-func docutils literal"><span class="pre">fbeta_score</span></tt></a>, you need to generate an appropriate scoring object.  The
+simplest way to generate a callable object for scoring is by using
+<a class="reference internal" href="generated/sklearn.metrics.Scorer.html#sklearn.metrics.Scorer" title="sklearn.metrics.Scorer"><tt class="xref py py-class docutils literal"><span class="pre">Scorer</span></tt></a>.
+<a class="reference internal" href="generated/sklearn.metrics.Scorer.html#sklearn.metrics.Scorer" title="sklearn.metrics.Scorer"><tt class="xref py py-class docutils literal"><span class="pre">Scorer</span></tt></a> converts score functions as above into callables that can be
+used for model evaluation.</p>
+<p>One typical use case is to wrap an existing scoring function from the library
+with non default value for its parameters such as the beta parameter for the
+<a class="reference internal" href="generated/sklearn.metrics.fbeta_score.html#sklearn.metrics.fbeta_score" title="sklearn.metrics.fbeta_score"><tt class="xref py py-func docutils literal"><span class="pre">fbeta_score</span></tt></a> function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">fbeta_score</span><span class="p">,</span> <span class="n">Scorer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftwo_scorer</span> <span class="o">=</span> <span class="n">Scorer</span><span class="p">(</span><span class="n">fbeta_score</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">(),</span> <span class="n">param_grid</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]},</span> <span class="n">scoring</span><span class="o">=</span><span class="n">ftwo_scorer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The second use case is to help build a completely new and custom scorer object
+from a simple python function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_custom_loss_func</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">,</span> <span class="n">predictions</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ground_truth</span> <span class="o">-</span> <span class="n">predictions</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">diff</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_custom_scorer</span> <span class="o">=</span> <span class="n">Scorer</span><span class="p">(</span><span class="n">my_custom_loss_func</span><span class="p">,</span> <span class="n">greater_is_better</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">(),</span> <span class="n">param_grid</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]},</span> <span class="n">scoring</span><span class="o">=</span><span class="n">my_custom_scorer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="generated/sklearn.metrics.Scorer.html#sklearn.metrics.Scorer" title="sklearn.metrics.Scorer"><tt class="xref py py-class docutils literal"><span class="pre">Scorer</span></tt></a> takes as parameters the function you want to use, whether it is
+a score (<tt class="docutils literal"><span class="pre">greater_is_better=True</span></tt>) or a loss (<tt class="docutils literal"><span class="pre">greater_is_better=False</span></tt>),
+whether the function you provided takes predictions as input
+(<tt class="docutils literal"><span class="pre">needs_threshold=False</span></tt>) or needs confidence scores
+(<tt class="docutils literal"><span class="pre">needs_threshold=True</span></tt>) and any additional parameters, such as <tt class="docutils literal"><span class="pre">beta</span></tt> in
+the example above.</p>
+</div>
+<div class="section" id="implementing-your-own-scoring-object">
+<h3>5.5.4.2. Implementing your own scoring object<a class="headerlink" href="#implementing-your-own-scoring-object" title="Permalink to this headline">¶</a></h3>
+<p>You can generate even more flexible model scores by constructing your own
+scoring object from scratch, without using the <a class="reference internal" href="generated/sklearn.metrics.Scorer.html#sklearn.metrics.Scorer" title="sklearn.metrics.Scorer"><tt class="xref py py-class docutils literal"><span class="pre">Scorer</span></tt></a> helper class.
+The requirements that a callable can be used for model selection are as
+follows:</p>
+<ul class="simple">
+<li>It can be called with parameters <tt class="docutils literal"><span class="pre">(estimator,</span> <span class="pre">X,</span> <span class="pre">y)</span></tt>, where <tt class="docutils literal"><span class="pre">estimator</span></tt>
+it the model that should be evaluated, <tt class="docutils literal"><span class="pre">X</span></tt> is validation data and <tt class="docutils literal"><span class="pre">y</span></tt> is
+the ground truth target for <tt class="docutils literal"><span class="pre">X</span></tt> (in the supervised case) or <tt class="docutils literal"><span class="pre">None</span></tt> in the
+unsupervised case.</li>
+<li>The call returns a number indicating the quality of estimator.</li>
+<li>The callable has a boolean attribute <tt class="docutils literal"><span class="pre">greater_is_better</span></tt> which indicates whether
+high or low values correspond to a better estimator.</li>
+</ul>
+<p>Objects that meet those conditions as said to implement the sklearn Scorer
+protocol.</p>
+</div>
+</div>
 <div class="section" id="dummy-estimators">
-<span id="id7"></span><h2>5.5.4. Dummy estimators<a class="headerlink" href="#dummy-estimators" title="Permalink to this headline">¶</a></h2>
-<p>When doing supervised learning, a simple sanity check consists in comparing one&#8217;s
-estimator against simple rules of thumb.
-<a class="reference internal" href="generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier"><tt class="xref py py-class docutils literal"><span class="pre">DummyClassifier</span></tt></a> implements three such simple strategies for
-classification:</p>
+<span id="id7"></span><h2>5.5.5. Dummy estimators<a class="headerlink" href="#dummy-estimators" title="Permalink to this headline">¶</a></h2>
+<p>When doing supervised learning, a simple sanity check consists in comparing
+one&#8217;s estimator against simple rules of thumb. <a class="reference internal" href="generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier"><tt class="xref py py-class docutils literal"><span class="pre">DummyClassifier</span></tt></a>
+implements three such simple strategies for classification:</p>
 <ul class="simple">
 <li><cite>stratified</cite> generates randomly predictions by respecting the training
 set&#8217;s class distribution,</li>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.19.4.8. sklearn.metrics.pairwise.pairwise_distances &mdash; scikit-learn 0.14-git documentation</title>
+    <title>8.19.5.8. sklearn.metrics.pairwise.pairwise_distances &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.19.4.9. sklearn.metrics.pairwise.pairwise_kernels" href="sklearn.metrics.pairwise.pairwise_kernels.html" />
-    <link rel="prev" title="8.19.4.7. sklearn.metrics.pairwise.manhattan_distances" href="sklearn.metrics.pairwise.manhattan_distances.html" />
+    <link rel="next" title="8.19.5.9. sklearn.metrics.pairwise.pairwise_kernels" href="sklearn.metrics.pairwise.pairwise_kernels.html" />
+    <link rel="prev" title="8.19.5.7. sklearn.metrics.pairwise.manhattan_distances" href="sklearn.metrics.pairwise.manhattan_distances.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.pairwise.manhattan_distances.html" title="8.19.4.7. sklearn.metrics.pairwise.manhattan_distances"
+	<a href="sklearn.metrics.pairwise.manhattan_distances.html" title="8.19.5.7. sklearn.metrics.pairwise.manhattan_distances"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.19.4.7. sklear...
+	    8.19.5.7. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.4.7. sklearn.metrics.pairwise.manhattan_distances
+	    8.19.5.7. sklearn.metrics.pairwise.manhattan_distances
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.pairwise.pairwise_kernels.html" title="8.19.4.9. sklearn.metrics.pairwise.pairwise_kernels"
+	<a href="sklearn.metrics.pairwise.pairwise_kernels.html" title="8.19.5.9. sklearn.metrics.pairwise.pairwise_kernels"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.19.4.9. sklear...
+	    8.19.5.9. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.4.9. sklearn.metrics.pairwise.pairwise_kernels
+	    8.19.5.9. sklearn.metrics.pairwise.pairwise_kernels
 	    </span>
 	    
 	    </a>
@@ -157,7 +157,7 @@
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.19.4.8. sklearn.metrics.pairwise.pairwise_distances</a></li>
+<li><a class="reference internal" href="#">8.19.5.8. sklearn.metrics.pairwise.pairwise_distances</a></li>
 </ul>
 
     
@@ -172,7 +172,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-pairwise-pairwise-distances">
-<h1>8.19.4.8. sklearn.metrics.pairwise.pairwise_distances<a class="headerlink" href="#sklearn-metrics-pairwise-pairwise-distances" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.5.8. sklearn.metrics.pairwise.pairwise_distances<a class="headerlink" href="#sklearn-metrics-pairwise-pairwise-distances" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.pairwise.pairwise_distances">
 <tt class="descclassname">sklearn.metrics.pairwise.</tt><tt class="descname">pairwise_distances</tt><big>(</big><em>X</em>, <em>Y=None</em>, <em>metric='euclidean'</em>, <em>n_jobs=1</em>, <em>**kwds</em><big>)</big><a class="headerlink" href="#sklearn.metrics.pairwise.pairwise_distances" title="Permalink to this definition">¶</a></dt>
@@ -186,7 +186,7 @@ array.</p>
 <p>If Y is given (default is None), then the returned matrix is the pairwise
 distance between the arrays from both X and Y.</p>
 <p>Please note that support for sparse matrices is currently limited to those
-metrics listed in pairwise.pairwise_distance_functions.</p>
+metrics listed in pairwise.PAIRWISE_DISTANCE_FUNCTIONS.</p>
 <p>Valid values for metric are:</p>
 <ul class="simple">
 <li>from scikit-learn: [&#8216;euclidean&#8217;, &#8216;l2&#8217;, &#8216;l1&#8217;, &#8216;manhattan&#8217;, &#8216;cityblock&#8217;]</li>
@@ -219,7 +219,7 @@ __doc__ of the sklearn.pairwise.distance_metrics function.</p>
 <div><p>The metric to use when calculating distance between instances in a
 feature array. If metric is a string, it must be one of the options
 allowed by scipy.spatial.distance.pdist for its metric parameter, or
-a metric listed in pairwise.pairwise_distance_functions.
+a metric listed in pairwise.PAIRWISE_DISTANCE_FUNCTIONS.
 If metric is &#8220;precomputed&#8221;, X is assumed to be a distance matrix.
 Alternatively, if metric is a callable function, it is called on each
 pair of instances (rows) and the resulting value recorded. The callable

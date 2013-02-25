@@ -30,7 +30,7 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.7.6. sklearn.ensemble.GradientBoostingClassifier" href="sklearn.ensemble.GradientBoostingClassifier.html" />
+    <link rel="next" title="8.7.6. sklearn.ensemble.AdaBoostClassifier" href="sklearn.ensemble.AdaBoostClassifier.html" />
     <link rel="prev" title="8.7.4. sklearn.ensemble.ExtraTreesClassifier" href="sklearn.ensemble.ExtraTreesClassifier.html" />
 
 
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.ensemble.GradientBoostingClassifier.html" title="8.7.6. sklearn.ensemble.GradientBoostingClassifier"
+	<a href="sklearn.ensemble.AdaBoostClassifier.html" title="8.7.6. sklearn.ensemble.AdaBoostClassifier"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
 	    8.7.6. sklearn.e...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.7.6. sklearn.ensemble.GradientBoostingClassifier
+	    8.7.6. sklearn.ensemble.AdaBoostClassifier
 	    </span>
 	    
 	    </a>
@@ -247,11 +247,6 @@ Note: this parameter is tree-specific.</p>
 <div><p>Whether bootstrap samples are used when building trees.
 Note: this parameter is tree-specific.</p>
 </div></blockquote>
-<p><strong>compute_importances</strong> : boolean, optional (default=True)</p>
-<blockquote>
-<div><p>Whether feature importances are computed and stored into the
-<tt class="docutils literal"><span class="pre">feature_importances_</span></tt> attribute when calling fit.</p>
-</div></blockquote>
 <p><strong>oob_score</strong> : bool</p>
 <blockquote>
 <div><p>Whether to use out-of-bag samples to estimate
@@ -259,8 +254,8 @@ the generalization error.</p>
 </div></blockquote>
 <p><strong>n_jobs</strong> : integer, optional (default=1)</p>
 <blockquote>
-<div><p>The number of jobs to run in parallel. If -1, then the number of jobs
-is set to the number of cores.</p>
+<div><p>The number of jobs to run in parallel for both <cite>fit</cite> and <cite>predict</cite>.
+If -1, then the number of jobs is set to the number of cores.</p>
 </div></blockquote>
 <p><strong>random_state</strong> : int, RandomState instance or None, optional (default=None)</p>
 <blockquote>
@@ -287,10 +282,10 @@ by <cite>np.random</cite>.</p>
 </dl>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r82" rules="none">
+<table class="docutils citation" frame="void" id="r93" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R82]</a></td><td>P. Geurts, D. Ernst., and L. Wehenkel, &#8220;Extremely randomized trees&#8221;,
+<tr><td class="label"><a class="fn-backref" href="#id1">[R93]</a></td><td>P. Geurts, D. Ernst., and L. Wehenkel, &#8220;Extremely randomized trees&#8221;,
 Machine Learning, 63(1), 3-42, 2006.</td></tr>
 </tbody>
 </table>
@@ -378,6 +373,23 @@ Machine Learning, 63(1), 3-42, 2006.</td></tr>
 return the index of the leaf x ends up in.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.ensemble.ExtraTreesRegressor.feature_importances_">
+<tt class="descname">feature_importances_</tt><a class="headerlink" href="#sklearn.ensemble.ExtraTreesRegressor.feature_importances_" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Return the feature importances (the higher, the more important the</dt>
+<dd>feature).</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><strong>feature_importances_</strong> : array, shape = [n_features]</td>
 </tr>
 </tbody>
 </table>
@@ -601,7 +613,7 @@ available, the object attribute <tt class="docutils literal"><span class="pre">t
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.ensemble.GradientBoostingClassifier.html">
+      <a href="sklearn.ensemble.AdaBoostClassifier.html">
         Next
       </a>
     </div>

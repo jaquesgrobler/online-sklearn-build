@@ -40,9 +40,9 @@ algorithms. The simplest clustering algorithm is
     >>> k_means = cluster.KMeans(n_clusters=3)
     >>> k_means.fit(X_iris) # doctest: +ELLIPSIS
     KMeans(copy_x=True, init='k-means++', ...
-    >>> print k_means.labels_[::10]
+    >>> print(k_means.labels_[::10])
     [1 1 1 1 1 0 0 0 0 0 2 2 2 2 2]
-    >>> print y_iris[::10]
+    >>> print(y_iris[::10])
     [0 0 0 0 0 1 1 1 1 1 2 2 2 2 2]
 
 .. |k_means_iris_bad_init| image:: ../../auto_examples/cluster/images/plot_cluster_iris_3.png
@@ -86,6 +86,23 @@ algorithms. The simplest clustering algorithm is
 
     **Don't over-interpret clustering results**
 
+
+.. |lena| image:: ../../auto_examples/cluster/images/plot_lena_compress_1.png
+   :target: ../../auto_examples/cluster/plot_lena_compress.html
+   :scale: 60
+
+.. |lena_regular| image:: ../../auto_examples/cluster/images/plot_lena_compress_2.png
+   :target: ../../auto_examples/cluster/plot_lena_compress.html
+   :scale: 60
+
+.. |lena_compressed| image:: ../../auto_examples/cluster/images/plot_lena_compress_3.png
+   :target: ../../auto_examples/cluster/plot_lena_compress.html
+   :scale: 60
+
+.. |lena_histogram| image:: ../../auto_examples/cluster/images/plot_lena_compress_4.png
+   :target: ../../auto_examples/cluster/plot_lena_compress.html
+   :scale: 60
+
 .. topic:: **Application example: vector quantization**
 
     Clustering in general and KMeans, in particular, can be seen as a way
@@ -109,6 +126,27 @@ algorithms. The simplest clustering algorithm is
     	>>> lena_compressed = np.choose(labels, values)
     	>>> lena_compressed.shape = lena.shape
 
+    .. list-table::
+      :class: centered
+
+      *
+        - |lena|
+
+        - |lena_compressed|
+
+        - |lena_regular|
+
+        - |lena_histogram|
+
+      *
+
+        - Raw image
+
+        - K-means quantization
+
+        - Equal bins
+
+        - Image histogram
 
 Hierarchical agglomerative clustering: Ward
 ---------------------------------------------
@@ -238,7 +276,7 @@ data by projecting on a principal subspace.
     >>> pca = decomposition.PCA()
     >>> pca.fit(X)
     PCA(copy=True, n_components=None, whiten=False)
-    >>> print pca.explained_variance_  # doctest: +SKIP
+    >>> print(pca.explained_variance_)  # doctest: +SKIP
     [  2.18565811e+00   1.19346747e+00   8.43026679e-32]
 
     >>> # As we can see, only the 2 first components are useful

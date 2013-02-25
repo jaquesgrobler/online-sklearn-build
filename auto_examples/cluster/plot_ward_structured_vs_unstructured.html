@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood" href="../covariance/plot_covariance_estimation.html" />
-    <link rel="prev" title="Spectral clustering for image segmentation" href="plot_segmentation_toy.html" />
+    <link rel="next" title="Demo of DBSCAN clustering algorithm" href="plot_dbscan.html" />
+    <link rel="prev" title="Vector Quantization Example" href="plot_lena_compress.html" />
 
 
 <script type="text/javascript">
@@ -101,14 +101,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_segmentation_toy.html" title="Spectral clustering for image segmentation"
+	<a href="plot_lena_compress.html" title="Vector Quantization Example"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Spectral cluster...
+	    Vector Quantizat...
 	    </span>
 	    <span class="hiddenrellink">
-	    Spectral clustering for image segmentation
+	    Vector Quantization Example
 	    </span>
 	    
 	    </a>
@@ -118,14 +118,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="../covariance/plot_covariance_estimation.html" title="Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood"
+	<a href="plot_dbscan.html" title="Demo of DBSCAN clustering algorithm"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Shrinkage covari...
+	    Demo of DBSCAN c...
 	    </span>
 	    <span class="hiddenrellink">
-	    Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood
+	    Demo of DBSCAN clustering algorithm
 	    </span>
 	    
 	    </a>
@@ -191,11 +191,11 @@ the clusters form a nice parcellation of the swiss roll.</p>
 </ul>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Compute unstructured hierarchical clustering...
-Elapsed time:  0.48564696312
-Number of points:  1000
+('Elapsed time: ', 0.49077796936035156)
+('Number of points: ', 1000)
 Compute structured hierarchical clustering...
-Elapsed time:  0.103084087372
-Number of points:  1000</pre>
+('Elapsed time: ', 0.1051018238067627)
+('Number of points: ', 1000)</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_ward_structured_vs_unstructured.py"><tt class="xref download docutils literal"><span class="pre">plot_ward_structured_vs_unstructured.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Authors : Vincent Michel, 2010</span>
@@ -203,7 +203,7 @@ Number of points:  1000</pre>
 <span class="c">#           Gael Varoquaux, 2010</span>
 <span class="c"># License: BSD</span>
 
-<span class="k">print</span> <span class="n">__doc__</span>
+<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">time</span> <span class="kn">as</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -222,12 +222,12 @@ Number of points:  1000</pre>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Compute clustering</span>
-<span class="k">print</span> <span class="s">&quot;Compute unstructured hierarchical clustering...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Compute unstructured hierarchical clustering...&quot;</span><span class="p">)</span>
 <span class="n">st</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <a href="../../modules/generated/sklearn.cluster.Ward.html#sklearn.cluster.Ward"><span class="n">ward</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.Ward.html#sklearn.cluster.Ward"><span class="n">Ward</span></a><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">label</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.Ward.html#sklearn.cluster.Ward"><span class="n">ward</span></a><span class="o">.</span><span class="n">labels_</span>
-<span class="k">print</span> <span class="s">&quot;Elapsed time: &quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st</span>
-<span class="k">print</span> <span class="s">&quot;Number of points: &quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">.</span><span class="n">size</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Elapsed time: &quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Number of points: &quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Plot result</span>
@@ -247,12 +247,12 @@ Number of points:  1000</pre>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Compute clustering</span>
-<span class="k">print</span> <span class="s">&quot;Compute structured hierarchical clustering...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Compute structured hierarchical clustering...&quot;</span><span class="p">)</span>
 <span class="n">st</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <a href="../../modules/generated/sklearn.cluster.Ward.html#sklearn.cluster.Ward"><span class="n">ward</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.Ward.html#sklearn.cluster.Ward"><span class="n">Ward</span></a><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">connectivity</span></a><span class="o">=</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">connectivity</span></a><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">label</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.Ward.html#sklearn.cluster.Ward"><span class="n">ward</span></a><span class="o">.</span><span class="n">labels_</span>
-<span class="k">print</span> <span class="s">&quot;Elapsed time: &quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st</span>
-<span class="k">print</span> <span class="s">&quot;Number of points: &quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">.</span><span class="n">size</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Elapsed time: &quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Number of points: &quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Plot result</span>
@@ -267,7 +267,7 @@ Number of points:  1000</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.75 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.76 seconds</p>
 </div>
 
 
@@ -289,12 +289,12 @@ Number of points:  1000</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_segmentation_toy.html">
+      <a href="plot_lena_compress.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="../covariance/plot_covariance_estimation.html">
+      <a href="plot_dbscan.html">
         Next
       </a>
     </div>

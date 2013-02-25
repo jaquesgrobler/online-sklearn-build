@@ -30,7 +30,6 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="5. Model selection and evaluation" href="../model_selection.html" />
-    <link rel="next" title="8.17.25. sklearn.linear_model.RidgeCV" href="generated/sklearn.linear_model.RidgeCV.html" />
     <link rel="prev" title="5.1. Cross-Validation: evaluating estimator performance" href="cross_validation.html" />
 
 
@@ -113,23 +112,6 @@
 	    
 	    </a>
 	</div>
-	    <div class="spacer">
-	    &nbsp;
-	    </div>
-	
-	<div class="rellink">
-	<a href="generated/sklearn.linear_model.RidgeCV.html" title="8.17.25. sklearn.linear_model.RidgeCV"
-	    accesskey="N">Next
-	    <br>
-	    <span class="smallrellink">
-	    8.17.25. sklearn...
-	    </span>
-	    <span class="hiddenrellink">
-	    8.17.25. sklearn.linear_model.RidgeCV
-	    </span>
-	    
-	    </a>
-	</div>
 	<!-- Ad a link to the 'up' page -->
 	<div class="spacer">
 	&nbsp;
@@ -158,7 +140,10 @@
     <h3>This page</h3>
 	<ul>
 <li><a class="reference internal" href="#">5.2. Grid Search: setting estimator parameters</a><ul>
-<li><a class="reference internal" href="#gridsearchcv">5.2.1. GridSearchCV</a></li>
+<li><a class="reference internal" href="#gridsearchcv">5.2.1. GridSearchCV</a><ul>
+<li><a class="reference internal" href="#scoring-functions-for-gridsearchcv">5.2.1.1. Scoring functions for GridSearchCV</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#examples">5.2.2. Examples</a></li>
 <li><a class="reference internal" href="#alternatives-to-brute-force-grid-search">5.2.3. Alternatives to brute force grid search</a><ul>
 <li><a class="reference internal" href="#model-specific-cross-validation">5.2.3.1. Model specific cross-validation</a><ul>
@@ -225,6 +210,17 @@ to compute performance metrics.</p>
 <p>This can be done by using the <a class="reference internal" href="generated/sklearn.cross_validation.train_test_split.html#sklearn.cross_validation.train_test_split" title="sklearn.cross_validation.train_test_split"><tt class="xref py py-func docutils literal"><span class="pre">cross_validation.train_test_split</span></tt></a>
 utility function.</p>
 </div>
+<div class="section" id="scoring-functions-for-gridsearchcv">
+<span id="gridsearch-scoring"></span><h3>5.2.1.1. Scoring functions for GridSearchCV<a class="headerlink" href="#scoring-functions-for-gridsearchcv" title="Permalink to this headline">¶</a></h3>
+<p>By default, <a class="reference internal" href="generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">GridSearchCV</span></tt></a> uses the <tt class="docutils literal"><span class="pre">score</span></tt> function of the estimator
+to evaluate a parameter setting. These are the <a class="reference internal" href="generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.accuracy_score</span></tt></a> for classification
+and <a class="reference internal" href="generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.r2_score</span></tt></a> for regression.
+For some applications, other scoring function are better suited (for example in
+unbalanced classification, the accuracy score is often non-informative). An
+alternative scoring function can be specified via the <tt class="docutils literal"><span class="pre">scoring</span></tt> parameter to
+<a class="reference internal" href="generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">GridSearchCV</span></tt></a>.
+See <a class="reference internal" href="model_evaluation.html#score-func-objects"><em>Scoring objects: defining your scoring rules</em></a> for more details.</p>
+</div>
 </div>
 <div class="section" id="examples">
 <h2>5.2.2. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -235,7 +231,7 @@ Grid Search computation on the digits dataset.</li>
 of Grid Search coupling parameters from a text documents feature
 extractor (n-gram count vectorizer and TF-IDF transformer) with a
 classifier (here a linear SVM trained with SGD with either elastic
-net or L2 penalty) using a <a class="reference internal" href="generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline"><tt class="xref py py-class docutils literal"><span class="pre">pipeline.Pipeline</span></tt></a> instance.</li>
+net or L2 penalty) using a <tt class="xref py py-class docutils literal"><span class="pre">pipeline.Pipeline</span></tt> instance.</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -261,23 +257,23 @@ compute the <strong>regularization path</strong> of the estimator.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV" title="sklearn.linear_model.RidgeCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.RidgeCV</span></tt></a>([alphas,&nbsp;...])</td>
-<td>Ridge regression with built-in cross-validation.</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.RidgeCV</span></tt></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.RidgeClassifierCV.html#sklearn.linear_model.RidgeClassifierCV" title="sklearn.linear_model.RidgeClassifierCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.RidgeClassifierCV</span></tt></a>([alphas,&nbsp;...])</td>
-<td>Ridge classifier with built-in cross-validation.</td>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.RidgeClassifierCV</span></tt></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.LarsCV.html#sklearn.linear_model.LarsCV" title="sklearn.linear_model.LarsCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LarsCV</span></tt></a>([fit_intercept,&nbsp;...])</td>
-<td>Cross-validated Least Angle Regression model</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LarsCV</span></tt></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV" title="sklearn.linear_model.LassoLarsCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoLarsCV</span></tt></a>([fit_intercept,&nbsp;...])</td>
-<td>Cross-validated Lasso, using the LARS algorithm</td>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoLarsCV</span></tt></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoCV</span></tt></a>([eps,&nbsp;n_alphas,&nbsp;...])</td>
-<td>Lasso linear model with iterative fitting along a regularization path</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoCV</span></tt></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.ElasticNetCV.html#sklearn.linear_model.ElasticNetCV" title="sklearn.linear_model.ElasticNetCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.ElasticNetCV</span></tt></a>([l1_ratio,&nbsp;eps,&nbsp;...])</td>
-<td>Elastic Net model with iterative fitting along a regularization path</td>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.ElasticNetCV</span></tt></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -296,8 +292,8 @@ model selection:</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.LassoLarsIC.html#sklearn.linear_model.LassoLarsIC" title="sklearn.linear_model.LassoLarsIC"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoLarsIC</span></tt></a>([criterion,&nbsp;...])</td>
-<td>Lasso model fit with Lars using BIC or AIC for model selection</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoLarsIC</span></tt></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -319,23 +315,23 @@ model selection.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.RandomForestClassifier</span></tt></a>([...])</td>
-<td>A random forest classifier.</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.RandomForestClassifier</span></tt></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor" title="sklearn.ensemble.RandomForestRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.RandomForestRegressor</span></tt></a>([...])</td>
-<td>A random forest regressor.</td>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.RandomForestRegressor</span></tt></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.ensemble.ExtraTreesClassifier.html#sklearn.ensemble.ExtraTreesClassifier" title="sklearn.ensemble.ExtraTreesClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.ExtraTreesClassifier</span></tt></a>([...])</td>
-<td>An extra-trees classifier.</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.ExtraTreesClassifier</span></tt></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.ensemble.ExtraTreesRegressor.html#sklearn.ensemble.ExtraTreesRegressor" title="sklearn.ensemble.ExtraTreesRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.ExtraTreesRegressor</span></tt></a>([n_estimators,&nbsp;...])</td>
-<td>An extra-trees regressor.</td>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.ExtraTreesRegressor</span></tt></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.ensemble.GradientBoostingClassifier.html#sklearn.ensemble.GradientBoostingClassifier" title="sklearn.ensemble.GradientBoostingClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.GradientBoostingClassifier</span></tt></a>([loss,&nbsp;...])</td>
-<td>Gradient Boosting for classification.</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.GradientBoostingClassifier</span></tt></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="sklearn.ensemble.GradientBoostingRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.GradientBoostingRegressor</span></tt></a>([loss,&nbsp;...])</td>
-<td>Gradient Boosting for regression.</td>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">ensemble.GradientBoostingRegressor</span></tt></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -364,11 +360,6 @@ model selection.</p>
     <div class="buttonPrevious">
       <a href="cross_validation.html">
         Previous
-      </a>
-    </div>
-    <div class="buttonNext">
-      <a href="generated/sklearn.linear_model.RidgeCV.html">
-        Next
       </a>
     </div>
     
