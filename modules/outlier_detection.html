@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -220,7 +214,7 @@ add one more observation to that data set. Is the new observation so
 different from the others that we can doubt it is regular? (i.e. does
 it come from the same distribution?) Or on the contrary, is it so
 similar to the other that we cannot distinguish it from the original
-observations? This is the question adressed by the novelty detection
+observations? This is the question addressed by the novelty detection
 tools and methods.</p>
 <p>In general, it is about to learn a rough, close frontier delimiting
 the contour of the initial observations distribution, plotted in
@@ -234,7 +228,7 @@ implemented in the <a class="reference internal" href="svm.html#svm"><em>Support
 <a class="reference internal" href="generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM" title="sklearn.svm.OneClassSVM"><tt class="xref py py-class docutils literal"><span class="pre">svm.OneClassSVM</span></tt></a> object. It requires the choice of a
 kernel and a scalar parameter to define a frontier.  The RBF kernel is
 usually chosen although there exist no exact formula or algorithm to
-set its bandwith parameter. This is the default in the scikit-learn
+set its bandwidth parameter. This is the default in the scikit-learn
 implementation. The <img class="math" src="../_images/math/d6a7ccf879c4a4fe694033606332cb83806db296.png" alt="\nu"/> parameter, also known as the margin of
 the One-Class SVM, corresponds to the probability of finding a new,
 but regular, observation outside the frontier.</p>
@@ -261,7 +255,7 @@ of regular observations that can be used to train any tool.</p>
 <h3>4.6.2.1. Fitting an elliptic envelop<a class="headerlink" href="#fitting-an-elliptic-envelop" title="Permalink to this headline">¶</a></h3>
 <p>One common way of performing outlier detection is to assume that the
 regular data come from a known distribution (e.g. data are Gaussian
-distributed). From this assumption, we generaly try to define the
+distributed). From this assumption, we generally try to define the
 &#8220;shape&#8221; of the data, and can define outlying observations as
 observations which stand far enough from the fit shape.</p>
 <p>The scikit-learn provides an object

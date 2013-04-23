@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -175,19 +169,24 @@
 <h1>8.19.2.1. sklearn.metrics.accuracy_score<a class="headerlink" href="#sklearn-metrics-accuracy-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.accuracy_score">
-<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">accuracy_score</tt><big>(</big><em>y_true</em>, <em>y_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.accuracy_score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Accuracy classification score</p>
+<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">accuracy_score</tt><big>(</big><em>y_true</em>, <em>y_pred</em>, <em>normalize=True</em><big>)</big><a class="headerlink" href="#sklearn.metrics.accuracy_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accuracy classification score.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like, shape = n_samples</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like or list of labels or label indicator matrix</p>
 <blockquote>
 <div><p>Ground truth (correct) labels.</p>
 </div></blockquote>
-<p><strong>y_pred</strong> : array-like, shape = n_samples</p>
+<p><strong>y_pred</strong> : array-like or list of labels or label indicator matrix</p>
 <blockquote>
 <div><p>Predicted labels, as returned by a classifier.</p>
+</div></blockquote>
+<p><strong>normalize</strong> : bool, optional (default=True)</p>
+<blockquote>
+<div><p>If <tt class="docutils literal"><span class="pre">False</span></tt>, return the number of correctly classified samples.
+Otherwise, return the fraction of correctly classified samples.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -202,16 +201,34 @@ The best performance is 1.</p>
 </table>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">zero_one_loss</span></tt></a></p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">zero_one_loss</span></tt></a></dt>
+<dd>zero-one classification loss</dd>
+</dl>
 </div>
+<p class="rubric">Notes</p>
+<p>In multilabel classification, this function computes subset accuracy:
+the set of labels predicted for a sample must <em>exactly</em> match the
+corresponding set of labels in y_true.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 <span class="go">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="go">2</span>
 </pre></div>
 </div>
+<p>In the multilabel case with binary indicator format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+<p>and with a list of labels format:
+&gt;&gt;&gt; accuracy_score([(1, 2), (3,)], [(1, 2), tuple()])
+0.5</p>
 </dd></dl>
 
 </div>

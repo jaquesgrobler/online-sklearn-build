@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -194,7 +188,7 @@ predicted to be in group <img class="math" src="../../_images/math/8122aa89ea6e8
 </div></blockquote>
 <p><strong>labels</strong> : array, shape = [n_classes]</p>
 <blockquote>
-<div><p>List of all labels occuring in the dataset.
+<div><p>List of all labels occurring in the dataset.
 If none is given, those that appear at least once
 in <tt class="docutils literal"><span class="pre">y_true</span></tt> or <tt class="docutils literal"><span class="pre">y_pred</span></tt> are used.</p>
 </div></blockquote>
@@ -209,7 +203,12 @@ in <tt class="docutils literal"><span class="pre">y_true</span></tt> or <tt clas
 </tbody>
 </table>
 <p class="rubric">References</p>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Confusion_matrix">http://en.wikipedia.org/wiki/Confusion_matrix</a></p>
+<table class="docutils citation" frame="void" id="r127" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R127]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Confusion_matrix">Wikipedia entry for the Confusion matrix</a></td></tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>

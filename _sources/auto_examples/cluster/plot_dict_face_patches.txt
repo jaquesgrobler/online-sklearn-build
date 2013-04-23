@@ -31,10 +31,12 @@ cluster.
 **Script output**::
 
   Learning the dictionary... 
-  [_mini_batch_step] Reassigning 6 cluster centers.
+  [MiniBatchKMeans] Reassigning 6 cluster centers.
   Partial fit of  100 out of 2400
   Partial fit of  200 out of 2400
   Partial fit of  300 out of 2400
+  [MiniBatchKMeans] Reassigning 10 cluster centers.
+  [MiniBatchKMeans] Reassigning 10 cluster centers.
   Partial fit of  400 out of 2400
   Partial fit of  500 out of 2400
   Partial fit of  600 out of 2400
@@ -43,10 +45,10 @@ cluster.
   Partial fit of  900 out of 2400
   Partial fit of 1000 out of 2400
   Partial fit of 1100 out of 2400
+  [MiniBatchKMeans] Reassigning 10 cluster centers.
   Partial fit of 1200 out of 2400
   Partial fit of 1300 out of 2400
   Partial fit of 1400 out of 2400
-  [_mini_batch_step] Reassigning 2 cluster centers.
   Partial fit of 1500 out of 2400
   Partial fit of 1600 out of 2400
   Partial fit of 1700 out of 2400
@@ -54,10 +56,12 @@ cluster.
   Partial fit of 1900 out of 2400
   Partial fit of 2000 out of 2400
   Partial fit of 2100 out of 2400
+  [MiniBatchKMeans] Reassigning 8 cluster centers.
   Partial fit of 2200 out of 2400
+  [MiniBatchKMeans] Reassigning 8 cluster centers.
   Partial fit of 2300 out of 2400
   Partial fit of 2400 out of 2400
-  done in 8.93s.
+  done in 8.76s.
 
 
 
@@ -66,5 +70,5 @@ cluster.
 .. literalinclude:: plot_dict_face_patches.py
     :lines: 21-
 
-**Total running time of the example:**  12.51 seconds
+**Total running time of the example:**  12.31 seconds
     

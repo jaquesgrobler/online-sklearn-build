@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -317,26 +311,32 @@ initialization, otherwise, just erase the previous solution.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.decision_function" title="sklearn.linear_model.SGDRegressor.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
 <td>Predict using the linear model</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.fit" title="sklearn.linear_model.SGDRegressor.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;coef_init,&nbsp;intercept_init,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.densify" title="sklearn.linear_model.SGDRegressor.densify"><tt class="xref py py-obj docutils literal"><span class="pre">densify</span></tt></a>()</td>
+<td>Convert coefficient matrix to dense array format.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.fit" title="sklearn.linear_model.SGDRegressor.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;coef_init,&nbsp;intercept_init,&nbsp;...])</td>
 <td>Fit linear model with Stochastic Gradient Descent.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.fit_transform" title="sklearn.linear_model.SGDRegressor.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.fit_transform" title="sklearn.linear_model.SGDRegressor.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
 <td>Fit to data, then transform it</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.get_params" title="sklearn.linear_model.SGDRegressor.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.get_params" title="sklearn.linear_model.SGDRegressor.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for the estimator</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.partial_fit" title="sklearn.linear_model.SGDRegressor.partial_fit"><tt class="xref py py-obj docutils literal"><span class="pre">partial_fit</span></tt></a>(X,&nbsp;y[,&nbsp;sample_weight])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.partial_fit" title="sklearn.linear_model.SGDRegressor.partial_fit"><tt class="xref py py-obj docutils literal"><span class="pre">partial_fit</span></tt></a>(X,&nbsp;y[,&nbsp;sample_weight])</td>
 <td>Fit linear model with Stochastic Gradient Descent.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.predict" title="sklearn.linear_model.SGDRegressor.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.predict" title="sklearn.linear_model.SGDRegressor.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
 <td>Predict using the linear model</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.score" title="sklearn.linear_model.SGDRegressor.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.score" title="sklearn.linear_model.SGDRegressor.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
 <td>Returns the coefficient of determination R^2 of the prediction.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt>(*args,&nbsp;**kwargs)</td>
 <td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.sparsify" title="sklearn.linear_model.SGDRegressor.sparsify"><tt class="xref py py-obj docutils literal"><span class="pre">sparsify</span></tt></a>()</td>
+<td>Convert coefficient matrix to sparse format.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDRegressor.transform" title="sklearn.linear_model.SGDRegressor.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X[,&nbsp;threshold])</td>
 <td>Reduce X to its most important features.</td>
@@ -364,6 +364,24 @@ initialization, otherwise, just erase the previous solution.</p>
 <div><p>Predicted target values per element in X.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.linear_model.SGDRegressor.densify">
+<tt class="descname">densify</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.linear_model.SGDRegressor.densify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert coefficient matrix to dense array format.</p>
+<p>Converts the <tt class="docutils literal"><span class="pre">coef_</span></tt> member (back) to a numpy.ndarray. This is the
+default format of <tt class="docutils literal"><span class="pre">coef_</span></tt> and is required for fitting, so calling
+this method is only required on models that have previously been
+sparsified; otherwise, it is a no-op.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><strong>self: estimator</strong> :</td>
 </tr>
 </tbody>
 </table>
@@ -445,9 +463,15 @@ and returns a transformed version of X.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -530,6 +554,32 @@ Best possible score is 1.0, lower values are worse.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.linear_model.SGDRegressor.sparsify">
+<tt class="descname">sparsify</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.linear_model.SGDRegressor.sparsify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert coefficient matrix to sparse format.</p>
+<p>Converts the <tt class="docutils literal"><span class="pre">coef_</span></tt> member to a scipy.sparse matrix, which for
+L1-regularized models can be much more memory- and storage-efficient
+than the usual numpy.ndarray representation.</p>
+<p>The <tt class="docutils literal"><span class="pre">intercept_</span></tt> member is not converted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><strong>self: estimator</strong> :</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>For non-sparse models, i.e. when there are not many zeros in <tt class="docutils literal"><span class="pre">coef_</span></tt>,
+this may actually <em>increase</em> memory usage, so use this method with
+care. A rule of thumb is that the number of zero elements, which can
+be computed with <tt class="docutils literal"><span class="pre">(coef_</span> <span class="pre">==</span> <span class="pre">0).sum()</span></tt>, must be more than 50% for this
+to provide significant benefits.</p>
+<p>After calling this method, further fitting with the partial_fit
+method (if any) will not work until you call densify.</p>
 </dd></dl>
 
 <dl class="method">

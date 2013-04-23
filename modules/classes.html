@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -422,7 +416,7 @@ algorithms.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.cluster.estimate_bandwidth.html#sklearn.cluster.estimate_bandwidth" title="sklearn.cluster.estimate_bandwidth"><tt class="xref py py-obj docutils literal"><span class="pre">cluster.estimate_bandwidth</span></tt></a>(X[,&nbsp;quantile,&nbsp;...])</td>
-<td>Estimate the bandwith to use with MeanShift algorithm</td>
+<td>Estimate the bandwidth to use with MeanShift algorithm</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.cluster.k_means.html#sklearn.cluster.k_means" title="sklearn.cluster.k_means"><tt class="xref py py-obj docutils literal"><span class="pre">cluster.k_means</span></tt></a>(X,&nbsp;n_clusters[,&nbsp;init,&nbsp;...])</td>
 <td>K-means clustering algorithm.</td>
@@ -1066,10 +1060,16 @@ of an estimator.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-obj docutils literal"><span class="pre">grid_search.GridSearchCV</span></tt></a>(estimator,&nbsp;param_grid)</td>
-<td>Grid search on the parameters of a classifier</td>
+<td>Exhaustive search over specified parameter values for an estimator.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.grid_search.IterGrid.html#sklearn.grid_search.IterGrid" title="sklearn.grid_search.IterGrid"><tt class="xref py py-obj docutils literal"><span class="pre">grid_search.IterGrid</span></tt></a>(param_grid)</td>
-<td>Generators on the combination of the various parameter lists given</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.grid_search.ParameterGrid.html#sklearn.grid_search.ParameterGrid" title="sklearn.grid_search.ParameterGrid"><tt class="xref py py-obj docutils literal"><span class="pre">grid_search.ParameterGrid</span></tt></a>(param_grid)</td>
+<td>Grid of parameters with a discrete number of values for each.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.grid_search.ParameterSampler.html#sklearn.grid_search.ParameterSampler" title="sklearn.grid_search.ParameterSampler"><tt class="xref py py-obj docutils literal"><span class="pre">grid_search.ParameterSampler</span></tt></a>(...[,&nbsp;random_state])</td>
+<td>Generator on parameters sampled from given distributions.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.grid_search.RandomizedSearchCV.html#sklearn.grid_search.RandomizedSearchCV" title="sklearn.grid_search.RandomizedSearchCV"><tt class="xref py py-obj docutils literal"><span class="pre">grid_search.RandomizedSearchCV</span></tt></a>(estimator,&nbsp;...)</td>
+<td>Randomized search on hyper parameters.</td>
 </tr>
 </tbody>
 </table>
@@ -1292,7 +1292,7 @@ implements Stochastic Gradient Descent related algorithms.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.lars_path.html#sklearn.linear_model.lars_path" title="sklearn.linear_model.lars_path"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.lars_path</span></tt></a>(X,&nbsp;y[,&nbsp;Xy,&nbsp;Gram,&nbsp;...])</td>
-<td>Compute Least Angle Regression and Lasso path</td>
+<td>Compute Least Angle Regression or Lasso path using LARS algorithm [1]</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.lasso_path.html#sklearn.linear_model.lasso_path" title="sklearn.linear_model.lasso_path"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.lasso_path</span></tt></a>(X,&nbsp;y[,&nbsp;eps,&nbsp;...])</td>
 <td>Compute Lasso path with coordinate descent</td>
@@ -1376,8 +1376,8 @@ and pairwise metrics and distance computations.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.accuracy_score</span></tt></a>(y_true,&nbsp;y_pred)</td>
-<td>Accuracy classification score</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.accuracy_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<td>Accuracy classification score.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.auc.html#sklearn.metrics.auc" title="sklearn.metrics.auc"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.auc</span></tt></a>(x,&nbsp;y[,&nbsp;reorder])</td>
 <td>Compute Area Under the Curve (AUC) using the trapezoidal rule</td>
@@ -1400,29 +1400,32 @@ and pairwise metrics and distance computations.</p>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.fbeta_score.html#sklearn.metrics.fbeta_score" title="sklearn.metrics.fbeta_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.fbeta_score</span></tt></a>(y_true,&nbsp;y_pred,&nbsp;beta[,&nbsp;...])</td>
 <td>Compute the F-beta score</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.hinge_loss.html#sklearn.metrics.hinge_loss" title="sklearn.metrics.hinge_loss"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.hinge_loss</span></tt></a>(y_true,&nbsp;pred_decision[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.hamming_loss.html#sklearn.metrics.hamming_loss" title="sklearn.metrics.hamming_loss"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.hamming_loss</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;classes])</td>
+<td>Compute the average Hamming loss.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.hinge_loss.html#sklearn.metrics.hinge_loss" title="sklearn.metrics.hinge_loss"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.hinge_loss</span></tt></a>(y_true,&nbsp;pred_decision[,&nbsp;...])</td>
 <td>Average hinge loss (non-regularized)</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.matthews_corrcoef.html#sklearn.metrics.matthews_corrcoef" title="sklearn.metrics.matthews_corrcoef"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.matthews_corrcoef</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.matthews_corrcoef.html#sklearn.metrics.matthews_corrcoef" title="sklearn.metrics.matthews_corrcoef"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.matthews_corrcoef</span></tt></a>(y_true,&nbsp;y_pred)</td>
 <td>Compute the Matthews correlation coefficient (MCC) for binary classes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve" title="sklearn.metrics.precision_recall_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_recall_curve</span></tt></a>(y_true,&nbsp;...)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve" title="sklearn.metrics.precision_recall_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_recall_curve</span></tt></a>(y_true,&nbsp;...)</td>
 <td>Compute precision-recall pairs for different probability thresholds</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support" title="sklearn.metrics.precision_recall_fscore_support"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_recall_fscore_support</span></tt></a>(...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support" title="sklearn.metrics.precision_recall_fscore_support"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_recall_fscore_support</span></tt></a>(...)</td>
 <td>Compute precision, recall, F-measure and support for each class</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
 <td>Compute the precision</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.recall_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.recall_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
 <td>Compute the recall</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve" title="sklearn.metrics.roc_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.roc_curve</span></tt></a>(y_true,&nbsp;y_score[,&nbsp;pos_label])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve" title="sklearn.metrics.roc_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.roc_curve</span></tt></a>(y_true,&nbsp;y_score[,&nbsp;pos_label])</td>
 <td>Compute Receiver operating characteristic (ROC)</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.zero_one_loss</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
-<td>Zero-One classification loss</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.zero_one_loss</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<td>Zero-one classification loss.</td>
 </tr>
 </tbody>
 </table>
@@ -1447,7 +1450,7 @@ details.</p>
 <td>Mean squared error regression loss</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.r2_score</span></tt></a>(y_true,&nbsp;y_pred)</td>
-<td>R^2 (coefficient of determination) regression score function</td>
+<td>R² (coefficient of determination) regression score function.</td>
 </tr>
 </tbody>
 </table>
@@ -1614,8 +1617,11 @@ use these estimators to turn a binary classifier or a regressor into a
 multiclass classifier. It is also possible to use these estimators with
 multiclass estimators in the hope that their accuracy or runtime performance
 improves.</p>
-<p>The one-vs-the-rest meta-classifier also implements a <cite>predic_proba</cite> method, so
-long as such a method is implemented by the base classifier. This method
+<p>All classifiers in scikit-learn implement multiclass classification; you
+only need to use this module if you want to experiment with custom multiclass
+strategies.</p>
+<p>The one-vs-the-rest meta-classifier also implements a <cite>predict_proba</cite> method,
+so long as such a method is implemented by the base classifier. This method
 returns probabilities of class membership in both the single label and
 multilabel case.  Note that in the multilabel case, probabilities are the
 marginal probability that a given sample falls in the given class. As such, in

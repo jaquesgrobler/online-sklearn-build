@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -202,29 +196,25 @@ each class.</p>
 <blockquote>
 <div><p>Integer array of labels.</p>
 </div></blockquote>
-<p><strong>pos_label</strong> : int</p>
+<p><strong>pos_label</strong> : int, 1 by default</p>
 <blockquote>
-<div><p>In the binary classification case, give the label of the positive class
-(default is 1). Everything else but <tt class="docutils literal"><span class="pre">pos_label</span></tt> is considered to
-belong to the negative class.  Set to <tt class="docutils literal"><span class="pre">None</span></tt> in the case of
-multiclass classification.</p>
+<div><p>If <tt class="docutils literal"><span class="pre">average</span></tt> is not <tt class="docutils literal"><span class="pre">None</span></tt> and the classification target is binary,
+only this class&#8217;s scores will be returned.</p>
 </div></blockquote>
 <p><strong>average</strong> : string, [None, &#8216;micro&#8217;, &#8216;macro&#8217;, &#8216;weighted&#8217; (default)]</p>
 <blockquote>
-<div><p>In the multiclass classification case, this determines the type of
-averaging performed on the data.</p>
+<div><p>If <tt class="docutils literal"><span class="pre">None</span></tt>, the scores for each class are returned. Otherwise,
+unless <tt class="docutils literal"><span class="pre">pos_label</span></tt> is given in binary classification, this
+determines the type of averaging performed on the data:</p>
 <dl class="docutils">
-<dt>None:</dt>
-<dd><p class="first last">Do not perform any averaging, return the score for each class.</p>
-</dd>
-<dt>&#8216;macro&#8217;:</dt>
+<dt><tt class="docutils literal"><span class="pre">'macro'</span></tt>:</dt>
 <dd><p class="first last">Average over classes (does not take imbalance into account).</p>
 </dd>
-<dt>&#8216;micro&#8217;:</dt>
+<dt><tt class="docutils literal"><span class="pre">'micro'</span></tt>:</dt>
 <dd><p class="first last">Average over instances (takes imbalance into account).  This
 implies that <tt class="docutils literal"><span class="pre">precision</span> <span class="pre">==</span> <span class="pre">recall</span> <span class="pre">==</span> <span class="pre">F1</span></tt>.</p>
 </dd>
-<dt>&#8216;weighted&#8217;:</dt>
+<dt><tt class="docutils literal"><span class="pre">'weighted'</span></tt>:</dt>
 <dd><p class="first last">Average weighted by support (takes imbalance into account).  Can
 result in F-score that is not between precision and recall.</p>
 </dd>
@@ -242,7 +232,12 @@ average of the F1 scores of each class for the multiclass task.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/F1_score">http://en.wikipedia.org/wiki/F1_score</a></p>
+<table class="docutils citation" frame="void" id="r127" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R127]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/F1_score">Wikipedia entry for the F1-score</a></td></tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
 <p>In the binary case:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.19.2.15. sklearn.metrics.roc_curve &mdash; scikit-learn 0.14-git documentation</title>
+    <title>8.19.2.16. sklearn.metrics.roc_curve &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.19.2.16. sklearn.metrics.zero_one_loss" href="sklearn.metrics.zero_one_loss.html" />
-    <link rel="prev" title="8.19.2.14. sklearn.metrics.recall_score" href="sklearn.metrics.recall_score.html" />
+    <link rel="next" title="8.19.2.17. sklearn.metrics.zero_one_loss" href="sklearn.metrics.zero_one_loss.html" />
+    <link rel="prev" title="8.19.2.15. sklearn.metrics.recall_score" href="sklearn.metrics.recall_score.html" />
 
 
 <script type="text/javascript">
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -101,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.recall_score.html" title="8.19.2.14. sklearn.metrics.recall_score"
+	<a href="sklearn.metrics.recall_score.html" title="8.19.2.15. sklearn.metrics.recall_score"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.19.2.14. sklea...
+	    8.19.2.15. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.2.14. sklearn.metrics.recall_score
+	    8.19.2.15. sklearn.metrics.recall_score
 	    </span>
 	    
 	    </a>
@@ -118,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.zero_one_loss.html" title="8.19.2.16. sklearn.metrics.zero_one_loss"
+	<a href="sklearn.metrics.zero_one_loss.html" title="8.19.2.17. sklearn.metrics.zero_one_loss"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.19.2.16. sklea...
+	    8.19.2.17. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.2.16. sklearn.metrics.zero_one_loss
+	    8.19.2.17. sklearn.metrics.zero_one_loss
 	    </span>
 	    
 	    </a>
@@ -157,7 +151,7 @@
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.19.2.15. sklearn.metrics.roc_curve</a></li>
+<li><a class="reference internal" href="#">8.19.2.16. sklearn.metrics.roc_curve</a></li>
 </ul>
 
     
@@ -172,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-roc-curve">
-<h1>8.19.2.15. sklearn.metrics.roc_curve<a class="headerlink" href="#sklearn-metrics-roc-curve" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.2.16. sklearn.metrics.roc_curve<a class="headerlink" href="#sklearn-metrics-roc-curve" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.roc_curve">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">roc_curve</tt><big>(</big><em>y_true</em>, <em>y_score</em>, <em>pos_label=None</em><big>)</big><a class="headerlink" href="#sklearn.metrics.roc_curve" title="Permalink to this definition">¶</a></dt>
@@ -185,7 +179,7 @@
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
 <blockquote>
 <div><p>True binary labels in range {0, 1} or {-1, 1}.  If labels are not
-binary, pos_label should be explictly given.</p>
+binary, pos_label should be explicitly given.</p>
 </div></blockquote>
 <p><strong>y_score</strong> : array, shape = [n_samples]</p>
 <blockquote>
@@ -214,12 +208,24 @@ class, confidence values, or binary decisions.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="sklearn.metrics.auc_score.html#sklearn.metrics.auc_score" title="sklearn.metrics.auc_score"><tt class="xref py py-obj docutils literal"><span class="pre">auc_score</span></tt></a></dt>
+<dd>Compute Area Under the Curve (AUC) from prediction scores</dd>
+</dl>
+</div>
 <p class="rubric">Notes</p>
 <p>Since the thresholds are sorted from low to high values, they
 are reversed upon returning them to ensure they correspond to both <tt class="docutils literal"><span class="pre">fpr</span></tt>
 and <tt class="docutils literal"><span class="pre">tpr</span></tt>, which are sorted in reversed order during their calculation.</p>
 <p class="rubric">References</p>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Receiver_operating_characteristic">http://en.wikipedia.org/wiki/Receiver_operating_characteristic</a></p>
+<table class="docutils citation" frame="void" id="r139" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R139]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Receiver_operating_characteristic">Wikipedia entry for the Receiver operating characteristic</a></td></tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>

@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -295,7 +289,7 @@ its <cite>coef_</cite> member:</p>
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
 <li><a class="reference internal" href="../auto_examples/linear_model/plot_ridge_path.html#example-linear-model-plot-ridge-path-py"><em>Plot Ridge coefficients as a function of the regularization</em></a></li>
-<li><em class="xref std std-ref">example_document_classification_20newsgroups.py</em></li>
+<li><a class="reference internal" href="../auto_examples/document_classification_20newsgroups.html#example-document-classification-20newsgroups-py"><em>Classification of text documents using sparse features</em></a></li>
 </ul>
 </div>
 <div class="section" id="ridge-complexity">
@@ -651,14 +645,14 @@ The prior for the parameter <img class="math" src="../_images/math/9ee4b825a2e36
 <div class="math">
 <p><img src="../_images/math/b560eaeca0221865ee795e4670db6914305a24cc.png" alt="p(w|\lambda) =
 \mathcal{N}(w|0,\lambda^{-1}\bold{I_{p}})"/></p>
-</div><p>The priors over <img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> and <img class="math" src="../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda"/> are choosen to be <a class="reference external" href="http://en.wikipedia.org/wiki/Gamma_distribution">gamma
+</div><p>The priors over <img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> and <img class="math" src="../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda"/> are chosen to be <a class="reference external" href="http://en.wikipedia.org/wiki/Gamma_distribution">gamma
 distributions</a>, the
 conjugate prior for the precision of the Gaussian.</p>
 <p>The resulting model is called <em>Bayesian Ridge Regression</em>, and is similar to the
 classical <a class="reference internal" href="generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="sklearn.linear_model.Ridge"><tt class="xref py py-class docutils literal"><span class="pre">Ridge</span></tt></a>.  The parameters <img class="math" src="../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w"/>, <img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> and
 <img class="math" src="../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda"/> are estimated jointly during the fit of the model.  The
 remaining hyperparameters are the parameters of the gamma priors over
-<img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> and <img class="math" src="../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda"/>.  These are usually choosen to be
+<img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> and <img class="math" src="../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda"/>.  These are usually chosen to be
 <em>non-informative</em>.  The parameters are estimated by maximizing the <em>marginal
 log likelihood</em>.</p>
 <p>By default <img class="math" src="../_images/math/5075192a9282f5e48194806cfed14ed63e76ed39.png" alt="\alpha_1 = \alpha_2 =  \lambda_1 = \lambda_2 = 1.e^{-6}"/>.</p>
@@ -778,7 +772,7 @@ thus be used to perform feature selection, as detailed in
 <div class="section" id="stochastic-gradient-descent-sgd">
 <h2>3.1.11. Stochastic Gradient Descent - SGD<a class="headerlink" href="#stochastic-gradient-descent-sgd" title="Permalink to this headline">¶</a></h2>
 <p>Stochastic gradient descent is a simple yet very efficient approach
-to fit linear models. It is particulary useful when the number of samples
+to fit linear models. It is particularly useful when the number of samples
 (and the number of features) is very large.</p>
 <p>The classes <a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier" title="sklearn.linear_model.SGDClassifier"><tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt></a> and <a class="reference internal" href="generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor" title="sklearn.linear_model.SGDRegressor"><tt class="xref py py-class docutils literal"><span class="pre">SGDRegressor</span></tt></a> provide
 functionality to fit linear models for classification and regression

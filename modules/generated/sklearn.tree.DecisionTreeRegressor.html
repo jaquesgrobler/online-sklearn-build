@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -186,14 +180,16 @@
 <div><p>The function to measure the quality of a split. The only supported
 criterion is &#8220;mse&#8221; for the mean squared error.</p>
 </div></blockquote>
-<p><strong>max_features</strong> : int, string or None, optional (default=None)</p>
+<p><strong>max_features</strong> : int, float, string or None, optional (default=None)</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>The number of features to consider when looking for the best split:</dt>
 <dd><ul class="first last simple">
-<li>If &#8220;auto&#8221;, then <cite>max_features=sqrt(n_features)</cite> on
-classification tasks and <cite>max_features=n_features</cite>
-on regression problems.</li>
+<li>If int, then consider <cite>max_features</cite> features at each split.</li>
+<li>If float, then <cite>max_features</cite> is a percentage and
+<cite>int(max_features * n_features)</cite> features are considered at each
+split.</li>
+<li>If &#8220;auto&#8221;, then <cite>max_features=n_features</cite>.</li>
 <li>If &#8220;sqrt&#8221;, then <cite>max_features=sqrt(n_features)</cite>.</li>
 <li>If &#8220;log2&#8221;, then <cite>max_features=log2(n_features)</cite>.</li>
 <li>If None, then <cite>max_features=n_features</cite>.</li>
@@ -242,30 +238,30 @@ by <cite>np.random</cite>.</p>
 <p class="last"><a class="reference internal" href="sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="sklearn.tree.DecisionTreeClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">DecisionTreeClassifier</span></tt></a></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r126" rules="none">
+<table class="docutils citation" frame="void" id="r156" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R126]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Decision_tree_learning">http://en.wikipedia.org/wiki/Decision_tree_learning</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[R156]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Decision_tree_learning">http://en.wikipedia.org/wiki/Decision_tree_learning</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r127" rules="none">
+<table class="docutils citation" frame="void" id="r157" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R127]</a></td><td>L. Breiman, J. Friedman, R. Olshen, and C. Stone, &#8220;Classification
+<tr><td class="label"><a class="fn-backref" href="#id2">[R157]</a></td><td>L. Breiman, J. Friedman, R. Olshen, and C. Stone, &#8220;Classification
 and Regression Trees&#8221;, Wadsworth, Belmont, CA, 1984.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r128" rules="none">
+<table class="docutils citation" frame="void" id="r158" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R128]</a></td><td>T. Hastie, R. Tibshirani and J. Friedman. &#8220;Elements of Statistical
+<tr><td class="label"><a class="fn-backref" href="#id3">[R158]</a></td><td>T. Hastie, R. Tibshirani and J. Friedman. &#8220;Elements of Statistical
 Learning&#8221;, Springer, 2009.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r129" rules="none">
+<table class="docutils citation" frame="void" id="r159" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[R129]</a></td><td>L. Breiman, and A. Cutler, &#8220;Random Forests&#8221;,
+<tr><td class="label">[R159]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> L. Breiman, and A. Cutler, &#8220;Random Forests&#8221;,
 <a class="reference external" href="http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm">http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm</a></td></tr>
 </tbody>
 </table>
@@ -288,6 +284,27 @@ Learning&#8221;, Springer, 2009.</td></tr>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="25%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><cite>tree_</cite></td>
+<td>Tree object</td>
+<td>The underlying Tree object.</td>
+</tr>
+<tr class="row-even"><td><cite>feature_importances_</cite></td>
+<td>array of shape = [n_features]</td>
+<td>The feature importances.
+The higher, the more important the feature.
+The importance of a feature is computed as the
+(normalized)total reduction of the criterion brought
+by that feature. It is also known as the Gini importance <a class="reference internal" href="#r159">[R159]</a>.</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -327,9 +344,9 @@ Learning&#8221;, Springer, 2009.</td></tr>
 <dt id="sklearn.tree.DecisionTreeRegressor.feature_importances_">
 <tt class="descname">feature_importances_</tt><a class="headerlink" href="#sklearn.tree.DecisionTreeRegressor.feature_importances_" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the feature importances.</p>
-<p>The importance of a feature is computed as the
-(normalized) total reduction of the criterion brought by that
-feature.  It is also known as the Gini importance <a href="#id6"><span class="problematic" id="id7"><span id="id5"></span>[4]_</span></a>.</p>
+<p>The importance of a feature is computed as the (normalized) total
+reduction of the criterion brought by that feature.
+It is also known as the Gini importance <a href="#id7"><span class="problematic" id="id8"><span id="id6"></span>[4]_</span></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -443,9 +460,15 @@ and returns a transformed version of X.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

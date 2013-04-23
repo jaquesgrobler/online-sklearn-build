@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -285,8 +279,8 @@ a function of <cite>C</cite> and <cite>gamma</cite>.</p>
     <a href="http://matplotlib.org/api/axis_api.html#matplotlib.axis"><span class="n">pl</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
 
 <span class="c"># plot the scores of the grid</span>
-<span class="c"># grid_scores_ contains parameter settings and scores</span>
-<span class="n">score_dict</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV"><span class="n">grid</span></a><span class="o">.</span><span class="n">grid_scores_</span>
+<span class="c"># cv_scores_ contains parameter settings and scores</span>
+<span class="n">score_dict</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV"><span class="n">grid</span></a><span class="o">.</span><span class="n">cv_scores_</span>
 
 <span class="c"># We extract just the scores</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">score_dict</span><span class="p">]</span>
@@ -305,7 +299,7 @@ a function of <cite>C</cite> and <cite>gamma</cite>.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  2.46 seconds</p>
+<p><strong>Total running time of the example:</strong>  2.43 seconds</p>
 </div>
 
 

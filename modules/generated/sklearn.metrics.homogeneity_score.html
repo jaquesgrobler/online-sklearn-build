@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -212,10 +206,10 @@ general.</p>
 <p class="last"><a class="reference internal" href="sklearn.metrics.completeness_score.html#sklearn.metrics.completeness_score" title="sklearn.metrics.completeness_score"><tt class="xref py py-obj docutils literal"><span class="pre">completeness_score</span></tt></a>, <a class="reference internal" href="sklearn.metrics.v_measure_score.html#sklearn.metrics.v_measure_score" title="sklearn.metrics.v_measure_score"><tt class="xref py py-obj docutils literal"><span class="pre">v_measure_score</span></tt></a></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r111" rules="none">
+<table class="docutils citation" frame="void" id="r133" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R111]</a></td><td><a class="reference external" href="http://acl.ldc.upenn.edu/D/D07/D07-1043.pdf">Andrew Rosenberg and Julia Hirschberg, 2007. V-Measure: A
+<tr><td class="label"><a class="fn-backref" href="#id1">[R133]</a></td><td><a class="reference external" href="http://acl.ldc.upenn.edu/D/D07/D07-1043.pdf">Andrew Rosenberg and Julia Hirschberg, 2007. V-Measure: A
 conditional entropy-based external cluster evaluation measure</a></td></tr>
 </tbody>
 </table>
@@ -226,7 +220,7 @@ conditional entropy-based external cluster evaluation measure</a></td></tr>
 <span class="go">1.0</span>
 </pre></div>
 </div>
-<p>Non-pefect labelings that futher split classes into more clusters can be
+<p>Non-pefect labelings that further split classes into more clusters can be
 perfectly homogeneous:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">homogeneity_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
 <span class="gp">... </span>                                                 

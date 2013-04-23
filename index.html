@@ -50,12 +50,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -339,9 +333,9 @@ printable format, see <a class="reference internal" href="support.html#documenta
 </li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#third-party-distributions-of-scikit-learn">1.2. Third party distributions of scikit-learn</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="install.html#debian-and-derivatives-ubuntu">1.2.1. Debian and derivatives (Ubuntu)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="install.html#python-x-y">1.2.2. Python(x, y)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#python-x-y">1.2.2. Python(x,y)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="install.html#enthought-python-distribution">1.2.3. Enthought Python distribution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="install.html#macports">1.2.4. Macports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#macports">1.2.4. MacPorts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="install.html#archlinux">1.2.5. Archlinux</a></li>
 <li class="toctree-l3"><a class="reference internal" href="install.html#netbsd">1.2.6. NetBSD</a></li>
 </ul>
@@ -351,11 +345,11 @@ printable format, see <a class="reference internal" href="support.html#documenta
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial/index.html">2. Tutorials: From the bottom up with scikit-learn</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/basic/tutorial.html">1. An introduction to machine learning with scikit-learn</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorial/basic/tutorial.html#machine-learning-the-problem-setting">1.1. Machine learning: the problem setting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial/basic/tutorial.html#loading-an-example-dataset">1.2. Loading an example dataset</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial/basic/tutorial.html#learning-and-predicting">1.3. Learning and predicting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial/basic/tutorial.html#model-persistence">1.4. Model persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/basic/tutorial.html">2.1. An introduction to machine learning with scikit-learn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/basic/tutorial.html#machine-learning-the-problem-setting">2.1.1. Machine learning: the problem setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/basic/tutorial.html#loading-an-example-dataset">2.1.2. Loading an example dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/basic/tutorial.html#learning-and-predicting">2.1.3. Learning and predicting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/basic/tutorial.html#model-persistence">2.1.4. Model persistence</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/statistical_inference/index.html">2.2. A tutorial on statistical-learning for scientific data processing</a><ul>
@@ -467,7 +461,8 @@ printable format, see <a class="reference internal" href="support.html#documenta
 <li class="toctree-l2"><a class="reference internal" href="modules/svm.html">3.2. Support Vector Machines</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/svm.html#classification">3.2.1. Classification</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="modules/svm.html#multi-class-classification">3.2.1.1. Multi-class classification</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/svm.html#unbalanced-problems">3.2.1.2. Unbalanced problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/svm.html#scores-and-probabilities">3.2.1.2. Scores and probabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/svm.html#unbalanced-problems">3.2.1.3. Unbalanced problems</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/svm.html#regression">3.2.2. Regression</a></li>
@@ -704,7 +699,7 @@ printable format, see <a class="reference internal" href="support.html#documenta
 <li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#affinity-propagation">4.3.3. Affinity Propagation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#mean-shift">4.3.4. Mean Shift</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#spectral-clustering">4.3.5. Spectral clustering</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#different-label-assignement-strategies">4.3.5.1. Different label assignement strategies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#different-label-assignment-strategies">4.3.5.1. Different label assignment strategies</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#hierarchical-clustering">4.3.6. Hierarchical clustering</a><ul>
@@ -827,15 +822,28 @@ printable format, see <a class="reference internal" href="support.html#documenta
 <li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#scoring-functions-for-gridsearchcv">5.2.1.1. Scoring functions for GridSearchCV</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#examples">5.2.2. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#randomized-hyper-parameter-optimization">5.2.2. Randomized Hyper-Parameter Optimization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#alternatives-to-brute-force-grid-search">5.2.3. Alternatives to brute force grid search</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#model-specific-cross-validation">5.2.3.1. Model specific cross-validation</a><ul class="simple">
+<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#model-specific-cross-validation">5.2.3.1. Model specific cross-validation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.RidgeCV.html">8.17.25. sklearn.linear_model.RidgeCV</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.RidgeClassifierCV.html">8.17.24. sklearn.linear_model.RidgeClassifierCV</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.LarsCV.html">8.17.6. sklearn.linear_model.LarsCV</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.LassoLarsCV.html">8.17.10. sklearn.linear_model.LassoLarsCV</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.LassoCV.html">8.17.8. sklearn.linear_model.LassoCV</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.ElasticNetCV.html">8.17.4. sklearn.linear_model.ElasticNetCV</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#information-criterion">5.2.3.2. Information Criterion</a><ul class="simple">
+<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#information-criterion">5.2.3.2. Information Criterion</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.LassoLarsIC.html">8.17.11. sklearn.linear_model.LassoLarsIC</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#out-of-bag-estimates">5.2.3.3. Out of Bag Estimates</a><ul class="simple">
+<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#out-of-bag-estimates">5.2.3.3. Out of Bag Estimates</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.ensemble.RandomForestClassifier.html">8.7.1. sklearn.ensemble.RandomForestClassifier</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.ensemble.RandomForestRegressor.html">8.7.3. sklearn.ensemble.RandomForestRegressor</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.ensemble.ExtraTreesClassifier.html">8.7.4. sklearn.ensemble.ExtraTreesClassifier</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.ensemble.ExtraTreesRegressor.html">8.7.5. sklearn.ensemble.ExtraTreesRegressor</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">8.7.8. sklearn.ensemble.GradientBoostingClassifier</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">8.7.9. sklearn.ensemble.GradientBoostingRegressor</a></li>
 </ul>
 </li>
 </ul>
@@ -858,15 +866,16 @@ printable format, see <a class="reference internal" href="support.html#documenta
 <li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#average-precision-score">5.5.1.3. Average precision score</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#confusion-matrix">5.5.1.4. Confusion matrix</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#classification-report">5.5.1.5. Classification report</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#precision-recall-and-f-measures">5.5.1.6. Precision, recall and F-measures</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#binary-classification">5.5.1.6.1. Binary classification</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#multiclass-and-multilabels-classification">5.5.1.6.2. Multiclass and multilabels classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#hamming-loss">5.5.1.6. Hamming loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#precision-recall-and-f-measures">5.5.1.7. Precision, recall and F-measures</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#binary-classification">5.5.1.7.1. Binary classification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#multiclass-and-multilabel-classification">5.5.1.7.2. Multiclass and multilabel classification</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#hinge-loss">5.5.1.7. Hinge loss</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#matthews-correlation-coefficient">5.5.1.8. Matthews correlation coefficient</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#receiver-operating-characteristic-roc">5.5.1.9. Receiver operating characteristic (ROC)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#zero-one-loss">5.5.1.10. Zero one loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#hinge-loss">5.5.1.8. Hinge loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#matthews-correlation-coefficient">5.5.1.9. Matthews correlation coefficient</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#receiver-operating-characteristic-roc">5.5.1.10. Receiver operating characteristic (ROC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#zero-one-loss">5.5.1.11. Zero one loss</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#regression-metrics">5.5.2. Regression metrics</a><ul>
@@ -888,44 +897,44 @@ printable format, see <a class="reference internal" href="support.html#documenta
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data_transforms.html">6. Dataset transformations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules/preprocessing.html">6.1. Preprocessing data</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling">6.1.1. Standardization or Mean Removal and Variance Scaling</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/preprocessing.html#scaling-features-to-a-range">6.1.1.1. Scaling Features to a Range</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/feature_extraction.html">6.1. Feature extraction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/feature_extraction.html#loading-features-from-dicts">6.1.1. Loading features from dicts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/feature_extraction.html#feature-hashing">6.1.2. Feature hashing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#implementation-details">6.1.2.1. Implementation details</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/preprocessing.html#normalization">6.1.2. Normalization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/preprocessing.html#binarization">6.1.3. Binarization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/preprocessing.html#feature-binarization">6.1.3.1. Feature binarization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/feature_extraction.html#text-feature-extraction">6.1.3. Text feature extraction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#the-bag-of-words-representation">6.1.3.1. The Bag of Words representation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#sparsity">6.1.3.2. Sparsity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#common-vectorizer-usage">6.1.3.3. Common Vectorizer usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#tfidf-term-weighting">6.1.3.4. Tf–idf term weighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#applications-and-examples">6.1.3.5. Applications and examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#limitations-of-the-bag-of-words-representation">6.1.3.6. Limitations of the Bag of Words representation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#vectorizing-a-large-text-corpus-with-the-hashing-trick">6.1.3.7. Vectorizing a large text corpus with the hashing trick</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#customizing-the-vectorizer-classes">6.1.3.8. Customizing the vectorizer classes</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/preprocessing.html#encoding-categorical-features">6.1.4. Encoding categorical features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/preprocessing.html#label-preprocessing">6.1.5. Label preprocessing</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/preprocessing.html#label-binarization">6.1.5.1. Label binarization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/preprocessing.html#label-encoding">6.1.5.2. Label encoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/feature_extraction.html#image-feature-extraction">6.1.4. Image feature extraction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#patch-extraction">6.1.4.1. Patch extraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#connectivity-graph-of-an-image">6.1.4.2. Connectivity graph of an image</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="modules/feature_extraction.html">6.2. Feature extraction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modules/feature_extraction.html#loading-features-from-dicts">6.2.1. Loading features from dicts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/feature_extraction.html#feature-hashing">6.2.2. Feature hashing</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#implementation-details">6.2.2.1. Implementation details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/preprocessing.html">6.2. Preprocessing data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling">6.2.1. Standardization or Mean Removal and Variance Scaling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/preprocessing.html#scaling-features-to-a-range">6.2.1.1. Scaling Features to a Range</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/feature_extraction.html#text-feature-extraction">6.2.3. Text feature extraction</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#the-bag-of-words-representation">6.2.3.1. The Bag of Words representation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#sparsity">6.2.3.2. Sparsity</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#common-vectorizer-usage">6.2.3.3. Common Vectorizer usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#tfidf-term-weighting">6.2.3.4. Tf–idf term weighting</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#applications-and-examples">6.2.3.5. Applications and examples</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#limitations-of-the-bag-of-words-representation">6.2.3.6. Limitations of the Bag of Words representation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#vectorizing-a-large-text-corpus-with-the-hashing-trick">6.2.3.7. Vectorizing a large text corpus with the hashing trick</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#customizing-the-vectorizer-classes">6.2.3.8. Customizing the vectorizer classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/preprocessing.html#normalization">6.2.2. Normalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/preprocessing.html#binarization">6.2.3. Binarization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/preprocessing.html#feature-binarization">6.2.3.1. Feature binarization</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/feature_extraction.html#image-feature-extraction">6.2.4. Image feature extraction</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#patch-extraction">6.2.4.1. Patch extraction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/feature_extraction.html#connectivity-graph-of-an-image">6.2.4.2. Connectivity graph of an image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/preprocessing.html#encoding-categorical-features">6.2.4. Encoding categorical features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/preprocessing.html#label-preprocessing">6.2.5. Label preprocessing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/preprocessing.html#label-binarization">6.2.5.1. Label binarization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/preprocessing.html#label-encoding">6.2.5.2. Label encoding</a></li>
 </ul>
 </li>
 </ul>
@@ -1162,7 +1171,9 @@ printable format, see <a class="reference internal" href="support.html#documenta
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.grid_search">8.11. <tt class="docutils literal"><span class="pre">sklearn.grid_search</span></tt>: Grid Search</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.grid_search.GridSearchCV.html">8.11.1. sklearn.grid_search.GridSearchCV</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.grid_search.IterGrid.html">8.11.2. sklearn.grid_search.IterGrid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.grid_search.ParameterGrid.html">8.11.2. sklearn.grid_search.ParameterGrid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.grid_search.ParameterSampler.html">8.11.3. sklearn.grid_search.ParameterSampler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.grid_search.RandomizedSearchCV.html">8.11.4. sklearn.grid_search.RandomizedSearchCV</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.hmm">8.12. <tt class="docutils literal"><span class="pre">sklearn.hmm</span></tt>: Hidden Markov Models</a><ul>
@@ -1250,14 +1261,15 @@ printable format, see <a class="reference internal" href="support.html#documenta
 <li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.confusion_matrix.html">8.19.2.6. sklearn.metrics.confusion_matrix</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.f1_score.html">8.19.2.7. sklearn.metrics.f1_score</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.fbeta_score.html">8.19.2.8. sklearn.metrics.fbeta_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.hinge_loss.html">8.19.2.9. sklearn.metrics.hinge_loss</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.matthews_corrcoef.html">8.19.2.10. sklearn.metrics.matthews_corrcoef</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_curve.html">8.19.2.11. sklearn.metrics.precision_recall_curve</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_fscore_support.html">8.19.2.12. sklearn.metrics.precision_recall_fscore_support</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_score.html">8.19.2.13. sklearn.metrics.precision_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.recall_score.html">8.19.2.14. sklearn.metrics.recall_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.roc_curve.html">8.19.2.15. sklearn.metrics.roc_curve</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.zero_one_loss.html">8.19.2.16. sklearn.metrics.zero_one_loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.hamming_loss.html">8.19.2.9. sklearn.metrics.hamming_loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.hinge_loss.html">8.19.2.10. sklearn.metrics.hinge_loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.matthews_corrcoef.html">8.19.2.11. sklearn.metrics.matthews_corrcoef</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_curve.html">8.19.2.12. sklearn.metrics.precision_recall_curve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_fscore_support.html">8.19.2.13. sklearn.metrics.precision_recall_fscore_support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_score.html">8.19.2.14. sklearn.metrics.precision_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.recall_score.html">8.19.2.15. sklearn.metrics.recall_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.roc_curve.html">8.19.2.16. sklearn.metrics.roc_curve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.zero_one_loss.html">8.19.2.17. sklearn.metrics.zero_one_loss</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/classes.html#regression-metrics">8.19.3. Regression metrics</a><ul>
@@ -1457,6 +1469,8 @@ printable format, see <a class="reference internal" href="support.html#documenta
 <li class="toctree-l2"><a class="reference internal" href="developers/index.html#coding-guidelines">1.5. Coding guidelines</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="developers/index.html#input-validation">1.5.1. Input validation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="developers/index.html#random-numbers">1.5.2. Random Numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developers/index.html#deprecation">1.5.3. Deprecation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developers/index.html#python-3-x-support">1.5.4. Python 3.x support</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="developers/index.html#apis-of-scikit-learn-objects">1.6. APIs of scikit-learn objects</a><ul>
@@ -1468,9 +1482,15 @@ printable format, see <a class="reference internal" href="support.html#documenta
 <li class="toctree-l4"><a class="reference internal" href="developers/index.html#optional-arguments">1.6.2.4. Optional Arguments</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="developers/index.html#unresolved-api-issues">1.6.3. Unresolved API issues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="developers/index.html#working-notes">1.6.4. Working notes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="developers/index.html#specific-models">1.6.5. Specific models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="developers/index.html#rolling-your-own-estimator">1.7. Rolling your own estimator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developers/index.html#get-params-and-set-params">1.7.1. get_params and set_params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developers/index.html#parameters-and-init">1.7.2. Parameters and init</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developers/index.html#cloning">1.7.3. Cloning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developers/index.html#pipeline-compatibility">1.7.4. Pipeline compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developers/index.html#working-notes">1.7.5. Working notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developers/index.html#specific-models">1.7.6. Specific models</a></li>
 </ul>
 </li>
 </ul>
@@ -1502,9 +1522,10 @@ printable format, see <a class="reference internal" href="support.html#documenta
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#testing-functions">3.7. Testing Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#helper-functions">3.8. Helper Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#hash-functions">3.9. Hash Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#warnings-and-exceptions">3.10. Warnings and Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#multiclass-and-multilabel-utility-function">3.8. Multiclass and multilabel utility function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#helper-functions">3.9. Helper Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#hash-functions">3.10. Hash Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#warnings-and-exceptions">3.11. Warnings and Exceptions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="developers/debugging.html">4. Developers&#8217; Tips for Debugging</a><ul>

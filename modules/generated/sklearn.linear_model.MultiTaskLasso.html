@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -200,11 +194,11 @@ to false, no intercept will be used in calculations
 </div></blockquote>
 <p><strong>normalize</strong> : boolean, optional, default False</p>
 <blockquote>
-<div><p>If True, the regressors X will be normalized before regression.</p>
+<div><p>If <tt class="docutils literal"><span class="pre">True</span></tt>, the regressors X will be normalized before regression.</p>
 </div></blockquote>
 <p><strong>copy_X</strong> : boolean, optional, default True</p>
 <blockquote>
-<div><p>If True, X will be copied; else, it may be overwritten.</p>
+<div><p>If <tt class="docutils literal"><span class="pre">True</span></tt>, X will be copied; else, it may be overwritten.</p>
 </div></blockquote>
 <p><strong>max_iter</strong> : int, optional</p>
 <blockquote>
@@ -213,13 +207,13 @@ to false, no intercept will be used in calculations
 <p><strong>tol</strong> : float, optional</p>
 <blockquote>
 <div><p>The tolerance for the optimization: if the updates are
-smaller than &#8216;tol&#8217;, the optimization code checks the
+smaller than <tt class="docutils literal"><span class="pre">tol</span></tt>, the optimization code checks the
 dual gap for optimality and continues until it is smaller
-than tol.</p>
+than <tt class="docutils literal"><span class="pre">tol</span></tt>.</p>
 </div></blockquote>
 <p><strong>warm_start</strong> : bool, optional</p>
 <blockquote class="last">
-<div><p>When set to True, reuse the solution of the previous call to fit as
+<div><p>When set to <tt class="docutils literal"><span class="pre">True</span></tt>, reuse the solution of the previous call to fit as
 initialization, otherwise, just erase the previous solution.</p>
 </div></blockquote>
 </td>
@@ -233,7 +227,7 @@ initialization, otherwise, just erase the previous solution.</p>
 <p class="rubric">Notes</p>
 <p>The algorithm used to fit the model is coordinate descent.</p>
 <p>To avoid unnecessary memory duplication the X argument of the fit method
-should be directly passed as a fortran contiguous numpy array.</p>
+should be directly passed as a Fortran-contiguous numpy array.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">MultiTaskLasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
@@ -250,16 +244,16 @@ should be directly passed as a fortran contiguous numpy array.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="12%" />
-<col width="37%" />
-<col width="51%" />
+<col width="14%" />
+<col width="36%" />
+<col width="49%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><cite>coef_</cite></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">coef_</span></tt></td>
 <td>array, shape = (n_tasks, n_features)</td>
 <td>parameter vector (W in the cost function formula)</td>
 </tr>
-<tr class="row-even"><td><cite>intercept_</cite></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">intercept_</span></tt></td>
 <td>array, shape = (n_tasks,)</td>
 <td>independent term in decision function.</td>
 </tr>
@@ -345,7 +339,7 @@ should be directly passed as a fortran contiguous numpy array.</p>
 <p class="rubric">Notes</p>
 <p>Coordinate descent is an algorithm that considers each column of
 data at a time hence it will automatically convert the X input
-as a fortran contiguous numpy array if necessary.</p>
+as a Fortran-contiguous numpy array if necessary.</p>
 <p>To avoid memory re-allocation it is advised to allocate the
 initial data in memory directly using that format.</p>
 </dd></dl>
@@ -359,9 +353,15 @@ initial data in memory directly using that format.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

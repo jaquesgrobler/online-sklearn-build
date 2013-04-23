@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -204,10 +198,17 @@ class, confidence values, or binary decisions.</p>
 <dl class="last docutils">
 <dt><a class="reference internal" href="sklearn.metrics.auc_score.html#sklearn.metrics.auc_score" title="sklearn.metrics.auc_score"><tt class="xref py py-obj docutils literal"><span class="pre">auc_score</span></tt></a></dt>
 <dd>Area under the ROC curve</dd>
+<dt><a class="reference internal" href="sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve" title="sklearn.metrics.precision_recall_curve"><tt class="xref py py-obj docutils literal"><span class="pre">precision_recall_curve</span></tt></a></dt>
+<dd>Compute precision-recall pairs for different probability thresholds</dd>
 </dl>
 </div>
 <p class="rubric">References</p>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Information_retrieval#Average_precision">http://en.wikipedia.org/wiki/Information_retrieval#Average_precision</a></p>
+<table class="docutils citation" frame="void" id="r124" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R124]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Information_retrieval#Average_precision">Wikipedia entry for the Average precision</a></td></tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">average_precision_score</span>

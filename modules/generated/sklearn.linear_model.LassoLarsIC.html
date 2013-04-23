@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -214,7 +208,7 @@ to false, no intercept will be used in calculations
 <p><strong>precompute</strong> : True | False | &#8216;auto&#8217; | array-like</p>
 <blockquote>
 <div><p>Whether to use a precomputed Gram matrix to speed up
-calculations. If set to &#8216;auto&#8217; let us decide. The Gram
+calculations. If set to <tt class="docutils literal"><span class="pre">'auto'</span></tt> let us decide. The Gram
 matrix can also be passed as argument.</p>
 </div></blockquote>
 <p><strong>max_iter: integer, optional</strong> :</p>
@@ -226,7 +220,7 @@ early stopping.</p>
 <blockquote class="last">
 <div><p>The machine-precision regularization in the computation of the
 Cholesky diagonal factors. Increase this for very ill-conditioned
-systems. Unlike the &#8216;tol&#8217; parameter in some iterative
+systems. Unlike the <tt class="docutils literal"><span class="pre">tol</span></tt> parameter in some iterative
 optimization-based algorithms, this parameter does not control
 the tolerance of the optimization.</p>
 </div></blockquote>
@@ -260,20 +254,20 @@ Ann. Statist. Volume 35, Number 5 (2007), 2173-2192.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="29%" />
-<col width="59%" />
+<col width="15%" />
+<col width="28%" />
+<col width="57%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><cite>coef_</cite></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">coef_</span></tt></td>
 <td>array, shape = [n_features]</td>
 <td>parameter vector (w in the fomulation formula)</td>
 </tr>
-<tr class="row-even"><td><cite>intercept_</cite></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">intercept_</span></tt></td>
 <td>float</td>
 <td>independent term in decision function.</td>
 </tr>
-<tr class="row-odd"><td><cite>alpha_</cite></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">alpha_</span></tt></td>
 <td>float</td>
 <td>the alpha parameter chosen by the information criterion</td>
 </tr>
@@ -369,9 +363,15 @@ Ann. Statist. Volume 35, Number 5 (2007), 2173-2192.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

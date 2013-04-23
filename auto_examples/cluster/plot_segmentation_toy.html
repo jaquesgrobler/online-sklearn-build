@@ -31,7 +31,7 @@
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="K-means Clustering" href="plot_cluster_iris.html" />
-    <link rel="prev" title="Demo of DBSCAN clustering algorithm" href="plot_dbscan.html" />
+    <link rel="prev" title="Hierarchical clustering: structured vs unstructured ward" href="plot_ward_structured_vs_unstructured.html" />
 
 
 <script type="text/javascript">
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -101,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_dbscan.html" title="Demo of DBSCAN clustering algorithm"
+	<a href="plot_ward_structured_vs_unstructured.html" title="Hierarchical clustering: structured vs unstructured ward"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Demo of DBSCAN c...
+	    Hierarchical clu...
 	    </span>
 	    <span class="hiddenrellink">
-	    Demo of DBSCAN clustering algorithm
+	    Hierarchical clustering: structured vs unstructured ward
 	    </span>
 	    
 	    </a>
@@ -241,7 +235,7 @@ separating the objects one from the other, and not from the background.</p>
 <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">img_to_graph</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
 
 <span class="c"># Take a decreasing function of the gradient: we take it weakly</span>
-<span class="c"># dependant from the gradient the segmentation is close to a voronoi</span>
+<span class="c"># dependent from the gradient the segmentation is close to a voronoi</span>
 <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 
 <span class="c"># Force the solver to be arpack, since amg is numerically</span>
@@ -274,7 +268,7 @@ separating the objects one from the other, and not from the background.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  1.69 seconds</p>
+<p><strong>Total running time of the example:</strong>  1.80 seconds</p>
 </div>
 
 
@@ -296,7 +290,7 @@ separating the objects one from the other, and not from the background.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_dbscan.html">
+      <a href="plot_ward_structured_vs_unstructured.html">
         Previous
       </a>
     </div>

@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -205,7 +199,7 @@ therefore are not shown.</p>
 <span class="c">#</span>
 <span class="c"># License: BSD</span>
 
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">izip</span>
+<span class="kn">from</span> <span class="nn">sklearn.externals.six.moves</span> <span class="kn">import</span> <span class="nb">zip</span>
 
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 
@@ -241,7 +235,7 @@ therefore are not shown.</p>
 <span class="n">real_test_errors</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">discrete_test_errors</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">real_test_predict</span><span class="p">,</span> <span class="n">discrete_train_predict</span> <span class="ow">in</span> <span class="n">izip</span><span class="p">(</span>
+<span class="k">for</span> <span class="n">real_test_predict</span><span class="p">,</span> <span class="n">discrete_train_predict</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
         <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">bdt_real</span></a><span class="o">.</span><span class="n">staged_predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">bdt_discrete</span></a><span class="o">.</span><span class="n">staged_predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)):</span>
     <span class="n">real_test_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
         <span class="mf">1.</span> <span class="o">-</span> <a href="../../modules/generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score"><span class="n">accuracy_score</span></a><span class="p">(</span><span class="n">real_test_predict</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
@@ -285,7 +279,7 @@ therefore are not shown.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  16.82 seconds</p>
+<p><strong>Total running time of the example:</strong>  16.68 seconds</p>
 </div>
 
 

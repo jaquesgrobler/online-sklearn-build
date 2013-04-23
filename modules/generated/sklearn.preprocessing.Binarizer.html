@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -181,9 +175,9 @@
 and zeros are left untouched.</p>
 <p>Binarization is a common operation on text count data where the
 analyst can decide to only consider the presence or absence of a
-feature rather than a quantified number of occurences for instance.</p>
+feature rather than a quantified number of occurrences for instance.</p>
 <p>It can also be used as a pre-processing step for estimators that
-consider boolean random variables (e.g. modeled using the Bernoulli
+consider boolean random variables (e.g. modelled using the Bernoulli
 distribution in a Bayesian setting).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -283,9 +277,15 @@ and returns a transformed version of X.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

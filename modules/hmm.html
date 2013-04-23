@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -257,17 +251,18 @@ The inferred optimal hidden states can be obtained by calling <cite>predict</cit
 The <cite>predict</cite> method can be specified with decoder algorithm.
 Currently the Viterbi algorithm (<cite>viterbi</cite>), and maximum a posteriori
 estimation (<cite>map</cite>) are supported.
-This time, the input is a single sequence of observed values.:</p>
+This time, the input is a single sequence of observed values.  Note, the states
+in model2 will have a different order than those in the generating model.:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">model2</span> <span class="o">=</span> <span class="n">hmm</span><span class="o">.</span><span class="n">GaussianHMM</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">&quot;full&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">X</span><span class="p">])</span> 
 <span class="go">GaussianHMM(algorithm=&#39;viterbi&#39;,...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Z2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z2</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
-<li><em class="xref std std-ref">example_plot_hmm_stock_analysis.py</em></li>
+<li><a class="reference internal" href="../auto_examples/plot_hmm_stock_analysis.html#example-plot-hmm-stock-analysis-py"><em>Gaussian HMM of stock data</em></a></li>
 </ul>
 </div>
 </div>

@@ -11,7 +11,7 @@ An illustration of various embeddings on the digits dataset.
 
 The RandomTreesEmbedding, from the :mod:`sklearn.ensemble` module, is not
 technically a manifold embedding method, as it learn a high-dimensional
-representation on wich we apply a dimensionality reduction method.
+representation on which we apply a dimensionality reduction method.
 However, it is often useful to cast a dataset into a representation in
 which the classes are linearly-seperable.
 
@@ -74,15 +74,15 @@ which the classes are linearly-seperable.
   Computing Isomap embedding
   Done.
   Computing LLE embedding
-  Done. Reconstruction error: 1.28472e-06
+  Done. Reconstruction error: 3.07864e-07
   Computing modified LLE embedding
-  Done. Reconstruction error: 0.359941
+  Done. Reconstruction error: 0.359853
   Computing Hessian LLE embedding
-  Done. Reconstruction error: 0.212096
+  Done. Reconstruction error: 0.212209
   Computing LTSA embedding
-  Done. Reconstruction error: 0.212075
+  Done. Reconstruction error: 0.212077
   Computing MDS embedding
-  Done. Stress: 141100635.430415
+  Done. Stress: 147692892.355551
   Computing Totally Random Trees embedding
   Computing Spectral embedding
 
@@ -93,5 +93,5 @@ which the classes are linearly-seperable.
 .. literalinclude:: plot_lle_digits.py
     :lines: 14-
 
-**Total running time of the example:**  15.54 seconds
+**Total running time of the example:**  15.34 seconds
     

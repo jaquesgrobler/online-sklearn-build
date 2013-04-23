@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -175,7 +169,7 @@
 <h1>8.1.1.6. sklearn.cluster.SpectralClustering<a class="headerlink" href="#sklearn-cluster-spectralclustering" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.cluster.SpectralClustering">
-<em class="property">class </em><tt class="descclassname">sklearn.cluster.</tt><tt class="descname">SpectralClustering</tt><big>(</big><em>n_clusters=8</em>, <em>eigen_solver=None</em>, <em>random_state=None</em>, <em>n_init=10</em>, <em>gamma=1.0</em>, <em>affinity='rbf'</em>, <em>n_neighbors=10</em>, <em>k=None</em>, <em>eigen_tol=0.0</em>, <em>assign_labels='kmeans'</em>, <em>mode=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.SpectralClustering" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.cluster.</tt><tt class="descname">SpectralClustering</tt><big>(</big><em>n_clusters=8</em>, <em>eigen_solver=None</em>, <em>random_state=None</em>, <em>n_init=10</em>, <em>gamma=1.0</em>, <em>affinity='rbf'</em>, <em>n_neighbors=10</em>, <em>k=None</em>, <em>eigen_tol=0.0</em>, <em>assign_labels='kmeans'</em>, <em>mode=None</em>, <em>degree=3</em>, <em>coef0=1</em>, <em>kernel_params=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.SpectralClustering" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply clustering to a projection to the normalized laplacian.</p>
 <p>In practice Spectral Clustering is very useful when the structure of
 the individual clusters is highly non-convex or more generally when
@@ -184,8 +178,9 @@ description of the complete cluster. For instance when clusters are
 nested circles on the 2D plan.</p>
 <p>If affinity is the adjacency matrix of a graph, this method can be
 used to find normalized graph cuts.</p>
-<p>When calling <tt class="docutils literal"><span class="pre">fit</span></tt>, an affinity matrix is constructed using either the
-Gaussian (aka RBF) kernel of the euclidean distanced <tt class="docutils literal"><span class="pre">d(X,</span> <span class="pre">X)</span></tt>:</p>
+<p>When calling <tt class="docutils literal"><span class="pre">fit</span></tt>, an affinity matrix is constructed using either
+kernel function such the Gaussian (aka RBF) kernel of the euclidean
+distanced <tt class="docutils literal"><span class="pre">d(X,</span> <span class="pre">X)</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -200,11 +195,29 @@ matrix can be used.</p>
 <blockquote>
 <div><p>The dimension of the projection subspace.</p>
 </div></blockquote>
-<p><strong>affinity: string, &#8216;nearest_neighbors&#8217;, &#8216;rbf&#8217; or &#8216;precomputed&#8217;</strong> :</p>
+<p><strong>affinity</strong> : string, array-like or callable, default &#8216;rbf&#8217;</p>
+<blockquote>
+<div><p>If a string, this may be one of &#8216;nearest_neighbors&#8217;, &#8216;precomputed&#8217;,
+&#8216;rbf&#8217; or one of the kernels supported by
+<cite>sklearn.metrics.pairwise_kernels</cite>.</p>
+<p>Only kernels that produce similarity scores (non-negative values that
+increase with similarity) should be used. This property is not checked
+by the clustering algorithm.</p>
+</div></blockquote>
 <p><strong>gamma: float</strong> :</p>
 <blockquote>
-<div><p>Scaling factor of Gaussian (rbf) affinity kernel. Ignored for
+<div><p>Scaling factor of RBF, polynomial, exponential chi² and
+sigmoid affinity kernel. Ignored for
 <tt class="docutils literal"><span class="pre">affinity='nearest_neighbors'</span></tt>.</p>
+</div></blockquote>
+<p><strong>degree</strong> : float, default=3</p>
+<blockquote>
+<div><p>Degree of the polynomial kernel. Ignored by other kernels.</p>
+</div></blockquote>
+<p><strong>coef0</strong> : float, default=1</p>
+<blockquote>
+<div><p>Zero coefficient for polynomial and sigmoid kernels.
+Ignored by other kernels.</p>
 </div></blockquote>
 <p><strong>n_neighbors: integer</strong> :</p>
 <blockquote>
@@ -235,12 +248,17 @@ n_init consecutive runs in terms of inertia.</p>
 when using arpack eigen_solver.</p>
 </div></blockquote>
 <p><strong>assign_labels</strong> : {&#8216;kmeans&#8217;, &#8216;discretize&#8217;}, default: &#8216;kmeans&#8217;</p>
-<blockquote class="last">
+<blockquote>
 <div><p>The strategy to use to assign labels in the embedding
 space. There are two ways to assign labels after the laplacian
 embedding. k-means can be applied and is a popular choice. But it can
 also be sensitive to initialization. Discretization is another approach
 which is less sensitive to random initialization.</p>
+</div></blockquote>
+<p><strong>kernel_params</strong> : dictionary of string to any, optional</p>
+<blockquote class="last">
+<div><p>Parameters (keyword arguments) and values for kernel passed as
+callable object. Ignored by other kernels.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -313,7 +331,7 @@ Stella X. Yu, Jianbo Shi
 </table>
 <dl class="method">
 <dt id="sklearn.cluster.SpectralClustering.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_clusters=8</em>, <em>eigen_solver=None</em>, <em>random_state=None</em>, <em>n_init=10</em>, <em>gamma=1.0</em>, <em>affinity='rbf'</em>, <em>n_neighbors=10</em>, <em>k=None</em>, <em>eigen_tol=0.0</em>, <em>assign_labels='kmeans'</em>, <em>mode=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.SpectralClustering.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_clusters=8</em>, <em>eigen_solver=None</em>, <em>random_state=None</em>, <em>n_init=10</em>, <em>gamma=1.0</em>, <em>affinity='rbf'</em>, <em>n_neighbors=10</em>, <em>k=None</em>, <em>eigen_tol=0.0</em>, <em>assign_labels='kmeans'</em>, <em>mode=None</em>, <em>degree=3</em>, <em>coef0=1</em>, <em>kernel_params=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.SpectralClustering.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -369,9 +387,15 @@ matrix of shape (n_samples, n_samples)</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

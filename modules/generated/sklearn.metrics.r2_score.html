@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -176,7 +170,7 @@
 <dl class="function">
 <dt id="sklearn.metrics.r2_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">r2_score</tt><big>(</big><em>y_true</em>, <em>y_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.r2_score" title="Permalink to this definition">¶</a></dt>
-<dd><p>R^2 (coefficient of determination) regression score function</p>
+<dd><p>R² (coefficient of determination) regression score function.</p>
 <p>Best possible score is 1.0, lower values are worse.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -194,7 +188,7 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>z</strong> : float</p>
 <blockquote class="last">
-<div><p>The R^2 score</p>
+<div><p>The R² score.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -202,8 +196,15 @@
 </table>
 <p class="rubric">Notes</p>
 <p>This is not a symmetric function.</p>
+<p>Unlike most other scores, R² score may be negative (it need not actually
+be the square of a quantity R).</p>
 <p class="rubric">References</p>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Coefficient_of_determination">http://en.wikipedia.org/wiki/Coefficient_of_determination</a></p>
+<table class="docutils citation" frame="void" id="r138" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R138]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Coefficient_of_determination">Wikipedia entry on the Coefficient of determination</a></td></tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>

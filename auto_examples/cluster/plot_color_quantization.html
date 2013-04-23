@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -194,11 +188,11 @@ randomly) is also shown.</p>
 </ul>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Fitting model on a small sub-sample of the data
-done in 0.564s.
+done in 0.556s.
 Predicting color indices on the full image (k-means)
-done in 0.479s.
+done in 0.471s.
 Predicting color indices on the full image (random)
-done in 0.509s.</pre>
+done in 0.474s.</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_color_quantization.py"><tt class="xref download docutils literal"><span class="pre">plot_color_quantization.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Authors: Robert Layton &lt;robertlayton@gmail.com&gt;</span>
@@ -284,11 +278,10 @@ done in 0.509s.</pre>
 <a href="http://matplotlib.org/api/axis_api.html#matplotlib.axis"><span class="n">pl</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;Quantized image (64 colors, Random)&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow"><span class="n">pl</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><span class="n">recreate_image</span><span class="p">(</span><span class="n">codebook_random</span><span class="p">,</span> <span class="n">labels_random</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
-
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  2.91 seconds</p>
+<p><strong>Total running time of the example:</strong>  2.82 seconds</p>
 </div>
 
 

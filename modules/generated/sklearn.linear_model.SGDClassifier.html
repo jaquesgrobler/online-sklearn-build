@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -339,32 +333,38 @@ initialization, otherwise, just erase the previous solution.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.decision_function" title="sklearn.linear_model.SGDClassifier.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
 <td>Predict confidence scores for samples.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.fit" title="sklearn.linear_model.SGDClassifier.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;coef_init,&nbsp;intercept_init,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.densify" title="sklearn.linear_model.SGDClassifier.densify"><tt class="xref py py-obj docutils literal"><span class="pre">densify</span></tt></a>()</td>
+<td>Convert coefficient matrix to dense array format.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.fit" title="sklearn.linear_model.SGDClassifier.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;coef_init,&nbsp;intercept_init,&nbsp;...])</td>
 <td>Fit linear model with Stochastic Gradient Descent.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.fit_transform" title="sklearn.linear_model.SGDClassifier.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.fit_transform" title="sklearn.linear_model.SGDClassifier.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
 <td>Fit to data, then transform it</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.get_params" title="sklearn.linear_model.SGDClassifier.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.get_params" title="sklearn.linear_model.SGDClassifier.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for the estimator</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.partial_fit" title="sklearn.linear_model.SGDClassifier.partial_fit"><tt class="xref py py-obj docutils literal"><span class="pre">partial_fit</span></tt></a>(X,&nbsp;y[,&nbsp;classes,&nbsp;sample_weight])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.partial_fit" title="sklearn.linear_model.SGDClassifier.partial_fit"><tt class="xref py py-obj docutils literal"><span class="pre">partial_fit</span></tt></a>(X,&nbsp;y[,&nbsp;classes,&nbsp;sample_weight])</td>
 <td>Fit linear model with Stochastic Gradient Descent.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.predict" title="sklearn.linear_model.SGDClassifier.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.predict" title="sklearn.linear_model.SGDClassifier.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
 <td>Predict class labels for samples in X.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.predict_log_proba" title="sklearn.linear_model.SGDClassifier.predict_log_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_log_proba</span></tt></a>(X)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.predict_log_proba" title="sklearn.linear_model.SGDClassifier.predict_log_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_log_proba</span></tt></a>(X)</td>
 <td>Log of probability estimates.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.predict_proba" title="sklearn.linear_model.SGDClassifier.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.predict_proba" title="sklearn.linear_model.SGDClassifier.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
 <td>Probability estimates.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.score" title="sklearn.linear_model.SGDClassifier.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.score" title="sklearn.linear_model.SGDClassifier.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
 <td>Returns the mean accuracy on the given test data and labels.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt>(*args,&nbsp;**kwargs)</td>
 <td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.sparsify" title="sklearn.linear_model.SGDClassifier.sparsify"><tt class="xref py py-obj docutils literal"><span class="pre">sparsify</span></tt></a>()</td>
+<td>Convert coefficient matrix to sparse format.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.SGDClassifier.transform" title="sklearn.linear_model.SGDClassifier.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X[,&nbsp;threshold])</td>
 <td>Reduce X to its most important features.</td>
@@ -398,6 +398,24 @@ sample to the hyperplane.</p>
 case, confidence score for the &#8220;positive&#8221; class.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.linear_model.SGDClassifier.densify">
+<tt class="descname">densify</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.linear_model.SGDClassifier.densify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert coefficient matrix to dense array format.</p>
+<p>Converts the <tt class="docutils literal"><span class="pre">coef_</span></tt> member (back) to a numpy.ndarray. This is the
+default format of <tt class="docutils literal"><span class="pre">coef_</span></tt> and is required for fitting, so calling
+this method is only required on models that have previously been
+sparsified; otherwise, it is a no-op.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><strong>self: estimator</strong> :</td>
 </tr>
 </tbody>
 </table>
@@ -480,9 +498,15 @@ and returns a transformed version of X.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -557,7 +581,8 @@ If not provided, uniform weights are assumed.</p>
 <dt id="sklearn.linear_model.SGDClassifier.predict_log_proba">
 <tt class="descname">predict_log_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.SGDClassifier.predict_log_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log of probability estimates.</p>
-<p>Log probability estimates are only supported for binary classification.</p>
+<p>When loss=&#8221;modified_huber&#8221;, probability estimates may be hard zeros
+and ones, so taking the logarithm is not possible.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -581,7 +606,11 @@ model, where classes are ordered as they are in
 <dt id="sklearn.linear_model.SGDClassifier.predict_proba">
 <tt class="descname">predict_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.SGDClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Probability estimates.</p>
-<p>Probability estimates are only supported for binary classification.</p>
+<p>Multiclass probability estimates are derived from binary (one-vs.-rest)
+estimates by simple normalization, as recommended by Zadrozny and
+Elkan.</p>
+<p>Binary probability estimates for loss=&#8221;modified_huber&#8221; are given by
+(clip(decision_function(X), -1, 1) + 1) / 2.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -599,6 +628,9 @@ where classes are ordered as they are in <cite>self.classes_</cite>.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
+<p>Zadrozny and Elkan, &#8220;Transforming classifier scores into multiclass
+probability estimates&#8221;, SIGKDD&#8216;02,
+<a class="reference external" href="http://www.research.ibm.com/people/z/zadrozny/kdd2002-Transf.pdf">http://www.research.ibm.com/people/z/zadrozny/kdd2002-Transf.pdf</a></p>
 <p>The justification for the formula in the loss=&#8221;modified_huber&#8221;
 case is in the appendix B in:
 <a class="reference external" href="http://jmlr.csail.mit.edu/papers/volume2/zhang02c/zhang02c.pdf">http://jmlr.csail.mit.edu/papers/volume2/zhang02c/zhang02c.pdf</a></p>
@@ -632,7 +664,33 @@ case is in the appendix B in:
 <dl class="attribute">
 <dt id="sklearn.linear_model.SGDClassifier.seed">
 <tt class="descname">seed</tt><a class="headerlink" href="#sklearn.linear_model.SGDClassifier.seed" title="Permalink to this definition">¶</a></dt>
-<dd><p>DEPRECATED: Parameter &#8216;seed&#8217; war renamed to &#8216;random_state&#8217; for consistency and will be removed in 0.15</p>
+<dd><p>DEPRECATED: Parameter &#8216;seed&#8217; was renamed to &#8216;random_state&#8217; for consistency and will be removed in 0.15</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.linear_model.SGDClassifier.sparsify">
+<tt class="descname">sparsify</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.linear_model.SGDClassifier.sparsify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert coefficient matrix to sparse format.</p>
+<p>Converts the <tt class="docutils literal"><span class="pre">coef_</span></tt> member to a scipy.sparse matrix, which for
+L1-regularized models can be much more memory- and storage-efficient
+than the usual numpy.ndarray representation.</p>
+<p>The <tt class="docutils literal"><span class="pre">intercept_</span></tt> member is not converted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><strong>self: estimator</strong> :</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>For non-sparse models, i.e. when there are not many zeros in <tt class="docutils literal"><span class="pre">coef_</span></tt>,
+this may actually <em>increase</em> memory usage, so use this method with
+care. A rule of thumb is that the number of zero elements, which can
+be computed with <tt class="docutils literal"><span class="pre">(coef_</span> <span class="pre">==</span> <span class="pre">0).sum()</span></tt>, must be more than 50% for this
+to provide significant benefits.</p>
+<p>After calling this method, further fitting with the partial_fit
+method (if any) will not work until you call densify.</p>
 </dd></dl>
 
 <dl class="method">

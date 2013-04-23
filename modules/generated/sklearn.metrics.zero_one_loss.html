@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.19.2.16. sklearn.metrics.zero_one_loss &mdash; scikit-learn 0.14-git documentation</title>
+    <title>8.19.2.17. sklearn.metrics.zero_one_loss &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -31,7 +31,7 @@
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.19.3.1. sklearn.metrics.explained_variance_score" href="sklearn.metrics.explained_variance_score.html" />
-    <link rel="prev" title="8.19.2.15. sklearn.metrics.roc_curve" href="sklearn.metrics.roc_curve.html" />
+    <link rel="prev" title="8.19.2.16. sklearn.metrics.roc_curve" href="sklearn.metrics.roc_curve.html" />
 
 
 <script type="text/javascript">
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -101,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.roc_curve.html" title="8.19.2.15. sklearn.metrics.roc_curve"
+	<a href="sklearn.metrics.roc_curve.html" title="8.19.2.16. sklearn.metrics.roc_curve"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.19.2.15. sklea...
+	    8.19.2.16. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.2.15. sklearn.metrics.roc_curve
+	    8.19.2.16. sklearn.metrics.roc_curve
 	    </span>
 	    
 	    </a>
@@ -157,7 +151,7 @@
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.19.2.16. sklearn.metrics.zero_one_loss</a></li>
+<li><a class="reference internal" href="#">8.19.2.17. sklearn.metrics.zero_one_loss</a></li>
 </ul>
 
     
@@ -172,11 +166,11 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-zero-one-loss">
-<h1>8.19.2.16. sklearn.metrics.zero_one_loss<a class="headerlink" href="#sklearn-metrics-zero-one-loss" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.2.17. sklearn.metrics.zero_one_loss<a class="headerlink" href="#sklearn-metrics-zero-one-loss" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.zero_one_loss">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">zero_one_loss</tt><big>(</big><em>y_true</em>, <em>y_pred</em>, <em>normalize=True</em><big>)</big><a class="headerlink" href="#sklearn.metrics.zero_one_loss" title="Permalink to this definition">¶</a></dt>
-<dd><p>Zero-One classification loss</p>
+<dd><p>Zero-one classification loss.</p>
 <p>If normalize is <tt class="docutils literal"><span class="pre">True</span></tt>, return the fraction of misclassifications
 (float), else it returns the number of misclassifications (int). The best
 performance is 0.</p>
@@ -184,11 +178,17 @@ performance is 0.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like</p>
-<p><strong>y_pred</strong> : array-like</p>
-<p><strong>normalize</strong> : bool, optional</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like or list of labels or label indicator matrix</p>
 <blockquote>
-<div><p>If <tt class="docutils literal"><span class="pre">False</span></tt> (default), return the number of misclassifications.
+<div><p>Ground truth (correct) labels.</p>
+</div></blockquote>
+<p><strong>y_pred</strong> : array-like or list of labels or label indicator matrix</p>
+<blockquote>
+<div><p>Predicted labels, as returned by a classifier.</p>
+</div></blockquote>
+<p><strong>normalize</strong> : bool, optional (default=True)</p>
+<blockquote>
+<div><p>If <tt class="docutils literal"><span class="pre">False</span></tt>, return the number of misclassifications.
 Otherwise, return the fraction of misclassifications.</p>
 </div></blockquote>
 </td>
@@ -202,6 +202,19 @@ Otherwise, return the fraction of misclassifications.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-obj docutils literal"><span class="pre">accuracy_score</span></tt></a></dt>
+<dd>Compute the accuracy score</dd>
+<dt><a class="reference internal" href="sklearn.metrics.hamming_loss.html#sklearn.metrics.hamming_loss" title="sklearn.metrics.hamming_loss"><tt class="xref py py-obj docutils literal"><span class="pre">hamming_loss</span></tt></a></dt>
+<dd>Compute the average Hamming loss</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>In multilabel classification, the zero_one_loss function corresponds to
+the subset zero-one loss: for each sample, the entire set of labels must be
+correctly predicted, otherwise the loss for that sample is equal to one.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">zero_one_loss</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
@@ -212,6 +225,12 @@ Otherwise, return the fraction of misclassifications.</p>
 <span class="go">1</span>
 </pre></div>
 </div>
+<p>In the multilabel case with binary indicator format
+&gt;&gt;&gt; zero_one_loss(np.array([[0.0, 1.0], [1.0, 1.0]]), np.zeros((2, 2)))
+1.0</p>
+<p>and with a list of labels format
+&gt;&gt;&gt; zero_one_loss([(1, 2), (3,)], [(1, 2), tuple()])
+0.5</p>
 </dd></dl>
 
 </div>

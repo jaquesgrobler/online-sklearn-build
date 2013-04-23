@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -175,7 +169,7 @@
 <h1>8.30.5. sklearn.tree.export_graphviz<a class="headerlink" href="#sklearn-tree-export-graphviz" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.tree.export_graphviz">
-<tt class="descclassname">sklearn.tree.</tt><tt class="descname">export_graphviz</tt><big>(</big><em>decision_tree</em>, <em>out_file=None</em>, <em>feature_names=None</em><big>)</big><a class="headerlink" href="#sklearn.tree.export_graphviz" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.tree.</tt><tt class="descname">export_graphviz</tt><big>(</big><em>decision_tree</em>, <em>out_file='tree.dot'</em>, <em>feature_names=None</em>, <em>max_depth=None</em>, <em>close=True</em><big>)</big><a class="headerlink" href="#sklearn.tree.export_graphviz" title="Permalink to this definition">¶</a></dt>
 <dd><p>Export a decision tree in DOT format.</p>
 <p>This function generates a GraphViz representation of the decision tree,
 which is then written into <cite>out_file</cite>. Once exported, graphical renderings
@@ -189,15 +183,20 @@ $ dot -Tpng tree.dot -o tree.png    (PNG format)</pre>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>decision_tree</strong> : decision tree classifier</p>
 <blockquote>
-<div><p>The decision tree to be exported to graphviz.</p>
+<div><p>The decision tree to be exported to GraphViz.</p>
 </div></blockquote>
-<p><strong>out</strong> : file object or string, optional (default=None)</p>
+<p><strong>out_file</strong> : file object or string, optional (default=&#8221;tree.dot&#8221;)</p>
 <blockquote>
 <div><p>Handle or name of the output file.</p>
 </div></blockquote>
 <p><strong>feature_names</strong> : list of strings, optional (default=None)</p>
 <blockquote>
 <div><p>Names of each of the features.</p>
+</div></blockquote>
+<p><strong>max_depth</strong> : int, optional (default=None)</p>
+<blockquote>
+<div><p>The maximum depth of the representation. If None, the tree is fully
+generated.</p>
 </div></blockquote>
 </td>
 </tr>

@@ -30,7 +30,7 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Comparison of the K-Means clustering and MiniBatchKMeans Algorithms" href="plot_mini_batch_kmeans.html" />
+    <link rel="next" title="Comparison of the K-Means and MiniBatchKMeans clustering algorithms" href="plot_mini_batch_kmeans.html" />
     <link rel="prev" title="A demo of K-Means clustering on the handwritten digits data" href="plot_kmeans_digits.html" />
 
 
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -118,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_mini_batch_kmeans.html" title="Comparison of the K-Means clustering and MiniBatchKMeans Algorithms"
+	<a href="plot_mini_batch_kmeans.html" title="Comparison of the K-Means and MiniBatchKMeans clustering algorithms"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
 	    Comparison of th...
 	    </span>
 	    <span class="hiddenrellink">
-	    Comparison of the K-Means clustering and MiniBatchKMeans Algorithms
+	    Comparison of the K-Means and MiniBatchKMeans clustering algorithms
 	    </span>
 	    
 	    </a>
@@ -193,19 +187,19 @@ value of k on various overlapping sub-samples of the dataset.</p>
 </ul>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Computing adjusted_rand_score for 10 values of n_clusters and n_samples=100
-done in 0.163s
+done in 0.167s
 Computing v_measure_score for 10 values of n_clusters and n_samples=100
 done in 0.030s
 Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=100
-done in 0.823s
+done in 0.720s
 Computing mutual_info_score for 10 values of n_clusters and n_samples=100
 done in 0.020s
 Computing adjusted_rand_score for 10 values of n_clusters and n_samples=1000
-done in 0.181s
+done in 0.189s
 Computing v_measure_score for 10 values of n_clusters and n_samples=1000
 done in 0.056s
 Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=1000
-done in 0.397s
+done in 0.374s
 Computing mutual_info_score for 10 values of n_clusters and n_samples=1000
 done in 0.035s</pre>
 </div>
@@ -229,7 +223,7 @@ done in 0.035s</pre>
 <span class="sd">    possible value in ``n_clusters_range``.</span>
 
 <span class="sd">    When fixed_n_classes is not None the first labeling is considered a ground</span>
-<span class="sd">    truth class assignement with fixed number of classes.</span>
+<span class="sd">    truth class assignment with fixed number of classes.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">random_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">random_integers</span>
     <span class="n">scores</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.zeros.html#numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">n_clusters_range</span><span class="p">),</span> <span class="n">n_runs</span><span class="p">))</span>
@@ -305,7 +299,7 @@ done in 0.035s</pre>
     <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score_func</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
 
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&quot;Clustering measures for random uniform labeling</span><span class="se">\n</span><span class="s">&quot;</span>
-         <span class="s">&quot;against reference assignement with </span><span class="si">%d</span><span class="s"> classes&quot;</span> <span class="o">%</span> <span class="n">n_classes</span><span class="p">)</span>
+         <span class="s">&quot;against reference assignment with </span><span class="si">%d</span><span class="s"> classes&quot;</span> <span class="o">%</span> <span class="n">n_classes</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&#39;Number of clusters (Number of samples is fixed to </span><span class="si">%d</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="n">n_samples</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylabel"><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s">&#39;Score value&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylim"><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span></a><span class="p">(</span><span class="n">ymin</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
@@ -313,7 +307,7 @@ done in 0.035s</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  1.88 seconds</p>
+<p><strong>Total running time of the example:</strong>  1.78 seconds</p>
 </div>
 
 

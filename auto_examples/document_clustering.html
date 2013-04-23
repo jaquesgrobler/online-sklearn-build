@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -202,11 +196,11 @@ feature scaling and that in this case the IDF weighting helps improve the
 quality of the clustering by quite a lot as measured against the &#8220;ground truth&#8221;
 provided by the class label assignments of the 20 newsgroups dataset.</p>
 <p>This improvement is not visible in the Silhouette Coefficient which is small
-for both as this measure seem to suffer from the phenomenom called
+for both as this measure seem to suffer from the phenomenon called
 &#8220;Concentration of Measure&#8221; or &#8220;Curse of Dimensionality&#8221; for high dimensional
 datasets such as text data. Other measures such as V-measure and Adjusted Rand
 Index are information theoretic based evaluation scores: as they are only based
-on cluster assignements rather than distances, hence not affected by the curse
+on cluster assignments rather than distances, hence not affected by the curse
 of dimensionality.</p>
 <p>Note: as k-means is optimizing a non-convex objective function, it will likely
 end up in a local optimum. Several runs with independent random init might be

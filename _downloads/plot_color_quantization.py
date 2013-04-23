@@ -101,5 +101,4 @@ ax = pl.axes([0, 0, 1, 1])
 pl.axis('off')
 pl.title('Quantized image (64 colors, Random)')
 pl.imshow(recreate_image(codebook_random, labels_random, w, h))
-
 pl.show()

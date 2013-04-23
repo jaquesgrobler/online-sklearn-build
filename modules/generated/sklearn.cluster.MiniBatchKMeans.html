@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -175,7 +169,7 @@
 <h1>8.1.1.4. sklearn.cluster.MiniBatchKMeans<a class="headerlink" href="#sklearn-cluster-minibatchkmeans" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.cluster.MiniBatchKMeans">
-<em class="property">class </em><tt class="descclassname">sklearn.cluster.</tt><tt class="descname">MiniBatchKMeans</tt><big>(</big><em>n_clusters=8</em>, <em>init='k-means++'</em>, <em>max_iter=100</em>, <em>batch_size=100</em>, <em>verbose=0</em>, <em>compute_labels=True</em>, <em>random_state=None</em>, <em>tol=0.0</em>, <em>max_no_improvement=10</em>, <em>init_size=None</em>, <em>n_init=3</em>, <em>k=None</em>, <em>reassignment_ratio=0.01</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.cluster.</tt><tt class="descname">MiniBatchKMeans</tt><big>(</big><em>n_clusters=8</em>, <em>init='k-means++'</em>, <em>max_iter=100</em>, <em>batch_size=100</em>, <em>verbose=0</em>, <em>compute_labels=True</em>, <em>random_state=None</em>, <em>tol=0.0</em>, <em>max_no_improvement=10</em>, <em>init_size=None</em>, <em>n_init=3</em>, <em>reassignment_ratio=0.01</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mini-Batch K-Means clustering</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -209,11 +203,11 @@ inertia heuristic.</p>
 <p>To disable convergence detection based on normalized center
 change, set tol to 0.0 (default).</p>
 </div></blockquote>
-<p><strong>batch_size: int, optional, default: 100</strong> :</p>
+<p><strong>batch_size</strong> : int, optional, default: 100</p>
 <blockquote>
 <div><p>Size of the mini batches.</p>
 </div></blockquote>
-<p><strong>init_size: int, optional, default: 3 * batch_size</strong> :</p>
+<p><strong>init_size</strong> : int, optional, default: 3 * batch_size</p>
 <blockquote>
 <div><p>Number of samples to randomly sample for speeding up the
 initialization (sometimes at the expense of accurracy): the
@@ -231,18 +225,18 @@ the initial centroids.</p>
 <p>If an ndarray is passed, it should be of shape (n_clusters, n_features)
 and gives the initial centers.</p>
 </div></blockquote>
-<p><strong>compute_labels: boolean</strong> :</p>
+<p><strong>compute_labels</strong> : boolean</p>
 <blockquote>
-<div><p>Compute label assignements and inertia for the complete dataset
+<div><p>Compute label assignment and inertia for the complete dataset
 once the minibatch optimization has converged in fit.</p>
 </div></blockquote>
-<p><strong>random_state: integer or numpy.RandomState, optional</strong> :</p>
+<p><strong>random_state</strong> : integer or numpy.RandomState, optional</p>
 <blockquote>
 <div><p>The generator used to initialize the centers. If an integer is
 given, it fixes the seed. Defaults to the global numpy random
 number generator.</p>
 </div></blockquote>
-<p><strong>reassignment_ratio: float, optional</strong> :</p>
+<p><strong>reassignment_ratio</strong> : float, optional</p>
 <blockquote class="last">
 <div><p>Control the fraction of the maximum number of counts for a
 center to be reassigned. A higher value means that low count
@@ -259,17 +253,21 @@ better clustering.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="44%" />
-<col width="56%" />
+<col width="16%" />
+<col width="27%" />
+<col width="57%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><cite>cluster_centers_</cite>: array, [n_clusters, n_features]</td>
+<tr class="row-odd"><td><cite>cluster_centers_</cite></td>
+<td>array, [n_clusters, n_features]</td>
 <td>Coordinates of cluster centers</td>
 </tr>
-<tr class="row-even"><td><cite>labels_</cite>:</td>
+<tr class="row-even"><td><cite>labels_</cite> :</td>
+<td>&nbsp;</td>
 <td>Labels of each point (if compute_labels is set to True).</td>
 </tr>
-<tr class="row-odd"><td><cite>inertia_</cite>: float</td>
+<tr class="row-odd"><td><cite>inertia_</cite></td>
+<td>float</td>
 <td>The value of the inertia criterion associated with the chosen
 partition (if compute_labels is set to True). The inertia is
 defined as the sum of square distances of samples to their nearest
@@ -315,7 +313,7 @@ neighbor.</td>
 </table>
 <dl class="method">
 <dt id="sklearn.cluster.MiniBatchKMeans.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_clusters=8</em>, <em>init='k-means++'</em>, <em>max_iter=100</em>, <em>batch_size=100</em>, <em>verbose=0</em>, <em>compute_labels=True</em>, <em>random_state=None</em>, <em>tol=0.0</em>, <em>max_no_improvement=10</em>, <em>init_size=None</em>, <em>n_init=3</em>, <em>k=None</em>, <em>reassignment_ratio=0.01</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_clusters=8</em>, <em>init='k-means++'</em>, <em>max_iter=100</em>, <em>batch_size=100</em>, <em>verbose=0</em>, <em>compute_labels=True</em>, <em>random_state=None</em>, <em>tol=0.0</em>, <em>max_no_improvement=10</em>, <em>init_size=None</em>, <em>n_init=3</em>, <em>reassignment_ratio=0.01</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -326,7 +324,7 @@ neighbor.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like, shape = [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
 <blockquote class="last">
 <div><p>Coordinates of the data points to cluster</p>
 </div></blockquote>
@@ -360,9 +358,15 @@ predict(X).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -378,7 +382,7 @@ contained subobjects that are estimators.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like, shape = [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
 <blockquote class="last">
 <div><p>Coordinates of the data points to cluster.</p>
 </div></blockquote>
@@ -399,7 +403,7 @@ the closest code in the code book.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: {array-like, sparse matrix}, shape = [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = [n_samples, n_features]</p>
 <blockquote>
 <div><p>New data to predict.</p>
 </div></blockquote>
@@ -423,13 +427,13 @@ the closest code in the code book.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: {array-like, sparse matrix}, shape = [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = [n_samples, n_features]</p>
 <blockquote>
 <div><p>New data.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>score: float</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>score</strong> : float</p>
 <blockquote class="last">
 <div><p>Opposite of the value of X on the K-means objective.</p>
 </div></blockquote>
@@ -468,7 +472,7 @@ centers.  Note that even if X is sparse, the array returned by
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: {array-like, sparse matrix}, shape = [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = [n_samples, n_features]</p>
 <blockquote>
 <div><p>New data to transform.</p>
 </div></blockquote>

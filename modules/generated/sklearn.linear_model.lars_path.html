@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -176,10 +170,12 @@
 <dl class="function">
 <dt id="sklearn.linear_model.lars_path">
 <tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">lars_path</tt><big>(</big><em>X</em>, <em>y</em>, <em>Xy=None</em>, <em>Gram=None</em>, <em>max_iter=500</em>, <em>alpha_min=0</em>, <em>method='lar'</em>, <em>copy_X=True</em>, <em>eps=2.2204460492503131e-16</em>, <em>copy_Gram=True</em>, <em>verbose=0</em>, <em>return_path=True</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.lars_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute Least Angle Regression and Lasso path</p>
-<p>The optimization objective for Lasso is:</p>
+<dd><p>Compute Least Angle Regression or Lasso path using LARS algorithm [1]</p>
+<p>The optimization objective for the case method=&#8217;lasso&#8217; is:</p>
 <div class="highlight-python"><pre>(1 / (2 * n_samples)) * ||y - Xw||^2_2 + alpha * ||w||_1</pre>
 </div>
+<p>in the case of method=&#8217;lars&#8217;, the objective function is only known in
+the form of an implicit equation (see discussion in [1])</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -198,7 +194,7 @@
 </div></blockquote>
 <p><strong>Gram</strong> : None, &#8216;auto&#8217;, array, shape: (n_features, n_features), optional</p>
 <blockquote>
-<div><p>Precomputed Gram matrix (X&#8217; * X), if &#8216;auto&#8217;, the Gram
+<div><p>Precomputed Gram matrix (X&#8217; * X), if <tt class="docutils literal"><span class="pre">'auto'</span></tt>, the Gram
 matrix is precomputed from the given X, if there are more samples
 than features.</p>
 </div></blockquote>
@@ -209,8 +205,8 @@ regularization parameter alpha parameter in the Lasso.</p>
 </div></blockquote>
 <p><strong>method</strong> : {&#8216;lar&#8217;, &#8216;lasso&#8217;}</p>
 <blockquote>
-<div><p>Specifies the returned model. Select &#8216;lar&#8217; for Least Angle
-Regression, &#8216;lasso&#8217; for the Lasso.</p>
+<div><p>Specifies the returned model. Select <tt class="docutils literal"><span class="pre">'lar'</span></tt> for Least Angle
+Regression, <tt class="docutils literal"><span class="pre">'lasso'</span></tt> for the Lasso.</p>
 </div></blockquote>
 <p><strong>eps</strong> : float, optional</p>
 <blockquote>
@@ -220,11 +216,11 @@ systems.</p>
 </div></blockquote>
 <p><strong>copy_X</strong> : bool</p>
 <blockquote>
-<div><p>If False, X is overwritten.</p>
+<div><p>If <tt class="docutils literal"><span class="pre">False</span></tt>, <tt class="docutils literal"><span class="pre">X</span></tt> is overwritten.</p>
 </div></blockquote>
 <p><strong>copy_Gram</strong> : bool</p>
 <blockquote>
-<div><p>If False, Gram is overwritten.</p>
+<div><p>If <tt class="docutils literal"><span class="pre">False</span></tt>, <tt class="docutils literal"><span class="pre">Gram</span></tt> is overwritten.</p>
 </div></blockquote>
 <p><strong>verbose</strong> : int (default=0)</p>
 <blockquote>
@@ -232,15 +228,18 @@ systems.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>alphas: array, shape: (max_features + 1,)</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>alphas: array, shape: [n_alphas + 1]</strong> :</p>
 <blockquote>
-<div><p>Maximum of covariances (in absolute value) at each iteration.</p>
+<div><p>Maximum of covariances (in absolute value) at each iteration.
+<tt class="docutils literal"><span class="pre">n_alphas</span></tt> is either <tt class="docutils literal"><span class="pre">max_iter</span></tt>, <tt class="docutils literal"><span class="pre">n_features</span></tt> or the
+number of nodes in the path with <tt class="docutils literal"><span class="pre">alpha</span> <span class="pre">&gt;=</span> <span class="pre">alpha_min</span></tt>, whichever
+is smaller.</p>
 </div></blockquote>
-<p><strong>active: array, shape (max_features,)</strong> :</p>
+<p><strong>active: array, shape [n_alphas]</strong> :</p>
 <blockquote>
 <div><p>Indices of active variables at the end of the path.</p>
 </div></blockquote>
-<p><strong>coefs: array, shape (n_features, max_features + 1)</strong> :</p>
+<p><strong>coefs: array, shape (n_features, n_alphas + 1)</strong> :</p>
 <blockquote class="last">
 <div><p>Coefficients along the path</p>
 </div></blockquote>
@@ -257,6 +256,9 @@ systems.</p>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Least-angle_regression">http://en.wikipedia.org/wiki/Least-angle_regression</a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Lasso_(statistics">http://en.wikipedia.org/wiki/Lasso_(statistics</a>)#LASSO_method</li>
 </ul>
+<p class="rubric">References</p>
+<p>[1] &#8220;Least Angle Regression&#8221;, Effron et al.
+<a class="reference external" href="http://www-stat.stanford.edu/~tibs/ftp/lars.pdf">http://www-stat.stanford.edu/~tibs/ftp/lars.pdf</a></p>
 </dd></dl>
 
 </div>

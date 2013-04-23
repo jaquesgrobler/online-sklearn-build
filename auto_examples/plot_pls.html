@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -189,15 +183,15 @@ weak: the point cloud is very spherical.</p>
 <img alt="../_images/plot_pls_1.png" class="align-center" src="../_images/plot_pls_1.png" />
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Corr(X)
-[[ 1.    0.5  -0.07  0.04]
- [ 0.5   1.    0.07  0.06]
- [-0.07  0.07  1.    0.5 ]
- [ 0.04  0.06  0.5   1.  ]]
+[[ 1.    0.48 -0.01  0.08]
+ [ 0.48  1.   -0.02  0.02]
+ [-0.01 -0.02  1.    0.52]
+ [ 0.08  0.02  0.52  1.  ]]
 Corr(Y)
-[[ 1.    0.46 -0.04  0.01]
- [ 0.46  1.   -0.04 -0.02]
- [-0.04 -0.04  1.    0.54]
- [ 0.01 -0.02  0.54  1.  ]]
+[[ 1.    0.54  0.01 -0.  ]
+ [ 0.54  1.   -0.   -0.02]
+ [ 0.01 -0.    1.    0.53]
+ [-0.   -0.02  0.53  1.  ]]
 True B (such that: Y = XB + Err)
 [[1 1 1]
  [2 2 2]
@@ -210,27 +204,27 @@ True B (such that: Y = XB + Err)
  [0 0 0]
  [0 0 0]]
 Estimated B
-[[ 1.   1.   1. ]
- [ 2.   2.1  2. ]
+[[ 1.   1.1  1. ]
+ [ 2.   2.   2. ]
+ [ 0.   0.   0. ]
+ [-0.  -0.   0. ]
+ [-0.   0.  -0. ]
  [ 0.  -0.   0. ]
  [-0.   0.  -0. ]
- [-0.1  0.  -0. ]
- [ 0.  -0.   0. ]
  [ 0.   0.  -0. ]
- [ 0.   0.   0. ]
- [-0.   0.   0. ]
- [-0.  -0.  -0. ]]
+ [-0.   0.  -0. ]
+ [ 0.   0.  -0. ]]
 Estimated betas
-[[ 1.]
- [ 2.]
- [ 0.]
- [-0.]
- [-0.]
- [-0.]
- [-0.]
- [ 0.]
- [ 0.]
- [ 0.]]</pre>
+[[ 1. ]
+ [ 2. ]
+ [-0. ]
+ [ 0.1]
+ [-0. ]
+ [-0.1]
+ [ 0. ]
+ [ 0. ]
+ [ 0. ]
+ [-0. ]]</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_pls.py"><tt class="xref download docutils literal"><span class="pre">plot_pls.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
@@ -363,7 +357,7 @@ Estimated betas
 <span class="n">X_test_r</span><span class="p">,</span> <span class="n">Y_test_r</span> <span class="o">=</span> <a href="../modules/generated/sklearn.pls.PLSCanonical.html#sklearn.pls.PLSCanonical"><span class="n">plsca</span></a><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.27 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.30 seconds</p>
 </div>
 
 

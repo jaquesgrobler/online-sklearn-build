@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -281,7 +275,7 @@ if <cite>tokenize == &#8216;word&#8217;</cite>. The default regexp select tokens
 or more letters characters (punctuation is completely ignored
 and always treated as a token separator).</p>
 </div></blockquote>
-<p><strong>n_features</strong> : interger, optional, (2 ** 20) by default</p>
+<p><strong>n_features</strong> : integer, optional, (2 ** 20) by default</p>
 <blockquote>
 <div><p>The number of features (columns) in the output matrices. Small numbers
 of features are likely to cause hash collisions, but large numbers
@@ -305,9 +299,8 @@ counts.</p>
 <blockquote class="last">
 <div><p>Whether output matrices should contain non-negative values only;
 effectively calls abs on the matrix prior to returning it.
-When True, output values will be multinomially distributed.
-When False, output values will be normally distributed (Gaussian) with
-mean 0, assuming a good hash function.</p>
+When True, output values can be interpreted as frequencies.
+When False, output values will have expected value zero.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -431,9 +424,15 @@ constructor argument) which will be tokenized and hashed.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

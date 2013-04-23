@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Spectral clustering for image segmentation" href="plot_segmentation_toy.html" />
-    <link rel="prev" title="Hierarchical clustering: structured vs unstructured ward" href="plot_ward_structured_vs_unstructured.html" />
+    <link rel="next" title="Online learning of a dictionary of parts of faces" href="plot_dict_face_patches.html" />
+    <link rel="prev" title="Segmenting the picture of Lena in regions" href="plot_lena_segmentation.html" />
 
 
 <script type="text/javascript">
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -101,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_ward_structured_vs_unstructured.html" title="Hierarchical clustering: structured vs unstructured ward"
+	<a href="plot_lena_segmentation.html" title="Segmenting the picture of Lena in regions"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Hierarchical clu...
+	    Segmenting the p...
 	    </span>
 	    <span class="hiddenrellink">
-	    Hierarchical clustering: structured vs unstructured ward
+	    Segmenting the picture of Lena in regions
 	    </span>
 	    
 	    </a>
@@ -118,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_segmentation_toy.html" title="Spectral clustering for image segmentation"
+	<a href="plot_dict_face_patches.html" title="Online learning of a dictionary of parts of faces"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Spectral cluster...
+	    Online learning ...
 	    </span>
 	    <span class="hiddenrellink">
-	    Spectral clustering for image segmentation
+	    Online learning of a dictionary of parts of faces
 	    </span>
 	    
 	    </a>
@@ -176,37 +170,36 @@
 <p>Finds core samples of high density and expands clusters from them.</p>
 <img alt="../../_images/plot_dbscan_1.png" class="align-center" src="../../_images/plot_dbscan_1.png" />
 <p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Estimated number of clusters: 2
-Homogeneity: 0.560
-Completeness: 0.802
-V-measure: 0.659
-Adjusted Rand Index: 0.541
-Adjusted Mutual Information: 0.559
-Silhouette Coefficient: 0.417</pre>
+<div class="highlight-python"><pre>Estimated number of clusters: 3
+Homogeneity: 0.953
+Completeness: 0.883
+V-measure: 0.917
+Adjusted Rand Index: 0.952
+Adjusted Mutual Information: 0.883
+Silhouette Coefficient: 0.626</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_dbscan.py"><tt class="xref download docutils literal"><span class="pre">plot_dbscan.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance</span>
+
 <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN"><span class="n">DBSCAN</span></a>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets.samples_generator</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs"><span class="n">make_blobs</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler"><span class="n">StandardScaler</span></a>
 
 
 <span class="c">##############################################################################</span>
 <span class="c"># Generate sample data</span>
 <span class="n">centers</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">labels_true</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs"><span class="n">make_blobs</span></a><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">750</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="n">centers</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">labels_true</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs"><span class="n">make_blobs</span></a><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">750</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="n">centers</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+                            <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="c">##############################################################################</span>
-<span class="c"># Compute similarities</span>
-<span class="n">D</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.spatial.distance.squareform.html#scipy.spatial.distance.squareform"><span class="n">distance</span><span class="o">.</span><span class="n">squareform</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.spatial.distance.pdist.html#scipy.spatial.distance.pdist"><span class="n">distance</span><span class="o">.</span><span class="n">pdist</span></a><span class="p">(</span><span class="n">X</span><span class="p">))</span>
-<span class="n">S</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">D</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+<span class="n">X</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler"><span class="n">StandardScaler</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="c">##############################################################################</span>
 <span class="c"># Compute DBSCAN</span>
-<a href="../../modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN"><span class="n">db</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN"><span class="n">DBSCAN</span></a><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<a href="../../modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN"><span class="n">db</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN"><span class="n">DBSCAN</span></a><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">core_samples</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN"><span class="n">db</span></a><span class="o">.</span><span class="n">core_sample_indices_</span>
 <span class="n">labels</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN"><span class="n">db</span></a><span class="o">.</span><span class="n">labels_</span>
 
@@ -222,20 +215,16 @@ Silhouette Coefficient: 0.417</pre>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Adjusted Mutual Information: </span><span class="si">%0.3f</span><span class="s">&quot;</span>
       <span class="o">%</span> <a href="../../modules/generated/sklearn.metrics.adjusted_mutual_info_score.html#sklearn.metrics.adjusted_mutual_info_score"><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span></a><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Silhouette Coefficient: </span><span class="si">%0.3f</span><span class="s">&quot;</span>
-      <span class="o">%</span> <a href="../../modules/generated/sklearn.metrics.silhouette_score.html#sklearn.metrics.silhouette_score"><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span></a><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s">&#39;precomputed&#39;</span><span class="p">))</span>
+      <span class="o">%</span> <a href="../../modules/generated/sklearn.metrics.silhouette_score.html#sklearn.metrics.silhouette_score"><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
 
 <span class="c">##############################################################################</span>
 <span class="c"># Plot result</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
-
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.close"><span class="n">pl</span><span class="o">.</span><span class="n">close</span></a><span class="p">(</span><span class="s">&#39;all&#39;</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">pl</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.clf"><span class="n">pl</span><span class="o">.</span><span class="n">clf</span></a><span class="p">()</span>
 
 <span class="c"># Black removed and is used for noise instead.</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="s">&#39;bgrcmybgrcmybgrcmybgrcmy&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">colors</span><span class="p">):</span>
+<span class="n">unique_labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.linspace.html#numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_labels</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">unique_labels</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="c"># Black used for noise.</span>
         <span class="n">col</span> <span class="o">=</span> <span class="s">&#39;k&#39;</span>
@@ -256,7 +245,7 @@ Silhouette Coefficient: 0.417</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  1.29 seconds</p>
+<p><strong>Total running time of the example:</strong>  1.16 seconds</p>
 </div>
 
 
@@ -278,12 +267,12 @@ Silhouette Coefficient: 0.417</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_ward_structured_vs_unstructured.html">
+      <a href="plot_lena_segmentation.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_segmentation_toy.html">
+      <a href="plot_dict_face_patches.html">
         Next
       </a>
     </div>

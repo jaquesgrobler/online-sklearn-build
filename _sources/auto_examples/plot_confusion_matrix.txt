@@ -8,7 +8,12 @@ Confusion matrix
 ================
 
 Example of confusion matrix usage to evaluate the quality
-of the output of a classifier.
+of the output of a classifier on the iris data set. The
+diagonal elements represent the number of points for which
+the predicted label is equal to the true label, while
+off-diagonal elements are those that are mislabeled by the
+classifier. The higher the diagonal values of the confusion
+matrix the better, indicating many correct predictions.
 
 
 
@@ -18,16 +23,16 @@ of the output of a classifier.
 
 **Script output**::
 
-  [[25  0  0]
-   [ 0 28  2]
-   [ 0  1 19]]
+  [[13  0  0]
+   [ 0 15  1]
+   [ 0  0  9]]
 
 
 
 **Python source code:** :download:`plot_confusion_matrix.py <plot_confusion_matrix.py>`
 
 .. literalinclude:: plot_confusion_matrix.py
-    :lines: 9-
+    :lines: 14-
 
-**Total running time of the example:**  0.14 seconds
+**Total running time of the example:**  0.16 seconds
     

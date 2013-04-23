@@ -31,7 +31,7 @@
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.12.2. sklearn.hmm.MultinomialHMM" href="sklearn.hmm.MultinomialHMM.html" />
-    <link rel="prev" title="8.11.2. sklearn.grid_search.IterGrid" href="sklearn.grid_search.IterGrid.html" />
+    <link rel="prev" title="8.11.4. sklearn.grid_search.RandomizedSearchCV" href="sklearn.grid_search.RandomizedSearchCV.html" />
 
 
 <script type="text/javascript">
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -101,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.grid_search.IterGrid.html" title="8.11.2. sklearn.grid_search.IterGrid"
+	<a href="sklearn.grid_search.RandomizedSearchCV.html" title="8.11.4. sklearn.grid_search.RandomizedSearchCV"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.11.2. sklearn....
+	    8.11.4. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.11.2. sklearn.grid_search.IterGrid
+	    8.11.4. sklearn.grid_search.RandomizedSearchCV
 	    </span>
 	    
 	    </a>
@@ -391,8 +385,6 @@ corresponds to a single data point.</p>
 <dt id="sklearn.hmm.GaussianHMM.eval">
 <tt class="descname">eval</tt><big>(</big><em>obs</em><big>)</big><a class="headerlink" href="#sklearn.hmm.GaussianHMM.eval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the log probability under the model and compute posteriors</p>
-<p>Implements rank and beam pruning in the forward-backward
-algorithm to speed up inference in large models.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -433,10 +425,8 @@ observation</p>
 <tt class="descname">fit</tt><big>(</big><em>obs</em><big>)</big><a class="headerlink" href="#sklearn.hmm.GaussianHMM.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate model parameters.</p>
 <p>An initialization step is performed before entering the EM
-algorithm. If you want to avoid this step, set the keyword
-argument init_params to the empty string &#8216;&#8217;. Likewise, if you
-would like just to do an initialization, call this method with
-n_iter=0.</p>
+algorithm. If you want to avoid this step, pass proper
+<tt class="docutils literal"><span class="pre">init_params</span></tt> keyword argument to estimator&#8217;s constructor.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -455,9 +445,6 @@ aggressive pruning is used.  Decreasing <cite>logprob</cite> is generally
 a sign of overfitting (e.g. a covariance parameter getting too
 small).  You can fix this by getting more training data, or
 decreasing <cite>covars_prior</cite>.</p>
-<p><strong>Please note that setting parameters in the `fit` method is
-deprecated and will be removed in the next release.
-Set it on initialization instead.</strong></p>
 </dd></dl>
 
 <dl class="method">
@@ -469,9 +456,15 @@ Set it on initialization instead.</strong></p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -650,7 +643,7 @@ component of a nested object.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.grid_search.IterGrid.html">
+      <a href="sklearn.grid_search.RandomizedSearchCV.html">
         Previous
       </a>
     </div>

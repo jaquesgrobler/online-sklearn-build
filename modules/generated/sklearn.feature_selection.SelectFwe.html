@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -175,7 +169,7 @@
 <h1>8.9.5. sklearn.feature_selection.SelectFwe<a class="headerlink" href="#sklearn-feature-selection-selectfwe" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_selection.SelectFwe">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectFwe</tt><big>(</big><em>score_func=&lt;function f_classif at 0x53ad938&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectFwe</tt><big>(</big><em>score_func=&lt;function f_classif at 0x4148140&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter: Select the p-values corresponding to Family-wise error rate</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -244,7 +238,7 @@
 </table>
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFwe.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x53ad938&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x4148140&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -294,9 +288,15 @@ and returns a transformed version of X.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

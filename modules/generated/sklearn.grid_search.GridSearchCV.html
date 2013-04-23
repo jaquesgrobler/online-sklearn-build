@@ -30,7 +30,7 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.11.2. sklearn.grid_search.IterGrid" href="sklearn.grid_search.IterGrid.html" />
+    <link rel="next" title="8.11.2. sklearn.grid_search.ParameterGrid" href="sklearn.grid_search.ParameterGrid.html" />
     <link rel="prev" title="8.10.10. sklearn.gaussian_process.regression_models.quadratic" href="sklearn.gaussian_process.regression_models.quadratic.html" />
 
 
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -118,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.grid_search.IterGrid.html" title="8.11.2. sklearn.grid_search.IterGrid"
+	<a href="sklearn.grid_search.ParameterGrid.html" title="8.11.2. sklearn.grid_search.ParameterGrid"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
 	    8.11.2. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.11.2. sklearn.grid_search.IterGrid
+	    8.11.2. sklearn.grid_search.ParameterGrid
 	    </span>
 	    
 	    </a>
@@ -176,7 +170,7 @@
 <dl class="class">
 <dt id="sklearn.grid_search.GridSearchCV">
 <em class="property">class </em><tt class="descclassname">sklearn.grid_search.</tt><tt class="descname">GridSearchCV</tt><big>(</big><em>estimator</em>, <em>param_grid</em>, <em>scoring=None</em>, <em>loss_func=None</em>, <em>score_func=None</em>, <em>fit_params=None</em>, <em>n_jobs=1</em>, <em>iid=True</em>, <em>refit=True</em>, <em>cv=None</em>, <em>verbose=0</em>, <em>pre_dispatch='2*n_jobs'</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.GridSearchCV" title="Permalink to this definition">¶</a></dt>
-<dd><p>Grid search on the parameters of a classifier</p>
+<dd><p>Exhaustive search over specified parameter values for an estimator.</p>
 <p>Important members are fit, predict.</p>
 <p>GridSearchCV implements a &#8220;fit&#8221; method and a &#8220;predict&#8221; method like
 any classifier except that the parameters of the classifier
@@ -194,7 +188,8 @@ used to predict is optimized by cross-validation.</p>
 <div><p>Dictionary with parameters names (string) as keys and lists of
 parameter settings to try as values, or a list of such
 dictionaries, in which case the grids spanned by each dictionary
-in the list are explored.</p>
+in the list are explored. This enables searching over any sequence
+of parameter settings.</p>
 </div></blockquote>
 <p><strong>scoring</strong> : string or callable, optional</p>
 <blockquote>
@@ -205,13 +200,13 @@ for details.</p>
 </div></blockquote>
 <p><strong>fit_params</strong> : dict, optional</p>
 <blockquote>
-<div><p>parameters to pass to the fit method</p>
+<div><p>Parameters to pass to the fit method.</p>
 </div></blockquote>
-<p><strong>n_jobs: int, optional</strong> :</p>
+<p><strong>n_jobs</strong> : int, optional</p>
 <blockquote>
-<div><p>number of jobs to run in parallel (default 1)</p>
+<div><p>Number of jobs to run in parallel (default 1).</p>
 </div></blockquote>
-<p><strong>pre_dispatch: int, or string, optional</strong> :</p>
+<p><strong>pre_dispatch</strong> : int, or string, optional</p>
 <blockquote>
 <div><p>Controls the number of jobs that get dispatched during parallel
 execution. Reducing this number can be useful to avoid an
@@ -219,7 +214,7 @@ explosion of memory consumption when more jobs get dispatched
 than CPUs can process. This parameter can be:</p>
 <blockquote>
 <div><ul class="simple">
-<li>None, in which case all the jobs are immediatly
+<li>None, in which case all the jobs are immediately
 created and spawned. Use this for lightweight and
 fast-running jobs, to avoid delays due to on-demand
 spawning of the jobs</li>
@@ -230,25 +225,25 @@ as in &#8216;2*n_jobs&#8217;</li>
 </ul>
 </div></blockquote>
 </div></blockquote>
-<p><strong>iid: boolean, optional</strong> :</p>
+<p><strong>iid</strong> : boolean, optional</p>
 <blockquote>
 <div><p>If True, the data is assumed to be identically distributed across
 the folds, and the loss minimized is the total loss per sample,
 and not the mean loss across the folds.</p>
 </div></blockquote>
-<p><strong>cv</strong> : integer or crossvalidation generator, optional</p>
+<p><strong>cv</strong> : integer or cross-validation generator, optional</p>
 <blockquote>
-<div><p>If an integer is passed, it is the number of fold (default 3).
-Specific crossvalidation objects can be passed, see
+<div><p>If an integer is passed, it is the number of folds (default 3).
+Specific cross-validation objects can be passed, see
 sklearn.cross_validation module for the list of possible objects</p>
 </div></blockquote>
-<p><strong>refit: boolean</strong> :</p>
+<p><strong>refit</strong> : boolean</p>
 <blockquote>
-<div><p>refit the best estimator with the entire dataset.
+<div><p>Refit the best estimator with the entire dataset.
 If &#8220;False&#8221;, it is impossible to make predictions using
-this GridSearch instance after fitting.</p>
+this GridSearchCV instance after fitting.</p>
 </div></blockquote>
-<p><strong>verbose: integer</strong> :</p>
+<p><strong>verbose</strong> : integer</p>
 <blockquote class="last">
 <div><p>Controls the verbosity: the higher, the more messages.</p>
 </div></blockquote>
@@ -259,7 +254,7 @@ this GridSearch instance after fitting.</p>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="sklearn.grid_search.IterGrid.html#sklearn.grid_search.IterGrid" title="sklearn.grid_search.IterGrid"><tt class="xref py py-class docutils literal"><span class="pre">IterGrid</span></tt></a></dt>
+<dt><a class="reference internal" href="sklearn.grid_search.ParameterGrid.html#sklearn.grid_search.ParameterGrid" title="sklearn.grid_search.ParameterGrid"><tt class="xref py py-class docutils literal"><span class="pre">ParameterGrid</span></tt></a></dt>
 <dd>generates all the combinations of a an hyperparameter grid.</dd>
 <dt><a class="reference internal" href="sklearn.cross_validation.train_test_split.html#sklearn.cross_validation.train_test_split" title="sklearn.cross_validation.train_test_split"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.cross_validation.train_test_split</span></tt></a></dt>
 <dd>utility function to split the data into a development set usable for fitting a GridSearchCV instance and an evaluation set for its final evaluation.</dd>
@@ -273,8 +268,8 @@ point in the grid (and not <cite>n_jobs</cite> times). This is done for efficien
 reasons if individual jobs take very little time, but may raise errors if
 the dataset is large and not enough memory is available.  A workaround in
 this case is to set <cite>pre_dispatch</cite>. Then, the memory is copied only
-<cite>pre_dispatch</cite> many times. A reasonable value for <cite>pre_dispatch</cite> is 2 *
-<cite>n_jobs</cite>.</p>
+<cite>pre_dispatch</cite> many times. A reasonable value for <cite>pre_dispatch</cite> is <cite>2 *
+n_jobs</cite>.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span><span class="p">,</span> <span class="n">grid_search</span><span class="p">,</span> <span class="n">datasets</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
@@ -300,19 +295,30 @@ this case is to set <cite>pre_dispatch</cite>. Then, the memory is copied only
 <col width="64%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><cite>grid_scores_</cite></td>
-<td>dict of any to float</td>
-<td>Contains scores for all parameter combinations in param_grid.</td>
+<tr class="row-odd"><td><cite>cv_scores_</cite></td>
+<td>list of named tuples</td>
+<td><p class="first">Contains scores for all parameter combinations in param_grid.
+Each entry corresponds to one parameter setting.
+Each named tuple has the attributes:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">parameters</span></tt>, a dict of parameter settings</li>
+<li><tt class="docutils literal"><span class="pre">mean_validation_score</span></tt>, the mean score over the
+cross-validation folds</li>
+<li><tt class="docutils literal"><span class="pre">cv_validation_scores</span></tt>, the list of scores for each fold</li>
+</ul>
+</div></blockquote>
+</td>
 </tr>
 <tr class="row-even"><td><cite>best_estimator_</cite></td>
 <td>estimator</td>
-<td>Estimator that was choosen by grid search, i.e. estimator
+<td>Estimator that was chosen by the search, i.e. estimator
 which gave highest score (or smallest loss if specified)
 on the left out data.</td>
 </tr>
 <tr class="row-odd"><td><cite>best_score_</cite></td>
 <td>float</td>
-<td>score of best_estimator on the left out data.</td>
+<td>Score of best_estimator on the left out data.</td>
 </tr>
 <tr class="row-even"><td><cite>best_params_</cite></td>
 <td>dict</td>
@@ -328,13 +334,13 @@ on the left out data.</td>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.grid_search.GridSearchCV.fit" title="sklearn.grid_search.GridSearchCV.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X[,&nbsp;y])</td>
-<td>Run fit with all sets of parameters</td>
+<td>Run fit with all sets of parameters.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.grid_search.GridSearchCV.get_params" title="sklearn.grid_search.GridSearchCV.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for the estimator</td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt>(X[,&nbsp;y])</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.grid_search.GridSearchCV.score" title="sklearn.grid_search.GridSearchCV.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X[,&nbsp;y])</td>
+<td>Returns the score on the given test data and labels, if the search estimator has been refit.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.grid_search.GridSearchCV.set_params" title="sklearn.grid_search.GridSearchCV.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
@@ -349,13 +355,12 @@ on the left out data.</td>
 <dl class="method">
 <dt id="sklearn.grid_search.GridSearchCV.fit">
 <tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y=None</em>, <em>**params</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.GridSearchCV.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run fit with all sets of parameters</p>
-<p>Returns the best classifier</p>
+<dd><p>Run fit with all sets of parameters.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array, [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like, shape = [n_samples, n_features]</strong> :</p>
 <blockquote>
 <div><p>Training vector, where n_samples in the number of samples and
 n_features is the number of features.</p>
@@ -380,10 +385,43 @@ None for unsupervised learning.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
 </div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.grid_search.GridSearchCV.score">
+<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.GridSearchCV.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the score on the given test data and labels, if the search
+estimator has been refit. The <tt class="docutils literal"><span class="pre">score</span></tt> function of the best estimator
+is used, or the <tt class="docutils literal"><span class="pre">scoring</span></tt> parameter where unavailable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Training set.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples], optional</p>
+<blockquote>
+<div><p>Labels for X.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>score</strong> : float</p>
 </td>
 </tr>
 </tbody>
@@ -436,7 +474,7 @@ component of a nested object.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.grid_search.IterGrid.html">
+      <a href="sklearn.grid_search.ParameterGrid.html">
         Next
       </a>
     </div>

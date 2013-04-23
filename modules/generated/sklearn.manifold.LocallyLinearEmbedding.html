@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -221,14 +215,14 @@ Not used if eigen_solver==&#8217;dense&#8217;.</p>
 <div><p>maximum number of iterations for the arpack solver.
 Not used if eigen_solver==&#8217;dense&#8217;.</p>
 </div></blockquote>
-<p><strong>method</strong> : string [&#8216;standard&#8217; | &#8216;hessian&#8217; | &#8216;modified&#8217; <a href="#id1"><span class="problematic" id="id2">|</span></a>&#8216;ltsa&#8217;]</p>
+<p><strong>method</strong> : string (&#8216;standard&#8217;, &#8216;hessian&#8217;, &#8216;modified&#8217; or &#8216;ltsa&#8217;)</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>standard <span class="classifier-delimiter">:</span> <span class="classifier">use the standard locally linear embedding algorithm.</span></dt>
-<dd><p class="first last">see reference [1]</p>
+<dt>standard <span class="classifier-delimiter">:</span> <span class="classifier">use the standard locally linear embedding algorithm.  see</span></dt>
+<dd><p class="first last">reference [1]</p>
 </dd>
-<dt>hessian <span class="classifier-delimiter">:</span> <span class="classifier">use the Hessian eigenmap method.  This method requires</span></dt>
-<dd><p class="first last">n_neighbors &gt; n_components * (1 + (n_components + 1) / 2.
+<dt>hessian <span class="classifier-delimiter">:</span> <span class="classifier">use the Hessian eigenmap method. This method requires</span></dt>
+<dd><p class="first last"><tt class="docutils literal"><span class="pre">n_neighbors</span> <span class="pre">&gt;</span> <span class="pre">n_components</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">(n_components</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">/</span> <span class="pre">2</span></tt>
 see reference [2]</p>
 </dd>
 <dt>modified <span class="classifier-delimiter">:</span> <span class="classifier">use the modified locally linear embedding algorithm.</span></dt>
@@ -242,12 +236,12 @@ see reference [2]</p>
 <p><strong>hessian_tol</strong> : float, optional</p>
 <blockquote>
 <div><p>Tolerance for Hessian eigenmapping method.
-Only used if method == &#8216;hessian&#8217;</p>
+Only used if <tt class="docutils literal"><span class="pre">method</span> <span class="pre">==</span> <span class="pre">'hessian'</span></tt></p>
 </div></blockquote>
 <p><strong>modified_tol</strong> : float, optional</p>
 <blockquote>
 <div><p>Tolerance for modified LLE method.
-Only used if method == &#8216;modified&#8217;</p>
+Only used if <tt class="docutils literal"><span class="pre">method</span> <span class="pre">==</span> <span class="pre">'modified'</span></tt></p>
 </div></blockquote>
 <p><strong>neighbors_algorithm</strong> : string [&#8216;auto&#8217;|&#8217;brute&#8217;|&#8217;kd_tree&#8217;|&#8217;ball_tree&#8217;]</p>
 <blockquote>
@@ -264,33 +258,33 @@ iterations.  Defaults to numpy.random.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r100" rules="none">
+<table class="docutils citation" frame="void" id="r113" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R100]</a></td><td><cite>Roweis, S. &amp; Saul, L. Nonlinear dimensionality reduction
+<tr><td class="label"><a class="fn-backref" href="#id1">[R113]</a></td><td><cite>Roweis, S. &amp; Saul, L. Nonlinear dimensionality reduction
 by locally linear embedding.  Science 290:2323 (2000).</cite></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r101" rules="none">
+<table class="docutils citation" frame="void" id="r114" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[R101]</a></td><td><cite>Donoho, D. &amp; Grimes, C. Hessian eigenmaps: Locally
+<tr><td class="label"><a class="fn-backref" href="#id2">[R114]</a></td><td><cite>Donoho, D. &amp; Grimes, C. Hessian eigenmaps: Locally
 linear embedding techniques for high-dimensional data.
 Proc Natl Acad Sci U S A.  100:5591 (2003).</cite></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r102" rules="none">
+<table class="docutils citation" frame="void" id="r115" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[R102]</a></td><td><cite>Zhang, Z. &amp; Wang, J. MLLE: Modified Locally Linear
+<tr><td class="label"><a class="fn-backref" href="#id3">[R115]</a></td><td><cite>Zhang, Z. &amp; Wang, J. MLLE: Modified Locally Linear
 Embedding Using Multiple Weights.</cite>
 <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.70.382">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.70.382</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r103" rules="none">
+<table class="docutils citation" frame="void" id="r116" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[R103]</a></td><td><cite>Zhang, Z. &amp; Zha, H. Principal manifolds and nonlinear
+<tr><td class="label"><a class="fn-backref" href="#id4">[R116]</a></td><td><cite>Zhang, Z. &amp; Zha, H. Principal manifolds and nonlinear
 dimensionality reduction via tangent space alignment.
 Journal of Shanghai Univ.  8:406 (2004)</cite></td></tr>
 </tbody>
@@ -398,9 +392,15 @@ if applicable.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

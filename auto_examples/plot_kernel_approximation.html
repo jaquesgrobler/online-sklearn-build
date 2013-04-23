@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -358,7 +352,7 @@ in <a class="reference internal" href="../modules/kernel_approximation.html#kern
 <span class="c"># predict and plot</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <a href="../modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline"><span class="n">clf</span></a> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">((</span><a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">kernel_svm</span></a><span class="p">,</span> <a href="../modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline"><span class="n">nystroem_approx_svm</span></a><span class="p">,</span>
                          <a href="../modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline"><span class="n">fourier_approx_svm</span></a><span class="p">)):</span>
-    <span class="c"># Plot the decision boundary. For that, we will asign a color to each</span>
+    <span class="c"># Plot the decision boundary. For that, we will assign a color to each</span>
     <span class="c"># point in the mesh [x_min, m_max]x[y_min, y_max].</span>
     <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplot"><span class="n">pl</span><span class="o">.</span><span class="n">subplot</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">Z</span> <span class="o">=</span> <a href="../modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline"><span class="n">clf</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">flat_grid</span><span class="p">)</span>
@@ -376,7 +370,7 @@ in <a class="reference internal" href="../modules/kernel_approximation.html#kern
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  2.76 seconds</p>
+<p><strong>Total running time of the example:</strong>  2.59 seconds</p>
 </div>
 
 

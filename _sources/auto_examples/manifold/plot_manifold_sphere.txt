@@ -15,7 +15,7 @@ the poles are cut from the sphere, as well as a thin slice down its
 side. This enables the manifold learning techniques to
 'spread it open' whilst projecting it onto two dimensions.
 
-For a similiar example, where the methods are applied to the
+For a similar example, where the methods are applied to the
 S-curve dataset, see :ref:`example_manifold_plot_compare_methods.py`
 
 Note that the purpose of the :ref:`MDS <multidimensional_scaling>` is
@@ -37,11 +37,11 @@ that of representing a flat map of the Earth, as with
 
   standard: 0.11 sec
   ltsa: 0.19 sec
-  hessian: 0.29 sec
-  modified: 0.25 sec
+  hessian: 0.28 sec
+  modified: 0.24 sec
   ISO: 0.35 sec
-  MDS: 1.8 sec
-  Spectral Embedding: 0.27 sec
+  MDS: 2.3 sec
+  Spectral Embedding: 0.31 sec
 
 
 
@@ -50,5 +50,5 @@ that of representing a flat map of the Earth, as with
 .. literalinclude:: plot_manifold_sphere.py
     :lines: 29-
 
-**Total running time of the example:**  3.76 seconds
+**Total running time of the example:**  4.18 seconds
     

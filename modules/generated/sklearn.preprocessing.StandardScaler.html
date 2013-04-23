@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -198,7 +192,11 @@ estimator unable to learn from other features correctly as expected.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>with_mean</strong> : boolean, True by default</p>
 <blockquote>
-<div><p>If True, center the data before scaling.</p>
+<div><p>If True, center the data before scaling.
+This does not work (and will raise an exception) when attempted on
+sparse matrices, because centering them entails building a dense
+matrix which in common use cases is likely to be too large to fit in
+memory.</p>
 </div></blockquote>
 <p><strong>with_std</strong> : boolean, True by default</p>
 <blockquote>
@@ -207,9 +205,10 @@ unit standard deviation).</p>
 </div></blockquote>
 <p><strong>copy</strong> : boolean, optional, default is True</p>
 <blockquote class="last">
-<div><p>Set to False to perform inplace row normalization and avoid a
-copy (if the input is already a numpy array or a scipy.sparse
-CSR matrix and if axis is 1).</p>
+<div><p>If False, try to avoid a copy and do inplace scaling instead.
+This is not guaranteed to always work inplace; e.g. if the data is
+not a NumPy array or scipy.sparse CSR matrix, a copy may still be
+returned.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -327,9 +326,15 @@ and returns a transformed version of X.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

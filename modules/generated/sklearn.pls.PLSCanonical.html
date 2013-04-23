@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -177,7 +171,7 @@
 <dt id="sklearn.pls.PLSCanonical">
 <em class="property">class </em><tt class="descclassname">sklearn.pls.</tt><tt class="descname">PLSCanonical</tt><big>(</big><em>n_components=2</em>, <em>scale=True</em>, <em>algorithm='nipals'</em>, <em>max_iter=500</em>, <em>tol=1e-06</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#sklearn.pls.PLSCanonical" title="Permalink to this definition">¶</a></dt>
 <dd><p>PLSCanonical implements the 2 blocks canonical PLS of the original Wold
-algorithm [Tenenhaus 1998] p.204, refered as PLS-C2A in [Wegelin 2000].</p>
+algorithm [Tenenhaus 1998] p.204, referred as PLS-C2A in [Wegelin 2000].</p>
 <p>This class inherits from PLS with mode=&#8221;A&#8221; and deflation_mode=&#8221;canonical&#8221;,
 norm_y_weights=True and algorithm=&#8221;nipals&#8221;, but svd should provide similar
 results up to numerical errors.</p>
@@ -376,9 +370,15 @@ q is the number of response variables.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

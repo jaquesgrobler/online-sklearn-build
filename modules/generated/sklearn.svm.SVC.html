@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -424,9 +418,15 @@ matrices as input.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -478,8 +478,8 @@ time: fit with attribute <cite>probability</cite> set to True.</p>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_classes]</p>
 <blockquote class="last">
 <div><p>Returns the log-probabilities of the sample for each class in
-the model, where classes are ordered by arithmetical
-order.</p>
+the model. The columns correspond to the classes in sorted
+order, as they appear in the attribute <cite>classes_</cite>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -508,8 +508,8 @@ time: fit with attribute <cite>probability</cite> set to True.</p>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_classes]</p>
 <blockquote class="last">
 <div><p>Returns the probability of the sample for each class in
-the model, where classes are ordered by arithmetical
-order.</p>
+the model. The columns correspond to the classes in sorted
+order, as they appear in the attribute <cite>classes_</cite>.</p>
 </div></blockquote>
 </td>
 </tr>

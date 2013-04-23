@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -292,13 +286,14 @@ SGD supports the following penalties:</p>
 <div><ul class="simple">
 <li><tt class="docutils literal"><span class="pre">penalty=&quot;l2&quot;</span></tt>: L2 norm penalty on <tt class="docutils literal"><span class="pre">coef_</span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre">penalty=&quot;l1&quot;</span></tt>: L1 norm penalty on <tt class="docutils literal"><span class="pre">coef_</span></tt>.</li>
-<li><tt class="docutils literal"><span class="pre">penalty=&quot;elasticnet&quot;</span></tt>: Convex combination of L2 and L1; <cite>rho * L2 + (1 - rho) * L1</cite>.</li>
+<li><tt class="docutils literal"><span class="pre">penalty=&quot;elasticnet&quot;</span></tt>: Convex combination of L2 and L1; <cite>(1 - l1_ratio) * L2 + l1_ratio * L1</cite>.</li>
 </ul>
 </div></blockquote>
 <p>The default setting is <tt class="docutils literal"><span class="pre">penalty=&quot;l2&quot;</span></tt>. The L1 penalty leads to sparse
 solutions, driving most coefficients to zero. The Elastic Net solves
 some deficiencies of the L1 penalty in the presence of highly correlated
-attributes. The parameter <tt class="docutils literal"><span class="pre">rho</span></tt> has to be specified by the user.</p>
+attributes. The parameter <tt class="docutils literal"><span class="pre">l1_ratio</span></tt> controls the convex combination
+of L1 and L2 penalty.</p>
 <p><a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier" title="sklearn.linear_model.SGDClassifier"><tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt></a> supports multi-class classification by combining
 multiple binary classifiers in a &#8220;one versus all&#8221; (OVA) scheme. For each
 of the <cite>K</cite> classes, a binary classifier is learned that discriminates
@@ -342,7 +337,7 @@ well suited for regression problems with a large number of training
 samples (&gt; 10.000), for other problems we recommend <a class="reference internal" href="generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="sklearn.linear_model.Ridge"><tt class="xref py py-class docutils literal"><span class="pre">Ridge</span></tt></a>,
 <a class="reference internal" href="generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><tt class="xref py py-class docutils literal"><span class="pre">Lasso</span></tt></a>, or <a class="reference internal" href="generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="sklearn.linear_model.ElasticNet"><tt class="xref py py-class docutils literal"><span class="pre">ElasticNet</span></tt></a>.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_sgd_ols.html"><img alt="../_images/plot_sgd_ols_11.png" src="../_images/plot_sgd_ols_11.png" style="width: 600.0px; height: 450.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_sgd_ols.html"><img alt="modules/../auto_examples/linear_model/images/plot_sgd_ols_1.png" src="modules/../auto_examples/linear_model/images/plot_sgd_ols_1.png" /></a>
 </div>
 <p>The concrete loss function can be set via the <tt class="docutils literal"><span class="pre">loss</span></tt>
 parameter. <a class="reference internal" href="generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor" title="sklearn.linear_model.SGDRegressor"><tt class="xref py py-class docutils literal"><span class="pre">SGDRegressor</span></tt></a> supports the following loss functions:</p>
@@ -378,7 +373,7 @@ matrix format as defined in <a class="reference external" href="http://docs.scip
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
-<li><em class="xref std std-ref">example_document_classification_20newsgroups.py</em></li>
+<li><a class="reference internal" href="../auto_examples/document_classification_20newsgroups.html#example-document-classification-20newsgroups-py"><em>Classification of text documents using sparse features</em></a></li>
 </ul>
 </div>
 </div>
@@ -470,7 +465,7 @@ misclassification error (Zero-one loss) as shown in the Figure below.</p>
 <li>L2 norm: <img class="math" src="../_images/math/b4272aa5d2ed5bd08f3d8be32d70f85f5c063bea.png" alt="R(w) := \frac{1}{2} \sum_{i=1}^{n} w_i^2"/>,</li>
 <li>L1 norm: <img class="math" src="../_images/math/f584c803031b0eb6fc5f26d56441ef6c9592fcb1.png" alt="R(w) := \sum_{i=1}^{n} |w_i|"/>, which leads to sparse
 solutions.</li>
-<li>Elastic Net: <img class="math" src="../_images/math/3259044f232e9fa404db7245a509c4af14d9ace1.png" alt="R(w) := \rho \frac{1}{2} \sum_{i=1}^{n} w_i^2 + (1-\rho) \sum_{i=1}^{n} |w_i|"/>, a convex combination of L2 and L1.</li>
+<li>Elastic Net: <img class="math" src="../_images/math/3259044f232e9fa404db7245a509c4af14d9ace1.png" alt="R(w) := \rho \frac{1}{2} \sum_{i=1}^{n} w_i^2 + (1-\rho) \sum_{i=1}^{n} |w_i|"/>, a convex combination of L2 and L1, where <img class="math" src="../_images/math/0027034d8a10372a06deaf4f4084c01956587479.png" alt="\rho"/> is given by <tt class="docutils literal"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">l1_ratio</span></tt>.</li>
 </ul>
 </div></blockquote>
 <p>The Figure below shows the contours of the different regularization terms
@@ -507,7 +502,7 @@ approx. 1). The exact definition can be found in <tt class="docutils literal"><s
 (<tt class="docutils literal"><span class="pre">learning_rate='invscaling'</span></tt>), given by</p>
 <div class="math">
 <p><img src="../_images/math/1d5dd409d3ff0af6931e97cc37087d4d33c4ffd3.png" alt="\eta^{(t)} = \frac{eta_0}{t^{power\_t}}"/></p>
-</div><p>where <img class="math" src="../_images/math/4b2b820d2fd6e45c2457f073ffec25469e13e1c8.png" alt="eta_0"/> and <img class="math" src="../_images/math/9fac8c10bc0c567ad37e956d3f4d8285795be865.png" alt="power\_t"/> are hyperparameters choosen by the
+</div><p>where <img class="math" src="../_images/math/4b2b820d2fd6e45c2457f073ffec25469e13e1c8.png" alt="eta_0"/> and <img class="math" src="../_images/math/9fac8c10bc0c567ad37e956d3f4d8285795be865.png" alt="power\_t"/> are hyperparameters chosen by the
 user via <tt class="docutils literal"><span class="pre">eta0</span></tt> and <tt class="docutils literal"><span class="pre">power_t</span></tt>, resp.</p>
 <p>For a constant learning rate use <tt class="docutils literal"><span class="pre">learning_rate='constant'</span></tt> and use <tt class="docutils literal"><span class="pre">eta0</span></tt>
 to specify the learning rate.</p>

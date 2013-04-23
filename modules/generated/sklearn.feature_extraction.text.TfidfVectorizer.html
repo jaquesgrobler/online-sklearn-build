@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -175,7 +169,7 @@
 <h1>8.8.4.4. sklearn.feature_extraction.text.TfidfVectorizer<a class="headerlink" href="#sklearn-feature-extraction-text-tfidfvectorizer" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_extraction.text.TfidfVectorizer">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_extraction.text.</tt><tt class="descname">TfidfVectorizer</tt><big>(</big><em>input=u'content'</em>, <em>charset=u'utf-8'</em>, <em>charset_error=u'strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>analyzer=u'word'</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>max_df=1.0</em>, <em>min_df=2</em>, <em>max_features=None</em>, <em>vocabulary=None</em>, <em>binary=False</em>, <em>dtype=&lt;type 'long'&gt;</em>, <em>norm=u'l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfVectorizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_extraction.text.</tt><tt class="descname">TfidfVectorizer</tt><big>(</big><em>input=u'content'</em>, <em>charset=u'utf-8'</em>, <em>charset_error=u'strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>analyzer=u'word'</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>max_df=1.0</em>, <em>min_df=1</em>, <em>max_features=None</em>, <em>vocabulary=None</em>, <em>binary=False</em>, <em>dtype=&lt;type 'numpy.int64'&gt;</em>, <em>norm=u'l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfVectorizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a collection of raw documents to a matrix of TF-IDF features.</p>
 <p>Equivalent to CountVectorizer followed by TfidfTransformer.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -264,7 +258,7 @@ If float, the parameter represents a proportion of documents, integer
 absolute counts.
 This parameter is ignored if vocabulary is not None.</p>
 </div></blockquote>
-<p><strong>min_df</strong> : float in range [0.0, 1.0] or int, optional, 2 by default</p>
+<p><strong>min_df</strong> : float in range [0.0, 1.0] or int, optional, 1 by default</p>
 <blockquote>
 <div><p>When building the vocabulary ignore terms that have a term frequency
 strictly lower than the given threshold.
@@ -373,7 +367,7 @@ exactly once. Prevents zero divisions.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.TfidfVectorizer.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>input=u'content'</em>, <em>charset=u'utf-8'</em>, <em>charset_error=u'strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>analyzer=u'word'</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>max_df=1.0</em>, <em>min_df=2</em>, <em>max_features=None</em>, <em>vocabulary=None</em>, <em>binary=False</em>, <em>dtype=&lt;type 'long'&gt;</em>, <em>norm=u'l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfVectorizer.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>input=u'content'</em>, <em>charset=u'utf-8'</em>, <em>charset_error=u'strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>analyzer=u'word'</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>max_df=1.0</em>, <em>min_df=1</em>, <em>max_features=None</em>, <em>vocabulary=None</em>, <em>binary=False</em>, <em>dtype=&lt;type 'numpy.int64'&gt;</em>, <em>norm=u'l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfVectorizer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -443,9 +437,15 @@ exactly once. Prevents zero divisions.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

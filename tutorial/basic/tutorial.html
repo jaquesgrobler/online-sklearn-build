@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. An introduction to machine learning with scikit-learn &mdash; scikit-learn 0.14-git documentation</title>
+    <title>2.1. An introduction to machine learning with scikit-learn &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -157,11 +151,11 @@
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">1. An introduction to machine learning with scikit-learn</a><ul>
-<li><a class="reference internal" href="#machine-learning-the-problem-setting">1.1. Machine learning: the problem setting</a></li>
-<li><a class="reference internal" href="#loading-an-example-dataset">1.2. Loading an example dataset</a></li>
-<li><a class="reference internal" href="#learning-and-predicting">1.3. Learning and predicting</a></li>
-<li><a class="reference internal" href="#model-persistence">1.4. Model persistence</a></li>
+<li><a class="reference internal" href="#">2.1. An introduction to machine learning with scikit-learn</a><ul>
+<li><a class="reference internal" href="#machine-learning-the-problem-setting">2.1.1. Machine learning: the problem setting</a></li>
+<li><a class="reference internal" href="#loading-an-example-dataset">2.1.2. Loading an example dataset</a></li>
+<li><a class="reference internal" href="#learning-and-predicting">2.1.3. Learning and predicting</a></li>
+<li><a class="reference internal" href="#model-persistence">2.1.4. Model persistence</a></li>
 </ul>
 </li>
 </ul>
@@ -178,7 +172,7 @@
           <div class="body">
             
   <div class="section" id="an-introduction-to-machine-learning-with-scikit-learn">
-<span id="introduction"></span><h1>1. An introduction to machine learning with scikit-learn<a class="headerlink" href="#an-introduction-to-machine-learning-with-scikit-learn" title="Permalink to this headline">¶</a></h1>
+<span id="introduction"></span><h1>2.1. An introduction to machine learning with scikit-learn<a class="headerlink" href="#an-introduction-to-machine-learning-with-scikit-learn" title="Permalink to this headline">¶</a></h1>
 <div class="topic">
 <p class="topic-title first">Section contents</p>
 <p>In this section, we introduce the <a class="reference external" href="http://en.wikipedia.org/wiki/Machine_learning">machine learning</a>
@@ -186,7 +180,7 @@ vocabulary that we use through-out <cite>scikit-learn</cite> and give a
 simple learning example.</p>
 </div>
 <div class="section" id="machine-learning-the-problem-setting">
-<h2>1.1. Machine learning: the problem setting<a class="headerlink" href="#machine-learning-the-problem-setting" title="Permalink to this headline">¶</a></h2>
+<h2>2.1.1. Machine learning: the problem setting<a class="headerlink" href="#machine-learning-the-problem-setting" title="Permalink to this headline">¶</a></h2>
 <p>In general, a learning problem considers a set of n
 <a class="reference external" href="http://en.wikipedia.org/wiki/Sample_(statistics)">samples</a> of
 data and then tries to predict properties of unknown data. If each sample is
@@ -246,7 +240,7 @@ on which we test these properties.</p>
 </div>
 </div>
 <div class="section" id="loading-an-example-dataset">
-<span id="loading-example-dataset"></span><h2>1.2. Loading an example dataset<a class="headerlink" href="#loading-an-example-dataset" title="Permalink to this headline">¶</a></h2>
+<span id="loading-example-dataset"></span><h2>2.1.2. Loading an example dataset<a class="headerlink" href="#loading-an-example-dataset" title="Permalink to this headline">¶</a></h2>
 <p><cite>scikit-learn</cite> comes with a few standard datasets, for instance the
 <a class="reference external" href="http://en.wikipedia.org/wiki/Iris_flower_data_set">iris</a> and <a class="reference external" href="http://archive.ics.uci.edu/ml/datasets/Pen-Based+Recognition+of+Handwritten+Digits">digits</a>
 datasets for classification and the <a class="reference external" href="http://archive.ics.uci.edu/ml/datasets/Housing">boston house prices dataset</a> for regression.:</p>
@@ -303,7 +297,7 @@ the <cite>scikit-learn</cite>.</p>
 </div>
 </div>
 <div class="section" id="learning-and-predicting">
-<h2>1.3. Learning and predicting<a class="headerlink" href="#learning-and-predicting" title="Permalink to this headline">¶</a></h2>
+<h2>2.1.3. Learning and predicting<a class="headerlink" href="#learning-and-predicting" title="Permalink to this headline">¶</a></h2>
 <p>In the case of the digits dataset, the task is to predict, given an image,
 which digit it represents. We are given samples of each of the 10
 possible classes (the digits zero through nine) on which we <em>fit</em> an
@@ -353,7 +347,7 @@ example that you can run and study:
 <a class="reference internal" href="../../auto_examples/plot_digits_classification.html#example-plot-digits-classification-py"><em>Recognizing hand-written digits</em></a>.</p>
 </div>
 <div class="section" id="model-persistence">
-<h2>1.4. Model persistence<a class="headerlink" href="#model-persistence" title="Permalink to this headline">¶</a></h2>
+<h2>2.1.4. Model persistence<a class="headerlink" href="#model-persistence" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to save a model in the scikit by using Python&#8217;s built-in
 persistence model, namely <a class="reference external" href="http://docs.python.org/library/pickle.html">pickle</a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>

@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -166,9 +160,9 @@
 </li>
 <li><a class="reference internal" href="#third-party-distributions-of-scikit-learn">1.2. Third party distributions of scikit-learn</a><ul>
 <li><a class="reference internal" href="#debian-and-derivatives-ubuntu">1.2.1. Debian and derivatives (Ubuntu)</a></li>
-<li><a class="reference internal" href="#python-x-y">1.2.2. Python(x, y)</a></li>
+<li><a class="reference internal" href="#python-x-y">1.2.2. Python(x,y)</a></li>
 <li><a class="reference internal" href="#enthought-python-distribution">1.2.3. Enthought Python distribution</a></li>
-<li><a class="reference internal" href="#macports">1.2.4. Macports</a></li>
+<li><a class="reference internal" href="#macports">1.2.4. MacPorts</a></li>
 <li><a class="reference internal" href="#archlinux">1.2.5. Archlinux</a></li>
 <li><a class="reference internal" href="#netbsd">1.2.6. NetBSD</a></li>
 </ul>
@@ -243,15 +237,14 @@ to get the header files for NumPy.</p>
 <p>The above installs the ATLAS implementation of BLAS
 (the Basic Linear Algebra Subprograms library).
 Ubuntu 11.10 and later, and recent (testing) versions of Debian,
-offer an alternative implementation called OpenBLAS.
-While this implementation has some issues
-(please don&#8217;t file bug reports about this),
-it may offer a significant speedup to some modules of scikit-learn,
-especially on multicore hardware.
-Replacing ATLAS with OpenBLAS only requires two commands:</p>
-<div class="last highlight-python"><pre># NumPy may not run when both ATLAS and OpenBLAS are installed,
-# so remove the former.
-sudo apt-get remove libatlas3gf-base libatlas-dev
+offer an alternative implementation called OpenBLAS.</p>
+<p>Using OpenBLAS can give speedups in some scikit-learn modules,
+but it doesn&#8217;t play nicely with joblib/multiprocessing,
+so using it is not recommended unless you know what you&#8217;re doing.</p>
+<p>If you do want to use OpenBLAS, then replacing ATLAS
+only requires two commands.
+ATLAS has to be removed, otherwise NumPy may not work:</p>
+<div class="last highlight-python"><pre>sudo apt-get remove libatlas3gf-base libatlas-dev
 sudo apt-get install libopenblas-dev</pre>
 </div>
 </div>
@@ -331,22 +324,24 @@ scikit-learn integrated with their package-management systems.</p>
 <p>These can make installation and upgrading much easier for users since
 the integration includes the ability to automatically install
 dependencies (numpy, scipy) that scikit-learn requires.</p>
-<p>The following is an imcomplete list of Python and OS distributions
-that provide their own version of scikit-learn:</p>
+<p>The following is an incomplete list of Python and OS distributions
+that provide their own version of scikit-learn.</p>
 <div class="section" id="debian-and-derivatives-ubuntu">
 <h3>1.2.1. Debian and derivatives (Ubuntu)<a class="headerlink" href="#debian-and-derivatives-ubuntu" title="Permalink to this headline">¶</a></h3>
-<p>The Debian package is named python-sklearn (formerly
-python-scikits-learn) and can be installed using the following
-commands with root privileges:</p>
-<div class="highlight-python"><pre>apt-get install python-sklearn</pre>
+<p>The Debian package is named <tt class="docutils literal"><span class="pre">python-sklearn</span></tt>
+(formerly <tt class="docutils literal"><span class="pre">python-scikits-learn</span></tt>)
+and can be installed using the following command:</p>
+<div class="highlight-python"><pre>sudo apt-get install python-sklearn</pre>
 </div>
 <p>Additionally, backport builds of the most recent release of
 scikit-learn for existing releases of Debian and Ubuntu are available
-from <a class="reference external" href="http://neuro.debian.net/pkgs/python-sklearn.html">NeuroDebian repository</a> .</p>
+from the <a class="reference external" href="http://neuro.debian.net/pkgs/python-sklearn.html">NeuroDebian repository</a> .</p>
+<p>A quick-&#8216;n&#8217;-dirty way of rolling your own <tt class="docutils literal"><span class="pre">.deb</span></tt> package
+is to <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/wiki/Quick-packaging-for-Debian-Ubuntu">use stdeb</a>.</p>
 </div>
 <div class="section" id="python-x-y">
-<h3>1.2.2. Python(x, y)<a class="headerlink" href="#python-x-y" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference external" href="http://pythonxy.com">Python(x, y)</a> distributes scikit-learn as an additional plugin, which can
+<h3>1.2.2. Python(x,y)<a class="headerlink" href="#python-x-y" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://pythonxy.com">Python(x,y)</a> distributes scikit-learn as an additional plugin, which can
 be found in the <a class="reference external" href="http://code.google.com/p/pythonxy/wiki/AdditionalPlugins">Additional plugins</a>
 page.</p>
 </div>
@@ -356,16 +351,16 @@ page.</p>
 version.</p>
 </div>
 <div class="section" id="macports">
-<h3>1.2.4. Macports<a class="headerlink" href="#macports" title="Permalink to this headline">¶</a></h3>
-<p>The macport&#8217;s package is named <cite>py26-sklearn</cite> or <cite>py27-sklearn</cite> depending
-on the version of Python. It can be installed by typing the following
+<h3>1.2.4. MacPorts<a class="headerlink" href="#macports" title="Permalink to this headline">¶</a></h3>
+<p>The MacPorts package is named <tt class="docutils literal"><span class="pre">py&lt;XY&gt;-scikits-learn</span></tt>,
+where <tt class="docutils literal"><span class="pre">XY</span></tt> denotes the Python version.
+It can be installed by typing the following
 command:</p>
-<div class="highlight-python"><pre>sudo port install py26-sklearn</pre>
+<div class="highlight-python"><pre>sudo port install py26-scikit-learn</pre>
 </div>
 <p>or:</p>
-<div class="highlight-python"><pre>sudo port install py27-sklearn</pre>
+<div class="highlight-python"><pre>sudo port install py27-scikit-learn</pre>
 </div>
-<p>depending on the version of Python you want to use.</p>
 </div>
 <div class="section" id="archlinux">
 <h3>1.2.5. Archlinux<a class="headerlink" href="#archlinux" title="Permalink to this headline">¶</a></h3>

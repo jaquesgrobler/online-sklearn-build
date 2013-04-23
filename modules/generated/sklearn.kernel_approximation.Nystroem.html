@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -175,7 +169,7 @@
 <h1>8.14.2. sklearn.kernel_approximation.Nystroem<a class="headerlink" href="#sklearn-kernel-approximation-nystroem" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.kernel_approximation.Nystroem">
-<em class="property">class </em><tt class="descclassname">sklearn.kernel_approximation.</tt><tt class="descname">Nystroem</tt><big>(</big><em>kernel='rbf'</em>, <em>gamma=None</em>, <em>coef0=1</em>, <em>degree=3</em>, <em>n_components=100</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.kernel_approximation.Nystroem" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.kernel_approximation.</tt><tt class="descname">Nystroem</tt><big>(</big><em>kernel='rbf'</em>, <em>gamma=None</em>, <em>coef0=1</em>, <em>degree=3</em>, <em>kernel_params=None</em>, <em>n_components=100</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.kernel_approximation.Nystroem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Approximate a kernel map using a subset of the training data.</p>
 <p>Constructs an approximate feature map for an arbitrary kernel
 using a subset of the data as basis.</p>
@@ -185,16 +179,35 @@ using a subset of the data as basis.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>kernel</strong> : string or callable, default=&#8221;rbf&#8221;</p>
 <blockquote>
-<div><p>Kernel map to be approximated.</p>
+<div><p>Kernel map to be approximated. A callable should accept two arguments
+and the keyword arguments passed to this object as kernel_params, and
+should return a floating point number.</p>
 </div></blockquote>
 <p><strong>n_components</strong> : int</p>
 <blockquote>
 <div><p>Number of features to construct.
 How many data points will be used to construct the mapping.</p>
 </div></blockquote>
-<p><strong>gamma</strong> : float, default=1/n_features.</p>
+<p><strong>gamma</strong> : float, default=None</p>
 <blockquote>
-<div><p>Parameter for the RBF kernel.</p>
+<div><p>Gamma parameter for the RBF, polynomial, exponential chi² and
+sigmoid kernels. Interpretation of the default value is left to
+the kernel; see the documentation for sklearn.metrics.pairwise.
+Ignored by other kernels.</p>
+</div></blockquote>
+<p><strong>degree</strong> : float, default=3</p>
+<blockquote>
+<div><p>Degree of the polynomial kernel. Ignored by other kernels.</p>
+</div></blockquote>
+<p><strong>coef0</strong> : float, default=1</p>
+<blockquote>
+<div><p>Zero coefficient for polynomial and sigmoid kernels.
+Ignored by other kernels.</p>
+</div></blockquote>
+<p><strong>kernel_params</strong> : mapping of string to any, optional</p>
+<blockquote>
+<div><p>Additional parameters (keyword arguments) for kernel function passed
+as callable object.</p>
 </div></blockquote>
 <p><strong>random_state</strong> : {int, RandomState}, optional</p>
 <blockquote class="last">
@@ -273,7 +286,7 @@ Square root of the kernel matrix on <tt class="docutils literal"><span class="pr
 </table>
 <dl class="method">
 <dt id="sklearn.kernel_approximation.Nystroem.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>kernel='rbf'</em>, <em>gamma=None</em>, <em>coef0=1</em>, <em>degree=3</em>, <em>n_components=100</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.kernel_approximation.Nystroem.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>kernel='rbf'</em>, <em>gamma=None</em>, <em>coef0=1</em>, <em>degree=3</em>, <em>kernel_params=None</em>, <em>n_components=100</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.kernel_approximation.Nystroem.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -335,9 +348,15 @@ and returns a transformed version of X.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

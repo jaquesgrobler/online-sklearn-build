@@ -31,7 +31,7 @@
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Vector Quantization Example" href="plot_lena_compress.html" />
-    <link rel="prev" title="Segmenting the picture of Lena in regions" href="plot_lena_segmentation.html" />
+    <link rel="prev" title="Demo of DBSCAN clustering algorithm" href="plot_dbscan.html" />
 
 
 <script type="text/javascript">
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -101,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_lena_segmentation.html" title="Segmenting the picture of Lena in regions"
+	<a href="plot_dbscan.html" title="Demo of DBSCAN clustering algorithm"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Segmenting the p...
+	    Demo of DBSCAN c...
 	    </span>
 	    <span class="hiddenrellink">
-	    Segmenting the picture of Lena in regions
+	    Demo of DBSCAN clustering algorithm
 	    </span>
 	    
 	    </a>
@@ -189,10 +183,12 @@ cluster.</p>
 <img alt="../../_images/plot_dict_face_patches_1.png" class="align-center" src="../../_images/plot_dict_face_patches_1.png" />
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Learning the dictionary...
-[_mini_batch_step] Reassigning 6 cluster centers.
+[MiniBatchKMeans] Reassigning 6 cluster centers.
 Partial fit of  100 out of 2400
 Partial fit of  200 out of 2400
 Partial fit of  300 out of 2400
+[MiniBatchKMeans] Reassigning 10 cluster centers.
+[MiniBatchKMeans] Reassigning 10 cluster centers.
 Partial fit of  400 out of 2400
 Partial fit of  500 out of 2400
 Partial fit of  600 out of 2400
@@ -201,10 +197,10 @@ Partial fit of  800 out of 2400
 Partial fit of  900 out of 2400
 Partial fit of 1000 out of 2400
 Partial fit of 1100 out of 2400
+[MiniBatchKMeans] Reassigning 10 cluster centers.
 Partial fit of 1200 out of 2400
 Partial fit of 1300 out of 2400
 Partial fit of 1400 out of 2400
-[_mini_batch_step] Reassigning 2 cluster centers.
 Partial fit of 1500 out of 2400
 Partial fit of 1600 out of 2400
 Partial fit of 1700 out of 2400
@@ -212,10 +208,12 @@ Partial fit of 1800 out of 2400
 Partial fit of 1900 out of 2400
 Partial fit of 2000 out of 2400
 Partial fit of 2100 out of 2400
+[MiniBatchKMeans] Reassigning 8 cluster centers.
 Partial fit of 2200 out of 2400
+[MiniBatchKMeans] Reassigning 8 cluster centers.
 Partial fit of 2300 out of 2400
 Partial fit of 2400 out of 2400
-done in 8.93s.</pre>
+done in 8.76s.</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_dict_face_patches.py"><tt class="xref download docutils literal"><span class="pre">plot_dict_face_patches.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
@@ -284,7 +282,7 @@ done in 8.93s.</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  12.51 seconds</p>
+<p><strong>Total running time of the example:</strong>  12.31 seconds</p>
 </div>
 
 
@@ -306,7 +304,7 @@ done in 8.93s.</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_lena_segmentation.html">
+      <a href="plot_dbscan.html">
         Previous
       </a>
     </div>

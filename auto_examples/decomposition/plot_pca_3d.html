@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Principal Component Analysis &mdash; scikit-learn 0.14-git documentation</title>
+    <title>Principal components analysis (PCA) &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="FastICA on 2D point clouds" href="plot_ica_vs_pca.html" />
-    <link rel="prev" title="Kernel PCA" href="plot_kernel_pca.html" />
+    <link rel="next" title="Faces dataset decompositions" href="plot_faces_decomposition.html" />
+    <link rel="prev" title="Sparse coding with a precomputed dictionary" href="plot_sparse_coding.html" />
 
 
 <script type="text/javascript">
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -101,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_kernel_pca.html" title="Kernel PCA"
+	<a href="plot_sparse_coding.html" title="Sparse coding with a precomputed dictionary"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Kernel PCA
+	    Sparse coding wi...
 	    </span>
 	    <span class="hiddenrellink">
-	    Kernel PCA
+	    Sparse coding with a precomputed dictionary
 	    </span>
 	    
 	    </a>
@@ -118,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_ica_vs_pca.html" title="FastICA on 2D point clouds"
+	<a href="plot_faces_decomposition.html" title="Faces dataset decompositions"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    FastICA on 2D po...
+	    Faces dataset de...
 	    </span>
 	    <span class="hiddenrellink">
-	    FastICA on 2D point clouds
+	    Faces dataset decompositions
 	    </span>
 	    
 	    </a>
@@ -157,7 +151,7 @@
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">Principal Component Analysis</a></li>
+<li><a class="reference internal" href="#">Principal components analysis (PCA)</a></li>
 </ul>
 
     
@@ -171,11 +165,11 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="principal-component-analysis">
-<span id="example-decomposition-plot-pca-3d-py"></span><h1>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this headline">¶</a></h1>
-<p>These figures aid in illustrating how a the point cloud
-can be very flad in one direction - which is where PCA
-would come in to choose a direction that is not flat.</p>
+  <div class="section" id="principal-components-analysis-pca">
+<span id="example-decomposition-plot-pca-3d-py"></span><h1>Principal components analysis (PCA)<a class="headerlink" href="#principal-components-analysis-pca" title="Permalink to this headline">¶</a></h1>
+<p>These figures aid in illustrating how a point cloud
+can be very flat in one direction&#8211;which is where PCA
+comes in to choose a direction that is not flat.</p>
 <ul class="horizontal">
 <li><a class="first reference internal image-reference" href="../../_images/plot_pca_3d_2.png"><img alt="../../_images/plot_pca_3d_2.png" src="../../_images/plot_pca_3d_2.png" style="width: 188.0px; height: 141.0px;" /></a>
 </li>
@@ -185,14 +179,21 @@ would come in to choose a direction that is not flat.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_pca_3d.py"><tt class="xref download docutils literal"><span class="pre">plot_pca_3d.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
-<span class="c"># Code source: Gael Varoquaux</span>
-<span class="c"># Modified for Documentation merge by Jaques Grobler</span>
+<span class="c"># Authors: Gael Varoquaux</span>
+<span class="c">#          Jaques Grobler</span>
+<span class="c">#          Kevin Hughes</span>
 <span class="c"># License: BSD</span>
 
-<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span><span class="p">,</span> <span class="n">linalg</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA"><span class="n">PCA</span></a>
+
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+
+<span class="c">###############################################################################</span>
+<span class="c"># Create the data</span>
 
 <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -229,7 +230,15 @@ would come in to choose a direction that is not flat.</p>
 
     <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">a</span><span class="p">[::</span><span class="mi">10</span><span class="p">],</span> <span class="n">b</span><span class="p">[::</span><span class="mi">10</span><span class="p">],</span> <span class="n">c</span><span class="p">[::</span><span class="mi">10</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">density</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;+&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">4</span><span class="p">)</span>
     <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span>
-    <span class="n">U</span><span class="p">,</span> <span class="n">pca_score</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.linalg.svd.html#scipy.linalg.svd"><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span></a><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">full_matrices</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="c"># Using SciPy&#39;s SVD, this would be:</span>
+    <span class="c"># _, pca_score, V = scipy.linalg.svd(Y, full_matrices=False)</span>
+
+    <span class="n">pca</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+    <span class="n">pca_score</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span>
+
     <span class="n">x_pca_axis</span><span class="p">,</span> <span class="n">y_pca_axis</span><span class="p">,</span> <span class="n">z_pca_axis</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">pca_score</span> <span class="o">/</span> <span class="n">pca_score</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 
     <span class="n">x_pca_axis</span><span class="p">,</span> <span class="n">y_pca_axis</span><span class="p">,</span> <span class="n">z_pca_axis</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">V</span><span class="o">.</span><span class="n">T</span>
@@ -256,7 +265,7 @@ would come in to choose a direction that is not flat.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.28 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.29 seconds</p>
 </div>
 
 
@@ -278,12 +287,12 @@ would come in to choose a direction that is not flat.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_kernel_pca.html">
+      <a href="plot_sparse_coding.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_ica_vs_pca.html">
+      <a href="plot_faces_decomposition.html">
         Next
       </a>
     </div>

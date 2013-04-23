@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>6.1. Preprocessing data &mdash; scikit-learn 0.14-git documentation</title>
+    <title>6.2. Preprocessing data &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="6. Dataset transformations" href="../data_transforms.html" />
-    <link rel="next" title="6.2. Feature extraction" href="feature_extraction.html" />
-    <link rel="prev" title="6. Dataset transformations" href="../data_transforms.html" />
+    <link rel="next" title="6.3. Kernel Approximation" href="kernel_approximation.html" />
+    <link rel="prev" title="6.1. Feature extraction" href="feature_extraction.html" />
 
 
 <script type="text/javascript">
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -101,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="../data_transforms.html" title="6. Dataset transformations"
+	<a href="feature_extraction.html" title="6.1. Feature extraction"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    6. Dataset trans...
+	    6.1. Feature ext...
 	    </span>
 	    <span class="hiddenrellink">
-	    6. Dataset transformations
+	    6.1. Feature extraction
 	    </span>
 	    
 	    </a>
@@ -118,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="feature_extraction.html" title="6.2. Feature extraction"
+	<a href="kernel_approximation.html" title="6.3. Kernel Approximation"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    6.2. Feature ext...
+	    6.3. Kernel Appr...
 	    </span>
 	    <span class="hiddenrellink">
-	    6.2. Feature extraction
+	    6.3. Kernel Approximation
 	    </span>
 	    
 	    </a>
@@ -157,20 +151,20 @@
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">6.1. Preprocessing data</a><ul>
-<li><a class="reference internal" href="#standardization-or-mean-removal-and-variance-scaling">6.1.1. Standardization or Mean Removal and Variance Scaling</a><ul>
-<li><a class="reference internal" href="#scaling-features-to-a-range">6.1.1.1. Scaling Features to a Range</a></li>
+<li><a class="reference internal" href="#">6.2. Preprocessing data</a><ul>
+<li><a class="reference internal" href="#standardization-or-mean-removal-and-variance-scaling">6.2.1. Standardization or Mean Removal and Variance Scaling</a><ul>
+<li><a class="reference internal" href="#scaling-features-to-a-range">6.2.1.1. Scaling Features to a Range</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#normalization">6.1.2. Normalization</a></li>
-<li><a class="reference internal" href="#binarization">6.1.3. Binarization</a><ul>
-<li><a class="reference internal" href="#feature-binarization">6.1.3.1. Feature binarization</a></li>
+<li><a class="reference internal" href="#normalization">6.2.2. Normalization</a></li>
+<li><a class="reference internal" href="#binarization">6.2.3. Binarization</a><ul>
+<li><a class="reference internal" href="#feature-binarization">6.2.3.1. Feature binarization</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#encoding-categorical-features">6.1.4. Encoding categorical features</a></li>
-<li><a class="reference internal" href="#label-preprocessing">6.1.5. Label preprocessing</a><ul>
-<li><a class="reference internal" href="#label-binarization">6.1.5.1. Label binarization</a></li>
-<li><a class="reference internal" href="#label-encoding">6.1.5.2. Label encoding</a></li>
+<li><a class="reference internal" href="#encoding-categorical-features">6.2.4. Encoding categorical features</a></li>
+<li><a class="reference internal" href="#label-preprocessing">6.2.5. Label preprocessing</a><ul>
+<li><a class="reference internal" href="#label-binarization">6.2.5.1. Label binarization</a></li>
+<li><a class="reference internal" href="#label-encoding">6.2.5.2. Label encoding</a></li>
 </ul>
 </li>
 </ul>
@@ -189,12 +183,12 @@
           <div class="body">
             
   <div class="section" id="preprocessing-data">
-<span id="preprocessing"></span><h1>6.1. Preprocessing data<a class="headerlink" href="#preprocessing-data" title="Permalink to this headline">¶</a></h1>
+<span id="preprocessing"></span><h1>6.2. Preprocessing data<a class="headerlink" href="#preprocessing-data" title="Permalink to this headline">¶</a></h1>
 <p>The <tt class="docutils literal"><span class="pre">sklearn.preprocessing</span></tt> package provides several common
 utility functions and transformer classes to change raw feature vectors
 into a representation that is more suitable for the downstream estimators.</p>
 <div class="section" id="standardization-or-mean-removal-and-variance-scaling">
-<span id="preprocessing-scaler"></span><h2>6.1.1. Standardization or Mean Removal and Variance Scaling<a class="headerlink" href="#standardization-or-mean-removal-and-variance-scaling" title="Permalink to this headline">¶</a></h2>
+<span id="preprocessing-scaler"></span><h2>6.2.1. Standardization or Mean Removal and Variance Scaling<a class="headerlink" href="#standardization-or-mean-removal-and-variance-scaling" title="Permalink to this headline">¶</a></h2>
 <p><strong>Standardization</strong> of datasets is a <strong>common requirement for many
 machine learning estimators</strong> implemented in the scikit: they might behave
 badly if the individual feature do not more or less look like standard
@@ -265,7 +259,7 @@ same way it did on the training set:</p>
 passing <tt class="docutils literal"><span class="pre">with_mean=False</span></tt> or <tt class="docutils literal"><span class="pre">with_std=False</span></tt> to the constructor
 of <a class="reference internal" href="generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler"><tt class="xref py py-class docutils literal"><span class="pre">StandardScaler</span></tt></a>.</p>
 <div class="section" id="scaling-features-to-a-range">
-<h3>6.1.1.1. Scaling Features to a Range<a class="headerlink" href="#scaling-features-to-a-range" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.1.1. Scaling Features to a Range<a class="headerlink" href="#scaling-features-to-a-range" title="Permalink to this headline">¶</a></h3>
 <p>An alternative standardization is scaling features to
 lie between a given minimum and maximum value, often between zero and one.
 This can be achieved using <a class="reference internal" href="generated/sklearn.preprocessing.MinMaxScaler.html#sklearn.preprocessing.MinMaxScaler" title="sklearn.preprocessing.MinMaxScaler"><tt class="xref py py-class docutils literal"><span class="pre">MinMaxScaler</span></tt></a>.</p>
@@ -347,7 +341,7 @@ for regression.</p>
 </div>
 </div>
 <div class="section" id="normalization">
-<h2>6.1.2. Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.2. Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">¶</a></h2>
 <p><strong>Normalization</strong> is the process of <strong>scaling individual samples to have
 unit norm</strong>. This process can be useful if you plan to use a quadratic form
 such as the dot-product or any other kernel to quantify the similarity
@@ -400,9 +394,9 @@ recommended to choose the CSR representation upstream.</p>
 </div>
 </div>
 <div class="section" id="binarization">
-<h2>6.1.3. Binarization<a class="headerlink" href="#binarization" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.3. Binarization<a class="headerlink" href="#binarization" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="feature-binarization">
-<h3>6.1.3.1. Feature binarization<a class="headerlink" href="#feature-binarization" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.3.1. Feature binarization<a class="headerlink" href="#feature-binarization" title="Permalink to this headline">¶</a></h3>
 <p><strong>Feature binarization</strong> is the process of <strong>thresholding numerical
 features to get boolean values</strong>. This can be useful for downsteam
 probabilistic estimators that make assumption that the input data
@@ -455,7 +449,7 @@ representation upstream.</p>
 </div>
 </div>
 <div class="section" id="encoding-categorical-features">
-<span id="preprocessing-categorical-features"></span><h2>6.1.4. Encoding categorical features<a class="headerlink" href="#encoding-categorical-features" title="Permalink to this headline">¶</a></h2>
+<span id="preprocessing-categorical-features"></span><h2>6.2.4. Encoding categorical features<a class="headerlink" href="#encoding-categorical-features" title="Permalink to this headline">¶</a></h2>
 <p>Often features are not given as continuous values but categorical.
 For example a person could have features <tt class="docutils literal"><span class="pre">[&quot;male&quot;,</span> <span class="pre">&quot;female&quot;]</span></tt>,
 <tt class="docutils literal"><span class="pre">[&quot;from</span> <span class="pre">Europe&quot;,</span> <span class="pre">&quot;from</span> <span class="pre">US&quot;,</span> <span class="pre">&quot;from</span> <span class="pre">Asia&quot;]</span></tt>,
@@ -491,9 +485,9 @@ numbers the continent and the last four the web browser.</p>
 as a dict, not as integers.</p>
 </div>
 <div class="section" id="label-preprocessing">
-<h2>6.1.5. Label preprocessing<a class="headerlink" href="#label-preprocessing" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.5. Label preprocessing<a class="headerlink" href="#label-preprocessing" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="label-binarization">
-<h3>6.1.5.1. Label binarization<a class="headerlink" href="#label-binarization" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.5.1. Label binarization<a class="headerlink" href="#label-binarization" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer" title="sklearn.preprocessing.LabelBinarizer"><tt class="xref py py-class docutils literal"><span class="pre">LabelBinarizer</span></tt></a> is a utility class to help create a label indicator
 matrix from a list of multi-class labels:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lb</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelBinarizer</span><span class="p">()</span>
@@ -516,7 +510,7 @@ matrix from a list of multi-class labels:</p>
 </div>
 </div>
 <div class="section" id="label-encoding">
-<h3>6.1.5.2. Label encoding<a class="headerlink" href="#label-encoding" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.5.2. Label encoding<a class="headerlink" href="#label-encoding" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/sklearn.preprocessing.LabelEncoder.html#sklearn.preprocessing.LabelEncoder" title="sklearn.preprocessing.LabelEncoder"><tt class="xref py py-class docutils literal"><span class="pre">LabelEncoder</span></tt></a> is a utility class to help normalize labels such that
 they contain only values between 0 and n_classes-1. This is sometimes useful
 for writing efficient Cython routines. <a class="reference internal" href="generated/sklearn.preprocessing.LabelEncoder.html#sklearn.preprocessing.LabelEncoder" title="sklearn.preprocessing.LabelEncoder"><tt class="xref py py-class docutils literal"><span class="pre">LabelEncoder</span></tt></a> can be used as
@@ -569,12 +563,12 @@ hashable and comparable) to numerical labels:</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="../data_transforms.html">
+      <a href="feature_extraction.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="feature_extraction.html">
+      <a href="kernel_approximation.html">
         Next
       </a>
     </div>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.19.2.13. sklearn.metrics.precision_score &mdash; scikit-learn 0.14-git documentation</title>
+    <title>8.19.2.14. sklearn.metrics.precision_score &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.19.2.14. sklearn.metrics.recall_score" href="sklearn.metrics.recall_score.html" />
-    <link rel="prev" title="8.19.2.12. sklearn.metrics.precision_recall_fscore_support" href="sklearn.metrics.precision_recall_fscore_support.html" />
+    <link rel="next" title="8.19.2.15. sklearn.metrics.recall_score" href="sklearn.metrics.recall_score.html" />
+    <link rel="prev" title="8.19.2.13. sklearn.metrics.precision_recall_fscore_support" href="sklearn.metrics.precision_recall_fscore_support.html" />
 
 
 <script type="text/javascript">
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -101,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.precision_recall_fscore_support.html" title="8.19.2.12. sklearn.metrics.precision_recall_fscore_support"
+	<a href="sklearn.metrics.precision_recall_fscore_support.html" title="8.19.2.13. sklearn.metrics.precision_recall_fscore_support"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.19.2.12. sklea...
+	    8.19.2.13. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.2.12. sklearn.metrics.precision_recall_fscore_support
+	    8.19.2.13. sklearn.metrics.precision_recall_fscore_support
 	    </span>
 	    
 	    </a>
@@ -118,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.recall_score.html" title="8.19.2.14. sklearn.metrics.recall_score"
+	<a href="sklearn.metrics.recall_score.html" title="8.19.2.15. sklearn.metrics.recall_score"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.19.2.14. sklea...
+	    8.19.2.15. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.2.14. sklearn.metrics.recall_score
+	    8.19.2.15. sklearn.metrics.recall_score
 	    </span>
 	    
 	    </a>
@@ -157,7 +151,7 @@
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.19.2.13. sklearn.metrics.precision_score</a></li>
+<li><a class="reference internal" href="#">8.19.2.14. sklearn.metrics.precision_score</a></li>
 </ul>
 
     
@@ -172,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-precision-score">
-<h1>8.19.2.13. sklearn.metrics.precision_score<a class="headerlink" href="#sklearn-metrics-precision-score" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.2.14. sklearn.metrics.precision_score<a class="headerlink" href="#sklearn-metrics-precision-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.precision_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">precision_score</tt><big>(</big><em>y_true</em>, <em>y_pred</em>, <em>labels=None</em>, <em>pos_label=1</em>, <em>average='weighted'</em><big>)</big><a class="headerlink" href="#sklearn.metrics.precision_score" title="Permalink to this definition">¶</a></dt>
@@ -198,21 +192,17 @@ that is negative.</p>
 <blockquote>
 <div><p>Integer array of labels.</p>
 </div></blockquote>
-<p><strong>pos_label</strong> : int</p>
+<p><strong>pos_label</strong> : int, 1 by default</p>
 <blockquote>
-<div><p>In the binary classification case, give the label of the positive class
-(default is 1). Everything else but <tt class="docutils literal"><span class="pre">pos_label</span></tt> is considered to
-belong to the negative class.  Set to <tt class="docutils literal"><span class="pre">None</span></tt> in the case of
-multiclass classification.</p>
+<div><p>If <tt class="docutils literal"><span class="pre">average</span></tt> is not <tt class="docutils literal"><span class="pre">None</span></tt> and the classification target is binary,
+only this class&#8217;s scores will be returned.</p>
 </div></blockquote>
 <p><strong>average</strong> : string, [None, &#8216;micro&#8217;, &#8216;macro&#8217;, &#8216;weighted&#8217; (default)]</p>
 <blockquote>
-<div><p>In the multiclass classification case, this determines the type of
-averaging performed on the data.</p>
+<div><p>If <tt class="docutils literal"><span class="pre">None</span></tt>, the scores for each class are returned. Otherwise,
+unless <tt class="docutils literal"><span class="pre">pos_label</span></tt> is given in binary classification, this
+determines the type of averaging performed on the data:</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">None</span></tt>:</dt>
-<dd><p class="first last">Do not perform any averaging, return the scores for each class.</p>
-</dd>
 <dt><tt class="docutils literal"><span class="pre">'macro'</span></tt>:</dt>
 <dd><p class="first last">Average over classes (does not take imbalance into account).</p>
 </dd>

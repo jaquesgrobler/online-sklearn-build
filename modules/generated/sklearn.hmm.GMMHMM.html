@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -353,8 +347,6 @@ corresponds to a single data point.</p>
 <dt id="sklearn.hmm.GMMHMM.eval">
 <tt class="descname">eval</tt><big>(</big><em>obs</em><big>)</big><a class="headerlink" href="#sklearn.hmm.GMMHMM.eval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the log probability under the model and compute posteriors</p>
-<p>Implements rank and beam pruning in the forward-backward
-algorithm to speed up inference in large models.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -395,10 +387,8 @@ observation</p>
 <tt class="descname">fit</tt><big>(</big><em>obs</em><big>)</big><a class="headerlink" href="#sklearn.hmm.GMMHMM.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate model parameters.</p>
 <p>An initialization step is performed before entering the EM
-algorithm. If you want to avoid this step, set the keyword
-argument init_params to the empty string &#8216;&#8217;. Likewise, if you
-would like just to do an initialization, call this method with
-n_iter=0.</p>
+algorithm. If you want to avoid this step, pass proper
+<tt class="docutils literal"><span class="pre">init_params</span></tt> keyword argument to estimator&#8217;s constructor.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -417,9 +407,6 @@ aggressive pruning is used.  Decreasing <cite>logprob</cite> is generally
 a sign of overfitting (e.g. a covariance parameter getting too
 small).  You can fix this by getting more training data, or
 decreasing <cite>covars_prior</cite>.</p>
-<p><strong>Please note that setting parameters in the `fit` method is
-deprecated and will be removed in the next release.
-Set it on initialization instead.</strong></p>
 </dd></dl>
 
 <dl class="method">
@@ -431,9 +418,15 @@ Set it on initialization instead.</strong></p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

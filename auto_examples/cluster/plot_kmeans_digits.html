@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -216,8 +210,8 @@ definitions and discussions of the metrics):</p>
 <div class="highlight-python"><pre>n_digits: 10,          n_samples 1797,         n_features 64
 _______________________________________________________________________________
 init    time  inertia    homo   compl  v-meas     ARI AMI  silhouette
-k-means++   0.63s    69432   0.602   0.650   0.625   0.465   0.598    0.146
-   random   0.54s    69694   0.669   0.710   0.689   0.553   0.666    0.147
+k-means++   0.60s    69432   0.602   0.650   0.625   0.465   0.598    0.146
+   random   0.52s    69694   0.669   0.710   0.689   0.553   0.666    0.147
 PCA-based   0.05s    71820   0.673   0.715   0.693   0.567   0.670    0.150
 _______________________________________________________________________________</pre>
 </div>
@@ -292,7 +286,7 @@ _______________________________________________________________________________<
 <span class="c"># Step size of the mesh. Decrease to increase the quality of the VQ.</span>
 <span class="n">h</span> <span class="o">=</span> <span class="o">.</span><span class="mo">02</span>     <span class="c"># point in the mesh [x_min, m_max]x[y_min, y_max].</span>
 
-<span class="c"># Plot the decision boundary. For that, we will asign a color to each</span>
+<span class="c"># Plot the decision boundary. For that, we will assign a color to each</span>
 <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">reduced_data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">reduced_data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">reduced_data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">reduced_data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.meshgrid.html#numpy.meshgrid"><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
@@ -324,7 +318,7 @@ _______________________________________________________________________________<
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  2.17 seconds</p>
+<p><strong>Total running time of the example:</strong>  2.14 seconds</p>
 </div>
 
 

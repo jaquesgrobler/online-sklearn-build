@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -166,7 +160,7 @@
 <li><a class="reference internal" href="#affinity-propagation">4.3.3. Affinity Propagation</a></li>
 <li><a class="reference internal" href="#mean-shift">4.3.4. Mean Shift</a></li>
 <li><a class="reference internal" href="#spectral-clustering">4.3.5. Spectral clustering</a><ul>
-<li><a class="reference internal" href="#different-label-assignement-strategies">4.3.5.1. Different label assignement strategies</a></li>
+<li><a class="reference internal" href="#different-label-assignment-strategies">4.3.5.1. Different label assignment strategies</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#hierarchical-clustering">4.3.6. Hierarchical clustering</a><ul>
@@ -388,18 +382,32 @@ transform method of a trained model of <a class="reference internal" href="gener
 <div class="section" id="mini-batch-k-means">
 <span id="mini-batch-kmeans"></span><h3>4.3.2.1. Mini Batch K-Means<a class="headerlink" href="#mini-batch-k-means" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="sklearn.cluster.MiniBatchKMeans"><tt class="xref py py-class docutils literal"><span class="pre">MiniBatchKMeans</span></tt></a> is a variant of the <a class="reference internal" href="generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans"><tt class="xref py py-class docutils literal"><span class="pre">KMeans</span></tt></a> algorithm
-using mini-batches, random subset of the dataset, to compute the centroids.</p>
-<p>Although the <a class="reference internal" href="generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="sklearn.cluster.MiniBatchKMeans"><tt class="xref py py-class docutils literal"><span class="pre">MiniBatchKMeans</span></tt></a> converge faster than the KMeans
-version, the quality of the results, measured by the inertia, the sum of
-the distance of each points to the nearest centroid, is not as good as
-the <a class="reference internal" href="generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans"><tt class="xref py py-class docutils literal"><span class="pre">KMeans</span></tt></a> algorithm.</p>
+which uses mini-batches to reduce the computation time, while still attempting
+to optimise the same objective function. Mini-batches are subsets of the input
+data, randomly sampled in each training iteration. These mini-batches
+drastically reduce the amount of computation required to converge to a local
+solution. In contrast to other algorithms that reduce the convergence time of
+k-means, mini-batch k-means produces results that are generally only slightly
+worse than the standard algorithm.</p>
+<p>The algorithm iterates between two major steps, similar to vanilla k-means.
+In the first step, <cite>b</cite> samples are drawn randomly from the dataset, to form
+a mini-batch. These are then assigned to the nearest centroid. In the second
+step, the centroids are updated. In contrast to k-means, this is done on a
+per-sample basis. For each sample in the mini-batch, the assigned centroid
+is updated by taking the streaming average of the sample and all previous
+samples assigned to that centroid. This has the effect of decreasing the
+rate of change for a centroid over time. These steps are performed until
+convergence or a predetermined number of iterations is reached.</p>
+<p><a class="reference internal" href="generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="sklearn.cluster.MiniBatchKMeans"><tt class="xref py py-class docutils literal"><span class="pre">MiniBatchKMeans</span></tt></a> converges faster than <a class="reference internal" href="generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans"><tt class="xref py py-class docutils literal"><span class="pre">KMeans</span></tt></a>, but the quality
+of the results is reduced. In practice this difference in quality can be quite
+small, as shown in the example and cited reference.</p>
 <div class="figure align-center">
 <a class="reference external image-reference" href="../auto_examples/cluster/plot_mini_batch_kmeans.html"><img alt="../_images/plot_mini_batch_kmeans_11.png" src="../_images/plot_mini_batch_kmeans_11.png" style="width: 800.0px; height: 300.0px;" /></a>
 </div>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../auto_examples/cluster/plot_mini_batch_kmeans.html#example-cluster-plot-mini-batch-kmeans-py"><em>Comparison of the K-Means clustering and MiniBatchKMeans Algorithms</em></a>: Comparison of KMeans and
+<li><a class="reference internal" href="../auto_examples/cluster/plot_mini_batch_kmeans.html#example-cluster-plot-mini-batch-kmeans-py"><em>Comparison of the K-Means and MiniBatchKMeans clustering algorithms</em></a>: Comparison of KMeans and
 MiniBatchKMeans</li>
 <li><a class="reference internal" href="../auto_examples/document_clustering.html#example-document-clustering-py"><em>Clustering text documents using k-means</em></a>: Document clustering using sparse
 MiniBatchKMeans</li>
@@ -529,9 +537,9 @@ from a noisy background using spectral clustering.</li>
 to split the image of lena in regions.</li>
 </ul>
 </div>
-<div class="section" id="different-label-assignement-strategies">
-<h3>4.3.5.1. Different label assignement strategies<a class="headerlink" href="#different-label-assignement-strategies" title="Permalink to this headline">¶</a></h3>
-<p>Different label assignement strategies can be used, corresponding to the
+<div class="section" id="different-label-assignment-strategies">
+<h3>4.3.5.1. Different label assignment strategies<a class="headerlink" href="#different-label-assignment-strategies" title="Permalink to this headline">¶</a></h3>
+<p>Different label assignment strategies can be used, corresponding to the
 <cite>assign_labels</cite> parameter of <a class="reference internal" href="generated/sklearn.cluster.SpectralClustering.html#sklearn.cluster.SpectralClustering" title="sklearn.cluster.SpectralClustering"><tt class="xref py py-class docutils literal"><span class="pre">SpectralClustering</span></tt></a>.
 The <cite>kmeans</cite> strategie can match finer details of the data, but it can be
 more unstable. In particular, unless you control the <cite>random_state</cite>, it

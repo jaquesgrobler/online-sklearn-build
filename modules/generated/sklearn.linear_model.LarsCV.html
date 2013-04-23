@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -197,12 +191,12 @@ to false, no intercept will be used in calculations
 </div></blockquote>
 <p><strong>copy_X</strong> : boolean, optional, default True</p>
 <blockquote>
-<div><p>If True, X will be copied; else, it may be overwritten.</p>
+<div><p>If <tt class="docutils literal"><span class="pre">True</span></tt>, X will be copied; else, it may be overwritten.</p>
 </div></blockquote>
 <p><strong>precompute</strong> : True | False | &#8216;auto&#8217; | array-like</p>
 <blockquote>
 <div><p>Whether to use a precomputed Gram matrix to speed up
-calculations. If set to &#8216;auto&#8217; let us decide. The Gram
+calculations. If set to <tt class="docutils literal"><span class="pre">'auto'</span></tt> let us decide. The Gram
 matrix can also be passed as argument.</p>
 </div></blockquote>
 <p><strong>max_iter: integer, optional</strong> :</p>
@@ -211,7 +205,7 @@ matrix can also be passed as argument.</p>
 </div></blockquote>
 <p><strong>cv</strong> : crossvalidation generator, optional</p>
 <blockquote>
-<div><p>see sklearn.cross_validation module. If None is passed, default to
+<div><p>see <a class="reference internal" href="../classes.html#module-sklearn.cross_validation" title="sklearn.cross_validation"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.cross_validation</span></tt></a>. If <tt class="docutils literal"><span class="pre">None</span></tt> is passed, default to
 a 5-fold strategy</p>
 </div></blockquote>
 <p><strong>max_n_alphas</strong> : integer, optional</p>
@@ -221,7 +215,7 @@ residuals in the cross-validation</p>
 </div></blockquote>
 <p><strong>n_jobs</strong> : integer, optional</p>
 <blockquote>
-<div><p>Number of CPUs to use during the cross validation. If &#8216;-1&#8217;, use
+<div><p>Number of CPUs to use during the cross validation. If <tt class="docutils literal"><span class="pre">-1</span></tt>, use
 all the CPUs</p>
 </div></blockquote>
 <p><strong>eps: float, optional</strong> :</p>
@@ -241,39 +235,39 @@ systems.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="37%" />
-<col width="19%" />
-<col width="44%" />
+<col width="14%" />
+<col width="32%" />
+<col width="54%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><cite>coef_</cite></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">coef_</span></tt></td>
 <td>array, shape = [n_features]</td>
 <td>parameter vector (w in the fomulation formula)</td>
 </tr>
-<tr class="row-even"><td><cite>intercept_</cite></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">intercept_</span></tt></td>
 <td>float</td>
 <td>independent term in decision function</td>
 </tr>
-<tr class="row-odd"><td><cite>coef_path_</cite>: array, shape = [n_features, n_alpha]</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">coef_path_</span></tt></td>
+<td>array, shape = [n_features, n_alphas]</td>
 <td>the varying values of the coefficients along the path</td>
 </tr>
-<tr class="row-even"><td><cite>alpha_</cite>: float</td>
-<td>&nbsp;</td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">alpha_</span></tt></td>
+<td>float</td>
 <td>the estimated regularization parameter alpha</td>
 </tr>
-<tr class="row-odd"><td><cite>alphas_</cite>: array, shape = [n_alpha]</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">alphas_</span></tt></td>
+<td>array, shape = [n_alphas]</td>
 <td>the different values of alpha along the path</td>
 </tr>
-<tr class="row-even"><td><cite>cv_alphas_</cite>: array, shape = [n_cv_alphas]</td>
-<td>&nbsp;</td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">cv_alphas_</span></tt></td>
+<td>array, shape = [n_cv_alphas]</td>
 <td>all the values of alpha along the path for the different folds</td>
 </tr>
-<tr class="row-odd"><td><cite>cv_mse_path_</cite>: array, shape = [n_folds, n_cv_alphas]</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">cv_mse_path_</span></tt></td>
+<td>array, shape = [n_folds, n_cv_alphas]</td>
 <td>the mean square error on left-out for each fold along the path
-(alpha values given by cv_alphas)</td>
+(alpha values given by <tt class="docutils literal"><span class="pre">cv_alphas</span></tt>)</td>
 </tr>
 </tbody>
 </table>
@@ -367,9 +361,15 @@ systems.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

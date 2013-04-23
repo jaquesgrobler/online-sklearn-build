@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -249,7 +243,7 @@ Noisy samples are given the label -1.</td>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.DBSCAN.fit" title="sklearn.cluster.DBSCAN.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X)</td>
-<td>Perform DBSCAN clustering from vector array or distance matrix.</td>
+<td>Perform DBSCAN clustering from features or distance matrix.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.DBSCAN.fit_predict" title="sklearn.cluster.DBSCAN.fit_predict"><tt class="xref py py-obj docutils literal"><span class="pre">fit_predict</span></tt></a>(X[,&nbsp;y])</td>
 <td>Performs clustering on X and returns cluster labels.</td>
@@ -270,7 +264,7 @@ Noisy samples are given the label -1.</td>
 <dl class="method">
 <dt id="sklearn.cluster.DBSCAN.fit">
 <tt class="descname">fit</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.cluster.DBSCAN.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform DBSCAN clustering from vector array or distance matrix.</p>
+<dd><p>Perform DBSCAN clustering from features or distance matrix.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -324,9 +318,15 @@ given as &#8216;precomputed&#8217;.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>

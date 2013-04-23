@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -201,8 +195,8 @@ increase.</p>
 <p>When using, for example, <a class="reference internal" href="../../modules/cross_validation.html#cross-validation"><em>cross validation</em></a>, to
 set the amount of regularization with <cite>C</cite>, there will be a
 different amount of samples between the main problem and the smaller problems
-withing the folds of the cross validation.</p>
-<p>Since our loss function is dependant on the amount of samples, the latter
+within the folds of the cross validation.</p>
+<p>Since our loss function is dependent on the amount of samples, the latter
 will influence the selected value of <cite>C</cite>.
 The question that arises is <cite>How do we optimally adjust C to
 account for the different amount of training samples?</cite></p>
@@ -237,7 +231,7 @@ which can be seen in the first figure.</p>
 is not scaled.</p>
 <div class="topic">
 <p class="topic-title first">Note:</p>
-<p>Two seperate datasets are used for the two different plots. The reason
+<p>Two separate datasets are used for the two different plots. The reason
 behind this is the <cite>L1</cite> case works better on sparse data, while <cite>L2</cite>
 is better suited to the non-sparse case.</p>
 </div>
@@ -298,7 +292,7 @@ is better suited to the non-sparse case.</p>
                             <span class="n">cv</span><span class="o">=</span><a href="../../modules/generated/sklearn.cross_validation.ShuffleSplit.html#sklearn.cross_validation.ShuffleSplit"><span class="n">ShuffleSplit</span></a><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">,</span>
                                             <span class="n">n_iter</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
         <a href="../../modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV"><span class="n">grid</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-        <span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <a href="../../modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV"><span class="n">grid</span></a><span class="o">.</span><span class="n">grid_scores_</span><span class="p">]</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <a href="../../modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV"><span class="n">grid</span></a><span class="o">.</span><span class="n">cv_scores_</span><span class="p">]</span>
 
         <span class="n">scales</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;No scaling&#39;</span><span class="p">),</span>
                   <span class="p">((</span><span class="n">n_samples</span> <span class="o">*</span> <span class="n">train_size</span><span class="p">),</span> <span class="s">&#39;1/n_samples&#39;</span><span class="p">),</span>
@@ -318,7 +312,7 @@ is better suited to the non-sparse case.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  20.06 seconds</p>
+<p><strong>Total running time of the example:</strong>  21.44 seconds</p>
 </div>
 </div>
 

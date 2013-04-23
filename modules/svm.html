@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -160,7 +154,8 @@
 <li><a class="reference internal" href="#">3.2. Support Vector Machines</a><ul>
 <li><a class="reference internal" href="#classification">3.2.1. Classification</a><ul>
 <li><a class="reference internal" href="#multi-class-classification">3.2.1.1. Multi-class classification</a></li>
-<li><a class="reference internal" href="#unbalanced-problems">3.2.1.2. Unbalanced problems</a></li>
+<li><a class="reference internal" href="#scores-and-probabilities">3.2.1.2. Scores and probabilities</a></li>
+<li><a class="reference internal" href="#unbalanced-problems">3.2.1.3. Unbalanced problems</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#regression">3.2.2. Regression</a></li>
@@ -221,8 +216,8 @@ provided, but it is also possible to specify custom kernels.</li>
 <li>If the number of features is much greater than the number of
 samples, the method is likely to give poor performances.</li>
 <li>SVMs do not directly provide probability estimates, these are
-calculated using five-fold cross-validation, and thus
-performance can suffer.</li>
+calculated using an expensive five-fold cross-validation
+(see <em class="xref std std-ref">Scores and probabilities</em>, below).</li>
 </ul>
 </div></blockquote>
 <p>The support vector machines in scikit-learn support both dens
@@ -385,8 +380,40 @@ for SVs of class 2</td>
 </tbody>
 </table>
 </div>
+<div class="section" id="scores-and-probabilities">
+<span id="scores-probabilities"></span><h3>3.2.1.2. Scores and probabilities<a class="headerlink" href="#scores-and-probabilities" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><tt class="xref py py-class docutils literal"><span class="pre">SVC</span></tt></a> method <tt class="docutils literal"><span class="pre">decision_function</span></tt> gives per-class scores
+for each sample (or a single score per sample in the binary case).
+When the constructor option <tt class="docutils literal"><span class="pre">probability</span></tt> is set to <tt class="docutils literal"><span class="pre">True</span></tt>,
+class membership probability estimates
+(from the methods <tt class="docutils literal"><span class="pre">predict_proba</span></tt> and <tt class="docutils literal"><span class="pre">predict_log_proba</span></tt>) are enabled.
+In the binary case, the probabilities are calibrated using Platt scaling:
+logistic regression on the SVM&#8217;s scores,
+fit by an additional cross-validation on the training data.
+In the multiclass case, this is extended as per Wu et al. (2004).</p>
+<p>Needless to say, the cross-validation involved in Platt scaling
+is an expensive operation for large datasets.
+In addition, the probability estimates may be inconsistent with the scores,
+in the sense that the &#8220;argmax&#8221; of the scores
+may not be the argmax of the probabilities.
+(E.g., in binary classification,
+a sample may be labeled by <tt class="docutils literal"><span class="pre">predict</span></tt> as belonging to a class
+that has probability &lt;½ according to <tt class="docutils literal"><span class="pre">predict_proba</span></tt>.)
+Platt&#8217;s method is also known to have theoretical issues.
+If confidence scores are required, but these do not have to be probabilities,
+then it is advisable to set <tt class="docutils literal"><span class="pre">probability=False</span></tt>
+and use <tt class="docutils literal"><span class="pre">decision_function</span></tt> instead of <tt class="docutils literal"><span class="pre">predict_proba</span></tt>.</p>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li>Wu, Lin and Weng,
+<a class="reference external" href="http://www.csie.ntu.edu.tw/~cjlin/papers/svmprob/svmprob.pdf">&#8220;Probability estimates for multi-class classification by pairwise coupling&#8221;</a>.
+JMLR 5:975-1005, 2004.</li>
+</ul>
+</div>
+</div>
 <div class="section" id="unbalanced-problems">
-<h3>3.2.1.2. Unbalanced problems<a class="headerlink" href="#unbalanced-problems" title="Permalink to this headline">¶</a></h3>
+<h3>3.2.1.3. Unbalanced problems<a class="headerlink" href="#unbalanced-problems" title="Permalink to this headline">¶</a></h3>
 <p>In problems where it is desired to give more importance to certain
 classes or certain individual samples keywords <tt class="docutils literal"><span class="pre">class_weight</span></tt> and
 <tt class="docutils literal"><span class="pre">sample_weight</span></tt> can be used.</p>

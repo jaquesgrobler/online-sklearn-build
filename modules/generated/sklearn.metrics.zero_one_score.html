@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.1.13. sklearn.metrics.zero_one_score &mdash; scikit-learn 0.13-git documentation</title>
+    <title>sklearn.metrics.zero_one_score &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13-git',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,10 +28,9 @@
     <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.13-git documentation" href="../../index.html" />
-    <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.1.14. sklearn.metrics.zero_one" href="sklearn.metrics.zero_one.html" />
-    <link rel="prev" title="8.17.1.12. sklearn.metrics.precision_recall_curve" href="sklearn.metrics.precision_recall_curve.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +44,8 @@
   })();
 
 </script>
+
+
 
   </head>
   <body>
@@ -86,68 +87,22 @@
 
       <div class="sphinxsidebar">
 	<div class="sphinxsidebarwrapper">
-	  <div class="rel">
-	   
+	   <div class="rel rellarge">
+	     
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
-	<div class="rellink">
-	<a href="sklearn.metrics.precision_recall_curve.html" title="8.17.1.12. sklearn.metrics.precision_recall_curve"
-	    accesskey="P">Previous
-	    <br>
-	    <span class="smallrellink">
-	    8.17.1.12. sklea...
-	    </span>
-	    <span class="hiddenrellink">
-	    8.17.1.12. sklearn.metrics.precision_recall_curve
-	    </span>
-	    
-	    </a>
-	</div>
-	    <div class="spacer">
-	    &nbsp;
-	    </div>
-	
-	<div class="rellink">
-	<a href="sklearn.metrics.zero_one.html" title="8.17.1.14. sklearn.metrics.zero_one"
-	    accesskey="N">Next
-	    <br>
-	    <span class="smallrellink">
-	    8.17.1.14. sklea...
-	    </span>
-	    <span class="hiddenrellink">
-	    8.17.1.14. sklearn.metrics.zero_one
-	    </span>
-	    
-	    </a>
-	</div>
 	<!-- Ad a link to the 'up' page -->
-	<div class="spacer">
-	&nbsp;
-	</div>
-	<div class="rellink">
-	<a href="../classes.html" title="8. Reference" >
-	Up
-	<br>
-	<span class="smallrellink">
-	8. Reference
-	</span>
-	<span class="hiddenrellink">
-	8. Reference
-	</span>
-	
-	</a>
-	</div>
     </div>
     <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.13-git</strong>
+    for scikit-learn <strong>version 0.14-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
-    <h3>Citing</h3>
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
     <p>If you use the software, please consider
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.17.1.13. sklearn.metrics.zero_one_score</a></li>
+<li><a class="reference internal" href="#">sklearn.metrics.zero_one_score</a></li>
 </ul>
 
     
@@ -162,29 +117,34 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-zero-one-score">
-<h1>8.17.1.13. sklearn.metrics.zero_one_score<a class="headerlink" href="#sklearn-metrics-zero-one-score" title="Permalink to this headline">¶</a></h1>
+<h1>sklearn.metrics.zero_one_score<a class="headerlink" href="#sklearn-metrics-zero-one-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.zero_one_score">
-<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">zero_one_score</tt><big>(</big><em>y_true</em>, <em>y_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.zero_one_score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Zero-one classification score (accuracy)</p>
-<p>Positive integer (number of good classifications).
-The best performance is 1.</p>
-<p>Return the fraction of correct predictions in y_pred.</p>
+<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">zero_one_score</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#sklearn.metrics.zero_one_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: Function zero_one_score has been renamed to accuracy_score and will be removed in release 0.15.</p>
+<p>Zero-one classification score (accuracy)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like, shape = n_samples</p>
 <blockquote>
-<div><p>Gold standard labels.</p>
+<div><blockquote>
+<div><p>Ground truth (correct) labels.</p>
 </div></blockquote>
-<p><strong>y_pred</strong> : array-like, shape = n_samples</p>
-<blockquote>
-<div><p>Predicted labels, as returned by a classifier.</p>
+<dl class="docutils">
+<dt>y_pred <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape = n_samples</span></dt>
+<dd><p class="first last">Predicted labels, as returned by a classifier.</p>
+</dd>
+</dl>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>score</strong> : float</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>score</strong> : float</p>
+<blockquote class="last">
+<div><p>Fraction of correct predictions in <tt class="docutils literal"><span class="pre">y_pred</span></tt>. The best performance is
+1.</p>
+</div></blockquote>
 </td>
 </tr>
 </tbody>
@@ -202,25 +162,15 @@ The best performance is 1.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010–2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.metrics.zero_one_score.txt"
 	    rel="nofollow">Show this page source</a>
     </span>
     </div>
-     <div class="rel">
+     <div class="rel rellarge">
     
-    <div class="buttonPrevious">
-      <a href="sklearn.metrics.precision_recall_curve.html">
-        Previous
-      </a>
-    </div>
-    <div class="buttonNext">
-      <a href="sklearn.metrics.zero_one.html">
-        Next
-      </a>
-    </div>
     
      </div>
      <script type="text/javascript">

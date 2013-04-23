@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.19.2.9. sklearn.metrics.hinge_loss &mdash; scikit-learn 0.14-git documentation</title>
+    <title>8.19.2.10. sklearn.metrics.hinge_loss &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.19.2.10. sklearn.metrics.matthews_corrcoef" href="sklearn.metrics.matthews_corrcoef.html" />
-    <link rel="prev" title="8.19.2.8. sklearn.metrics.fbeta_score" href="sklearn.metrics.fbeta_score.html" />
+    <link rel="next" title="8.19.2.11. sklearn.metrics.matthews_corrcoef" href="sklearn.metrics.matthews_corrcoef.html" />
+    <link rel="prev" title="8.19.2.9. sklearn.metrics.hamming_loss" href="sklearn.metrics.hamming_loss.html" />
 
 
 <script type="text/javascript">
@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -101,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.fbeta_score.html" title="8.19.2.8. sklearn.metrics.fbeta_score"
+	<a href="sklearn.metrics.hamming_loss.html" title="8.19.2.9. sklearn.metrics.hamming_loss"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.19.2.8. sklear...
+	    8.19.2.9. sklear...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.2.8. sklearn.metrics.fbeta_score
+	    8.19.2.9. sklearn.metrics.hamming_loss
 	    </span>
 	    
 	    </a>
@@ -118,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.matthews_corrcoef.html" title="8.19.2.10. sklearn.metrics.matthews_corrcoef"
+	<a href="sklearn.metrics.matthews_corrcoef.html" title="8.19.2.11. sklearn.metrics.matthews_corrcoef"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.19.2.10. sklea...
+	    8.19.2.11. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.2.10. sklearn.metrics.matthews_corrcoef
+	    8.19.2.11. sklearn.metrics.matthews_corrcoef
 	    </span>
 	    
 	    </a>
@@ -157,7 +151,7 @@
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.19.2.9. sklearn.metrics.hinge_loss</a></li>
+<li><a class="reference internal" href="#">8.19.2.10. sklearn.metrics.hinge_loss</a></li>
 </ul>
 
     
@@ -172,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-hinge-loss">
-<h1>8.19.2.9. sklearn.metrics.hinge_loss<a class="headerlink" href="#sklearn-metrics-hinge-loss" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.2.10. sklearn.metrics.hinge_loss<a class="headerlink" href="#sklearn-metrics-hinge-loss" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.hinge_loss">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">hinge_loss</tt><big>(</big><em>y_true</em>, <em>pred_decision</em>, <em>pos_label=1</em>, <em>neg_label=-1</em><big>)</big><a class="headerlink" href="#sklearn.metrics.hinge_loss" title="Permalink to this definition">¶</a></dt>
@@ -202,7 +196,12 @@ mistakes made by the classifier.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Hinge_loss">http://en.wikipedia.org/wiki/Hinge_loss</a></p>
+<table class="docutils citation" frame="void" id="r132" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R132]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Hinge_loss">Wikipedia entry on the Hinge loss</a></td></tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">hinge_loss</span>
@@ -243,7 +242,7 @@ mistakes made by the classifier.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.metrics.fbeta_score.html">
+      <a href="sklearn.metrics.hamming_loss.html">
         Previous
       </a>
     </div>

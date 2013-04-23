@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -305,8 +299,8 @@ estimator during the construction and exposes an estimator API:</p>
 <span class="gp">... </span>                   <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_digits</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">y_digits</span><span class="p">[:</span><span class="mi">1000</span><span class="p">])</span> 
 <span class="go">GridSearchCV(cv=None,...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">best_score_</span>
-<span class="go">0.988991985997974</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">best_score_</span>   
+<span class="go">0.9889...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">gamma</span>
 <span class="go">9.9999999999999995e-07</span>
 
@@ -353,7 +347,7 @@ automatically by cross-validation:</p>
 <span class="go">    tol=0.0001, verbose=False)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># The estimator chose automatically its lambda:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lasso</span><span class="o">.</span><span class="n">alpha_</span> 
-<span class="go">0.01318...</span>
+<span class="go">0.01229...</span>
 </pre></div>
 </div>
 <p>These estimators are called similarly to their counterparts, with &#8216;CV&#8217;

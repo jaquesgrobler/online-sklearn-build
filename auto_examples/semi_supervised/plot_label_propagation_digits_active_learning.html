@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -240,7 +234,7 @@ model with their true labels.</p>
     <span class="c"># select five digit examples that the classifier is most uncertain about</span>
     <span class="n">uncertainty_index</span> <span class="o">=</span> <span class="n">uncertainty_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">pred_entropies</span><span class="p">)[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
 
-    <span class="c"># keep track of indicies that we get labels for</span>
+    <span class="c"># keep track of indices that we get labels for</span>
     <span class="n">delete_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 
     <span class="n">f</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="o">.</span><span class="mi">183</span><span class="p">),</span>

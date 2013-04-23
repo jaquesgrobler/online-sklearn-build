@@ -51,12 +51,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -152,9 +146,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#testing-functions">3.7. Testing Functions</a></li>
-<li><a class="reference internal" href="#helper-functions">3.8. Helper Functions</a></li>
-<li><a class="reference internal" href="#hash-functions">3.9. Hash Functions</a></li>
-<li><a class="reference internal" href="#warnings-and-exceptions">3.10. Warnings and Exceptions</a></li>
+<li><a class="reference internal" href="#multiclass-and-multilabel-utility-function">3.8. Multiclass and multilabel utility function</a></li>
+<li><a class="reference internal" href="#helper-functions">3.9. Helper Functions</a></li>
+<li><a class="reference internal" href="#hash-functions">3.10. Hash Functions</a></li>
+<li><a class="reference internal" href="#warnings-and-exceptions">3.11. Warnings and Exceptions</a></li>
 </ul>
 </li>
 </ul>
@@ -383,14 +378,25 @@ in Python 2.7).  Used in <tt class="docutils literal"><span class="pre">benchmar
 container membership. Designed for forward compatibility with Nose 1.0.</li>
 <li><tt class="xref py py-func docutils literal"><span class="pre">testing.assert_raise_message</span></tt>: Assertions for checking the
 error raise message.</li>
-<li><tt class="xref py py-class docutils literal"><span class="pre">mock_urllib2</span></tt>: Object which mocks the urllib2 module to fake
-requests of mldata.  Used in tests of <a class="reference internal" href="../modules/classes.html#module-sklearn.datasets" title="sklearn.datasets"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.datasets</span></tt></a>.</li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">testing.mock_mldata_urlopen</span></tt>: Mocks the urlopen function to fake
+requests to mldata.org. Used in tests of <a class="reference internal" href="../modules/classes.html#module-sklearn.datasets" title="sklearn.datasets"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.datasets</span></tt></a>.</li>
 <li><tt class="xref py py-func docutils literal"><span class="pre">testing.all_estimators</span></tt> : returns a list of all estimators in
 sklearn to test for consistent behavior and interfaces.</li>
 </ul>
 </div>
+<div class="section" id="multiclass-and-multilabel-utility-function">
+<h2>3.8. Multiclass and multilabel utility function<a class="headerlink" href="#multiclass-and-multilabel-utility-function" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">multiclass.is_multilabel</span></tt>: Helper function to check if the task
+is a multi-label classification one.</li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">multiclass.is_label_indicator_matrix</span></tt>: Helper function to check if
+a classification output is in label indicator matrix format.</li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">multiclass.unique_labels</span></tt>: Helper function to extract an ordered
+array of unique labels from a list of labels.</li>
+</ul>
+</div>
 <div class="section" id="helper-functions">
-<h2>3.8. Helper Functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
+<h2>3.9. Helper Functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-class docutils literal"><span class="pre">gen_even_slices</span></tt>: generator to create <tt class="docutils literal"><span class="pre">n</span></tt>-packs of slices going up
 to <tt class="docutils literal"><span class="pre">n</span></tt>.  Used in <tt class="docutils literal"><span class="pre">sklearn.decomposition.dict_learning</span></tt> and
@@ -407,7 +413,7 @@ array-likes, matrices and sparse matrices.</li>
 </ul>
 </div>
 <div class="section" id="hash-functions">
-<h2>3.9. Hash Functions<a class="headerlink" href="#hash-functions" title="Permalink to this headline">¶</a></h2>
+<h2>3.10. Hash Functions<a class="headerlink" href="#hash-functions" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first"><tt class="xref py py-func docutils literal"><span class="pre">murmurhash3_32</span></tt> provides a python wrapper for the
 <cite>MurmurHash3_x86_32</cite> C++ non cryptographic hash function. This hash
@@ -429,7 +435,7 @@ MurmurHash while skipping the overhead of the Python interpreter.</p>
 </ul>
 </div>
 <div class="section" id="warnings-and-exceptions">
-<h2>3.10. Warnings and Exceptions<a class="headerlink" href="#warnings-and-exceptions" title="Permalink to this headline">¶</a></h2>
+<h2>3.11. Warnings and Exceptions<a class="headerlink" href="#warnings-and-exceptions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-class docutils literal"><span class="pre">deprecated</span></tt>: Decorator to mark a function or class as deprecated.</li>
 <li><tt class="xref py py-class docutils literal"><span class="pre">ConvergenceWarning</span></tt>: Custom warning to catch convergence problems.

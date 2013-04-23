@@ -52,12 +52,6 @@
 
   </head>
   <body>
-     <div class="survey-wrapper">
-       <p>Please help us to improve <b>scikit-learn</b>
-	 by completing this quick survey.
-         &mdash; <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFdyeGNhMzlCRWZUdldpMEZlZ1B1YkE6MQ#gid=0">
-           Click here..</a></p></p>
-     </div>
 
     <div class="header-wrapper">
       <div class="header">
@@ -463,7 +457,7 @@ whereas the weights are decreased for those that were predicted correctly. As
 iterations proceed, examples that are difficult to predict receive
 ever-increasing influence. Each subsequent weak learner is thereby forced to
 concentrate on the examples that are missed by the previous ones in the sequence
-<a class="reference internal" href="#id18">[HTF2009]</a>.</p>
+<a class="reference internal" href="../auto_examples/ensemble/plot_partial_dependence.html#htf2009">[HTF2009]</a>.</p>
 <div class="figure align-center">
 <a class="reference external image-reference" href="../auto_examples/ensemble/plot_adaboost_hastie_10_2.html"><img alt="../_images/plot_adaboost_hastie_10_2_11.png" src="../_images/plot_adaboost_hastie_10_2_11.png" style="width: 600.0px; height: 450.0px;" /></a>
 </div>
@@ -758,7 +752,7 @@ be set via the <tt class="docutils literal"><span class="pre">learning_rate</spa
 <tt class="docutils literal"><span class="pre">n_estimators</span></tt>, the number of weak learners to fit. Smaller values
 of <tt class="docutils literal"><span class="pre">learning_rate</span></tt> require larger numbers of weak learners to maintain
 a constant training error. Empirical evidence suggests that small
-values of <tt class="docutils literal"><span class="pre">learning_rate</span></tt> favor better test error. <a class="reference internal" href="#id18">[HTF2009]</a>
+values of <tt class="docutils literal"><span class="pre">learning_rate</span></tt> favor better test error. <a class="reference internal" href="../auto_examples/ensemble/plot_partial_dependence.html#htf2009">[HTF2009]</a>
 recommend to set the learning rate to a small constant
 (e.g. <tt class="docutils literal"><span class="pre">learning_rate</span> <span class="pre">&lt;=</span> <span class="pre">0.1</span></tt>) and choose <tt class="docutils literal"><span class="pre">n_estimators</span></tt> by early
 stopping. For a more detailed discussion of the interaction between
@@ -784,7 +778,7 @@ is stored in the attribute <tt class="docutils literal"><span class="pre">oob_sc
 used for model selection (e.g. to determine the optimal number of iterations).</p>
 <p>Another strategy to reduce the variance is by subsampling the features
 analogous to the random splits in Random Forests. The size of the subsample
-can be controled via the <tt class="docutils literal"><span class="pre">max_features</span></tt> parameter.</p>
+can be controlled via the <tt class="docutils literal"><span class="pre">max_features</span></tt> parameter.</p>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
