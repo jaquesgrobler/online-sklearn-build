@@ -293,7 +293,7 @@ by <a class="reference external" href="http://www.ajoly.org">Arnaud Joly</a>.</l
 <h2>API changes summary<a class="headerlink" href="#api-changes-summary" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="modules/generated/sklearn.grid_search.IterGrid.html#sklearn.grid_search.IterGrid" title="sklearn.grid_search.IterGrid"><tt class="xref py py-class docutils literal"><span class="pre">grid_search.IterGrid</span></tt></a> was renamed to
+<li><tt class="xref py py-class docutils literal"><span class="pre">grid_search.IterGrid</span></tt> was renamed to
 <a class="reference internal" href="modules/generated/sklearn.grid_search.ParameterGrid.html#sklearn.grid_search.ParameterGrid" title="sklearn.grid_search.ParameterGrid"><tt class="xref py py-class docutils literal"><span class="pre">grid_search.ParameterGrid</span></tt></a>.</li>
 <li>Fixed bug in <tt class="xref py py-class docutils literal"><span class="pre">KFold</span></tt> causing imperfect class balance in some
 cases. By <a class="reference external" href="http://alexandre.gramfort.net">Alexandre Gramfort</a> and Tadej Janež.</li>
@@ -548,12 +548,12 @@ Also, the dtype returned by <tt class="docutils literal"><span class="pre">predi
 to None, added possibility to infer <tt class="docutils literal"><span class="pre">test_size</span></tt> from <tt class="docutils literal"><span class="pre">train_size</span></tt> in
 <a class="reference internal" href="modules/generated/sklearn.cross_validation.ShuffleSplit.html#sklearn.cross_validation.ShuffleSplit" title="sklearn.cross_validation.ShuffleSplit"><tt class="xref py py-class docutils literal"><span class="pre">cross_validation.ShuffleSplit</span></tt></a> and
 <a class="reference internal" href="modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html#sklearn.cross_validation.StratifiedShuffleSplit" title="sklearn.cross_validation.StratifiedShuffleSplit"><tt class="xref py py-class docutils literal"><span class="pre">cross_validation.StratifiedShuffleSplit</span></tt></a>.</li>
-<li>Renamed function <a class="reference internal" href="modules/generated/sklearn.metrics.zero_one.html#sklearn.metrics.zero_one" title="sklearn.metrics.zero_one"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.zero_one</span></tt></a> to
+<li>Renamed function <tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.zero_one</span></tt> to
 <a class="reference internal" href="modules/generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.zero_one_loss</span></tt></a>. Be aware that the default behavior
 in <a class="reference internal" href="modules/generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.zero_one_loss</span></tt></a> is different from
-<a class="reference internal" href="modules/generated/sklearn.metrics.zero_one.html#sklearn.metrics.zero_one" title="sklearn.metrics.zero_one"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.zero_one</span></tt></a>: <tt class="docutils literal"><span class="pre">normalize=False</span></tt> is changed to
+<tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.zero_one</span></tt>: <tt class="docutils literal"><span class="pre">normalize=False</span></tt> is changed to
 <tt class="docutils literal"><span class="pre">normalize=True</span></tt>.</li>
-<li>Renamed function <a class="reference internal" href="modules/generated/sklearn.metrics.zero_one_score.html#sklearn.metrics.zero_one_score" title="sklearn.metrics.zero_one_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.zero_one_score</span></tt></a> to
+<li>Renamed function <tt class="xref py py-func docutils literal"><span class="pre">metrics.zero_one_score</span></tt> to
 <a class="reference internal" href="modules/generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.accuracy_score</span></tt></a>.</li>
 <li><a class="reference internal" href="modules/generated/sklearn.datasets.make_circles.html#sklearn.datasets.make_circles" title="sklearn.datasets.make_circles"><tt class="xref py py-func docutils literal"><span class="pre">datasets.make_circles</span></tt></a> now has the same number of inner and outer points.</li>
 <li>In the Naive Bayes classifiers, the <tt class="docutils literal"><span class="pre">class_prior</span></tt> parmeter was moved
@@ -1282,8 +1282,8 @@ and <a class="reference external" href="http://alexandre.gramfort.net">Alexandre
 <li>Distance helper functions <a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.pairwise_distances.html#sklearn.metrics.pairwise.pairwise_distances" title="sklearn.metrics.pairwise.pairwise_distances"><tt class="xref py py-func docutils literal"><span class="pre">metrics.pairwise.pairwise_distances</span></tt></a>
 and <a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.pairwise_kernels.html#sklearn.metrics.pairwise.pairwise_kernels" title="sklearn.metrics.pairwise.pairwise_kernels"><tt class="xref py py-func docutils literal"><span class="pre">metrics.pairwise.pairwise_kernels</span></tt></a> by Robert Layton</li>
 <li><a class="reference internal" href="modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="sklearn.cluster.MiniBatchKMeans"><tt class="xref py py-class docutils literal"><span class="pre">Mini-Batch</span> <span class="pre">K-Means</span></tt></a> by Nelle Varoquaux and Peter Prettenhofer.</li>
-<li><a class="reference internal" href="datasets/index.html#mldata"><em>Downloading datasets from the mldata.org repository</em></a> utilities by Pietro Berkes.</li>
-<li><a class="reference internal" href="datasets/index.html#olivetti-faces"><em>The Olivetti faces dataset</em></a> by <a class="reference external" href="http://www-etud.iro.umontreal.ca/~wardefar/">David Warde-Farley</a>.</li>
+<li><a class="reference internal" href="datasets/mldata.html#mldata"><em>Downloading datasets from the mldata.org repository</em></a> utilities by Pietro Berkes.</li>
+<li><a class="reference internal" href="datasets/olivetti_faces.html#olivetti-faces"><em>The Olivetti faces dataset</em></a> by <a class="reference external" href="http://www-etud.iro.umontreal.ca/~wardefar/">David Warde-Farley</a>.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1421,7 +1421,7 @@ enhacements and bug fixes.</p>
 <li>New <a class="reference internal" href="modules/clustering.html#hierarchical-clustering"><em>Hierarchical clustering</em></a> module by Vincent Michel,
 <a class="reference external" href="http://parietal.saclay.inria.fr/Members/bertrand-thirion">Bertrand Thirion</a>, <a class="reference external" href="http://alexandre.gramfort.net">Alexandre Gramfort</a> and <a class="reference external" href="http://gael-varoquaux.info">Gael Varoquaux</a>.</li>
 <li><a class="reference internal" href="modules/decomposition.html#kernel-pca"><em>Kernel PCA</em></a> implementation by <a class="reference external" href="http://www.mblondel.org/journal/">Mathieu Blondel</a></li>
-<li><a class="reference internal" href="datasets/index.html#labeled-faces-in-the-wild"><em>The Labeled Faces in the Wild face recognition dataset</em></a> by <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a>.</li>
+<li><a class="reference internal" href="datasets/labeled_faces.html#labeled-faces-in-the-wild"><em>The Labeled Faces in the Wild face recognition dataset</em></a> by <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a>.</li>
 <li>New <a class="reference internal" href="modules/pls.html#pls"><em>Partial Least Squares</em></a> module by <a class="reference external" href="http://www.lnao.fr/spip.php?rubrique30">Edouard Duchesnay</a>.</li>
 <li><a class="reference internal" href="modules/decomposition.html#nmf"><em>Non-negative matrix factorization (NMF or NNMF)</em></a> module <a class="reference external" href="http://vene.ro">Vlad Niculae</a></li>
 <li>Implementation of the <a class="reference internal" href="modules/covariance.html#oracle-approximating-shrinkage"><em>Oracle Approximating Shrinkage</em></a> algorithm by
