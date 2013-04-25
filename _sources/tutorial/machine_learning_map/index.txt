@@ -1,27 +1,45 @@
 .. _ml_map:
 
 
-
 .. include:: ../includes/big_toc_css.rst
 
 Choosing the right estimator
 =======================================================
 
+
+Often the hardest part of solving a machine learning problem can
+be finding the right estimator for the job.
+
+Different estimators are better suited for different types of data
+and different problems.
+
+The flowchart below is designed to give users a bit of
+a rough guide on how to approach problems with regard to
+which estimators to try on your data.
+
+Click on any estimator in the chart below to see it's documentation.
+
+
+
 .. raw:: html
 
     <style>
     body {
-    	display: inline-block
+    	display: inline-block;
     }
-
     div.content-wrapper {
         max-width: 100%;
     }
+    div.bodywrapper h1 {
+        text-align: left;
+    }
     div.content {
         margin-left: 0;
+	height: 1660px;
+	width: 2330px;
     }
-    div.sphinxsidebar {
-        display: none;
+    div.map {
+    	width: 2117px;
     }
     div.body img {
         max-width: 100%;
@@ -30,7 +48,10 @@ Choosing the right estimator
         max-width: 2150px;
 	margin-left: auto;
 	margin-right: auto;
-	display: block
+	padding-left: 200px;
+    }
+    p.logo {
+    	padding-left: 0px;
     }
     </style>
 
