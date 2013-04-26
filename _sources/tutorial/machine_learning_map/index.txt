@@ -1,7 +1,7 @@
 .. _ml_map:
 
 
-.. include:: ../includes/big_toc_css.rst
+.. include:: ../../includes/big_toc_css.rst
 
 Choosing the right estimator
 =======================================================
@@ -35,11 +35,19 @@ Click on any estimator in the chart below to see it's documentation.
     }
     div.content {
         margin-left: 0;
-	height: 1660px;
-	width: 2330px;
+	height: 1400px;
+	width: 2120px;
     }
     div.map {
-    	width: 2117px;
+    	position: absolute;
+	left: 70px;
+	top: 260px;
+	width: 2117px;
+  	-webkit-transform: scale(0.8); /* Saf3.1+, Chrome */
+     	-moz-transform: scale(0.8); /* FF3.5+ */
+     	-ms-transform: scale(0.8); /* IE9 */
+       	-o-transform: scale(0.8); /* Opera 10.5+ */
+        transform: scale(0.8);
     }
     div.body img {
         max-width: 100%;
@@ -48,7 +56,7 @@ Click on any estimator in the chart below to see it's documentation.
         max-width: 2150px;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: 200px;
+
     }
     p.logo {
     	padding-left: 0px;
@@ -63,6 +71,12 @@ Click on any estimator in the chart below to see it's documentation.
 	            fade: true
 	        });
 	});</script>
+	<script type="text/javascript">
+	    var map_id = $('.map');
+	    map_id.css({
+	    	    'width': '2117px'
+	    });
+	</script>
       <p>
         <img src="../../_static/ml_map.png" class="map" width="2122" height="1323" alt="Move mouse over image" usemap="#imgmap">
       	    <map name="imgmap">

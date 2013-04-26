@@ -165,7 +165,41 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="choosing-the-right-estimator">
+  <span class="target" id="ml-map"></span><style type="text/css">
+  div.bodywrapper blockquote {
+      margin: 0 ;
+  }
+
+  div.toctree-wrapper ul {
+      margin-top: 0 ;
+      margin-bottom: 0 ;
+      padding-left: 10px ;
+  }
+
+  li.toctree-l1 {
+      padding: 0 0 0.5em 0 ;
+      list-style-type: none;
+      font-size: 150% ;
+      font-weight: bold;
+      }
+
+  li.toctree-l1 ul {
+      padding-left: 40px ;
+  }
+
+  li.toctree-l2 {
+      font-size: 70% ;
+      list-style-type: square;
+      font-weight: normal;
+      }
+
+  li.toctree-l3 {
+      font-size: 85% ;
+      list-style-type: circle;
+      font-weight: normal;
+      }
+
+</style><div class="section" id="choosing-the-right-estimator">
 <h1>2.3. Choosing the right estimator<a class="headerlink" href="#choosing-the-right-estimator" title="Permalink to this headline">¶</a></h1>
 <p>Often the hardest part of solving a machine learning problem can
 be finding the right estimator for the job.</p>
@@ -187,11 +221,19 @@ div.bodywrapper h1 {
 }
 div.content {
     margin-left: 0;
-    height: 1660px;
-    width: 2330px;
+    height: 1400px;
+    width: 2120px;
 }
 div.map {
+    position: absolute;
+    left: 70px;
+    top: 260px;
     width: 2117px;
+    -webkit-transform: scale(0.8); /* Saf3.1+, Chrome */
+    -moz-transform: scale(0.8); /* FF3.5+ */
+    -ms-transform: scale(0.8); /* IE9 */
+    -o-transform: scale(0.8); /* Opera 10.5+ */
+    transform: scale(0.8);
 }
 div.body img {
     max-width: 100%;
@@ -200,7 +242,7 @@ p {
     max-width: 2150px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 200px;
+
 }
 p.logo {
     padding-left: 0px;
@@ -215,6 +257,12 @@ p.logo {
                 fade: true
             });
     });</script>
+    <script type="text/javascript">
+        var map_id = $('.map');
+        map_id.css({
+                'width': '2117px'
+        });
+    </script>
   <p>
     <img src="../../_static/ml_map.png" class="map" width="2122" height="1323" alt="Move mouse over image" usemap="#imgmap">
         <map name="imgmap">
