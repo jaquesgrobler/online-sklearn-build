@@ -31,7 +31,7 @@ a BayesianRidge as supervised estimator.
          [ 0.275706, ..., -1.085711]]), 
   <1600x1600 sparse matrix of type '<type 'numpy.int64'>'
   	with 7840 stored elements in COOrdinate format>, copy=True, n_components=1, n_clusters=10)
-  ________________________________________________________ward_tree - 0.2s, 0.0min
+  ________________________________________________________ward_tree - 0.8s, 0.0min
   ________________________________________________________________________________
   [Memory] Calling sklearn.cluster.hierarchical.ward_tree...
   ward_tree(array([[ 0.905206, ...,  0.161245],
@@ -39,7 +39,7 @@ a BayesianRidge as supervised estimator.
          [-0.849835, ..., -1.091621]]), 
   <1600x1600 sparse matrix of type '<type 'numpy.int64'>'
   	with 7840 stored elements in COOrdinate format>, copy=True, n_components=1, n_clusters=10)
-  ________________________________________________________ward_tree - 0.2s, 0.0min
+  ________________________________________________________ward_tree - 0.8s, 0.0min
   ________________________________________________________________________________
   [Memory] Calling sklearn.cluster.hierarchical.ward_tree...
   ward_tree(array([[-0.451933, ..., -0.675318],
@@ -47,7 +47,7 @@ a BayesianRidge as supervised estimator.
          [ 0.275706, ..., -1.085711]]), 
   <1600x1600 sparse matrix of type '<type 'numpy.int64'>'
   	with 7840 stored elements in COOrdinate format>, copy=True, n_components=1, n_clusters=20)
-  ________________________________________________________ward_tree - 0.2s, 0.0min
+  ________________________________________________________ward_tree - 0.7s, 0.0min
   ________________________________________________________________________________
   [Memory] Calling sklearn.cluster.hierarchical.ward_tree...
   ward_tree(array([[ 0.905206, ...,  0.161245],
@@ -55,7 +55,7 @@ a BayesianRidge as supervised estimator.
          [-0.849835, ..., -1.091621]]), 
   <1600x1600 sparse matrix of type '<type 'numpy.int64'>'
   	with 7840 stored elements in COOrdinate format>, copy=True, n_components=1, n_clusters=20)
-  ________________________________________________________ward_tree - 0.2s, 0.0min
+  ________________________________________________________ward_tree - 0.8s, 0.0min
   ________________________________________________________________________________
   [Memory] Calling sklearn.cluster.hierarchical.ward_tree...
   ward_tree(array([[-0.451933, ..., -0.675318],
@@ -63,7 +63,7 @@ a BayesianRidge as supervised estimator.
          [ 0.275706, ..., -1.085711]]), 
   <1600x1600 sparse matrix of type '<type 'numpy.int64'>'
   	with 7840 stored elements in COOrdinate format>, copy=True, n_components=1, n_clusters=30)
-  ________________________________________________________ward_tree - 0.2s, 0.0min
+  ________________________________________________________ward_tree - 0.7s, 0.0min
   ________________________________________________________________________________
   [Memory] Calling sklearn.cluster.hierarchical.ward_tree...
   ward_tree(array([[ 0.905206, ...,  0.161245],
@@ -71,7 +71,7 @@ a BayesianRidge as supervised estimator.
          [-0.849835, ..., -1.091621]]), 
   <1600x1600 sparse matrix of type '<type 'numpy.int64'>'
   	with 7840 stored elements in COOrdinate format>, copy=True, n_components=1, n_clusters=30)
-  ________________________________________________________ward_tree - 0.2s, 0.0min
+  ________________________________________________________ward_tree - 0.8s, 0.0min
   ________________________________________________________________________________
   [Memory] Calling sklearn.cluster.hierarchical.ward_tree...
   ward_tree(array([[ 0.905206, ..., -0.675318],
@@ -79,28 +79,28 @@ a BayesianRidge as supervised estimator.
          [-0.849835, ..., -1.085711]]), 
   <1600x1600 sparse matrix of type '<type 'numpy.int64'>'
   	with 7840 stored elements in COOrdinate format>, copy=True, n_components=1, n_clusters=20)
-  ________________________________________________________ward_tree - 0.2s, 0.0min
+  ________________________________________________________ward_tree - 0.9s, 0.0min
   ________________________________________________________________________________
   [Memory] Calling sklearn.feature_selection.univariate_selection.f_regression...
   f_regression(array([[-0.451933, ...,  0.275706],
          ..., 
          [-0.675318, ..., -1.085711]]), 
   array([ 25.267703, ..., -25.026711]))
-  _____________________________________________________f_regression - 0.0s, 0.0min
+  _____________________________________________________f_regression - 0.1s, 0.0min
   ________________________________________________________________________________
   [Memory] Calling sklearn.feature_selection.univariate_selection.f_regression...
   f_regression(array([[ 0.905206, ..., -0.849835],
          ..., 
          [ 0.161245, ..., -1.091621]]), 
   array([ -27.447268, ..., -112.638768]))
-  _____________________________________________________f_regression - 0.0s, 0.0min
+  _____________________________________________________f_regression - 0.1s, 0.0min
   ________________________________________________________________________________
   [Memory] Calling sklearn.feature_selection.univariate_selection.f_regression...
   f_regression(array([[ 0.905206, ..., -0.849835],
          ..., 
          [-0.675318, ..., -1.085711]]), 
   array([-27.447268, ..., -25.026711]))
-  _____________________________________________________f_regression - 0.0s, 0.0min
+  _____________________________________________________f_regression - 0.1s, 0.0min
 
 
 
@@ -109,5 +109,5 @@ a BayesianRidge as supervised estimator.
 .. literalinclude:: plot_feature_agglomeration_vs_univariate_selection.py
     :lines: 15-
 
-**Total running time of the example:**  2.30 seconds
+**Total running time of the example:**  10.61 seconds
     
