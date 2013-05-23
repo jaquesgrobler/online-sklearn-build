@@ -159,15 +159,16 @@
 <li><a class="reference internal" href="#confusion-matrix">5.5.1.4. Confusion matrix</a></li>
 <li><a class="reference internal" href="#classification-report">5.5.1.5. Classification report</a></li>
 <li><a class="reference internal" href="#hamming-loss">5.5.1.6. Hamming loss</a></li>
-<li><a class="reference internal" href="#precision-recall-and-f-measures">5.5.1.7. Precision, recall and F-measures</a><ul>
-<li><a class="reference internal" href="#binary-classification">5.5.1.7.1. Binary classification</a></li>
-<li><a class="reference internal" href="#multiclass-and-multilabel-classification">5.5.1.7.2. Multiclass and multilabel classification</a></li>
+<li><a class="reference internal" href="#jaccard-similarity-coefficient-score">5.5.1.7. Jaccard similarity coefficient score</a></li>
+<li><a class="reference internal" href="#precision-recall-and-f-measures">5.5.1.8. Precision, recall and F-measures</a><ul>
+<li><a class="reference internal" href="#binary-classification">5.5.1.8.1. Binary classification</a></li>
+<li><a class="reference internal" href="#multiclass-and-multilabel-classification">5.5.1.8.2. Multiclass and multilabel classification</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#hinge-loss">5.5.1.8. Hinge loss</a></li>
-<li><a class="reference internal" href="#matthews-correlation-coefficient">5.5.1.9. Matthews correlation coefficient</a></li>
-<li><a class="reference internal" href="#receiver-operating-characteristic-roc">5.5.1.10. Receiver operating characteristic (ROC)</a></li>
-<li><a class="reference internal" href="#zero-one-loss">5.5.1.11. Zero one loss</a></li>
+<li><a class="reference internal" href="#hinge-loss">5.5.1.9. Hinge loss</a></li>
+<li><a class="reference internal" href="#matthews-correlation-coefficient">5.5.1.10. Matthews correlation coefficient</a></li>
+<li><a class="reference internal" href="#receiver-operating-characteristic-roc">5.5.1.11. Receiver operating characteristic (ROC)</a></li>
+<li><a class="reference internal" href="#zero-one-loss">5.5.1.12. Zero one loss</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#regression-metrics">5.5.2. Regression metrics</a><ul>
@@ -250,26 +251,8 @@ functions to measure classification performance.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report" title="sklearn.metrics.classification_report"><tt class="xref py py-obj docutils literal"><span class="pre">classification_report</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
-<td>Build a text report showing the main classification metrics</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix" title="sklearn.metrics.confusion_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">confusion_matrix</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;labels])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix" title="sklearn.metrics.confusion_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">confusion_matrix</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;labels])</td>
 <td>Compute confusion matrix to evaluate the accuracy of a classification</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score"><tt class="xref py py-obj docutils literal"><span class="pre">f1_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;labels,&nbsp;...])</td>
-<td>Compute the F1 score, also known as balanced F-score or F-measure</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.fbeta_score.html#sklearn.metrics.fbeta_score" title="sklearn.metrics.fbeta_score"><tt class="xref py py-obj docutils literal"><span class="pre">fbeta_score</span></tt></a>(y_true,&nbsp;y_pred,&nbsp;beta[,&nbsp;labels,&nbsp;...])</td>
-<td>Compute the F-beta score</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support" title="sklearn.metrics.precision_recall_fscore_support"><tt class="xref py py-obj docutils literal"><span class="pre">precision_recall_fscore_support</span></tt></a>(y_true,&nbsp;y_pred)</td>
-<td>Compute precision, recall, F-measure and support for each class</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-obj docutils literal"><span class="pre">precision_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;labels,&nbsp;...])</td>
-<td>Compute the precision</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-obj docutils literal"><span class="pre">recall_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;labels,&nbsp;...])</td>
-<td>Compute the recall</td>
 </tr>
 </tbody>
 </table>
@@ -283,10 +266,31 @@ functions to measure classification performance.</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-obj docutils literal"><span class="pre">accuracy_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;normalize])</td>
 <td>Accuracy classification score.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.hamming_loss.html#sklearn.metrics.hamming_loss" title="sklearn.metrics.hamming_loss"><tt class="xref py py-obj docutils literal"><span class="pre">hamming_loss</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;classes])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report" title="sklearn.metrics.classification_report"><tt class="xref py py-obj docutils literal"><span class="pre">classification_report</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<td>Build a text report showing the main classification metrics</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score"><tt class="xref py py-obj docutils literal"><span class="pre">f1_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;labels,&nbsp;...])</td>
+<td>Compute the F1 score, also known as balanced F-score or F-measure</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.fbeta_score.html#sklearn.metrics.fbeta_score" title="sklearn.metrics.fbeta_score"><tt class="xref py py-obj docutils literal"><span class="pre">fbeta_score</span></tt></a>(y_true,&nbsp;y_pred,&nbsp;beta[,&nbsp;labels,&nbsp;...])</td>
+<td>Compute the F-beta score</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.hamming_loss.html#sklearn.metrics.hamming_loss" title="sklearn.metrics.hamming_loss"><tt class="xref py py-obj docutils literal"><span class="pre">hamming_loss</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;classes])</td>
 <td>Compute the average Hamming loss.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">zero_one_loss</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;normalize])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.jaccard_similarity_score.html#sklearn.metrics.jaccard_similarity_score" title="sklearn.metrics.jaccard_similarity_score"><tt class="xref py py-obj docutils literal"><span class="pre">jaccard_similarity_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<td>Jaccard similarity coefficient score</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support" title="sklearn.metrics.precision_recall_fscore_support"><tt class="xref py py-obj docutils literal"><span class="pre">precision_recall_fscore_support</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>Compute precision, recall, F-measure and support for each class</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-obj docutils literal"><span class="pre">precision_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;labels,&nbsp;...])</td>
+<td>Compute the precision</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-obj docutils literal"><span class="pre">recall_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;labels,&nbsp;...])</td>
+<td>Compute the recall</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">zero_one_loss</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;normalize])</td>
 <td>Zero-one classification loss.</td>
 </tr>
 </tbody>
@@ -298,11 +302,10 @@ confidence values or binary decisions value.</p>
 <h3>5.5.1.1. Accuracy score<a class="headerlink" href="#accuracy-score" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-func docutils literal"><span class="pre">accuracy_score</span></tt></a> function computes the
 <a class="reference external" href="http://en.wikipedia.org/wiki/Accuracy_and_precision">accuracy</a>, the fraction
-(default) or the number of correct predictions. In multilabel classification,
-the function returns the subset accuracy:
-the entire set of labels for a sample must be entirely correct
-or the sample has an accuracy of zero.
-(See the Hamming loss for a more forgiving evaluation metric.)</p>
+(default) or the number of correct predictions.</p>
+<p>In multilabel classification, the function returns the subset accuracy: if
+the entire set of predicted labels for a sample strictly match with the true
+set of labels, then the subset accuracy is 1.0, otherwise it is 0.0.</p>
 <p>If <img class="math" src="../_images/math/893679832eefebfdd6b79dbd91c6219a96de76a0.png" alt="\hat{y}_i"/> is the predicted value of
 the <img class="math" src="../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i"/>-th sample and <img class="math" src="../_images/math/6e6ceb79ebc4bf613298e0144eae25dd73de9be3.png" alt="y_i"/> is the corresponding true value,
 then the fraction of correct predictions over <img class="math" src="../_images/math/5d6f1aea754fe9282e002d6118a0818a52effd01.png" alt="n_\text{samples}"/> is
@@ -310,8 +313,7 @@ defined as</p>
 <div class="math">
 <p><img src="../_images/math/0ee88f60b07dd5471d195475b082ee97cda896b9.png" alt="\texttt{accuracy}(y, \hat{y}) = \frac{1}{n_\text{samples}} \sum_{i=0}^{n_\text{samples}-1} 1(\hat{y}_i = y_i)"/></p>
 </div><p>where <img class="math" src="../_images/math/0d4b4c28168e2d4ef79fb483891c05e772e1aa2b.png" alt="1(x)"/> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Indicator_function">indicator function</a>.</p>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
@@ -322,16 +324,15 @@ defined as</p>
 </pre></div>
 </div>
 <p>In the multilabel case with binary indicator format:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
-<span class="go">0.0</span>
-</pre></div>
-</div>
-<p>and with a list of labels format:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">accuracy_score</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)],</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">tuple</span><span class="p">()])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
 <span class="go">0.5</span>
 </pre></div>
 </div>
-</div></blockquote>
+<p>and with a list of labels format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">accuracy_score</span><span class="p">([(</span><span class="mi">1</span><span class="p">,),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)],</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">tuple</span><span class="p">()])</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
 <div class="topic">
 <p class="topic-title first">Example:</p>
 <ul class="simple">
@@ -489,8 +490,41 @@ will give a Hamming loss strictly between zero and one.</p>
 over samples, the Hamming loss is always between zero and one.</p>
 </div>
 </div>
+<div class="section" id="jaccard-similarity-coefficient-score">
+<h3>5.5.1.7. Jaccard similarity coefficient score<a class="headerlink" href="#jaccard-similarity-coefficient-score" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="generated/sklearn.metrics.jaccard_similarity_score.html#sklearn.metrics.jaccard_similarity_score" title="sklearn.metrics.jaccard_similarity_score"><tt class="xref py py-func docutils literal"><span class="pre">jaccard_similarity_score</span></tt></a> function computes the average (default)
+or sum of <a class="reference external" href="http://en.wikipedia.org/wiki/Jaccard_index">Jaccard similarity coefficients</a>, also called Jaccard index,
+between pairs of label sets.</p>
+<p>The Jaccard similarity coefficient of the <img class="math" src="../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i"/>-th samples
+with a ground truth label set <img class="math" src="../_images/math/6e6ceb79ebc4bf613298e0144eae25dd73de9be3.png" alt="y_i"/> and a predicted label set
+<img class="math" src="../_images/math/893679832eefebfdd6b79dbd91c6219a96de76a0.png" alt="\hat{y}_i"/>  is defined as</p>
+<div class="math">
+<p><img src="../_images/math/e38ce1a7299a9fbc67b04fe92dc67c80b55529bf.png" alt="J(y_i, \hat{y}_i) = \frac{|y_i \cap \hat{y}_i|}{|y_i \cup \hat{y}_i|}."/></p>
+</div><p>In binary and multiclass classification, the Jaccard similarity coefficient
+score is equal to the classification accuracy.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">jaccard_similarity_score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jaccard_similarity_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="go">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jaccard_similarity_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>In the multilabel case with binary indicator format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">jaccard_similarity_score</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="go">0.75</span>
+</pre></div>
+</div>
+<p>and with a list of labels format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">jaccard_similarity_score</span><span class="p">([(</span><span class="mi">1</span><span class="p">,),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)],</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">tuple</span><span class="p">()])</span>
+<span class="go">0.25</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="precision-recall-and-f-measures">
-<span id="precision-recall-f-measure-metrics"></span><h3>5.5.1.7. Precision, recall and F-measures<a class="headerlink" href="#precision-recall-and-f-measures" title="Permalink to this headline">¶</a></h3>
+<span id="precision-recall-f-measure-metrics"></span><h3>5.5.1.8. Precision, recall and F-measures<a class="headerlink" href="#precision-recall-and-f-measures" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference external" href="http://en.wikipedia.org/wiki/Precision_and_recall#Precision">precision</a>
 is intuitively the ability of the classifier not to label as
 positive a sample that is negative.</p>
@@ -552,7 +586,7 @@ for sparse linear models.</li>
 </ul>
 </div>
 <div class="section" id="binary-classification">
-<h4>5.5.1.7.1. Binary classification<a class="headerlink" href="#binary-classification" title="Permalink to this headline">¶</a></h4>
+<h4>5.5.1.8.1. Binary classification<a class="headerlink" href="#binary-classification" title="Permalink to this headline">¶</a></h4>
 <p>In a binary classification task, the terms &#8216;&#8217;positive&#8217;&#8217; and &#8216;&#8217;negative&#8217;&#8217; refer
 to the classifier&#8217;s prediction and the terms &#8216;&#8217;true&#8217;&#8217; and &#8216;&#8217;false&#8217;&#8217; refer to
 whether that prediction corresponds to the external judgment (sometimes known
@@ -624,67 +658,89 @@ Correct absence of result</td>
 </div>
 </div>
 <div class="section" id="multiclass-and-multilabel-classification">
-<h4>5.5.1.7.2. Multiclass and multilabel classification<a class="headerlink" href="#multiclass-and-multilabel-classification" title="Permalink to this headline">¶</a></h4>
+<h4>5.5.1.8.2. Multiclass and multilabel classification<a class="headerlink" href="#multiclass-and-multilabel-classification" title="Permalink to this headline">¶</a></h4>
 <p>In multiclass and multilabel classification task, the notions of precision,
-recall and F-measures can be applied to each label independently.</p>
-<p>Moreover, these notions can be further extended. The functions
-<a class="reference internal" href="generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score"><tt class="xref py py-func docutils literal"><span class="pre">f1_score</span></tt></a>, <a class="reference internal" href="generated/sklearn.metrics.fbeta_score.html#sklearn.metrics.fbeta_score" title="sklearn.metrics.fbeta_score"><tt class="xref py py-func docutils literal"><span class="pre">fbeta_score</span></tt></a>, <a class="reference internal" href="generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support" title="sklearn.metrics.precision_recall_fscore_support"><tt class="xref py py-func docutils literal"><span class="pre">precision_recall_fscore_support</span></tt></a>,
-<a class="reference internal" href="generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-func docutils literal"><span class="pre">precision_score</span></tt></a>  and <a class="reference internal" href="generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-func docutils literal"><span class="pre">recall_score</span></tt></a> support an argument called
-<tt class="docutils literal"><span class="pre">average</span></tt> which defines the type of averaging:</p>
-<blockquote>
-<div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">&quot;macro&quot;</span></tt>: average over classes (does not take imbalance into account).</li>
-<li><tt class="docutils literal"><span class="pre">&quot;micro&quot;</span></tt>: average over instances (takes imbalance into account).</li>
-<li><tt class="docutils literal"><span class="pre">&quot;weighted&quot;</span></tt>: average weighted by support (takes imbalance into account).
-It can result in F1 score that is not between precision and recall.</li>
-<li><tt class="docutils literal"><span class="pre">None</span></tt>: no averaging is performed.</li>
+recall and F-measures can be applied to each label independently.
+There are a few ways to combine results across labels,
+specified by the <tt class="docutils literal"><span class="pre">average</span></tt> argument to the <a class="reference internal" href="generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score"><tt class="xref py py-func docutils literal"><span class="pre">f1_score</span></tt></a>,
+<a class="reference internal" href="generated/sklearn.metrics.fbeta_score.html#sklearn.metrics.fbeta_score" title="sklearn.metrics.fbeta_score"><tt class="xref py py-func docutils literal"><span class="pre">fbeta_score</span></tt></a>, <a class="reference internal" href="generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support" title="sklearn.metrics.precision_recall_fscore_support"><tt class="xref py py-func docutils literal"><span class="pre">precision_recall_fscore_support</span></tt></a>,
+<a class="reference internal" href="generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-func docutils literal"><span class="pre">precision_score</span></tt></a>  and <a class="reference internal" href="generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-func docutils literal"><span class="pre">recall_score</span></tt></a> functions:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">&quot;micro&quot;</span></tt>: calculate metrics globally by counting the total true
+positives, false negatives and false positives. Except in the multi-label
+case this implies that precision, recall and <img class="math" src="../_images/math/a055f405829e64a3b70253ab67cb45ed6ed5bb29.png" alt="F"/> are equal.</li>
+<li><tt class="docutils literal"><span class="pre">&quot;samples&quot;</span></tt>: calculate metrics for each sample, comparing sets of
+labels assigned to each, and find the mean across all samples.
+This is only meaningful and available in the multilabel case.</li>
+<li><tt class="docutils literal"><span class="pre">&quot;macro&quot;</span></tt>: calculate metrics for each label, and find their mean.
+This does not take label imbalance into account.</li>
+<li><tt class="docutils literal"><span class="pre">&quot;weighted&quot;</span></tt>: calculate metrics for each label, and find their average
+weighted by the number of occurrences of the label in the true data.
+This alters <tt class="docutils literal"><span class="pre">&quot;macro&quot;</span></tt> to account for label imbalance; it may produce an
+F-score that is not between precision and recall.</li>
+<li><tt class="docutils literal"><span class="pre">None</span></tt>: calculate metrics for each label and do not average them.</li>
 </ul>
-</div></blockquote>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Currently those functions support only the multiclass case. However the
-following definitions are general and remain valid in the multilabel
-case.</p>
-</div>
-<p>Let&#8217;s define some notations:</p>
-<blockquote>
-<div><ul class="simple">
-<li><img class="math" src="../_images/math/7025d2f5fe38ef4dc01dec771ffa6cace4d7ca32.png" alt="n_\text{labels}"/> and <img class="math" src="../_images/math/5d6f1aea754fe9282e002d6118a0818a52effd01.png" alt="n_\text{samples}"/> denotes respectively
-the number of labels and the number of samples.</li>
-<li><img class="math" src="../_images/math/7fc6ba35d0efce3499c23f60cf584c33484e8f76.png" alt="\texttt{precision}_j"/>, <img class="math" src="../_images/math/18a27e9273fec4ac6d1cf41ea8e9f4220918a0d3.png" alt="\texttt{recall}_j"/> and
-<img class="math" src="../_images/math/08fbebba7cb738329d2244e975b32a39951a9594.png" alt="{F_\beta}_j"/> are respectively the precision, the recall and
-<img class="math" src="../_images/math/8ddb84c6f24186c6e64f4383b2ea1272fd9ff4e9.png" alt="F_\beta"/> measure for the <img class="math" src="../_images/math/8122aa89ea6e80784c6513d22787ad86e36ad0cc.png" alt="j"/>-th label;</li>
-<li><img class="math" src="../_images/math/19db5d62fe8543d0a508818b76492160f37f794d.png" alt="tp_j"/>, <img class="math" src="../_images/math/23880883bd4719a5ccbcdef8be16b4a133a321b7.png" alt="fp_j"/> and <img class="math" src="../_images/math/772e29cecea501f79f4110aac2021e5129b1e0bc.png" alt="fn_j"/> respectively the number of
-true positives, false positives and false negatives for the <img class="math" src="../_images/math/8122aa89ea6e80784c6513d22787ad86e36ad0cc.png" alt="j"/>-th
-label;</li>
-<li><img class="math" src="../_images/math/6e6ceb79ebc4bf613298e0144eae25dd73de9be3.png" alt="y_i"/> is the set of true label and
-<img class="math" src="../_images/math/893679832eefebfdd6b79dbd91c6219a96de76a0.png" alt="\hat{y}_i"/> is the set of predicted for the
-<img class="math" src="../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i"/>-th sample;</li>
+<p>To make this more explicit, consider the following notation:</p>
+<ul class="simple">
+<li><img class="math" src="../_images/math/092e364e1d9d19ad5fffb0b46ef4cc7f2da02c1c.png" alt="y"/> the set of <em>predicted</em> <img class="math" src="../_images/math/8fbad1829302e98de076be9eea8720e2b8130ee9.png" alt="(sample, label)"/> pairs</li>
+<li><img class="math" src="../_images/math/ab480a17c2d0cff51b14f3bd5eed54e1b7e142dd.png" alt="\hat{y}"/> the set of <em>true</em> <img class="math" src="../_images/math/8fbad1829302e98de076be9eea8720e2b8130ee9.png" alt="(sample, label)"/> pairs</li>
+<li><img class="math" src="../_images/math/859ccf4cd60c7bc6b8fa1afc9a42dc811a826d6f.png" alt="L"/> the set of labels</li>
+<li><img class="math" src="../_images/math/ad28c83c99a8fd0dd2e2e594c9d02ee532765a0a.png" alt="S"/> the set of samples</li>
+<li><img class="math" src="../_images/math/9abba17d4f0529757beeefd5fb2c4ae282b68632.png" alt="y_s"/> the subset of <img class="math" src="../_images/math/092e364e1d9d19ad5fffb0b46ef4cc7f2da02c1c.png" alt="y"/> with sample <img class="math" src="../_images/math/f37bba504894945c07a32f5496d74299a37aa51c.png" alt="s"/>,
+i.e. <img class="math" src="../_images/math/70622a4949fe921ed160fc10712b494fd609c8ab.png" alt="y_s := \left\{(s', l) \in y | s' = s\right\}"/></li>
+<li><img class="math" src="../_images/math/f19c043e50a0fd21e6ad1c2c7b35189c07ab39a4.png" alt="y_l"/> the subset of <img class="math" src="../_images/math/092e364e1d9d19ad5fffb0b46ef4cc7f2da02c1c.png" alt="y"/> with label <img class="math" src="../_images/math/9b25f8e64b484493fda944d25cad453423041fe6.png" alt="l"/></li>
+<li>similarly, <img class="math" src="../_images/math/cc8711be2692a6b3cec1d3c3a648c353a4db3875.png" alt="\hat{y}_s"/> and <img class="math" src="../_images/math/00ee26e2c93a8330715d3ca4ce0a8103a26858ff.png" alt="\hat{y}_l"/> are subsets of
+<img class="math" src="../_images/math/ab480a17c2d0cff51b14f3bd5eed54e1b7e142dd.png" alt="\hat{y}"/></li>
+<li><img class="math" src="../_images/math/777dd54039d1d4b9062fa6ffa2fe692a6c0b2db3.png" alt="P(A, B) := \frac{\left| A \cap B \right|}{\left|A\right|}"/></li>
+<li><img class="math" src="../_images/math/e9f3dd0c5641c8946571746e486a1da6a032b55a.png" alt="R(A, B) := \frac{\left| A \cap B \right|}{\left|B\right|}"/>
+(Conventions vary on handling <img class="math" src="../_images/math/d0d27c56b4e82d1f4324efa55f3e6e9a150daf81.png" alt="B = \emptyset"/>; this implementation uses
+<img class="math" src="../_images/math/61f4bc2722ec7079e6491234236329d56f917eb1.png" alt="R(A, B):=0"/>, and similar for <cite>P</cite>.)</li>
+<li><img class="math" src="../_images/math/b76a94224f13ec0023a0c95e038902b686b321bf.png" alt="F_\beta(A, B) := \left(1 + \beta^2\right) \frac{P(A, B) \times R(A, B)}{\beta^2 P(A, B) + R(A, B)}"/></li>
 </ul>
-</div></blockquote>
-<p>The macro precision, recall and <img class="math" src="../_images/math/8ddb84c6f24186c6e64f4383b2ea1272fd9ff4e9.png" alt="F_\beta"/> are averaged over all labels</p>
-<div class="math">
-<p><img src="../_images/math/a3717b0a604b97e897dcfc61d5de2e6c4d239c71.png" alt="\texttt{macro\_{}precision} = \frac{1}{n_\text{labels}} \sum_{j=0}^{n_\text{labels} - 1} \texttt{precision}_j,"/></p>
-</div><div class="math">
-<p><img src="../_images/math/6f5d5047628fad2bc0db7f63610e972d57365efc.png" alt="\texttt{macro\_{}recall} = \frac{1}{n_\text{labels}} \sum_{j=0}^{n_\text{labels} - 1} \texttt{recall}_j,"/></p>
-</div><div class="math">
-<p><img src="../_images/math/db27749836b78af65d444e449dbdaa8210051776.png" alt="\texttt{macro\_{}F\_{}beta} = \frac{1}{n_\text{labels}} \sum_{j=0}^{n_\text{labels} - 1} {F_\beta}_j."/></p>
-</div><p>The micro precision, recall and <img class="math" src="../_images/math/8ddb84c6f24186c6e64f4383b2ea1272fd9ff4e9.png" alt="F_\beta"/> are averaged over all instances</p>
-<div class="math">
-<p><img src="../_images/math/9dbbb773684240ee043182a52613d046e3df9668.png" alt="\texttt{micro\_{}precision} = \frac{\sum_{j=0}^{n_\text{labels} - 1} tp_j}{\sum_{j=0}^{n_\text{labels} - 1} tp_j + \sum_{j=0}^{n_\text{labels} - 1} fp_j},"/></p>
-</div><div class="math">
-<p><img src="../_images/math/35d2886a2dd04d22bba0e0949f77454a892c8d6e.png" alt="\texttt{micro\_{}recall} = \frac{\sum_{j=0}^{n_\text{labels} - 1} tp_j}{\sum_{j=0}^{n_\text{labels} - 1} tp_j + \sum_{j=0}^{n_\text{labels} - 1} fn_j},"/></p>
-</div><div class="math">
-<p><img src="../_images/math/4fd2b89646ff8f5d0aca400c66305d9c53b72c4a.png" alt="\texttt{micro\_{}F\_{}beta} = (1 + \beta^2) \frac{\texttt{micro\_{}precision} \times  \texttt{micro\_{}recall}}{\beta^2 \texttt{micro\_{}precision} +  \texttt{micro\_{}recall}}."/></p>
-</div><p>The weighted precision, recall and <img class="math" src="../_images/math/8ddb84c6f24186c6e64f4383b2ea1272fd9ff4e9.png" alt="F_\beta"/> are averaged weighted by
-their support</p>
-<div class="math">
-<p><img src="../_images/math/e1ef51c3b52dc05fbb46f8171ba2f3115acab36d.png" alt="\texttt{weighted\_{}precision}(y,\hat{y}) &amp;= \frac{1}{n_\text{samples}} \sum_{i=0}^{n_\text{samples} - 1} \frac{|y_i \cap \hat{y}_i|}{|y_i|},"/></p>
-</div><div class="math">
-<p><img src="../_images/math/ba3b80570d2323779482286f4590fde15e751b35.png" alt="\texttt{weighted\_{}recall}(y,\hat{y}) &amp;= \frac{1}{n_\text{samples}} \sum_{i=0}^{n_\text{samples} - 1} \frac{|y_i \cap \hat{y}_i|}{|\hat{y}_i|},"/></p>
-</div><div class="math">
-<p><img src="../_images/math/97580e9c01e9b2bfd88208dcde8453140b809ee8.png" alt="\texttt{weighted\_{}F\_{}beta}(y,\hat{y}) &amp;= \frac{1}{n_\text{samples}} \sum_{i=0}^{n_\text{samples} - 1} (1 + \beta^2)\frac{|y_i \cap \hat{y}_i|}{\beta^2 |\hat{y}_i| + |y_i|}."/></p>
-</div><p>Here an example where <tt class="docutils literal"><span class="pre">average</span></tt> is set to <tt class="docutils literal"><span class="pre">average</span></tt> to <tt class="docutils literal"><span class="pre">macro</span></tt>:</p>
+<p>Then the metrics are defined as:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="32%" />
+<col width="32%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><tt class="docutils literal"><span class="pre">average</span></tt></th>
+<th class="head">Precision</th>
+<th class="head">Recall</th>
+<th class="head">F_beta</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">&quot;micro&quot;</span></tt></td>
+<td><img class="math" src="../_images/math/3989f0a8300a610a2f0a509814f0d478a1eeb940.png" alt="P(y, \hat{y})"/></td>
+<td><img class="math" src="../_images/math/2924b8bffcc0332736f6950cc852aa66a800314e.png" alt="R(y, \hat{y})"/></td>
+<td><img class="math" src="../_images/math/bee251e82c04a28be8010b6331651ca21935f5e9.png" alt="F_\beta(y, \hat{y})"/></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">&quot;samples&quot;</span></tt></td>
+<td><img class="math" src="../_images/math/d20c7b12cc860c2a3c9ef48cfb367e4fd373a34e.png" alt="\frac{1}{\left|S\right|} \sum_{s \in S} P(y_s, \hat{y}_s)"/></td>
+<td><img class="math" src="../_images/math/4e15e95330c91492a3d3e3c09a2580e620873111.png" alt="\frac{1}{\left|S\right|} \sum_{s \in S} R(y_s, \hat{y}_s)"/></td>
+<td><img class="math" src="../_images/math/bfd930c2126e2a0eb80ffc6914f17af36ebec2d5.png" alt="\frac{1}{\left|S\right|} \sum_{s \in S} F_\beta(y_s, \hat{y}_s)"/></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">&quot;macro&quot;</span></tt></td>
+<td><img class="math" src="../_images/math/15911963bbd996f6f17f277c15d1a30efab0d838.png" alt="\frac{1}{\left|L\right|} \sum_{l \in L} P(y_l, \hat{y}_l)"/></td>
+<td><img class="math" src="../_images/math/68a130c1f88862e222b0ee87a3844d7b876357ff.png" alt="\frac{1}{\left|L\right|} \sum_{l \in L} R(y_l, \hat{y}_l)"/></td>
+<td><img class="math" src="../_images/math/c4dde507f80f4206652f841b3b1c25b0f62a6f7e.png" alt="\frac{1}{\left|L\right|} \sum_{l \in L} F_\beta(y_l, \hat{y}_l)"/></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">&quot;weighted&quot;</span></tt></td>
+<td><img class="math" src="../_images/math/d961ddab87f1964bd6dd41840bbd71767f12eb14.png" alt="\frac{1}{\sum_{l \in L} \left|\hat{y}_l\right|} \sum_{l \in L} \left|\hat{y}_l\right| P(y_l, \hat{y}_l)"/></td>
+<td><img class="math" src="../_images/math/7c51f6db2d752ef240406f02e6d4dbcd3e0b0b7d.png" alt="\frac{1}{\sum_{l \in L} \left|\hat{y}_l\right|} \sum_{l \in L} \left|\hat{y}_l\right| R(y_l, \hat{y}_l)"/></td>
+<td><img class="math" src="../_images/math/d20b93464ab69a6b5c13a0b9e8b3d9b59928674f.png" alt="\frac{1}{\sum_{l \in L} \left|\hat{y}_l\right|} \sum_{l \in L} \left|\hat{y}_l\right| F_\beta(y_l, \hat{y}_l)"/></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">None</span></tt></td>
+<td><img class="math" src="../_images/math/a4020ca24f29c5d8ce0732e805999d9fd7ce0510.png" alt="\langle P(y_l, \hat{y}_l) | l \in L \rangle"/></td>
+<td><img class="math" src="../_images/math/1420ce851d5b03cda6973388c3b5f0e4edc145eb.png" alt="\langle R(y_l, \hat{y}_l) | l \in L \rangle"/></td>
+<td><img class="math" src="../_images/math/8b60a11cc554d94afc8ef17ab01dee43bb4efdd2.png" alt="\langle F_\beta(y_l, \hat{y}_l) | l \in L \rangle"/></td>
+</tr>
+</tbody>
+</table>
+<p>Here is an example where <tt class="docutils literal"><span class="pre">average</span></tt> is set to <tt class="docutils literal"><span class="pre">macro</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
@@ -700,58 +756,70 @@ their support</p>
 <span class="go">(0.22..., 0.33..., 0.26..., None)</span>
 </pre></div>
 </div>
-<p>Here an example where <tt class="docutils literal"><span class="pre">average</span></tt> is set to to <tt class="docutils literal"><span class="pre">micro</span></tt>:</p>
+<p>Here is an example where <tt class="docutils literal"><span class="pre">average</span></tt> is set to <tt class="docutils literal"><span class="pre">micro</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">)</span>
+<span class="gp">... </span>
 <span class="go">0.33...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">)</span>
+<span class="gp">... </span>
 <span class="go">0.33...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">)</span>
+<span class="gp">... </span>
 <span class="go">0.33...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">fbeta_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">fbeta_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">... </span>
 <span class="go">0.33...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">)</span>
+<span class="gp">... </span>
 <span class="go">(0.33..., 0.33..., 0.33..., None)</span>
 </pre></div>
 </div>
-<p>Here an example where <tt class="docutils literal"><span class="pre">average</span></tt> is set to to <tt class="docutils literal"><span class="pre">weighted</span></tt>:</p>
+<p>Here is an example where <tt class="docutils literal"><span class="pre">average</span></tt> is set to <tt class="docutils literal"><span class="pre">weighted</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">)</span>
+<span class="gp">... </span>
 <span class="go">0.22...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">)</span>
+<span class="gp">... </span>
 <span class="go">0.33...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">fbeta_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">fbeta_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">... </span>
 <span class="go">0.23...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">)</span>  
 <span class="go">0.26...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">average</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">)</span>  
 <span class="go">(0.22..., 0.33..., 0.26..., None)</span>
 </pre></div>
 </div>
-<p>Here an example where <tt class="docutils literal"><span class="pre">average</span></tt> is set to <tt class="docutils literal"><span class="pre">None</span></tt>:</p>
+<p>Here is an example where <tt class="docutils literal"><span class="pre">average</span></tt> is set to <tt class="docutils literal"><span class="pre">None</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="gp">... </span>
 <span class="go">array([ 0.66...,  0.        ,  0.        ])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 <span class="go">array([ 1.,  0.,  0.])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>  
 <span class="go">array([ 0.8,  0. ,  0. ])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">fbeta_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">fbeta_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">... </span>
 <span class="go">array([ 0.71...,  0.        ,  0.        ])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">... </span>
 <span class="go">(array([ 0.66...,  0.        ,  0.        ]), array([ 1.,  0.,  0.]), array([ 0.71...,  0.        ,  0.        ]), array([2, 2, 2]...))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="hinge-loss">
-<h3>5.5.1.8. Hinge loss<a class="headerlink" href="#hinge-loss" title="Permalink to this headline">¶</a></h3>
+<h3>5.5.1.9. Hinge loss<a class="headerlink" href="#hinge-loss" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="generated/sklearn.metrics.hinge_loss.html#sklearn.metrics.hinge_loss" title="sklearn.metrics.hinge_loss"><tt class="xref py py-func docutils literal"><span class="pre">hinge_loss</span></tt></a> function computes the average
 <a class="reference external" href="http://en.wikipedia.org/wiki/Hinge_loss">hinge loss function</a>. The hinge
 loss is used in maximal margin classification as support vector machines.</p>
@@ -780,7 +848,7 @@ with a svm classifier:</p>
 </div>
 </div>
 <div class="section" id="matthews-correlation-coefficient">
-<h3>5.5.1.9. Matthews correlation coefficient<a class="headerlink" href="#matthews-correlation-coefficient" title="Permalink to this headline">¶</a></h3>
+<h3>5.5.1.10. Matthews correlation coefficient<a class="headerlink" href="#matthews-correlation-coefficient" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="generated/sklearn.metrics.matthews_corrcoef.html#sklearn.metrics.matthews_corrcoef" title="sklearn.metrics.matthews_corrcoef"><tt class="xref py py-func docutils literal"><span class="pre">matthews_corrcoef</span></tt></a> function computes the Matthew&#8217;s correlation
 coefficient (MCC) for binary classes (quoting the <a class="reference external" href="http://en.wikipedia.org/wiki/Matthews_correlation_coefficient">Wikipedia article on the
 Matthew&#8217;s correlation coefficient</a>):</p>
@@ -809,7 +877,7 @@ function:</p>
 </div>
 </div>
 <div class="section" id="receiver-operating-characteristic-roc">
-<span id="roc-metrics"></span><h3>5.5.1.10. Receiver operating characteristic (ROC)<a class="headerlink" href="#receiver-operating-characteristic-roc" title="Permalink to this headline">¶</a></h3>
+<span id="roc-metrics"></span><h3>5.5.1.11. Receiver operating characteristic (ROC)<a class="headerlink" href="#receiver-operating-characteristic-roc" title="Permalink to this headline">¶</a></h3>
 <p>The function <a class="reference internal" href="generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve" title="sklearn.metrics.roc_curve"><tt class="xref py py-func docutils literal"><span class="pre">roc_curve</span></tt></a> computes the <a class="reference external" href="http://en.wikipedia.org/wiki/Receiver_operating_characteristic">receiver operating characteristic
 curve, or ROC curve (quoting
 Wikipedia)</a>:</p>
@@ -849,7 +917,7 @@ model species distribution.</li>
 </div>
 </div>
 <div class="section" id="zero-one-loss">
-<span id="id5"></span><h3>5.5.1.11. Zero one loss<a class="headerlink" href="#zero-one-loss" title="Permalink to this headline">¶</a></h3>
+<span id="id5"></span><h3>5.5.1.12. Zero one loss<a class="headerlink" href="#zero-one-loss" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-func docutils literal"><span class="pre">zero_one_loss</span></tt></a> function computes the sum or the average of the 0-1
 classification loss (<img class="math" src="../_images/math/b8666bbc214ffef7a5f79d4fc524f55f273cdc3a.png" alt="L_{0-1}"/>) over <img class="math" src="../_images/math/f64845215a9beeab0c363110bf2b7a6efa21bd61.png" alt="n_{\text{samples}}"/>. By
 defaults, the function normalizes over the sample. To get the sum of the
@@ -862,8 +930,7 @@ then the 0-1 loss <img class="math" src="../_images/math/b8666bbc214ffef7a5f79d4
 <div class="math">
 <p><img src="../_images/math/416c1de5a9e5212b8e8d4fb0f88ff229689e4ec9.png" alt="L_{0-1}(y_i, \hat{y}_i) = 1(\hat{y}_i \not= y_i)"/></p>
 </div><p>where <img class="math" src="../_images/math/0d4b4c28168e2d4ef79fb483891c05e772e1aa2b.png" alt="1(x)"/> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Indicator_function">indicator function</a>.</p>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">zero_one_loss</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">zero_one_loss</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">zero_one_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
@@ -873,16 +940,15 @@ then the 0-1 loss <img class="math" src="../_images/math/b8666bbc214ffef7a5f79d4
 </pre></div>
 </div>
 <p>In the multilabel case with binary indicator format:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">zero_one_loss</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
-<span class="go">1.0</span>
-</pre></div>
-</div>
-<p>and with a list of labels format:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">zero_one_loss</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)],</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">tuple</span><span class="p">()])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">zero_one_loss</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
 <span class="go">0.5</span>
 </pre></div>
 </div>
-</div></blockquote>
+<p>and with a list of labels format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">zero_one_loss</span><span class="p">([(</span><span class="mi">1</span><span class="p">,),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)],</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">tuple</span><span class="p">()])</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
 <div class="topic">
 <p class="topic-title first">Example:</p>
 <ul class="simple">
@@ -1113,7 +1179,7 @@ a score (<tt class="docutils literal"><span class="pre">greater_is_better=True</
 whether the function you provided takes predictions as input
 (<tt class="docutils literal"><span class="pre">needs_threshold=False</span></tt>) or needs confidence scores
 (<tt class="docutils literal"><span class="pre">needs_threshold=True</span></tt>) and any additional parameters, such as <tt class="docutils literal"><span class="pre">beta</span></tt> in
-the example above.</p>
+the previous example.</p>
 </div>
 <div class="section" id="implementing-your-own-scoring-object">
 <h3>5.5.4.2. Implementing your own scoring object<a class="headerlink" href="#implementing-your-own-scoring-object" title="Permalink to this headline">¶</a></h3>
@@ -1179,9 +1245,9 @@ change the kernel:</p>
 </div>
 <p>We see that the accuracy was boosted to almost 100%. For a better estimate
 of the accuracy, it is recommended to use a cross validation strategy, if it
-is not too CPU costly. For more information see the <a class="reference internal" href="cross_validation.html#cross-validation"><em>Cross-Validation: evaluating estimator performance</em></a>
+is not too CPU costly. For more information see the <a class="reference internal" href="cross_validation.html#cross-validation"><em>Cross-validation: evaluating estimator performance</em></a>
 section. Moreover if you want to optimize over the parameter space, it is
-highly recommended to use an appropriate methodology see the <a class="reference internal" href="grid_search.html#grid-search"><em>Grid Search: setting estimator parameters</em></a>
+highly recommended to use an appropriate methodology see the <a class="reference internal" href="grid_search.html#grid-search"><em>Grid Search: Searching for estimator parameters</em></a>
 section.</p>
 <p>More generally, when the accuracy of a classifier is too close to random
 classification, it probably means that something went wrong: features are not

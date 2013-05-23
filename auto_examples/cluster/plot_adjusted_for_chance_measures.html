@@ -187,27 +187,27 @@ value of k on various overlapping sub-samples of the dataset.</p>
 </ul>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Computing adjusted_rand_score for 10 values of n_clusters and n_samples=100
-done in 0.755s
+done in 0.756s
 Computing v_measure_score for 10 values of n_clusters and n_samples=100
-done in 0.142s
+done in 0.136s
 Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=100
-done in 3.824s
+done in 3.711s
 Computing mutual_info_score for 10 values of n_clusters and n_samples=100
-done in 0.094s
+done in 0.091s
 Computing adjusted_rand_score for 10 values of n_clusters and n_samples=1000
-done in 0.915s
+done in 0.852s
 Computing v_measure_score for 10 values of n_clusters and n_samples=1000
-done in 0.275s
+done in 0.250s
 Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=1000
-done in 1.876s
+done in 1.820s
 Computing mutual_info_score for 10 values of n_clusters and n_samples=1000
-done in 0.160s</pre>
+done in 0.155s</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_adjusted_for_chance_measures.py"><tt class="xref download docutils literal"><span class="pre">plot_adjusted_for_chance_measures.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Olivier Grisel &lt;olivier.grisel@ensta.org&gt;</span>
-<span class="c"># License: Simplified BSD</span>
+<span class="c"># License: BSD 3 clause</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
@@ -304,10 +304,10 @@ done in 0.160s</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylabel"><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s">&#39;Score value&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylim"><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span></a><span class="p">(</span><span class="n">ymin</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">pl</span><span class="o">.</span><span class="n">legend</span></a><span class="p">(</span><span class="n">plots</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  8.81 seconds</p>
+<p><strong>Total running time of the example:</strong>  8.33 seconds</p>
 </div>
 
 

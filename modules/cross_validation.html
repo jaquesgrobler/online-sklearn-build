@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>5.1. Cross-Validation: evaluating estimator performance &mdash; scikit-learn 0.14-git documentation</title>
+    <title>5.1. Cross-validation: evaluating estimator performance &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -30,7 +30,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="5. Model selection and evaluation" href="../model_selection.html" />
-    <link rel="next" title="5.2. Grid Search: setting estimator parameters" href="grid_search.html" />
+    <link rel="next" title="5.2. Grid Search: Searching for estimator parameters" href="grid_search.html" />
     <link rel="prev" title="5. Model selection and evaluation" href="../model_selection.html" />
 
 
@@ -112,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="grid_search.html" title="5.2. Grid Search: setting estimator parameters"
+	<a href="grid_search.html" title="5.2. Grid Search: Searching for estimator parameters"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
 	    5.2. Grid Search...
 	    </span>
 	    <span class="hiddenrellink">
-	    5.2. Grid Search: setting estimator parameters
+	    5.2. Grid Search: Searching for estimator parameters
 	    </span>
 	    
 	    </a>
@@ -151,11 +151,11 @@
     <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">5.1. Cross-Validation: evaluating estimator performance</a><ul>
+<li><a class="reference internal" href="#">5.1. Cross-validation: evaluating estimator performance</a><ul>
 <li><a class="reference internal" href="#computing-cross-validated-metrics">5.1.1. Computing cross-validated metrics</a></li>
 <li><a class="reference internal" href="#cross-validation-iterators">5.1.2. Cross validation iterators</a><ul>
 <li><a class="reference internal" href="#k-fold">5.1.2.1. K-fold</a></li>
-<li><a class="reference internal" href="#stratified-k-fold">5.1.2.2. Stratified K-Fold</a></li>
+<li><a class="reference internal" href="#stratified-k-fold">5.1.2.2. Stratified k-fold</a></li>
 <li><a class="reference internal" href="#leave-one-out-loo">5.1.2.3. Leave-One-Out - LOO</a></li>
 <li><a class="reference internal" href="#leave-p-out-lpo">5.1.2.4. Leave-P-Out - LPO</a></li>
 <li><a class="reference internal" href="#leave-one-label-out-lolo">5.1.2.5. Leave-One-Label-Out - LOLO</a></li>
@@ -182,18 +182,22 @@
           <div class="body">
             
   <div class="section" id="cross-validation-evaluating-estimator-performance">
-<span id="cross-validation"></span><h1>5.1. Cross-Validation: evaluating estimator performance<a class="headerlink" href="#cross-validation-evaluating-estimator-performance" title="Permalink to this headline">¶</a></h1>
+<span id="cross-validation"></span><h1>5.1. Cross-validation: evaluating estimator performance<a class="headerlink" href="#cross-validation-evaluating-estimator-performance" title="Permalink to this headline">¶</a></h1>
 <p>Learning the parameters of a prediction function and testing it on the
 same data is a methodological mistake: a model that would just repeat
 the labels of the samples that it has just seen would have a perfect
-score but would fail to predict anything useful on yet-unseen data.</p>
-<p>To <strong>avoid over-fitting</strong>, we have to define two different sets :
-a <strong>training set</strong> <tt class="docutils literal"><span class="pre">X_train,</span> <span class="pre">y_train</span></tt> which is used for learning
-the parameters of a predictive model, and a <strong>testing set</strong> <tt class="docutils literal"><span class="pre">X_test,</span>
-<span class="pre">y_test</span></tt> which is used for evaluating the fitted predictive model.</p>
-<p>In scikit-learn such a random split can be quickly computed with the
-<a class="reference internal" href="generated/sklearn.cross_validation.train_test_split.html#sklearn.cross_validation.train_test_split" title="sklearn.cross_validation.train_test_split"><tt class="xref py py-func docutils literal"><span class="pre">train_test_split</span></tt></a> helper function. Let load the iris data set to
-fit a linear Support Vector Machine model on it:</p>
+score but would fail to predict anything useful on yet-unseen data.
+This situation is called <strong>overfitting</strong>.
+To avoid it, it is common practice when performing
+a (supervised) machine learning experiment
+to hold out part of the available data as a <strong>test set</strong> <tt class="docutils literal"><span class="pre">X_test,</span> <span class="pre">y_test</span></tt>.
+Note that the word &#8220;experiment&#8221; is not intended
+to denote academic use only,
+because even in commercial settings
+machine learning usually starts out experimentally.</p>
+<p>In scikit-learn a random split into training and test sets
+can be quickly computed with the <a class="reference internal" href="generated/sklearn.cross_validation.train_test_split.html#sklearn.cross_validation.train_test_split" title="sklearn.cross_validation.train_test_split"><tt class="xref py py-func docutils literal"><span class="pre">train_test_split</span></tt></a> helper function.
+Let&#8217;s load the iris data set to fit a linear support vector machine on it:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
@@ -219,22 +223,53 @@ data for testing (evaluating) our classifier:</p>
 <span class="go">0.96...</span>
 </pre></div>
 </div>
-<p>However, by defining these two sets, we drastically reduce the number
-of samples which can be used for learning the model, and the results can
-depend on a particular random choice for the pair of (train, test) sets.</p>
-<p>A solution is to <strong>split the whole data several consecutive times in
-different train set and test set</strong>, and to return the averaged value of
-the prediction scores obtained with the different sets. Such a procedure
-is called <strong>cross-validation</strong>. This approach can be <strong>computationally
-expensive, but does not waste too much data</strong> (as it is the case when
-fixing an arbitrary test set), which is a major advantage in problem
-such as inverse inference where the number of samples is very small.</p>
+<p>When evaluating different settings (&#8220;hyperparameters&#8221;) for estimators,
+such as the <tt class="docutils literal"><span class="pre">C</span></tt> setting that must be manually set for an SVM,
+there is still a risk of overfitting <em>on the test set</em>
+because the parameters can be tweaked until the estimator performs optimally.
+This way, knowledge about the test set can &#8220;leak&#8221; into the model
+and evaluation metrics no longer report on generalization performance.
+To solve this problem, yet another part of the dataset can be held out
+as a so-called &#8220;validation set&#8221;: training proceeds on the training set,
+after which evaluation is done on the validation set,
+and when the experiment seems to be successful,
+final evaluation can be done on the test set.</p>
+<p>However, by partitioning the available data into three sets,
+we drastically reduce the number of samples
+which can be used for learning the model,
+and the results can depend on a particular random choice for the pair of
+(train, validation) sets.</p>
+<p>A solution to this problem is a procedure called
+<a class="reference external" href="http://en.wikipedia.org/wiki/Cross-validation_(statistics)">cross-validation</a>
+(CV for short).
+A test set should still be held out for final evaluation,
+but the validation set is no longer needed when doing CV.
+In the basic approach, called <em>k</em>-fold CV,
+the training set is split into <em>k</em> smaller sets
+(other approaches are described below,
+but generally follow the same principles).
+The following is procedure is followed for each of the <em>k</em> &#8220;folds&#8221;:</p>
+<blockquote>
+<div><ul class="simple">
+<li>A model is trained using <img class="math" src="../_images/math/7dc6fab4c2fdb4e9046030fbfdcf6ea721b05602.png" alt="k-1"/> of the folds as training data;</li>
+<li>the resulting model is validated on the remaining part of the data
+(i.e., it is used as a test set to compute a performance measure
+such as accuracy).</li>
+</ul>
+</div></blockquote>
+<p>The performance measure reported by <em>k</em>-fold cross-validation
+is then the average of the values computed in the loop.
+This approach can be computationally expensive,
+but does not waste too much data
+(as it is the case when fixing an arbitrary test set),
+which is a major advantage in problem such as inverse inference
+where the number of samples is very small.</p>
 <div class="section" id="computing-cross-validated-metrics">
 <h2>5.1.1. Computing cross-validated metrics<a class="headerlink" href="#computing-cross-validated-metrics" title="Permalink to this headline">¶</a></h2>
 <p>The simplest way to use perform cross-validation in to call the
 <a class="reference internal" href="generated/sklearn.cross_validation.cross_val_score.html#sklearn.cross_validation.cross_val_score" title="sklearn.cross_validation.cross_val_score"><tt class="xref py py-func docutils literal"><span class="pre">cross_val_score</span></tt></a> helper function on the estimator and the dataset.</p>
 <p>The following example demonstrates how to estimate the accuracy of a
-linear kernel Support Vector Machine on the iris dataset by splitting
+linear kernel support vector machine on the iris dataset by splitting
 the data and fitting a model and computing the score 5 consecutive times
 (with different splits each time):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -306,10 +341,10 @@ CV object (when supported) to use the boolean mask method instead.</p>
 </div>
 <div class="section" id="k-fold">
 <h3>5.1.2.1. K-fold<a class="headerlink" href="#k-fold" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="generated/sklearn.cross_validation.KFold.html#sklearn.cross_validation.KFold" title="sklearn.cross_validation.KFold"><tt class="xref py py-class docutils literal"><span class="pre">KFold</span></tt></a> divides all the samples in math:<cite>K</cite> groups of samples,
-called folds (if <img class="math" src="../_images/math/15a6fc78a7aca86309063f765a65556f8749e98f.png" alt="K = n"/>, this is equivalent to the <em>Leave One
+<p><a class="reference internal" href="generated/sklearn.cross_validation.KFold.html#sklearn.cross_validation.KFold" title="sklearn.cross_validation.KFold"><tt class="xref py py-class docutils literal"><span class="pre">KFold</span></tt></a> divides all the samples in math:<cite>k</cite> groups of samples,
+called folds (if <img class="math" src="../_images/math/d35a51f5f4479cf610e903ad871c5baa6f1fe9c0.png" alt="k = n"/>, this is equivalent to the <em>Leave One
 Out</em> strategy), of equal sizes (if possible). The prediction function is
-learned using <img class="math" src="../_images/math/1b1c9d593d88a2297c109c472971ba3094b1037c.png" alt="K - 1"/> folds, and the fold left out is used for test.</p>
+learned using <img class="math" src="../_images/math/efce61aab04f52f5d37708f357df021c8baa7434.png" alt="k - 1"/> folds, and the fold left out is used for test.</p>
 <p>Example of 2-fold:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">KFold</span>
@@ -347,10 +382,11 @@ when creating the cross-validation procedure:</p>
 </div>
 </div>
 <div class="section" id="stratified-k-fold">
-<h3>5.1.2.2. Stratified K-Fold<a class="headerlink" href="#stratified-k-fold" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold" title="sklearn.cross_validation.StratifiedKFold"><tt class="xref py py-class docutils literal"><span class="pre">StratifiedKFold</span></tt></a> is a variation of <em>K-fold</em>, which returns
-stratified folds, <em>i.e</em> which creates folds by preserving the same
-percentage for each target class as in the complete set.</p>
+<h3>5.1.2.2. Stratified k-fold<a class="headerlink" href="#stratified-k-fold" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold" title="sklearn.cross_validation.StratifiedKFold"><tt class="xref py py-class docutils literal"><span class="pre">StratifiedKFold</span></tt></a> is a variation of <em>k-fold</em> which returns
+<em>stratified</em> folds:
+each set contains the same percentage of samples
+of each target class as the complete set.</p>
 <p>Example of stratified 2-fold:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
@@ -544,7 +580,7 @@ will allow some samples to occur several times in each splits.</p>
 <h2>5.1.3. Cross validation and model selection<a class="headerlink" href="#cross-validation-and-model-selection" title="Permalink to this headline">¶</a></h2>
 <p>Cross validation iterators can also be used to directly perform model
 selection using Grid Search for the optimal hyperparameters of the
-model. This is the topic if the next section: <a class="reference internal" href="grid_search.html#grid-search"><em>Grid Search: setting estimator parameters</em></a>.</p>
+model. This is the topic if the next section: <a class="reference internal" href="grid_search.html#grid-search"><em>Grid Search: Searching for estimator parameters</em></a>.</p>
 </div>
 </div>
 

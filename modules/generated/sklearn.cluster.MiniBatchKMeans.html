@@ -225,6 +225,12 @@ the initial centroids.</p>
 <p>If an ndarray is passed, it should be of shape (n_clusters, n_features)
 and gives the initial centers.</p>
 </div></blockquote>
+<p><strong>n_init</strong> : int, default=3</p>
+<blockquote>
+<div><p>Number of random initializations that are tried.
+In constrast to KMeans, the algorithm is only run once, using the
+best of the <tt class="docutils literal"><span class="pre">n_init</span></tt> initializations as measured by inertia.</p>
+</div></blockquote>
 <p><strong>compute_labels</strong> : boolean</p>
 <blockquote>
 <div><p>Compute label assignment and inertia for the complete dataset

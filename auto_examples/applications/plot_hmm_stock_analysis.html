@@ -273,9 +273,9 @@ var =  [  8.85469963e-01   2.50139810e+14]</pre>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;var = &quot;</span><span class="p">,</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.diag.html#numpy.diag"><span class="n">np</span><span class="o">.</span><span class="n">diag</span></a><span class="p">(</span><a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">covars_</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
     <span class="k">print</span><span class="p">()</span>
 
-<a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.YearLocator"><span class="n">years</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.YearLocator"><span class="n">YearLocator</span></a><span class="p">()</span>   <span class="c"># every year</span>
-<a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.MonthLocator"><span class="n">months</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.MonthLocator"><span class="n">MonthLocator</span></a><span class="p">()</span>  <span class="c"># every month</span>
-<a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.DateFormatter"><span class="n">yearsFmt</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.DateFormatter"><span class="n">DateFormatter</span></a><span class="p">(</span><span class="s">&#39;%Y&#39;</span><span class="p">)</span>
+<span class="n">years</span> <span class="o">=</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.YearLocator"><span class="n">YearLocator</span></a><span class="p">()</span>   <span class="c"># every year</span>
+<span class="n">months</span> <span class="o">=</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.MonthLocator"><span class="n">MonthLocator</span></a><span class="p">()</span>  <span class="c"># every month</span>
+<span class="n">yearsFmt</span> <span class="o">=</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.DateFormatter"><span class="n">DateFormatter</span></a><span class="p">(</span><span class="s">&#39;%Y&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">pl</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
@@ -286,9 +286,9 @@ var =  [  8.85469963e-01   2.50139810e+14]</pre>
 <a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">ax</span><span class="o">.</span><span class="n">legend</span></a><span class="p">()</span>
 
 <span class="c"># format the ticks</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.YearLocator"><span class="n">years</span></a><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.DateFormatter"><span class="n">yearsFmt</span></a><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.MonthLocator"><span class="n">months</span></a><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">years</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">yearsFmt</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">months</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">()</span>
 
 <span class="c"># format the coords message box</span>
@@ -297,10 +297,10 @@ var =  [  8.85469963e-01   2.50139810e+14]</pre>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 
 <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  18.87 seconds</p>
+<p><strong>Total running time of the example:</strong>  16.79 seconds</p>
 </div>
 
 

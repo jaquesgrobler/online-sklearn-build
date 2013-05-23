@@ -201,34 +201,32 @@
 </table>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><a class="reference internal" href="sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">zero_one_loss</span></tt></a></dt>
-<dd>Zero-one classification loss</dd>
-</dl>
+<p class="last"><a class="reference internal" href="sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-obj docutils literal"><span class="pre">accuracy_score</span></tt></a>, <a class="reference internal" href="sklearn.metrics.jaccard_similarity_score.html#sklearn.metrics.jaccard_similarity_score" title="sklearn.metrics.jaccard_similarity_score"><tt class="xref py py-obj docutils literal"><span class="pre">jaccard_similarity_score</span></tt></a>, <a class="reference internal" href="sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">zero_one_loss</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>In multiclass classification, the Hamming loss correspond to the Hamming
 distance between <tt class="docutils literal"><span class="pre">y_true</span></tt> and <tt class="docutils literal"><span class="pre">y_pred</span></tt> which is equivalent to the
-<tt class="docutils literal"><span class="pre">zero_one_loss</span></tt> function.</p>
+subset <tt class="docutils literal"><span class="pre">zero_one_loss</span></tt> function.</p>
 <p>In multilabel classification, the Hamming loss is different from the
-zero-one loss. The zero-one loss considers the entire set of labels for a
-given sample incorrect if it does entirely match the true set of labels.
-Hamming loss is more forgiving in that it penalizes the individual labels.</p>
-<p>The Hamming loss is upperbounded by the zero-one loss. When normalized
-over samples, the Hamming loss is always between 0 and 1.</p>
+subset zero-one loss. The zero-one loss considers the entire set of labels
+for a given sample incorrect if it does entirely match the true set of
+labels. Hamming loss is more forgiving in that it penalizes the individual
+labels.</p>
+<p>The Hamming loss is upperbounded by the subset zero-one loss. When
+normalized over samples, the Hamming loss is always between 0 and 1.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r130" rules="none">
+<table class="docutils citation" frame="void" id="r138" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R130]</a></td><td>Grigorios Tsoumakas, Ioannis Katakis. Multi-Label Classification:
+<tr><td class="label"><a class="fn-backref" href="#id1">[R138]</a></td><td>Grigorios Tsoumakas, Ioannis Katakis. Multi-Label Classification:
 An Overview. International Journal of Data Warehousing &amp; Mining,
 3(3), 1-13, July-September 2007.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r131" rules="none">
+<table class="docutils citation" frame="void" id="r139" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R131]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Hamming_distance">Wikipedia entry on the Hamming distance</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id2">[R139]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Hamming_distance">Wikipedia entry on the Hamming distance</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>

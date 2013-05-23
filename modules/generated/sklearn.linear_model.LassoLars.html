@@ -183,9 +183,9 @@
 <blockquote>
 <div><p>Constant that multiplies the penalty term. Defaults to 1.0.
 <tt class="docutils literal"><span class="pre">alpha</span> <span class="pre">=</span> <span class="pre">0</span></tt> is equivalent to an ordinary least square, solved
-by <a class="reference internal" href="sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression"><tt class="xref py py-class docutils literal"><span class="pre">LinearRegression</span></tt></a>. For numerical reasons, using <tt class="docutils literal"><span class="pre">alpha</span> <span class="pre">=</span> <span class="pre">0</span></tt>
-with the LassoLars object is not advised and you should prefer the
-LinearRegression object.</p>
+by <a class="reference internal" href="sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression"><tt class="xref py py-class docutils literal"><span class="pre">LinearRegression</span></tt></a>. For numerical reasons, using
+<tt class="docutils literal"><span class="pre">alpha</span> <span class="pre">=</span> <span class="pre">0</span></tt> with the LassoLars object is not advised and you
+should prefer the LinearRegression object.</p>
 </div></blockquote>
 <p><strong>fit_intercept</strong> : boolean</p>
 <blockquote>
@@ -253,9 +253,9 @@ with a small alpha.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="4%" />
-<col width="23%" />
-<col width="73%" />
+<col width="5%" />
+<col width="20%" />
+<col width="76%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><tt class="docutils literal"><span class="pre">alphas_</span></tt></td>
@@ -267,8 +267,9 @@ with a small alpha.</p>
 <td>Indices of active variables at the end of the path.</td>
 </tr>
 <tr class="row-odd"><td><tt class="docutils literal"><span class="pre">coef_path_</span></tt></td>
-<td>array, shape = [n_features, n_alphas + 1] | list of n_targets such arrays</td>
-<td>The varying values of the coefficients along the path. It is not
+<td>array, shape = [n_features, n_alphas + 1] or list</td>
+<td>If a list is passed it&#8217;s expected to be one of n_targets such arrays.
+The varying values of the coefficients along the path. It is not
 present if the <tt class="docutils literal"><span class="pre">fit_path</span></tt> parameter is <tt class="docutils literal"><span class="pre">False</span></tt>.</td>
 </tr>
 <tr class="row-even"><td><tt class="docutils literal"><span class="pre">coef_</span></tt></td>

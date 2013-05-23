@@ -219,17 +219,17 @@ achieving a lower test error with fewer boosting iterations.</p>
 <p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">AdaBoostRegressor</span></tt>, <a class="reference internal" href="sklearn.ensemble.GradientBoostingClassifier.html#sklearn.ensemble.GradientBoostingClassifier" title="sklearn.ensemble.GradientBoostingClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">GradientBoostingClassifier</span></tt></a>, <tt class="xref py py-obj docutils literal"><span class="pre">DecisionTreeClassifier</span></tt></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r101" rules="none">
+<table class="docutils citation" frame="void" id="r106" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R101]</a></td><td>Y. Freund, R. Schapire, &#8220;A Decision-Theoretic Generalization of
+<tr><td class="label"><a class="fn-backref" href="#id1">[R106]</a></td><td>Y. Freund, R. Schapire, &#8220;A Decision-Theoretic Generalization of
 on-Line Learning and an Application to Boosting&#8221;, 1995.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r102" rules="none">
+<table class="docutils citation" frame="void" id="r107" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R102]</a></td><td><ol class="first last upperalpha simple" start="10">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R107]</a></td><td><ol class="first last upperalpha simple" start="10">
 <li>Zhu, H. Zou, S. Rosset, T. Hastie, &#8220;Multi-class AdaBoost&#8221;, 2009.</li>
 </ol>
 </td></tr>
@@ -331,11 +331,12 @@ ensemble.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>score</strong> : array, shape = [n_samples, k]</p>
 <blockquote class="last">
-<div><p>The decision function of the input samples. Classes are
-ordered by arithmetical order. Binary classification is a
-special cases with <tt class="docutils literal"><span class="pre">k</span> <span class="pre">==</span> <span class="pre">1</span></tt>, otherwise <tt class="docutils literal"><span class="pre">k==n_classes</span></tt>.
-For binary classification, values closer to -1 or 1 mean more
-like the first or second class in <tt class="docutils literal"><span class="pre">classes_</span></tt>, respectively.</p>
+<div><p>The decision function of the input samples. The order of
+outputs is the same of that of the <cite>classes_</cite> attribute.
+Binary classification is a special cases with <tt class="docutils literal"><span class="pre">k</span> <span class="pre">==</span> <span class="pre">1</span></tt>,
+otherwise <tt class="docutils literal"><span class="pre">k==n_classes</span></tt>. For binary classification,
+values closer to -1 or 1 mean more like the first or second
+class in <tt class="docutils literal"><span class="pre">classes_</span></tt>, respectively.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -422,8 +423,8 @@ contained subobjects that are estimators.</p>
 <dt id="sklearn.ensemble.AdaBoostClassifier.predict">
 <tt class="descclassname">AdaBoostClassifier.</tt><tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.AdaBoostClassifier.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict classes for X.</p>
-<p>The predicted class of an input sample is computed
-as the weighted mean prediction of the classifiers in the ensemble.</p>
+<p>The predicted class of an input sample is computed as the weighted mean
+prediction of the classifiers in the ensemble.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -449,8 +450,8 @@ as the weighted mean prediction of the classifiers in the ensemble.</p>
 <tt class="descclassname">AdaBoostClassifier.</tt><tt class="descname">predict_log_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.AdaBoostClassifier.predict_log_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class log-probabilities for X.</p>
 <p>The predicted class log-probabilities of an input sample is computed as
-the weighted mean predicted class log-probabilities
-of the classifiers in the ensemble.</p>
+the weighted mean predicted class log-probabilities of the classifiers
+in the ensemble.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -463,8 +464,8 @@ of the classifiers in the ensemble.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>p</strong> : array of shape = [n_samples]</p>
 <blockquote class="last">
-<div><p>The class log-probabilities of the input samples. Classes are
-ordered by arithmetical order.</p>
+<div><p>The class probabilities of the input samples. The order of
+outputs is the same of that of the <cite>classes_</cite> attribute.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -477,8 +478,8 @@ ordered by arithmetical order.</p>
 <tt class="descclassname">AdaBoostClassifier.</tt><tt class="descname">predict_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.AdaBoostClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class probabilities for X.</p>
 <p>The predicted class probabilities of an input sample is computed as
-the weighted mean predicted class probabilities
-of the classifiers in the ensemble.</p>
+the weighted mean predicted class probabilities of the classifiers
+in the ensemble.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -491,8 +492,8 @@ of the classifiers in the ensemble.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>p</strong> : array of shape = [n_samples]</p>
 <blockquote class="last">
-<div><p>The class probabilities of the input samples. Classes are
-ordered by arithmetical order.</p>
+<div><p>The class probabilities of the input samples. The order of
+outputs is the same of that of the <cite>classes_</cite> attribute.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -561,11 +562,12 @@ after each boosting iteration.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>score</strong> : generator of array, shape = [n_samples, k]</p>
 <blockquote class="last">
-<div><p>The decision function of the input samples. Classes are
-ordered by arithmetical order. Binary classification is a
-special cases with <tt class="docutils literal"><span class="pre">k</span> <span class="pre">==</span> <span class="pre">1</span></tt>, otherwise <tt class="docutils literal"><span class="pre">k==n_classes</span></tt>.
-For binary classification, values closer to -1 or 1 mean more
-like the first or second class in <tt class="docutils literal"><span class="pre">classes_</span></tt>, respectively.</p>
+<div><p>The decision function of the input samples. The order of
+outputs is the same of that of the <cite>classes_</cite> attribute.
+Binary classification is a special cases with <tt class="docutils literal"><span class="pre">k</span> <span class="pre">==</span> <span class="pre">1</span></tt>,
+otherwise <tt class="docutils literal"><span class="pre">k==n_classes</span></tt>. For binary classification,
+values closer to -1 or 1 mean more like the first or second
+class in <tt class="docutils literal"><span class="pre">classes_</span></tt>, respectively.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -577,8 +579,8 @@ like the first or second class in <tt class="docutils literal"><span class="pre"
 <dt id="sklearn.ensemble.AdaBoostClassifier.staged_predict">
 <tt class="descclassname">AdaBoostClassifier.</tt><tt class="descname">staged_predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.AdaBoostClassifier.staged_predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return staged predictions for X.</p>
-<p>The predicted class of an input sample is computed
-as the weighted mean prediction of the classifiers in the ensemble.</p>
+<p>The predicted class of an input sample is computed as the weighted mean
+prediction of the classifiers in the ensemble.</p>
 <p>This generator method yields the ensemble prediction after each
 iteration of boosting and therefore allows monitoring, such as to
 determine the prediction on a test set after each boost.</p>
@@ -607,8 +609,8 @@ determine the prediction on a test set after each boost.</p>
 <tt class="descclassname">AdaBoostClassifier.</tt><tt class="descname">staged_predict_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.AdaBoostClassifier.staged_predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class probabilities for X.</p>
 <p>The predicted class probabilities of an input sample is computed as
-the weighted mean predicted class probabilities
-of the classifiers in the ensemble.</p>
+the weighted mean predicted class probabilities of the classifiers
+in the ensemble.</p>
 <p>This generator method yields the ensemble predicted class probabilities
 after each iteration of boosting and therefore allows monitoring, such
 as to determine the predicted class probabilities on a test set after
@@ -625,8 +627,8 @@ each boost.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>p</strong> : generator of array, shape = [n_samples]</p>
 <blockquote class="last">
-<div><p>The class probabilities of the input samples. Classes are
-ordered by arithmetical order.</p>
+<div><p>The class probabilities of the input samples. The order of
+outputs is the same of that of the <cite>classes_</cite> attribute.</p>
 </div></blockquote>
 </td>
 </tr>

@@ -680,11 +680,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="model_selection.html">5. Model selection and evaluation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules/cross_validation.html">5.1. Cross-Validation: evaluating estimator performance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/cross_validation.html">5.1. Cross-validation: evaluating estimator performance</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/cross_validation.html#computing-cross-validated-metrics">5.1.1. Computing cross-validated metrics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/cross_validation.html#cross-validation-iterators">5.1.2. Cross validation iterators</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="modules/cross_validation.html#k-fold">5.1.2.1. K-fold</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/cross_validation.html#stratified-k-fold">5.1.2.2. Stratified K-Fold</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/cross_validation.html#stratified-k-fold">5.1.2.2. Stratified k-fold</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/cross_validation.html#leave-one-out-loo">5.1.2.3. Leave-One-Out - LOO</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/cross_validation.html#leave-p-out-lpo">5.1.2.4. Leave-P-Out - LPO</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/cross_validation.html#leave-one-label-out-lolo">5.1.2.5. Leave-One-Label-Out - LOLO</a></li>
@@ -697,13 +697,13 @@
 <li class="toctree-l3"><a class="reference internal" href="modules/cross_validation.html#cross-validation-and-model-selection">5.1.3. Cross validation and model selection</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="modules/grid_search.html">5.2. Grid Search: setting estimator parameters</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#gridsearchcv">5.2.1. GridSearchCV</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#scoring-functions-for-gridsearchcv">5.2.1.1. Scoring functions for GridSearchCV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/grid_search.html">5.2. Grid Search: Searching for estimator parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#exhaustive-grid-search">5.2.1. Exhaustive Grid Search</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#scoring-functions-for-parameter-search">5.2.1.1. Scoring functions for parameter search</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#randomized-hyper-parameter-optimization">5.2.2. Randomized Hyper-Parameter Optimization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#alternatives-to-brute-force-grid-search">5.2.3. Alternatives to brute force grid search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#randomized-parameter-optimization">5.2.2. Randomized Parameter Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#alternatives-to-brute-force-parameter-search">5.2.3. Alternatives to brute force parameter search</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="modules/grid_search.html#model-specific-cross-validation">5.2.3.1. Model specific cross-validation</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.RidgeCV.html">8.17.25. sklearn.linear_model.RidgeCV</a></li>
 <li class="toctree-l5"><a class="reference internal" href="modules/generated/sklearn.linear_model.RidgeClassifierCV.html">8.17.24. sklearn.linear_model.RidgeClassifierCV</a></li>
@@ -747,15 +747,16 @@
 <li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#confusion-matrix">5.5.1.4. Confusion matrix</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#classification-report">5.5.1.5. Classification report</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#hamming-loss">5.5.1.6. Hamming loss</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#precision-recall-and-f-measures">5.5.1.7. Precision, recall and F-measures</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#binary-classification">5.5.1.7.1. Binary classification</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#multiclass-and-multilabel-classification">5.5.1.7.2. Multiclass and multilabel classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#jaccard-similarity-coefficient-score">5.5.1.7. Jaccard similarity coefficient score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#precision-recall-and-f-measures">5.5.1.8. Precision, recall and F-measures</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#binary-classification">5.5.1.8.1. Binary classification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#multiclass-and-multilabel-classification">5.5.1.8.2. Multiclass and multilabel classification</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#hinge-loss">5.5.1.8. Hinge loss</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#matthews-correlation-coefficient">5.5.1.9. Matthews correlation coefficient</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#receiver-operating-characteristic-roc">5.5.1.10. Receiver operating characteristic (ROC)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#zero-one-loss">5.5.1.11. Zero one loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#hinge-loss">5.5.1.9. Hinge loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#matthews-correlation-coefficient">5.5.1.10. Matthews correlation coefficient</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#receiver-operating-characteristic-roc">5.5.1.11. Receiver operating characteristic (ROC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#zero-one-loss">5.5.1.12. Zero one loss</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#regression-metrics">5.5.2. Regression metrics</a><ul>
@@ -1143,13 +1144,14 @@
 <li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.fbeta_score.html">8.19.2.8. sklearn.metrics.fbeta_score</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.hamming_loss.html">8.19.2.9. sklearn.metrics.hamming_loss</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.hinge_loss.html">8.19.2.10. sklearn.metrics.hinge_loss</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.matthews_corrcoef.html">8.19.2.11. sklearn.metrics.matthews_corrcoef</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_curve.html">8.19.2.12. sklearn.metrics.precision_recall_curve</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_fscore_support.html">8.19.2.13. sklearn.metrics.precision_recall_fscore_support</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_score.html">8.19.2.14. sklearn.metrics.precision_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.recall_score.html">8.19.2.15. sklearn.metrics.recall_score</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.roc_curve.html">8.19.2.16. sklearn.metrics.roc_curve</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.zero_one_loss.html">8.19.2.17. sklearn.metrics.zero_one_loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.jaccard_similarity_score.html">8.19.2.11. sklearn.metrics.jaccard_similarity_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.matthews_corrcoef.html">8.19.2.12. sklearn.metrics.matthews_corrcoef</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_curve.html">8.19.2.13. sklearn.metrics.precision_recall_curve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_fscore_support.html">8.19.2.14. sklearn.metrics.precision_recall_fscore_support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.precision_score.html">8.19.2.15. sklearn.metrics.precision_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.recall_score.html">8.19.2.16. sklearn.metrics.recall_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.roc_curve.html">8.19.2.17. sklearn.metrics.roc_curve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.metrics.zero_one_loss.html">8.19.2.18. sklearn.metrics.zero_one_loss</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/classes.html#regression-metrics">8.19.3. Regression metrics</a><ul>

@@ -30,7 +30,7 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.19.2.11. sklearn.metrics.matthews_corrcoef" href="sklearn.metrics.matthews_corrcoef.html" />
+    <link rel="next" title="8.19.2.11. sklearn.metrics.jaccard_similarity_score" href="sklearn.metrics.jaccard_similarity_score.html" />
     <link rel="prev" title="8.19.2.9. sklearn.metrics.hamming_loss" href="sklearn.metrics.hamming_loss.html" />
 
 
@@ -112,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.matthews_corrcoef.html" title="8.19.2.11. sklearn.metrics.matthews_corrcoef"
+	<a href="sklearn.metrics.jaccard_similarity_score.html" title="8.19.2.11. sklearn.metrics.jaccard_similarity_score"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
 	    8.19.2.11. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.2.11. sklearn.metrics.matthews_corrcoef
+	    8.19.2.11. sklearn.metrics.jaccard_similarity_score
 	    </span>
 	    
 	    </a>
@@ -169,7 +169,7 @@
 <h1>8.19.2.10. sklearn.metrics.hinge_loss<a class="headerlink" href="#sklearn-metrics-hinge-loss" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.hinge_loss">
-<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">hinge_loss</tt><big>(</big><em>y_true</em>, <em>pred_decision</em>, <em>pos_label=1</em>, <em>neg_label=-1</em><big>)</big><a class="headerlink" href="#sklearn.metrics.hinge_loss" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">hinge_loss</tt><big>(</big><em>y_true</em>, <em>pred_decision</em>, <em>pos_label=None</em>, <em>neg_label=None</em><big>)</big><a class="headerlink" href="#sklearn.metrics.hinge_loss" title="Permalink to this definition">¶</a></dt>
 <dd><p>Average hinge loss (non-regularized)</p>
 <p>Assuming labels in y_true are encoded with +1 and -1, when a prediction
 mistake is made, <tt class="docutils literal"><span class="pre">margin</span> <span class="pre">=</span> <span class="pre">y_true</span> <span class="pre">*</span> <span class="pre">pred_decision</span></tt> is always negative
@@ -182,7 +182,8 @@ mistakes made by the classifier.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>True target (integers).</p>
+<div><p>True target, consisting of integers of two values. The positive label
+must be greater than the negative label.</p>
 </div></blockquote>
 <p><strong>pred_decision</strong> : array, shape = [n_samples] or [n_samples, n_classes]</p>
 <blockquote>
@@ -196,10 +197,10 @@ mistakes made by the classifier.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r132" rules="none">
+<table class="docutils citation" frame="void" id="r140" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R132]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Hinge_loss">Wikipedia entry on the Hinge loss</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[R140]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Hinge_loss">Wikipedia entry on the Hinge loss</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -247,7 +248,7 @@ mistakes made by the classifier.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.metrics.matthews_corrcoef.html">
+      <a href="sklearn.metrics.jaccard_similarity_score.html">
         Next
       </a>
     </div>

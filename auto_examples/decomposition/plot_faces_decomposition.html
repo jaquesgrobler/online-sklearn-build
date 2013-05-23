@@ -194,25 +194,25 @@ matrix decomposition (dimension reduction) methods from the module
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Dataset consists of 400 faces
 Extracting the top 6 Eigenfaces - RandomizedPCA...
-done in 0.836s
+done in 0.799s
 Extracting the top 6 Non-negative components - NMF...
-done in 3.538s
+done in 3.259s
 Extracting the top 6 Independent components - FastICA...
-done in 4.866s
+done in 4.508s
 Extracting the top 6 Sparse comp. - MiniBatchSparsePCA...
-done in 6.310s
+done in 5.902s
 Extracting the top 6 MiniBatchDictionaryLearning...
-done in 4.524s
+done in 4.269s
 Extracting the top 6 Cluster centers - MiniBatchKMeans...
-done in 1.083s
+done in 1.050s
 Extracting the top 6 Factor Analysis components - FA...
-done in 12.811s</pre>
+done in 11.753s</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_faces_decomposition.py"><tt class="xref download docutils literal"><span class="pre">plot_faces_decomposition.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Authors: Vlad Niculae, Alexandre Gramfort</span>
-<span class="c"># License: BSD</span>
+<span class="c"># License: BSD 3 clause</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
@@ -331,10 +331,10 @@ done in 12.811s</pre>
     <span class="n">plot_gallery</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> - Train time </span><span class="si">%.1f</span><span class="s">s&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">train_time</span><span class="p">),</span>
                  <span class="n">components_</span><span class="p">[:</span><span class="n">n_components</span><span class="p">])</span>
 
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  44.19 seconds</p>
+<p><strong>Total running time of the example:</strong>  37.90 seconds</p>
 </div>
 
 

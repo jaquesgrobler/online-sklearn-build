@@ -403,22 +403,22 @@ Computer Vision Theory and Applications 2009</li>
 <div class="section" id="complexity">
 <span id="tree-complexity"></span><h2>3.8.4. Complexity<a class="headerlink" href="#complexity" title="Permalink to this headline">¶</a></h2>
 <p>In general, the run time cost to construct a balanced binary tree is
-<img class="math" src="../_images/math/1b0c70f9b357eb1133ec347cd533751ed661cea3.png" alt="O(n_{samples}n_{features}log(n_{samples}))"/> and query time
-<img class="math" src="../_images/math/2d2c15eb6c9e372089e03ca890e7ac4ca9b65d15.png" alt="O(log(n_{samples}))"/>.  Although the tree construction algorithm attempts
+<img class="math" src="../_images/math/88efbde8a742146b124d24fe52b02011edddde79.png" alt="O(n_{samples}n_{features}\log(n_{samples}))"/> and query time
+<img class="math" src="../_images/math/10d177d32f7f91e4ddf98e3f2153c3d1fac751dd.png" alt="O(\log(n_{samples}))"/>.  Although the tree construction algorithm attempts
 to generate balanced trees, they will not always be balanced.  Assuming that the
 subtrees remain approximately balanced, the cost at each node consists of
 searching through <img class="math" src="../_images/math/6f151e3fc9d67079f9d2cf87297123d823999c44.png" alt="O(n_{features})"/> to find the feature that offers the
 largest reduction in entropy.  This has a cost of
-<img class="math" src="../_images/math/cd4a4681c2eae329ff3ea1789325cd8e7bd01bf8.png" alt="O(n_{features}n_{samples}log(n_{samples}))"/> at each node, leading to a
+<img class="math" src="../_images/math/43013032a6309dd837e496e9679190402914500c.png" alt="O(n_{features}n_{samples}\log(n_{samples}))"/> at each node, leading to a
 total cost over the entire trees (by summing the cost at each node) of
-<img class="math" src="../_images/math/6501ba838a8158b642e47f6fa7764a84723a772b.png" alt="O(n_{features}n_{samples}^{2}log(n_{samples}))"/>.</p>
+<img class="math" src="../_images/math/ea6a0f79cb5f5ba93f9f70c441db01d32199c510.png" alt="O(n_{features}n_{samples}^{2}\log(n_{samples}))"/>.</p>
 <p>Scikit-learn offers a more efficient implementation for the construction of
 decision trees.  A naive implementation (as above) would recompute the class
 label histograms (for classification) or the means (for regression) at for each
 new split point along a given feature. By presorting the feature over all
 relevant samples, and retaining a running label count, we reduce the complexity
-at each node to <img class="math" src="../_images/math/020b2a0b4e8fcda8d01944759785a8eae4671207.png" alt="O(n_{features}log(n_{samples}))"/>, which results in a
-total cost of <img class="math" src="../_images/math/cd4a4681c2eae329ff3ea1789325cd8e7bd01bf8.png" alt="O(n_{features}n_{samples}log(n_{samples}))"/>.</p>
+at each node to <img class="math" src="../_images/math/559e5c4652dcf3ef621f71a0aa4bafc9d4137ab5.png" alt="O(n_{features}\log(n_{samples}))"/>, which results in a
+total cost of <img class="math" src="../_images/math/43013032a6309dd837e496e9679190402914500c.png" alt="O(n_{features}n_{samples}\log(n_{samples}))"/>.</p>
 <p>This implementation also offers a parameter <cite>min_density</cite> to control an
 optimization heuristic. A sample mask is used to mask data points that are
 inactive at a given node, which avoids the copying of data (important for large
@@ -522,10 +522,10 @@ Q_{right}(\theta) = Q \setminus Q_{left}(\theta)"/></p>
 + \frac{n_{right}}{N_m} H(Q_{right}(\theta))"/></p>
 </div><p>Select the parameters that minimises the impurity</p>
 <div class="math">
-<p><img src="../_images/math/3d1be5dfdaf732ed4458775a9bc7e155b2e177d3.png" alt="\theta^* = argmin_\theta  G(Q, \theta)"/></p>
+<p><img src="../_images/math/873b7550655c8586b19ca8fcb34468fd53c4a83e.png" alt="\theta^* = \operatorname{argmin}_\theta  G(Q, \theta)"/></p>
 </div><p>Recurse for subsets <img class="math" src="../_images/math/72d48343b86e8135369143144389d4a293a3f08e.png" alt="Q_{left}(\theta^*)"/> and
 <img class="math" src="../_images/math/268c5c0460ec1895b9f5ad2e72cfb7976f8f933a.png" alt="Q_{right}(\theta^*)"/> until the maximum allowable depth is reached,
-<img class="math" src="../_images/math/e9740eb3286c19a8c6237371f7d295f6944c9904.png" alt="N_m &lt; min\_samples"/> or <img class="math" src="../_images/math/47368d972f09f7c7ff0b98bbe7d431e391fa6a60.png" alt="N_m = 1"/>.</p>
+<img class="math" src="../_images/math/f7f2c7855a2dbb9ac7ece0b9871a8f1409bb87b4.png" alt="N_m &lt; \min_{samples}"/> or <img class="math" src="../_images/math/47368d972f09f7c7ff0b98bbe7d431e391fa6a60.png" alt="N_m = 1"/>.</p>
 <div class="section" id="classification-criteria">
 <h3>3.8.7.1. Classification criteria<a class="headerlink" href="#classification-criteria" title="Permalink to this headline">¶</a></h3>
 <p>If a target is a classification outcome taking on values 0,1,...,K-1,
@@ -539,10 +539,10 @@ observations, let</p>
 <p><img src="../_images/math/dde0f5514c3181e6e888ce4593b48052a5989754.png" alt="H(X_m) = \sum_k p_{mk} (1 - p_{mk})"/></p>
 </div><p>Cross-Entropy</p>
 <div class="math">
-<p><img src="../_images/math/089d77a784cf0bed707752fd0d1b6ba53be1cc4f.png" alt="H(X_m) = \sum_k p_{mk} log(p_{mk})"/></p>
+<p><img src="../_images/math/496cd201ea8b125a895ad9f37fd809a2e05ff2a9.png" alt="H(X_m) = \sum_k p_{mk} \log(p_{mk})"/></p>
 </div><p>and Misclassification</p>
 <div class="math">
-<p><img src="../_images/math/b2e8c1ade5f9f320f056dfd6791a267cc2a0c60c.png" alt="H(X_m) = 1 - max(p_{mk})"/></p>
+<p><img src="../_images/math/fa2c74cec2aaa27dcb6cdeed0a2cd438b567b4f8.png" alt="H(X_m) = 1 - \max(p_{mk})"/></p>
 </div></div>
 <div class="section" id="regression-criteria">
 <h3>3.8.7.2. Regression criteria<a class="headerlink" href="#regression-criteria" title="Permalink to this headline">¶</a></h3>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.19.2.12. sklearn.metrics.precision_recall_curve &mdash; scikit-learn 0.14-git documentation</title>
+    <title>8.19.2.13. sklearn.metrics.precision_recall_curve &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.19.2.13. sklearn.metrics.precision_recall_fscore_support" href="sklearn.metrics.precision_recall_fscore_support.html" />
-    <link rel="prev" title="8.19.2.11. sklearn.metrics.matthews_corrcoef" href="sklearn.metrics.matthews_corrcoef.html" />
+    <link rel="next" title="8.19.2.14. sklearn.metrics.precision_recall_fscore_support" href="sklearn.metrics.precision_recall_fscore_support.html" />
+    <link rel="prev" title="8.19.2.12. sklearn.metrics.matthews_corrcoef" href="sklearn.metrics.matthews_corrcoef.html" />
 
 
 <script type="text/javascript">
@@ -95,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.metrics.matthews_corrcoef.html" title="8.19.2.11. sklearn.metrics.matthews_corrcoef"
+	<a href="sklearn.metrics.matthews_corrcoef.html" title="8.19.2.12. sklearn.metrics.matthews_corrcoef"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.19.2.11. sklea...
+	    8.19.2.12. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.2.11. sklearn.metrics.matthews_corrcoef
+	    8.19.2.12. sklearn.metrics.matthews_corrcoef
 	    </span>
 	    
 	    </a>
@@ -112,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.metrics.precision_recall_fscore_support.html" title="8.19.2.13. sklearn.metrics.precision_recall_fscore_support"
+	<a href="sklearn.metrics.precision_recall_fscore_support.html" title="8.19.2.14. sklearn.metrics.precision_recall_fscore_support"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.19.2.13. sklea...
+	    8.19.2.14. sklea...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.19.2.13. sklearn.metrics.precision_recall_fscore_support
+	    8.19.2.14. sklearn.metrics.precision_recall_fscore_support
 	    </span>
 	    
 	    </a>
@@ -151,7 +151,7 @@
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.19.2.12. sklearn.metrics.precision_recall_curve</a></li>
+<li><a class="reference internal" href="#">8.19.2.13. sklearn.metrics.precision_recall_curve</a></li>
 </ul>
 
     
@@ -166,7 +166,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-precision-recall-curve">
-<h1>8.19.2.12. sklearn.metrics.precision_recall_curve<a class="headerlink" href="#sklearn-metrics-precision-recall-curve" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.2.13. sklearn.metrics.precision_recall_curve<a class="headerlink" href="#sklearn-metrics-precision-recall-curve" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.precision_recall_curve">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">precision_recall_curve</tt><big>(</big><em>y_true</em>, <em>probas_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.precision_recall_curve" title="Permalink to this definition">¶</a></dt>
@@ -196,17 +196,20 @@ x axis.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>precision</strong> : array, shape = [n + 1]</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>precision</strong> : array, shape = [n_thresholds + 1]</p>
 <blockquote>
-<div><p>Precision values.</p>
+<div><p>Precision values such that element i is the precision of
+predictions with score &gt;= thresholds[i] and the last element is 1.</p>
 </div></blockquote>
-<p><strong>recall</strong> : array, shape = [n + 1]</p>
+<p><strong>recall</strong> : array, shape = [n_thresholds + 1]</p>
 <blockquote>
-<div><p>Recall values.</p>
+<div><p>Decreasing recall values such that element i is the recall of
+predictions with score &gt;= thresholds[i] and the last element is 0.</p>
 </div></blockquote>
-<p><strong>thresholds</strong> : array, shape = [n]</p>
+<p><strong>thresholds</strong> : array, shape = [n_thresholds := len(np.unique(probas_pred))]</p>
 <blockquote class="last">
-<div><p>Thresholds on y_score used to compute precision and recall.</p>
+<div><p>Increasing thresholds on the decision function used to compute
+precision and recall.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -217,12 +220,13 @@ x axis.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">y_true</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">precision</span>  
 <span class="go">array([ 0.66...,  0.5       ,  1.        ,  1.        ])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">recall</span>
 <span class="go">array([ 1. ,  0.5,  0.5,  0. ])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">threshold</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">thresholds</span>
 <span class="go">array([ 0.35,  0.4 ,  0.8 ])</span>
 </pre></div>
 </div>

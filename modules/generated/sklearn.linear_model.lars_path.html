@@ -188,7 +188,7 @@ the form of an implicit equation (see discussion in [1])</p>
 <blockquote>
 <div><p>Input targets.</p>
 </div></blockquote>
-<p><strong>max_iter</strong> : integer, optional</p>
+<p><strong>max_iter</strong> : integer, optional (default=500)</p>
 <blockquote>
 <div><p>Maximum number of iterations to perform, set to infinity for no limit.</p>
 </div></blockquote>
@@ -198,33 +198,38 @@ the form of an implicit equation (see discussion in [1])</p>
 matrix is precomputed from the given X, if there are more samples
 than features.</p>
 </div></blockquote>
-<p><strong>alpha_min</strong> : float, optional</p>
+<p><strong>alpha_min</strong> : float, optional (default=0)</p>
 <blockquote>
 <div><p>Minimum correlation along the path. It corresponds to the
 regularization parameter alpha parameter in the Lasso.</p>
 </div></blockquote>
-<p><strong>method</strong> : {&#8216;lar&#8217;, &#8216;lasso&#8217;}</p>
+<p><strong>method</strong> : {&#8216;lar&#8217;, &#8216;lasso&#8217;}, optional (default=&#8217;lar&#8217;)</p>
 <blockquote>
 <div><p>Specifies the returned model. Select <tt class="docutils literal"><span class="pre">'lar'</span></tt> for Least Angle
 Regression, <tt class="docutils literal"><span class="pre">'lasso'</span></tt> for the Lasso.</p>
 </div></blockquote>
-<p><strong>eps</strong> : float, optional</p>
+<p><strong>eps</strong> : float, optional (default=``np.finfo(np.float).eps``)</p>
 <blockquote>
 <div><p>The machine-precision regularization in the computation of the
 Cholesky diagonal factors. Increase this for very ill-conditioned
 systems.</p>
 </div></blockquote>
-<p><strong>copy_X</strong> : bool</p>
+<p><strong>copy_X</strong> : bool, optional (default=True)</p>
 <blockquote>
 <div><p>If <tt class="docutils literal"><span class="pre">False</span></tt>, <tt class="docutils literal"><span class="pre">X</span></tt> is overwritten.</p>
 </div></blockquote>
-<p><strong>copy_Gram</strong> : bool</p>
+<p><strong>copy_Gram</strong> : bool, optional (default=True)</p>
 <blockquote>
 <div><p>If <tt class="docutils literal"><span class="pre">False</span></tt>, <tt class="docutils literal"><span class="pre">Gram</span></tt> is overwritten.</p>
 </div></blockquote>
 <p><strong>verbose</strong> : int (default=0)</p>
 <blockquote>
 <div><p>Controls output verbosity.</p>
+</div></blockquote>
+<p><strong>return_path: bool, (optional=True)</strong> :</p>
+<blockquote>
+<div><p>If <tt class="docutils literal"><span class="pre">return_path==True</span></tt> returns the entire path, else returns only the
+last point of the path.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -251,14 +256,26 @@ is smaller.</p>
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="sklearn.linear_model.lasso_path.html#sklearn.linear_model.lasso_path" title="sklearn.linear_model.lasso_path"><tt class="xref py py-obj docutils literal"><span class="pre">lasso_path</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.LassoLars.html#sklearn.linear_model.LassoLars" title="sklearn.linear_model.LassoLars"><tt class="xref py py-obj docutils literal"><span class="pre">LassoLars</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.Lars.html#sklearn.linear_model.Lars" title="sklearn.linear_model.Lars"><tt class="xref py py-obj docutils literal"><span class="pre">Lars</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV" title="sklearn.linear_model.LassoLarsCV"><tt class="xref py py-obj docutils literal"><span class="pre">LassoLarsCV</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.LarsCV.html#sklearn.linear_model.LarsCV" title="sklearn.linear_model.LarsCV"><tt class="xref py py-obj docutils literal"><span class="pre">LarsCV</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.sparse_encode.html#sklearn.decomposition.sparse_encode" title="sklearn.decomposition.sparse_encode"><tt class="xref py py-obj docutils literal"><span class="pre">sklearn.decomposition.sparse_encode</span></tt></a></p>
 </div>
-<p class="rubric">Notes</p>
-<ul class="simple">
-<li><a class="reference external" href="http://en.wikipedia.org/wiki/Least-angle_regression">http://en.wikipedia.org/wiki/Least-angle_regression</a></li>
-<li><a class="reference external" href="http://en.wikipedia.org/wiki/Lasso_(statistics">http://en.wikipedia.org/wiki/Lasso_(statistics</a>)#LASSO_method</li>
-</ul>
 <p class="rubric">References</p>
-<p>[1] &#8220;Least Angle Regression&#8221;, Effron et al.
-<a class="reference external" href="http://www-stat.stanford.edu/~tibs/ftp/lars.pdf">http://www-stat.stanford.edu/~tibs/ftp/lars.pdf</a></p>
+<table class="docutils citation" frame="void" id="r118" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R118]</a></td><td>&#8220;Least Angle Regression&#8221;, Effron et al.
+<a class="reference external" href="http://www-stat.stanford.edu/~tibs/ftp/lars.pdf">http://www-stat.stanford.edu/~tibs/ftp/lars.pdf</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r119" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R119]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Least-angle_regression">Wikipedia entry on the Least-angle regression</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r120" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[R120]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Lasso_(statistics)#Lasso_method">Wikipedia entry on the Lasso</a></td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>

@@ -169,17 +169,17 @@
 <h1>8.19.2.5. sklearn.metrics.classification_report<a class="headerlink" href="#sklearn-metrics-classification-report" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.classification_report">
-<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">classification_report</tt><big>(</big><em>y_true</em>, <em>y_pred</em>, <em>labels=None</em>, <em>target_names=None</em><big>)</big><a class="headerlink" href="#sklearn.metrics.classification_report" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">classification_report</tt><big>(</big><em>y_true</em>, <em>y_pred</em>, <em>labels=None</em>, <em>target_names=None</em>, <em>pos_label=1</em><big>)</big><a class="headerlink" href="#sklearn.metrics.classification_report" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a text report showing the main classification metrics</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like or list of labels or label indicator matrix</p>
 <blockquote>
 <div><p>Ground truth (correct) target values.</p>
 </div></blockquote>
-<p><strong>y_pred</strong> : array, shape = [n_samples]</p>
+<p><strong>y_true</strong> : array-like or list of labels or label indicator matrix</p>
 <blockquote>
 <div><p>Estimated targets as returned by a classifier.</p>
 </div></blockquote>
@@ -190,6 +190,11 @@
 <p><strong>target_names</strong> : list of strings</p>
 <blockquote>
 <div><p>Optional display names matching the labels (same order).</p>
+</div></blockquote>
+<p><strong>pos_label</strong> : int, 1 by default</p>
+<blockquote>
+<div><p>In multilabel classification, it is used to infer what is a
+positive label in the label indicator matrix format.</p>
 </div></blockquote>
 </td>
 </tr>

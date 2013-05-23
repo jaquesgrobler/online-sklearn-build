@@ -216,11 +216,15 @@ will be used.</p>
 <blockquote>
 <div><p>Flag indicating which strategy to use when performing
 Generalized Cross-Validation. Options are:</p>
-<div class="highlight-python"><pre>'auto' : use svd if n_samples &gt; n_features, otherwise use eigen
+<div class="highlight-python"><pre>'auto' : use svd if n_samples &gt; n_features or when X is a sparse
+         matrix, otherwise use eigen
 'svd' : force computation via singular value decomposition of X
+        (does not work for sparse matrices)
 'eigen' : force computation via eigendecomposition of X^T X</pre>
 </div>
-<p>The &#8216;auto&#8217; mode is the default and is intended to pick the cheaper         option of the two depending upon the shape of the training data.</p>
+<p>The &#8216;auto&#8217; mode is the default and is intended to pick the cheaper
+option of the two depending upon the shape and format of the training
+data.</p>
 </div></blockquote>
 <p><strong>store_cv_values</strong> : boolean, default=False</p>
 <blockquote class="last">

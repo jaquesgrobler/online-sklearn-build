@@ -577,12 +577,12 @@ be calculated using <a class="reference internal" href="generated/sklearn.svm.l1
 <p>The <em>kernel function</em> can be any of the following:</p>
 <blockquote>
 <div><ul class="simple">
-<li>linear: <img class="math" src="../_images/math/89236f7fdb8d5a6abe203db9593cab9b08b0b8fd.png" alt="&lt;x_i, x_j'&gt;"/>.</li>
-<li>polynomial: <img class="math" src="../_images/math/8c848651b6dd9e1c081f50d8966208bcbacec38a.png" alt="(\gamma &lt;x, x'&gt; + r)^d"/>. <cite>d</cite> is specified by
+<li>linear: <img class="math" src="../_images/math/335466a1d9412ae1cbeb16e982842a63548d5c88.png" alt="\langle x, x'\rangle"/>.</li>
+<li>polynomial: <img class="math" src="../_images/math/32c664ae249c848cd8455b326acb9b937d882b1b.png" alt="(\gamma \langle x, x'\rangle + r)^d"/>. <cite>d</cite> is specified by
 keyword <tt class="docutils literal"><span class="pre">degree</span></tt>, <cite>r</cite> by <tt class="docutils literal"><span class="pre">coef0</span></tt>.</li>
-<li>rbf (<img class="math" src="../_images/math/7b6e1197e6c4f0395b0c2b9397e18ad577af21c1.png" alt="\exp(-\gamma |x-x'|^2), \gamma &gt; 0"/>). <img class="math" src="../_images/math/66981fa3920210c6ad8dbe5e968783d5dd7520c3.png" alt="\gamma"/> is
-specified by keyword <tt class="docutils literal"><span class="pre">gamma</span></tt>.</li>
-<li>sigmoid (<img class="math" src="../_images/math/0303433e0be68508618a85695dc70a90bc0e92b5.png" alt="\tanh(&lt;x_i,x_j&gt; + r)"/>), where <cite>r</cite> is specified by
+<li>rbf: <img class="math" src="../_images/math/190818eacf35a0c45f76932d77ac2a440e855a24.png" alt="\exp(-\gamma |x-x'|^2)"/>. <img class="math" src="../_images/math/66981fa3920210c6ad8dbe5e968783d5dd7520c3.png" alt="\gamma"/> is
+specified by keyword <tt class="docutils literal"><span class="pre">gamma</span></tt>, must be greater than 0.</li>
+<li>sigmoid (<img class="math" src="../_images/math/4829b35686dacea41811753be471cf71ccbfb8df.png" alt="\tanh(\gamma \langle x,x'\rangle + r)"/>), where <cite>r</cite> is specified by
 <tt class="docutils literal"><span class="pre">coef0</span></tt>.</li>
 </ul>
 </div></blockquote>

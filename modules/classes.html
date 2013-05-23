@@ -508,7 +508,7 @@ Models.</p>
 <span id="sklearn-cross-validation-cross-validation"></span><span id="cross-validation-ref"></span><h2><a class="toc-backref" href="#id5">8.3. <a class="reference internal" href="#module-sklearn.cross_validation" title="sklearn.cross_validation"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.cross_validation</span></tt></a>: Cross Validation</a><a class="headerlink" href="#module-sklearn.cross_validation" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-sklearn.cross_validation" title="sklearn.cross_validation"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.cross_validation</span></tt></a> module includes utilities for cross-
 validation and performance evaluation.</p>
-<p><strong>User guide:</strong> See the <a class="reference internal" href="cross_validation.html#cross-validation"><em>Cross-Validation: evaluating estimator performance</em></a> section for further details.</p>
+<p><strong>User guide:</strong> See the <a class="reference internal" href="cross_validation.html#cross-validation"><em>Cross-validation: evaluating estimator performance</em></a> section for further details.</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -1052,7 +1052,7 @@ based predictions.</p>
 <span id="sklearn-grid-search-grid-search"></span><span id="grid-search-ref"></span><h2><a class="toc-backref" href="#id18">8.11. <a class="reference internal" href="#module-sklearn.grid_search" title="sklearn.grid_search"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.grid_search</span></tt></a>: Grid Search</a><a class="headerlink" href="#module-sklearn.grid_search" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-sklearn.grid_search" title="sklearn.grid_search"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.grid_search</span></tt></a> includes utilities to fine-tune the parameters
 of an estimator.</p>
-<p><strong>User guide:</strong> See the <a class="reference internal" href="grid_search.html#grid-search"><em>Grid Search: setting estimator parameters</em></a> section for further details.</p>
+<p><strong>User guide:</strong> See the <a class="reference internal" href="grid_search.html#grid-search"><em>Grid Search: Searching for estimator parameters</em></a> section for further details.</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -1406,25 +1406,28 @@ and pairwise metrics and distance computations.</p>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.hinge_loss.html#sklearn.metrics.hinge_loss" title="sklearn.metrics.hinge_loss"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.hinge_loss</span></tt></a>(y_true,&nbsp;pred_decision[,&nbsp;...])</td>
 <td>Average hinge loss (non-regularized)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.matthews_corrcoef.html#sklearn.metrics.matthews_corrcoef" title="sklearn.metrics.matthews_corrcoef"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.matthews_corrcoef</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.jaccard_similarity_score.html#sklearn.metrics.jaccard_similarity_score" title="sklearn.metrics.jaccard_similarity_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.jaccard_similarity_score</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>Jaccard similarity coefficient score</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.matthews_corrcoef.html#sklearn.metrics.matthews_corrcoef" title="sklearn.metrics.matthews_corrcoef"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.matthews_corrcoef</span></tt></a>(y_true,&nbsp;y_pred)</td>
 <td>Compute the Matthews correlation coefficient (MCC) for binary classes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve" title="sklearn.metrics.precision_recall_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_recall_curve</span></tt></a>(y_true,&nbsp;...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve" title="sklearn.metrics.precision_recall_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_recall_curve</span></tt></a>(y_true,&nbsp;...)</td>
 <td>Compute precision-recall pairs for different probability thresholds</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support" title="sklearn.metrics.precision_recall_fscore_support"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_recall_fscore_support</span></tt></a>(...)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support" title="sklearn.metrics.precision_recall_fscore_support"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_recall_fscore_support</span></tt></a>(...)</td>
 <td>Compute precision, recall, F-measure and support for each class</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
 <td>Compute the precision</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.recall_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.recall_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
 <td>Compute the recall</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve" title="sklearn.metrics.roc_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.roc_curve</span></tt></a>(y_true,&nbsp;y_score[,&nbsp;pos_label])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve" title="sklearn.metrics.roc_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.roc_curve</span></tt></a>(y_true,&nbsp;y_score[,&nbsp;pos_label])</td>
 <td>Compute Receiver operating characteristic (ROC)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.zero_one_loss</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.zero_one_loss</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
 <td>Zero-one classification loss.</td>
 </tr>
 </tbody>

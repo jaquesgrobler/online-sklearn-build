@@ -254,13 +254,13 @@ from 56436 down to 10000 while reasonably preserving pairwise distances.</p>
 </ul>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Embedding 500 samples with dim 64 using various random projections
-Projected 500 samples from 64 to 300 in 0.068s
+Projected 500 samples from 64 to 300 in 0.069s
 Random matrix with size: 0.029MB
 Mean distances rate: 0.98 (0.10)
-Projected 500 samples from 64 to 1000 in 0.081s
+Projected 500 samples from 64 to 1000 in 0.086s
 Random matrix with size: 0.096MB
 Mean distances rate: 0.99 (0.04)
-Projected 500 samples from 64 to 10000 in 0.886s
+Projected 500 samples from 64 to 10000 in 0.774s
 Random matrix with size: 0.962MB
 Mean distances rate: 1.00 (0.01)</pre>
 </div>
@@ -294,7 +294,7 @@ Mean distances rate: 1.00 (0.01)</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&quot;Number of observations to eps-embed&quot;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylabel"><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s">&quot;Minimum number of dimensions&quot;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&quot;Johnson-Lindenstrauss bounds:</span><span class="se">\n</span><span class="s">n_samples vs n_components&quot;</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c"># range of admissible distortions</span>
 <span class="n">eps_range</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.linspace.html#numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -312,7 +312,7 @@ Mean distances rate: 1.00 (0.01)</pre>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&quot;Distortion eps&quot;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylabel"><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s">&quot;Minimum number of dimensions&quot;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&quot;Johnson-Lindenstrauss bounds:</span><span class="se">\n</span><span class="s">n_components vs eps&quot;</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c"># Part 2: perform sparse random projection of some digits images which are</span>
 <span class="c"># quite low dimensional and dense or documents of the 20 newsgroups dataset</span>
@@ -368,13 +368,13 @@ Mean distances rate: 1.00 (0.01)</pre>
     <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylabel"><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s">&quot;Distribution of samples pairs&quot;</span><span class="p">)</span>
     <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&quot;Histogram of pairwise distance rates for n_components=</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span>
              <span class="n">n_components</span><span class="p">)</span>
-    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
     <span class="c"># TODO: compute the expected value of eps and add them to the previous plot</span>
     <span class="c"># as vertical lines / region</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  32.46 seconds</p>
+<p><strong>Total running time of the example:</strong>  43.28 seconds</p>
 </div>
 </div>
 

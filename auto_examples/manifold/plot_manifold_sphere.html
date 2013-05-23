@@ -186,17 +186,17 @@ that of representing a flat map of the Earth, as with
 <a class="reference external" href="http://en.wikipedia.org/wiki/Map_projection">map projection</a></p>
 <img alt="../../_images/plot_manifold_sphere_1.png" class="align-center" src="../../_images/plot_manifold_sphere_1.png" />
 <p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>standard: 0.55 sec
-ltsa: 0.96 sec
+<div class="highlight-python"><pre>standard: 0.57 sec
+ltsa: 0.94 sec
 hessian: 1.4 sec
-modified: 1.2 sec
+modified: 1.1 sec
 ISO: 1.5 sec
-MDS: 9.4 sec
-Spectral Embedding: 1.5 sec</pre>
+MDS: 9.3 sec
+Spectral Embedding: 1.4 sec</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_manifold_sphere.py"><tt class="xref download docutils literal"><span class="pre">plot_manifold_sphere.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author: Jaques Grobler &lt;jaques.grobler@inria.fr&gt;</span>
-<span class="c"># License: BSD</span>
+<span class="c"># License: BSD 3 clause</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
@@ -306,10 +306,10 @@ Spectral Embedding: 1.5 sec</pre>
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><a href="http://matplotlib.org/api/ticker_api.html#matplotlib.ticker.NullFormatter"><span class="n">NullFormatter</span></a><span class="p">())</span>
 <a href="http://matplotlib.org/api/axis_api.html#matplotlib.axis"><span class="n">pl</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
 
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  18.46 seconds</p>
+<p><strong>Total running time of the example:</strong>  17.54 seconds</p>
 </div>
 
 

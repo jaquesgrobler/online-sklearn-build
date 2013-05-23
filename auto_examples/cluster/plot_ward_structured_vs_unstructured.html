@@ -185,17 +185,17 @@ the clusters form a nice parcellation of the swiss roll.</p>
 </ul>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Compute unstructured hierarchical clustering...
-('Elapsed time: ', 2.5168800354003906)
+('Elapsed time: ', 2.113636016845703)
 ('Number of points: ', 1000)
 Compute structured hierarchical clustering...
-('Elapsed time: ', 0.4929029941558838)
+('Elapsed time: ', 0.482496976852417)
 ('Number of points: ', 1000)</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_ward_structured_vs_unstructured.py"><tt class="xref download docutils literal"><span class="pre">plot_ward_structured_vs_unstructured.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Authors : Vincent Michel, 2010</span>
 <span class="c">#           Alexandre Gramfort, 2010</span>
 <span class="c">#           Gael Varoquaux, 2010</span>
-<span class="c"># License: BSD</span>
+<span class="c"># License: BSD 3 clause</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
@@ -258,10 +258,10 @@ Compute structured hierarchical clustering...
               <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">label</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;With connectivity constraints&#39;</span><span class="p">)</span>
 
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  4.31 seconds</p>
+<p><strong>Total running time of the example:</strong>  3.99 seconds</p>
 </div>
 
 

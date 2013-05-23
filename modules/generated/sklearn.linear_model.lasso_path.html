@@ -178,7 +178,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : ndarray, shape = (n_samples, n_features)</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape (n_samples, n_features)</p>
 <blockquote>
 <div><p>Training data. Pass directly as Fortran-contiguous data to avoid
 unnecessary memory duplication</p>
@@ -268,7 +268,8 @@ values output by lars_path</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">lars_path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">alphas</span><span class="p">,</span> <span class="n">active</span><span class="p">,</span> <span class="n">coef_path_lars</span> <span class="o">=</span> <span class="n">lars_path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;lasso&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">coef_path_continuous</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">alphas</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">coef_path_lars</span><span class="p">[:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coef_path_continuous</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">alphas</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">coef_path_lars</span><span class="p">[:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">coef_path_continuous</span><span class="p">([</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">]))</span>
 <span class="go">[[ 0.          0.          0.46915237]</span>
 <span class="go"> [ 0.2159048   0.4425765   0.23668876]]</span>

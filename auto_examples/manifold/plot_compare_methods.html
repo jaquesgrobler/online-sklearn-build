@@ -181,12 +181,12 @@ representation of the data in the low-dimensional space.</p>
 <img alt="../../_images/plot_compare_methods_1.png" class="align-center" src="../../_images/plot_compare_methods_1.png" />
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>standard: 0.73 sec
-ltsa: 1.5 sec
-hessian: 2 sec
+ltsa: 1.4 sec
+hessian: 1.8 sec
 modified: 1.6 sec
 Isomap: 2.8 sec
-MDS: 18 sec
-SpectralEmbedding: 1.8 sec</pre>
+MDS: 17 sec
+SpectralEmbedding: 1.7 sec</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_compare_methods.py"><tt class="xref download docutils literal"><span class="pre">plot_compare_methods.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author: Jake Vanderplas -- &lt;vanderplas@astro.washington.edu&gt;</span>
@@ -278,10 +278,10 @@ SpectralEmbedding: 1.8 sec</pre>
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><a href="http://matplotlib.org/api/ticker_api.html#matplotlib.ticker.NullFormatter"><span class="n">NullFormatter</span></a><span class="p">())</span>
 <a href="http://matplotlib.org/api/axis_api.html#matplotlib.axis"><span class="n">pl</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
 
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">pl</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  30.39 seconds</p>
+<p><strong>Total running time of the example:</strong>  28.75 seconds</p>
 </div>
 
 

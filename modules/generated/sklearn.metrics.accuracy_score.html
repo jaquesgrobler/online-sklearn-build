@@ -171,6 +171,9 @@
 <dt id="sklearn.metrics.accuracy_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">accuracy_score</tt><big>(</big><em>y_true</em>, <em>y_pred</em>, <em>normalize=True</em><big>)</big><a class="headerlink" href="#sklearn.metrics.accuracy_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Accuracy classification score.</p>
+<p>In multilabel classification, this function computes subset accuracy:
+the set of labels predicted for a sample must <em>exactly</em> match the
+corresponding set of labels in y_true.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -192,8 +195,11 @@ Otherwise, return the fraction of correctly classified samples.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>score</strong> : float</p>
 <blockquote class="last">
-<div><p>The fraction of correct predictions in <tt class="docutils literal"><span class="pre">y_pred</span></tt>.
-The best performance is 1.</p>
+<div><p>If <tt class="docutils literal"><span class="pre">normalize</span> <span class="pre">==</span> <span class="pre">True</span></tt>, return the correctly classified samples
+(float), else it returns the number of correctly classified samples
+(int).</p>
+<p>The best performance is 1 with <tt class="docutils literal"><span class="pre">normalize</span> <span class="pre">==</span> <span class="pre">True</span></tt> and the number
+of samples with <tt class="docutils literal"><span class="pre">normalize</span> <span class="pre">==</span> <span class="pre">False</span></tt>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -201,15 +207,11 @@ The best performance is 1.</p>
 </table>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><a class="reference internal" href="sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">zero_one_loss</span></tt></a></dt>
-<dd>zero-one classification loss</dd>
-</dl>
+<p class="last"><a class="reference internal" href="sklearn.metrics.jaccard_similarity_score.html#sklearn.metrics.jaccard_similarity_score" title="sklearn.metrics.jaccard_similarity_score"><tt class="xref py py-obj docutils literal"><span class="pre">jaccard_similarity_score</span></tt></a>, <a class="reference internal" href="sklearn.metrics.hamming_loss.html#sklearn.metrics.hamming_loss" title="sklearn.metrics.hamming_loss"><tt class="xref py py-obj docutils literal"><span class="pre">hamming_loss</span></tt></a>, <a class="reference internal" href="sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-obj docutils literal"><span class="pre">zero_one_loss</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>In multilabel classification, this function computes subset accuracy:
-the set of labels predicted for a sample must <em>exactly</em> match the
-corresponding set of labels in y_true.</p>
+<p>In binary and multiclass classification, this function is equal
+to the <tt class="docutils literal"><span class="pre">jaccard_similarity_score</span></tt> function.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
@@ -222,13 +224,15 @@ corresponding set of labels in y_true.</p>
 </pre></div>
 </div>
 <p>In the multilabel case with binary indicator format:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="go">0.5</span>
+</pre></div>
+</div>
+<p>and with a list of labels format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">accuracy_score</span><span class="p">([(</span><span class="mi">1</span><span class="p">,),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)],</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">tuple</span><span class="p">()])</span>
 <span class="go">0.0</span>
 </pre></div>
 </div>
-<p>and with a list of labels format:
-&gt;&gt;&gt; accuracy_score([(1, 2), (3,)], [(1, 2), tuple()])
-0.5</p>
 </dd></dl>
 
 </div>

@@ -169,7 +169,7 @@
 <h1>8.3.11. sklearn.cross_validation.cross_val_score<a class="headerlink" href="#sklearn-cross-validation-cross-val-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.cross_validation.cross_val_score">
-<tt class="descclassname">sklearn.cross_validation.</tt><tt class="descname">cross_val_score</tt><big>(</big><em>estimator</em>, <em>X</em>, <em>y=None</em>, <em>scoring=None</em>, <em>cv=None</em>, <em>n_jobs=1</em>, <em>verbose=0</em>, <em>fit_params=None</em>, <em>score_func=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.cross_val_score" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.cross_validation.</tt><tt class="descname">cross_val_score</tt><big>(</big><em>estimator</em>, <em>X</em>, <em>y=None</em>, <em>scoring=None</em>, <em>cv=None</em>, <em>n_jobs=1</em>, <em>verbose=0</em>, <em>fit_params=None</em>, <em>score_func=None</em>, <em>pre_dispatch='2*n_jobs'</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.cross_val_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate a score by cross-validation</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -213,6 +213,25 @@ when y is supplied and estimator is a classifier.</p>
 <p><strong>fit_params</strong> : dict, optional</p>
 <blockquote>
 <div><p>Parameters to pass to the fit method of the estimator.</p>
+</div></blockquote>
+<p><strong>pre_dispatch</strong> : int, or string, optional</p>
+<blockquote>
+<div><p>Controls the number of jobs that get dispatched during parallel
+execution. Reducing this number can be useful to avoid an
+explosion of memory consumption when more jobs get dispatched
+than CPUs can process. This parameter can be:</p>
+<blockquote>
+<div><ul class="simple">
+<li>None, in which case all the jobs are immediately
+created and spawned. Use this for lightweight and
+fast-running jobs, to avoid delays due to on-demand
+spawning of the jobs</li>
+<li>An int, giving the exact number of total jobs that are
+spawned</li>
+<li>A string, giving an expression as a function of n_jobs,
+as in &#8216;2*n_jobs&#8217;</li>
+</ul>
+</div></blockquote>
 </div></blockquote>
 </td>
 </tr>

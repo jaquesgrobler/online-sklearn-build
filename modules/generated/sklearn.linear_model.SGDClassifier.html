@@ -186,13 +186,21 @@ of floating point values for the features.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>loss</strong> : str, &#8216;hinge&#8217; or &#8216;log&#8217; or &#8216;modified_huber&#8217;</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>loss</strong> : str, &#8216;hinge&#8217;, &#8216;log&#8217;, &#8216;modified_huber&#8217;, &#8216;squared_hinge&#8217;,</p>
 <blockquote>
-<div><p>The loss function to be used. Defaults to &#8216;hinge&#8217;. The hinge loss is
+<div><blockquote>
+<div><p>&#8216;perceptron&#8217;, or a regression loss: &#8216;squared_loss&#8217;, &#8216;huber&#8217;,
+&#8216;epsilon_insensitive&#8217;, or &#8216;squared_epsilon_insensitive&#8217;</p>
+</div></blockquote>
+<p>The loss function to be used. Defaults to &#8216;hinge&#8217;. The hinge loss is
 a margin loss used by standard linear SVM models. The &#8216;log&#8217; loss is
 the loss of logistic regression models and can be used for
 probability estimation in binary classifiers. &#8216;modified_huber&#8217;
-is another smooth loss that brings tolerance to outliers.</p>
+is another smooth loss that brings tolerance to outliers.
+&#8216;squared_hinge&#8217; is like hinge but is quadratically penalized.
+&#8216;perceptron&#8217;is the linear loss used by the perceptron algorithm.
+The other losses are designed for regression but can be useful in
+classification as well; see SGDRegressor for a description.</p>
 </div></blockquote>
 <p><strong>penalty</strong> : str, &#8216;l2&#8217; or &#8216;l1&#8217; or &#8216;elasticnet&#8217;</p>
 <blockquote>
@@ -237,10 +245,12 @@ shuffling the data.</p>
 </div></blockquote>
 <p><strong>epsilon: float</strong> :</p>
 <blockquote>
-<div><p>Epsilon in the epsilon-insensitive loss functions;
-only if <cite>loss==&#8217;huber&#8217;</cite> or <cite>loss=&#8217;epsilon_insensitive&#8217;</cite>.
-If the difference between the current prediction and the correct label
-is below this threshold, the model is not updated.</p>
+<div><p>Epsilon in the epsilon-insensitive loss functions; only if <cite>loss</cite> is
+&#8216;huber&#8217;, &#8216;epsilon_insensitive&#8217;, or &#8216;squared_epsilon_insensitive&#8217;.
+For &#8216;huber&#8217;, determines the threshold at which it becomes less
+important to get the prediction exactly right.
+For epsilon-insensitive, any differences between the current prediction
+and the correct label are ignored if they are less than this threshold.</p>
 </div></blockquote>
 <p><strong>n_jobs: integer, optional</strong> :</p>
 <blockquote>
