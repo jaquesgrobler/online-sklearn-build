@@ -173,9 +173,9 @@ coordinate descent.</p>
 <ul class="horizontal">
 <li><a class="first reference internal image-reference" href="../../_images/plot_lasso_coordinate_descent_path_1.png"><img alt="../../_images/plot_lasso_coordinate_descent_path_1.png" src="../../_images/plot_lasso_coordinate_descent_path_1.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lasso_coordinate_descent_path_3.png"><img alt="../../_images/plot_lasso_coordinate_descent_path_3.png" src="../../_images/plot_lasso_coordinate_descent_path_3.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_lasso_coordinate_descent_path_2.png"><img alt="../../_images/plot_lasso_coordinate_descent_path_2.png" src="../../_images/plot_lasso_coordinate_descent_path_2.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_lasso_coordinate_descent_path_3.png"><img alt="../../_images/plot_lasso_coordinate_descent_path_3.png" src="../../_images/plot_lasso_coordinate_descent_path_3.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 </ul>
 <p><strong>Script output</strong>:</p>
@@ -236,7 +236,7 @@ Computing regularization path using the positve elastic net...</pre>
 <span class="n">l1</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">alphas_lasso</span><span class="p">),</span> <span class="n">coefs_lasso</span><span class="p">)</span>
 <span class="n">l2</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">alphas_enet</span><span class="p">),</span> <span class="n">coefs_enet</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
 
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&#39;-Log(alpha)&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&#39;-Log(lambda)&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylabel"><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s">&#39;coefficients&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;Lasso and Elastic-Net Paths&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">pl</span><span class="o">.</span><span class="n">legend</span></a><span class="p">((</span><span class="n">l1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">l2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="s">&#39;Lasso&#39;</span><span class="p">,</span> <span class="s">&#39;Elastic-Net&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;lower left&#39;</span><span class="p">)</span>
@@ -250,7 +250,7 @@ Computing regularization path using the positve elastic net...</pre>
 <span class="n">l2</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">alphas_positive_lasso</span><span class="p">),</span> <span class="n">coefs_positive_lasso</span><span class="p">,</span>
              <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
 
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&#39;-Log(alpha)&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&#39;-Log(lambda)&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylabel"><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s">&#39;coefficients&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;Lasso and positive Lasso&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">pl</span><span class="o">.</span><span class="n">legend</span></a><span class="p">((</span><span class="n">l1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">l2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="s">&#39;Lasso&#39;</span><span class="p">,</span> <span class="s">&#39;positive Lasso&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;lower left&#39;</span><span class="p">)</span>
@@ -264,7 +264,7 @@ Computing regularization path using the positve elastic net...</pre>
 <span class="n">l2</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">alphas_positive_enet</span><span class="p">),</span> <span class="n">coefs_positive_enet</span><span class="p">,</span>
              <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
 
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&#39;-Log(alpha)&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&#39;-Log(lambda)&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylabel"><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s">&#39;coefficients&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;Elastic-Net and positive Elastic-Net&#39;</span><span class="p">)</span>
 <a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">pl</span><span class="o">.</span><span class="n">legend</span></a><span class="p">((</span><span class="n">l1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">l2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="s">&#39;Elastic-Net&#39;</span><span class="p">,</span> <span class="s">&#39;positive Elastic-Net&#39;</span><span class="p">),</span>
@@ -273,7 +273,7 @@ Computing regularization path using the positve elastic net...</pre>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  1.52 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.56 seconds</p>
 </div>
 
 

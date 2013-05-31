@@ -20,17 +20,7 @@ matrix decomposition (dimension reduction) methods from the module
 
     *
 
-      .. image:: images/plot_faces_decomposition_9.png
-            :scale: 47
-
-    *
-
-      .. image:: images/plot_faces_decomposition_3.png
-            :scale: 47
-
-    *
-
-      .. image:: images/plot_faces_decomposition_8.png
+      .. image:: images/plot_faces_decomposition_1.png
             :scale: 47
 
     *
@@ -40,17 +30,12 @@ matrix decomposition (dimension reduction) methods from the module
 
     *
 
+      .. image:: images/plot_faces_decomposition_3.png
+            :scale: 47
+
+    *
+
       .. image:: images/plot_faces_decomposition_4.png
-            :scale: 47
-
-    *
-
-      .. image:: images/plot_faces_decomposition_7.png
-            :scale: 47
-
-    *
-
-      .. image:: images/plot_faces_decomposition_1.png
             :scale: 47
 
     *
@@ -63,24 +48,39 @@ matrix decomposition (dimension reduction) methods from the module
       .. image:: images/plot_faces_decomposition_6.png
             :scale: 47
 
+    *
+
+      .. image:: images/plot_faces_decomposition_7.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_faces_decomposition_8.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_faces_decomposition_9.png
+            :scale: 47
+
 
 **Script output**::
 
   Dataset consists of 400 faces
   Extracting the top 6 Eigenfaces - RandomizedPCA...
-  done in 0.799s
+  done in 0.390s
   Extracting the top 6 Non-negative components - NMF...
-  done in 3.259s
+  done in 1.552s
   Extracting the top 6 Independent components - FastICA...
-  done in 4.508s
+  done in 2.547s
   Extracting the top 6 Sparse comp. - MiniBatchSparsePCA...
-  done in 5.902s
+  done in 2.217s
   Extracting the top 6 MiniBatchDictionaryLearning...
-  done in 4.269s
+  done in 2.472s
   Extracting the top 6 Cluster centers - MiniBatchKMeans...
-  done in 1.050s
+  done in 0.656s
   Extracting the top 6 Factor Analysis components - FA...
-  done in 11.753s
+  done in 8.160s
 
 
 
@@ -89,5 +89,5 @@ matrix decomposition (dimension reduction) methods from the module
 .. literalinclude:: plot_faces_decomposition.py
     :lines: 12-
 
-**Total running time of the example:**  37.90 seconds
+**Total running time of the example:**  20.75 seconds
     

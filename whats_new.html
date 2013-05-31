@@ -235,7 +235,6 @@
 <div class="section" id="changelog">
 <h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><blockquote>
 <div><ul class="simple">
 <li>Added an interactive version of <a class="reference external" href="http://peekaboo-vision.blogspot.com">Andreas Müller</a>&#8216;s
 <a class="reference external" href="http://peekaboo-vision.blogspot.de/2013/01/machine-learning-cheat-sheet-for-scikit.html">Machine Learning Cheat Sheet (for scikit-learn)</a>
@@ -251,21 +250,10 @@ deprecated.</li>
 <tt class="xref py py-class docutils literal"><span class="pre">ensemble.AdaBoostRegressor</span></tt>, by <a class="reference external" href="http://noel.dawe.me">Noel Dawe</a>  and
 <a class="reference external" href="http://www.montefiore.ulg.ac.be/~glouppe/">Gilles Louppe</a>. See the <a class="reference internal" href="modules/ensemble.html#adaboost"><em>AdaBoost</em></a> section of the user
 guide for details and examples.</li>
-<li>Multi-label classification output is now supported by
-<a class="reference internal" href="modules/generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.accuracy_score</span></tt></a>, <a class="reference internal" href="modules/generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-func docutils literal"><span class="pre">metrics.zero_one_loss</span></tt></a>,
-<a class="reference internal" href="modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.f1_score</span></tt></a>, <a class="reference internal" href="modules/generated/sklearn.metrics.fbeta_score.html#sklearn.metrics.fbeta_score" title="sklearn.metrics.fbeta_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.fbeta_score</span></tt></a>,
-<a class="reference internal" href="modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report" title="sklearn.metrics.classification_report"><tt class="xref py py-func docutils literal"><span class="pre">metrics.classification_report</span></tt></a>,
-<a class="reference internal" href="modules/generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.precision_score</span></tt></a> and <a class="reference internal" href="modules/generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.recall_score</span></tt></a>
-by <a class="reference external" href="http://www.ajoly.org">Arnaud Joly</a>.</li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li>Two new metrics <a class="reference internal" href="modules/generated/sklearn.metrics.hamming_loss.html#sklearn.metrics.hamming_loss" title="sklearn.metrics.hamming_loss"><tt class="xref py py-func docutils literal"><span class="pre">metrics.hamming_loss</span></tt></a> and
-<a class="reference internal" href="modules/generated/sklearn.metrics.jaccard_similarity_score.html#sklearn.metrics.jaccard_similarity_score" title="sklearn.metrics.jaccard_similarity_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.jaccard_similarity_score</span></tt></a>
+<li><a class="reference internal" href="modules/generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.accuracy_score</span></tt></a>, <a class="reference internal" href="modules/generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss" title="sklearn.metrics.zero_one_loss"><tt class="xref py py-func docutils literal"><span class="pre">metrics.zero_one_loss</span></tt></a> support
+multi-label classification and two new metrics <a class="reference internal" href="modules/generated/sklearn.metrics.hamming_loss.html#sklearn.metrics.hamming_loss" title="sklearn.metrics.hamming_loss"><tt class="xref py py-func docutils literal"><span class="pre">metrics.hamming_loss</span></tt></a>
+and <a class="reference internal" href="modules/generated/sklearn.metrics.jaccard_similarity_score.html#sklearn.metrics.jaccard_similarity_score" title="sklearn.metrics.jaccard_similarity_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.jaccard_similarity_score</span></tt></a>
 are added with multi-label support by <a class="reference external" href="http://www.ajoly.org">Arnaud Joly</a>.</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
 <li>Speed and memory usage improvements in
 <a class="reference internal" href="modules/generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">feature_extraction.text.CountVectorizer</span></tt></a> and
 <a class="reference internal" href="modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html#sklearn.feature_extraction.text.TfidfVectorizer" title="sklearn.feature_extraction.text.TfidfVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">feature_extraction.text.TfidfVectorizer</span></tt></a>,
@@ -303,17 +291,7 @@ Nelle Varoquaux.</li>
 <li><a class="reference internal" href="modules/generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.accuracy_score</span></tt></a> has an option normalize to return
 the fraction or the number of correctly classified sample
 by <a class="reference external" href="http://www.ajoly.org">Arnaud Joly</a>.</li>
-<li>A bug that caused <tt class="xref py py-class docutils literal"><span class="pre">ensemble.AdaBoostClassifier</span></tt>&#8216;s to output
-incorrect probabilities has been fixed.</li>
-<li>Feature selectors now share a mixin providing consistent <cite>transform</cite>,
-<cite>inverse_transform</cite> and <cite>get_support</cite> methods. By <a class="reference external" href="http://joelnothman.com">Joel Nothman</a>.</li>
-<li>A fitted <a class="reference internal" href="modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">grid_search.GridSearchCV</span></tt></a> or
-<a class="reference internal" href="modules/generated/sklearn.grid_search.RandomizedSearchCV.html#sklearn.grid_search.RandomizedSearchCV" title="sklearn.grid_search.RandomizedSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">grid_search.RandomizedSearchCV</span></tt></a> can now generally be pickled.
-By <a class="reference external" href="http://joelnothman.com">Joel Nothman</a>.</li>
-<li>Refactored and vectorized implementation of <a class="reference internal" href="modules/generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve" title="sklearn.metrics.roc_curve"><tt class="xref py py-func docutils literal"><span class="pre">metrics.roc_curve</span></tt></a>
-and <a class="reference internal" href="modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve" title="sklearn.metrics.precision_recall_curve"><tt class="xref py py-func docutils literal"><span class="pre">metrics.precision_recall_curve</span></tt></a>. By <a class="reference external" href="http://joelnothman.com">Joel Nothman</a>.</li>
 </ul>
-</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="api-changes-summary">
@@ -921,7 +899,7 @@ and <a class="reference internal" href="modules/generated/sklearn.metrics.pairwi
 by <a class="reference external" href="http://www.mblondel.org/journal/">Mathieu Blondel</a>.</li>
 <li><a class="reference internal" href="modules/clustering.html#k-means"><em>K-means</em></a> can now be run in parallel, using the <cite>n_jobs</cite> argument
 to either <a class="reference internal" href="modules/clustering.html#k-means"><em>K-means</em></a> or <tt class="xref py py-class docutils literal"><span class="pre">KMeans</span></tt>, by <a class="reference external" href="http://www.twitter.com/robertlayton">Robert Layton</a>.</li>
-<li>Improved <a class="reference internal" href="modules/cross_validation.html#cross-validation"><em>Cross-validation: evaluating estimator performance</em></a> and <a class="reference internal" href="modules/grid_search.html#grid-search"><em>Grid Search: Searching for estimator parameters</em></a> documentation
+<li>Improved <a class="reference internal" href="modules/cross_validation.html#cross-validation"><em>Cross-validation: evaluating estimator performance</em></a> and <a class="reference internal" href="modules/grid_search.html#grid-search"><em>Grid Search: setting estimator parameters</em></a> documentation
 and introduced the new <a class="reference internal" href="modules/generated/sklearn.cross_validation.train_test_split.html#sklearn.cross_validation.train_test_split" title="sklearn.cross_validation.train_test_split"><tt class="xref py py-func docutils literal"><span class="pre">cross_validation.train_test_split</span></tt></a>
 helper function by <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a></li>
 <li><a class="reference internal" href="modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><tt class="xref py py-class docutils literal"><span class="pre">svm.SVC</span></tt></a> members <cite>coef_</cite> and <cite>intercept_</cite> changed sign for consistency

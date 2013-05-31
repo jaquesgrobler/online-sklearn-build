@@ -214,10 +214,10 @@ Useful for doing grid searches.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r116" rules="none">
+<table class="docutils citation" frame="void" id="r115" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R116]</a></td><td>Guyon, I., Weston, J., Barnhill, S., &amp; Vapnik, V., &#8220;Gene selection
+<tr><td class="label"><a class="fn-backref" href="#id1">[R115]</a></td><td>Guyon, I., Weston, J., Barnhill, S., &amp; Vapnik, V., &#8220;Gene selection
 for cancer classification using support vector machines&#8221;,
 Mach. Learn., 46(1-3), 389&#8211;422, 2002.</td></tr>
 </tbody>
@@ -278,32 +278,23 @@ features in the Friedman #1 dataset.</p>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.fit" title="sklearn.feature_selection.RFE.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
 <td>Fit the RFE model and then the underlying estimator on the selected</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.fit_transform" title="sklearn.feature_selection.RFE.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
-<td>Fit to data, then transform it</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.get_params" title="sklearn.feature_selection.RFE.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.get_params" title="sklearn.feature_selection.RFE.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for the estimator</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.get_support" title="sklearn.feature_selection.RFE.get_support"><tt class="xref py py-obj docutils literal"><span class="pre">get_support</span></tt></a>([indices])</td>
-<td>Get a mask, or integer index, of the features selected</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.inverse_transform" title="sklearn.feature_selection.RFE.inverse_transform"><tt class="xref py py-obj docutils literal"><span class="pre">inverse_transform</span></tt></a>(X)</td>
-<td>Reverse the transformation operation</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.predict" title="sklearn.feature_selection.RFE.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.predict" title="sklearn.feature_selection.RFE.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
 <td>Reduce X to the selected features and then predict using the</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt>(X)</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt>(X)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.score" title="sklearn.feature_selection.RFE.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.score" title="sklearn.feature_selection.RFE.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
 <td>Reduce X to the selected features and then return the score of the</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.set_params" title="sklearn.feature_selection.RFE.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.set_params" title="sklearn.feature_selection.RFE.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.transform" title="sklearn.feature_selection.RFE.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X)</td>
-<td>Reduce X to the selected features.</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_selection.RFE.transform" title="sklearn.feature_selection.RFE.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X)</td>
+<td>Reduce X to the selected features during the elimination.</td>
 </tr>
 </tbody>
 </table>
@@ -336,36 +327,6 @@ features.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="sklearn.feature_selection.RFE.fit_transform">
-<tt class="descname">fit_transform</tt><big>(</big><em>X</em>, <em>y=None</em>, <em>**fit_params</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.RFE.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit to data, then transform it</p>
-<p>Fits transformer to X and y with optional parameters fit_params
-and returns a transformed version of X.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array of shape [n_samples, n_features]</p>
-<blockquote>
-<div><p>Training set.</p>
-</div></blockquote>
-<p><strong>y</strong> : numpy array of shape [n_samples]</p>
-<blockquote>
-<div><p>Target values.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X_new</strong> : numpy array of shape [n_samples, n_features_new]</p>
-<blockquote class="last">
-<div><p>Transformed array.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="sklearn.feature_selection.RFE.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.RFE.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for the estimator</p>
@@ -383,61 +344,6 @@ contained subobjects that are estimators.</p>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
 <blockquote class="last">
 <div><p>Parameter names mapped to their values.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sklearn.feature_selection.RFE.get_support">
-<tt class="descname">get_support</tt><big>(</big><em>indices=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.RFE.get_support" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a mask, or integer index, of the features selected</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>indices</strong> : boolean (default False)</p>
-<blockquote>
-<div><p>If True, the return value will be an array of integers, rather
-than a boolean mask.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>support</strong> : array</p>
-<blockquote class="last">
-<div><p>An index that selects the retained features from a feature vector.
-If <cite>indices</cite> is False, this is a boolean array of shape
-[# input features], in which an element is True iff its
-corresponding feature is selected for retention. If <cite>indices</cite> is
-True, this is an integer array of shape [# output features] whose
-values are indices into the input feature vector.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sklearn.feature_selection.RFE.inverse_transform">
-<tt class="descname">inverse_transform</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.RFE.inverse_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reverse the transformation operation</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array of shape [n_samples, n_selected_features]</p>
-<blockquote>
-<div><p>The input samples.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X_r</strong> : array of shape [n_samples, n_original_features]</p>
-<blockquote class="last">
-<div><p><cite>X</cite> with columns of zeros inserted where features would have
-been removed by <cite>transform</cite>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -514,7 +420,7 @@ component of a nested object.</p>
 <dl class="method">
 <dt id="sklearn.feature_selection.RFE.transform">
 <tt class="descname">transform</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.RFE.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reduce X to the selected features.</p>
+<dd><p>Reduce X to the selected features during the elimination.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -527,7 +433,7 @@ component of a nested object.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X_r</strong> : array of shape [n_samples, n_selected_features]</p>
 <blockquote class="last">
-<div><p>The input samples with only the selected features.</p>
+<div><p>The input samples with only the features selected during the             elimination.</p>
 </div></blockquote>
 </td>
 </tr>

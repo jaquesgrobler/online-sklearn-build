@@ -169,7 +169,7 @@
 <h1>8.9.5. sklearn.feature_selection.SelectFwe<a class="headerlink" href="#sklearn-feature-selection-selectfwe" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_selection.SelectFwe">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectFwe</tt><big>(</big><em>score_func=&lt;function f_classif at 0x4c7d320&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectFwe</tt><big>(</big><em>score_func=&lt;function f_classif at 0x396ced8&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter: Select the p-values corresponding to Family-wise error rate</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -223,7 +223,7 @@
 <td>Get parameters for the estimator</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_selection.SelectFwe.get_support" title="sklearn.feature_selection.SelectFwe.get_support"><tt class="xref py py-obj docutils literal"><span class="pre">get_support</span></tt></a>([indices])</td>
-<td>Get a mask, or integer index, of the features selected</td>
+<td>Return a mask, or list, of the features/indices selected.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.SelectFwe.inverse_transform" title="sklearn.feature_selection.SelectFwe.inverse_transform"><tt class="xref py py-obj docutils literal"><span class="pre">inverse_transform</span></tt></a>(X)</td>
 <td>Reverse the transformation operation</td>
@@ -232,13 +232,13 @@
 <td>Set the parameters of the estimator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.SelectFwe.transform" title="sklearn.feature_selection.SelectFwe.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X)</td>
-<td>Reduce X to the selected features.</td>
+<td>Transform a new matrix using the selected features</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFwe.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x4c7d320&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x396ced8&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -307,56 +307,15 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFwe.get_support">
 <tt class="descname">get_support</tt><big>(</big><em>indices=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe.get_support" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a mask, or integer index, of the features selected</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>indices</strong> : boolean (default False)</p>
-<blockquote>
-<div><p>If True, the return value will be an array of integers, rather
-than a boolean mask.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>support</strong> : array</p>
-<blockquote class="last">
-<div><p>An index that selects the retained features from a feature vector.
-If <cite>indices</cite> is False, this is a boolean array of shape
-[# input features], in which an element is True iff its
-corresponding feature is selected for retention. If <cite>indices</cite> is
-True, this is an integer array of shape [# output features] whose
-values are indices into the input feature vector.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Return a mask, or list, of the features/indices selected.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFwe.inverse_transform">
 <tt class="descname">inverse_transform</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reverse the transformation operation</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array of shape [n_samples, n_selected_features]</p>
-<blockquote>
-<div><p>The input samples.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X_r</strong> : array of shape [n_samples, n_original_features]</p>
-<blockquote class="last">
-<div><p><cite>X</cite> with columns of zeros inserted where features would have
+<p>Returns <cite>X</cite> with columns of zeros inserted where features would have
 been removed by <cite>transform</cite>.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
@@ -380,25 +339,7 @@ component of a nested object.</p>
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFwe.transform">
 <tt class="descname">transform</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFwe.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reduce X to the selected features.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array of shape [n_samples, n_features]</p>
-<blockquote>
-<div><p>The input samples.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X_r</strong> : array of shape [n_samples, n_selected_features]</p>
-<blockquote class="last">
-<div><p>The input samples with only the selected features.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Transform a new matrix using the selected features</p>
 </dd></dl>
 
 </dd></dl>

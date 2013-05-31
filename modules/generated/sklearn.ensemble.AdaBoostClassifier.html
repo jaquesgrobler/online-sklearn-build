@@ -219,17 +219,17 @@ achieving a lower test error with fewer boosting iterations.</p>
 <p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">AdaBoostRegressor</span></tt>, <a class="reference internal" href="sklearn.ensemble.GradientBoostingClassifier.html#sklearn.ensemble.GradientBoostingClassifier" title="sklearn.ensemble.GradientBoostingClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">GradientBoostingClassifier</span></tt></a>, <tt class="xref py py-obj docutils literal"><span class="pre">DecisionTreeClassifier</span></tt></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r106" rules="none">
+<table class="docutils citation" frame="void" id="r105" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R106]</a></td><td>Y. Freund, R. Schapire, &#8220;A Decision-Theoretic Generalization of
+<tr><td class="label"><a class="fn-backref" href="#id1">[R105]</a></td><td>Y. Freund, R. Schapire, &#8220;A Decision-Theoretic Generalization of
 on-Line Learning and an Application to Boosting&#8221;, 1995.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r107" rules="none">
+<table class="docutils citation" frame="void" id="r106" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R107]</a></td><td><ol class="first last upperalpha simple" start="10">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R106]</a></td><td><ol class="first last upperalpha simple" start="10">
 <li>Zhu, H. Zou, S. Rosset, T. Hastie, &#8220;Multi-class AdaBoost&#8221;, 2009.</li>
 </ol>
 </td></tr>
@@ -423,8 +423,8 @@ contained subobjects that are estimators.</p>
 <dt id="sklearn.ensemble.AdaBoostClassifier.predict">
 <tt class="descclassname">AdaBoostClassifier.</tt><tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.AdaBoostClassifier.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict classes for X.</p>
-<p>The predicted class of an input sample is computed as the weighted mean
-prediction of the classifiers in the ensemble.</p>
+<p>The predicted class of an input sample is computed
+as the weighted mean prediction of the classifiers in the ensemble.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -450,8 +450,8 @@ prediction of the classifiers in the ensemble.</p>
 <tt class="descclassname">AdaBoostClassifier.</tt><tt class="descname">predict_log_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.AdaBoostClassifier.predict_log_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class log-probabilities for X.</p>
 <p>The predicted class log-probabilities of an input sample is computed as
-the weighted mean predicted class log-probabilities of the classifiers
-in the ensemble.</p>
+the weighted mean predicted class log-probabilities
+of the classifiers in the ensemble.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -478,8 +478,8 @@ outputs is the same of that of the <cite>classes_</cite> attribute.</p>
 <tt class="descclassname">AdaBoostClassifier.</tt><tt class="descname">predict_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.AdaBoostClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class probabilities for X.</p>
 <p>The predicted class probabilities of an input sample is computed as
-the weighted mean predicted class probabilities of the classifiers
-in the ensemble.</p>
+the weighted mean predicted class probabilities
+of the classifiers in the ensemble.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -579,8 +579,8 @@ class in <tt class="docutils literal"><span class="pre">classes_</span></tt>, re
 <dt id="sklearn.ensemble.AdaBoostClassifier.staged_predict">
 <tt class="descclassname">AdaBoostClassifier.</tt><tt class="descname">staged_predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.AdaBoostClassifier.staged_predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return staged predictions for X.</p>
-<p>The predicted class of an input sample is computed as the weighted mean
-prediction of the classifiers in the ensemble.</p>
+<p>The predicted class of an input sample is computed
+as the weighted mean prediction of the classifiers in the ensemble.</p>
 <p>This generator method yields the ensemble prediction after each
 iteration of boosting and therefore allows monitoring, such as to
 determine the prediction on a test set after each boost.</p>
@@ -609,8 +609,8 @@ determine the prediction on a test set after each boost.</p>
 <tt class="descclassname">AdaBoostClassifier.</tt><tt class="descname">staged_predict_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.AdaBoostClassifier.staged_predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class probabilities for X.</p>
 <p>The predicted class probabilities of an input sample is computed as
-the weighted mean predicted class probabilities of the classifiers
-in the ensemble.</p>
+the weighted mean predicted class probabilities
+of the classifiers in the ensemble.</p>
 <p>This generator method yields the ensemble predicted class probabilities
 after each iteration of boosting and therefore allows monitoring, such
 as to determine the predicted class probabilities on a test set after
