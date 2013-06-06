@@ -98,7 +98,7 @@ from 56436 down to 10000 while reasonably preserving pairwise distances.
 
     *
 
-      .. image:: images/plot_johnson_lindenstrauss_bound_1.png
+      .. image:: images/plot_johnson_lindenstrauss_bound_4.png
             :scale: 47
 
     *
@@ -108,12 +108,17 @@ from 56436 down to 10000 while reasonably preserving pairwise distances.
 
     *
 
-      .. image:: images/plot_johnson_lindenstrauss_bound_3.png
+      .. image:: images/plot_johnson_lindenstrauss_bound_1.png
             :scale: 47
 
     *
 
-      .. image:: images/plot_johnson_lindenstrauss_bound_4.png
+      .. image:: images/plot_johnson_lindenstrauss_bound_7.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_johnson_lindenstrauss_bound_3.png
             :scale: 47
 
     *
@@ -128,11 +133,6 @@ from 56436 down to 10000 while reasonably preserving pairwise distances.
 
     *
 
-      .. image:: images/plot_johnson_lindenstrauss_bound_7.png
-            :scale: 47
-
-    *
-
       .. image:: images/plot_johnson_lindenstrauss_bound_8.png
             :scale: 47
 
@@ -140,13 +140,13 @@ from 56436 down to 10000 while reasonably preserving pairwise distances.
 **Script output**::
 
   Embedding 500 samples with dim 64 using various random projections
-  Projected 500 samples from 64 to 300 in 0.029s
+  Projected 500 samples from 64 to 300 in 0.007s
   Random matrix with size: 0.029MB
   Mean distances rate: 0.98 (0.10)
-  Projected 500 samples from 64 to 1000 in 0.028s
+  Projected 500 samples from 64 to 1000 in 0.017s
   Random matrix with size: 0.096MB
   Mean distances rate: 0.99 (0.04)
-  Projected 500 samples from 64 to 10000 in 0.290s
+  Projected 500 samples from 64 to 10000 in 0.180s
   Random matrix with size: 0.962MB
   Mean distances rate: 1.00 (0.01)
 
@@ -157,5 +157,5 @@ from 56436 down to 10000 while reasonably preserving pairwise distances.
 .. literalinclude:: plot_johnson_lindenstrauss_bound.py
     :lines: 90-
 
-**Total running time of the example:**  17.04 seconds
+**Total running time of the example:**  9.63 seconds
     

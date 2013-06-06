@@ -62,33 +62,39 @@
           var clone = $(this).closest('.thumbnailContainer').find('.clonedItem');
           var clone_fig = clone.find('.figure');
           clone.css("left", position.left - (position.left/10)).css("position", "absolute").css("z-index", 1000).css("background-color", "white");
-          clone.find('p').show();
+
           var cloneImg = clone_fig.find('img');
 
           clone.show();
-          clone_fig.show();
           clone.animate({
                 height: "270px",
                 width: "320px"
-            }, 10
-          );
-          clone_fig.css({
-               'margin-top': '20px',
-          });
-          clone_fig.animate({
-               height: "240px",
-               width: "305px"
-            }, 10
+            }, 0
           );
           cloneImg.css({
                 'max-height': "200px",
                 'max-width': "280px"
-            });
+          });
           cloneImg.animate({
                 height: "200px",
                 width: "280px"
-            }, 10
+            }, 0
+           );
+          clone_fig.css({
+               'margin-top': '20px',
+          });
+          clone_fig.show();
+          clone.find('p').css("display", "compact");
+          clone_fig.css({
+               height: "240",
+               width: "305px"
+          });
+          cloneP_height = clone.find('p.caption').height();
+          clone_fig.animate({
+               height: (200 + cloneP_height)
+           }, 0
           );
+
           clone.bind("mouseleave", function(e){
               clone.animate({
                   height: "100px",
@@ -154,7 +160,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>Simple usage of Pipeline that runs successively a univariate feature selection with anova and then a C-SVM of the selected features. 
+    <p>Simple usage of Pipeline that runs successively a univariate feature selection with anova and t...
     </p></div>
     </div>
 
@@ -182,7 +188,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>A recursive feature elimination example showing the relevance of pixels in a digit classification task.
+    <p>A recursive feature elimination example showing the relevance of pixels in a digit classificati...
     </p></div>
     </div>
 
@@ -210,7 +216,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>A recursive feature elimination example with automatic tuning of the number of features selected with cross-validation. 
+    <p>A recursive feature elimination example with automatic tuning of the number of features selecte...
     </p></div>
     </div>
 
@@ -238,7 +244,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>Example of confusion matrix usage to evaluate the quality of the output of a classifier on the iris data set. The diagonal elements represent the number of points for which the predicted label is equal to the true label, while off-diagonal elements are those that are mislabeled by the classifier. The higher the diagonal values of the confusion matrix the better, indicating many correct predictions. 
+    <p>Example of confusion matrix usage to evaluate the quality of the output of a classifier on the ...
     </p></div>
     </div>
 
@@ -294,7 +300,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>An illustration of the isotonic regression on generated data. The isotonic regression finds a non-decreasing approximation of a function while minimizing the mean squared error on the training data. The benefit of such a model is that it does not assume any form for the target function such as linearity. For comparison a linear regression is also presented.
+    <p>An illustration of the isotonic regression on generated data. The isotonic regression finds a n...
     </p></div>
     </div>
 
@@ -322,7 +328,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>In many real-world examples, there are many ways to extract features from a dataset. Often it is benefitial to combine several methods to obtain good performance. This example shows how to use ``FeatureUnion`` to combine features obtained by PCA and univariate selection.
+    <p>In many real-world examples, there are many ways to extract features from a dataset. Often it i...
     </p></div>
     </div>
 
@@ -350,7 +356,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>Example of Receiver operating characteristic (ROC) metric to evaluate the quality of the output of a classifier.
+    <p>Example of Receiver operating characteristic (ROC) metric to evaluate the quality of the output...
     </p></div>
     </div>
 
@@ -378,7 +384,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>This script shows how to sample points from a Hiden Markov Model (HMM): we use a 4-components with specified mean and covariance.
+    <p>This script shows how to sample points from a Hiden Markov Model (HMM): we use a 4-components w...
     </p></div>
     </div>
 
@@ -434,7 +440,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>The PCA does an unsupervised dimensionality reduction, while the logistic regression does the prediction.
+    <p>The PCA does an unsupervised dimensionality reduction, while the logistic regression does the p...
     </p></div>
     </div>
 
@@ -462,7 +468,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>In order to test if a classification score is significative a technique in repeating the classification procedure after randomizing, permuting, the labels. The p-value is then given by the percentage of runs for which the score obtained is greater than the classification score obtained in the first place.
+    <p>In order to test if a classification score is significative a technique in repeating the classi...
     </p></div>
     </div>
 
@@ -490,7 +496,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>Example of Receiver operating characteristic (ROC) metric to evaluate the quality of the output of a classifier using cross-validation. 
+    <p>Example of Receiver operating characteristic (ROC) metric to evaluate the quality of the output...
     </p></div>
     </div>
 
@@ -518,7 +524,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>The classifier is optimized by "nested" cross-validation using the :class:`sklearn.grid_search.GridSearchCV` object on a development set that comprises only half of the available labeled data.
+    <p>The classifier is optimized by "nested" cross-validation using the :class:`sklearn.grid_search....
     </p></div>
     </div>
 
@@ -546,7 +552,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>Illustration of how the performance of an estimator on unseen data (test data) is not the same as the performance on training data. As the regularization increases the performance on train decreases while the performance on test is optimal within a range of values of the regularization parameter. The example with an Elastic-Net regression model and the performance is measured using the explained variance a.k.a. R^2.
+    <p>Illustration of how the performance of an estimator on unseen data (test data) is not the same ...
     </p></div>
     </div>
 
@@ -602,7 +608,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>Plot the classification probability for different classifiers. We use a 3 class dataset, and we classify it with a Support Vector classifier, as well as L1 and L2 penalized logistic regression.
+    <p>Plot the classification probability for different classifiers. We use a 3 class dataset, and we...
     </p></div>
     </div>
 
@@ -630,7 +636,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>This example simulates a multi-label document classification problem. The dataset is generated randomly based on the following process:
+    <p>This example simulates a multi-label document classification problem. The dataset is generated ...
     </p></div>
     </div>
 
@@ -658,7 +664,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>The dataset used in this example is the 20 newsgroups dataset which will be automatically downloaded and then cached and reused for the document classification example.
+    <p>The dataset used in this example is the 20 newsgroups dataset which will be automatically downl...
     </p></div>
     </div>
 
@@ -714,7 +720,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p> The `Johnson-Lindenstrauss lemma`_ states that any high dimensional dataset can be randomly projected into a lower dimensional Euclidean space while controlling the distortion in the pairwise distances.
+    <p> The `Johnson-Lindenstrauss lemma`_ states that any high dimensional dataset can be randomly pr...
     </p></div>
     </div>
 
@@ -742,7 +748,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>This is an example showing how the scikit-learn can be used to classify documents by topics using a bag-of-words approach. This example uses a scipy.sparse matrix to store the features instead of standard numpy arrays.
+    <p>This is an example showing how the scikit-learn can be used to classify documents by topics usi...
     </p></div>
     </div>
 
@@ -770,7 +776,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>In particular in high dimensional spaces data can more easily be separated linearly and the simplicity of classifiers such as naive Bayes and linear SVMs might lead to better generalization.
+    <p>In particular in high dimensional spaces data can more easily be separated linearly and the sim...
     </p></div>
     </div>
 
@@ -798,7 +804,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>Simple usage of various PLS flavor: - PLSCanonical - PLSRegression, with multivariate response, a.k.a. PLS2 - PLSRegression, with univariate response, a.k.a. PLS1 - CCA
+    <p>Simple usage of various PLS flavor: - PLSCanonical - PLSRegression, with multivariate response,...
     </p></div>
     </div>
 
@@ -826,7 +832,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>This is an example showing how the scikit-learn can be used to cluster documents by topics using a bag-of-words approach. This example uses a scipy.sparse matrix to store the features instead of standard numpy arrays.
+    <p>This is an example showing how the scikit-learn can be used to cluster documents by topics usin...
     </p></div>
     </div>
 
@@ -910,7 +916,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>This is an example showing how scikit-learn can be used to classify documents by topics using a bag-of-words approach. This example uses a scipy.sparse matrix to store the features and demonstrates various classifiers that can efficiently handle sparse matrices.
+    <p>This is an example showing how scikit-learn can be used to classify documents by topics using a...
     </p></div>
     </div>
 
@@ -955,7 +961,7 @@ interactive user interface.
 .. raw:: html
 
 
-    <p>This is a proof of concept application of Non Negative Matrix Factorization of the term frequency matrix of a corpus of documents so as to extract an additive model of the topic structure of the corpus.
+    <p>This is a proof of concept application of Non Negative Matrix Factorization of the term frequen...
     </p></div>
     </div>
 
@@ -983,7 +989,7 @@ interactive user interface.
 .. raw:: html
 
 
-    <p>This example illustrates the need for robust covariance estimation on a real data set. It is useful both for outlier detection and for a better understanding of the data structure.
+    <p>This example illustrates the need for robust covariance estimation on a real data set. It is us...
     </p></div>
     </div>
 
@@ -1011,7 +1017,7 @@ interactive user interface.
 .. raw:: html
 
 
-    <p>This script shows how to use Gaussian HMM. It uses stock price data, which can be obtained from yahoo finance. For more information on how to get stock prices with matplotlib, please refer to date_demo1.py of matplotlib. 
+    <p>This script shows how to use Gaussian HMM. It uses stock price data, which can be obtained from...
     </p></div>
     </div>
 
@@ -1039,7 +1045,7 @@ interactive user interface.
 .. raw:: html
 
 
-    <p>This example shows the reconstruction of an image from a set of parallel projections, acquired along different angles. Such a dataset is acquired in **computed tomography** (CT).
+    <p>This example shows the reconstruction of an image from a set of parallel projections, acquired ...
     </p></div>
     </div>
 
@@ -1067,7 +1073,7 @@ interactive user interface.
 .. raw:: html
 
 
-    <p>The dataset used in this example is a preprocessed excerpt of the "Labeled Faces in the Wild", aka LFW_:
+    <p>The dataset used in this example is a preprocessed excerpt of the "Labeled Faces in the Wild", ...
     </p></div>
     </div>
 
@@ -1095,7 +1101,7 @@ interactive user interface.
 .. raw:: html
 
 
-    <p>Modeling species' geographic distributions is an important problem in conservation biology. In this example we model the geographic distribution of two south american mammals given past observations and 14 environmental variables. Since we have only positive examples (there are no unsuccessful observations), we cast this problem as a density estimation problem and use the `OneClassSVM` provided by the package `sklearn.svm` as our modeling tool. The dataset is provided by Phillips et. al. (2006). If available, the example uses `basemap <http://matplotlib.sourceforge.net/basemap/doc/html/>`_ to plot the coast lines and national boundaries of South America.
+    <p>Modeling species' geographic distributions is an important problem in conservation biology. In ...
     </p></div>
     </div>
 
@@ -1151,7 +1157,7 @@ interactive user interface.
 .. raw:: html
 
 
-    <p>A classical way to assert the relative importance of vertices in a graph is to compute the principal eigenvector of the adjacency matrix so as to assign to each vertex the values of the components of the first eigenvector as a centrality score:
+    <p>A classical way to assert the relative importance of vertices in a graph is to compute the prin...
     </p></div>
     </div>
 
@@ -1179,7 +1185,7 @@ interactive user interface.
 .. raw:: html
 
 
-    <p>A simple graphical frontend for Libsvm mainly intended for didactic purposes. You can create data points by point and click and visualize the decision region induced by different kernels and parameter settings.
+    <p>A simple graphical frontend for Libsvm mainly intended for didactic purposes. You can create da...
     </p></div>
     </div>
 
@@ -1251,7 +1257,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>Compute the segmentation of a 2D image with Ward hierarchical clustering. The clustering is spatially constrained in order for each segmented region to be in one piece. 
+    <p>Compute the segmentation of a 2D image with Ward hierarchical clustering. The clustering is spa...
     </p></div>
     </div>
 
@@ -1307,7 +1313,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>Reference: Brendan J. Frey and Delbert Dueck, "Clustering by Passing Messages Between Data Points", Science Feb. 2007
+    <p>Reference: Brendan J. Frey and Delbert Dueck, "Clustering by Passing Messages Between Data Poin...
     </p></div>
     </div>
 
@@ -1335,7 +1341,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>This example uses :ref:`spectral_clustering` on a graph created from voxel-to-voxel difference on an image to break this image into multiple partly-homogenous regions.
+    <p>This example uses :ref:`spectral_clustering` on a graph created from voxel-to-voxel difference ...
     </p></div>
     </div>
 
@@ -1391,7 +1397,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>This example uses a large dataset of faces to learn a set of 20 x 20 images patches that constitute faces.
+    <p>This example uses a large dataset of faces to learn a set of 20 x 20 images patches that consti...
     </p></div>
     </div>
 
@@ -1419,7 +1425,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>
+    <p>The classic image processing example, Lena, an 8-bit grayscale bit-depth, 512 x 512 sized image...
     </p></div>
     </div>
 
@@ -1475,7 +1481,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>In this example, an image with connected circles is generated and :ref:`spectral_clustering` is used to separate the circles.
+    <p>In this example, an image with connected circles is generated and :ref:`spectral_clustering` is...
     </p></div>
     </div>
 
@@ -1503,7 +1509,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>The plots display firstly what a K-means algorithm would yield using three clusters. It is then shown what the effect of a bad initialization is on the classification process: By setting n_init to only 1 (default is 10), the amount of times that the algorithm will be run with different centroid seeds is reduced. The next plot displays what using eight clusters would deliver and finally the ground truth.
+    <p>The plots display firstly what a K-means algorithm would yield using three clusters. It is then...
     </p></div>
     </div>
 
@@ -1531,7 +1537,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>Performs a pixel-wise Vector Quantization (VQ) of an image of the summer palace (China), reducing the number of colors required to show the image from 96,615 unique colors to 64, while preserving the overall appearance quality.
+    <p>Performs a pixel-wise Vector Quantization (VQ) of an image of the summer palace (China), reduci...
     </p></div>
     </div>
 
@@ -1559,7 +1565,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>This example aims at showing characteristics of different clustering algorithms on datasets that are "interesting" but still in 2D. The last dataset is an example of a 'null' situation for clustering: the data is homogeneous, and there is no good clustering.
+    <p>This example aims at showing characteristics of different clustering algorithms on datasets tha...
     </p></div>
     </div>
 
@@ -1615,7 +1621,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>Evaluate the ability of k-means initializations strategies to make the algorithm convergence robust as measured by the relative standard deviation of the inertia of the clustering (i.e. the sum of distances to the nearest cluster center).
+    <p>Evaluate the ability of k-means initializations strategies to make the algorithm convergence ro...
     </p></div>
     </div>
 
@@ -1643,7 +1649,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>In this example with compare the various initialization strategies for K-means in terms of runtime and quality of the results.
+    <p>In this example with compare the various initialization strategies for K-means in terms of runt...
     </p></div>
     </div>
 
@@ -1671,7 +1677,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>The following plots demonstrate the impact of the number of clusters and number of samples on various clustering performance evaluation metrics.
+    <p>The following plots demonstrate the impact of the number of clusters and number of samples on v...
     </p></div>
     </div>
 
@@ -1699,7 +1705,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>We want to compare the performance of the MiniBatchKMeans and KMeans: the MiniBatchKMeans is faster, but gives slightly different results (see :ref:`mini_batch_kmeans`).
+    <p>We want to compare the performance of the MiniBatchKMeans and KMeans: the MiniBatchKMeans is fa...
     </p></div>
     </div>
 
@@ -1743,7 +1749,7 @@ Examples concerning the :mod:`sklearn.covariance` package.
 .. raw:: html
 
 
-    <p>The usual covariance maximum likelihood estimate can be regularized using shrinkage. Ledoit and Wolf proposed a close formula to compute the asymptotical optimal shrinkage parameter (minimizing a MSE criterion), yielding the Ledoit-Wolf covariance estimate.
+    <p>The usual covariance maximum likelihood estimate can be regularized using shrinkage. Ledoit and...
     </p></div>
     </div>
 
@@ -1771,7 +1777,7 @@ Examples concerning the :mod:`sklearn.covariance` package.
 .. raw:: html
 
 
-    <p>This example illustrates two ways of performing :ref:`outlier_detection` when the amount of contamination is known:
+    <p>This example illustrates two ways of performing :ref:`outlier_detection` when the amount of con...
     </p></div>
     </div>
 
@@ -1799,7 +1805,7 @@ Examples concerning the :mod:`sklearn.covariance` package.
 .. raw:: html
 
 
-    <p>Using the GraphLasso estimator to learn a covariance and sparse precision from a small number of samples.
+    <p>Using the GraphLasso estimator to learn a covariance and sparse precision from a small number o...
     </p></div>
     </div>
 
@@ -1827,7 +1833,7 @@ Examples concerning the :mod:`sklearn.covariance` package.
 .. raw:: html
 
 
-    <p>The usual estimator for covariance is the maximum likelihood estimator, :class:`sklearn.covariance.EmpiricalCovariance`. It is unbiased, i.e. it converges to the true (population) covariance when given many observations. However, it can also be beneficial to regularize it, in order to reduce its variance; this, in turn, introduces some bias. This example illustrates the simple regularization used in :ref:`shrunk_covariance` estimators. In particular, it focuses on how to set the amount of regularization, i.e. how to choose the bias-variance trade-off.
+    <p>The usual estimator for covariance is the maximum likelihood estimator, :class:`sklearn.covaria...
     </p></div>
     </div>
 
@@ -1855,7 +1861,7 @@ Examples concerning the :mod:`sklearn.covariance` package.
 .. raw:: html
 
 
-    <p>For Gaussian distributed data, the distance of an observation :math:`x_i` to the mode of the distribution can be computed using its Mahalanobis distance: :math:`d_{(\mu,\Sigma)}(x_i)^2 = (x_i - \mu)'\Sigma^{-1}(x_i - \mu)` where :math:`\mu` and :math:`\Sigma` are the location and the covariance of the underlying gaussian distribution.
+    <p>For Gaussian distributed data, the distance of an observation :math:`x_i` to the mode of the di...
     </p></div>
     </div>
 
@@ -1883,7 +1889,7 @@ Examples concerning the :mod:`sklearn.covariance` package.
 .. raw:: html
 
 
-    <p>The usual covariance maximum likelihood estimate is very sensitive to the presence of outliers in the data set. In such a case, one would have better to use a robust estimator of covariance to garanty that the estimation is resistant to "errorneous" observations in the data set.
+    <p>The usual covariance maximum likelihood estimate is very sensitive to the presence of outliers ...
     </p></div>
     </div>
 
@@ -1927,7 +1933,7 @@ Examples concerning the :mod:`sklearn.datasets` package.
 .. raw:: html
 
 
-    <p>See `here <http://archive.ics.uci.edu/ml/datasets/Pen-Based+Recognition+of+Handwritten+Digits>`_ for more information about this dataset. 
+    <p>See `here <http://archive.ics.uci.edu/ml/datasets/Pen-Based+Recognition+of+Handwritten+Digits>`...
     </p></div>
     </div>
 
@@ -1955,7 +1961,7 @@ Examples concerning the :mod:`sklearn.datasets` package.
 .. raw:: html
 
 
-    <p>Plot several randomly generated 2D classification datasets. This example illustrates the `datasets.make_classification` function.
+    <p>Plot several randomly generated 2D classification datasets. This example illustrates the `datas...
     </p></div>
     </div>
 
@@ -1983,7 +1989,7 @@ Examples concerning the :mod:`sklearn.datasets` package.
 .. raw:: html
 
 
-    <p>The rows being the samples and the columns being: Sepal Length, Sepal Width, Petal Length	and Petal Width.
+    <p>The rows being the samples and the columns being: Sepal Length, Sepal Width, Petal Length	and P...
     </p></div>
     </div>
 
@@ -2028,7 +2034,7 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 .. raw:: html
 
 
-    <p>The Iris dataset represents 3 kind of Iris flowers (Setosa, Versicolour and Virginica) with 4 attributes: sepal length, sepal width, petal length and petal width.
+    <p>The Iris dataset represents 3 kind of Iris flowers (Setosa, Versicolour and Virginica) with 4 a...
     </p></div>
     </div>
 
@@ -2056,7 +2062,7 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 .. raw:: html
 
 
-    <p>:ref:`ICA` is used to estimate sources given noisy measurements. Imagine 2 instruments playing simultaneously and 2 microphones recording the mixed signals. ICA is used to recover the sources ie. what is played by each instrument.
+    <p>:ref:`ICA` is used to estimate sources given noisy measurements. Imagine 2 instruments playing ...
     </p></div>
     </div>
 
@@ -2084,7 +2090,7 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 .. raw:: html
 
 
-    <p>
+    <p>Principal Component Analysis applied to the Iris dataset.
     </p></div>
     </div>
 
@@ -2112,7 +2118,7 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 .. raw:: html
 
 
-    <p>This example shows that Kernel PCA is able to find a projection of the data that makes data linearly separable. 
+    <p>This example shows that Kernel PCA is able to find a projection of the data that makes data lin...
     </p></div>
     </div>
 
@@ -2168,7 +2174,7 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 .. raw:: html
 
 
-    <p>Transform a signal as a sparse combination of Ricker wavelets. This example visually compares different sparse coding methods using the :class:`sklearn.decomposition.SparseCoder` estimator. The Ricker (also known as mexican hat or the second derivative of a gaussian) is not a particularly good kernel to represent piecewise constant signals like this one. It can therefore be seen how much adding different widths of atoms matters and it therefore motivates learning the dictionary to best fit your type of signals.
+    <p>Transform a signal as a sparse combination of Ricker wavelets. This example visually compares d...
     </p></div>
     </div>
 
@@ -2196,7 +2202,7 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 .. raw:: html
 
 
-    <p>These figures aid in illustrating how a point cloud can be very flat in one direction--which is where PCA comes in to choose a direction that is not flat.
+    <p>These figures aid in illustrating how a point cloud can be very flat in one direction--which is...
     </p></div>
     </div>
 
@@ -2224,7 +2230,7 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 .. raw:: html
 
 
-    <p>This example applies to :ref:`olivetti_faces` different unsupervised matrix decomposition (dimension reduction) methods from the module :py:mod:`sklearn.decomposition` (see the documentation chapter :ref:`decompositions`) .
+    <p>This example applies to :ref:`olivetti_faces` different unsupervised matrix decomposition (dime...
     </p></div>
     </div>
 
@@ -2252,7 +2258,7 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 .. raw:: html
 
 
-    <p>An example comparing the effect of reconstructing noisy fragments of Lena using online :ref:`DictionaryLearning` and various transform methods.
+    <p>An example comparing the effect of reconstructing noisy fragments of Lena using online :ref:`Di...
     </p></div>
     </div>
 
@@ -2296,7 +2302,7 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 .. raw:: html
 
 
-    <p>A decision tree is boosted using the AdaBoost.R2 [1] algorithm on a 1D sinusoidal dataset with a small amount of Gaussian noise. 299 boosts (300 decision trees) is compared with a single decision tree regressor. As the number of boosts is increased the regressor can fit more detail.
+    <p>A decision tree is boosted using the AdaBoost.R2 [1] algorithm on a 1D sinusoidal dataset with ...
     </p></div>
     </div>
 
@@ -2324,7 +2330,7 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 .. raw:: html
 
 
-    <p>This example shows the use of forests of trees to evaluate the importance of the pixels in an image classification task (faces). The hotter the pixel, the more important.
+    <p>This example shows the use of forests of trees to evaluate the importance of the pixels in an i...
     </p></div>
     </div>
 
@@ -2352,7 +2358,7 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 .. raw:: html
 
 
-    <p>This examples shows the use of forests of trees to evaluate the importance of features on an artificial classification task. The red bars are the feature importances of the forest, along with their inter-trees variability.
+    <p>This examples shows the use of forests of trees to evaluate the importance of features on an ar...
     </p></div>
     </div>
 
@@ -2380,7 +2386,7 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 .. raw:: html
 
 
-    <p>This example shows the use of multi-output forests to complete images. The goal is to predict the lower half of a face given its upper half.
+    <p>This example shows the use of multi-output forests to complete images. The goal is to predict t...
     </p></div>
     </div>
 
@@ -2408,7 +2414,7 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 .. raw:: html
 
 
-    <p>Illustration of the effect of different regularization strategies for Gradient Boosting. The example is taken from Hastie et al 2009.
+    <p>Illustration of the effect of different regularization strategies for Gradient Boosting. The ex...
     </p></div>
     </div>
 
@@ -2464,7 +2470,7 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 .. raw:: html
 
 
-    <p>Partial dependence plots show the dependence between the target function [1]_ and a set of 'target' features, marginalizing over the values of all other features (the complement features). Due to the limits of human perception the size of the target feature set must be small (usually, one or two) thus the target features are usually chosen among the most important features (see :attr:`~sklearn.ensemble.GradientBoostingRegressor.feature_importances_`).
+    <p>Partial dependence plots show the dependence between the target function [1]_ and a set of 'tar...
     </p></div>
     </div>
 
@@ -2520,7 +2526,7 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 .. raw:: html
 
 
-    <p>This example fits an AdaBoosted decision stump on a non-linearly separable classification dataset composed of two "Gaussian quantiles" clusters (see :func:`sklearn.datasets.make_gaussian_quantiles`) and plots the decision boundary and decision scores. The distributions of decision scores are shown separately for samples of class A and B. The predicted class label for each sample is determined by the sign of the decision score. Samples with decision scores greater than zero are classified as B, and are otherwise classified as A. The magnitude of a decision score determines the degree of likeness with the predicted class label. Additionally, a new dataset could be constructed containing a desired purity of class B, for example, by only selecting samples with a decision score above some value.
+    <p>This example fits an AdaBoosted decision stump on a non-linearly separable classification datas...
     </p></div>
     </div>
 
@@ -2548,7 +2554,7 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 .. raw:: html
 
 
-    <p>RandomTreesEmbedding provides a way to map data to a very high-dimensional, sparse representation, which might be beneficial for classification. The mapping is completely unsupervised and very efficient.
+    <p>RandomTreesEmbedding provides a way to map data to a very high-dimensional, sparse representati...
     </p></div>
     </div>
 
@@ -2576,7 +2582,7 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 .. raw:: html
 
 
-    <p>Plot the decision surfaces of forests of randomized trees trained on pairs of features of the iris dataset.
+    <p>Plot the decision surfaces of forests of randomized trees trained on pairs of features of the i...
     </p></div>
     </div>
 
@@ -2604,7 +2610,7 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 .. raw:: html
 
 
-    <p>This example reproduces Figure 1 of Zhu et al [1] and shows how boosting can improve prediction accuracy on a multi-class problem. The classification dataset is constructed by taking a ten-dimensional standard normal distribution and defining three classes separated by nested concentric ten-dimensional spheres such that roughly equal numbers of samples are in each class (quantiles of the :math:`\chi^2` distribution).
+    <p>This example reproduces Figure 1 of Zhu et al [1] and shows how boosting can improve prediction...
     </p></div>
     </div>
 
@@ -2632,7 +2638,7 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 .. raw:: html
 
 
-    <p>This example is based on Figure 10.2 from Hastie et al 2009 [1] and illustrates the difference in performance between the discrete SAMME [2] boosting algorithm and real SAMME.R boosting algorithm. Both algorithms are evaluated on a binary classification task where the target Y is a non-linear function of 10 input features.
+    <p>This example is based on Figure 10.2 from Hastie et al 2009 [1] and illustrates the difference ...
     </p></div>
     </div>
 
@@ -2674,7 +2680,7 @@ Exercises for the tutorials
 .. raw:: html
 
 
-    <p>This exercise is used in the :ref:`clf_tut` part of the :ref:`supervised_learning_tut` section of the :ref:`stat_learn_tut_index`. 
+    <p>This exercise is used in the :ref:`clf_tut` part of the :ref:`supervised_learning_tut` section ...
     </p></div>
     </div>
 
@@ -2702,7 +2708,7 @@ Exercises for the tutorials
 .. raw:: html
 
 
-    <p>This exercise is used in the :ref:`cv_generators_tut` part of the :ref:`model_selection_tut` section of the :ref:`stat_learn_tut_index`. 
+    <p>This exercise is used in the :ref:`cv_generators_tut` part of the :ref:`model_selection_tut` se...
     </p></div>
     </div>
 
@@ -2730,7 +2736,7 @@ Exercises for the tutorials
 .. raw:: html
 
 
-    <p>This exercise is used in the :ref:`using_kernels_tut` part of the :ref:`supervised_learning_tut` section of the :ref:`stat_learn_tut_index`. 
+    <p>This exercise is used in the :ref:`using_kernels_tut` part of the :ref:`supervised_learning_tut...
     </p></div>
     </div>
 
@@ -2758,7 +2764,7 @@ Exercises for the tutorials
 .. raw:: html
 
 
-    <p>This exercise is used in the :ref:`cv_estimators_tut` part of the :ref:`model_selection_tut` section of the :ref:`stat_learn_tut_index`. 
+    <p>This exercise is used in the :ref:`cv_estimators_tut` part of the :ref:`model_selection_tut` se...
     </p></div>
     </div>
 
@@ -2831,7 +2837,7 @@ Examples concerning the :mod:`sklearn.gaussian_process` package.
 .. raw:: html
 
 
-    <p>A two-dimensional regression exercise with a post-processing allowing for probabilistic classification thanks to the Gaussian property of the prediction.
+    <p>A two-dimensional regression exercise with a post-processing allowing for probabilistic classif...
     </p></div>
     </div>
 
@@ -2903,7 +2909,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Computes Lasso Path along the regularization parameter using the LARS algorithm on the diabetest dataset. Each color represents a different feature of the coefficient vector, and this is displayed as a function of the regularization parameter.
+    <p>Computes Lasso Path along the regularization parameter using the LARS algorithm on the diabetes...
     </p></div>
     </div>
 
@@ -2931,7 +2937,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Plot the maximum margin separating hyperplane within a two-class separable dataset using a linear Support Vector Machines classifier trained using SGD. 
+    <p>Plot the maximum margin separating hyperplane within a two-class separable dataset using a line...
     </p></div>
     </div>
 
@@ -2959,7 +2965,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>This example demonstrates how to approximate a function with a polynomial of degree n_degree by using ridge regression. Concretely, from n_samples 1d points, it suffices to build the Vandermonde matrix, which is n_samples x n_degree+1 and has the following form:
+    <p>This example demonstrates how to approximate a function with a polynomial of degree n_degree by...
     </p></div>
     </div>
 
@@ -2987,7 +2993,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Plot decision function of a weighted dataset, where the size of points is proportional to its weight. 
+    <p>Plot decision function of a weighted dataset, where the size of points is proportional to its w...
     </p></div>
     </div>
 
@@ -3127,7 +3133,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>
+    <p>Show below is a logistic-regression classifiers decision boundaries on the `iris <http://en.wik...
     </p></div>
     </div>
 
@@ -3155,7 +3161,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Fit linear SVMs with and without class weighting. Allows to handle problems with unbalanced classes.
+    <p>Fit linear SVMs with and without class weighting. Allows to handle problems with unbalanced cla...
     </p></div>
     </div>
 
@@ -3183,7 +3189,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Ridge regression is basically minimizing a penalised version of the least-squared function. The penalising `shrinks` the value of the regression coefficients. Despite the few data points in each dimension, the slope of the prediction is much more stable and the variance in the line itself is greatly reduced, in comparison to that of the standard linear regression 
+    <p>Ridge regression is basically minimizing a penalised version of the least-squared function. The...
     </p></div>
     </div>
 
@@ -3239,7 +3245,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>The multi-task lasso allows to fit multiple regression problems jointly enforcing the selected features to be the same across tasks. This example simulates sequential measurements, each task is a time instant, and the relevant features vary in amplitude over time while being the same. The multi-task lasso imposes that features that are selected at one time point are select for all time point. This makes feature selection by the Lasso more stable.
+    <p>The multi-task lasso allows to fit multiple regression problems jointly enforcing the selected ...
     </p></div>
     </div>
 
@@ -3267,7 +3273,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>
+    <p>Show in the plot is how the logistic regression would, in this synthetic dataset, classify valu...
     </p></div>
     </div>
 
@@ -3295,7 +3301,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Plot the contours of the three penalties supported by `sklearn.linear_model.stochastic_gradient`.
+    <p>Plot the contours of the three penalties supported by `sklearn.linear_model.stochastic_gradient...
     </p></div>
     </div>
 
@@ -3323,7 +3329,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>We show that linear_model.Lasso provides the same results for dense and sparse data and that in the case of sparse data the speed is improved.
+    <p>We show that linear_model.Lasso provides the same results for dense and sparse data and that in...
     </p></div>
     </div>
 
@@ -3351,7 +3357,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Using orthogonal matching pursuit for recovering a sparse signal from a noisy measurement encoded with a dictionary 
+    <p>Using orthogonal matching pursuit for recovering a sparse signal from a noisy measurement encod...
     </p></div>
     </div>
 
@@ -3379,7 +3385,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Estimates Lasso and Elastic-Net regression models on a manually generated sparse signal corrupted with an additive noise. Estimated coefficients are compared with the ground-truth.
+    <p>Estimates Lasso and Elastic-Net regression models on a manually generated sparse signal corrupt...
     </p></div>
     </div>
 
@@ -3435,7 +3441,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Features 1 and 2 of the diabetes-dataset are fitted and plotted below. It illustrates that although feature 2 has a strong coefficient on the full model, it does not give us much regarding `y` when compared to just feautre 1
+    <p>Features 1 and 2 of the diabetes-dataset are fitted and plotted below. It illustrates that alth...
     </p></div>
     </div>
 
@@ -3491,7 +3497,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Comparison of the sparsity (percentage of zero coefficients) of solutions when L1 and L2 penalty are used for different values of C. We can see that large values of C give more freedom to the model.  Conversely, smaller values of C constrain the model more. In the L1 penalty case, this leads to sparser solutions.
+    <p>Comparison of the sparsity (percentage of zero coefficients) of solutions when L1 and L2 penalt...
     </p></div>
     </div>
 
@@ -3519,7 +3525,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Plot decision surface of multi-class SGD on iris dataset. The hyperplanes corresponding to the three one-versus-all (OVA) classifiers are represented by the dashed lines.
+    <p>Plot decision surface of multi-class SGD on iris dataset. The hyperplanes corresponding to the ...
     </p></div>
     </div>
 
@@ -3575,7 +3581,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Use the Akaike information criterion (AIC), the Bayes Information criterion (BIC) and cross-validation to select an optimal value of the regularization parameter alpha of the :ref:`lasso` estimator.
+    <p>Use the Akaike information criterion (AIC), the Bayes Information criterion (BIC) and cross-val...
     </p></div>
     </div>
 
@@ -3603,7 +3609,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Given a small number of observations, we want to recover which features of X are relevant to explain y. For this :ref:`sparse linear models <l1_feature_selection>` can outperform standard statistical tests if the true model is sparse, i.e. if a small fraction of the features are relevant.
+    <p>Given a small number of observations, we want to recover which features of X are relevant to ex...
     </p></div>
     </div>
 
@@ -3704,7 +3710,7 @@ Examples concerning the :mod:`sklearn.manifold` package.
 .. raw:: html
 
 
-    <p>An illustration of dimensionality reduction on the S-curve dataset with various manifold learning methods.
+    <p>An illustration of dimensionality reduction on the S-curve dataset with various manifold learni...
     </p></div>
     </div>
 
@@ -3732,7 +3738,7 @@ Examples concerning the :mod:`sklearn.manifold` package.
 .. raw:: html
 
 
-    <p>An application of the different :ref:`manifold` techniques on a spherical data-set. Here one can see the use of dimensionality reduction in order to gain some intuition regarding the Manifold learning methods. Regarding the dataset, the poles are cut from the sphere, as well as a thin slice down its side. This enables the manifold learning techniques to 'spread it open' whilst projecting it onto two dimensions.
+    <p>An application of the different :ref:`manifold` techniques on a spherical data-set. Here one ca...
     </p></div>
     </div>
 
@@ -3804,7 +3810,7 @@ Examples concerning the :mod:`sklearn.mixture` package.
 .. raw:: html
 
 
-    <p>Plot the density estimation of a mixture of two gaussians. Data is generated from two gaussians with different centers and covariance matrices. 
+    <p>Plot the density estimation of a mixture of two gaussians. Data is generated from two gaussians...
     </p></div>
     </div>
 
@@ -3832,7 +3838,7 @@ Examples concerning the :mod:`sklearn.mixture` package.
 .. raw:: html
 
 
-    <p>Plot the confidence ellipsoids of a mixture of two gaussians with EM and variational dirichlet process.
+    <p>Plot the confidence ellipsoids of a mixture of two gaussians with EM and variational dirichlet ...
     </p></div>
     </div>
 
@@ -3860,7 +3866,7 @@ Examples concerning the :mod:`sklearn.mixture` package.
 .. raw:: html
 
 
-    <p>This example highlights the advantages of the Dirichlet Process: complexity control and dealing with sparse data. The dataset is formed by 100 points loosely spaced following a noisy sine curve. The fit by the GMM class, using the expectation-maximization algorithm to fit a mixture of 10 gaussian components, finds too-small components and very little structure. The fits by the dirichlet process, however, show that the model can either learn a global structure for the data (small alpha) or easily interpolate to finding relevant local structure (large alpha), never falling into the problems shown by the GMM class. 
+    <p>This example highlights the advantages of the Dirichlet Process: complexity control and dealing...
     </p></div>
     </div>
 
@@ -3888,7 +3894,7 @@ Examples concerning the :mod:`sklearn.mixture` package.
 .. raw:: html
 
 
-    <p>This example shows that model selection can be perfomed with Gaussian Mixture Models using information-theoretic criteria (BIC). Model selection concerns both the covariance type and the number of components in the model. In that case, AIC also provides the right result (not shown to save time), but BIC is better suited if the problem is to identify the right model. Unlike Bayesian procedures, such inferences are prior-free.
+    <p>This example shows that model selection can be perfomed with Gaussian Mixture Models using info...
     </p></div>
     </div>
 
@@ -3960,7 +3966,7 @@ Examples concerning the :mod:`sklearn.neighbors` package.
 .. raw:: html
 
 
-    <p>Demonstrate the resolution of a regression problem using a k-Nearest Neighbor and the interpolation of the target using both barycenter and constant weights.
+    <p>Demonstrate the resolution of a regression problem using a k-Nearest Neighbor and the interpola...
     </p></div>
     </div>
 
@@ -3988,7 +3994,7 @@ Examples concerning the :mod:`sklearn.neighbors` package.
 .. raw:: html
 
 
-    <p>Sample usage of Nearest Neighbors classification. It will plot the decision boundaries for each class. 
+    <p>Sample usage of Nearest Neighbors classification. It will plot the decision boundaries for each...
     </p></div>
     </div>
 
@@ -4016,7 +4022,7 @@ Examples concerning the :mod:`sklearn.neighbors` package.
 .. raw:: html
 
 
-    <p>Sample usage of Nearest Centroid classification. It will plot the decision boundaries for each class. 
+    <p>Sample usage of Nearest Centroid classification. It will plot the decision boundaries for each ...
     </p></div>
     </div>
 
@@ -4060,7 +4066,7 @@ Examples concerning the :mod:`sklearn.semi_supervised` package.
 .. raw:: html
 
 
-    <p>Example of LabelPropagation learning a complex internal structure to demonstrate "manifold learning". The outer circle should be labeled "red" and the inner circle "blue". Because both label groups lie inside their own distinct shape, we can see that the labels propagate correctly around the circle. 
+    <p>Example of LabelPropagation learning a complex internal structure to demonstrate "manifold lear...
     </p></div>
     </div>
 
@@ -4116,7 +4122,7 @@ Examples concerning the :mod:`sklearn.semi_supervised` package.
 .. raw:: html
 
 
-    <p>This example demonstrates the power of semisupervised learning by training a Label Spreading model to classify handwritten digits with sets of very few labels.
+    <p>This example demonstrates the power of semisupervised learning by training a Label Spreading mo...
     </p></div>
     </div>
 
@@ -4188,7 +4194,7 @@ Examples concerning the :mod:`sklearn.svm` package.
 .. raw:: html
 
 
-    <p>Plot decision function of a weighted dataset, where the size of points is proportional to its weight. 
+    <p>Plot decision function of a weighted dataset, where the size of points is proportional to its w...
     </p></div>
     </div>
 
@@ -4216,7 +4222,7 @@ Examples concerning the :mod:`sklearn.svm` package.
 .. raw:: html
 
 
-    <p>Perform binary classification using non-linear SVC with RBF kernel. The target to predict is a XOR of the inputs.
+    <p>Perform binary classification using non-linear SVC with RBF kernel. The target to predict is a ...
     </p></div>
     </div>
 
@@ -4272,7 +4278,7 @@ Examples concerning the :mod:`sklearn.svm` package.
 .. raw:: html
 
 
-    <p>Plot the maximum margin separating hyperplane within a two-class separable dataset using a Support Vector Machines classifier with linear kernel. 
+    <p>Plot the maximum margin separating hyperplane within a two-class separable dataset using a Supp...
     </p></div>
     </div>
 
@@ -4356,7 +4362,7 @@ Examples concerning the :mod:`sklearn.svm` package.
 .. raw:: html
 
 
-    <p>Simple usage of Support Vector Machines to classify a sample. It will plot the decision surface and the support vectors.
+    <p>Simple usage of Support Vector Machines to classify a sample. It will plot the decision surface...
     </p></div>
     </div>
 
@@ -4384,7 +4390,7 @@ Examples concerning the :mod:`sklearn.svm` package.
 .. raw:: html
 
 
-    <p>This example shows how to perform univariate feature before running a SVC (support vector classifier) to improve the classification scores. 
+    <p>This example shows how to perform univariate feature before running a SVC (support vector class...
     </p></div>
     </div>
 
@@ -4412,7 +4418,7 @@ Examples concerning the :mod:`sklearn.svm` package.
 .. raw:: html
 
 
-    <p>Comparison of different linear SVM classifiers on the iris dataset. It will plot the decision surface for four different SVM classifiers.
+    <p>Comparison of different linear SVM classifiers on the iris dataset. It will plot the decision s...
     </p></div>
     </div>
 
@@ -4440,7 +4446,7 @@ Examples concerning the :mod:`sklearn.svm` package.
 .. raw:: html
 
 
-    <p>:ref:`One-class SVM <svm_outlier_detection>` is an unsupervised algorithm that learns a decision function for novelty detection: classifying new data as similar or different to the training set. 
+    <p>:ref:`One-class SVM <svm_outlier_detection>` is an unsupervised algorithm that learns a decisio...
     </p></div>
     </div>
 
@@ -4468,7 +4474,7 @@ Examples concerning the :mod:`sklearn.svm` package.
 .. raw:: html
 
 
-    <p> 
+    <p>Three different types of SVM-Kernels are displayed below. The polynomial and RBF are especially...
     </p></div>
     </div>
 
@@ -4496,7 +4502,7 @@ Examples concerning the :mod:`sklearn.svm` package.
 .. raw:: html
 
 
-    <p>A small value of `C` includes more/all the observations, allowing the margins to be calculated using all the data in the area.
+    <p>A small value of `C` includes more/all the observations, allowing the margins to be calculated ...
     </p></div>
     </div>
 
@@ -4524,7 +4530,7 @@ Examples concerning the :mod:`sklearn.svm` package.
 .. raw:: html
 
 
-    <p>The following example illustrates the effect of scaling the regularization parameter when using :ref:`svm` for :ref:`classification <svm_classification>`. For SVC classification, we are interested in a risk minimization for the equation:
+    <p>The following example illustrates the effect of scaling the regularization parameter when using...
     </p></div>
     </div>
 
@@ -4596,7 +4602,7 @@ Examples concerning the :mod:`sklearn.tree` package.
 .. raw:: html
 
 
-    <p>1D regression with :ref:`decision trees <tree>`: the decision tree is used to fit a sine curve with addition noisy observation. As a result, it learns local linear regressions approximating the sine curve.
+    <p>1D regression with :ref:`decision trees <tree>`: the decision tree is used to fit a sine curve ...
     </p></div>
     </div>
 
@@ -4624,7 +4630,7 @@ Examples concerning the :mod:`sklearn.tree` package.
 .. raw:: html
 
 
-    <p>Multi-output regression with :ref:`decision trees <tree>`: the decision tree is used to predict simultaneously the noisy x and y observations of a circle given a single underlying feature. As a result, it learns local linear regressions approximating the circle.
+    <p>Multi-output regression with :ref:`decision trees <tree>`: the decision tree is used to predict...
     </p></div>
     </div>
 
@@ -4652,7 +4658,7 @@ Examples concerning the :mod:`sklearn.tree` package.
 .. raw:: html
 
 
-    <p>Plot the decision surface of a :ref:`decision tree <tree>` trained on pairs of features of the iris dataset.
+    <p>Plot the decision surface of a :ref:`decision tree <tree>` trained on pairs of features of the ...
     </p></div>
     </div>
 
