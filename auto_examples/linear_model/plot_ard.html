@@ -167,13 +167,22 @@
             
   <div class="section" id="automatic-relevance-determination-regression-ard">
 <span id="example-linear-model-plot-ard-py"></span><h1>Automatic Relevance Determination Regression (ARD)<a class="headerlink" href="#automatic-relevance-determination-regression-ard" title="Permalink to this headline">¶</a></h1>
-<p>Fit regression model with <a class="reference internal" href="../../modules/linear_model.html#bayesian-ridge-regression"><em>Bayesian Ridge Regression</em></a>.</p>
+<p>Fit regression model with Bayesian Ridge Regression.</p>
+<p>See <a class="reference internal" href="../../modules/linear_model.html#bayesian-ridge-regression"><em>Bayesian Ridge Regression</em></a> for more information on the regressor.</p>
 <p>Compared to the OLS (ordinary least squares) estimator, the coefficient
 weights are slightly shifted toward zeros, which stabilises them.</p>
 <p>The histogram of the estimated weights is very peaked, as a sparsity-inducing
 prior is implied on the weights.</p>
 <p>The estimation of the model is done by iteratively maximizing the
 marginal log-likelihood of the observations.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../../_images/plot_ard_2.png"><img alt="../../_images/plot_ard_2.png" src="../../_images/plot_ard_2.png" style="width: 282.0px; height: 235.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_ard_3.png"><img alt="../../_images/plot_ard_3.png" src="../../_images/plot_ard_3.png" style="width: 282.0px; height: 235.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_ard_1.png"><img alt="../../_images/plot_ard_1.png" src="../../_images/plot_ard_1.png" style="width: 282.0px; height: 235.0px;" /></a>
+</li>
+</ul>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_ard.py"><tt class="xref download docutils literal"><span class="pre">plot_ard.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
@@ -241,6 +250,7 @@ marginal log-likelihood of the observations.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.41 seconds</p>
 </div>
 
 

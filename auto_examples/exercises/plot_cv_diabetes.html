@@ -167,8 +167,23 @@
             
   <div class="section" id="cross-validation-on-diabetes-dataset-exercise">
 <span id="example-exercises-plot-cv-diabetes-py"></span><h1>Cross-validation on diabetes Dataset Exercise<a class="headerlink" href="#cross-validation-on-diabetes-dataset-exercise" title="Permalink to this headline">¶</a></h1>
+<p>A tutorial excercise which uses cross-validation with linear models.</p>
 <p>This exercise is used in the <a class="reference internal" href="../../tutorial/statistical_inference/model_selection.html#cv-estimators-tut"><em>Cross-validated estimators</em></a> part of the
 <a class="reference internal" href="../../tutorial/statistical_inference/model_selection.html#model-selection-tut"><em>Model selection: choosing estimators and their parameters</em></a> section of the <a class="reference internal" href="../../tutorial/statistical_inference/index.html#stat-learn-tut-index"><em>A tutorial on statistical-learning for scientific data processing</em></a>.</p>
+<img alt="../../_images/plot_cv_diabetes_1.png" class="align-center" src="../../_images/plot_cv_diabetes_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Answer to the bonus question: how much can you trust the selection of alpha?
+
+Alpha parameters maximising the generalization score on different
+subsets of the data:
+[fold 0] alpha: 0.00030, score: 0.49984
+[fold 1] alpha: 0.00053, score: 0.10660
+[fold 2] alpha: 0.00030, score: 0.44419
+
+Answer: Not very much since we obtained different alphas for different
+subsets of the data and moreover, the scores for these alphas differ
+quite substantially.</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_cv_diabetes.py"><tt class="xref download docutils literal"><span class="pre">plot_cv_diabetes.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 
@@ -235,6 +250,7 @@
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  3.07 seconds</p>
 </div>
 
 

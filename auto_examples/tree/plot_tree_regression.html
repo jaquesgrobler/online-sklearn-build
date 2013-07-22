@@ -167,12 +167,14 @@
             
   <div class="section" id="decision-tree-regression">
 <span id="example-tree-plot-tree-regression-py"></span><h1>Decision Tree Regression<a class="headerlink" href="#decision-tree-regression" title="Permalink to this headline">¶</a></h1>
-<p>1D regression with <a class="reference internal" href="../../modules/tree.html#tree"><em>decision trees</em></a>: the decision tree is
+<p>A 1D regression with decision tree.</p>
+<p>The <a class="reference internal" href="../../modules/tree.html#tree"><em>decision trees</em></a> is
 used to fit a sine curve with addition noisy observation. As a result, it
 learns local linear regressions approximating the sine curve.</p>
 <p>We can see that if the maximum depth of the tree (controlled by the
 <cite>max_depth</cite> parameter) is set too high, the decision trees learn too fine
 details of the training data and learn from the noise, i.e. they overfit.</p>
+<img alt="../../_images/plot_tree_regression_1.png" class="align-center" src="../../_images/plot_tree_regression_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_tree_regression.py"><tt class="xref download docutils literal"><span class="pre">plot_tree_regression.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
@@ -211,6 +213,7 @@ details of the training data and learn from the noise, i.e. they overfit.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.07 seconds</p>
 </div>
 
 

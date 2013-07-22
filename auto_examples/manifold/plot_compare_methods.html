@@ -178,6 +178,16 @@ representation of the data (here 2D) in which the distances respect well
 the distances in the original high-dimensional space, unlike other
 manifold-learning algorithms, it does not seeks an isotropic
 representation of the data in the low-dimensional space.</p>
+<img alt="../../_images/plot_compare_methods_1.png" class="align-center" src="../../_images/plot_compare_methods_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>standard: 0.15 sec
+ltsa: 0.31 sec
+hessian: 0.39 sec
+modified: 0.34 sec
+Isomap: 0.63 sec
+MDS: 4.3 sec
+SpectralEmbedding: 0.37 sec</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_compare_methods.py"><tt class="xref download docutils literal"><span class="pre">plot_compare_methods.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author: Jake Vanderplas -- &lt;vanderplas@astro.washington.edu&gt;</span>
 
@@ -271,6 +281,7 @@ representation of the data in the low-dimensional space.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  6.85 seconds</p>
 </div>
 
 

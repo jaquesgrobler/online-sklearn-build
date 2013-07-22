@@ -168,8 +168,8 @@
   <div class="section" id="spectral-clustering-for-image-segmentation">
 <span id="example-cluster-plot-segmentation-toy-py"></span><h1>Spectral clustering for image segmentation<a class="headerlink" href="#spectral-clustering-for-image-segmentation" title="Permalink to this headline">¶</a></h1>
 <p>In this example, an image with connected circles is generated and
-<a class="reference internal" href="../../modules/clustering.html#spectral-clustering"><em>Spectral clustering</em></a> is used to separate the circles.</p>
-<p>In these settings, the spectral clustering approach solves the problem
+spectral clustering is used to separate the circles.</p>
+<p>In these settings, the <a class="reference internal" href="../../modules/clustering.html#spectral-clustering"><em>Spectral clustering</em></a> approach solves the problem
 know as &#8216;normalized graph cuts&#8217;: the image is seen as a graph of
 connected voxels, and the spectral clustering algorithm amounts to
 choosing graph cuts defining regions while minimizing the ratio of the
@@ -183,6 +183,16 @@ a Voronoi partition of the graph.</p>
 <p>In addition, we use the mask of the objects to restrict the graph to the
 outline of the objects. In this example, we are interested in
 separating the objects one from the other, and not from the background.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../../_images/plot_segmentation_toy_3.png"><img alt="../../_images/plot_segmentation_toy_3.png" src="../../_images/plot_segmentation_toy_3.png" style="width: 282.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_segmentation_toy_2.png"><img alt="../../_images/plot_segmentation_toy_2.png" src="../../_images/plot_segmentation_toy_2.png" style="width: 282.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_segmentation_toy_4.png"><img alt="../../_images/plot_segmentation_toy_4.png" src="../../_images/plot_segmentation_toy_4.png" style="width: 282.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_segmentation_toy_1.png"><img alt="../../_images/plot_segmentation_toy_1.png" src="../../_images/plot_segmentation_toy_1.png" style="width: 282.0px; height: 282.0px;" /></a>
+</li>
+</ul>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_segmentation_toy.py"><tt class="xref download docutils literal"><span class="pre">plot_segmentation_toy.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
@@ -258,6 +268,7 @@ separating the objects one from the other, and not from the background.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  1.77 seconds</p>
 </div>
 
 

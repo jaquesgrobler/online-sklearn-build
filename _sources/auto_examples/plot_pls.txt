@@ -7,11 +7,12 @@
 PLS Partial Least Squares
 =========================
 
-Simple usage of various PLS flavor:
-- PLSCanonical
-- PLSRegression, with multivariate response, a.k.a. PLS2
-- PLSRegression, with univariate response, a.k.a. PLS1
-- CCA
+Simple usage of various PLS flavors:
+
+* PLSCanonical
+* PLSRegression, with multivariate response, a.k.a. PLS2
+* PLSRegression, with univariate response, a.k.a. PLS1
+* CCA
 
 Given 2 multivariate covarying two-dimensional datasets, X, and Y,
 PLS extracts the 'directions of covariance', i.e. the components of each
@@ -23,8 +24,63 @@ however, the correlation across datasets for different components is
 weak: the point cloud is very spherical.
 
 
+
+.. image:: images/plot_pls_1.png
+    :align: center
+
+
+**Script output**::
+
+  Corr(X)
+  [[ 1.    0.55  0.08  0.07]
+   [ 0.55  1.    0.08  0.07]
+   [ 0.08  0.08  1.    0.56]
+   [ 0.07  0.07  0.56  1.  ]]
+  Corr(Y)
+  [[ 1.    0.54  0.09  0.03]
+   [ 0.54  1.    0.08  0.  ]
+   [ 0.09  0.08  1.    0.53]
+   [ 0.03  0.    0.53  1.  ]]
+  True B (such that: Y = XB + Err)
+  [[1 1 1]
+   [2 2 2]
+   [0 0 0]
+   [0 0 0]
+   [0 0 0]
+   [0 0 0]
+   [0 0 0]
+   [0 0 0]
+   [0 0 0]
+   [0 0 0]]
+  Estimated B
+  [[ 1.   1.   1. ]
+   [ 2.   2.   2. ]
+   [-0.  -0.  -0. ]
+   [-0.   0.1  0. ]
+   [-0.   0.  -0. ]
+   [ 0.   0.1  0.1]
+   [ 0.1  0.   0. ]
+   [ 0.  -0.  -0. ]
+   [-0.   0.  -0. ]
+   [ 0.  -0.  -0. ]]
+  Estimated betas
+  [[ 1. ]
+   [ 2. ]
+   [ 0. ]
+   [ 0.1]
+   [ 0. ]
+   [-0. ]
+   [ 0.1]
+   [-0. ]
+   [-0. ]
+   [ 0. ]]
+
+
+
 **Python source code:** :download:`plot_pls.py <plot_pls.py>`
 
 .. literalinclude:: plot_pls.py
-    :lines: 21-
+    :lines: 22-
+
+**Total running time of the example:**  0.28 seconds
     

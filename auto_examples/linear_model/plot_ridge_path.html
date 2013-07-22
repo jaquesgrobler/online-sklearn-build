@@ -167,13 +167,15 @@
             
   <div class="section" id="plot-ridge-coefficients-as-a-function-of-the-regularization">
 <span id="example-linear-model-plot-ridge-path-py"></span><h1>Plot Ridge coefficients as a function of the regularization<a class="headerlink" href="#plot-ridge-coefficients-as-a-function-of-the-regularization" title="Permalink to this headline">¶</a></h1>
-<p>Shows the effect of collinearity in the coefficients or the
-<a class="reference internal" href="../../modules/generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="sklearn.linear_model.Ridge"><tt class="xref py py-class docutils literal"><span class="pre">Ridge</span></tt></a>. Each color represents a different feature of the
+<p>Shows the effect of collinearity in the coefficients of an estimator.</p>
+<p><a class="reference internal" href="../../modules/generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="sklearn.linear_model.Ridge"><tt class="xref py py-class docutils literal"><span class="pre">Ridge</span></tt></a> Regression is the estimator used in this example.
+Each color represents a different feature of the
 coefficient vector, and this is displayed as a function of the
 regularization parameter.</p>
 <p>At the end of the path, as alpha tends toward zero
 and the solution tends towards the ordinary least squares, coefficients
 exhibit big oscillations.</p>
+<img alt="../../_images/plot_ridge_path_1.png" class="align-center" src="../../_images/plot_ridge_path_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_ridge_path.py"><tt class="xref download docutils literal"><span class="pre">plot_ridge_path.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author: Fabian Pedregosa -- &lt;fabian.pedregosa@inria.fr&gt;</span>
 <span class="c"># License: BSD 3 clause</span>
@@ -217,6 +219,7 @@ exhibit big oscillations.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.08 seconds</p>
 </div>
 
 

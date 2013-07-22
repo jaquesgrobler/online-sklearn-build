@@ -61,7 +61,7 @@
           position = $(this).position();
           var clone = $(this).closest('.thumbnailContainer').find('.clonedItem');
           var clone_fig = clone.find('.figure');
-          clone.css("left", position.left - (position.left/10)).css("position", "absolute").css("z-index", 1000).css("background-color", "white");
+          clone.css("left", position.left - 70).css("top", position.top - 70).css("position", "absolute").css("z-index", 1000).css("background-color", "white");
 
           var cloneImg = clone_fig.find('img');
 
@@ -524,7 +524,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>The classifier is optimized by "nested" cross-validation using the :class:`sklearn.grid_search....
+    <p>This examples shows how a classifier is optimized by "nested" cross-validation, which is done u...
     </p></div>
     </div>
 
@@ -776,7 +776,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>In particular in high dimensional spaces data can more easily be separated linearly and the sim...
+    <p>A comparison of a several classifiers in scikit-learn on synthetic datasets. The point of this ...
     </p></div>
     </div>
 
@@ -804,7 +804,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>Simple usage of various PLS flavor: - PLSCanonical - PLSRegression, with multivariate response,...
+    <p>Simple usage of various PLS flavors:
     </p></div>
     </div>
 
@@ -888,7 +888,7 @@ General-purpose and introductory examples for the scikit.
 .. raw:: html
 
 
-    <p>.. currentmodule:: sklearn.kernel_approximation
+    <p>An example illustrating the approximation of the feature map of an RBF kernel.
     </p></div>
     </div>
 
@@ -1129,7 +1129,7 @@ interactive user interface.
 .. raw:: html
 
 
-    <p>.. _stock_market:
+    <p>This example employs several unsupervised learning techniques to extract the stock market struc...
     </p></div>
     </div>
 
@@ -1453,7 +1453,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>Example builds a swiss roll dataset and runs :ref:`hierarchical_clustering` on their position.
+    <p>Example builds a swiss roll dataset and runs hierarchical clustering on their position.
     </p></div>
     </div>
 
@@ -1481,7 +1481,7 @@ Examples concerning the :mod:`sklearn.cluster` package.
 .. raw:: html
 
 
-    <p>In this example, an image with connected circles is generated and :ref:`spectral_clustering` is...
+    <p>In this example, an image with connected circles is generated and spectral clustering is used t...
     </p></div>
     </div>
 
@@ -1777,7 +1777,7 @@ Examples concerning the :mod:`sklearn.covariance` package.
 .. raw:: html
 
 
-    <p>This example illustrates two ways of performing :ref:`outlier_detection` when the amount of con...
+    <p>When the amount of contamination is known, this example illustrates two different ways of perfo...
     </p></div>
     </div>
 
@@ -1833,7 +1833,7 @@ Examples concerning the :mod:`sklearn.covariance` package.
 .. raw:: html
 
 
-    <p>The usual estimator for covariance is the maximum likelihood estimator, :class:`sklearn.covaria...
+    <p>When working with covariance estimation, the usual approach is to use a maximum likelihood esti...
     </p></div>
     </div>
 
@@ -1861,7 +1861,7 @@ Examples concerning the :mod:`sklearn.covariance` package.
 .. raw:: html
 
 
-    <p>For Gaussian distributed data, the distance of an observation :math:`x_i` to the mode of the di...
+    <p>An example to show covariance estimation with the Mahalanobis distances on Gaussian distributed...
     </p></div>
     </div>
 
@@ -1933,7 +1933,7 @@ Examples concerning the :mod:`sklearn.datasets` package.
 .. raw:: html
 
 
-    <p>See `here <http://archive.ics.uci.edu/ml/datasets/Pen-Based+Recognition+of+Handwritten+Digits>`...
+    <p>This dataset is made up of 1797 8x8 images. Each image, like the one shown below, is of a hand-...
     </p></div>
     </div>
 
@@ -2062,7 +2062,7 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 .. raw:: html
 
 
-    <p>:ref:`ICA` is used to estimate sources given noisy measurements. Imagine 2 instruments playing ...
+    <p>An example of estimating sources from noisy data.
     </p></div>
     </div>
 
@@ -2146,7 +2146,7 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 .. raw:: html
 
 
-    <p>Illustrate visually the results of :ref:`ICA` vs :ref:`PCA` in the feature space.
+    <p>This example illustrates visually in the feature space a comparison by results using two differ...
     </p></div>
     </div>
 
@@ -2258,7 +2258,7 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 .. raw:: html
 
 
-    <p>An example comparing the effect of reconstructing noisy fragments of Lena using online :ref:`Di...
+    <p>An example comparing the effect of reconstructing noisy fragments of the Lena image using first...
     </p></div>
     </div>
 
@@ -2680,7 +2680,7 @@ Exercises for the tutorials
 .. raw:: html
 
 
-    <p>This exercise is used in the :ref:`clf_tut` part of the :ref:`supervised_learning_tut` section ...
+    <p>A tutorial exercise regarding the use of classification techniques on the Digits dataset.
     </p></div>
     </div>
 
@@ -2708,7 +2708,7 @@ Exercises for the tutorials
 .. raw:: html
 
 
-    <p>This exercise is used in the :ref:`cv_generators_tut` part of the :ref:`model_selection_tut` se...
+    <p>A tutorial excercise using Cross-validation with an SVM on the Digits dataset.
     </p></div>
     </div>
 
@@ -2736,7 +2736,7 @@ Exercises for the tutorials
 .. raw:: html
 
 
-    <p>This exercise is used in the :ref:`using_kernels_tut` part of the :ref:`supervised_learning_tut...
+    <p>A tutorial exercise for using different SVM kernels.
     </p></div>
     </div>
 
@@ -2764,7 +2764,7 @@ Exercises for the tutorials
 .. raw:: html
 
 
-    <p>This exercise is used in the :ref:`cv_estimators_tut` part of the :ref:`model_selection_tut` se...
+    <p>A tutorial excercise which uses cross-validation with linear models.
     </p></div>
     </div>
 
@@ -3021,7 +3021,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>.. currentmodule:: sklearn.linear_model
+    <p>Shows the effect of collinearity in the coefficients of an estimator.
     </p></div>
     </div>
 
@@ -3049,7 +3049,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Plot the convex loss functions supported by `sklearn.linear_model.stochastic_gradient`. 
+    <p>An example that compares various convex loss functions.
     </p></div>
     </div>
 
@@ -3301,7 +3301,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Plot the contours of the three penalties supported by `sklearn.linear_model.stochastic_gradient...
+    <p>Plot the contours of the three penalties.
     </p></div>
     </div>
 
@@ -3413,7 +3413,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Computes a :ref:`bayesian_ridge_regression` on a synthetic dataset.
+    <p>Computes a Bayesian Ridge Regression on a synthetic dataset.
     </p></div>
     </div>
 
@@ -3469,7 +3469,7 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 .. raw:: html
 
 
-    <p>Fit regression model with :ref:`bayesian_ridge_regression`.
+    <p>Fit regression model with Bayesian Ridge Regression.
     </p></div>
     </div>
 
@@ -3922,7 +3922,7 @@ Examples concerning the :mod:`sklearn.mixture` package.
 .. raw:: html
 
 
-    <p>Demonstration of :ref:`gmm` for classification.
+    <p>Demonstration of Gaussian mixture models for classification.
     </p></div>
     </div>
 
@@ -4446,7 +4446,7 @@ Examples concerning the :mod:`sklearn.svm` package.
 .. raw:: html
 
 
-    <p>:ref:`One-class SVM <svm_outlier_detection>` is an unsupervised algorithm that learns a decisio...
+    <p>An example using a one-class SVM for novelty detection.
     </p></div>
     </div>
 
@@ -4602,7 +4602,7 @@ Examples concerning the :mod:`sklearn.tree` package.
 .. raw:: html
 
 
-    <p>1D regression with :ref:`decision trees <tree>`: the decision tree is used to fit a sine curve ...
+    <p>A 1D regression with decision tree.
     </p></div>
     </div>
 
@@ -4630,7 +4630,7 @@ Examples concerning the :mod:`sklearn.tree` package.
 .. raw:: html
 
 
-    <p>Multi-output regression with :ref:`decision trees <tree>`: the decision tree is used to predict...
+    <p>An example to illustrate multi-output regression with decision tree.
     </p></div>
     </div>
 
@@ -4658,7 +4658,7 @@ Examples concerning the :mod:`sklearn.tree` package.
 .. raw:: html
 
 
-    <p>Plot the decision surface of a :ref:`decision tree <tree>` trained on pairs of features of the ...
+    <p>Plot the decision surface of a decision tree trained on pairs of features of the iris dataset.
     </p></div>
     </div>
 

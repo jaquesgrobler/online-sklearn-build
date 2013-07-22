@@ -265,11 +265,12 @@ of the computer.</p>
 </table>
 <div class="green topic">
 <p class="topic-title first"><strong>Exercise</strong></p>
-<a class="reference external image-reference" href="../../auto_examples/exercises/plot_cv_digits.html"><img alt="../../_images/plot_cv_digits_1.png" class="align-right" src="../../_images/plot_cv_digits_1.png" style="width: 360.0px; height: 270.0px;" /></a>
+<a class="reference external image-reference" href="../../auto_examples/exercises/plot_cv_digits.html"><img alt="../../_images/plot_cv_digits_11.png" class="align-right" src="../../_images/plot_cv_digits_11.png" style="width: 360.0px; height: 270.0px;" /></a>
 <p>On the digits dataset, plot the cross-validation score of a <a class="reference internal" href="../../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><tt class="xref py py-class docutils literal"><span class="pre">SVC</span></tt></a>
 estimator with an linear kernel as a function of parameter <cite>C</cite> (use a
 logarithmic grid of points, from <cite>1</cite> to <cite>10</cite>).</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">svm</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">svm</span>
 
 <span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span>
@@ -277,9 +278,6 @@ logarithmic grid of points, from <cite>1</cite> to <cite>10</cite>).</p>
 
 <span class="n">svc</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span>
 <span class="n">C_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-
-<span class="n">scores</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-<span class="n">scores_std</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>Solution:</strong> <a class="reference internal" href="../../auto_examples/exercises/plot_cv_digits.html#example-exercises-plot-cv-digits-py"><em>Cross-validation on Digits Dataset Exercise</em></a></p>
@@ -357,7 +355,9 @@ appended to their name.</p>
 <p>On the diabetes dataset, find the optimal regularization parameter
 alpha.</p>
 <p><strong>Bonus</strong>: How much can you trust the selection of alpha?</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">linear_model</span>
@@ -367,8 +367,6 @@ alpha.</p>
 <span class="n">diabetes</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="mi">150</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">150</span><span class="p">]</span>
-
-<span class="n">lasso</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">Lasso</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>Solution:</strong> <a class="reference internal" href="../../auto_examples/exercises/plot_cv_diabetes.html#example-exercises-plot-cv-diabetes-py"><em>Cross-validation on diabetes Dataset Exercise</em></a></p>

@@ -174,6 +174,24 @@ constrain the model more. In the L1 penalty case, this leads to sparser
 solutions.</p>
 <p>We classify 8x8 images of digits into two classes: 0-4 against 5-9.
 The visualization shows coefficients of the models for varying C.</p>
+<img alt="../../_images/plot_logistic_l1_l2_sparsity_1.png" class="align-center" src="../../_images/plot_logistic_l1_l2_sparsity_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>C=10
+Sparsity with L1 penalty: 6.25%
+score with L1 penalty: 0.9104
+Sparsity with L2 penalty: 4.69%
+score with L2 penalty: 0.9093
+C=100
+Sparsity with L1 penalty: 6.25%
+score with L1 penalty: 0.9098
+Sparsity with L2 penalty: 4.69%
+score with L2 penalty: 0.9098
+C=1000
+Sparsity with L1 penalty: 4.69%
+score with L1 penalty: 0.9098
+Sparsity with L2 penalty: 4.69%
+score with L2 penalty: 0.9098</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_logistic_l1_l2_sparsity.py"><tt class="xref download docutils literal"><span class="pre">plot_logistic_l1_l2_sparsity.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
@@ -241,6 +259,7 @@ The visualization shows coefficients of the models for varying C.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.46 seconds</p>
 </div>
 
 

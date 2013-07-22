@@ -249,7 +249,7 @@ function animateClone(e){
   position = $(this).position();
   var clone = $(this).closest('.thumbnailContainer').find('.clonedItem');
   var clone_fig = clone.find('.figure');
-  clone.css("left", position.left - (position.left/10)).css("position", "absolute").css("z-index", 1000).css("background-color", "white");
+  clone.css("left", position.left - 70).css("top", position.top - 70).css("position", "absolute").css("z-index", 1000).css("background-color", "white");
 
   var cloneImg = clone_fig.find('img');
 
@@ -437,7 +437,7 @@ $(window).load(function () {
 <a class="reference external image-reference" href="./grid_search_digits.html"><img alt="../_images/grid_search_digits.png" src="../_images/grid_search_digits.png" /></a>
 <p class="caption"><a class="reference internal" href="grid_search_digits.html#example-grid-search-digits-py"><em>Parameter estimation using grid search with a nested cross-validation</em></a></p>
 </div>
-<p>The classifier is optimized by "nested" cross-validation using the :class:`sklearn.grid_search....
+<p>This examples shows how a classifier is optimized by "nested" cross-validation, which is done u...
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -518,7 +518,7 @@ $(window).load(function () {
 <a class="reference external image-reference" href="./plot_classifier_comparison.html"><img alt="../_images/plot_classifier_comparison.png" src="../_images/plot_classifier_comparison.png" /></a>
 <p class="caption"><a class="reference internal" href="plot_classifier_comparison.html#example-plot-classifier-comparison-py"><em>Classifiers Comparison</em></a></p>
 </div>
-<p>In particular in high dimensional spaces data can more easily be separated linearly and the sim...
+<p>A comparison of a several classifiers in scikit-learn on synthetic datasets. The point of this ...
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -527,7 +527,7 @@ $(window).load(function () {
 <a class="reference external image-reference" href="./plot_pls.html"><img alt="../_images/plot_pls.png" src="../_images/plot_pls.png" /></a>
 <p class="caption"><a class="reference internal" href="plot_pls.html#example-plot-pls-py"><em>PLS Partial Least Squares</em></a></p>
 </div>
-<p>Simple usage of various PLS flavor: - PLSCanonical - PLSRegression, with multivariate response,...
+<p>Simple usage of various PLS flavors:
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -554,7 +554,7 @@ $(window).load(function () {
 <a class="reference external image-reference" href="./plot_kernel_approximation.html"><img alt="../_images/plot_kernel_approximation.png" src="../_images/plot_kernel_approximation.png" /></a>
 <p class="caption"><a class="reference internal" href="plot_kernel_approximation.html#example-plot-kernel-approximation-py"><em>Explicit feature map approximation for RBF kernels</em></a></p>
 </div>
-<p>.. currentmodule:: sklearn.kernel_approximation
+<p>An example illustrating the approximation of the feature map of an RBF kernel.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -631,7 +631,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./applications/plot_stock_market.html"><img alt="../_images/plot_stock_market.png" src="../_images/plot_stock_market.png" /></a>
 <p class="caption"><a class="reference internal" href="applications/plot_stock_market.html#example-applications-plot-stock-market-py"><em>Visualizing the stock market structure</em></a></p>
 </div>
-<p>.. _stock_market:
+<p>This example employs several unsupervised learning techniques to extract the stock market struc...
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -734,7 +734,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./cluster/plot_ward_structured_vs_unstructured.html"><img alt="../_images/plot_ward_structured_vs_unstructured.png" src="../_images/plot_ward_structured_vs_unstructured.png" /></a>
 <p class="caption"><a class="reference internal" href="cluster/plot_ward_structured_vs_unstructured.html#example-cluster-plot-ward-structured-vs-unstructured-py"><em>Hierarchical clustering: structured vs unstructured ward</em></a></p>
 </div>
-<p>Example builds a swiss roll dataset and runs :ref:`hierarchical_clustering` on their position.
+<p>Example builds a swiss roll dataset and runs hierarchical clustering on their position.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -743,7 +743,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./cluster/plot_segmentation_toy.html"><img alt="../_images/plot_segmentation_toy.png" src="../_images/plot_segmentation_toy.png" /></a>
 <p class="caption"><a class="reference internal" href="cluster/plot_segmentation_toy.html#example-cluster-plot-segmentation-toy-py"><em>Spectral clustering for image segmentation</em></a></p>
 </div>
-<p>In this example, an image with connected circles is generated and :ref:`spectral_clustering` is...
+<p>In this example, an image with connected circles is generated and spectral clustering is used t...
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -837,7 +837,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./covariance/plot_outlier_detection.html"><img alt="../_images/plot_outlier_detection.png" src="../_images/plot_outlier_detection.png" /></a>
 <p class="caption"><a class="reference internal" href="covariance/plot_outlier_detection.html#example-covariance-plot-outlier-detection-py"><em>Outlier detection with several methods.</em></a></p>
 </div>
-<p>This example illustrates two ways of performing :ref:`outlier_detection` when the amount of con...
+<p>When the amount of contamination is known, this example illustrates two different ways of perfo...
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -855,7 +855,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./covariance/plot_covariance_estimation.html"><img alt="../_images/plot_covariance_estimation.png" src="../_images/plot_covariance_estimation.png" /></a>
 <p class="caption"><a class="reference internal" href="covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood</em></a></p>
 </div>
-<p>The usual estimator for covariance is the maximum likelihood estimator, :class:`sklearn.covaria...
+<p>When working with covariance estimation, the usual approach is to use a maximum likelihood esti...
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -864,7 +864,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./covariance/plot_mahalanobis_distances.html"><img alt="../_images/plot_mahalanobis_distances.png" src="../_images/plot_mahalanobis_distances.png" /></a>
 <p class="caption"><a class="reference internal" href="covariance/plot_mahalanobis_distances.html#example-covariance-plot-mahalanobis-distances-py"><em>Robust covariance estimation and Mahalanobis distances relevance</em></a></p>
 </div>
-<p>For Gaussian distributed data, the distance of an observation :math:`x_i` to the mode of the di...
+<p>An example to show covariance estimation with the Mahalanobis distances on Gaussian distributed...
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -886,7 +886,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./datasets/plot_digits_last_image.html"><img alt="../_images/plot_digits_last_image.png" src="../_images/plot_digits_last_image.png" /></a>
 <p class="caption"><a class="reference internal" href="datasets/plot_digits_last_image.html#example-datasets-plot-digits-last-image-py"><em>The Digit Dataset</em></a></p>
 </div>
-<p>See `here <http://archive.ics.uci.edu/ml/datasets/Pen-Based+Recognition+of+Handwritten+Digits>`...
+<p>This dataset is made up of 1797 8x8 images. Each image, like the one shown below, is of a hand-...
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -926,7 +926,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./decomposition/plot_ica_blind_source_separation.html"><img alt="../_images/plot_ica_blind_source_separation.png" src="../_images/plot_ica_blind_source_separation.png" /></a>
 <p class="caption"><a class="reference internal" href="decomposition/plot_ica_blind_source_separation.html#example-decomposition-plot-ica-blind-source-separation-py"><em>Blind source separation using FastICA</em></a></p>
 </div>
-<p>:ref:`ICA` is used to estimate sources given noisy measurements. Imagine 2 instruments playing ...
+<p>An example of estimating sources from noisy data.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -953,7 +953,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./decomposition/plot_ica_vs_pca.html"><img alt="../_images/plot_ica_vs_pca.png" src="../_images/plot_ica_vs_pca.png" /></a>
 <p class="caption"><a class="reference internal" href="decomposition/plot_ica_vs_pca.html#example-decomposition-plot-ica-vs-pca-py"><em>FastICA on 2D point clouds</em></a></p>
 </div>
-<p>Illustrate visually the results of :ref:`ICA` vs :ref:`PCA` in the feature space.
+<p>This example illustrates visually in the feature space a comparison by results using two differ...
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -989,7 +989,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./decomposition/plot_image_denoising.html"><img alt="../_images/plot_image_denoising.png" src="../_images/plot_image_denoising.png" /></a>
 <p class="caption"><a class="reference internal" href="decomposition/plot_image_denoising.html#example-decomposition-plot-image-denoising-py"><em>Image denoising using dictionary learning</em></a></p>
 </div>
-<p>An example comparing the effect of reconstructing noisy fragments of Lena using online :ref:`Di...
+<p>An example comparing the effect of reconstructing noisy fragments of the Lena image using first...
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1123,7 +1123,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./exercises/plot_digits_classification_exercise.html"><img alt="../_images/plot_digits_classification_exercise.png" src="../_images/plot_digits_classification_exercise.png" /></a>
 <p class="caption"><a class="reference internal" href="exercises/plot_digits_classification_exercise.html#example-exercises-plot-digits-classification-exercise-py"><em>Digits Classification Exercise</em></a></p>
 </div>
-<p>This exercise is used in the :ref:`clf_tut` part of the :ref:`supervised_learning_tut` section ...
+<p>A tutorial exercise regarding the use of classification techniques on the Digits dataset.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1132,7 +1132,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./exercises/plot_cv_digits.html"><img alt="../_images/plot_cv_digits.png" src="../_images/plot_cv_digits.png" /></a>
 <p class="caption"><a class="reference internal" href="exercises/plot_cv_digits.html#example-exercises-plot-cv-digits-py"><em>Cross-validation on Digits Dataset Exercise</em></a></p>
 </div>
-<p>This exercise is used in the :ref:`cv_generators_tut` part of the :ref:`model_selection_tut` se...
+<p>A tutorial excercise using Cross-validation with an SVM on the Digits dataset.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1141,7 +1141,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./exercises/plot_iris_exercise.html"><img alt="../_images/plot_iris_exercise.png" src="../_images/plot_iris_exercise.png" /></a>
 <p class="caption"><a class="reference internal" href="exercises/plot_iris_exercise.html#example-exercises-plot-iris-exercise-py"><em>SVM Exercise</em></a></p>
 </div>
-<p>This exercise is used in the :ref:`using_kernels_tut` part of the :ref:`supervised_learning_tut...
+<p>A tutorial exercise for using different SVM kernels.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1150,7 +1150,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./exercises/plot_cv_diabetes.html"><img alt="../_images/plot_cv_diabetes.png" src="../_images/plot_cv_diabetes.png" /></a>
 <p class="caption"><a class="reference internal" href="exercises/plot_cv_diabetes.html#example-exercises-plot-cv-diabetes-py"><em>Cross-validation on diabetes Dataset Exercise</em></a></p>
 </div>
-<p>This exercise is used in the :ref:`cv_estimators_tut` part of the :ref:`model_selection_tut` se...
+<p>A tutorial excercise which uses cross-validation with linear models.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1230,7 +1230,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./linear_model/plot_ridge_path.html"><img alt="../_images/plot_ridge_path.png" src="../_images/plot_ridge_path.png" /></a>
 <p class="caption"><a class="reference internal" href="linear_model/plot_ridge_path.html#example-linear-model-plot-ridge-path-py"><em>Plot Ridge coefficients as a function of the regularization</em></a></p>
 </div>
-<p>.. currentmodule:: sklearn.linear_model
+<p>Shows the effect of collinearity in the coefficients of an estimator.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1239,7 +1239,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./linear_model/plot_sgd_loss_functions.html"><img alt="../_images/plot_sgd_loss_functions.png" src="../_images/plot_sgd_loss_functions.png" /></a>
 <p class="caption"><a class="reference internal" href="linear_model/plot_sgd_loss_functions.html#example-linear-model-plot-sgd-loss-functions-py"><em>SGD: Convex Loss Functions</em></a></p>
 </div>
-<p>Plot the convex loss functions supported by `sklearn.linear_model.stochastic_gradient`.
+<p>An example that compares various convex loss functions.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1320,7 +1320,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./linear_model/plot_sgd_penalties.html"><img alt="../_images/plot_sgd_penalties.png" src="../_images/plot_sgd_penalties.png" /></a>
 <p class="caption"><a class="reference internal" href="linear_model/plot_sgd_penalties.html#example-linear-model-plot-sgd-penalties-py"><em>SGD: Penalties</em></a></p>
 </div>
-<p>Plot the contours of the three penalties supported by `sklearn.linear_model.stochastic_gradient...
+<p>Plot the contours of the three penalties.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1356,7 +1356,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./linear_model/plot_bayesian_ridge.html"><img alt="../_images/plot_bayesian_ridge.png" src="../_images/plot_bayesian_ridge.png" /></a>
 <p class="caption"><a class="reference internal" href="linear_model/plot_bayesian_ridge.html#example-linear-model-plot-bayesian-ridge-py"><em>Bayesian Ridge Regression</em></a></p>
 </div>
-<p>Computes a :ref:`bayesian_ridge_regression` on a synthetic dataset.
+<p>Computes a Bayesian Ridge Regression on a synthetic dataset.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1374,7 +1374,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./linear_model/plot_ard.html"><img alt="../_images/plot_ard.png" src="../_images/plot_ard.png" /></a>
 <p class="caption"><a class="reference internal" href="linear_model/plot_ard.html#example-linear-model-plot-ard-py"><em>Automatic Relevance Determination Regression (ARD)</em></a></p>
 </div>
-<p>Fit regression model with :ref:`bayesian_ridge_regression`.
+<p>Fit regression model with Bayesian Ridge Regression.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1517,7 +1517,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./mixture/plot_gmm_classifier.html"><img alt="../_images/plot_gmm_classifier.png" src="../_images/plot_gmm_classifier.png" /></a>
 <p class="caption"><a class="reference internal" href="mixture/plot_gmm_classifier.html#example-mixture-plot-gmm-classifier-py"><em>GMM classification</em></a></p>
 </div>
-<p>Demonstration of :ref:`gmm` for classification.
+<p>Demonstration of Gaussian mixture models for classification.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1682,7 +1682,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./svm/plot_oneclass.html"><img alt="../_images/plot_oneclass.png" src="../_images/plot_oneclass.png" /></a>
 <p class="caption"><a class="reference internal" href="svm/plot_oneclass.html#example-svm-plot-oneclass-py"><em>One-class SVM with non-linear kernel (RBF)</em></a></p>
 </div>
-<p>:ref:`One-class SVM <svm_outlier_detection>` is an unsupervised algorithm that learns a decisio...
+<p>An example using a one-class SVM for novelty detection.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1731,7 +1731,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./tree/plot_tree_regression.html"><img alt="../_images/plot_tree_regression.png" src="../_images/plot_tree_regression.png" /></a>
 <p class="caption"><a class="reference internal" href="tree/plot_tree_regression.html#example-tree-plot-tree-regression-py"><em>Decision Tree Regression</em></a></p>
 </div>
-<p>1D regression with :ref:`decision trees <tree>`: the decision tree is used to fit a sine curve ...
+<p>A 1D regression with decision tree.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1740,7 +1740,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./tree/plot_tree_regression_multioutput.html"><img alt="../_images/plot_tree_regression_multioutput.png" src="../_images/plot_tree_regression_multioutput.png" /></a>
 <p class="caption"><a class="reference internal" href="tree/plot_tree_regression_multioutput.html#example-tree-plot-tree-regression-multioutput-py"><em>Multi-output Decision Tree Regression</em></a></p>
 </div>
-<p>Multi-output regression with :ref:`decision trees <tree>`: the decision tree is used to predict...
+<p>An example to illustrate multi-output regression with decision tree.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1749,7 +1749,7 @@ interactive user interface.</p>
 <a class="reference external image-reference" href="./tree/plot_iris.html"><img alt="../_images/plot_iris1.png" src="../_images/plot_iris1.png" /></a>
 <p class="caption"><a class="reference internal" href="tree/plot_iris.html#example-tree-plot-iris-py"><em>Plot the decision surface of a decision tree on the iris dataset</em></a></p>
 </div>
-<p>Plot the decision surface of a :ref:`decision tree <tree>` trained on pairs of features of the ...
+<p>Plot the decision surface of a decision tree trained on pairs of features of the iris dataset.
 </p></div>
 </div><div class="toctree-wrapper compound">
 </div>

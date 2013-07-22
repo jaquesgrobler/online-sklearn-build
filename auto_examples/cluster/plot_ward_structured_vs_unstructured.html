@@ -168,8 +168,8 @@
   <div class="section" id="hierarchical-clustering-structured-vs-unstructured-ward">
 <span id="example-cluster-plot-ward-structured-vs-unstructured-py"></span><h1>Hierarchical clustering: structured vs unstructured ward<a class="headerlink" href="#hierarchical-clustering-structured-vs-unstructured-ward" title="Permalink to this headline">¶</a></h1>
 <p>Example builds a swiss roll dataset and runs
-<a class="reference internal" href="../../modules/clustering.html#hierarchical-clustering"><em>Hierarchical clustering</em></a> on their position.</p>
-<p>In a first step, the hierarchical clustering without connectivity
+hierarchical clustering on their position.</p>
+<p>In a first step, the <a class="reference internal" href="../../modules/clustering.html#hierarchical-clustering"><em>Hierarchical clustering</em></a> without connectivity
 constraints on structure, solely based on distance, whereas in a second
 step clustering restricted to the k-Nearest Neighbors graph: it&#8217;s a
 hierarchical clustering with structure prior.</p>
@@ -177,6 +177,20 @@ hierarchical clustering with structure prior.</p>
 respect the structure of the swiss roll and extend across different folds of
 the manifolds. On the opposite, when opposing connectivity constraints,
 the clusters form a nice parcellation of the swiss roll.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../../_images/plot_ward_structured_vs_unstructured_2.png"><img alt="../../_images/plot_ward_structured_vs_unstructured_2.png" src="../../_images/plot_ward_structured_vs_unstructured_2.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_ward_structured_vs_unstructured_1.png"><img alt="../../_images/plot_ward_structured_vs_unstructured_1.png" src="../../_images/plot_ward_structured_vs_unstructured_1.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+</ul>
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Compute unstructured hierarchical clustering...
+('Elapsed time: ', 0.48471689224243164)
+('Number of points: ', 1000)
+Compute structured hierarchical clustering...
+('Elapsed time: ', 0.10263586044311523)
+('Number of points: ', 1000)</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_ward_structured_vs_unstructured.py"><tt class="xref download docutils literal"><span class="pre">plot_ward_structured_vs_unstructured.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Authors : Vincent Michel, 2010</span>
 <span class="c">#           Alexandre Gramfort, 2010</span>
@@ -247,6 +261,7 @@ the clusters form a nice parcellation of the swiss roll.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.72 seconds</p>
 </div>
 
 

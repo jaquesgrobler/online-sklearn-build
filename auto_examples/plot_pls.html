@@ -167,11 +167,13 @@
             
   <div class="section" id="pls-partial-least-squares">
 <span id="example-plot-pls-py"></span><h1>PLS Partial Least Squares<a class="headerlink" href="#pls-partial-least-squares" title="Permalink to this headline">¶</a></h1>
-<p>Simple usage of various PLS flavor:
-- PLSCanonical
-- PLSRegression, with multivariate response, a.k.a. PLS2
-- PLSRegression, with univariate response, a.k.a. PLS1
-- CCA</p>
+<p>Simple usage of various PLS flavors:</p>
+<ul class="simple">
+<li>PLSCanonical</li>
+<li>PLSRegression, with multivariate response, a.k.a. PLS2</li>
+<li>PLSRegression, with univariate response, a.k.a. PLS1</li>
+<li>CCA</li>
+</ul>
 <p>Given 2 multivariate covarying two-dimensional datasets, X, and Y,
 PLS extracts the &#8216;directions of covariance&#8217;, i.e. the components of each
 datasets that explain the most shared variance between both datasets.
@@ -180,6 +182,52 @@ dataset X and dataset Y are maximaly correlated (points lie around the
 first diagonal). This is also true for components 2 in both dataset,
 however, the correlation across datasets for different components is
 weak: the point cloud is very spherical.</p>
+<img alt="../_images/plot_pls_1.png" class="align-center" src="../_images/plot_pls_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Corr(X)
+[[ 1.    0.55  0.08  0.07]
+ [ 0.55  1.    0.08  0.07]
+ [ 0.08  0.08  1.    0.56]
+ [ 0.07  0.07  0.56  1.  ]]
+Corr(Y)
+[[ 1.    0.54  0.09  0.03]
+ [ 0.54  1.    0.08  0.  ]
+ [ 0.09  0.08  1.    0.53]
+ [ 0.03  0.    0.53  1.  ]]
+True B (such that: Y = XB + Err)
+[[1 1 1]
+ [2 2 2]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]]
+Estimated B
+[[ 1.   1.   1. ]
+ [ 2.   2.   2. ]
+ [-0.  -0.  -0. ]
+ [-0.   0.1  0. ]
+ [-0.   0.  -0. ]
+ [ 0.   0.1  0.1]
+ [ 0.1  0.   0. ]
+ [ 0.  -0.  -0. ]
+ [-0.   0.  -0. ]
+ [ 0.  -0.  -0. ]]
+Estimated betas
+[[ 1. ]
+ [ 2. ]
+ [ 0. ]
+ [ 0.1]
+ [ 0. ]
+ [-0. ]
+ [ 0.1]
+ [-0. ]
+ [-0. ]
+ [ 0. ]]</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_pls.py"><tt class="xref download docutils literal"><span class="pre">plot_pls.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
@@ -311,6 +359,7 @@ weak: the point cloud is very spherical.</p>
 <span class="n">X_test_r</span><span class="p">,</span> <span class="n">Y_test_r</span> <span class="o">=</span> <a href="../modules/generated/sklearn.pls.PLSCanonical.html#sklearn.pls.PLSCanonical"><span class="n">plsca</span></a><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.28 seconds</p>
 </div>
 
 

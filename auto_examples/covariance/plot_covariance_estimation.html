@@ -167,7 +167,8 @@
             
   <div class="section" id="shrinkage-covariance-estimation-ledoitwolf-vs-oas-and-max-likelihood">
 <span id="example-covariance-plot-covariance-estimation-py"></span><h1>Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood<a class="headerlink" href="#shrinkage-covariance-estimation-ledoitwolf-vs-oas-and-max-likelihood" title="Permalink to this headline">¶</a></h1>
-<p>The usual estimator for covariance is the maximum likelihood estimator,
+<p>When working with covariance estimation, the usual approach is to use
+a maximum likelihood estimator, such as the
 <a class="reference internal" href="../../modules/generated/sklearn.covariance.EmpiricalCovariance.html#sklearn.covariance.EmpiricalCovariance" title="sklearn.covariance.EmpiricalCovariance"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.covariance.EmpiricalCovariance</span></tt></a>. It is unbiased, i.e. it
 converges to the true (population) covariance when given many
 observations. However, it can also be beneficial to regularize it, in
@@ -198,6 +199,7 @@ as it is close to the optimal and is computational not costly. In this
 example, the OAS estimate is a bit further away. Interestingly, both
 approaches outperform cross-validation, which is significantly most
 computationally costly.</p>
+<img alt="../../_images/plot_covariance_estimation_1.png" class="align-center" src="../../_images/plot_covariance_estimation_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_covariance_estimation.py"><tt class="xref download docutils literal"><span class="pre">plot_covariance_estimation.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
@@ -289,6 +291,7 @@ computationally costly.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  0.33 seconds</p>
 </div>
 
 
