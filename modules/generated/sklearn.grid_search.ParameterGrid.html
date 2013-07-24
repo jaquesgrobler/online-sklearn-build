@@ -177,10 +177,14 @@ Python built-in function iter.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>param_grid</strong> : dict of string to sequence</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>param_grid</strong> : dict of string to sequence, or sequence of such</p>
 <blockquote class="last">
 <div><p>The parameter grid to explore, as a dictionary mapping estimator
 parameters to sequences of allowed values.</p>
+<p>An empty dict signifies default parameters.</p>
+<p>A sequence of dicts signifies a sequence of grids to search, and is
+useful to avoid exploring parameter combinations that make no sense
+or have no effect. See the examples below.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -195,10 +199,18 @@ parameters to sequences of allowed values.</p>
 </div>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">ParameterGrid</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s">&#39;b&#39;</span><span class="p">:[</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">]}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">ParameterGrid</span><span class="p">(</span><span class="n">param_grid</span><span class="p">))</span> 
-<span class="go">[{&#39;a&#39;: 1, &#39;b&#39;: True}, {&#39;a&#39;: 1, &#39;b&#39;: False},</span>
-<span class="go"> {&#39;a&#39;: 2, &#39;b&#39;: True}, {&#39;a&#39;: 2, &#39;b&#39;: False}]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">ParameterGrid</span><span class="p">(</span><span class="n">param_grid</span><span class="p">))</span> <span class="o">==</span> <span class="p">(</span>
+<span class="gp">... </span>   <span class="p">[{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;linear&#39;</span><span class="p">]},</span> <span class="p">{</span><span class="s">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;rbf&#39;</span><span class="p">],</span> <span class="s">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]}]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">ParameterGrid</span><span class="p">(</span><span class="n">grid</span><span class="p">))</span> <span class="o">==</span> <span class="p">[{</span><span class="s">&#39;kernel&#39;</span><span class="p">:</span> <span class="s">&#39;linear&#39;</span><span class="p">},</span>
+<span class="gp">... </span>                              <span class="p">{</span><span class="s">&#39;kernel&#39;</span><span class="p">:</span> <span class="s">&#39;rbf&#39;</span><span class="p">,</span> <span class="s">&#39;gamma&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+<span class="gp">... </span>                              <span class="p">{</span><span class="s">&#39;kernel&#39;</span><span class="p">:</span> <span class="s">&#39;rbf&#39;</span><span class="p">,</span> <span class="s">&#39;gamma&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}]</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 <dl class="method">
@@ -219,7 +231,7 @@ parameters to sequences of allowed values.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.grid_search.ParameterGrid.txt"

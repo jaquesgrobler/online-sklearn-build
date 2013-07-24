@@ -217,7 +217,7 @@ provided, but it is also possible to specify custom kernels.</li>
 samples, the method is likely to give poor performances.</li>
 <li>SVMs do not directly provide probability estimates, these are
 calculated using an expensive five-fold cross-validation
-(see <em class="xref std std-ref">Scores and probabilities</em>, below).</li>
+(see <a class="reference internal" href="#scores-probabilities"><em>Scores and probabilities</em></a>, below).</li>
 </ul>
 </div></blockquote>
 <p>The support vector machines in scikit-learn support both dens
@@ -231,7 +231,7 @@ data. For optimal performance, use C-ordered <tt class="docutils literal"><span 
 <p><a class="reference internal" href="generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><tt class="xref py py-class docutils literal"><span class="pre">SVC</span></tt></a>, <a class="reference internal" href="generated/sklearn.svm.NuSVC.html#sklearn.svm.NuSVC" title="sklearn.svm.NuSVC"><tt class="xref py py-class docutils literal"><span class="pre">NuSVC</span></tt></a> and <a class="reference internal" href="generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><tt class="xref py py-class docutils literal"><span class="pre">LinearSVC</span></tt></a> are classes
 capable of performing multi-class classification on a dataset.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/svm/plot_iris.html"><img alt="../_images/plot_iris_13.png" src="../_images/plot_iris_13.png" /></a>
+<a class="reference external image-reference" href="../auto_examples/svm/plot_iris.html"><img alt="../_images/plot_iris_12.png" src="../_images/plot_iris_12.png" /></a>
 </div>
 <p><a class="reference internal" href="generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><tt class="xref py py-class docutils literal"><span class="pre">SVC</span></tt></a> and <a class="reference internal" href="generated/sklearn.svm.NuSVC.html#sklearn.svm.NuSVC" title="sklearn.svm.NuSVC"><tt class="xref py py-class docutils literal"><span class="pre">NuSVC</span></tt></a> are similar methods, but accept
 slightly different sets of parameters and have different mathematical
@@ -318,7 +318,7 @@ are mostly similar, but the runtime is significantly less.</p>
 <p>For &#8220;one-vs-rest&#8221; <a class="reference internal" href="generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><tt class="xref py py-class docutils literal"><span class="pre">LinearSVC</span></tt></a> the attributes <tt class="docutils literal"><span class="pre">coef_</span></tt> and <tt class="docutils literal"><span class="pre">intercept_</span></tt>
 have the shape <tt class="docutils literal"><span class="pre">[n_class,</span> <span class="pre">n_features]</span></tt> and <tt class="docutils literal"><span class="pre">[n_class]</span></tt> respectively.
 Each row of the coefficients corresponds to one of the <tt class="docutils literal"><span class="pre">n_class</span></tt> many
-&#8220;one-vs-rest&#8221; classifiers and simliar for the interecepts, in the
+&#8220;one-vs-rest&#8221; classifiers and similar for the intercepts, in the
 order of the &#8220;one&#8221; class.</p>
 <p>In the case of &#8220;one-vs-one&#8221; <a class="reference internal" href="generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><tt class="xref py py-class docutils literal"><span class="pre">SVC</span></tt></a>, the layout of the attributes
 is a little more involved. In the case of having a linear kernel,
@@ -582,7 +582,7 @@ be calculated using <a class="reference internal" href="generated/sklearn.svm.l1
 keyword <tt class="docutils literal"><span class="pre">degree</span></tt>, <cite>r</cite> by <tt class="docutils literal"><span class="pre">coef0</span></tt>.</li>
 <li>rbf: <img class="math" src="../_images/math/190818eacf35a0c45f76932d77ac2a440e855a24.png" alt="\exp(-\gamma |x-x'|^2)"/>. <img class="math" src="../_images/math/66981fa3920210c6ad8dbe5e968783d5dd7520c3.png" alt="\gamma"/> is
 specified by keyword <tt class="docutils literal"><span class="pre">gamma</span></tt>, must be greater than 0.</li>
-<li>sigmoid (<img class="math" src="../_images/math/1f6d44c02ff719dad0e9699bc8a10260ce102ef3.png" alt="\tanh(\langle x,x'\rangle + r)"/>), where <cite>r</cite> is specified by
+<li>sigmoid (<img class="math" src="../_images/math/4829b35686dacea41811753be471cf71ccbfb8df.png" alt="\tanh(\gamma \langle x,x'\rangle + r)"/>), where <cite>r</cite> is specified by
 <tt class="docutils literal"><span class="pre">coef0</span></tt>.</li>
 </ul>
 </div></blockquote>
@@ -772,7 +772,7 @@ used, please refer to</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/svm.txt"

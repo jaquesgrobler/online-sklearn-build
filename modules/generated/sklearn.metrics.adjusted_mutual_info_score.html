@@ -171,7 +171,7 @@
 <dt id="sklearn.metrics.adjusted_mutual_info_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">adjusted_mutual_info_score</tt><big>(</big><em>labels_true</em>, <em>labels_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.adjusted_mutual_info_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adjusted Mutual Information between two clusterings</p>
-<p>Adjusted Mutual Information (AMI) is an adjustement of the Mutual
+<p>Adjusted Mutual Information (AMI) is an adjustment of the Mutual
 Information (MI) score to account for chance. It accounts for the fact that
 the MI is generally higher for two clusterings with a larger number of
 clusters, regardless of whether there is actually more information shared.
@@ -220,18 +220,18 @@ metrics, such as the Adjusted Rand Index.</p>
 </dl>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r112" rules="none">
+<table class="docutils citation" frame="void" id="r129" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R112]</a></td><td><a class="reference external" href="http://jmlr.csail.mit.edu/papers/volume11/vinh10a/vinh10a.pdf">Vinh, Epps, and Bailey, (2010). Information Theoretic Measures for
+<tr><td class="label"><a class="fn-backref" href="#id1">[R129]</a></td><td><a class="reference external" href="http://jmlr.csail.mit.edu/papers/volume11/vinh10a/vinh10a.pdf">Vinh, Epps, and Bailey, (2010). Information Theoretic Measures for
 Clusterings Comparison: Variants, Properties, Normalization and
 Correction for Chance, JMLR</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r113" rules="none">
+<table class="docutils citation" frame="void" id="r130" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R113]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Adjusted_Mutual_Information">Wikipedia entry for the Adjusted Mutual Information</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id2">[R130]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Adjusted_Mutual_Information">Wikipedia entry for the Adjusted Mutual Information</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -244,7 +244,7 @@ score 1.0:</p>
 <span class="go">1.0</span>
 </pre></div>
 </div>
-<p>If classes members are completly splitted across different clusters,
+<p>If classes members are completely split across different clusters,
 the assignment is totally in-complete, hence the AMI is null:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">adjusted_mutual_info_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="go">0.0</span>
@@ -263,7 +263,7 @@ the assignment is totally in-complete, hence the AMI is null:</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.metrics.adjusted_mutual_info_score.txt"

@@ -254,7 +254,7 @@ It can be computed using <a class="reference internal" href="generated/sklearn.m
 </div>
 <p>The chi squared kernel is given by</p>
 <div class="math">
-<p><img src="../_images/math/9699a0a1d67bc94f317bdf909e5f11873dd2cb87.png" alt="k(x, y) = exp(-\gamma * \sum_i (x[i] - y[i]) ** 2 / (x[i] + y[i]))"/></p>
+<p><img src="../_images/math/c7d30824f15d62a5d892cbd9bee52de6584e0807.png" alt="k(x, y) = \exp \left (-\gamma \sum_i \frac{(x[i] - y[i]) ^ 2}{x[i] + y[i]} \right )"/></p>
 </div><p>The data is assumed to be non-negative, and is often normalized to have an L1-norm of one.
 The normalization is rationalized with the connection to the chi squared distance,
 which is a distance between discrete probability distributions.</p>
@@ -281,7 +281,7 @@ International Journal of Computer Vision 2007
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/metrics.txt"

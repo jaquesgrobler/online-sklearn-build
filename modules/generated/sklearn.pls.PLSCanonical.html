@@ -181,12 +181,12 @@ results up to numerical errors.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like of predictors, shape = [n_samples, p]</p>
 <blockquote>
-<div><p>Training vectors, where n_samples in the number of samples and
+<div><p>Training vectors, where n_samples is the number of samples and
 p is the number of predictors.</p>
 </div></blockquote>
 <p><strong>Y</strong> : array-like of response, shape = [n_samples, q]</p>
 <blockquote>
-<div><p>Training vectors, where n_samples in the number of samples and
+<div><p>Training vectors, where n_samples is the number of samples and
 q is the number of response variables.</p>
 </div></blockquote>
 <p><strong>n_components</strong> : int, number of components to keep. (default 2).</p>
@@ -226,14 +226,14 @@ intra-block variances.</p>
 <p>The residual matrix of X (Xk+1) block is obtained by the deflation on the
 current X score: x_score.</p>
 <p>The residual matrix of Y (Yk+1) block is obtained by deflation on the
-current Y score. This performs a canonical symetric version of the PLS
-regression. But slightly different than the CCA. This is mode mostly used
+current Y score. This performs a canonical symmetric version of the PLS
+regression. But slightly different than the CCA. This is mostly used
 for modeling.</p>
 <p>This implementation provides the same results that the &#8220;plspm&#8221; package
 provided in the R language (R-project), using the function plsca(X, Y).
 Results are equal or colinear with the function
 <tt class="docutils literal"><span class="pre">pls(...,</span> <span class="pre">mode</span> <span class="pre">=</span> <span class="pre">&quot;canonical&quot;)</span></tt> of the &#8220;mixOmics&#8221; package. The difference
-relies in the fact that mixOmics implmentation does not exactly implement
+relies in the fact that mixOmics implementation does not exactly implement
 the Wold algorithm since it does not normalize y_weights to one.</p>
 <p class="rubric">References</p>
 <p>Jacob A. Wegelin. A survey of Partial Least Squares (PLS) methods, with
@@ -408,7 +408,7 @@ p is the number of predictors.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>This call require the estimation of a p x q matrix, which may
+<p>This call requires the estimation of a p x q matrix, which may
 be an issue in high dimensional space.</p>
 </dd></dl>
 
@@ -500,7 +500,7 @@ q is the number of response variables.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.pls.PLSCanonical.txt"

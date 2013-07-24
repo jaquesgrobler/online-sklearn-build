@@ -169,7 +169,7 @@
 <h1>8.19.5.7. sklearn.metrics.pairwise.manhattan_distances<a class="headerlink" href="#sklearn-metrics-pairwise-manhattan-distances" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.pairwise.manhattan_distances">
-<tt class="descclassname">sklearn.metrics.pairwise.</tt><tt class="descname">manhattan_distances</tt><big>(</big><em>X</em>, <em>Y=None</em>, <em>sum_over_features=True</em><big>)</big><a class="headerlink" href="#sklearn.metrics.pairwise.manhattan_distances" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.metrics.pairwise.</tt><tt class="descname">manhattan_distances</tt><big>(</big><em>X</em>, <em>Y=None</em>, <em>sum_over_features=True</em>, <em>size_threshold=500000000.0</em><big>)</big><a class="headerlink" href="#sklearn.metrics.pairwise.manhattan_distances" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the L1 distances between the vectors in X and Y.</p>
 <p>With sum_over_features equal to False it returns the componentwise
 distances.</p>
@@ -189,6 +189,12 @@ distances.</p>
 <blockquote>
 <div><p>If True the function returns the pairwise distance matrix
 else it returns the componentwise L1 pairwise-distances.</p>
+</div></blockquote>
+<p><strong>size_threshold</strong> : int, default=5e8</p>
+<blockquote>
+<div><p>Avoid creating temporary matrices bigger than size_threshold (in
+bytes). If the problem size gets too big, the implementation then
+breaks it down in smaller problems.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -236,7 +242,7 @@ the pairwise l1 distances.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.metrics.pairwise.manhattan_distances.txt"

@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Multi-class AdaBoosted Decision Trees" href="plot_adaboost_multiclass.html" />
-    <link rel="prev" title="Hashing feature transformation using Totally Random Trees" href="plot_random_forest_embedding.html" />
+    <link rel="next" title="Digits Classification Exercise" href="../exercises/plot_digits_classification_exercise.html" />
+    <link rel="prev" title="Discrete versus Real AdaBoost" href="plot_adaboost_hastie_10_2.html" />
 
 
 <script type="text/javascript">
@@ -95,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_random_forest_embedding.html" title="Hashing feature transformation using Totally Random Trees"
+	<a href="plot_adaboost_hastie_10_2.html" title="Discrete versus Real AdaBoost"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    Hashing feature ...
+	    Discrete versus ...
 	    </span>
 	    <span class="hiddenrellink">
-	    Hashing feature transformation using Totally Random Trees
+	    Discrete versus Real AdaBoost
 	    </span>
 	    
 	    </a>
@@ -112,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_adaboost_multiclass.html" title="Multi-class AdaBoosted Decision Trees"
+	<a href="../exercises/plot_digits_classification_exercise.html" title="Digits Classification Exercise"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Multi-class AdaB...
+	    Digits Classific...
 	    </span>
 	    <span class="hiddenrellink">
-	    Multi-class AdaBoosted Decision Trees
+	    Digits Classification Exercise
 	    </span>
 	    
 	    </a>
@@ -175,7 +175,42 @@ trees classifier (third column) and by an AdaBoost classifier (fourth column).</
 <p>In the first row, the classifiers are built using the sepal width and the sepal
 length features only, on the second row using the petal length and sepal length
 only, and on the third row using the petal width and the petal length only.</p>
+<p>In descending order of quality, when trained (outside of this example) on all
+4 features using 30 estimators and scored using 10 fold cross validation, we see:</p>
+<div class="highlight-python"><div class="highlight"><pre><a href="../../modules/generated/sklearn.ensemble.ExtraTreesClassifier.html#sklearn.ensemble.ExtraTreesClassifier"><span class="n">ExtraTreesClassifier</span></a><span class="p">()</span>  <span class="c"># 0.95 score</span>
+<a href="../../modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">()</span>  <span class="c"># 0.94 score</span>
+<span class="n">AdaBoost</span><span class="p">(</span><span class="n">DecisionTree</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>  <span class="c"># 0.94 score</span>
+<span class="n">DecisionTree</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>  <span class="c"># 0.94 score</span>
+</pre></div>
+</div>
+<p>Increasing <cite>max_depth</cite> for AdaBoost lowers the standard deviation of the scores (but
+the average score does not improve).</p>
+<p>See the console&#8217;s output for further details about each model.</p>
+<p>In this example you might try to:</p>
+<ol class="arabic simple">
+<li>vary the <tt class="docutils literal"><span class="pre">max_depth</span></tt> for the <tt class="docutils literal"><span class="pre">DecisionTreeClassifier</span></tt> and
+<tt class="docutils literal"><span class="pre">AdaBoostClassifier</span></tt>, perhaps try <tt class="docutils literal"><span class="pre">max_depth=3</span></tt> for the
+<tt class="docutils literal"><span class="pre">DecisionTreeClassifier</span></tt> or <tt class="docutils literal"><span class="pre">max_depth=None</span></tt> for <tt class="docutils literal"><span class="pre">AdaBoostClassifier</span></tt></li>
+<li>vary <tt class="docutils literal"><span class="pre">n_estimators</span></tt></li>
+</ol>
+<p>It is worth noting that RandomForests and ExtraTrees can be fitted in parallel
+on many cores as each tree is built independently of the others. AdaBoost&#8217;s
+samples are built sequentially and so do not use multiple cores.</p>
 <img alt="../../_images/plot_forest_iris_1.png" class="align-center" src="../../_images/plot_forest_iris_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>DecisionTree with features [0, 1] has a score of 0.926666666667
+RandomForest with 30 estimators with features [0, 1] has a score of 0.926666666667
+ExtraTrees with 30 estimators with features [0, 1] has a score of 0.926666666667
+AdaBoost with 30 estimators with features [0, 1] has a score of 0.846666666667
+DecisionTree with features [0, 2] has a score of 0.993333333333
+RandomForest with 30 estimators with features [0, 2] has a score of 0.993333333333
+ExtraTrees with 30 estimators with features [0, 2] has a score of 0.993333333333
+AdaBoost with 30 estimators with features [0, 2] has a score of 0.993333333333
+DecisionTree with features [2, 3] has a score of 0.993333333333
+RandomForest with 30 estimators with features [2, 3] has a score of 0.993333333333
+ExtraTrees with 30 estimators with features [2, 3] has a score of 0.993333333333
+AdaBoost with 30 estimators with features [2, 3] has a score of 0.993333333333</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_forest_iris.py"><tt class="xref download docutils literal"><span class="pre">plot_forest_iris.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
@@ -192,27 +227,32 @@ only, and on the third row using the petal width and the petal length only.</p>
 <span class="c"># Parameters</span>
 <span class="n">n_classes</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">plot_colors</span> <span class="o">=</span> <span class="s">&quot;bry&quot;</span>
-<span class="n">plot_step</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="n">plot_colors</span> <span class="o">=</span> <span class="s">&quot;ryb&quot;</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">RdYlBu</span>
+<span class="n">plot_step</span> <span class="o">=</span> <span class="mf">0.02</span>  <span class="c"># fine step width for decision surface contours</span>
+<span class="n">plot_step_coarser</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c"># step widths for coarse classifier guesses</span>
+<span class="n">RANDOM_SEED</span> <span class="o">=</span> <span class="mi">13</span>  <span class="c"># fix the seed on each iteration</span>
 
 <span class="c"># Load data</span>
 <span class="n">iris</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris"><span class="n">load_iris</span></a><span class="p">()</span>
 
 <span class="n">plot_idx</span> <span class="o">=</span> <span class="mi">1</span>
 
+<span class="n">models</span> <span class="o">=</span> <span class="p">[</span><a href="../../modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier"><span class="n">DecisionTreeClassifier</span></a><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="bp">None</span><span class="p">),</span>
+          <a href="../../modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">),</span>
+          <a href="../../modules/generated/sklearn.ensemble.ExtraTreesClassifier.html#sklearn.ensemble.ExtraTreesClassifier"><span class="n">ExtraTreesClassifier</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">),</span>
+          <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">AdaBoostClassifier</span></a><span class="p">(</span><a href="../../modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier"><span class="n">DecisionTreeClassifier</span></a><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+                             <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">)]</span>
+
 <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]):</span>
-    <span class="k">for</span> <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">model</span></a> <span class="ow">in</span> <span class="p">(</span><a href="../../modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier"><span class="n">DecisionTreeClassifier</span></a><span class="p">(),</span>
-                  <a href="../../modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">),</span>
-                  <a href="../../modules/generated/sklearn.ensemble.ExtraTreesClassifier.html#sklearn.ensemble.ExtraTreesClassifier"><span class="n">ExtraTreesClassifier</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">),</span>
-                  <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">AdaBoostClassifier</span></a><span class="p">(</span><a href="../../modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier"><span class="n">DecisionTreeClassifier</span></a><span class="p">(),</span>
-                                     <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">)):</span>
+    <span class="k">for</span> <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">model</span></a> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
         <span class="c"># We only take the two corresponding features</span>
         <span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="n">pair</span><span class="p">]</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
 
         <span class="c"># Shuffle</span>
         <span class="n">idx</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">RANDOM_SEED</span><span class="p">)</span>
         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
         <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
@@ -226,43 +266,67 @@ only, and on the third row using the petal width and the petal length only.</p>
         <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">clf</span></a> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">model</span></a><span class="p">)</span>
         <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">clf</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">model</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-        <span class="c"># Plot the decision boundary</span>
-        <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplot"><span class="n">pl</span><span class="o">.</span><span class="n">subplot</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">plot_idx</span><span class="p">)</span>
+        <span class="n">scores</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">clf</span></a><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="c"># Create a title for each column and the console by using str() and</span>
+        <span class="c"># slicing away useless parts of the string</span>
+        <span class="n">model_title</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">model</span></a><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">2</span><span class="p">][:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="s">&quot;Classifier&quot;</span><span class="p">)]</span>
+        <span class="n">model_details</span> <span class="o">=</span> <span class="n">model_title</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">model</span></a><span class="p">,</span> <span class="s">&quot;estimators_&quot;</span><span class="p">):</span>
+            <span class="n">model_details</span> <span class="o">+=</span> <span class="s">&quot; with {} estimators&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">model</span></a><span class="o">.</span><span class="n">estimators_</span><span class="p">))</span>
+        <span class="k">print</span> <span class="n">model_details</span> <span class="o">+</span> <span class="s">&quot; with features&quot;</span><span class="p">,</span> <span class="n">pair</span><span class="p">,</span> <span class="s">&quot;has a score of&quot;</span><span class="p">,</span> <span class="n">scores</span>
 
+        <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplot"><span class="n">pl</span><span class="o">.</span><span class="n">subplot</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">plot_idx</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plot_idx</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">models</span><span class="p">):</span>
+            <span class="c"># Add a title at the top of each column</span>
+            <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="n">model_title</span><span class="p">)</span>
+
+        <span class="c"># Now plot the decision boundary using a fine mesh as input to a</span>
+        <span class="c"># filled contour plot</span>
         <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.meshgrid.html#numpy.meshgrid"><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">plot_step</span><span class="p">),</span>
                              <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">plot_step</span><span class="p">))</span>
 
+        <span class="c"># Plot either a single DecisionTreeClassifier or alpha blend the</span>
+        <span class="c"># decision surfaces of the ensemble of classifiers</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">model</span></a><span class="p">,</span> <a href="../../modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier"><span class="n">DecisionTreeClassifier</span></a><span class="p">):</span>
             <span class="n">Z</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">model</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
             <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-            <span class="n">cs</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.contourf"><span class="n">pl</span><span class="o">.</span><span class="n">contourf</span></a><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+            <span class="n">cs</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.contourf"><span class="n">pl</span><span class="o">.</span><span class="n">contourf</span></a><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
+            <span class="c"># Choose alpha blend level with respect to the number of estimators</span>
+            <span class="c"># that are in use (noting that AdaBoost can use fewer estimators</span>
+            <span class="c"># than its maximum if it achieves a good enough fit early on)</span>
+            <span class="n">estimator_alpha</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">model</span></a><span class="o">.</span><span class="n">estimators_</span><span class="p">)</span>
             <span class="k">for</span> <a href="../../modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier"><span class="n">tree</span></a> <span class="ow">in</span> <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">model</span></a><span class="o">.</span><span class="n">estimators_</span><span class="p">:</span>
                 <span class="n">Z</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier"><span class="n">tree</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
                 <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-                <span class="n">cs</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.contourf"><span class="n">pl</span><span class="o">.</span><span class="n">contourf</span></a><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+                <span class="n">cs</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.contourf"><span class="n">pl</span><span class="o">.</span><span class="n">contourf</span></a><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">estimator_alpha</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
 
-        <a href="http://matplotlib.org/api/axis_api.html#matplotlib.axis"><span class="n">pl</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s">&quot;tight&quot;</span><span class="p">)</span>
+        <span class="c"># Build a coarser grid to plot a set of ensemble classifications</span>
+        <span class="c"># to show how these are different to what we see in the decision</span>
+        <span class="c"># surfaces. These points are regularly space and do not have a black outline</span>
+        <span class="n">xx_coarser</span><span class="p">,</span> <span class="n">yy_coarser</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.meshgrid.html#numpy.meshgrid"><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">plot_step_coarser</span><span class="p">),</span>
+                                             <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">plot_step_coarser</span><span class="p">))</span>
+        <span class="n">Z_points_coarser</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier"><span class="n">model</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx_coarser</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy_coarser</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx_coarser</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.CircleCollection"><span class="n">cs_points</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span><span class="n">xx_coarser</span><span class="p">,</span> <span class="n">yy_coarser</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">Z_points_coarser</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">)</span>
 
-        <span class="c"># Plot the training points</span>
+        <span class="c"># Plot the training points, these are clustered together and have a</span>
+        <span class="c"># black outline</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">xrange</span><span class="p">(</span><span class="n">n_classes</span><span class="p">),</span> <span class="n">plot_colors</span><span class="p">):</span>
             <span class="n">idx</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.where.html#numpy.where"><span class="n">np</span><span class="o">.</span><span class="n">where</span></a><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
             <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-                       <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+                       <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
 
-        <a href="http://matplotlib.org/api/axis_api.html#matplotlib.axis"><span class="n">pl</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s">&quot;tight&quot;</span><span class="p">)</span>
+        <span class="n">plot_idx</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c"># move on to the next plot in sequence</span>
 
-        <span class="n">plot_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.suptitle"><span class="n">pl</span><span class="o">.</span><span class="n">suptitle</span></a><span class="p">(</span><span class="s">&quot;Classifiers on feature subsets of the Iris dataset&quot;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/axis_api.html#matplotlib.axis"><span class="n">pl</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s">&quot;tight&quot;</span><span class="p">)</span>
 
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.suptitle"><span class="n">pl</span><span class="o">.</span><span class="n">suptitle</span></a><span class="p">(</span><span class="s">&quot;Decision surfaces of DecisionTreeClassifier, &quot;</span>
-            <span class="s">&quot;RandomForestClassifier,</span><span class="se">\n</span><span class="s">ExtraTreesClassifier&quot;</span>
-            <span class="s">&quot; and AdaBoostClassifier&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  8.46 seconds</p>
+<p><strong>Total running time of the example:</strong>  8.36 seconds</p>
 </div>
 
 
@@ -274,7 +338,7 @@ only, and on the third row using the petal width and the petal length only.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/auto_examples/ensemble/plot_forest_iris.txt"
@@ -284,12 +348,12 @@ only, and on the third row using the petal width and the petal length only.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_random_forest_embedding.html">
+      <a href="plot_adaboost_hastie_10_2.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_adaboost_multiclass.html">
+      <a href="../exercises/plot_digits_classification_exercise.html">
         Next
       </a>
     </div>

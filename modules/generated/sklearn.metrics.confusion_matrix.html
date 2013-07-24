@@ -186,11 +186,12 @@ predicted to be in group <img class="math" src="../../_images/math/8122aa89ea6e8
 <blockquote>
 <div><p>Estimated targets as returned by a classifier.</p>
 </div></blockquote>
-<p><strong>labels</strong> : array, shape = [n_classes]</p>
+<p><strong>labels</strong> : array, shape = [n_classes], optional</p>
 <blockquote>
-<div><p>List of all labels occurring in the dataset.
+<div><p>List of labels to index the matrix. This may be used to reorder
+or select a subset of labels.
 If none is given, those that appear at least once
-in <tt class="docutils literal"><span class="pre">y_true</span></tt> or <tt class="docutils literal"><span class="pre">y_pred</span></tt> are used.</p>
+in <tt class="docutils literal"><span class="pre">y_true</span></tt> or <tt class="docutils literal"><span class="pre">y_pred</span></tt> are used in sorted order.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -203,10 +204,10 @@ in <tt class="docutils literal"><span class="pre">y_true</span></tt> or <tt clas
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r117" rules="none">
+<table class="docutils citation" frame="void" id="r134" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R117]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Confusion_matrix">Wikipedia entry for the Confusion matrix</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[R134]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Confusion_matrix">Wikipedia entry for the Confusion matrix</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -232,7 +233,7 @@ in <tt class="docutils literal"><span class="pre">y_true</span></tt> or <tt clas
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.metrics.confusion_matrix.txt"

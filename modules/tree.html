@@ -207,7 +207,7 @@ information.</li>
 <li>Able to handle multi-output problems.</li>
 <li>Uses a white box model. If a given situation is observable in a model,
 the explanation for the condition is easily explained by boolean logic.
-By constrast, in a black box model (e.g., in an artificial neural
+By contrast, in a black box model (e.g., in an artificial neural
 network), results may be more difficult to interpret.</li>
 <li>Possible to validate a model using statistical tests. That makes it
 possible to account for the reliability of the model.</li>
@@ -276,7 +276,7 @@ labels are [-1, 1]) classification and multiclass (where the labels are
 <p>Once trained, we can export the tree in <a class="reference external" href="http://www.graphviz.org/">Graphviz</a> format using the <a class="reference internal" href="generated/sklearn.tree.export_graphviz.html#sklearn.tree.export_graphviz" title="sklearn.tree.export_graphviz"><tt class="xref py py-func docutils literal"><span class="pre">export_graphviz</span></tt></a>
 exporter. Below is an example export of a tree trained on the entire
 iris dataset:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">StringIO</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.externals.six</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;iris.dot&quot;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
@@ -289,7 +289,8 @@ supported file type): <tt class="docutils literal"><span class="pre">dot</span> 
 </div>
 <p>Alternatively, if we have Python module <tt class="docutils literal"><span class="pre">pydot</span></tt> installed, we can generate
 a PDF file (or any other supported file type) directly in Python:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">StringIO</span><span class="o">,</span> <span class="nn">pydot</span> 
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.externals.six</span> <span class="kn">import</span> <span class="n">StringIO</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pydot</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dot_data</span> <span class="o">=</span> <span class="n">StringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">dot_data</span><span class="p">)</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">graph_from_dot_data</span><span class="p">(</span><span class="n">dot_data</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span> 
@@ -304,7 +305,7 @@ a PDF file (or any other supported file type) directly in Python:</p>
 </pre></div>
 </div>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/tree/plot_iris.html"><img alt="../_images/plot_iris_11.png" src="../_images/plot_iris_11.png" style="width: 600.0px; height: 450.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/tree/plot_iris.html"><img alt="../_images/plot_iris_13.png" src="../_images/plot_iris_13.png" style="width: 600.0px; height: 450.0px;" /></a>
 </div>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
@@ -419,29 +420,6 @@ new split point along a given feature. By presorting the feature over all
 relevant samples, and retaining a running label count, we reduce the complexity
 at each node to <img class="math" src="../_images/math/559e5c4652dcf3ef621f71a0aa4bafc9d4137ab5.png" alt="O(n_{features}\log(n_{samples}))"/>, which results in a
 total cost of <img class="math" src="../_images/math/43013032a6309dd837e496e9679190402914500c.png" alt="O(n_{features}n_{samples}\log(n_{samples}))"/>.</p>
-<p>This implementation also offers a parameter <cite>min_density</cite> to control an
-optimization heuristic. A sample mask is used to mask data points that are
-inactive at a given node, which avoids the copying of data (important for large
-datasets or training trees within an ensemble). Density is defined as the ratio
-of &#8216;active&#8217; data samples to total samples at a given node.  The minimum density
-parameter specifies the level below which fancy indexing (and therefore data
-copied) and the sample mask reset.
-If <cite>min_density</cite> is 1, then fancy indexing is always used for data partitioning
-during the tree building phase. In this case, the size of memory (as a
-proportion of the input data <img class="math" src="../_images/math/c7d457e388298246adb06c587bccd419ea67f7e8.png" alt="a"/>) required at a node of depth <img class="math" src="../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n"/>
-can be approximated using a geometric series: <img class="math" src="../_images/math/f382e36bad0fe62c589d54ed3590c1059d45928e.png" alt="size = a \frac{1 - r^n}{1 -
-r}"/> where <img class="math" src="../_images/math/b55ca7a0aa88ab7d58f4fc035317fdac39b17861.png" alt="r"/> is the ratio of samples used at each node.  A best case
-analysis shows that the lowest memory requirement (for an infinitely deep tree)
-is <img class="math" src="../_images/math/eaf6058b1d06bad0f0ff7355540f2b5fe73add59.png" alt="2 \times a"/>, where each partition divides the data in half.  A worst
-case analysis shows that the memory requirement can  increase to <img class="math" src="../_images/math/038487588ba5d907d566027804f86dfab15c545a.png" alt="n \times
-a"/>. In practise it usually requires 3 to 4 times <img class="math" src="../_images/math/c7d457e388298246adb06c587bccd419ea67f7e8.png" alt="a"/>.
-Setting <cite>min_density</cite> to 0 will always use the sample mask to select the subset
-of samples at each node.  This results in little to no additional memory being
-allocated, making it appropriate for massive datasets or within ensemble
-learners. The default value for <cite>min_density</cite> is 0.1 which empirically
-leads to fast training for many problems.
-Typically high values of <tt class="docutils literal"><span class="pre">min_density</span></tt> will lead to excessive reallocation,
-slowing down the algorithm significantly.</p>
 </div>
 <div class="section" id="tips-on-practical-use">
 <h2>3.8.5. Tips on practical use<a class="headerlink" href="#tips-on-practical-use" title="Permalink to this headline">¶</a></h2>
@@ -469,7 +447,7 @@ create arbitrary small leaves, though <tt class="docutils literal"><span class="
 in the literature.</li>
 <li>Balance your dataset before training to prevent the tree from creating
 a tree biased toward the classes that are dominant.</li>
-<li>All decision trees use Fortran ordered <tt class="docutils literal"><span class="pre">np.float32</span></tt> arrays internally.
+<li>All decision trees use <tt class="docutils literal"><span class="pre">np.float32</span></tt> arrays internally.
 If training data is not in this format, a copy of the dataset will be made.</li>
 </ul>
 </div></blockquote>
@@ -578,7 +556,7 @@ Elements of Statistical Learning, Springer, 2009.</li>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/tree.txt"

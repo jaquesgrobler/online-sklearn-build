@@ -178,9 +178,10 @@ several feature extraction mechanisms into a single transformer.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>transformers: list of (name, transformer)</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>transformer_list: list of (string, transformer) tuples</strong> :</p>
 <blockquote>
-<div><p>List of transformer objects to be applied to the data.</p>
+<div><p>List of transformer objects to be applied to the data. The first
+half of each tuple is the name of the transformer.</p>
 </div></blockquote>
 <p><strong>n_jobs: int, optional</strong> :</p>
 <blockquote>
@@ -206,7 +207,7 @@ Keys are transformer names, values the weights.</p>
 <td>Fit all transformers using X.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.pipeline.FeatureUnion.fit_transform" title="sklearn.pipeline.FeatureUnion.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
-<td>Fit all tranformers using X, transform the data and concatenate</td>
+<td>Fit all transformers using X, transform the data and concatenate</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.pipeline.FeatureUnion.get_feature_names" title="sklearn.pipeline.FeatureUnion.get_feature_names"><tt class="xref py py-obj docutils literal"><span class="pre">get_feature_names</span></tt></a>()</td>
 <td>Get feature names from all transformers.</td>
@@ -248,7 +249,7 @@ Keys are transformer names, values the weights.</p>
 <dl class="method">
 <dt id="sklearn.pipeline.FeatureUnion.fit_transform">
 <tt class="descname">fit_transform</tt><big>(</big><em>X</em>, <em>y=None</em>, <em>**fit_params</em><big>)</big><a class="headerlink" href="#sklearn.pipeline.FeatureUnion.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit all tranformers using X, transform the data and concatenate
+<dd><p>Fit all transformers using X, transform the data and concatenate
 results.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -345,7 +346,7 @@ sum of n_components (output dimension) over transformers.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.pipeline.FeatureUnion.txt"

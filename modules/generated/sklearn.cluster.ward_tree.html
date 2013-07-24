@@ -171,8 +171,10 @@
 <dt id="sklearn.cluster.ward_tree">
 <tt class="descclassname">sklearn.cluster.</tt><tt class="descname">ward_tree</tt><big>(</big><em>X</em>, <em>connectivity=None</em>, <em>n_components=None</em>, <em>copy=True</em>, <em>n_clusters=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.ward_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ward clustering based on a Feature matrix.</p>
+<p>Recursively merges the pair of clusters that minimally increases
+within-cluster variance.</p>
 <p>The inertia matrix uses a Heapq-based representation.</p>
-<p>This is the structured version, that takes into account a some topological
+<p>This is the structured version, that takes into account some topological
 structure between samples.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -184,7 +186,7 @@ structure between samples.</p>
 </div></blockquote>
 <p><strong>connectivity</strong> : sparse matrix.</p>
 <blockquote>
-<div><p>connectivity matrix. Defines for each sample the neigbhoring samples
+<div><p>connectivity matrix. Defines for each sample the neighboring samples
 following a given structure of the data. The matrix is assumed to
 be symmetric and only the upper triangular half is used.
 Default is None, i.e, the Ward algorithm is unstructured.</p>
@@ -212,10 +214,11 @@ This option is valid only when specifying a connectivity matrix.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>children</strong> : 2D array, shape (n_nodes, 2)</p>
 <blockquote>
-<div><p>list of the children of each nodes.
-Leaves of the tree have empty list of children.</p>
+<div><p>The children of each non-leaf node. Values less than <cite>n_samples</cite> refer
+to leaves of the tree. A greater value <cite>i</cite> indicates a node with
+children <cite>children[i - n_samples]</cite>.</p>
 </div></blockquote>
-<p><strong>n_components</strong> : sparse matrix.</p>
+<p><strong>n_components</strong> : int</p>
 <blockquote>
 <div><p>The number of connected components in the graph.</p>
 </div></blockquote>
@@ -245,7 +248,7 @@ is specified, elsewhere &#8216;None&#8217; is returned.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.cluster.ward_tree.txt"

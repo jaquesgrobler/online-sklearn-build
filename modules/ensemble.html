@@ -282,7 +282,7 @@ in bias:</p>
 <span class="gp">... </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>                             
-<span class="go">0.97...</span>
+<span class="go">0.98...</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -320,10 +320,6 @@ are usually not optimal. The best parameter values should always be cross-
 validated. In addition, note that bootstrap samples are used by default
 in random forests (<tt class="docutils literal"><span class="pre">bootstrap=True</span></tt>) while the default strategy is to
 use the original dataset for building extra-trees (<tt class="docutils literal"><span class="pre">bootstrap=False</span></tt>).</p>
-<p>When training on large datasets, where runtime and memory requirements
-are important, it might also be beneficial to adjust the <tt class="docutils literal"><span class="pre">min_density</span></tt>
-parameter, that controls a heuristic for speeding up computations in
-each tree.  See <a class="reference internal" href="tree.html#tree-complexity"><em>Complexity of trees</em></a> for details.</p>
 </div>
 <div class="section" id="parallelization">
 <h3>3.9.1.4. Parallelization<a class="headerlink" href="#parallelization" title="Permalink to this headline">¶</a></h3>
@@ -425,7 +421,7 @@ the transformation performs an implicit, non-parametric density estimation.</p>
 <ul class="simple">
 <li><a class="reference internal" href="../auto_examples/ensemble/plot_random_forest_embedding.html#example-ensemble-plot-random-forest-embedding-py"><em>Hashing feature transformation using Totally Random Trees</em></a></li>
 <li><a class="reference internal" href="../auto_examples/manifold/plot_lle_digits.html#example-manifold-plot-lle-digits-py"><em>Manifold learning on handwritten digits: Locally Linear Embedding, Isomap...</em></a> compares non-linear
-dimensionality reduction technics on handwritten digits.</li>
+dimensionality reduction techniques on handwritten digits.</li>
 </ul>
 </div>
 <div class="admonition-see-also admonition seealso">
@@ -627,7 +623,7 @@ with least squares loss and 500 base learners to the Boston house price dataset
 The plot on the left shows the train and test error at each iteration.
 The train error at each iteration is stored in the
 <tt class="xref py py-attr docutils literal"><span class="pre">train_score_</span></tt> attribute
-of the gradient boosting model. The test error at each iterations can be optained
+of the gradient boosting model. The test error at each iterations can be obtained
 via the <a class="reference internal" href="generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor.staged_predict" title="sklearn.ensemble.GradientBoostingRegressor.staged_predict"><tt class="xref py py-meth docutils literal"><span class="pre">staged_predict</span></tt></a> method which returns a
 generator that yields the predictions at each stage. Plots like these can be used
 to determine the optimal number of trees (i.e. <tt class="docutils literal"><span class="pre">n_estimators</span></tt>) by early stopping.
@@ -853,7 +849,7 @@ interactions among the two features. For example, the two-variable PDP in the
 above Figure shows the dependence of median house price on joint
 values of house age and avg. occupants per household. We can clearly
 see an interaction between the two features:
-For an avg. occupancy greather than two, the house price is nearly independent
+For an avg. occupancy greater than two, the house price is nearly independent
 of the house age, whereas for values less than two there is a strong dependence
 on age.</p>
 <p>The module <tt class="xref py py-mod docutils literal"><span class="pre">partial_dependence</span></tt> provides a convenience function
@@ -986,7 +982,7 @@ The Annals of Statistics, Vol. 29, No. 5, 2001.</td></tr>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/ensemble.txt"

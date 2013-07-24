@@ -156,6 +156,8 @@
 <li><a class="reference internal" href="#the-olivetti-faces-dataset">7.6. The Olivetti faces dataset</a></li>
 <li><a class="reference internal" href="#the-20-newsgroups-text-dataset">7.7. The 20 newsgroups text dataset</a><ul>
 <li><a class="reference internal" href="#usage">7.7.1. Usage</a></li>
+<li><a class="reference internal" href="#converting-text-to-vectors">7.7.2. Converting text to vectors</a></li>
+<li><a class="reference internal" href="#filtering-text-for-more-realistic-training">7.7.3. Filtering text for more realistic training</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#downloading-datasets-from-the-mldata-org-repository">7.8. Downloading datasets from the mldata.org repository</a></li>
@@ -202,11 +204,11 @@ interface, returning a tuple <tt class="docutils literal"><span class="pre">(X,<
 numpy array X and an array of length n_samples containing the targets y.</p>
 <p>The toy datasets as well as the &#8216;real world&#8217; datasets and the datasets
 fetched from mldata.org have more sophisticated structure.
-These functions return a <tt class="docutils literal"><span class="pre">bunch</span></tt> (which is a dictionary that is
-accessible with the &#8216;dict.key&#8217; syntax).
-All datasets have at least two keys, <tt class="docutils literal"><span class="pre">data</span></tt>, containg an array of shape
-<tt class="docutils literal"><span class="pre">n_samples</span> <span class="pre">x</span> <span class="pre">n_features</span></tt> (except for 20newsgroups) and <tt class="docutils literal"><span class="pre">target</span></tt>, a numpy
-array of length <tt class="docutils literal"><span class="pre">n_features</span></tt>, containing the targets.</p>
+These functions return a dictionary-like object holding at least two items:
+an array of shape <tt class="docutils literal"><span class="pre">n_samples</span></tt> * `` n_features`` with key <tt class="docutils literal"><span class="pre">data</span></tt>
+(except for 20newsgroups)
+and a NumPy array of length <tt class="docutils literal"><span class="pre">n_features</span></tt>, containing the target values,
+with key <tt class="docutils literal"><span class="pre">target</span></tt>.</p>
 <p>The datasets also contain a description in <tt class="docutils literal"><span class="pre">DESCR</span></tt> and some contain
 <tt class="docutils literal"><span class="pre">feature_names</span></tt> and <tt class="docutils literal"><span class="pre">target_names</span></tt>.
 See the dataset descriptions below for details.</p>
@@ -331,7 +333,7 @@ can be used to build artificial datasets of controlled size and complexity.</p>
 <td>Generate an S curve dataset.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_sparse_spd_matrix.html#sklearn.datasets.make_sparse_spd_matrix" title="sklearn.datasets.make_sparse_spd_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">make_sparse_spd_matrix</span></tt></a>([dim,&nbsp;alpha,&nbsp;...])</td>
-<td>Generate a sparse symetric definite positive matrix.</td>
+<td>Generate a sparse symmetric definite positive matrix.</td>
 </tr>
 </tbody>
 </table>
@@ -397,13 +399,13 @@ consists of 64x64 images.</p>
 <div class="section" id="the-20-newsgroups-text-dataset">
 <span id="newsgroups"></span><h2>7.7. The 20 newsgroups text dataset<a class="headerlink" href="#the-20-newsgroups-text-dataset" title="Permalink to this headline">¶</a></h2>
 <p>The 20 newsgroups dataset comprises around 18000 newsgroups posts on
-20 topics splitted in two subsets: one for training (or development)
+20 topics split in two subsets: one for training (or development)
 and the other one for testing (or for performance evaluation). The split
 between the train and test set is based upon a messages posted before
 and after a specific date.</p>
 <p>This module contains two loaders. The first one,
 <tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_20newsgroups</span></tt>,
-returns a list of the raw text files that can be fed to text feature
+returns a list of the raw texts that can be fed to text feature
 extractors such as <tt class="xref py py-class docutils literal"><span class="pre">sklearn.feature_extraction.text.Vectorizer</span></tt>
 with custom parameters so as to extract feature vectors.
 The second one, <tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_20newsgroups_vectorized</span></tt>,
@@ -469,28 +471,129 @@ list of the categories to load to the <tt class="docutils literal"><span class="
 <span class="go">array([1, 1, 1, 0, 1, 0, 0, 1, 1, 1])</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="converting-text-to-vectors">
+<h3>7.7.2. Converting text to vectors<a class="headerlink" href="#converting-text-to-vectors" title="Permalink to this headline">¶</a></h3>
 <p>In order to feed predictive or clustering models with the text data,
 one first need to turn the text into vectors of numerical values suitable
 for statistical analysis. This can be achieved with the utilities of the
 <tt class="docutils literal"><span class="pre">sklearn.feature_extraction.text</span></tt> as demonstrated in the following
-example that extract <a class="reference external" href="http://en.wikipedia.org/wiki/Tf-idf">TF-IDF</a> vectors of unigram tokens:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">Vectorizer</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">documents</span> <span class="o">=</span> <span class="p">[</span><span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">newsgroups_train</span><span class="o">.</span><span class="n">filenames</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">Vectorizer</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vectors</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+example that extract <a class="reference external" href="http://en.wikipedia.org/wiki/Tf-idf">TF-IDF</a> vectors of unigram tokens
+from a subset of 20news:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;alt.atheism&#39;</span><span class="p">,</span> <span class="s">&#39;talk.religion.misc&#39;</span><span class="p">,</span>
+<span class="gp">... </span>              <span class="s">&#39;comp.graphics&#39;</span><span class="p">,</span> <span class="s">&#39;sci.space&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newsgroups_train</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;train&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                                      <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectors</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">newsgroups_train</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vectors</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">(1073, 21108)</span>
+<span class="go">(2034, 34118)</span>
 </pre></div>
 </div>
-<p>The extracted TF-IDF vectors are very sparse with an average of 118 non zero
-components by sample in a more than 20000 dimensional space (less than 1% non
-zero features):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vectors</span><span class="o">.</span><span class="n">nnz</span> <span class="o">/</span> <span class="n">vectors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="go">118</span>
+<p>The extracted TF-IDF vectors are very sparse, with an average of 159 non-zero
+components by sample in a more than 30000-dimensional space
+(less than .5% non-zero features):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vectors</span><span class="o">.</span><span class="n">nnz</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">vectors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">159.01327433628319</span>
 </pre></div>
 </div>
 <p><tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_20newsgroups_vectorized</span></tt> is a function which returns
 ready-to-use tfidf features instead of file names.</p>
+</div>
+<div class="section" id="filtering-text-for-more-realistic-training">
+<h3>7.7.3. Filtering text for more realistic training<a class="headerlink" href="#filtering-text-for-more-realistic-training" title="Permalink to this headline">¶</a></h3>
+<p>It is easy for a classifier to overfit on particular things that appear in the
+20 Newsgroups data, such as newsgroup headers. Many classifiers achieve very
+high F-scores, but their results would not generalize to other documents that
+aren&#8217;t from this window of time.</p>
+<p>For example, let&#8217;s look at the results of a multinomial Naive Bayes classifier,
+which is fast to train and achieves a decent F-score:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newsgroups_test</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;test&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                                     <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectors_test</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">newsgroups_test</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mo">01</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">vectors</span><span class="p">,</span> <span class="n">newsgroups_train</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">vectors_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">newsgroups_test</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+<span class="go">0.88251152461278892</span>
+</pre></div>
+</div>
+<p>(The example <a class="reference internal" href="../auto_examples/document_classification_20newsgroups.html#example-document-classification-20newsgroups-py"><em>Classification of text documents using sparse features</em></a> shuffles
+the training and test data, instead of segmenting by time, and in that case
+multinomial Naive Bayes gets a much higher F-score of 0.88. Are you suspicious
+yet of what&#8217;s going on inside this classifier?)</p>
+<p>Let&#8217;s take a look at what the most informative features are:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">show_top10</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">vectorizer</span><span class="p">,</span> <span class="n">categories</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">feature_names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">())</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">category</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">categories</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">top10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">classifier</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
+<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feature_names</span><span class="p">[</span><span class="n">top10</span><span class="p">])))</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">show_top10</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">vectorizer</span><span class="p">,</span> <span class="n">newsgroups_train</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
+<span class="go">alt.atheism: sgi livesey atheists writes people caltech com god keith edu</span>
+<span class="go">comp.graphics: organization thanks files subject com image lines university edu graphics</span>
+<span class="go">sci.space: toronto moon gov com alaska access henry nasa edu space</span>
+<span class="go">talk.religion.misc: article writes kent people christian jesus sandvik edu com god</span>
+</pre></div>
+</div>
+<p>You can now see many things that these features have overfit to:</p>
+<ul class="simple">
+<li>Almost every group is distinguished by whether headers such as
+<tt class="docutils literal"><span class="pre">NNTP-Posting-Host:</span></tt> and <tt class="docutils literal"><span class="pre">Distribution:</span></tt> appear more or less often.</li>
+<li>Another significant feature involves whether the sender is affiliated with
+a university, as indicated either by their headers or their signature.</li>
+<li>The word &#8220;article&#8221; is a significant feature, based on how often people quote
+previous posts like this: &#8220;In article [article ID], [name] &lt;[e-mail address]&gt;
+wrote:&#8221;</li>
+<li>Other features match the names and e-mail addresses of particular people who
+were posting at the time.</li>
+</ul>
+<p>With such an abundance of clues that distinguish newsgroups, the classifiers
+barely have to identify topics from text at all, and they all perform at the
+same high level.</p>
+<p>For this reason, the functions that load 20 Newsgroups data provide a
+parameter called <strong>remove</strong>, telling it what kinds of information to strip out
+of each file. <strong>remove</strong> should be a tuple containing any subset of
+<tt class="docutils literal"><span class="pre">('headers',</span> <span class="pre">'footers',</span> <span class="pre">'quotes')</span></tt>, telling it to remove headers, signature
+blocks, and quotation blocks respectively.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">newsgroups_test</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;test&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                                     <span class="n">remove</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;headers&#39;</span><span class="p">,</span> <span class="s">&#39;footers&#39;</span><span class="p">,</span> <span class="s">&#39;quotes&#39;</span><span class="p">),</span>
+<span class="gp">... </span>                                     <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectors_test</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">newsgroups_test</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">vectors_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">newsgroups_test</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="go">0.78409163025839435</span>
+</pre></div>
+</div>
+<p>This classifier lost over a lot of its F-score, just because we removed
+metadata that has little to do with topic classification.
+It loses even more if we also strip this metadata from the training data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">newsgroups_train</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;train&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                                      <span class="n">remove</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;headers&#39;</span><span class="p">,</span> <span class="s">&#39;footers&#39;</span><span class="p">,</span> <span class="s">&#39;quotes&#39;</span><span class="p">),</span>
+<span class="gp">... </span>                                      <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectors</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">newsgroups_train</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">BernoulliNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mo">01</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">vectors</span><span class="p">,</span> <span class="n">newsgroups_train</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectors_test</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">newsgroups_test</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">vectors_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">newsgroups_test</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+<span class="go">0.73160869205141166</span>
+</pre></div>
+</div>
+<p>Some other classifiers cope better with this harder version of the task. Try
+running <a class="reference internal" href="../auto_examples/grid_search_text_feature_extraction.html#example-grid-search-text-feature-extraction-py"><em>Sample pipeline for text feature extraction and evaluation</em></a> with and without
+the <tt class="docutils literal"><span class="pre">--filter</span></tt> option to compare the results.</p>
+<div class="topic">
+<p class="topic-title first">Recommendation</p>
+<p>When evaluating text classifiers on the 20 Newsgroups data, you
+should strip newsgroup-related metadata. In scikit-learn, you can do this by
+setting <tt class="docutils literal"><span class="pre">remove=('headers',</span> <span class="pre">'footers',</span> <span class="pre">'quotes')</span></tt>. The F-score will be
+lower because it is more realistic.</p>
+</div>
 <div class="topic">
 <p class="topic-title first">Examples</p>
 <ul class="simple">
@@ -652,7 +755,7 @@ is a pair of two picture belonging or not to the same person:</p>
 possible to get an additional dimension with the RGB color channels by
 passing <tt class="docutils literal"><span class="pre">color=True</span></tt>, in that case the shape will be
 <tt class="docutils literal"><span class="pre">(2200,</span> <span class="pre">2,</span> <span class="pre">62,</span> <span class="pre">47,</span> <span class="pre">3)</span></tt>.</p>
-<p>The <tt class="docutils literal"><span class="pre">fetch_lfw_pairs</span></tt> datasets is subdived in 3 subsets: the development
+<p>The <tt class="docutils literal"><span class="pre">fetch_lfw_pairs</span></tt> datasets is subdivided into 3 subsets: the development
 <tt class="docutils literal"><span class="pre">train</span></tt> set, the development <tt class="docutils literal"><span class="pre">test</span></tt> set and an evaluation <tt class="docutils literal"><span class="pre">10_folds</span></tt>
 set meant to compute performance metrics using a 10-folds cross
 validation scheme.</p>
@@ -682,7 +785,8 @@ Each sample has 54 features, described on the
 Some of the features are boolean indicators,
 while others are discrete or continuous measurements.</p>
 <p><tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_covtype</span></tt> will load the covertype dataset;
-it returns a <tt class="docutils literal"><span class="pre">Bunch</span></tt> object with the feature matrix in the <tt class="docutils literal"><span class="pre">data</span></tt> member
+it returns a dictionary-like object
+with the feature matrix in the <tt class="docutils literal"><span class="pre">data</span></tt> member
 and the target values in <tt class="docutils literal"><span class="pre">target</span></tt>.
 The dataset will be downloaded from the web if necessary.</p>
 </div>
@@ -697,7 +801,7 @@ The dataset will be downloaded from the web if necessary.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/datasets/index.txt"

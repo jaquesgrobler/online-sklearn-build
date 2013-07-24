@@ -30,7 +30,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="4. Unsupervised learning" href="../unsupervised_learning.html" />
-    <link rel="next" title="5. Model selection and evaluation" href="../model_selection.html" />
+    <link rel="next" title="4.8. Density Estimation" href="density.html" />
     <link rel="prev" title="4.6. Novelty and Outlier Detection" href="outlier_detection.html" />
 
 
@@ -112,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="../model_selection.html" title="5. Model selection and evaluation"
+	<a href="density.html" title="4.8. Density Estimation"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    5. Model selecti...
+	    4.8. Density Est...
 	    </span>
 	    <span class="hiddenrellink">
-	    5. Model selection and evaluation
+	    4.8. Density Estimation
 	    </span>
 	    
 	    </a>
@@ -154,7 +154,7 @@
 <li><a class="reference internal" href="#">4.7. Hidden Markov Models</a><ul>
 <li><a class="reference internal" href="#using-hmm">4.7.1. Using HMM</a><ul>
 <li><a class="reference internal" href="#building-hmm-and-generating-samples">4.7.1.1. Building HMM and generating samples</a></li>
-<li><a class="reference internal" href="#training-hmm-parameters-and-infering-the-hidden-states">4.7.1.2. Training HMM parameters and infering the hidden states</a></li>
+<li><a class="reference internal" href="#training-hmm-parameters-and-inferring-the-hidden-states">4.7.1.2. Training HMM parameters and inferring the hidden states</a></li>
 <li><a class="reference internal" href="#implementing-hmms-with-custom-emission-probabilities">4.7.1.3. Implementing HMMs with custom emission probabilities</a></li>
 </ul>
 </li>
@@ -240,8 +240,8 @@ constructor. Then, you can generate samples from the HMM by calling <cite>sample
 </ul>
 </div>
 </div>
-<div class="section" id="training-hmm-parameters-and-infering-the-hidden-states">
-<h3>4.7.1.2. Training HMM parameters and infering the hidden states<a class="headerlink" href="#training-hmm-parameters-and-infering-the-hidden-states" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="training-hmm-parameters-and-inferring-the-hidden-states">
+<h3>4.7.1.2. Training HMM parameters and inferring the hidden states<a class="headerlink" href="#training-hmm-parameters-and-inferring-the-hidden-states" title="Permalink to this headline">¶</a></h3>
 <p>You can train an HMM by calling the <cite>fit</cite> method. The input is &#8220;the list&#8221; of
 the sequence of observed value. Note, since the EM algorithm is a gradient-based
 optimization method, it will generally get stuck in local optima. You should try
@@ -262,7 +262,7 @@ in model2 will have a different order than those in the generating model.:</p>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
-<li><em class="xref std std-ref">example_plot_hmm_stock_analysis.py</em></li>
+<li><a class="reference internal" href="../auto_examples/applications/plot_hmm_stock_analysis.html#example-applications-plot-hmm-stock-analysis-py"><em>Gaussian HMM of stock data</em></a></li>
 </ul>
 </div>
 </div>
@@ -287,7 +287,7 @@ the methods <cite>__init__</cite>, <cite>_compute_log_likelihood</cite>,
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/hmm.txt"
@@ -302,7 +302,7 @@ the methods <cite>__init__</cite>, <cite>_compute_log_likelihood</cite>,
       </a>
     </div>
     <div class="buttonNext">
-      <a href="../model_selection.html">
+      <a href="density.html">
         Next
       </a>
     </div>

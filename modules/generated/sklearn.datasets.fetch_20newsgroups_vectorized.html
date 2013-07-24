@@ -169,7 +169,7 @@
 <h1>8.4.1.2. sklearn.datasets.fetch_20newsgroups_vectorized<a class="headerlink" href="#sklearn-datasets-fetch-20newsgroups-vectorized" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.datasets.fetch_20newsgroups_vectorized">
-<tt class="descclassname">sklearn.datasets.</tt><tt class="descname">fetch_20newsgroups_vectorized</tt><big>(</big><em>subset='train'</em>, <em>data_home=None</em><big>)</big><a class="headerlink" href="#sklearn.datasets.fetch_20newsgroups_vectorized" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.datasets.</tt><tt class="descname">fetch_20newsgroups_vectorized</tt><big>(</big><em>subset='train'</em>, <em>remove=()</em>, <em>data_home=None</em><big>)</big><a class="headerlink" href="#sklearn.datasets.fetch_20newsgroups_vectorized" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load the 20 newsgroups dataset and transform it into tf-idf vectors.</p>
 <p>This is a convenience function; the tf-idf transformation is done using the
 default settings for <cite>sklearn.feature_extraction.text.Vectorizer</cite>. For more
@@ -188,6 +188,16 @@ for the test set, &#8216;all&#8217; for both, with shuffled ordering.</p>
 <blockquote>
 <div><p>Specify an download and cache folder for the datasets. If None,
 all scikit-learn data is stored in &#8216;~/scikit_learn_data&#8217; subfolders.</p>
+</div></blockquote>
+<p><strong>remove: tuple</strong> :</p>
+<blockquote>
+<div><p>May contain any subset of (&#8216;headers&#8217;, &#8216;footers&#8217;, &#8216;quotes&#8217;). Each of
+these are kinds of text that will be detected and removed from the
+newsgroup posts, preventing classifiers from overfitting on
+metadata.</p>
+<p>&#8216;headers&#8217; removes newsgroup headers, &#8216;footers&#8217; removes blocks at the
+ends of posts that look like signatures, and &#8216;quotes&#8217; removes lines
+that appear to be quoting another post.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -214,7 +224,7 @@ bunch.target_names: list, length [n_classes]</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.datasets.fetch_20newsgroups_vectorized.txt"

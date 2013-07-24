@@ -171,8 +171,9 @@
 <dt id="sklearn.preprocessing.Binarizer">
 <em class="property">class </em><tt class="descclassname">sklearn.preprocessing.</tt><tt class="descname">Binarizer</tt><big>(</big><em>threshold=0.0</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#sklearn.preprocessing.Binarizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Binarize data (set feature values to 0 or 1) according to a threshold</p>
-<p>The default threshold is 0.0 so that any non-zero values are set to 1.0
-and zeros are left untouched.</p>
+<p>Values greater than the threshold map to 1, while values less than
+or equal to the threshold map to 0. With the default threshold of 0,
+only positive values map to 1.</p>
 <p>Binarization is a common operation on text count data where the
 analyst can decide to only consider the presence or absence of a
 feature rather than a quantified number of occurrences for instance.</p>
@@ -185,7 +186,8 @@ distribution in a Bayesian setting).</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>threshold</strong> : float, optional (0.0 by default)</p>
 <blockquote>
-<div><p>The lower bound that triggers feature values to be replaced by 1.0.</p>
+<div><p>Feature values below this are replaced by 1, above it by 0.
+Threshold may not be less than 0 for operations on sparse matrices.</p>
 </div></blockquote>
 <p><strong>copy</strong> : boolean, optional, default is True</p>
 <blockquote class="last">
@@ -344,7 +346,7 @@ un-necessary copy.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.preprocessing.Binarizer.txt"

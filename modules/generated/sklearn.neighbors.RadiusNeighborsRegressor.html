@@ -30,7 +30,7 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.23.6. sklearn.neighbors.BallTree" href="sklearn.neighbors.BallTree.html" />
+    <link rel="next" title="8.23.6. sklearn.neighbors.NearestCentroid" href="sklearn.neighbors.NearestCentroid.html" />
     <link rel="prev" title="8.23.4. sklearn.neighbors.KNeighborsRegressor" href="sklearn.neighbors.KNeighborsRegressor.html" />
 
 
@@ -112,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.neighbors.BallTree.html" title="8.23.6. sklearn.neighbors.BallTree"
+	<a href="sklearn.neighbors.NearestCentroid.html" title="8.23.6. sklearn.neighbors.NearestCentroid"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
 	    8.23.6. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.23.6. sklearn.neighbors.BallTree
+	    8.23.6. sklearn.neighbors.NearestCentroid
 	    </span>
 	    
 	    </a>
@@ -169,7 +169,7 @@
 <h1>8.23.5. sklearn.neighbors.RadiusNeighborsRegressor<a class="headerlink" href="#sklearn-neighbors-radiusneighborsregressor" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.neighbors.RadiusNeighborsRegressor">
-<em class="property">class </em><tt class="descclassname">sklearn.neighbors.</tt><tt class="descname">RadiusNeighborsRegressor</tt><big>(</big><em>radius=1.0</em>, <em>weights='uniform'</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>p=2</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsRegressor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.neighbors.</tt><tt class="descname">RadiusNeighborsRegressor</tt><big>(</big><em>radius=1.0</em>, <em>weights='uniform'</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>p=2</em>, <em>metric='minkowski'</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsRegressor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Regression based on neighbors within a fixed radius.</p>
 <p>The target is predicted by local interpolation of the targets
 associated of the nearest neighbors in the training set.</p>
@@ -202,7 +202,7 @@ containing the weights.</li>
 <div><p>Algorithm used to compute the nearest neighbors:</p>
 <ul class="simple">
 <li>&#8216;ball_tree&#8217; will use <a class="reference internal" href="sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-class docutils literal"><span class="pre">BallTree</span></tt></a></li>
-<li>&#8216;kd_tree&#8217; will use <tt class="xref py py-class docutils literal"><span class="pre">scipy.spatial.cKDtree</span></tt></li>
+<li>&#8216;kd_tree&#8217; will use <tt class="xref py py-class docutils literal"><span class="pre">KDtree</span></tt></li>
 <li>&#8216;brute&#8217; will use a brute-force search.</li>
 <li>&#8216;auto&#8217; will attempt to decide the most appropriate algorithm
 based on the values passed to <a class="reference internal" href="#sklearn.neighbors.RadiusNeighborsRegressor.fit" title="sklearn.neighbors.RadiusNeighborsRegressor.fit"><tt class="xref py py-meth docutils literal"><span class="pre">fit</span></tt></a> method.</li>
@@ -212,17 +212,28 @@ this parameter, using brute force.</p>
 </div></blockquote>
 <p><strong>leaf_size</strong> : int, optional (default = 30)</p>
 <blockquote>
-<div><p>Leaf size passed to BallTree or cKDTree.  This can affect the
+<div><p>Leaf size passed to BallTree or KDTree.  This can affect the
 speed of the construction and query, as well as the memory
 required to store the tree.  The optimal value depends on the
 nature of the problem.</p>
 </div></blockquote>
-<p><strong>p: integer, optional (default = 2)</strong> :</p>
-<blockquote class="last">
-<div><p>Parameter for the Minkowski metric from
-sklearn.metrics.pairwise.pairwise_distances. When p = 1, this is
+<p><strong>metric</strong> : string or DistanceMetric object (default=&#8217;minkowski&#8217;)</p>
+<blockquote>
+<div><p>the distance metric to use for the tree.  The default metric is
+minkowski, and with p=2 is equivalent to the standard Euclidean
+metric. See the documentation of the DistanceMetric class for a
+list of available metrics.</p>
+</div></blockquote>
+<p><strong>p</strong> : integer, optional (default = 2)</p>
+<blockquote>
+<div><p>Power parameter for the Minkowski metric. When p = 1, this is
 equivalent to using manhattan_distance (l1), and euclidean_distance
 (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used.</p>
+</div></blockquote>
+<p><strong>**kwargs :</strong> :</p>
+<blockquote class="last">
+<div><p>additional keyword arguments are passed to the distance function as
+additional arguments.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -279,7 +290,7 @@ for a discussion of the choice of <tt class="docutils literal"><span class="pre"
 </table>
 <dl class="method">
 <dt id="sklearn.neighbors.RadiusNeighborsRegressor.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>radius=1.0</em>, <em>weights='uniform'</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>p=2</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsRegressor.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>radius=1.0</em>, <em>weights='uniform'</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>p=2</em>, <em>metric='minkowski'</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsRegressor.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -290,14 +301,13 @@ for a discussion of the choice of <tt class="docutils literal"><span class="pre"
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix, BallTree, cKDTree}</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix, BallTree, KDTree}</p>
 <blockquote>
-<div><p>Training data. If array or matrix, then the shape
-is [n_samples, n_features]</p>
+<div><p>Training data. If array or matrix, shape = [n_samples, n_features]</p>
 </div></blockquote>
-<p><strong>y</strong> : {array-like, sparse matrix}, shape = [n_samples]</p>
+<p><strong>y</strong> : {array-like, sparse matrix}</p>
 <blockquote class="last">
-<div><p>Target values, array of float values.</p>
+<div><p>Target values, array of float values, shape = [n_samples]</p>
 </div></blockquote>
 </td>
 </tr>
@@ -398,7 +408,7 @@ standard data array.
 For efficiency, <cite>radius_neighbors</cite> returns arrays of objects, where
 each object is a 1D array of indices or distances.</p>
 <p class="rubric">Examples</p>
-<p>In the following example, we construnct a NeighborsClassifier
+<p>In the following example, we construct a NeighborsClassifier
 class from an array representing our data set and ask who&#8217;s
 the closest point to [1,1,1]</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">]]</span>
@@ -526,7 +536,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.neighbors.RadiusNeighborsRegressor.txt"
@@ -541,7 +551,7 @@ component of a nested object.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.neighbors.BallTree.html">
+      <a href="sklearn.neighbors.NearestCentroid.html">
         Next
       </a>
     </div>

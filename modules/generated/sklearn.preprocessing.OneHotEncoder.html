@@ -169,25 +169,37 @@
 <h1>8.26.7. sklearn.preprocessing.OneHotEncoder<a class="headerlink" href="#sklearn-preprocessing-onehotencoder" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.preprocessing.OneHotEncoder">
-<em class="property">class </em><tt class="descclassname">sklearn.preprocessing.</tt><tt class="descname">OneHotEncoder</tt><big>(</big><em>n_values='auto'</em>, <em>dtype=&lt;type 'float'&gt;</em><big>)</big><a class="headerlink" href="#sklearn.preprocessing.OneHotEncoder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.preprocessing.</tt><tt class="descname">OneHotEncoder</tt><big>(</big><em>n_values='auto'</em>, <em>categorical_features='all'</em>, <em>dtype=&lt;type 'float'&gt;</em><big>)</big><a class="headerlink" href="#sklearn.preprocessing.OneHotEncoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Encode categorical integer features using a one-hot aka one-of-K scheme.</p>
 <p>The input to this transformer should be a matrix of integers, denoting
 the values taken on by categorical (discrete) features. The output will be
 a sparse matrix were each column corresponds to one possible value of one
 feature. It is assumed that input features take on values in the range
 [0, n_values).</p>
-<p>This encoding is needed for feeding categorical data to scikit-learn
-estimators.</p>
+<p>This encoding is needed for feeding categorical data to many scikit-learn
+estimators, notably linear models and SVMs with the standard kernels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_values</strong> : &#8216;auto&#8217;, int or array of int</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_values</strong> : &#8216;auto&#8217;, int or array of ints</p>
 <blockquote>
-<div><p>Number of values per feature.
-&#8216;auto&#8217; : determine value range from training data.
-int : maximum value for all features.
-array : maximum value per feature.</p>
+<div><p>Number of values per feature.</p>
+<ul class="simple">
+<li>&#8216;auto&#8217; : determine value range from training data.</li>
+<li>int : maximum value for all features.</li>
+<li>array : maximum value per feature.</li>
+</ul>
+</div></blockquote>
+<p><strong>categorical_features: &#8220;all&#8221; or array of indices or mask</strong> :</p>
+<blockquote>
+<div><p>Specify what features are treated as categorical.</p>
+<ul class="simple">
+<li>&#8216;all&#8217; (default): All features are treated as categorical.</li>
+<li>array of indices: Array of categorical feature indices.</li>
+<li>mask: Array of length n_features and with dtype=bool.</li>
+</ul>
+<p>Non-categorical features are always stacked to the right of the matrix.</p>
 </div></blockquote>
 <p><strong>dtype</strong> : number type, default=np.float</p>
 <blockquote class="last">
@@ -200,10 +212,10 @@ array : maximum value per feature.</p>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="sklearn.preprocessing.LabelEncoder.html#sklearn.preprocessing.LabelEncoder" title="sklearn.preprocessing.LabelEncoder"><tt class="xref py py-obj docutils literal"><span class="pre">LabelEncoder</span></tt></a></dt>
-<dd>performs a one-hot encoding on arbitrary class labels.</dd>
 <dt><a class="reference internal" href="sklearn.feature_extraction.DictVectorizer.html#sklearn.feature_extraction.DictVectorizer" title="sklearn.feature_extraction.DictVectorizer"><tt class="xref py py-obj docutils literal"><span class="pre">sklearn.feature_extraction.DictVectorizer</span></tt></a></dt>
 <dd>performs a one-hot encoding of dictionary items (also handles string-valued features).</dd>
+<dt><a class="reference internal" href="sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="sklearn.feature_extraction.FeatureHasher"><tt class="xref py py-obj docutils literal"><span class="pre">sklearn.feature_extraction.FeatureHasher</span></tt></a></dt>
+<dd>performs an approximate one-hot encoding of dictionary items or strings.</dd>
 </dl>
 </div>
 <p class="rubric">Examples</p>
@@ -213,7 +225,8 @@ one-hot encoding.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>  
-<span class="go">OneHotEncoder(dtype=&lt;... &#39;float&#39;&gt;, n_values=&#39;auto&#39;)</span>
+<span class="go">OneHotEncoder(categorical_features=&#39;all&#39;, dtype=&lt;... &#39;float&#39;&gt;,</span>
+<span class="go">       n_values=&#39;auto&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">n_values_</span>
 <span class="go">array([2, 3, 4])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">feature_indices_</span>
@@ -274,7 +287,7 @@ from <tt class="docutils literal"><span class="pre">feature_indices_[i]</span></
 </table>
 <dl class="method">
 <dt id="sklearn.preprocessing.OneHotEncoder.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_values='auto'</em>, <em>dtype=&lt;type 'float'&gt;</em><big>)</big><a class="headerlink" href="#sklearn.preprocessing.OneHotEncoder.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_values='auto'</em>, <em>categorical_features='all'</em>, <em>dtype=&lt;type 'float'&gt;</em><big>)</big><a class="headerlink" href="#sklearn.preprocessing.OneHotEncoder.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -357,7 +370,7 @@ component of a nested object.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape=(n_samples, feature_indices_[-1])</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape=(n_samples, n_features)</p>
 <blockquote>
 <div><p>Input array of type int.</p>
 </div></blockquote>
@@ -386,7 +399,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.preprocessing.OneHotEncoder.txt"

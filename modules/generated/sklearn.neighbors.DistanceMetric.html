@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>8.23.9. sklearn.neighbors.DistanceMetric &mdash; scikit-learn 0.14-git documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.14-git',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.23.10. sklearn.neighbors.KernelDensity" href="sklearn.neighbors.KernelDensity.html" />
+    <link rel="prev" title="8.23.8. sklearn.neighbors.KDTree" href="sklearn.neighbors.KDTree.html" />
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+
+  </head>
+  <body>
+
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../classes.html">Reference</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+      <div class="sphinxsidebar">
+	<div class="sphinxsidebarwrapper">
+	  <div class="rel">
+	   
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.neighbors.KDTree.html" title="8.23.8. sklearn.neighbors.KDTree"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.23.8. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.23.8. sklearn.neighbors.KDTree
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.neighbors.KernelDensity.html" title="8.23.10. sklearn.neighbors.KernelDensity"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.23.10. sklearn...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.23.10. sklearn.neighbors.KernelDensity
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center; background-color: #FFE4E4">This documentation is
+    for scikit-learn <strong>version 0.14-git</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
+    <p>If you use the software, please consider
+    <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.23.9. sklearn.neighbors.DistanceMetric</a></li>
+</ul>
+
+    
+    </div>
+	  </div>
+
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sklearn-neighbors-distancemetric">
+<h1>8.23.9. sklearn.neighbors.DistanceMetric<a class="headerlink" href="#sklearn-neighbors-distancemetric" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sklearn.neighbors.DistanceMetric">
+<em class="property">class </em><tt class="descclassname">sklearn.neighbors.</tt><tt class="descname">DistanceMetric</tt><a class="headerlink" href="#sklearn.neighbors.DistanceMetric" title="Permalink to this definition">¶</a></dt>
+<dd><p>DistanceMetric class</p>
+<p>This class provides a uniform interface to fast distance metric
+functions.  The various metrics can be accessed via the <cite>get_metric</cite>
+class method and the metric string identifier (see below).
+For example, to use the Euclidean distance:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span> <span class="o">=</span> <span class="n">DistanceMetric</span><span class="o">.</span><span class="n">get_metric</span><span class="p">(</span><span class="s">&#39;euclidean&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="go">         [3, 4, 5]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span><span class="o">.</span><span class="n">pairwise</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([[ 0.        ,  5.19615242],</span>
+<span class="go">       [ 5.19615242,  0.        ]])</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.neighbors.DistanceMetric.dist_to_rdist" title="sklearn.neighbors.DistanceMetric.dist_to_rdist"><tt class="xref py py-obj docutils literal"><span class="pre">dist_to_rdist</span></tt></a></td>
+<td>Convert the true distance to the reduced distance.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.neighbors.DistanceMetric.get_metric" title="sklearn.neighbors.DistanceMetric.get_metric"><tt class="xref py py-obj docutils literal"><span class="pre">get_metric</span></tt></a></td>
+<td>Get the given distance metric from the string identifier.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.neighbors.DistanceMetric.pairwise" title="sklearn.neighbors.DistanceMetric.pairwise"><tt class="xref py py-obj docutils literal"><span class="pre">pairwise</span></tt></a></td>
+<td>Compute the pairwise distances between X and Y</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.neighbors.DistanceMetric.rdist_to_dist" title="sklearn.neighbors.DistanceMetric.rdist_to_dist"><tt class="xref py py-obj docutils literal"><span class="pre">rdist_to_dist</span></tt></a></td>
+<td>Convert the Reduced distance to the true distance.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sklearn.neighbors.DistanceMetric.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.neighbors.DistanceMetric.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.neighbors.DistanceMetric.dist_to_rdist">
+<tt class="descname">dist_to_rdist</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.neighbors.DistanceMetric.dist_to_rdist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the true distance to the reduced distance.</p>
+<p>The reduced distance, defined for some metrics, is a computationally
+more efficent measure which preserves the rank of the true distance.
+For example, in the Euclidean distance metric, the reduced distance
+is the squared-euclidean distance.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="sklearn.neighbors.DistanceMetric.get_metric">
+<em class="property">static </em><tt class="descname">get_metric</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.neighbors.DistanceMetric.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the given distance metric from the string identifier.</p>
+<p>See the docstring of DistanceMetric for a list of available metrics.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>metric</strong> : string or class name</p>
+<blockquote>
+<div><p>The distance metric to use</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote class="last">
+<div><p>additional arguments will be passed to the requested metric</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.neighbors.DistanceMetric.pairwise">
+<tt class="descname">pairwise</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.neighbors.DistanceMetric.pairwise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the pairwise distances between X and Y</p>
+<p>This is a convenience routine for the sake of testing.  For many
+metrics, the utilities in scipy.spatial.distance.cdist and
+scipy.spatial.distance.pdist will be faster.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array_like</p>
+<blockquote>
+<div><p>Array of shape (Nx, D), representing Nx points in D dimensions.</p>
+</div></blockquote>
+<p><strong>Y</strong> : array_like (optional)</p>
+<blockquote>
+<div><p>Array of shape (Ny, D), representing Ny points in D dimensions.
+If not specified, then Y=X.</p>
+</div></blockquote>
+<p><strong>Returns</strong> :</p>
+<p><strong>&#8212;&#8212;-</strong> :</p>
+<p><strong>dist</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>The shape (Nx, Ny) array of pairwise distances between points in
+X and Y.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.neighbors.DistanceMetric.rdist_to_dist">
+<tt class="descname">rdist_to_dist</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.neighbors.DistanceMetric.rdist_to_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the Reduced distance to the true distance.</p>
+<p>The reduced distance, defined for some metrics, is a computationally
+more efficent measure which preserves the rank of the true distance.
+For example, in the Euclidean distance metric, the reduced distance
+is the squared-euclidean distance.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2010â2013, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/sklearn.neighbors.DistanceMetric.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+     <div class="rel">
+    
+    <div class="buttonPrevious">
+      <a href="sklearn.neighbors.KDTree.html">
+        Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.neighbors.KernelDensity.html">
+        Next
+      </a>
+    </div>
+    
+     </div>
+     <script type="text/javascript">
+       $("div.buttonNext, div.buttonPrevious").hover(
+           function () {
+               $(this).css('background-color', '#FF9C34');
+           },
+           function () {
+               $(this).css('background-color', '#A7D6E2');
+           }
+       );
+       var bodywrapper = $('.bodywrapper');
+   	var sidebarbutton = $('#sidebarbutton');
+        sidebarbutton.css({
+	    'height': '900px'
+       });
+     </script>
+  </body>
+</html>

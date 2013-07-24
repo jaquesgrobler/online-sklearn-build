@@ -169,7 +169,7 @@
 <h1>8.4.1.6. sklearn.datasets.load_files<a class="headerlink" href="#sklearn-datasets-load-files" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.datasets.load_files">
-<tt class="descclassname">sklearn.datasets.</tt><tt class="descname">load_files</tt><big>(</big><em>container_path</em>, <em>description=None</em>, <em>categories=None</em>, <em>load_content=True</em>, <em>shuffle=True</em>, <em>charset=None</em>, <em>charse_error='strict'</em>, <em>random_state=0</em><big>)</big><a class="headerlink" href="#sklearn.datasets.load_files" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.datasets.</tt><tt class="descname">load_files</tt><big>(</big><em>container_path</em>, <em>description=None</em>, <em>categories=None</em>, <em>load_content=True</em>, <em>shuffle=True</em>, <em>encoding=None</em>, <em>decode_error='strict'</em>, <em>random_state=0</em><big>)</big><a class="headerlink" href="#sklearn.datasets.load_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load text files with categories as subfolder names.</p>
 <p>Individual samples are assumed to be files stored a two levels folder
 structure such as the following:</p>
@@ -190,16 +190,21 @@ file_44.txt
 </dd>
 </dl>
 </div></blockquote>
-<p>The folder names are used has supervised signal label names. The indivial
-file names are not important.</p>
+<p>The folder names are used has supervised signal label names. The
+individual file names are not important.</p>
 <p>This function does not try to extract features into a numpy array or
 scipy sparse matrix. In addition, if load_content is false it
 does not try to load the files in memory.</p>
-<p>To use utf-8 text files in a scikit-learn classification or clustering
-algorithm you will first need to use the <cite>sklearn.features.text</cite>
+<p>To use text files in a scikit-learn classification or clustering
+algorithm, you will need to use the <cite>sklearn.feature_extraction.text</cite>
 module to build a feature extraction transformer that suits your
 problem.</p>
-<p>Similar feature extractors should be build for other kind of unstructured
+<p>If you set load_content=True, you should also specify the encoding of
+the text using the &#8216;encoding&#8217; parameter. For many modern text files,
+&#8216;utf-8&#8217; will be the correct encoding. If you leave encoding equal to None,
+then the content will be made of bytes instead of Unicode, and you will
+not be able to use most functions in <cite>sklearn.feature_extraction.text</cite>.</p>
+<p>Similar feature extractors should be built for other kind of unstructured
 data input such as images, audio, video, ...</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -226,19 +231,18 @@ true a &#8216;data&#8217; attribute containing the text information is present
 in the data structure returned. If not, a filenames attribute
 gives the path to the files.</p>
 </div></blockquote>
-<p><strong>charset</strong> : string or None (default is None)</p>
+<p><strong>encoding</strong> : string or None (default is None)</p>
 <blockquote>
 <div><p>If None, do not try to decode the content of the files (e.g. for
 images or other non-text content).
-If not None, charset to use to decode text files if load_content is
-True.</p>
+If not None, encoding to use to decode text files to Unicode if
+load_content is True.</p>
 </div></blockquote>
-<p><strong>charset_error: {&#8216;strict&#8217;, &#8216;ignore&#8217;, &#8216;replace&#8217;}</strong> :</p>
+<p><strong>decode_error: {&#8216;strict&#8217;, &#8216;ignore&#8217;, &#8216;replace&#8217;}, optional</strong> :</p>
 <blockquote>
 <div><p>Instruction on what to do if a byte sequence is given to analyze that
-contains characters not of the given <cite>charset</cite>. By default, it is
-&#8216;strict&#8217;, meaning that a UnicodeDecodeError will be raised. Other
-values are &#8216;ignore&#8217; and &#8216;replace&#8217;.</p>
+contains characters not of the given <cite>encoding</cite>. Passed as keyword
+argument &#8216;errors&#8217; to bytes.decode.</p>
 </div></blockquote>
 <p><strong>shuffle</strong> : bool, optional (default=True)</p>
 <blockquote>
@@ -280,7 +284,7 @@ description of the dataset.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.datasets.load_files.txt"

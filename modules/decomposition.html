@@ -159,15 +159,16 @@
 <li><a class="reference internal" href="#sparse-principal-components-analysis-sparsepca-and-minibatchsparsepca">4.4.1.4. Sparse Principal Components Analysis (SparsePCA and MiniBatchSparsePCA)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dictionary-learning">4.4.2. Dictionary Learning</a><ul>
-<li><a class="reference internal" href="#sparse-coding-with-a-precomputed-dictionary">4.4.2.1. Sparse coding with a precomputed dictionary</a></li>
-<li><a class="reference internal" href="#generic-dictionary-learning">4.4.2.2. Generic dictionary learning</a></li>
-<li><a class="reference internal" href="#mini-batch-dictionary-learning">4.4.2.3. Mini-batch dictionary learning</a></li>
+<li><a class="reference internal" href="#truncated-singular-value-decomposition-and-latent-semantic-analysis">4.4.2. Truncated singular value decomposition and latent semantic analysis</a></li>
+<li><a class="reference internal" href="#dictionary-learning">4.4.3. Dictionary Learning</a><ul>
+<li><a class="reference internal" href="#sparse-coding-with-a-precomputed-dictionary">4.4.3.1. Sparse coding with a precomputed dictionary</a></li>
+<li><a class="reference internal" href="#generic-dictionary-learning">4.4.3.2. Generic dictionary learning</a></li>
+<li><a class="reference internal" href="#mini-batch-dictionary-learning">4.4.3.3. Mini-batch dictionary learning</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#factor-analysis">4.4.3. Factor Analysis</a></li>
-<li><a class="reference internal" href="#independent-component-analysis-ica">4.4.4. Independent component analysis (ICA)</a></li>
-<li><a class="reference internal" href="#non-negative-matrix-factorization-nmf-or-nnmf">4.4.5. Non-negative matrix factorization (NMF or NNMF)</a></li>
+<li><a class="reference internal" href="#factor-analysis">4.4.4. Factor Analysis</a></li>
+<li><a class="reference internal" href="#independent-component-analysis-ica">4.4.5. Independent component analysis (ICA)</a></li>
+<li><a class="reference internal" href="#non-negative-matrix-factorization-nmf-or-nnmf">4.4.6. Non-negative matrix factorization (NMF or NNMF)</a></li>
 </ul>
 </li>
 </ul>
@@ -373,10 +374,83 @@ R. Jenatton, G. Obozinski, F. Bach, 2009</td></tr>
 </div>
 </div>
 </div>
+<div class="section" id="truncated-singular-value-decomposition-and-latent-semantic-analysis">
+<span id="lsa"></span><h2>4.4.2. Truncated singular value decomposition and latent semantic analysis<a class="headerlink" href="#truncated-singular-value-decomposition-and-latent-semantic-analysis" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/sklearn.decomposition.TruncatedSVD.html#sklearn.decomposition.TruncatedSVD" title="sklearn.decomposition.TruncatedSVD"><tt class="xref py py-class docutils literal"><span class="pre">TruncatedSVD</span></tt></a> implements a variant of singular value decomposition
+(SVD) that only computes the <img class="math" src="../_images/math/8c325612684d41304b9751c175df7bcc0f61f64f.png" alt="k"/> largest singular values,
+where <img class="math" src="../_images/math/8c325612684d41304b9751c175df7bcc0f61f64f.png" alt="k"/> is a user-specified parameter.</p>
+<p>When truncated SVD is applied to term-document matrices
+(as returned by <tt class="docutils literal"><span class="pre">CountVectorizer</span></tt> or <tt class="docutils literal"><span class="pre">TfidfVectorizer</span></tt>),
+this transformation is known as
+<a class="reference external" href="http://nlp.stanford.edu/IR-book/pdf/18lsi.pdf">latent semantic analysis</a>
+(LSA), because it transforms such matrices
+to a &#8220;semantic&#8221; space of low dimensionality.
+In particular, LSA is known to combat the effects of synonymy and polysemy
+(both of which roughly mean there are multiple meanings per word),
+which cause term-document matrices to be overly sparse
+and exhibit poor similarity under measures such as cosine similarity.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">LSA is also known as latent semantic indexing, LSI,
+though strictly that refers to its use in persistent indexes
+for information retrieval purposes.</p>
+</div>
+<p>Mathematically, truncated SVD applied to training samples <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/>
+produces a low-rank approximation <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/>:</p>
+<div class="math">
+<p><img src="../_images/math/249c604fbe26a73b2d42a46b035941aa61c0fd9e.png" alt="X \approx X_k = U_k \Sigma_k V_k^\top"/></p>
+</div><p>After this operation, <img class="math" src="../_images/math/a53fa230665275ac6dd2f5c3f6870e1f689f0337.png" alt="U_k \Sigma_k^\top"/>
+is the transformed training set with <img class="math" src="../_images/math/8c325612684d41304b9751c175df7bcc0f61f64f.png" alt="k"/> features
+(called <tt class="docutils literal"><span class="pre">n_components</span></tt> in the API).</p>
+<p>To also transform a test set <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/>, we multiply it with <img class="math" src="../_images/math/40b514f3d50ab12888fa4886e266bb6a1e8a7e9f.png" alt="V_k"/>:</p>
+<div class="math">
+<p><img src="../_images/math/7c4ce2c876c837757cd0d1b340c28056920edcc4.png" alt="X' = X V_k^\top"/></p>
+</div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Most treatments of LSA in the natural language processing (NLP)
+and information retrieval (IR) literature
+swap the axis of the matrix <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/> so that it has shape
+<tt class="docutils literal"><span class="pre">n_features</span></tt> × <tt class="docutils literal"><span class="pre">n_samples</span></tt>.
+We present LSA in a different way that matches the scikit-learn API better,
+but the singular values found are the same.</p>
+</div>
+<p><a class="reference internal" href="generated/sklearn.decomposition.TruncatedSVD.html#sklearn.decomposition.TruncatedSVD" title="sklearn.decomposition.TruncatedSVD"><tt class="xref py py-class docutils literal"><span class="pre">TruncatedSVD</span></tt></a> is very similar to <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a>, but differs
+in that it works on sample matrices <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/> directly
+instead of their covariance matrices.
+When the columnwise (per-feature) means of <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/>
+are subtracted from the feature values,
+truncated SVD on the resulting matrix is equivalent to PCA.
+In practical terms, this means
+that the <a class="reference internal" href="generated/sklearn.decomposition.TruncatedSVD.html#sklearn.decomposition.TruncatedSVD" title="sklearn.decomposition.TruncatedSVD"><tt class="xref py py-class docutils literal"><span class="pre">TruncatedSVD</span></tt></a> transformer accepts <tt class="docutils literal"><span class="pre">scipy.sparse</span></tt>
+matrices without the need to densify them,
+as densifying may fill up memory even for medium-sized document collections.</p>
+<p>While the <a class="reference internal" href="generated/sklearn.decomposition.TruncatedSVD.html#sklearn.decomposition.TruncatedSVD" title="sklearn.decomposition.TruncatedSVD"><tt class="xref py py-class docutils literal"><span class="pre">TruncatedSVD</span></tt></a> transformer
+works with any (sparse) feature matrix,
+using it on tf–idf matrices is recommended over raw frequency counts
+in an LSA/document processing setting.
+In particular, sublinear scaling and inverse document frequency
+should be turned on (<tt class="docutils literal"><span class="pre">sublinear_tf=True,</span> <span class="pre">use_idf=True</span></tt>)
+to bring the feature values closer to a Gaussian distribution,
+compensating for LSA&#8217;s erroneous assumptions about textual data.</p>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/document_clustering.html#example-document-clustering-py"><em>Clustering text documents using k-means</em></a></li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li>Christopher D. Manning, Prabhakar Raghavan and Hinrich Schütze (2008),
+<em>Introduction to Information Retrieval</em>, Cambridge University Press,
+chapter 18: <a class="reference external" href="http://nlp.stanford.edu/IR-book/pdf/18lsi.pdf">Matrix decompositions &amp; latent semantic indexing</a></li>
+</ul>
+</div>
+</div>
 <div class="section" id="dictionary-learning">
-<span id="dictionarylearning"></span><h2>4.4.2. Dictionary Learning<a class="headerlink" href="#dictionary-learning" title="Permalink to this headline">¶</a></h2>
+<span id="dictionarylearning"></span><h2>4.4.3. Dictionary Learning<a class="headerlink" href="#dictionary-learning" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="sparse-coding-with-a-precomputed-dictionary">
-<span id="sparsecoder"></span><h3>4.4.2.1. Sparse coding with a precomputed dictionary<a class="headerlink" href="#sparse-coding-with-a-precomputed-dictionary" title="Permalink to this headline">¶</a></h3>
+<span id="sparsecoder"></span><h3>4.4.3.1. Sparse coding with a precomputed dictionary<a class="headerlink" href="#sparse-coding-with-a-precomputed-dictionary" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="generated/sklearn.decomposition.SparseCoder.html#sklearn.decomposition.SparseCoder" title="sklearn.decomposition.SparseCoder"><tt class="xref py py-class docutils literal"><span class="pre">SparseCoder</span></tt></a> object is an estimator that can be used to transform signals
 into sparse linear combination of atoms from a fixed, precomputed dictionary
 such as a discrete wavelet basis. This object therefore does not
@@ -416,7 +490,7 @@ a positive sign. Therefore, the split_code is non-negative.</p>
 </div>
 </div>
 <div class="section" id="generic-dictionary-learning">
-<h3>4.4.2.2. Generic dictionary learning<a class="headerlink" href="#generic-dictionary-learning" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.3.2. Generic dictionary learning<a class="headerlink" href="#generic-dictionary-learning" title="Permalink to this headline">¶</a></h3>
 <p>Dictionary learning (<a class="reference internal" href="generated/sklearn.decomposition.DictionaryLearning.html#sklearn.decomposition.DictionaryLearning" title="sklearn.decomposition.DictionaryLearning"><tt class="xref py py-class docutils literal"><span class="pre">DictionaryLearning</span></tt></a>) is a matrix factorization
 problem that amounts to finding a (usually overcomplete) dictionary that will
 perform good at sparsely encoding the fitted data.</p>
@@ -459,7 +533,7 @@ J. Mairal, F. Bach, J. Ponce, G. Sapiro, 2009</li>
 </div>
 </div>
 <div class="section" id="mini-batch-dictionary-learning">
-<span id="minibatchdictionarylearning"></span><h3>4.4.2.3. Mini-batch dictionary learning<a class="headerlink" href="#mini-batch-dictionary-learning" title="Permalink to this headline">¶</a></h3>
+<span id="minibatchdictionarylearning"></span><h3>4.4.3.3. Mini-batch dictionary learning<a class="headerlink" href="#mini-batch-dictionary-learning" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/sklearn.decomposition.MiniBatchDictionaryLearning.html#sklearn.decomposition.MiniBatchDictionaryLearning" title="sklearn.decomposition.MiniBatchDictionaryLearning"><tt class="xref py py-class docutils literal"><span class="pre">MiniBatchDictionaryLearning</span></tt></a> implements a faster, but less accurate
 version of the dictionary learning algorithm that is better suited for large
 datasets.</p>
@@ -485,7 +559,7 @@ computationally efficient and implements on-line learning
 </div>
 </div>
 <div class="section" id="factor-analysis">
-<span id="fa"></span><h2>4.4.3. Factor Analysis<a class="headerlink" href="#factor-analysis" title="Permalink to this headline">¶</a></h2>
+<span id="fa"></span><h2>4.4.4. Factor Analysis<a class="headerlink" href="#factor-analysis" title="Permalink to this headline">¶</a></h2>
 <p>In unsupervised learning we only have a dataset <img class="math" src="../_images/math/62a3e289b6543bef57e3e781b613a55b2ee9f06c.png" alt="X = \{x_1, x_2, \dots, x_n
 \}"/>. How can this dataset be described mathematically? A very simple
 <cite>continuous latent variabel</cite> model for <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/> is</p>
@@ -520,11 +594,11 @@ structure of the error covariance <img class="math" src="../_images/math/866f020
 <li><img class="math" src="../_images/math/77101e5fc6c2fb4b935bd72fd65f779dd78d3c5c.png" alt="\Psi = \sigma^2 \mathbf{I}"/>: This assumption leads to
 <a class="reference internal" href="generated/sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-class docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a>.</li>
 <li><img class="math" src="../_images/math/a9125baf25810d1fb373bd5fc11147857bdae2ab.png" alt="\Psi = diag(\psi_1, \psi_2, \dots, \psi_n)"/>: This model is called Factor
-Analysis, a classical statistical model. The matrix W is sometimtes called
+Analysis, a classical statistical model. The matrix W is sometimes called
 <cite>factor loading matrix</cite>.</li>
 </ul>
 <p>Both model essentially estimate a Gaussian with a low-rank covariance matrix.
-Because both models are probilistic they can be integrated in more complex
+Because both models are probabilistic they can be integrated in more complex
 models, e.g. Mixture of Factor Analysers. One gets very different models (e.g.
 <a class="reference internal" href="generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="sklearn.decomposition.FastICA"><tt class="xref py py-class docutils literal"><span class="pre">FastICA</span></tt></a>) if non-Gaussian priors on the latent variables are assumed.</p>
 <p>Factor Analysis <cite>can</cite> produce similar components (the columns of its loading
@@ -540,7 +614,7 @@ it can model the variance in every direction of the input space independently:</
 </div>
 </div>
 <div class="section" id="independent-component-analysis-ica">
-<span id="ica"></span><h2>4.4.4. Independent component analysis (ICA)<a class="headerlink" href="#independent-component-analysis-ica" title="Permalink to this headline">¶</a></h2>
+<span id="ica"></span><h2>4.4.5. Independent component analysis (ICA)<a class="headerlink" href="#independent-component-analysis-ica" title="Permalink to this headline">¶</a></h2>
 <p>Independent component analysis separates a multivariate signal into
 additive subcomponents that are maximally independent. It is
 implemented in scikit-learn using the <a class="reference internal" href="generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="sklearn.decomposition.FastICA"><tt class="xref py py-class docutils literal"><span class="pre">Fast</span> <span class="pre">ICA</span></tt></a>
@@ -565,7 +639,7 @@ components with some sparsity:</p>
 </div>
 </div>
 <div class="section" id="non-negative-matrix-factorization-nmf-or-nnmf">
-<span id="nmf"></span><h2>4.4.5. Non-negative matrix factorization (NMF or NNMF)<a class="headerlink" href="#non-negative-matrix-factorization-nmf-or-nnmf" title="Permalink to this headline">¶</a></h2>
+<span id="nmf"></span><h2>4.4.6. Non-negative matrix factorization (NMF or NNMF)<a class="headerlink" href="#non-negative-matrix-factorization-nmf-or-nnmf" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> is an alternative approach to decomposition that assumes that the
 data and the components are non-negative. <a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> can be plugged in
 instead of <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a> or its variants, in the cases where the data matrix
@@ -630,7 +704,7 @@ C. Boutsidis, E. Gallopoulos, 2008</li>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/decomposition.txt"

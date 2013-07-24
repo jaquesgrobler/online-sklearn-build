@@ -398,13 +398,13 @@ recommended to choose the CSR representation upstream.</p>
 <div class="section" id="feature-binarization">
 <h3>6.2.3.1. Feature binarization<a class="headerlink" href="#feature-binarization" title="Permalink to this headline">¶</a></h3>
 <p><strong>Feature binarization</strong> is the process of <strong>thresholding numerical
-features to get boolean values</strong>. This can be useful for downsteam
+features to get boolean values</strong>. This can be useful for downstream
 probabilistic estimators that make assumption that the input data
 is distributed according to a multi-variate <a class="reference external" href="http://en.wikipedia.org/wiki/Bernoulli_distribution">Bernoulli distribution</a>. For instance,
 this is the case for the most common class of <a class="reference external" href="http://en.wikipedia.org/wiki/Boltzmann_machine">(Restricted) Boltzmann
 Machines</a>
 (not yet implemented in the scikit).</p>
-<p>It is also commmon among the text processing community to use binary
+<p>It is also common among the text processing community to use binary
 feature values (probably to simplify the probabilistic reasoning) even
 if normalized counts (a.k.a. term frequencies) or TF-IDF valued features
 often perform slightly better in practice.</p>
@@ -468,8 +468,9 @@ categorical feature with <tt class="docutils literal"><span class="pre">m</span>
 only one active.</p>
 <p>Continuing the example above:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">OneHotEncoder</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
-<span class="go">OneHotEncoder(dtype=&lt;type &#39;float&#39;&gt;, n_values=&#39;auto&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>  
+<span class="go">OneHotEncoder(categorical_features=&#39;all&#39;, dtype=&lt;... &#39;float&#39;&gt;,</span>
+<span class="go">       n_values=&#39;auto&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 <span class="go">array([[ 1.,  0.,  0.,  1.,  0.,  0.,  0.,  0.,  1.]])</span>
 </pre></div>
@@ -553,7 +554,7 @@ hashable and comparable) to numerical labels:</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/preprocessing.txt"

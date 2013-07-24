@@ -169,7 +169,7 @@
 <h1>8.1.2.6. sklearn.cluster.mean_shift<a class="headerlink" href="#sklearn-cluster-mean-shift" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.cluster.mean_shift">
-<tt class="descclassname">sklearn.cluster.</tt><tt class="descname">mean_shift</tt><big>(</big><em>X</em>, <em>bandwidth=None</em>, <em>seeds=None</em>, <em>bin_seeding=False</em>, <em>cluster_all=True</em>, <em>max_iterations=300</em><big>)</big><a class="headerlink" href="#sklearn.cluster.mean_shift" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.cluster.</tt><tt class="descname">mean_shift</tt><big>(</big><em>X</em>, <em>bandwidth=None</em>, <em>seeds=None</em>, <em>bin_seeding=False</em>, <em>min_bin_freq=1</em>, <em>cluster_all=True</em>, <em>max_iterations=300</em><big>)</big><a class="headerlink" href="#sklearn.cluster.mean_shift" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform MeanShift Clustering of data using a flat kernel</p>
 <p>Seed using a binning technique for scalability.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -220,7 +220,7 @@ min_bin_freq points as seeds. If not defined, set to 1.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>See examples/plot_meanshift.py for an example.</p>
+<p>See examples/cluster/plot_meanshift.py for an example.</p>
 </dd></dl>
 
 </div>
@@ -234,7 +234,7 @@ min_bin_freq points as seeds. If not defined, set to 1.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.cluster.mean_shift.txt"

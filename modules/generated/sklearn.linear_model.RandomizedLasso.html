@@ -170,7 +170,7 @@
 <dl class="class">
 <dt id="sklearn.linear_model.RandomizedLasso">
 <em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">RandomizedLasso</tt><big>(</big><em>alpha='aic'</em>, <em>scaling=0.5</em>, <em>sample_fraction=0.75</em>, <em>n_resampling=200</em>, <em>selection_threshold=0.25</em>, <em>fit_intercept=True</em>, <em>verbose=False</em>, <em>normalize=True</em>, <em>precompute='auto'</em>, <em>max_iter=500</em>, <em>eps=2.2204460492503131e-16</em>, <em>random_state=None</em>, <em>n_jobs=1</em>, <em>pre_dispatch='3*n_jobs'</em>, <em>memory=Memory(cachedir=None)</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RandomizedLasso" title="Permalink to this definition">¶</a></dt>
-<dd><p>Randomized Lasso</p>
+<dd><p>Randomized Lasso.</p>
 <p>Randomized Lasso works by resampling the train data and computing
 a Lasso on each resampling. In short, the features selected more
 often are good features. It is also known as stability selection.</p>
@@ -178,23 +178,31 @@ often are good features. It is also known as stability selection.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>alpha</strong> : float, &#8216;aic&#8217;, or &#8216;bic&#8217;</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>alpha</strong> : float, &#8216;aic&#8217;, or &#8216;bic&#8217;, optional</p>
 <blockquote>
 <div><p>The regularization parameter alpha parameter in the Lasso.
 Warning: this is not the alpha parameter in the stability selection
 article which is scaling.</p>
 </div></blockquote>
-<p><strong>scaling</strong> : float</p>
+<p><strong>scaling</strong> : float, optional</p>
 <blockquote>
 <div><p>The alpha parameter in the stability selection article used to
 randomly scale the features. Should be between 0 and 1.</p>
 </div></blockquote>
-<p><strong>sample_fraction</strong> : float</p>
+<p><strong>sample_fraction</strong> : float, optional</p>
 <blockquote>
 <div><p>The fraction of samples to be used in each randomized design.
 Should be between 0 and 1. If 1, all samples are used.</p>
 </div></blockquote>
-<p><strong>fit_intercept</strong> : boolean</p>
+<p><strong>n_resampling</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of randomized models.</p>
+</div></blockquote>
+<p><strong>selection_threshold: float, optional</strong> :</p>
+<blockquote>
+<div><p>The score above which features should be selected.</p>
+</div></blockquote>
+<p><strong>fit_intercept</strong> : boolean, optional</p>
 <blockquote>
 <div><p>whether to calculate the intercept for this model. If set
 to false, no intercept will be used in calculations
@@ -468,7 +476,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.linear_model.RandomizedLasso.txt"

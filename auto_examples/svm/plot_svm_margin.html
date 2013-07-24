@@ -201,9 +201,9 @@ the margins to be calculated using all the data in the area.</p>
 <span class="n">fignum</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c"># fit the model</span>
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">penality</span> <span class="ow">in</span> <span class="p">((</span><span class="s">&#39;unreg&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;reg&#39;</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)):</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">penalty</span> <span class="ow">in</span> <span class="p">((</span><span class="s">&#39;unreg&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;reg&#39;</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)):</span>
 
-    <a href="../../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">clf</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">svm</span><span class="o">.</span><span class="n">SVC</span></a><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">penality</span><span class="p">)</span>
+    <a href="../../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">clf</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">svm</span><span class="o">.</span><span class="n">SVC</span></a><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">penalty</span><span class="p">)</span>
     <a href="../../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">clf</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
 
     <span class="c"># get the separating hyperplane</span>
@@ -253,7 +253,7 @@ the margins to be calculated using all the data in the area.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.23 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.21 seconds</p>
 </div>
 
 
@@ -265,7 +265,7 @@ the margins to be calculated using all the data in the area.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/auto_examples/svm/plot_svm_margin.txt"

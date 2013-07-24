@@ -1,0 +1,541 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Out-of-core classification of text documents &mdash; scikit-learn 0.14-git documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.14-git',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Libsvm GUI" href="svm_gui.html" />
+    <link rel="prev" title="Wikipedia principal eigenvector" href="wikipedia_principal_eigenvector.html" />
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+
+  </head>
+  <body>
+
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../index.html">Examples</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+      <div class="sphinxsidebar">
+	<div class="sphinxsidebarwrapper">
+	  <div class="rel">
+	   
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="wikipedia_principal_eigenvector.html" title="Wikipedia principal eigenvector"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Wikipedia princi...
+	    </span>
+	    <span class="hiddenrellink">
+	    Wikipedia principal eigenvector
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="svm_gui.html" title="Libsvm GUI"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Libsvm GUI
+	    </span>
+	    <span class="hiddenrellink">
+	    Libsvm GUI
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center; background-color: #FFE4E4">This documentation is
+    for scikit-learn <strong>version 0.14-git</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
+    <p>If you use the software, please consider
+    <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">Out-of-core classification of text documents</a></li>
+</ul>
+
+    
+    </div>
+	  </div>
+
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="out-of-core-classification-of-text-documents">
+<span id="example-applications-plot-out-of-core-classification-py"></span><h1>Out-of-core classification of text documents<a class="headerlink" href="#out-of-core-classification-of-text-documents" title="Permalink to this headline">¶</a></h1>
+<p>This is an example showing how scikit-learn can be used for classification
+using an out-of-core approach.</p>
+<p>Out-of-core learning means that we can learn from data that would not fit into
+the computer main memory. To achieve this goal we make use of an online
+classifier (i.e. that supports the <cite>partial_fit</cite> method) that will be fed with
+batches of examples. Moreover, to guarantee that the features space remains the
+same over time we leverage the <cite>HashingVectorizer</cite> class that will project each
+example into the same input space. This is especially useful in the case of
+text classification where new features (e.g. words) are discovered on the fly.</p>
+<p>The dataset used in this example is Reuters-21578 as provided by the UCI ML
+repository. It will be automatically downloaded and uncompressed in the current
+directory on first run.</p>
+<p>The plot represents is the learning curve of the classifier i.e. the evolution
+of classification accuracy with the number of mini-batches fed to the
+classifier.</p>
+<p><cite>ReutersParser</cite> and <cite>ReutersStreamReader</cite> classes are utility classes to parse
+and stream examples to the main learning loop.</p>
+<p>To limit the amount of consumed memory at any time we enqueue examples up to a
+fixed amount before calling the features transformation and learning routines.
+We then clear the examples queue and proceed with enqueuing again and so on.</p>
+<p>To study the performance of the method we sample the first 1000 examples of the
+dataset and hold them out as separate testing data. We then use it to estimate
+accuracy after each mini-batch.</p>
+<img alt="../../_images/plot_out_of_core_classification_1.png" class="align-center" src="../../_images/plot_out_of_core_classification_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Test set is 988 documents (122 positive)
+    29 train docs (     2 positive)    988 test docs (   122 positive) accuracy: 0.864 in 0.86s (   33 docs/s)
+   565 train docs (    58 positive)    988 test docs (   122 positive) accuracy: 0.903 in 1.58s (  356 docs/s)
+  1033 train docs (   110 positive)    988 test docs (   122 positive) accuracy: 0.912 in 2.26s (  457 docs/s)
+  2009 train docs (   219 positive)    988 test docs (   122 positive) accuracy: 0.904 in 3.11s (  645 docs/s)
+  2887 train docs (   280 positive)    988 test docs (   122 positive) accuracy: 0.907 in 3.84s (  751 docs/s)
+  3758 train docs (   403 positive)    988 test docs (   122 positive) accuracy: 0.941 in 4.66s (  805 docs/s)
+  4690 train docs (   532 positive)    988 test docs (   122 positive) accuracy: 0.948 in 5.47s (  856 docs/s)
+  5662 train docs (   656 positive)    988 test docs (   122 positive) accuracy: 0.922 in 6.30s (  898 docs/s)
+  6628 train docs (   775 positive)    988 test docs (   122 positive) accuracy: 0.948 in 7.14s (  928 docs/s)
+  7595 train docs (   926 positive)    988 test docs (   122 positive) accuracy: 0.954 in 7.94s (  956 docs/s)
+  8514 train docs (  1050 positive)    988 test docs (   122 positive) accuracy: 0.945 in 8.74s (  974 docs/s)
+  9486 train docs (  1155 positive)    988 test docs (   122 positive) accuracy: 0.950 in 9.60s (  988 docs/s)
+ 10460 train docs (  1268 positive)    988 test docs (   122 positive) accuracy: 0.954 in 10.44s ( 1001 docs/s)
+ 11435 train docs (  1394 positive)    988 test docs (   122 positive) accuracy: 0.956 in 11.26s ( 1015 docs/s)
+ 12407 train docs (  1503 positive)    988 test docs (   122 positive) accuracy: 0.950 in 12.13s ( 1022 docs/s)
+ 13373 train docs (  1609 positive)    988 test docs (   122 positive) accuracy: 0.963 in 12.98s ( 1030 docs/s)
+ 14339 train docs (  1721 positive)    988 test docs (   122 positive) accuracy: 0.962 in 13.83s ( 1036 docs/s)
+ 15310 train docs (  1854 positive)    988 test docs (   122 positive) accuracy: 0.956 in 14.77s ( 1036 docs/s)
+ 16273 train docs (  2004 positive)    988 test docs (   122 positive) accuracy: 0.946 in 15.60s ( 1042 docs/s)
+ 17265 train docs (  2147 positive)    988 test docs (   122 positive) accuracy: 0.956 in 16.45s ( 1049 docs/s)
+ 18251 train docs (  2271 positive)    988 test docs (   122 positive) accuracy: 0.970 in 17.31s ( 1054 docs/s)</pre>
+</div>
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_out_of_core_classification.py"><tt class="xref download docutils literal"><span class="pre">plot_out_of_core_classification.py</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Author: Eustache Diemert &lt;eustache@diemert.fr&gt;</span>
+<span class="c"># License: BSD 3 clause</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">fnmatch</span>
+<span class="kn">import</span> <span class="nn">sgmllib</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">tarfile</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.feature_extraction.text.HashingVectorizer.html#sklearn.feature_extraction.text.HashingVectorizer"><span class="n">HashingVectorizer</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model.stochastic_gradient</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier"><span class="n">SGDClassifier</span></a>
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="c">###############################################################################</span>
+<span class="c"># Reuters Dataset related routines</span>
+<span class="c">###############################################################################</span>
+
+
+<span class="k">def</span> <span class="nf">_not_in_sphinx</span><span class="p">():</span>
+    <span class="c"># Hack to detect whether we are running by the sphinx builder</span>
+    <span class="k">return</span> <span class="s">&#39;__file__&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">ReutersParser</span><span class="p">(</span><span class="n">sgmllib</span><span class="o">.</span><span class="n">SGMLParser</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Utility class to parse a SGML file and yield documents one at a time.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="n">sgmllib</span><span class="o">.</span><span class="n">SGMLParser</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_title</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_body</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_topics</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_topic_d</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">topics</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">topic_d</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fd</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">docs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">fd</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">docs</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">doc</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">docs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">handle_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_body</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span> <span class="o">+=</span> <span class="n">data</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_title</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">+=</span> <span class="n">data</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_topic_d</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">topic_d</span> <span class="o">+=</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">start_reuters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">end_reuters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;\s+&#39;</span><span class="p">,</span> <span class="s">r&#39; &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">docs</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                          <span class="s">&#39;body&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
+                          <span class="s">&#39;topics&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">topics</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">start_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_title</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">end_title</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_title</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">start_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_body</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">end_body</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_body</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">start_topics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_topics</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">end_topics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_topics</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">start_d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_topic_d</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">end_d</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_topic_d</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">topics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">topic_d</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">topic_d</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">ReutersStreamReader</span><span class="p">():</span>
+
+    <span class="sd">&quot;&quot;&quot;Iterate over documents of the Reuters dataset.</span>
+
+<span class="sd">    The Reuters archive will automatically be downloaded and uncompressed if</span>
+<span class="sd">    the `data_path` directory does not exist.</span>
+
+<span class="sd">    Documents are represented as dictionaries with &#39;body&#39; (str),</span>
+<span class="sd">    &#39;title&#39; (str), &#39;topics&#39; (list(str)) keys.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">DOWNLOAD_URL</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;http://archive.ics.uci.edu/ml/machine-learning-databases/&#39;</span>
+                    <span class="s">&#39;reuters21578-mld/reuters21578.tar.gz&#39;</span><span class="p">)</span>
+    <span class="n">ARCHIVE_FILENAME</span> <span class="o">=</span> <span class="s">&#39;reuters21578.tar.gz&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_path</span> <span class="o">=</span> <span class="n">data_path</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_path</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">download_dataset</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">download_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Download the dataset.&quot;&quot;&quot;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;downloading dataset (once and for all) into </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span>
+              <span class="bp">self</span><span class="o">.</span><span class="n">data_path</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_path</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">progress</span><span class="p">(</span><span class="n">blocknum</span><span class="p">,</span> <span class="n">bs</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+            <span class="n">total_sz_mb</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%.2f</span><span class="s"> MB&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">size</span> <span class="o">/</span> <span class="mf">1e6</span><span class="p">)</span>
+            <span class="n">current_sz_mb</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%.2f</span><span class="s"> MB&#39;</span> <span class="o">%</span> <span class="p">((</span><span class="n">blocknum</span> <span class="o">*</span> <span class="n">bs</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">_not_in_sphinx</span><span class="p">():</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\r</span><span class="s">downloaded </span><span class="si">%s</span><span class="s"> / </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">current_sz_mb</span><span class="p">,</span> <span class="n">total_sz_mb</span><span class="p">),</span>
+                      <span class="n">end</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DOWNLOAD_URL</span><span class="p">,</span>
+                           <span class="n">filename</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span>
+                                                 <span class="bp">self</span><span class="o">.</span><span class="n">ARCHIVE_FILENAME</span><span class="p">),</span>
+                           <span class="n">reporthook</span><span class="o">=</span><span class="n">progress</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">_not_in_sphinx</span><span class="p">():</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\r</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;untaring data ...&quot;</span><span class="p">)</span>
+        <span class="n">tfile</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span>
+                                          <span class="bp">self</span><span class="o">.</span><span class="n">ARCHIVE_FILENAME</span><span class="p">),</span>
+                             <span class="s">&#39;r:gz&#39;</span><span class="p">)</span>
+        <span class="n">tfile</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_path</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;done !&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">iterdocs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Iterate doc by doc, yield a dict.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">_dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_path</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">fnmatch</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="s">&#39;*.sgm&#39;</span><span class="p">):</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+                <span class="n">parser</span> <span class="o">=</span> <span class="n">ReutersParser</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)):</span>
+                    <span class="k">yield</span> <span class="n">doc</span>
+
+
+<span class="c">###############################################################################</span>
+<span class="c"># Main</span>
+<span class="c">###############################################################################</span>
+<span class="c"># Create the hasher and limit the number of features to a reasonable maximum</span>
+<a href="../../modules/generated/sklearn.feature_extraction.text.HashingVectorizer.html#sklearn.feature_extraction.text.HashingVectorizer"><span class="n">hasher</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.feature_extraction.text.HashingVectorizer.html#sklearn.feature_extraction.text.HashingVectorizer"><span class="n">HashingVectorizer</span></a><span class="p">(</span><span class="n">charset_error</span><span class="o">=</span><span class="s">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">18</span><span class="p">)</span>
+
+<span class="c"># Create an online classifier i.e. supporting `partial_fit()`</span>
+<a href="../../modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier"><span class="n">classifier</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier"><span class="n">SGDClassifier</span></a><span class="p">()</span>
+
+<span class="c"># Create the data_streamer that parses Reuters SGML files and iterates on</span>
+<span class="c"># documents as a stream</span>
+<span class="n">data_streamer</span> <span class="o">=</span> <span class="n">ReutersStreamReader</span><span class="p">(</span><span class="s">&#39;reuters&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">iterdocs</span><span class="p">()</span>
+
+<span class="c"># Here we propose to learn a binary classification between the positive class</span>
+<span class="c"># and all other documents.&quot;&quot;&quot;</span>
+<span class="n">all_classes</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="c"># NB: the &#39;acq&#39; class was chosen as it is more or less evenly distributed in</span>
+<span class="c"># the Reuters files. For other datasets, one should take care of creating a</span>
+<span class="c"># test set with a realistic portion of positive instances.</span>
+<span class="n">positive_class</span> <span class="o">=</span> <span class="s">&#39;acq&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">get_minibatch</span><span class="p">(</span><span class="n">doc_iter</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">transformer</span><span class="o">=</span><a href="../../modules/generated/sklearn.feature_extraction.text.HashingVectorizer.html#sklearn.feature_extraction.text.HashingVectorizer"><span class="n">hasher</span></a><span class="p">,</span>
+                  <span class="n">pos_class</span><span class="o">=</span><span class="n">positive_class</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Extract a minibatch of examples, return a tuple X, y.</span>
+
+<span class="sd">    Note: size is before excluding invalid docs with no topics assigned.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;{title}</span><span class="se">\n\n</span><span class="s">{body}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">doc</span><span class="p">),</span> <span class="n">pos_class</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">[</span><span class="s">&#39;topics&#39;</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">islice</span><span class="p">(</span><span class="n">doc_iter</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">doc</span><span class="p">[</span><span class="s">&#39;topics&#39;</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="k">return</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.asarray.html#numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.asarray.html#numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.asarray.html#numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">iter_minibatchs</span><span class="p">(</span><span class="n">doc_iter</span><span class="p">,</span> <span class="n">minibatch_size</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generator of minibatchs.&quot;&quot;&quot;</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">get_minibatch</span><span class="p">(</span><span class="n">doc_iter</span><span class="p">,</span> <span class="n">minibatch_size</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">yield</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">get_minibatch</span><span class="p">(</span><span class="n">doc_iter</span><span class="p">,</span> <span class="n">minibatch_size</span><span class="p">)</span>
+
+
+<span class="c"># structure to track accuracy history</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_train&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;n_test&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;n_train_pos&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;n_test_pos&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="s">&#39;accuracy&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s">&#39;accuracy_history&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span> <span class="s">&#39;t0&#39;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+         <span class="s">&#39;runtime_history&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]}</span>
+
+<span class="c"># First we hold out a number of examples to estimate accuracy</span>
+<span class="n">n_test_documents</span> <span class="o">=</span> <span class="mi">1000</span>
+<a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">X_test</span></a><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">get_minibatch</span><span class="p">(</span><span class="n">data_streamer</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">stats</span><span class="p">[</span><span class="s">&#39;n_test&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">stats</span><span class="p">[</span><span class="s">&#39;n_test_pos&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Test set is </span><span class="si">%d</span><span class="s"> documents (</span><span class="si">%d</span><span class="s"> positive)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y_test</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">progress</span><span class="p">(</span><span class="n">stats</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Report progress information, return a string.&quot;&quot;&quot;</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">stats</span><span class="p">[</span><span class="s">&#39;t0&#39;</span><span class="p">]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%(n_train)6d</span><span class="s"> train docs (</span><span class="si">%(n_train_pos)6d</span><span class="s"> positive) &quot;</span> <span class="o">%</span> <span class="n">stats</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="s">&quot;</span><span class="si">%(n_test)6d</span><span class="s"> test docs (</span><span class="si">%(n_test_pos)6d</span><span class="s"> positive) &quot;</span> <span class="o">%</span> <span class="n">stats</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="s">&quot;accuracy: </span><span class="si">%(accuracy).3f</span><span class="s"> &quot;</span> <span class="o">%</span> <span class="n">stats</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="s">&quot;in </span><span class="si">%.2f</span><span class="s">s (</span><span class="si">%5d</span><span class="s"> docs/s)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">stats</span><span class="p">[</span><span class="s">&#39;n_train&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">duration</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span>
+
+<span class="c"># We will feed the classifier with mini-batches of 100 documents; this means</span>
+<span class="c"># we have at most 100 docs in memory at any time.</span>
+<span class="n">minibatch_size</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c"># Main loop : iterate on mini-batchs of examples</span>
+<span class="n">minibatch_iterators</span> <span class="o">=</span> <span class="n">iter_minibatchs</span><span class="p">(</span><span class="n">data_streamer</span><span class="p">,</span> <span class="n">minibatch_size</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">X_train</span></a><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">minibatch_iterators</span><span class="p">):</span>
+    <span class="c"># update estimator with examples in the current mini-batch</span>
+    <a href="../../modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier"><span class="n">classifier</span></a><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">X_train</span></a><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">all_classes</span><span class="p">)</span>
+    <span class="c"># accumulate test accuracy stats</span>
+    <span class="n">stats</span><span class="p">[</span><span class="s">&#39;n_train&#39;</span><span class="p">]</span> <span class="o">+=</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">X_train</span></a><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">stats</span><span class="p">[</span><span class="s">&#39;n_train_pos&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+    <span class="n">stats</span><span class="p">[</span><span class="s">&#39;accuracy&#39;</span><span class="p">]</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier"><span class="n">classifier</span></a><span class="o">.</span><span class="n">score</span><span class="p">(</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.csr_matrix.getH.html#scipy.sparse.csr_matrix"><span class="n">X_test</span></a><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="n">stats</span><span class="p">[</span><span class="s">&#39;accuracy_history&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">stats</span><span class="p">[</span><span class="s">&#39;accuracy&#39;</span><span class="p">],</span> <span class="n">stats</span><span class="p">[</span><span class="s">&#39;n_train&#39;</span><span class="p">]))</span>
+    <span class="n">stats</span><span class="p">[</span><span class="s">&#39;runtime_history&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">stats</span><span class="p">[</span><span class="s">&#39;accuracy&#39;</span><span class="p">],</span>
+                                     <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">stats</span><span class="p">[</span><span class="s">&#39;t0&#39;</span><span class="p">]))</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">progress</span><span class="p">(</span><span class="n">stats</span><span class="p">))</span>
+
+<span class="c">###############################################################################</span>
+<span class="c"># Plot results</span>
+<span class="c">###############################################################################</span>
+
+
+<span class="k">def</span> <span class="nf">plot_accuracy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">plot_placement</span><span class="p">,</span> <span class="n">x_legend</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot accuracy as a function of x.&quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplots_adjust"><span class="n">pl</span><span class="o">.</span><span class="n">subplots_adjust</span></a><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplot"><span class="n">pl</span><span class="o">.</span><span class="n">subplot</span></a><span class="p">(</span><span class="n">plot_placement</span><span class="p">)</span>
+    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;Classification accuracy as a function of </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x_legend</span><span class="p">)</span>
+    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x_legend</span><span class="p">)</span>
+    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylabel"><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s">&#39;Accuracy&#39;</span><span class="p">)</span>
+    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.grid"><span class="n">pl</span><span class="o">.</span><span class="n">grid</span></a><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">pl</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c"># Plot accuracy evolution with #examples</span>
+<span class="n">accuracy</span><span class="p">,</span> <span class="n">n_examples</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">stats</span><span class="p">[</span><span class="s">&#39;accuracy_history&#39;</span><span class="p">])</span>
+<span class="n">plot_accuracy</span><span class="p">(</span><span class="n">n_examples</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">,</span> <span class="mi">211</span><span class="p">,</span> <span class="s">&quot;training examples (#)&quot;</span><span class="p">)</span>
+
+<span class="c"># Plot accuracy evolution with runtime</span>
+<span class="n">accuracy</span><span class="p">,</span> <span class="n">runtime</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">stats</span><span class="p">[</span><span class="s">&#39;runtime_history&#39;</span><span class="p">])</span>
+<span class="n">plot_accuracy</span><span class="p">(</span><span class="n">runtime</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">,</span> <span class="mi">212</span><span class="p">,</span> <span class="s">&#39;runtime (s)&#39;</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Total running time of the example:</strong>  17.82 seconds</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2010â2013, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/auto_examples/applications/plot_out_of_core_classification.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+     <div class="rel">
+    
+    <div class="buttonPrevious">
+      <a href="wikipedia_principal_eigenvector.html">
+        Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="svm_gui.html">
+        Next
+      </a>
+    </div>
+    
+     </div>
+     <script type="text/javascript">
+       $("div.buttonNext, div.buttonPrevious").hover(
+           function () {
+               $(this).css('background-color', '#FF9C34');
+           },
+           function () {
+               $(this).css('background-color', '#A7D6E2');
+           }
+       );
+       var bodywrapper = $('.bodywrapper');
+   	var sidebarbutton = $('#sidebarbutton');
+        sidebarbutton.css({
+	    'height': '900px'
+       });
+     </script>
+  </body>
+</html>

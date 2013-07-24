@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Linear and Quadratic Discriminant Analysis with confidence ellipsoid" href="plot_lda_qda.html" />
-    <link rel="prev" title="PLS Partial Least Squares" href="plot_pls.html" />
+    <link rel="next" title="Explicit feature map approximation for RBF kernels" href="plot_kernel_approximation.html" />
+    <link rel="prev" title="Linear and Quadratic Discriminant Analysis with confidence ellipsoid" href="plot_lda_qda.html" />
 
 
 <script type="text/javascript">
@@ -95,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="plot_pls.html" title="PLS Partial Least Squares"
+	<a href="plot_lda_qda.html" title="Linear and Quadratic Discriminant Analysis with confidence ellipsoid"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    PLS Partial Leas...
+	    Linear and Quadr...
 	    </span>
 	    <span class="hiddenrellink">
-	    PLS Partial Least Squares
+	    Linear and Quadratic Discriminant Analysis with confidence ellipsoid
 	    </span>
 	    
 	    </a>
@@ -112,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="plot_lda_qda.html" title="Linear and Quadratic Discriminant Analysis with confidence ellipsoid"
+	<a href="plot_kernel_approximation.html" title="Explicit feature map approximation for RBF kernels"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    Linear and Quadr...
+	    Explicit feature...
 	    </span>
 	    <span class="hiddenrellink">
-	    Linear and Quadratic Discriminant Analysis with confidence ellipsoid
+	    Explicit feature map approximation for RBF kernels
 	    </span>
 	    
 	    </a>
@@ -213,10 +213,12 @@ necessary to get a good convergence.</p>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_20newsgroups</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">HashingVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
 <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Normalizer</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span><span class="p">,</span> <span class="n">MiniBatchKMeans</span>
@@ -235,6 +237,9 @@ necessary to get a good convergence.</p>
 
 <span class="c"># parse commandline arguments</span>
 <span class="n">op</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">()</span>
+<span class="n">op</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--lsa&quot;</span><span class="p">,</span>
+              <span class="n">dest</span><span class="o">=</span><span class="s">&quot;n_components&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">&quot;int&quot;</span><span class="p">,</span>
+              <span class="n">help</span><span class="o">=</span><span class="s">&quot;Preprocess documents with latent semantic analysis.&quot;</span><span class="p">)</span>
 <span class="n">op</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--no-minibatch&quot;</span><span class="p">,</span>
               <span class="n">action</span><span class="o">=</span><span class="s">&quot;store_false&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&quot;minibatch&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
               <span class="n">help</span><span class="o">=</span><span class="s">&quot;Use ordinary k-means algorithm (in batch mode).&quot;</span><span class="p">)</span>
@@ -247,6 +252,9 @@ necessary to get a good convergence.</p>
 <span class="n">op</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--n-features&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
               <span class="n">help</span><span class="o">=</span><span class="s">&quot;Maximum number of features (dimensions)&quot;</span>
                    <span class="s">&quot;to extract from text.&quot;</span><span class="p">)</span>
+<span class="n">op</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--verbose&quot;</span><span class="p">,</span>
+              <span class="n">action</span><span class="o">=</span><span class="s">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&quot;verbose&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+              <span class="n">help</span><span class="o">=</span><span class="s">&quot;Print progress reports inside k-means algorithm.&quot;</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 <span class="n">op</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
@@ -307,17 +315,29 @@ necessary to get a good convergence.</p>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">, n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="k">print</span><span class="p">()</span>
 
+<span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">n_components</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Performing dimensionality reduction using LSA&quot;</span><span class="p">)</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">lsa</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">n_components</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">lsa</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="c"># Vectorizer results are normalized, which makes KMeans behave as</span>
+    <span class="c"># spherical k-means for better results. Since LSA/SVD results are</span>
+    <span class="c"># not normalized, we have to redo the normalization.</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">()</span>
+
 
 <span class="c">###############################################################################</span>
 <span class="c"># Do the actual clustering</span>
 
 <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">minibatch</span><span class="p">:</span>
     <span class="n">km</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">true_k</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                         <span class="n">init_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-                         <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                         <span class="n">init_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">true_k</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">verbose</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Clustering sparse data with </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">km</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
@@ -347,7 +367,7 @@ necessary to get a good convergence.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/auto_examples/document_clustering.txt"
@@ -357,12 +377,12 @@ necessary to get a good convergence.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_pls.html">
+      <a href="plot_lda_qda.html">
         Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_lda_qda.html">
+      <a href="plot_kernel_approximation.html">
         Next
       </a>
     </div>

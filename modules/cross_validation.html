@@ -30,7 +30,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
     <link rel="up" title="5. Model selection and evaluation" href="../model_selection.html" />
-    <link rel="next" title="5.2. Grid Search: setting estimator parameters" href="grid_search.html" />
+    <link rel="next" title="5.2. Grid Search: Searching for estimator parameters" href="grid_search.html" />
     <link rel="prev" title="5. Model selection and evaluation" href="../model_selection.html" />
 
 
@@ -112,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="grid_search.html" title="5.2. Grid Search: setting estimator parameters"
+	<a href="grid_search.html" title="5.2. Grid Search: Searching for estimator parameters"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
 	    5.2. Grid Search...
 	    </span>
 	    <span class="hiddenrellink">
-	    5.2. Grid Search: setting estimator parameters
+	    5.2. Grid Search: Searching for estimator parameters
 	    </span>
 	    
 	    </a>
@@ -268,10 +268,10 @@ where the number of samples is very small.</p>
 <h2>5.1.1. Computing cross-validated metrics<a class="headerlink" href="#computing-cross-validated-metrics" title="Permalink to this headline">¶</a></h2>
 <p>The simplest way to use perform cross-validation in to call the
 <a class="reference internal" href="generated/sklearn.cross_validation.cross_val_score.html#sklearn.cross_validation.cross_val_score" title="sklearn.cross_validation.cross_val_score"><tt class="xref py py-func docutils literal"><span class="pre">cross_val_score</span></tt></a> helper function on the estimator and the dataset.</p>
-<p>The following example demonstrates how to estimate the accuracy of a
-linear kernel support vector machine on the iris dataset by splitting
-the data and fitting a model and computing the score 5 consecutive times
-(with different splits each time):</p>
+<p>The following example demonstrates how to estimate the accuracy of a linear
+kernel support vector machine on the iris dataset by splitting the data, fitting
+a model and computing the score 5 consecutive times (with different splits each
+time):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">cross_val_score</span><span class="p">(</span>
 <span class="gp">... </span>   <span class="n">clf</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
@@ -302,7 +302,7 @@ classes hence the accuracy and the F1-score are almost equal.</p>
 <p>When the <tt class="docutils literal"><span class="pre">cv</span></tt> argument is an integer, <a class="reference internal" href="generated/sklearn.cross_validation.cross_val_score.html#sklearn.cross_validation.cross_val_score" title="sklearn.cross_validation.cross_val_score"><tt class="xref py py-func docutils literal"><span class="pre">cross_val_score</span></tt></a> uses the
 <a class="reference internal" href="generated/sklearn.cross_validation.KFold.html#sklearn.cross_validation.KFold" title="sklearn.cross_validation.KFold"><tt class="xref py py-class docutils literal"><span class="pre">KFold</span></tt></a> or <a class="reference internal" href="generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold" title="sklearn.cross_validation.StratifiedKFold"><tt class="xref py py-class docutils literal"><span class="pre">StratifiedKFold</span></tt></a> strategies by default (depending on
 the absence or presence of the target array).</p>
-<p>It is also possible to use othe cross validation strategies by passing a cross
+<p>It is also possible to use other cross validation strategies by passing a cross
 validation iterator instead, for instance:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">n_samples</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cv</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
@@ -435,8 +435,11 @@ not waste much data as only one sample is removed from the learning set:</p>
 </div>
 <div class="section" id="leave-p-out-lpo">
 <h3>5.1.2.4. Leave-P-Out - LPO<a class="headerlink" href="#leave-p-out-lpo" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="generated/sklearn.cross_validation.LeavePOut.html#sklearn.cross_validation.LeavePOut" title="sklearn.cross_validation.LeavePOut"><tt class="xref py py-class docutils literal"><span class="pre">LeavePOut</span></tt></a> is very similar to <em>Leave-One-Out</em>, as it creates all the
-possible training/test sets by removing <img class="math" src="../_images/math/4b4cade9ca8a2c8311fafcf040bc5b15ca507f52.png" alt="P"/> samples from the complete set.</p>
+<p><a class="reference internal" href="generated/sklearn.cross_validation.LeavePOut.html#sklearn.cross_validation.LeavePOut" title="sklearn.cross_validation.LeavePOut"><tt class="xref py py-class docutils literal"><span class="pre">LeavePOut</span></tt></a> is very similar to <a class="reference internal" href="generated/sklearn.cross_validation.LeaveOneOut.html#sklearn.cross_validation.LeaveOneOut" title="sklearn.cross_validation.LeaveOneOut"><tt class="xref py py-class docutils literal"><span class="pre">LeaveOneOut</span></tt></a> as it creates all
+the possible training/test sets by removing <img class="math" src="../_images/math/36f73fc1312ee0349b3f3a0f3bd9eb5504339011.png" alt="p"/> samples from the complete
+set. For <img class="math" src="../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n"/> samples, this produces <img class="math" src="../_images/math/dfc4188b2b8c9f457c75ea87f7787cedee484acd.png" alt="{n \choose p}"/> train-test
+pairs. Unlike <a class="reference internal" href="generated/sklearn.cross_validation.LeaveOneOut.html#sklearn.cross_validation.LeaveOneOut" title="sklearn.cross_validation.LeaveOneOut"><tt class="xref py py-class docutils literal"><span class="pre">LeaveOneOut</span></tt></a> and <a class="reference internal" href="generated/sklearn.cross_validation.KFold.html#sklearn.cross_validation.KFold" title="sklearn.cross_validation.KFold"><tt class="xref py py-class docutils literal"><span class="pre">KFold</span></tt></a>, the test sets will
+overlap for <img class="math" src="../_images/math/fc86688cd9e5a4ce262df69345bacac9f89f8ed4.png" alt="p &gt; 1"/>.</p>
 <p>Example of Leave-2-Out:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">LeavePOut</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]]</span>
@@ -514,7 +517,7 @@ samples related to <img class="math" src="../_images/math/4b4cade9ca8a2c8311fafc
 <p><a class="reference internal" href="generated/sklearn.cross_validation.ShuffleSplit.html#sklearn.cross_validation.ShuffleSplit" title="sklearn.cross_validation.ShuffleSplit"><tt class="xref py py-class docutils literal"><span class="pre">ShuffleSplit</span></tt></a></p>
 <p>The <a class="reference internal" href="generated/sklearn.cross_validation.ShuffleSplit.html#sklearn.cross_validation.ShuffleSplit" title="sklearn.cross_validation.ShuffleSplit"><tt class="xref py py-class docutils literal"><span class="pre">ShuffleSplit</span></tt></a> iterator will generate a user defined number of
 independent train / test dataset splits. Samples are first shuffled and
-then splitted into a pair of train and test sets.</p>
+then split into a pair of train and test sets.</p>
 <p>It is possible to control the randomness for reproducibility of the
 results by explicitly seeding the <tt class="docutils literal"><span class="pre">random_state</span></tt> pseudo random number
 generator.</p>
@@ -580,7 +583,7 @@ will allow some samples to occur several times in each splits.</p>
 <h2>5.1.3. Cross validation and model selection<a class="headerlink" href="#cross-validation-and-model-selection" title="Permalink to this headline">¶</a></h2>
 <p>Cross validation iterators can also be used to directly perform model
 selection using Grid Search for the optimal hyperparameters of the
-model. This is the topic if the next section: <a class="reference internal" href="grid_search.html#grid-search"><em>Grid Search: setting estimator parameters</em></a>.</p>
+model. This is the topic if the next section: <a class="reference internal" href="grid_search.html#grid-search"><em>Grid Search: Searching for estimator parameters</em></a>.</p>
 </div>
 </div>
 
@@ -593,7 +596,7 @@ model. This is the topic if the next section: <a class="reference internal" href
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/cross_validation.txt"

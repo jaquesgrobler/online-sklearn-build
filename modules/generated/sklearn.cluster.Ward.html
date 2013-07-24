@@ -171,30 +171,32 @@
 <dt id="sklearn.cluster.Ward">
 <em class="property">class </em><tt class="descclassname">sklearn.cluster.</tt><tt class="descname">Ward</tt><big>(</big><em>n_clusters=2</em>, <em>memory=Memory(cachedir=None)</em>, <em>connectivity=None</em>, <em>copy=True</em>, <em>n_components=None</em>, <em>compute_full_tree='auto'</em><big>)</big><a class="headerlink" href="#sklearn.cluster.Ward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ward hierarchical clustering: constructs a tree and cuts it.</p>
+<p>Recursively merges the pair of clusters that minimally increases
+within-cluster variance.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_clusters</strong> : int or ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_clusters</strong> : int, default=2</p>
 <blockquote>
 <div><p>The number of clusters to find.</p>
 </div></blockquote>
-<p><strong>connectivity</strong> : sparse matrix.</p>
+<p><strong>connectivity</strong> : sparse matrix (optional)</p>
 <blockquote>
-<div><p>Connectivity matrix. Defines for each sample the neigbhoring
+<div><p>Connectivity matrix. Defines for each sample the neighboring
 samples following a given structure of the data.
-Default is None, i.e, the hiearchical clustering algorithm is
+Default is None, i.e, the hierarchical clustering algorithm is
 unstructured.</p>
 </div></blockquote>
-<p><strong>memory</strong> : Instance of joblib.Memory or string</p>
+<p><strong>memory</strong> : Instance of joblib.Memory or string (optional)</p>
 <blockquote>
 <div><p>Used to cache the output of the computation of the tree.
 By default, no caching is done. If a string is given, it is the
 path to the caching directory.</p>
 </div></blockquote>
-<p><strong>copy</strong> : bool</p>
+<p><strong>copy</strong> : bool, default=True</p>
 <blockquote>
-<div><p>Copy the connectivity matrix or work inplace.</p>
+<div><p>Copy the connectivity matrix or work in-place.</p>
 </div></blockquote>
 <p><strong>n_components</strong> : int (optional)</p>
 <blockquote>
@@ -214,31 +216,6 @@ be advantageous to compute the full tree.</p>
 </tbody>
 </table>
 <p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="13%" />
-<col width="27%" />
-<col width="60%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><cite>children_</cite></td>
-<td>array-like, shape = [n_nodes, 2]</td>
-<td>List of the children of each nodes.  Leaves of the tree do not appear.</td>
-</tr>
-<tr class="row-even"><td><cite>labels_</cite></td>
-<td>array [n_samples]</td>
-<td>cluster labels for each point</td>
-</tr>
-<tr class="row-odd"><td><cite>n_leaves_</cite></td>
-<td>int</td>
-<td>Number of leaves in the hiearchical tree.</td>
-</tr>
-<tr class="row-even"><td><cite>n_components_</cite></td>
-<td>sparse matrix.</td>
-<td>The estimated number of connected components in the graph.</td>
-</tr>
-</tbody>
-</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -366,7 +343,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.cluster.Ward.txt"

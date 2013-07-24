@@ -170,9 +170,9 @@
 <dl class="function">
 <dt id="sklearn.metrics.v_measure_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">v_measure_score</tt><big>(</big><em>labels_true</em>, <em>labels_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.v_measure_score" title="Permalink to this definition">¶</a></dt>
-<dd><p>V-Measure cluster labeling given a ground truth.</p>
+<dd><p>V-measure cluster labeling given a ground truth.</p>
 <p>This score is identical to <a class="reference internal" href="sklearn.metrics.normalized_mutual_info_score.html#sklearn.metrics.normalized_mutual_info_score" title="sklearn.metrics.normalized_mutual_info_score"><tt class="xref py py-func docutils literal"><span class="pre">normalized_mutual_info_score</span></tt></a>.</p>
-<p>The V-Measure is the hormonic mean between homogeneity and completeness:</p>
+<p>The V-measure is the harmonic mean between homogeneity and completeness:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">v</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">homogeneity</span> <span class="o">*</span> <span class="n">completeness</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">homogeneity</span> <span class="o">+</span> <span class="n">completeness</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -197,7 +197,7 @@ on the same dataset when the real ground truth is not known.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>completeness: float</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>v_measure: float</strong> :</p>
 <blockquote class="last">
 <div><p>score between 0.0 and 1.0. 1.0 stands for perfectly complete labeling</p>
 </div></blockquote>
@@ -210,10 +210,10 @@ on the same dataset when the real ground truth is not known.</p>
 <p class="last"><a class="reference internal" href="sklearn.metrics.homogeneity_score.html#sklearn.metrics.homogeneity_score" title="sklearn.metrics.homogeneity_score"><tt class="xref py py-obj docutils literal"><span class="pre">homogeneity_score</span></tt></a>, <a class="reference internal" href="sklearn.metrics.completeness_score.html#sklearn.metrics.completeness_score" title="sklearn.metrics.completeness_score"><tt class="xref py py-obj docutils literal"><span class="pre">completeness_score</span></tt></a></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r136" rules="none">
+<table class="docutils citation" frame="void" id="r154" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R136]</a></td><td><a class="reference external" href="http://acl.ldc.upenn.edu/D/D07/D07-1043.pdf">Andrew Rosenberg and Julia Hirschberg, 2007. V-Measure: A
+<tr><td class="label"><a class="fn-backref" href="#id1">[R154]</a></td><td><a class="reference external" href="http://acl.ldc.upenn.edu/D/D07/D07-1043.pdf">Andrew Rosenberg and Julia Hirschberg, 2007. V-Measure: A
 conditional entropy-based external cluster evaluation measure</a></td></tr>
 </tbody>
 </table>
@@ -238,7 +238,7 @@ are complete be not homogeneous, hence penalized:</p>
 </div>
 <p>Labelings that have pure clusters with members coming from the same
 classes are homogeneous but un-necessary splits harms completeness
-and thus penalize V-Measure as well:</p>
+and thus penalize V-measure as well:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
 <span class="gp">... </span>                                                 
 <span class="go">0.8...</span>
@@ -247,7 +247,7 @@ and thus penalize V-Measure as well:</p>
 <span class="go">0.66...</span>
 </pre></div>
 </div>
-<p>If classes members are completly splitted across different clusters,
+<p>If classes members are completely split across different clusters,
 the assignment is totally incomplete, hence the V-Measure is null:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">v_measure_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
 <span class="gp">... </span>                                                 
@@ -274,7 +274,7 @@ destroy the homogeneity of the labeling, hence:</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.metrics.v_measure_score.txt"

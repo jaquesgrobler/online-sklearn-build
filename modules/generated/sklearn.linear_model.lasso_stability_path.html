@@ -183,30 +183,30 @@
 <blockquote>
 <div><p>target values.</p>
 </div></blockquote>
-<p><strong>scaling</strong> : float</p>
+<p><strong>scaling</strong> : float, optional, default=0.5</p>
 <blockquote>
 <div><p>The alpha parameter in the stability selection article used to
 randomly scale the features. Should be between 0 and 1.</p>
 </div></blockquote>
-<p><strong>random_state</strong> : integer or numpy.RandomState, optional</p>
+<p><strong>random_state</strong> : integer or numpy.random.RandomState, optional</p>
 <blockquote>
 <div><p>The generator used to randomize the design.</p>
 </div></blockquote>
-<p><strong>n_resampling</strong> : int</p>
+<p><strong>n_resampling</strong> : int, optional, default=200</p>
 <blockquote>
 <div><p>Number of randomized models.</p>
 </div></blockquote>
-<p><strong>n_grid</strong> : int</p>
+<p><strong>n_grid</strong> : int, optional, default=100</p>
 <blockquote>
 <div><p>Number of grid points. The path is linearly reinterpolated
 on a grid between 0 and 1 before computing the scores.</p>
 </div></blockquote>
-<p><strong>sample_fraction</strong> : float</p>
+<p><strong>sample_fraction</strong> : float, optional, default=0.75</p>
 <blockquote>
 <div><p>The fraction of samples to be used in each randomized design.
 Should be between 0 and 1. If 1, all samples are used.</p>
 </div></blockquote>
-<p><strong>eps</strong> : float</p>
+<p><strong>eps</strong> : float, optional</p>
 <blockquote>
 <div><p>Smallest value of alpha / alpha_max considered</p>
 </div></blockquote>
@@ -234,7 +234,7 @@ all the CPUs</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>See examples/linear_model/plot_randomized_lasso.py for an example.</p>
+<p>See examples/linear_model/plot_sparse_recovery.py for an example.</p>
 </dd></dl>
 
 </div>
@@ -248,7 +248,7 @@ all the CPUs</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.linear_model.lasso_stability_path.txt"

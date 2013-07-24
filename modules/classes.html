@@ -464,7 +464,7 @@ Models.</p>
 <td>Sparse inverse covariance estimation with an l1-penalized estimator.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.covariance.GraphLassoCV.html#sklearn.covariance.GraphLassoCV" title="sklearn.covariance.GraphLassoCV"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.GraphLassoCV</span></tt></a>([alphas,&nbsp;...])</td>
-<td>Sparse inverse covariance w/ cross-validated choice of the l1 penality</td>
+<td>Sparse inverse covariance w/ cross-validated choice of the l1 penalty</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.covariance.LedoitWolf.html#sklearn.covariance.LedoitWolf" title="sklearn.covariance.LedoitWolf"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.LedoitWolf</span></tt></a>([store_precision,&nbsp;...])</td>
 <td>LedoitWolf Estimator</td>
@@ -580,7 +580,7 @@ features some artificial data generators.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.fetch_20newsgroups.html#sklearn.datasets.fetch_20newsgroups" title="sklearn.datasets.fetch_20newsgroups"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.fetch_20newsgroups</span></tt></a>([data_home,&nbsp;...])</td>
-<td>Load the filenames of the 20 newsgroups dataset.</td>
+<td>Load the filenames and data from the 20 newsgroups dataset.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.fetch_20newsgroups_vectorized.html#sklearn.datasets.fetch_20newsgroups_vectorized" title="sklearn.datasets.fetch_20newsgroups_vectorized"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.fetch_20newsgroups_vectorized</span></tt></a>([...])</td>
 <td>Load the 20 newsgroups dataset and transform it into tf-idf vectors.</td>
@@ -687,7 +687,7 @@ features some artificial data generators.</p>
 <td>Generate a signal as a sparse combination of dictionary elements.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_sparse_spd_matrix.html#sklearn.datasets.make_sparse_spd_matrix" title="sklearn.datasets.make_sparse_spd_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_sparse_spd_matrix</span></tt></a>([dim,&nbsp;...])</td>
-<td>Generate a sparse symetric definite positive matrix.</td>
+<td>Generate a sparse symmetric definite positive matrix.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_sparse_uncorrelated.html#sklearn.datasets.make_sparse_uncorrelated" title="sklearn.datasets.make_sparse_uncorrelated"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_sparse_uncorrelated</span></tt></a>([...])</td>
 <td>Generate a random regression problem with sparse uncorrelated design</td>
@@ -735,22 +735,25 @@ this module can be regarded as dimensionality reduction techniques.</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="sklearn.decomposition.FastICA"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.FastICA</span></tt></a>([n_components,&nbsp;...])</td>
 <td>FastICA; a fast algorithm for Independent Component Analysis</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.NMF</span></tt></a>([n_components,&nbsp;init,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.TruncatedSVD.html#sklearn.decomposition.TruncatedSVD" title="sklearn.decomposition.TruncatedSVD"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.TruncatedSVD</span></tt></a>([n_components,&nbsp;...])</td>
+<td>Dimensionality reduction using truncated SVD (aka LSA).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.NMF</span></tt></a>([n_components,&nbsp;init,&nbsp;...])</td>
 <td>Non-Negative matrix factorization by Projected Gradient (NMF)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.SparsePCA.html#sklearn.decomposition.SparsePCA" title="sklearn.decomposition.SparsePCA"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.SparsePCA</span></tt></a>([n_components,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.SparsePCA.html#sklearn.decomposition.SparsePCA" title="sklearn.decomposition.SparsePCA"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.SparsePCA</span></tt></a>([n_components,&nbsp;...])</td>
 <td>Sparse Principal Components Analysis (SparsePCA)</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.MiniBatchSparsePCA.html#sklearn.decomposition.MiniBatchSparsePCA" title="sklearn.decomposition.MiniBatchSparsePCA"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.MiniBatchSparsePCA</span></tt></a>([...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.MiniBatchSparsePCA.html#sklearn.decomposition.MiniBatchSparsePCA" title="sklearn.decomposition.MiniBatchSparsePCA"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.MiniBatchSparsePCA</span></tt></a>([...])</td>
 <td>Mini-batch Sparse Principal Components Analysis</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.SparseCoder.html#sklearn.decomposition.SparseCoder" title="sklearn.decomposition.SparseCoder"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.SparseCoder</span></tt></a>(dictionary[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.SparseCoder.html#sklearn.decomposition.SparseCoder" title="sklearn.decomposition.SparseCoder"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.SparseCoder</span></tt></a>(dictionary[,&nbsp;...])</td>
 <td>Sparse coding</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.DictionaryLearning.html#sklearn.decomposition.DictionaryLearning" title="sklearn.decomposition.DictionaryLearning"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.DictionaryLearning</span></tt></a>([...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.DictionaryLearning.html#sklearn.decomposition.DictionaryLearning" title="sklearn.decomposition.DictionaryLearning"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.DictionaryLearning</span></tt></a>([...])</td>
 <td>Dictionary learning</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.MiniBatchDictionaryLearning.html#sklearn.decomposition.MiniBatchDictionaryLearning" title="sklearn.decomposition.MiniBatchDictionaryLearning"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.MiniBatchDictionaryLearning</span></tt></a>([...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.MiniBatchDictionaryLearning.html#sklearn.decomposition.MiniBatchDictionaryLearning" title="sklearn.decomposition.MiniBatchDictionaryLearning"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.MiniBatchDictionaryLearning</span></tt></a>([...])</td>
 <td>Mini-batch dictionary learning</td>
 </tr>
 </tbody>
@@ -1052,7 +1055,7 @@ based predictions.</p>
 <span id="sklearn-grid-search-grid-search"></span><span id="grid-search-ref"></span><h2><a class="toc-backref" href="#id18">8.11. <a class="reference internal" href="#module-sklearn.grid_search" title="sklearn.grid_search"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.grid_search</span></tt></a>: Grid Search</a><a class="headerlink" href="#module-sklearn.grid_search" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-sklearn.grid_search" title="sklearn.grid_search"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.grid_search</span></tt></a> includes utilities to fine-tune the parameters
 of an estimator.</p>
-<p><strong>User guide:</strong> See the <a class="reference internal" href="grid_search.html#grid-search"><em>Grid Search: setting estimator parameters</em></a> section for further details.</p>
+<p><strong>User guide:</strong> See the <a class="reference internal" href="grid_search.html#grid-search"><em>Grid Search: Searching for estimator parameters</em></a> section for further details.</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -1119,7 +1122,7 @@ make it more stable, this module will be removed in version 0.11.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.isotonic.isotonic_regression.html#sklearn.isotonic.isotonic_regression" title="sklearn.isotonic.isotonic_regression"><tt class="xref py py-obj docutils literal"><span class="pre">isotonic.isotonic_regression</span></tt></a>(y[,&nbsp;weight,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.isotonic.isotonic_regression.html#sklearn.isotonic.isotonic_regression" title="sklearn.isotonic.isotonic_regression"><tt class="xref py py-obj docutils literal"><span class="pre">isotonic.isotonic_regression</span></tt></a>(y[,&nbsp;...])</td>
 <td>Solve the isotonic regression model::      min sum w[i] (y[i] - y_[i]) ** 2      subject to y_min = y_[1] &lt;= y_[2] ...</td>
 </tr>
 </tbody>
@@ -1191,7 +1194,7 @@ Propagation.</p>
 </div>
 <div class="section" id="module-sklearn.linear_model">
 <span id="sklearn-linear-model-generalized-linear-models"></span><span id="linear-model-ref"></span><h2><a class="toc-backref" href="#id24">8.17. <a class="reference internal" href="#module-sklearn.linear_model" title="sklearn.linear_model"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.linear_model</span></tt></a>: Generalized Linear Models</a><a class="headerlink" href="#module-sklearn.linear_model" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference internal" href="#module-sklearn.linear_model" title="sklearn.linear_model"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.linear_model</span></tt></a> module implements genelarized linear models. It
+<p>The <a class="reference internal" href="#module-sklearn.linear_model" title="sklearn.linear_model"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.linear_model</span></tt></a> module implements generalized linear models. It
 includes Ridge regression, Bayesian Regression, Lasso and Elastic Net
 estimators computed with Least Angle Regression and coordinate descent. It also
 implements Stochastic Gradient Descent related algorithms.</p>
@@ -1260,7 +1263,7 @@ implements Stochastic Gradient Descent related algorithms.</p>
 <td>Perceptron</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.RandomizedLasso.html#sklearn.linear_model.RandomizedLasso" title="sklearn.linear_model.RandomizedLasso"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.RandomizedLasso</span></tt></a>([alpha,&nbsp;...])</td>
-<td>Randomized Lasso</td>
+<td>Randomized Lasso.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.RandomizedLogisticRegression.html#sklearn.linear_model.RandomizedLogisticRegression" title="sklearn.linear_model.RandomizedLogisticRegression"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.RandomizedLogisticRegression</span></tt></a>([...])</td>
 <td>Randomized Logistic Regression</td>
@@ -1502,7 +1505,7 @@ cluster analysis results. There are two forms of evaluation:</p>
 <td>Compute the Silhouette Coefficient for each sample.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.v_measure_score.html#sklearn.metrics.v_measure_score" title="sklearn.metrics.v_measure_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.v_measure_score</span></tt></a>(labels_true,&nbsp;labels_pred)</td>
-<td>V-Measure cluster labeling given a ground truth.</td>
+<td>V-measure cluster labeling given a ground truth.</td>
 </tr>
 </tbody>
 </table>
@@ -1727,11 +1730,20 @@ algorithm.</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.RadiusNeighborsRegressor.html#sklearn.neighbors.RadiusNeighborsRegressor" title="sklearn.neighbors.RadiusNeighborsRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.RadiusNeighborsRegressor</span></tt></a>([radius,&nbsp;...])</td>
 <td>Regression based on neighbors within a fixed radius.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.BallTree</span></tt></a></td>
-<td>Ball Tree for fast nearest-neighbor searches :</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.NearestCentroid.html#sklearn.neighbors.NearestCentroid" title="sklearn.neighbors.NearestCentroid"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.NearestCentroid</span></tt></a>([metric,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.NearestCentroid.html#sklearn.neighbors.NearestCentroid" title="sklearn.neighbors.NearestCentroid"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.NearestCentroid</span></tt></a>([metric,&nbsp;...])</td>
 <td>Nearest centroid classifier.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.BallTree</span></tt></a></td>
+<td>BallTree for fast generalized N-point problems</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.KDTree.html#sklearn.neighbors.KDTree" title="sklearn.neighbors.KDTree"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.KDTree</span></tt></a></td>
+<td>KDTree for fast generalized N-point problems</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.DistanceMetric.html#sklearn.neighbors.DistanceMetric" title="sklearn.neighbors.DistanceMetric"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.DistanceMetric</span></tt></a></td>
+<td>DistanceMetric class</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity" title="sklearn.neighbors.KernelDensity"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.KernelDensity</span></tt></a>([bandwidth,&nbsp;...])</td>
+<td>Kernel Density Estimation</td>
 </tr>
 </tbody>
 </table>
@@ -1777,7 +1789,7 @@ algorithm.</p>
 </div>
 <div class="section" id="module-sklearn.pipeline">
 <span id="sklearn-pipeline-pipeline"></span><span id="pipeline-ref"></span><h2><a class="toc-backref" href="#id38">8.25. <a class="reference internal" href="#module-sklearn.pipeline" title="sklearn.pipeline"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pipeline</span></tt></a>: Pipeline</a><a class="headerlink" href="#module-sklearn.pipeline" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference internal" href="#module-sklearn.pipeline" title="sklearn.pipeline"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pipeline</span></tt></a> module implements utilites to build a composite
+<p>The <a class="reference internal" href="#module-sklearn.pipeline" title="sklearn.pipeline"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.pipeline</span></tt></a> module implements utilities to build a composite
 estimator, as a chain of transforms and estimators.</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -1821,7 +1833,7 @@ estimator, as a chain of transforms and estimators.</p>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.Normalizer.html#sklearn.preprocessing.Normalizer" title="sklearn.preprocessing.Normalizer"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.Normalizer</span></tt></a>([norm,&nbsp;copy])</td>
 <td>Normalize samples individually to unit norm</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder" title="sklearn.preprocessing.OneHotEncoder"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.OneHotEncoder</span></tt></a>([n_values,&nbsp;dtype])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder" title="sklearn.preprocessing.OneHotEncoder"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.OneHotEncoder</span></tt></a>([n_values,&nbsp;...])</td>
 <td>Encode categorical integer features using a one-hot aka one-of-K scheme.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.StandardScaler</span></tt></a>([copy,&nbsp;...])</td>
@@ -1838,16 +1850,13 @@ estimator, as a chain of transforms and estimators.</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.add_dummy_feature.html#sklearn.preprocessing.add_dummy_feature" title="sklearn.preprocessing.add_dummy_feature"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.add_dummy_feature</span></tt></a>(X[,&nbsp;value])</td>
 <td>Augment dataset with an additional dummy feature.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.balance_weights.html#sklearn.preprocessing.balance_weights" title="sklearn.preprocessing.balance_weights"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.balance_weights</span></tt></a>(y)</td>
-<td>Compute sample weights such that the class distribution of y becomes balanced.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.binarize.html#sklearn.preprocessing.binarize" title="sklearn.preprocessing.binarize"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.binarize</span></tt></a>(X[,&nbsp;threshold,&nbsp;copy])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.binarize.html#sklearn.preprocessing.binarize" title="sklearn.preprocessing.binarize"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.binarize</span></tt></a>(X[,&nbsp;threshold,&nbsp;copy])</td>
 <td>Boolean thresholding of array-like or scipy.sparse matrix</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.normalize.html#sklearn.preprocessing.normalize" title="sklearn.preprocessing.normalize"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.normalize</span></tt></a>(X[,&nbsp;norm,&nbsp;axis,&nbsp;copy])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.normalize.html#sklearn.preprocessing.normalize" title="sklearn.preprocessing.normalize"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.normalize</span></tt></a>(X[,&nbsp;norm,&nbsp;axis,&nbsp;copy])</td>
 <td>Normalize a dataset along any axis</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.scale.html#sklearn.preprocessing.scale" title="sklearn.preprocessing.scale"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.scale</span></tt></a>(X[,&nbsp;axis,&nbsp;with_mean,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.scale.html#sklearn.preprocessing.scale" title="sklearn.preprocessing.scale"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.scale</span></tt></a>(X[,&nbsp;axis,&nbsp;with_mean,&nbsp;...])</td>
 <td>Standardize a dataset along any axis</td>
 </tr>
 </tbody>
@@ -1863,7 +1872,7 @@ estimator, as a chain of transforms and estimators.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.qda.QDA.html#sklearn.qda.QDA" title="sklearn.qda.QDA"><tt class="xref py py-obj docutils literal"><span class="pre">qda.QDA</span></tt></a>([priors])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.qda.QDA.html#sklearn.qda.QDA" title="sklearn.qda.QDA"><tt class="xref py py-obj docutils literal"><span class="pre">qda.QDA</span></tt></a>([priors,&nbsp;reg_param])</td>
 <td>Quadratic Discriminant Analysis (QDA)</td>
 </tr>
 </tbody>
@@ -2026,7 +2035,7 @@ classification and regression.</p>
 </div>
 <div class="section" id="module-sklearn.utils">
 <span id="sklearn-utils-utilities"></span><span id="utils-ref"></span><h2><a class="toc-backref" href="#id46">8.31. <a class="reference internal" href="#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a>: Utilities</a><a class="headerlink" href="#module-sklearn.utils" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference internal" href="#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a> module includes various utilites.</p>
+<p>The <a class="reference internal" href="#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a> module includes various utilities.</p>
 <p><strong>Developer guide:</strong> See the <a class="reference internal" href="../developers/utilities.html#developers-utils"><em>Utilities for Developers</em></a> page for further details.</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -2057,7 +2066,7 @@ classification and regression.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/classes.txt"

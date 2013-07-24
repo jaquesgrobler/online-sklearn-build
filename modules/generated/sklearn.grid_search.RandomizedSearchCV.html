@@ -30,6 +30,7 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.12.1. sklearn.hmm.GaussianHMM" href="sklearn.hmm.GaussianHMM.html" />
     <link rel="prev" title="8.11.3. sklearn.grid_search.ParameterSampler" href="sklearn.grid_search.ParameterSampler.html" />
 
 
@@ -106,6 +107,23 @@
 	    
 	    </a>
 	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.hmm.GaussianHMM.html" title="8.12.1. sklearn.hmm.GaussianHMM"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.12.1. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.12.1. sklearn.hmm.GaussianHMM
+	    </span>
+	    
+	    </a>
+	</div>
 	<!-- Ad a link to the 'up' page -->
 	<div class="spacer">
 	&nbsp;
@@ -151,12 +169,12 @@
 <h1>8.11.4. sklearn.grid_search.RandomizedSearchCV<a class="headerlink" href="#sklearn-grid-search-randomizedsearchcv" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.grid_search.RandomizedSearchCV">
-<em class="property">class </em><tt class="descclassname">sklearn.grid_search.</tt><tt class="descname">RandomizedSearchCV</tt><big>(</big><em>estimator</em>, <em>param_distributions</em>, <em>n_iter=10</em>, <em>scoring=None</em>, <em>loss_func=None</em>, <em>score_func=None</em>, <em>fit_params=None</em>, <em>n_jobs=1</em>, <em>iid=True</em>, <em>refit=True</em>, <em>cv=None</em>, <em>verbose=0</em>, <em>pre_dispatch='2*n_jobs'</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.RandomizedSearchCV" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.grid_search.</tt><tt class="descname">RandomizedSearchCV</tt><big>(</big><em>estimator</em>, <em>param_distributions</em>, <em>n_iter=10</em>, <em>scoring=None</em>, <em>loss_func=None</em>, <em>score_func=None</em>, <em>fit_params=None</em>, <em>n_jobs=1</em>, <em>iid=True</em>, <em>refit=True</em>, <em>cv=None</em>, <em>verbose=0</em>, <em>pre_dispatch='2*n_jobs'</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.RandomizedSearchCV" title="Permalink to this definition">¶</a></dt>
 <dd><p>Randomized search on hyper parameters.</p>
 <p>RandomizedSearchCV implements a &#8220;fit&#8221; method and a &#8220;predict&#8221; method like
 any classifier except that the parameters of the classifier
 used to predict is optimized by cross-validation.</p>
-<p>In constrast to GridSearchCV, not all parameter values are tried out, but
+<p>In contrast to GridSearchCV, not all parameter values are tried out, but
 rather a fixed number of parameter settings is sampled from the specified
 distributions. The number of parameter settings that are tried is
 given by n_iter.</p>
@@ -178,7 +196,7 @@ If a list is given, it is sampled uniformly.</p>
 <p><strong>n_iter</strong> : int, default=10</p>
 <blockquote>
 <div><p>Number of parameter settings that are sampled. n_iter trades
-off runtime vs qualitiy of the solution.</p>
+off runtime vs quality of the solution.</p>
 </div></blockquote>
 <p><strong>scoring</strong> : string or callable, optional</p>
 <blockquote>
@@ -323,12 +341,12 @@ on the left out data.</td>
 </table>
 <dl class="method">
 <dt id="sklearn.grid_search.RandomizedSearchCV.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>estimator</em>, <em>param_distributions</em>, <em>n_iter=10</em>, <em>scoring=None</em>, <em>loss_func=None</em>, <em>score_func=None</em>, <em>fit_params=None</em>, <em>n_jobs=1</em>, <em>iid=True</em>, <em>refit=True</em>, <em>cv=None</em>, <em>verbose=0</em>, <em>pre_dispatch='2*n_jobs'</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.RandomizedSearchCV.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>estimator</em>, <em>param_distributions</em>, <em>n_iter=10</em>, <em>scoring=None</em>, <em>loss_func=None</em>, <em>score_func=None</em>, <em>fit_params=None</em>, <em>n_jobs=1</em>, <em>iid=True</em>, <em>refit=True</em>, <em>cv=None</em>, <em>verbose=0</em>, <em>pre_dispatch='2*n_jobs'</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.RandomizedSearchCV.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="sklearn.grid_search.RandomizedSearchCV.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y=None</em>, <em>**params</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.RandomizedSearchCV.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.grid_search.RandomizedSearchCV.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run fit on the estimator with randomly drawn parameters.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -433,7 +451,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.grid_search.RandomizedSearchCV.txt"
@@ -445,6 +463,11 @@ component of a nested object.</p>
     <div class="buttonPrevious">
       <a href="sklearn.grid_search.ParameterSampler.html">
         Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.hmm.GaussianHMM.html">
+        Next
       </a>
     </div>
     

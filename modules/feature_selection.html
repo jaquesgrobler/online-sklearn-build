@@ -281,7 +281,7 @@ feature selection.</li>
 <p class="topic-title first"><strong>L1-recovery and compressive sensing</strong></p>
 <p>For a good choice of alpha, the <a class="reference internal" href="linear_model.html#lasso"><em>Lasso</em></a> can fully recover the
 exact set of non-zero variables using only few observations, provided
-certain specific conditions are met. In paraticular, the number of
+certain specific conditions are met. In particular, the number of
 samples should be &#8220;sufficiently large&#8221;, or L1 models will perform at
 random, where &#8220;sufficiently large&#8221; depends on the number of non-zero
 coefficients, the logarithm of the number of features, the amount of
@@ -350,11 +350,11 @@ features:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(150, 4)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">ExtraTreesClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">ExtraTreesClassifier</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_new</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">feature_importances_</span>  
-<span class="go">array([ 0.12...,  0.07...,  0.38...,  0.41...])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X_new</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">array([ 0.04...,  0.05...,  0.4...,  0.4...])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_new</span><span class="o">.</span><span class="n">shape</span>               
 <span class="go">(150, 2)</span>
 </pre></div>
 </div>
@@ -380,7 +380,7 @@ on face recognition data.</li>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/feature_selection.txt"

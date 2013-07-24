@@ -191,9 +191,16 @@ will then be used as a cv generator.</p>
 <div><p>The target variable for a supervised learning problem.</p>
 </div></blockquote>
 <p><strong>classifier</strong> : boolean optional</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Whether the task is a classification task, in which case
 stratified KFold will be used.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>checked_cv: a cross-validation generator instance.</strong> :</p>
+<blockquote class="last">
+<div><p>The return value is guaranteed to be a cv generator instance, whatever
+the input type.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -212,7 +219,7 @@ stratified KFold will be used.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.cross_validation.check_cv.txt"

@@ -178,21 +178,29 @@ more often are good features. It is also known as stability selection.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>C</strong> : float</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>C</strong> : float, optional, default=1</p>
 <blockquote>
 <div><p>The regularization parameter C in the LogisticRegression.</p>
 </div></blockquote>
-<p><strong>scaling</strong> : float</p>
+<p><strong>scaling</strong> : float, optional, default=0.5</p>
 <blockquote>
 <div><p>The alpha parameter in the stability selection article used to
 randomly scale the features. Should be between 0 and 1.</p>
 </div></blockquote>
-<p><strong>sample_fraction</strong> : float</p>
+<p><strong>sample_fraction</strong> : float, optional, default=0.75</p>
 <blockquote>
 <div><p>The fraction of samples to be used in each randomized design.
 Should be between 0 and 1. If 1, all samples are used.</p>
 </div></blockquote>
-<p><strong>fit_intercept</strong> : boolean</p>
+<p><strong>n_resampling</strong> : int, optional, default=200</p>
+<blockquote>
+<div><p>Number of randomized models.</p>
+</div></blockquote>
+<p><strong>selection_threshold: float, optional, default=0.25</strong> :</p>
+<blockquote>
+<div><p>The score above which features should be selected.</p>
+</div></blockquote>
+<p><strong>fit_intercept</strong> : boolean, optional, default=True</p>
 <blockquote>
 <div><p>whether to calculate the intercept for this model. If set
 to false, no intercept will be used in calculations
@@ -202,11 +210,11 @@ to false, no intercept will be used in calculations
 <blockquote>
 <div><p>Sets the verbosity amount</p>
 </div></blockquote>
-<p><strong>normalize</strong> : boolean, optional, default False</p>
+<p><strong>normalize</strong> : boolean, optional, default=False</p>
 <blockquote>
 <div><p>If True, the regressors X will be normalized before regression.</p>
 </div></blockquote>
-<p><strong>tol</strong> : float, optional</p>
+<p><strong>tol</strong> : float, optional, default=1e-3</p>
 <blockquote>
 <div><p>tolerance for stopping criteria of LogisticRegression</p>
 </div></blockquote>
@@ -255,7 +263,7 @@ If a string is given, it is thepath to the caching directory.</p>
 <p class="last"><a class="reference internal" href="sklearn.linear_model.RandomizedLasso.html#sklearn.linear_model.RandomizedLasso" title="sklearn.linear_model.RandomizedLasso"><tt class="xref py py-obj docutils literal"><span class="pre">RandomizedLasso</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><tt class="xref py py-obj docutils literal"><span class="pre">Lasso</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="sklearn.linear_model.ElasticNet"><tt class="xref py py-obj docutils literal"><span class="pre">ElasticNet</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>See examples/linear_model/plot_randomized_lasso.py for an example.</p>
+<p>See examples/linear_model/plot_sparse_recovery.py for an example.</p>
 <p class="rubric">References</p>
 <p>Stability selection
 Nicolai Meinshausen, Peter Buhlmann
@@ -452,7 +460,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.linear_model.RandomizedLogisticRegression.txt"

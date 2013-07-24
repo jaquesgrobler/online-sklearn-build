@@ -236,7 +236,10 @@ automatically downloaded, then cached.</p>
 <span class="n">op</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--n_features&quot;</span><span class="p">,</span>
               <span class="n">action</span><span class="o">=</span><span class="s">&quot;store&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">16</span><span class="p">,</span>
               <span class="n">help</span><span class="o">=</span><span class="s">&quot;n_features when using the hashing vectorizer.&quot;</span><span class="p">)</span>
-
+<span class="n">op</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--filtered&quot;</span><span class="p">,</span>
+              <span class="n">action</span><span class="o">=</span><span class="s">&quot;store_true&quot;</span><span class="p">,</span>
+              <span class="n">help</span><span class="o">=</span><span class="s">&quot;Remove newsgroup information that is easily overfit: &quot;</span>
+                   <span class="s">&quot;headers, signatures, and quoting.&quot;</span><span class="p">)</span>
 
 <span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -260,14 +263,21 @@ automatically downloaded, then cached.</p>
         <span class="s">&#39;sci.space&#39;</span><span class="p">,</span>
     <span class="p">]</span>
 
+<span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">filtered</span><span class="p">:</span>
+    <span class="n">remove</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;headers&#39;</span><span class="p">,</span> <span class="s">&#39;footers&#39;</span><span class="p">,</span> <span class="s">&#39;quotes&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">remove</span> <span class="o">=</span> <span class="p">()</span>
+
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Loading 20 newsgroups dataset for categories:&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">categories</span> <span class="k">if</span> <span class="n">categories</span> <span class="k">else</span> <span class="s">&quot;all&quot;</span><span class="p">)</span>
 
 <span class="n">data_train</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;train&#39;</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span>
-                                <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+                                <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+                                <span class="n">remove</span><span class="o">=</span><span class="n">remove</span><span class="p">)</span>
 
 <span class="n">data_test</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;test&#39;</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span>
-                               <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+                               <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+                               <span class="n">remove</span><span class="o">=</span><span class="n">remove</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&#39;data loaded&#39;</span><span class="p">)</span>
 
 <span class="n">categories</span> <span class="o">=</span> <span class="n">data_train</span><span class="o">.</span><span class="n">target_names</span>    <span class="c"># for case categories == None</span>
@@ -281,7 +291,7 @@ automatically downloaded, then cached.</p>
 
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents - </span><span class="si">%0.3f</span><span class="s">MB (training set)&quot;</span> <span class="o">%</span> <span class="p">(</span>
     <span class="nb">len</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">data_train_size_mb</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents - </span><span class="si">%0.3f</span><span class="s">MB (training set)&quot;</span> <span class="o">%</span> <span class="p">(</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents - </span><span class="si">%0.3f</span><span class="s">MB (test set)&quot;</span> <span class="o">%</span> <span class="p">(</span>
     <span class="nb">len</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">data_test_size_mb</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> categories&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">categories</span><span class="p">))</span>
 <span class="k">print</span><span class="p">()</span>
@@ -448,7 +458,7 @@ automatically downloaded, then cached.</p>
 <span class="n">training_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">training_time</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">training_time</span><span class="p">)</span>
 <span class="n">test_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_time</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">test_time</span><span class="p">)</span>
 
-<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Score&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;score&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">indices</span> <span class="o">+</span> <span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">training_time</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;training time&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
@@ -476,7 +486,7 @@ automatically downloaded, then cached.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/auto_examples/document_classification_20newsgroups.txt"

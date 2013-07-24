@@ -169,9 +169,9 @@
 <h1>8.7.3. sklearn.ensemble.RandomForestRegressor<a class="headerlink" href="#sklearn-ensemble-randomforestregressor" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.ensemble.RandomForestRegressor">
-<em class="property">class </em><tt class="descclassname">sklearn.ensemble.</tt><tt class="descname">RandomForestRegressor</tt><big>(</big><em>n_estimators=10</em>, <em>criterion='mse'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features='auto'</em>, <em>bootstrap=True</em>, <em>compute_importances=False</em>, <em>oob_score=False</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.RandomForestRegressor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.ensemble.</tt><tt class="descname">RandomForestRegressor</tt><big>(</big><em>n_estimators=10</em>, <em>criterion='mse'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>max_features='auto'</em>, <em>bootstrap=True</em>, <em>oob_score=False</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>verbose=0</em>, <em>min_density=None</em>, <em>compute_importances=None</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.RandomForestRegressor" title="Permalink to this definition">¶</a></dt>
 <dd><p>A random forest regressor.</p>
-<p>A random forest is a meta estimator that fits a number of classifical
+<p>A random forest is a meta estimator that fits a number of classifying
 decision trees on various sub-samples of the dataset and use averaging
 to improve the predictive accuracy and control over-fitting.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -225,18 +225,6 @@ discarded if after the split, one of the leaves would contain less then
 <tt class="docutils literal"><span class="pre">min_samples_leaf</span></tt> samples.
 Note: this parameter is tree-specific.</p>
 </div></blockquote>
-<p><strong>min_density</strong> : float, optional (default=0.1)</p>
-<blockquote>
-<div><p>This parameter controls a trade-off in an optimization heuristic. It
-controls the minimum density of the <cite>sample_mask</cite> (i.e. the
-fraction of samples in the mask). If the density falls below this
-threshold the mask is recomputed and the input data is packed
-which results in data copying.  If <cite>min_density</cite> equals to one,
-the partitions are always represented as copies of the original
-data. Otherwise, partitions are represented as bit masks (aka
-sample masks).
-Note: this parameter is tree-specific.</p>
-</div></blockquote>
 <p><strong>bootstrap</strong> : boolean, optional (default=True)</p>
 <blockquote>
 <div><p>Whether bootstrap samples are used when building trees.</p>
@@ -271,10 +259,10 @@ by <cite>np.random</cite>.</p>
 <p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">DecisionTreeRegressor</span></tt>, <a class="reference internal" href="sklearn.ensemble.ExtraTreesRegressor.html#sklearn.ensemble.ExtraTreesRegressor" title="sklearn.ensemble.ExtraTreesRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">ExtraTreesRegressor</span></tt></a></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r104" rules="none">
+<table class="docutils citation" frame="void" id="r113" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R104]</a></td><td><ol class="first last upperalpha simple" start="12">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R113]</a></td><td><ol class="first last upperalpha simple" start="12">
 <li>Breiman, &#8220;Random Forests&#8221;, Machine Learning, 45(1), 5-32, 2001.</li>
 </ol>
 </td></tr>
@@ -284,8 +272,8 @@ by <cite>np.random</cite>.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="31%" />
-<col width="21%" />
-<col width="48%" />
+<col width="20%" />
+<col width="49%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><cite>estimators_</cite>: list of DecisionTreeRegressor</td>
@@ -294,7 +282,7 @@ by <cite>np.random</cite>.</p>
 </tr>
 <tr class="row-even"><td><cite>feature_importances_</cite></td>
 <td>array of shape = [n_features]</td>
-<td>The feature mportances (the higher, the more important the feature).</td>
+<td>The feature importances (the higher, the more important the feature).</td>
 </tr>
 <tr class="row-odd"><td><cite>oob_score_</cite></td>
 <td>float</td>
@@ -341,7 +329,7 @@ by <cite>np.random</cite>.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.ensemble.RandomForestRegressor.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_estimators=10</em>, <em>criterion='mse'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features='auto'</em>, <em>bootstrap=True</em>, <em>compute_importances=False</em>, <em>oob_score=False</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.RandomForestRegressor.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_estimators=10</em>, <em>criterion='mse'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>max_features='auto'</em>, <em>bootstrap=True</em>, <em>oob_score=False</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>verbose=0</em>, <em>min_density=None</em>, <em>compute_importances=None</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.RandomForestRegressor.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -595,7 +583,7 @@ available, the object attribute <tt class="docutils literal"><span class="pre">t
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.ensemble.RandomForestRegressor.txt"

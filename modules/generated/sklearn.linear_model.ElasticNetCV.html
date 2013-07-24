@@ -220,10 +220,10 @@ smaller than <tt class="docutils literal"><span class="pre">tol</span></tt>, the
 dual gap for optimality and continues until it is smaller
 than <tt class="docutils literal"><span class="pre">tol</span></tt>.</p>
 </div></blockquote>
-<p><strong>cv</strong> : integer or crossvalidation generator, optional</p>
+<p><strong>cv</strong> : integer or cross-validation generator, optional</p>
 <blockquote>
 <div><p>If an integer is passed, it is the number of fold (default 3).
-Specific crossvalidation objects can be passed, see the
+Specific cross-validation objects can be passed, see the
 <a class="reference internal" href="../classes.html#module-sklearn.cross_validation" title="sklearn.cross_validation"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.cross_validation</span></tt></a> module for the list of possible
 objects.</p>
 </div></blockquote>
@@ -246,7 +246,7 @@ l1_ratio are given.</p>
 <p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">enet_path</span></tt>, <a class="reference internal" href="sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="sklearn.linear_model.ElasticNet"><tt class="xref py py-obj docutils literal"><span class="pre">ElasticNet</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>See examples/linear_model/lasso_path_with_crossvalidation.py
+<p>See examples/linear_model/plot_lasso_model_selection.py
 for an example.</p>
 <p>To avoid unnecessary memory duplication the X argument of the fit method
 should be directly passed as a Fortran-contiguous numpy array.</p>
@@ -486,7 +486,8 @@ only when the Gram matrix is precomputed.</p>
 <p class="last"><a class="reference internal" href="sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="sklearn.linear_model.ElasticNet"><tt class="xref py py-obj docutils literal"><span class="pre">ElasticNet</span></tt></a>, <a class="reference internal" href="#sklearn.linear_model.ElasticNetCV" title="sklearn.linear_model.ElasticNetCV"><tt class="xref py py-obj docutils literal"><span class="pre">ElasticNetCV</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>See examples/plot_lasso_coordinate_descent_path.py for an example.</p>
+<p>See examples/linear_model/plot_lasso_coordinate_descent_path.py
+for an example.</p>
 </dd></dl>
 
 <dl class="method">
@@ -573,7 +574,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.linear_model.ElasticNetCV.txt"

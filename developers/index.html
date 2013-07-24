@@ -152,6 +152,7 @@
 <li><a class="reference internal" href="#random-numbers">1.5.2. Random Numbers</a></li>
 <li><a class="reference internal" href="#deprecation">1.5.3. Deprecation</a></li>
 <li><a class="reference internal" href="#python-3-x-support">1.5.4. Python 3.x support</a></li>
+<li><a class="reference internal" href="#id4">1.5.5. Python 3.x support</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#apis-of-scikit-learn-objects">1.6. APIs of scikit-learn objects</a><ul>
@@ -398,7 +399,7 @@ intuition.</p>
 <p>Finally, any math and equations, followed by references,
 can be added to further the documentation. Not starting the
 documentation with the maths makes it more friendly towards
-users that are just intersted in what the feature will do, as
+users that are just interested in what the feature will do, as
 opposed to how it works <cite>under the hood</cite>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -577,7 +578,7 @@ in an attribute <tt class="docutils literal"><span class="pre">random_state</spa
 <tt class="docutils literal"><span class="pre">fit</span></tt> can call <tt class="docutils literal"><span class="pre">check_random_state</span></tt> on that attribute
 to get an actual random number generator.
 If, for some reason, randomness is needed after <tt class="docutils literal"><span class="pre">fit</span></tt>,
-the RNG should be stored in an attibute <tt class="docutils literal"><span class="pre">random_state_</span></tt>.
+the RNG should be stored in an attribute <tt class="docutils literal"><span class="pre">random_state_</span></tt>.
 The following example should make this clear:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">GaussianNoise</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This estimator ignores its input and returns random Gaussian noise.</span>
@@ -648,6 +649,21 @@ In following example, k is deprecated and renamed to n_clusters:</p>
 </div>
 <div class="section" id="python-3-x-support">
 <h3>1.5.4. Python 3.x support<a class="headerlink" href="#python-3-x-support" title="Permalink to this headline">¶</a></h3>
+<p>All scikit-learn code should work unchanged in both Python 2.[67]
+and 3.2 or newer. Since Python 3.x is not backwards compatible,
+that may require changes to code and it certainly requires testing
+on both 2.6 or 2.7, and 3.2 or newer.</p>
+<p>For most numerical algorithms, Python 3.x support is easy:
+just remember that <tt class="docutils literal"><span class="pre">print</span></tt> is a function and
+integer division is written <tt class="docutils literal"><span class="pre">//</span></tt>.
+String handling has been overhauled, though, as have parts of
+the Python standard library.
+The <a class="reference external" href="http://pythonhosted.org/six/">six</a> package helps with
+cross-compatibility and is included in scikit-learn as
+<tt class="docutils literal"><span class="pre">sklearn.externals.six</span></tt>.</p>
+</div>
+<div class="section" id="id4">
+<h3>1.5.5. Python 3.x support<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>All scikit-learn code should work unchanged in both Python 2.[67]
 and 3.2 or newer. Since Python 3.x is not backwards compatible,
 that may require changes to code and it certainly requires testing
@@ -901,7 +917,7 @@ All logic behind estimator parameters,
 like translating string arguments into functions, should be done in <tt class="docutils literal"><span class="pre">fit</span></tt>.</p>
 </div>
 <div class="section" id="cloning">
-<span id="id4"></span><h3>1.7.3. Cloning<a class="headerlink" href="#cloning" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h3>1.7.3. Cloning<a class="headerlink" href="#cloning" title="Permalink to this headline">¶</a></h3>
 <p>For using <tt class="xref py py-class docutils literal"><span class="pre">grid_search.GridSearch</span></tt> or any functionality of the
 <tt class="xref py py-mod docutils literal"><span class="pre">cross_validation</span></tt> module, an estimator must support the <tt class="docutils literal"><span class="pre">base.clone</span></tt>
 function to replicate an estimator.
@@ -975,7 +991,7 @@ for working with multiclass and multilabel problems.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/developers/index.txt"

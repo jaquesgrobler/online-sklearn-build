@@ -31,7 +31,7 @@
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.28.1. sklearn.random_projection.GaussianRandomProjection" href="sklearn.random_projection.GaussianRandomProjection.html" />
-    <link rel="prev" title="8.26.13. sklearn.preprocessing.scale" href="sklearn.preprocessing.scale.html" />
+    <link rel="prev" title="8.26.12. sklearn.preprocessing.scale" href="sklearn.preprocessing.scale.html" />
 
 
 <script type="text/javascript">
@@ -95,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.preprocessing.scale.html" title="8.26.13. sklearn.preprocessing.scale"
+	<a href="sklearn.preprocessing.scale.html" title="8.26.12. sklearn.preprocessing.scale"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.26.13. sklearn...
+	    8.26.12. sklearn...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.26.13. sklearn.preprocessing.scale
+	    8.26.12. sklearn.preprocessing.scale
 	    </span>
 	    
 	    </a>
@@ -169,7 +169,7 @@
 <h1>8.27.1. sklearn.qda.QDA<a class="headerlink" href="#sklearn-qda-qda" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.qda.QDA">
-<em class="property">class </em><tt class="descclassname">sklearn.qda.</tt><tt class="descname">QDA</tt><big>(</big><em>priors=None</em><big>)</big><a class="headerlink" href="#sklearn.qda.QDA" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.qda.</tt><tt class="descname">QDA</tt><big>(</big><em>priors=None</em>, <em>reg_param=0.0</em><big>)</big><a class="headerlink" href="#sklearn.qda.QDA" title="Permalink to this definition">¶</a></dt>
 <dd><p>Quadratic Discriminant Analysis (QDA)</p>
 <p>A classifier with a quadratic decision boundary, generated
 by fitting class conditional densities to the data
@@ -180,8 +180,13 @@ and using Bayes&#8217; rule.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>priors</strong> : array, optional, shape = [n_classes]</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Priors on classes</p>
+</div></blockquote>
+<p><strong>reg_param</strong> : float, optional</p>
+<blockquote class="last">
+<div><p>Regularizes the covariance estimate as 
+(1-reg_param)*Sigma + reg_param*np.eye(n_features)</p>
 </div></blockquote>
 </td>
 </tr>
@@ -201,7 +206,7 @@ and using Bayes&#8217; rule.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">QDA</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="go">QDA(priors=None)</span>
+<span class="go">QDA(priors=None, reg_param=0.0)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]))</span>
 <span class="go">[1]</span>
 </pre></div>
@@ -274,7 +279,7 @@ class, i.e. the variance in the rotated coordinate system.</td>
 </table>
 <dl class="method">
 <dt id="sklearn.qda.QDA.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>priors=None</em><big>)</big><a class="headerlink" href="#sklearn.qda.QDA.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>priors=None</em>, <em>reg_param=0.0</em><big>)</big><a class="headerlink" href="#sklearn.qda.QDA.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -477,7 +482,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.qda.QDA.txt"

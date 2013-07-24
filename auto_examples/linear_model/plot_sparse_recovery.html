@@ -173,15 +173,15 @@ true model is sparse, i.e. if a small fraction of the features are
 relevant.</p>
 <p>As detailed in <a class="reference internal" href="../../modules/feature_selection.html#compressive-sensing"><em>the compressive sensing notes</em></a>, the ability of L1-based approach to identify the
 relevant variables depends on the sparsity of the ground truth, the
-number of samples, the number of features, the conditionning of the
+number of samples, the number of features, the conditioning of the
 design matrix on the signal subspace, the amount of noise, and the
 absolute value of the smallest non-zero coefficient [Wainwright2006]
 (<a class="reference external" href="http://statistics.berkeley.edu/tech-reports/709.pdf">http://statistics.berkeley.edu/tech-reports/709.pdf</a>).</p>
-<p>Here we keep all parameters constant and vary the conditionning of the
-design matrix. For a well-conditionned design matrix (small mutual
+<p>Here we keep all parameters constant and vary the conditioning of the
+design matrix. For a well-conditioned design matrix (small mutual
 incoherence) we are exactly in compressive sensing conditions (i.i.d
 Gaussian sensing matrix), and L1-recovery with the Lasso performs very
-well. For an ill-conditionned matrix (high mutual incoherence),
+well. For an ill-conditioned matrix (high mutual incoherence),
 regressors are very correlated, and the Lasso randomly selects one.
 However, randomized-Lasso can recover the ground truth well.</p>
 <p>In each situation, we first vary the alpha parameter setting the sparsity
@@ -234,7 +234,7 @@ precision-recall.</p>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">projector</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
 
-<span class="k">for</span> <span class="n">conditionning</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">conditioning</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">):</span>
     <span class="c">###########################################################################</span>
     <span class="c"># Simulate regression data with a correlated design</span>
     <span class="n">n_features</span> <span class="o">=</span> <span class="mi">501</span>
@@ -242,7 +242,7 @@ precision-recall.</p>
     <span class="n">noise_level</span> <span class="o">=</span> <span class="o">.</span><span class="mi">2</span>
     <span class="n">coef_min</span> <span class="o">=</span> <span class="o">.</span><span class="mi">2</span>
     <span class="c"># The Donoho-Tanner phase transition is around n_samples=25: below we</span>
-    <span class="c"># will completely fail to recover in the well-conditionned case</span>
+    <span class="c"># will completely fail to recover in the well-conditioned case</span>
     <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">25</span>
     <span class="n">block_size</span> <span class="o">=</span> <span class="n">n_relevant_features</span>
 
@@ -255,7 +255,7 @@ precision-recall.</p>
     <span class="c"># The correlation of our design: variables correlated by blocs of 3</span>
     <span class="n">corr</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.zeros.html#numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">((</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_features</span><span class="p">,</span> <span class="n">block_size</span><span class="p">):</span>
-        <span class="n">corr</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">block_size</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">block_size</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">conditionning</span>
+        <span class="n">corr</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">block_size</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">block_size</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">conditioning</span>
     <span class="n">corr</span><span class="o">.</span><span class="n">flat</span><span class="p">[::</span><span class="n">n_features</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">corr</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.linalg.cholesky.html#scipy.linalg.cholesky"><span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span></a><span class="p">(</span><span class="n">corr</span><span class="p">)</span>
 
@@ -340,7 +340,7 @@ precision-recall.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  8.29 seconds</p>
+<p><strong>Total running time of the example:</strong>  8.03 seconds</p>
 </div>
 
 
@@ -352,7 +352,7 @@ precision-recall.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/auto_examples/linear_model/plot_sparse_recovery.txt"

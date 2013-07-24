@@ -174,15 +174,14 @@
 <p>Linear dimensionality reduction using approximated Singular Value
 Decomposition of the data and keeping only the most significant
 singular vectors to project the data to a lower dimensional space.</p>
-<p>This implementation uses a randomized SVD implementation and can
-handle both scipy.sparse and numpy dense arrays as input.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_components</strong> : int</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_components</strong> : int, optional</p>
 <blockquote>
-<div><p>Maximum number of components to keep: default is 50.</p>
+<div><p>Maximum number of components to keep. When not given or None, this
+is set to n_features (the second dimension of the training data).</p>
 </div></blockquote>
 <p><strong>copy</strong> : bool</p>
 <blockquote>
@@ -190,7 +189,7 @@ handle both scipy.sparse and numpy dense arrays as input.</p>
 </div></blockquote>
 <p><strong>iterated_power</strong> : int, optional</p>
 <blockquote>
-<div><p>Number of iteration for the power method. 3 by default.</p>
+<div><p>Number of iterations for the power method. 3 by default.</p>
 </div></blockquote>
 <p><strong>whiten</strong> : bool, optional</p>
 <blockquote>
@@ -213,8 +212,13 @@ numpy.random singleton.</p>
 </table>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-obj docutils literal"><span class="pre">PCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-obj docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a></p>
+<p class="last"><a class="reference internal" href="sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-obj docutils literal"><span class="pre">PCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-obj docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.TruncatedSVD.html#sklearn.decomposition.TruncatedSVD" title="sklearn.decomposition.TruncatedSVD"><tt class="xref py py-obj docutils literal"><span class="pre">TruncatedSVD</span></tt></a></p>
 </div>
+<p class="rubric">Notes</p>
+<p>This class supports sparse matrix input for backward compatibility, but
+actually computes a truncated SVD instead of a PCA in that case (i.e. no
+centering is performed). This support is deprecated; use the class
+TruncatedSVD for sparse matrix support.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="halko2009" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -301,7 +305,7 @@ Per-Gunnar Martinsson, Vladimir Rokhlin and Mark Tygert</cite></td></tr>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like or scipy.sparse matrix, shape (n_samples, n_features)</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like, shape (n_samples, n_features)</strong> :</p>
 <blockquote>
 <div><p>Training vector, where n_samples in the number of samples and
 n_features is the number of features.</p>
@@ -382,7 +386,7 @@ contained subobjects that are estimators.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like or scipy.sparse matrix, shape (n_samples, n_components)</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape (n_samples, n_components)</p>
 <blockquote>
 <div><p>New data, where n_samples in the number of samples
 and n_components is the number of components.</p>
@@ -425,7 +429,7 @@ component of a nested object.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like or scipy.sparse matrix, shape (n_samples, n_features)</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape (n_samples, n_features)</p>
 <blockquote>
 <div><p>New data, where n_samples in the number of samples
 and n_features is the number of features.</p>
@@ -452,7 +456,7 @@ and n_features is the number of features.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.decomposition.RandomizedPCA.txt"

@@ -206,21 +206,21 @@ general.</p>
 <p class="last"><a class="reference internal" href="sklearn.metrics.completeness_score.html#sklearn.metrics.completeness_score" title="sklearn.metrics.completeness_score"><tt class="xref py py-obj docutils literal"><span class="pre">completeness_score</span></tt></a>, <a class="reference internal" href="sklearn.metrics.v_measure_score.html#sklearn.metrics.v_measure_score" title="sklearn.metrics.v_measure_score"><tt class="xref py py-obj docutils literal"><span class="pre">v_measure_score</span></tt></a></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r124" rules="none">
+<table class="docutils citation" frame="void" id="r141" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R124]</a></td><td><a class="reference external" href="http://acl.ldc.upenn.edu/D/D07/D07-1043.pdf">Andrew Rosenberg and Julia Hirschberg, 2007. V-Measure: A
+<tr><td class="label"><a class="fn-backref" href="#id1">[R141]</a></td><td><a class="reference external" href="http://acl.ldc.upenn.edu/D/D07/D07-1043.pdf">Andrew Rosenberg and Julia Hirschberg, 2007. V-Measure: A
 conditional entropy-based external cluster evaluation measure</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<p>Perfect labelings are homegenous:</p>
+<p>Perfect labelings are homogeneous:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics.cluster</span> <span class="kn">import</span> <span class="n">homogeneity_score</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">homogeneity_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="go">1.0</span>
 </pre></div>
 </div>
-<p>Non-pefect labelings that further split classes into more clusters can be
+<p>Non-perfect labelings that further split classes into more clusters can be
 perfectly homogeneous:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.6f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">homogeneity_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
 <span class="gp">... </span>                                                 
@@ -253,7 +253,7 @@ homogeneous labeling:</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.metrics.homogeneity_score.txt"

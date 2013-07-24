@@ -169,11 +169,11 @@
 <h1>8.7.7. sklearn.ensemble.AdaBoostRegressor<a class="headerlink" href="#sklearn-ensemble-adaboostregressor" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt>
-<tt class="descname">AdaBoostRegressor(base_estimator=DecisionTreeRegressor(compute_importances=False, criterion='mse', max_depth=3,</tt></dt>
+<tt class="descname">AdaBoostRegressor(base_estimator=DecisionTreeRegressor(compute_importances=None, criterion='mse', max_depth=3,</tt></dt>
 <dt>
-<tt class="descname">max_features=None, min_density=0.1, min_samples_leaf=1,</tt></dt>
+<tt class="descname">max_features=None, min_density=None, min_samples_leaf=1,</tt></dt>
 <dt>
-<tt class="descname">min_samples_split=2, random_state=None), n_estimators=50, learning_rate=1.0, loss='linear', random_state=None)</tt></dt>
+<tt class="descname">min_samples_split=2, random_state=None, splitter='best'), n_estimators=50, learning_rate=1.0, loss='linear', random_state=None)</tt></dt>
 <dd><p>An AdaBoost regressor.</p>
 <p>An AdaBoost [1] regressor is a meta-estimator that begins by fitting a
 regressor on the original dataset and then fits additional copies of the
@@ -222,17 +222,17 @@ by <cite>np.random</cite>.</p>
 <p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">AdaBoostClassifier</span></tt>, <a class="reference internal" href="sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="sklearn.ensemble.GradientBoostingRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">GradientBoostingRegressor</span></tt></a>, <tt class="xref py py-obj docutils literal"><span class="pre">DecisionTreeRegressor</span></tt></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r99" rules="none">
+<table class="docutils citation" frame="void" id="r108" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R99]</a></td><td>Y. Freund, R. Schapire, &#8220;A Decision-Theoretic Generalization of
+<tr><td class="label"><a class="fn-backref" href="#id1">[R108]</a></td><td>Y. Freund, R. Schapire, &#8220;A Decision-Theoretic Generalization of
 on-Line Learning and an Application to Boosting&#8221;, 1995.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r100" rules="none">
+<table class="docutils citation" frame="void" id="r109" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R100]</a></td><td><ol class="first last upperalpha simple" start="8">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R109]</a></td><td><ol class="first last upperalpha simple" start="8">
 <li>Drucker, &#8220;Improving Regressors using Boosting Techniques&#8221;, 1997.</li>
 </ol>
 </td></tr>
@@ -509,7 +509,7 @@ score on a test set after each boost.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.ensemble.AdaBoostRegressor.txt"

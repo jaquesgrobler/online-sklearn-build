@@ -34,7 +34,8 @@
         -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.0);
         -moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, .0); /* FF3.5 - 3.6 */
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.0); /* Opera 10.5, IE9, FF4+, Chrome 10+ */
-        padding: 0px
+        padding: 0px;
+        border: white;
     }
 
     div.docstringWrapper p {
@@ -45,6 +46,8 @@
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 1.00); /* Opera 10.5, IE9, FF4+, Chrome 10+ */
         padding: 13px;
         margin-top: 0px;
+        border-style: solid;
+        border-width: 1px;
     }
 
 
@@ -291,34 +294,6 @@ General-purpose and introductory examples for the scikit.
         <div class="docstringWrapper">
 
 
-.. figure:: ./images/thumb/plot_isotonic_regression.png
-   :target: ./plot_isotonic_regression.html
-
-   :ref:`example_plot_isotonic_regression.py`
-
-
-.. raw:: html
-
-
-    <p>An illustration of the isotonic regression on generated data. The isotonic regression finds a n...
-    </p></div>
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./plot_isotonic_regression
-
-
-
-.. raw:: html
-
-
-    <div class="thumbnailContainer">
-        <div class="docstringWrapper">
-
-
 .. figure:: ./images/thumb/feature_stacker.png
    :target: ./feature_stacker.html
 
@@ -337,6 +312,34 @@ General-purpose and introductory examples for the scikit.
    :hidden:
 
    ./feature_stacker
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ./images/thumb/plot_isotonic_regression.png
+   :target: ./plot_isotonic_regression.html
+
+   :ref:`example_plot_isotonic_regression.py`
+
+
+.. raw:: html
+
+
+    <p>An illustration of the isotonic regression on generated data. The isotonic regression finds a n...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_isotonic_regression
 
 
 
@@ -627,6 +630,34 @@ General-purpose and introductory examples for the scikit.
         <div class="docstringWrapper">
 
 
+.. figure:: ./images/thumb/randomized_search.png
+   :target: ./randomized_search.html
+
+   :ref:`example_randomized_search.py`
+
+
+.. raw:: html
+
+
+    <p>Compare randomized search and grid search for optimizing hyperparameters of a random forest. Al...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./randomized_search
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
 .. figure:: ./images/thumb/plot_multilabel.png
    :target: ./plot_multilabel.html
 
@@ -823,34 +854,6 @@ General-purpose and introductory examples for the scikit.
         <div class="docstringWrapper">
 
 
-.. figure:: ./images/thumb/document_clustering.png
-   :target: ./document_clustering.html
-
-   :ref:`example_document_clustering.py`
-
-
-.. raw:: html
-
-
-    <p>This is an example showing how the scikit-learn can be used to cluster documents by topics usin...
-    </p></div>
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./document_clustering
-
-
-
-.. raw:: html
-
-
-    <div class="thumbnailContainer">
-        <div class="docstringWrapper">
-
-
 .. figure:: ./images/thumb/plot_lda_qda.png
    :target: ./plot_lda_qda.html
 
@@ -869,6 +872,34 @@ General-purpose and introductory examples for the scikit.
    :hidden:
 
    ./plot_lda_qda
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ./images/thumb/document_clustering.png
+   :target: ./document_clustering.html
+
+   :ref:`example_document_clustering.py`
+
+
+.. raw:: html
+
+
+    <p>This is an example showing how the scikit-learn can be used to cluster documents by topics usin...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./document_clustering
 
 
 
@@ -1166,6 +1197,34 @@ interactive user interface.
    :hidden:
 
    applications/wikipedia_principal_eigenvector
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: applications/images/thumb/plot_out_of_core_classification.png
+   :target: ./applications/plot_out_of_core_classification.html
+
+   :ref:`example_applications_plot_out_of_core_classification.py`
+
+
+.. raw:: html
+
+
+    <p>This is an example showing how scikit-learn can be used for classification using an out-of-core...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   applications/plot_out_of_core_classification
 
 
 
@@ -2573,34 +2632,6 @@ Examples concerning the :mod:`sklearn.ensemble` package.
         <div class="docstringWrapper">
 
 
-.. figure:: ensemble/images/thumb/plot_forest_iris.png
-   :target: ./ensemble/plot_forest_iris.html
-
-   :ref:`example_ensemble_plot_forest_iris.py`
-
-
-.. raw:: html
-
-
-    <p>Plot the decision surfaces of forests of randomized trees trained on pairs of features of the i...
-    </p></div>
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ensemble/plot_forest_iris
-
-
-
-.. raw:: html
-
-
-    <div class="thumbnailContainer">
-        <div class="docstringWrapper">
-
-
 .. figure:: ensemble/images/thumb/plot_adaboost_multiclass.png
    :target: ./ensemble/plot_adaboost_multiclass.html
 
@@ -2647,6 +2678,34 @@ Examples concerning the :mod:`sklearn.ensemble` package.
    :hidden:
 
    ensemble/plot_adaboost_hastie_10_2
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ensemble/images/thumb/plot_forest_iris.png
+   :target: ./ensemble/plot_forest_iris.html
+
+   :ref:`example_ensemble_plot_forest_iris.py`
+
+
+.. raw:: html
+
+
+    <p>Plot the decision surfaces of forests of randomized trees trained on pairs of features of the i...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ensemble/plot_forest_iris
 
 
 .. raw:: html
@@ -3894,7 +3953,7 @@ Examples concerning the :mod:`sklearn.mixture` package.
 .. raw:: html
 
 
-    <p>This example shows that model selection can be perfomed with Gaussian Mixture Models using info...
+    <p>This example shows that model selection can be performed with Gaussian Mixture Models using inf...
     </p></div>
     </div>
 
@@ -4031,6 +4090,90 @@ Examples concerning the :mod:`sklearn.neighbors` package.
    :hidden:
 
    neighbors/plot_nearest_centroid
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: neighbors/images/thumb/plot_digits_kde_sampling.png
+   :target: ./neighbors/plot_digits_kde_sampling.html
+
+   :ref:`example_neighbors_plot_digits_kde_sampling.py`
+
+
+.. raw:: html
+
+
+    <p>This example shows how kernel density estimation (KDE), a powerful non-parametric density estim...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   neighbors/plot_digits_kde_sampling
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: neighbors/images/thumb/plot_species_kde.png
+   :target: ./neighbors/plot_species_kde.html
+
+   :ref:`example_neighbors_plot_species_kde.py`
+
+
+.. raw:: html
+
+
+    <p>This example does not perform any learning over the data (see :ref:`example_applications_plot_s...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   neighbors/plot_species_kde
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: neighbors/images/thumb/plot_kde_1d.png
+   :target: ./neighbors/plot_kde_1d.html
+
+   :ref:`example_neighbors_plot_kde_1d.py`
+
+
+.. raw:: html
+
+
+    <p>The first plot shows one of the problems with using histograms to visualize the density of poin...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   neighbors/plot_kde_1d
 
 
 .. raw:: html

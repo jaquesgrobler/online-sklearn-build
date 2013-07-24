@@ -169,7 +169,7 @@
 <h1>8.13.2. sklearn.isotonic.isotonic_regression<a class="headerlink" href="#sklearn-isotonic-isotonic-regression" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.isotonic.isotonic_regression">
-<tt class="descclassname">sklearn.isotonic.</tt><tt class="descname">isotonic_regression</tt><big>(</big><em>y</em>, <em>weight=None</em>, <em>y_min=None</em>, <em>y_max=None</em><big>)</big><a class="headerlink" href="#sklearn.isotonic.isotonic_regression" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.isotonic.</tt><tt class="descname">isotonic_regression</tt><big>(</big><em>y</em>, <em>sample_weight=None</em>, <em>y_min=None</em>, <em>y_max=None</em>, <em>weight=None</em><big>)</big><a class="headerlink" href="#sklearn.isotonic.isotonic_regression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solve the isotonic regression model:</p>
 <div class="highlight-python"><pre>min sum w[i] (y[i] - y_[i]) ** 2
 
@@ -192,7 +192,7 @@ subject to y_min = y_[1] &lt;= y_[2] ... &lt;= y_[n] = y_max</pre>
 <blockquote>
 <div><p>The data.</p>
 </div></blockquote>
-<p><strong>weight</strong> : iterable of floating-point values, optional, default: None</p>
+<p><strong>sample_weight</strong> : iterable of floating-point values, optional, default: None</p>
 <blockquote>
 <div><p>Weights on each point of the regression.
 If None, weight is set to 1 (equal weights).</p>
@@ -231,7 +231,7 @@ by Michael J. Best and Nilotpal Chakravarti, section 3.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.isotonic.isotonic_regression.txt"

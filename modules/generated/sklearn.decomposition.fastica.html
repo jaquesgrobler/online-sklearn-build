@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.5.14. sklearn.decomposition.fastica &mdash; scikit-learn 0.14-git documentation</title>
+    <title>8.5.15. sklearn.decomposition.fastica &mdash; scikit-learn 0.14-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -30,8 +30,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.5.15. sklearn.decomposition.dict_learning" href="sklearn.decomposition.dict_learning.html" />
-    <link rel="prev" title="8.5.13. sklearn.decomposition.MiniBatchDictionaryLearning" href="sklearn.decomposition.MiniBatchDictionaryLearning.html" />
+    <link rel="next" title="8.5.16. sklearn.decomposition.dict_learning" href="sklearn.decomposition.dict_learning.html" />
+    <link rel="prev" title="8.5.14. sklearn.decomposition.MiniBatchDictionaryLearning" href="sklearn.decomposition.MiniBatchDictionaryLearning.html" />
 
 
 <script type="text/javascript">
@@ -95,14 +95,14 @@
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
 	<div class="rellink">
-	<a href="sklearn.decomposition.MiniBatchDictionaryLearning.html" title="8.5.13. sklearn.decomposition.MiniBatchDictionaryLearning"
+	<a href="sklearn.decomposition.MiniBatchDictionaryLearning.html" title="8.5.14. sklearn.decomposition.MiniBatchDictionaryLearning"
 	    accesskey="P">Previous
 	    <br>
 	    <span class="smallrellink">
-	    8.5.13. sklearn....
+	    8.5.14. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.5.13. sklearn.decomposition.MiniBatchDictionaryLearning
+	    8.5.14. sklearn.decomposition.MiniBatchDictionaryLearning
 	    </span>
 	    
 	    </a>
@@ -112,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.decomposition.dict_learning.html" title="8.5.15. sklearn.decomposition.dict_learning"
+	<a href="sklearn.decomposition.dict_learning.html" title="8.5.16. sklearn.decomposition.dict_learning"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
-	    8.5.15. sklearn....
+	    8.5.16. sklearn....
 	    </span>
 	    <span class="hiddenrellink">
-	    8.5.15. sklearn.decomposition.dict_learning
+	    8.5.16. sklearn.decomposition.dict_learning
 	    </span>
 	    
 	    </a>
@@ -151,7 +151,7 @@
     <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">8.5.14. sklearn.decomposition.fastica</a></li>
+<li><a class="reference internal" href="#">8.5.15. sklearn.decomposition.fastica</a></li>
 </ul>
 
     
@@ -166,10 +166,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-decomposition-fastica">
-<h1>8.5.14. sklearn.decomposition.fastica<a class="headerlink" href="#sklearn-decomposition-fastica" title="Permalink to this headline">¶</a></h1>
+<h1>8.5.15. sklearn.decomposition.fastica<a class="headerlink" href="#sklearn-decomposition-fastica" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.decomposition.fastica">
-<tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">fastica</tt><big>(</big><em>X</em>, <em>n_components=None</em>, <em>algorithm='parallel'</em>, <em>whiten=True</em>, <em>fun='logcosh'</em>, <em>fun_prime=''</em>, <em>fun_args={}</em>, <em>max_iter=200</em>, <em>tol=0.0001</em>, <em>w_init=None</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.fastica" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">fastica</tt><big>(</big><em>X</em>, <em>n_components=None</em>, <em>algorithm='parallel'</em>, <em>whiten=True</em>, <em>fun='logcosh'</em>, <em>fun_args={}</em>, <em>max_iter=200</em>, <em>tol=0.0001</em>, <em>w_init=None</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.fastica" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform Fast Independent Component Analysis.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -210,12 +210,6 @@ point. Example:</p>
 <dd><p class="first last">return x ** 3, 3 * x ** 2</p>
 </dd>
 </dl>
-<p>Supplying the derivative through the <cite>fun_prime</cite> attribute is
-still supported, but deprecated.</p>
-</div></blockquote>
-<p><strong>fun_prime</strong> : empty string (&#8216;&#8217;) or function, optional, deprecated.</p>
-<blockquote>
-<div><p>See fun.</p>
 </div></blockquote>
 <p><strong>fun_args: dictionary, optional</strong> :</p>
 <blockquote>
@@ -297,7 +291,7 @@ pp. 411-430</cite></p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.decomposition.fastica.txt"

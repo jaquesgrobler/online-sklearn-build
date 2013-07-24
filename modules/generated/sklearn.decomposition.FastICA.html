@@ -30,7 +30,7 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.5.8. sklearn.decomposition.NMF" href="sklearn.decomposition.NMF.html" />
+    <link rel="next" title="8.5.8. sklearn.decomposition.TruncatedSVD" href="sklearn.decomposition.TruncatedSVD.html" />
     <link rel="prev" title="8.5.6. sklearn.decomposition.FactorAnalysis" href="sklearn.decomposition.FactorAnalysis.html" />
 
 
@@ -112,14 +112,14 @@
 	    </div>
 	
 	<div class="rellink">
-	<a href="sklearn.decomposition.NMF.html" title="8.5.8. sklearn.decomposition.NMF"
+	<a href="sklearn.decomposition.TruncatedSVD.html" title="8.5.8. sklearn.decomposition.TruncatedSVD"
 	    accesskey="N">Next
 	    <br>
 	    <span class="smallrellink">
 	    8.5.8. sklearn.d...
 	    </span>
 	    <span class="hiddenrellink">
-	    8.5.8. sklearn.decomposition.NMF
+	    8.5.8. sklearn.decomposition.TruncatedSVD
 	    </span>
 	    
 	    </a>
@@ -169,7 +169,7 @@
 <h1>8.5.7. sklearn.decomposition.FastICA<a class="headerlink" href="#sklearn-decomposition-fastica" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.decomposition.FastICA">
-<em class="property">class </em><tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">FastICA</tt><big>(</big><em>n_components=None</em>, <em>algorithm='parallel'</em>, <em>whiten=True</em>, <em>fun='logcosh'</em>, <em>fun_prime=''</em>, <em>fun_args=None</em>, <em>max_iter=200</em>, <em>tol=0.0001</em>, <em>w_init=None</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.FastICA" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">FastICA</tt><big>(</big><em>n_components=None</em>, <em>algorithm='parallel'</em>, <em>whiten=True</em>, <em>fun='logcosh'</em>, <em>fun_args=None</em>, <em>max_iter=200</em>, <em>tol=0.0001</em>, <em>w_init=None</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.FastICA" title="Permalink to this definition">¶</a></dt>
 <dd><p>FastICA; a fast algorithm for Independent Component Analysis</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -201,12 +201,6 @@ point. Example:</p>
 <dd><p class="first last">return x ** 3, 3 * x ** 2</p>
 </dd>
 </dl>
-<p>Supplying the derivative through the <cite>fun_prime</cite> attribute is
-still supported, but deprecated.</p>
-</div></blockquote>
-<p><strong>fun_prime</strong> : empty string (&#8216;&#8217;) or function, optional, deprecated.</p>
-<blockquote>
-<div><p>See fun.</p>
 </div></blockquote>
 <p><strong>fun_args: dictionary, optional</strong> :</p>
 <blockquote>
@@ -286,7 +280,7 @@ pp. 411-430</cite></p>
 </table>
 <dl class="method">
 <dt id="sklearn.decomposition.FastICA.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_components=None</em>, <em>algorithm='parallel'</em>, <em>whiten=True</em>, <em>fun='logcosh'</em>, <em>fun_prime=''</em>, <em>fun_args=None</em>, <em>max_iter=200</em>, <em>tol=0.0001</em>, <em>w_init=None</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.FastICA.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_components=None</em>, <em>algorithm='parallel'</em>, <em>whiten=True</em>, <em>fun='logcosh'</em>, <em>fun_args=None</em>, <em>max_iter=200</em>, <em>tol=0.0001</em>, <em>w_init=None</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.FastICA.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -388,7 +382,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.decomposition.FastICA.txt"
@@ -403,7 +397,7 @@ component of a nested object.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.decomposition.NMF.html">
+      <a href="sklearn.decomposition.TruncatedSVD.html">
         Next
       </a>
     </div>

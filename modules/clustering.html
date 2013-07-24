@@ -439,7 +439,7 @@ is given.</p>
 </div>
 <p>Affinity Propagation can be interesting as it chooses the number of
 clusters based on the data provided. For this purpose, the two important
-parameters are the <cite>preference</cite>, which controls how many examplars are
+parameters are the <cite>preference</cite>, which controls how many exemplars are
 used, and the <cite>damping</cite> factor.</p>
 <p>The main drawback of Affinity Propagation is its complexity. The
 algorithm has a time complexity of the order <img class="math" src="../_images/math/233744a49e1314cf5d4070e71860d46320ac5574.png" alt="O(N^2 T)"/>, where <cite>N</cite>
@@ -541,7 +541,7 @@ to split the image of lena in regions.</li>
 <h3>4.3.5.1. Different label assignment strategies<a class="headerlink" href="#different-label-assignment-strategies" title="Permalink to this headline">¶</a></h3>
 <p>Different label assignment strategies can be used, corresponding to the
 <cite>assign_labels</cite> parameter of <a class="reference internal" href="generated/sklearn.cluster.SpectralClustering.html#sklearn.cluster.SpectralClustering" title="sklearn.cluster.SpectralClustering"><tt class="xref py py-class docutils literal"><span class="pre">SpectralClustering</span></tt></a>.
-The <cite>kmeans</cite> strategie can match finer details of the data, but it can be
+The <cite>kmeans</cite> strategy can match finer details of the data, but it can be
 more unstable. In particular, unless you control the <cite>random_state</cite>, it
 may not be reproducible from run-to-run, as it depends on a random
 initialization. On the other hand, the <cite>discretize</cite> strategy is 100%
@@ -640,15 +640,16 @@ separated by areas of low density. Due to this rather generic view, clusters
 found by DBSCAN can be any shape, as opposed to k-means which assumes that
 clusters are convex shaped. The central component to the DBSCAN is the concept
 of <em>core samples</em>, which are samples that are in areas of high density. A
-cluster is therefore a set of core samples, each highly similar to each other
-and a set of non-core samples that are similar to a core sample (but are not
+cluster is therefore a set of core samples, each close to each other
+(measured by some distance measure)
+and a set of non-core samples that are close to a core sample (but are not
 themselves core samples). There are two parameters to the algorithm,
-<cite>min_points</cite> and <cite>eps</cite>, which define formally what we mean when we say <em>dense</em>.
-A higher <cite>min_points</cite> or lower <cite>eps</cite> indicate higher density necessary to form
+<cite>min_samples</cite> and <cite>eps</cite>, which define formally what we mean when we say <em>dense</em>.
+A higher <cite>min_samples</cite> or lower <cite>eps</cite> indicate higher density necessary to form
 a cluster.</p>
 <p>More formally, we define a core sample as being a sample in the dataset such
-that there exists <cite>min_samples</cite> other samples with a similarity higher than
-<cite>eps</cite> to it, which are defined as <em>neighbors</em> of the core sample. This tells
+that there exist <cite>min_samples</cite> other samples within a distance of
+<cite>eps</cite>, which are defined as <em>neighbors</em> of the core sample. This tells
 us that the core sample is in a dense area of the vector space. A cluster
 is a set of core samples, that can be built by recursively by taking a core
 sample, finding all of its neighbors that are core samples, finding all of
@@ -658,15 +659,15 @@ in the cluster but are not themselves core samples. Intuitively, these samples
 are on the fringes of a cluster.</p>
 <p>Any core sample is part of a cluster, by definition. Further, any cluster has
 at least <cite>min_samples</cite> points in it, following the definition of a core
-sample. For any sample that is not a core sample, and does not have a
-similarity higher than <cite>eps</cite> to a core sample, it is considered an outlier by
+sample. For any sample that is not a core sample, and does have a
+distance higher than <cite>eps</cite> to any core sample, it is considered an outlier by
 the algorithm.</p>
 <p>The algorithm is non-deterministic, however the core samples themselves will
 always belong to the same clusters (although the labels themselves may be
 different). The non-determinism comes from deciding on which cluster a
-non-core sample belongs to. A non-core sample can be have a similarity higher
+non-core sample belongs to. A non-core sample can have a distance lower
 than <cite>eps</cite> to two core samples in different classes. Following from the
-triangular inequality, those two core samples would be less similar than
+triangular inequality, those two core samples would be more distant than
 <cite>eps</cite> from each other &#8211; else they would be in the same class. The non-core
 sample is simply assigned to which ever cluster is generated first, where
 the order is determined randomly within the code. Other than the ordering of,
@@ -941,22 +942,20 @@ Index.</li>
 </div>
 <div class="section" id="id14">
 <h4>4.3.8.3.4. Mathematical formulation<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
-<p>Assume two label assignments (of the same data), <img class="math" src="../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U"/> with <img class="math" src="../_images/math/eff43e84f8a3bcf7b6965f0a3248bc4d3a9d0cd4.png" alt="R"/>
-classes and <img class="math" src="../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/> with <img class="math" src="../_images/math/c3355896da590fc491a10150a50416687626d7cc.png" alt="C"/> classes. The entropy of either is the
-amount of uncertaintly for an array, and can be calculated as:</p>
+<p>Assume two label assignments (of the same N objects), <img class="math" src="../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U"/> and <img class="math" src="../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/>.
+Their entropy is the amount of uncertainty for a partition set, defined by:</p>
 <div class="math">
-<p><img src="../_images/math/12ad96d0cc71cf45fd0b7aa9e96e1e8a1d722f66.png" alt="H(U) = \sum_{i=1}^{|R|}P(i)\log(P(i))"/></p>
-</div><p>Where P(i) is the number of instances in U that are in class <img class="math" src="../_images/math/1ef7ab23d6fc7d336379d457f66aa6ed57d72ec9.png" alt="R_i"/>.
-Likewise, for <img class="math" src="../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/>:</p>
+<p><img src="../_images/math/424540d5fc2f862c62aa236c5908c4c9f0ab6e34.png" alt="H(U) = \sum_{i=1}^{|U|}P(i)\log(P(i))"/></p>
+</div><p>where <img class="math" src="../_images/math/b0ca48026433847d7223830533a412ec40e06853.png" alt="P(i) = |U_i| / N"/> is the probability that an object picked at
+random from <img class="math" src="../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U"/> falls into class <img class="math" src="../_images/math/fb8df2d00f692a5a5ee3e592916d04a5a3e1060b.png" alt="U_i"/>. Likewise for <img class="math" src="../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/>:</p>
 <div class="math">
-<p><img src="../_images/math/3fab94a3b4ad30aabb9dff4957f1c32bf9ed014c.png" alt="H(V) = \sum_{j=1}^{|C|}P'(j)\log(P'(j))"/></p>
-</div><p>Where P&#8217;(j) is the number of instances in V that are in class <img class="math" src="../_images/math/93655c05b798b5badfb3dceb08d20094ea4b77ac.png" alt="C_j"/>.</p>
-<p>The mutual information between <img class="math" src="../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U"/> and <img class="math" src="../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/> is
-calculated by:</p>
+<p><img src="../_images/math/47c3f7d77c188974b21c112a8de850fdeb1ff712.png" alt="H(V) = \sum_{j=1}^{|V|}P'(j)\log(P'(j))"/></p>
+</div><p>With <img class="math" src="../_images/math/c2317f66dbe391d6366c63c27e0eaecfbc0fc449.png" alt="P'(j) = |V_j| / N"/>. The mutual information (MI) between <img class="math" src="../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U"/>
+and <img class="math" src="../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/> is calculated by:</p>
 <div class="math">
-<p><img src="../_images/math/9da4f138a05800c703a1a469dc6c0549fe0d04ad.png" alt="\text{MI}(U, V) = \sum_{i=1}^{|R|}\sum_{j=1}^{|C|}P(i, j)\log\left(\frac{P(i,j)}{P(i)P'(j)}\right)"/></p>
-</div><p>Where P(i, j) is the number of instances with label <img class="math" src="../_images/math/1ef7ab23d6fc7d336379d457f66aa6ed57d72ec9.png" alt="R_i"/>
-and also with label <img class="math" src="../_images/math/93655c05b798b5badfb3dceb08d20094ea4b77ac.png" alt="C_j"/>.</p>
+<p><img src="../_images/math/6d355123a517fe0ab101918ab3fe8b03ae683b2b.png" alt="\text{MI}(U, V) = \sum_{i=1}^{|U|}\sum_{j=1}^{|V|}P(i, j)\log\left(\frac{P(i,j)}{P(i)P'(j)}\right)"/></p>
+</div><p>where <img class="math" src="../_images/math/ce8dc5b0e25130c16f0536216e639cd878badd5f.png" alt="P(i, j) = |U_i \cap V_j| / N"/> is the probability that an object
+picked at random falls into both classes <img class="math" src="../_images/math/fb8df2d00f692a5a5ee3e592916d04a5a3e1060b.png" alt="U_i"/> and <img class="math" src="../_images/math/6fbba8e6f8bc75af045750f417c9000c07feb8dc.png" alt="V_j"/>.</p>
 <p>The normalized mutual information is defined as</p>
 <div class="math">
 <p><img src="../_images/math/5f35587580d883aea1f892a5449db879c326c497.png" alt="\text{NMI}(U, V) = \frac{\text{MI}(U, V)}{\sqrt{H(U)H(V)}}"/></p>
@@ -966,10 +965,10 @@ adjusted for chance and will tend to increase as the number of different labels
 between the label assignments.</p>
 <p>The expected value for the mutual information can be calculated using the
 following equation, from Vinh, Epps, and Bailey, (2009). In this equation,
-<img class="math" src="../_images/math/412787c048e28774dc63fc27db42dc52ca858de7.png" alt="a_i"/> is the number of instances with label <img class="math" src="../_images/math/fb8df2d00f692a5a5ee3e592916d04a5a3e1060b.png" alt="U_i"/> and
-<img class="math" src="../_images/math/dfbbf3e10280b5771976f3342b10181e4b31d4fd.png" alt="b_j"/> is the number of instances with label <img class="math" src="../_images/math/6fbba8e6f8bc75af045750f417c9000c07feb8dc.png" alt="V_j"/>.</p>
+<img class="math" src="../_images/math/eeb173b280af1a85871f8f0c0ffc0aa3dd3e18ca.png" alt="a_i = |U_i|"/> (the number of elements in <img class="math" src="../_images/math/fb8df2d00f692a5a5ee3e592916d04a5a3e1060b.png" alt="U_i"/>) and
+<img class="math" src="../_images/math/f05b8c14c9772aa1d38ce611da94114c47e4572d.png" alt="b_j = |V_j|"/> (the number of elements in <img class="math" src="../_images/math/6fbba8e6f8bc75af045750f417c9000c07feb8dc.png" alt="V_j"/>).</p>
 <div class="math">
-<p><img src="../_images/math/783a9f8d240ff144cccb708c27176cdfb21359d5.png" alt="E[\text{MI}(U,V)]=\sum_{i=1}^R \sum_{j=1}^C \sum_{n_{ij}=(a_i+b_j-N)^+
+<p><img src="../_images/math/a2b6760e3538878467adc1da0f03e28bd67c4a85.png" alt="E[\text{MI}(U,V)]=\sum_{i=1}^|U| \sum_{j=1}^|V| \sum_{n_{ij}=(a_i+b_j-N)^+
 }^{\min(a_i, b_j)} \frac{n_{ij}}{N}\log \left( \frac{ N.n_{ij}}{a_i b_j}\right)
 \frac{a_i!b_j!(N-a_i)!(N-b_j)!}{N!n_{ij}!(a_i-n_{ij})!(b_j-n_{ij})!
 (N-a_i-b_j+n_{ij})!}"/></p>
@@ -1033,14 +1032,14 @@ cluster.</li>
 </div>
 <p>The V-measure is actually equivalent to the mutual information (NMI)
 discussed above normalized by the sum of the label entropies <a class="reference internal" href="#b2011">[B2011]</a>.</p>
-<p>Homogeneity, completensess and V-measure can be computed at once using
+<p>Homogeneity, completeness and V-measure can be computed at once using
 <a class="reference internal" href="generated/sklearn.metrics.homogeneity_completeness_v_measure.html#sklearn.metrics.homogeneity_completeness_v_measure" title="sklearn.metrics.homogeneity_completeness_v_measure"><tt class="xref py py-func docutils literal"><span class="pre">homogeneity_completeness_v_measure</span></tt></a> as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">homogeneity_completeness_v_measure</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
 <span class="gp">... </span>                                                     
 <span class="go">(0.66..., 0.42..., 0.51...)</span>
 </pre></div>
 </div>
-<p>The following clustering assignment is slighlty better, since it is
+<p>The following clustering assignment is slightly better, since it is
 homogeneous but not complete:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">labels_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">homogeneity_completeness_v_measure</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
@@ -1065,7 +1064,7 @@ the <strong>agreement</strong> of two independent assignments on the same datase
 <li><strong>Bounded scores</strong>: 0.0 is as bad as it can be, 1.0 is a perfect score</li>
 <li>Intuitive interpretation: clustering with bad V-measure can be
 <strong>qualitatively analyzed in terms of homogeneity and completeness</strong>
-to better feel what &#8216;kind&#8217; of mistakes is done by the assigmenent.</li>
+to better feel what &#8216;kind&#8217; of mistakes is done by the assignment.</li>
 <li><strong>No assumption is made on the cluster structure</strong>: can be used
 to compare clustering algorithms such as k-means which assumes isotropic
 blob shapes with results of spectral clustering algorithms which can
@@ -1229,7 +1228,7 @@ through DBSCAN.</li>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/clustering.txt"

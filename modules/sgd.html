@@ -243,7 +243,7 @@ for the training samples:</p>
 <p>SGD fits a linear model to the training data. The member <tt class="docutils literal"><span class="pre">coef_</span></tt> holds
 the model parameters:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
-<span class="go">array([[ 9.90090187,  9.90090187]])</span>
+<span class="go">array([[ 9.91080278,  9.91080278]])</span>
 </pre></div>
 </div>
 <p>Member <tt class="docutils literal"><span class="pre">intercept_</span></tt> holds the intercept (aka offset or bias):</p>
@@ -255,7 +255,7 @@ the model parameters:</p>
 hyperplane, is controlled by the parameter <tt class="docutils literal"><span class="pre">fit_intercept</span></tt>.</p>
 <p>To get the signed distance to the hyperplane use <a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier.decision_function" title="sklearn.linear_model.SGDClassifier.decision_function"><tt class="xref py py-meth docutils literal"><span class="pre">SGDClassifier.decision_function</span></tt></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">([[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]])</span>
-<span class="go">array([ 29.61357756])</span>
+<span class="go">array([ 29.65318117])</span>
 </pre></div>
 </div>
 <p>The concrete loss function can be set via the <tt class="docutils literal"><span class="pre">loss</span></tt>
@@ -277,7 +277,7 @@ is used.</p>
 <a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier.predict_proba" title="sklearn.linear_model.SGDClassifier.predict_proba"><tt class="xref py py-meth docutils literal"><span class="pre">SGDClassifier.predict_proba</span></tt></a>, where <cite>C</cite> is the largest class label:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">&quot;log&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
-<span class="go">array([[ 0.00000051,  0.99999949]])</span>
+<span class="go">array([[ 0.0000005,  0.9999995]])</span>
 </pre></div>
 </div>
 <p>The concrete penalty can be set via the <tt class="docutils literal"><span class="pre">penalty</span></tt> parameter.
@@ -306,7 +306,7 @@ the decision surface induced by the three classifiers.</p>
 <div class="figure align-center">
 <a class="reference external image-reference" href="../auto_examples/linear_model/plot_sgd_iris.html"><img alt="../_images/plot_sgd_iris_11.png" src="../_images/plot_sgd_iris_11.png" style="width: 600.0px; height: 450.0px;" /></a>
 </div>
-<p>In the case of multi-class classification <tt class="docutils literal"><span class="pre">coef_</span></tt> is a two-dimensionaly
+<p>In the case of multi-class classification <tt class="docutils literal"><span class="pre">coef_</span></tt> is a two-dimensionally
 array of <tt class="docutils literal"><span class="pre">shape=[n_classes,</span> <span class="pre">n_features]</span></tt> and <tt class="docutils literal"><span class="pre">intercept_</span></tt> is a one
 dimensional array of <tt class="docutils literal"><span class="pre">shape=[n_classes]</span></tt>. The i-th row of <tt class="docutils literal"><span class="pre">coef_</span></tt> holds
 the weight vector of the OVA classifier for the i-th class; classes are
@@ -352,12 +352,6 @@ parameter. <a class="reference internal" href="generated/sklearn.linear_model.SG
 robust regression. The width of the insensitive region has to be
 specified via the parameter <tt class="docutils literal"><span class="pre">epsilon</span></tt>. This parameter depends on the
 scale of the target variables.</p>
-<div class="topic">
-<p class="topic-title first">Examples:</p>
-<ul class="simple">
-<li><em class="xref std std-ref">example_linear_model_plot_sgd_ols.py</em>,</li>
-</ul>
-</div>
 </div>
 <div class="section" id="stochastic-gradient-descent-for-sparse-data">
 <h2>3.3.3. Stochastic Gradient Descent for sparse data<a class="headerlink" href="#stochastic-gradient-descent-for-sparse-data" title="Permalink to this headline">¶</a></h2>
@@ -564,7 +558,7 @@ Y. Tsuruoka, J. Tsujii, S. Ananiadou -  In Proceedings of the AFNLP/ACL &#8216;0
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/sgd.txt"

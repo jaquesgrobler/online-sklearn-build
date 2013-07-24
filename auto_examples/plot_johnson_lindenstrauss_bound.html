@@ -256,16 +256,18 @@ from 56436 down to 10000 while reasonably preserving pairwise distances.</p>
 <div class="highlight-python"><pre>Embedding 500 samples with dim 64 using various random projections
 Projected 500 samples from 64 to 300 in 0.007s
 Random matrix with size: 0.029MB
-Mean distances rate: 0.97 (0.08)
-Projected 500 samples from 64 to 1000 in 0.019s
+Mean distances rate: 0.99 (0.08)
+Projected 500 samples from 64 to 1000 in 0.018s
 Random matrix with size: 0.096MB
-Mean distances rate: 1.01 (0.04)
-Projected 500 samples from 64 to 10000 in 0.183s
-Random matrix with size: 0.962MB
-Mean distances rate: 1.00 (0.02)</pre>
+Mean distances rate: 1.00 (0.05)
+Projected 500 samples from 64 to 10000 in 0.186s
+Random matrix with size: 0.961MB
+Mean distances rate: 1.01 (0.01)</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_johnson_lindenstrauss_bound.py"><tt class="xref download docutils literal"><span class="pre">plot_johnson_lindenstrauss_bound.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
@@ -374,7 +376,7 @@ Mean distances rate: 1.00 (0.02)</pre>
     <span class="c"># as vertical lines / region</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  9.27 seconds</p>
+<p><strong>Total running time of the example:</strong>  10.34 seconds</p>
 </div>
 </div>
 
@@ -387,7 +389,7 @@ Mean distances rate: 1.00 (0.02)</pre>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/auto_examples/plot_johnson_lindenstrauss_bound.txt"

@@ -31,6 +31,7 @@
     <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.13.2. sklearn.isotonic.isotonic_regression" href="sklearn.isotonic.isotonic_regression.html" />
+    <link rel="prev" title="8.12.3. sklearn.hmm.GMMHMM" href="sklearn.hmm.GMMHMM.html" />
 
 
 <script type="text/javascript">
@@ -93,6 +94,23 @@
 	   
 	<!-- rellinks[1:] is an ugly hack to avoid link to module
 	    index  -->
+	<div class="rellink">
+	<a href="sklearn.hmm.GMMHMM.html" title="8.12.3. sklearn.hmm.GMMHMM"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.12.3. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.12.3. sklearn.hmm.GMMHMM
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
 	<div class="rellink">
 	<a href="sklearn.isotonic.isotonic_regression.html" title="8.13.2. sklearn.isotonic.isotonic_regression"
 	    accesskey="N">Next
@@ -216,10 +234,10 @@ Vol. 14, No. 2 (May, 1989), pp. 303-308</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.isotonic.IsotonicRegression.fit" title="sklearn.isotonic.IsotonicRegression.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;weight])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.isotonic.IsotonicRegression.fit" title="sklearn.isotonic.IsotonicRegression.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;sample_weight,&nbsp;weight])</td>
 <td>Fit the model using X, y as training data.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.isotonic.IsotonicRegression.fit_transform" title="sklearn.isotonic.IsotonicRegression.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X,&nbsp;y[,&nbsp;weight])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.isotonic.IsotonicRegression.fit_transform" title="sklearn.isotonic.IsotonicRegression.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X,&nbsp;y[,&nbsp;sample_weight,&nbsp;weight])</td>
 <td>Fit model and transform y by linear interpolation.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.isotonic.IsotonicRegression.get_params" title="sklearn.isotonic.IsotonicRegression.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
@@ -246,7 +264,7 @@ Vol. 14, No. 2 (May, 1989), pp. 303-308</p>
 
 <dl class="method">
 <dt id="sklearn.isotonic.IsotonicRegression.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>weight=None</em><big>)</big><a class="headerlink" href="#sklearn.isotonic.IsotonicRegression.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>sample_weight=None</em>, <em>weight=None</em><big>)</big><a class="headerlink" href="#sklearn.isotonic.IsotonicRegression.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit the model using X, y as training data.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -260,7 +278,7 @@ Vol. 14, No. 2 (May, 1989), pp. 303-308</p>
 <blockquote>
 <div><p>Training target.</p>
 </div></blockquote>
-<p><strong>weight</strong> : array-like, shape=(n_samples,), optional, default: None</p>
+<p><strong>sample_weight</strong> : array-like, shape=(n_samples,), optional, default: None</p>
 <blockquote>
 <div><p>Weights. If set to None, all weights will be set to 1 (equal
 weights).</p>
@@ -282,7 +300,7 @@ new input data.</p>
 
 <dl class="method">
 <dt id="sklearn.isotonic.IsotonicRegression.fit_transform">
-<tt class="descname">fit_transform</tt><big>(</big><em>X</em>, <em>y</em>, <em>weight=None</em><big>)</big><a class="headerlink" href="#sklearn.isotonic.IsotonicRegression.fit_transform" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit_transform</tt><big>(</big><em>X</em>, <em>y</em>, <em>sample_weight=None</em>, <em>weight=None</em><big>)</big><a class="headerlink" href="#sklearn.isotonic.IsotonicRegression.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit model and transform y by linear interpolation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -296,7 +314,7 @@ new input data.</p>
 <blockquote>
 <div><p>Training target.</p>
 </div></blockquote>
-<p><strong>weight</strong> : array-like, shape=(n_samples,), optional, default: None</p>
+<p><strong>sample_weight</strong> : array-like, shape=(n_samples,), optional, default: None</p>
 <blockquote>
 <div><p>Weights. If set to None, all weights will be equal to 1 (equal
 weights).</p>
@@ -447,7 +465,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.isotonic.IsotonicRegression.txt"
@@ -457,8 +475,13 @@ component of a nested object.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="sklearn.isotonic.isotonic_regression.html">
+      <a href="sklearn.hmm.GMMHMM.html">
         Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.isotonic.isotonic_regression.html">
+        Next
       </a>
     </div>
     

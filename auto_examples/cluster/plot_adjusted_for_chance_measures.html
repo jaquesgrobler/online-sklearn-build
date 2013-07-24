@@ -171,7 +171,7 @@
 number of samples on various clustering performance evaluation metrics.</p>
 <p>Non-adjusted measures such as the V-Measure show a dependency between
 the number of clusters and the number of samples: the mean V-Measure
-of random labeling increases signicantly as the number of clusters is
+of random labeling increases significantly as the number of clusters is
 closer to the total number of samples used to compute the measure.</p>
 <p>Adjusted for chance measure such as ARI display some random variations
 centered around a mean score of 0.0 for any number of samples and
@@ -187,21 +187,21 @@ value of k on various overlapping sub-samples of the dataset.</p>
 </ul>
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>Computing adjusted_rand_score for 10 values of n_clusters and n_samples=100
-done in 0.163s
+done in 0.171s
 Computing v_measure_score for 10 values of n_clusters and n_samples=100
-done in 0.030s
+done in 0.029s
 Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=100
-done in 0.742s
+done in 0.801s
 Computing mutual_info_score for 10 values of n_clusters and n_samples=100
-done in 0.020s
+done in 0.019s
 Computing adjusted_rand_score for 10 values of n_clusters and n_samples=1000
-done in 0.180s
+done in 0.192s
 Computing v_measure_score for 10 values of n_clusters and n_samples=1000
-done in 0.056s
+done in 0.057s
 Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=1000
-done in 0.385s
+done in 0.404s
 Computing mutual_info_score for 10 values of n_clusters and n_samples=1000
-done in 0.036s</pre>
+done in 0.035s</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_adjusted_for_chance_measures.py"><tt class="xref download docutils literal"><span class="pre">plot_adjusted_for_chance_measures.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
@@ -307,7 +307,7 @@ done in 0.036s</pre>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  1.72 seconds</p>
+<p><strong>Total running time of the example:</strong>  1.85 seconds</p>
 </div>
 
 
@@ -319,7 +319,7 @@ done in 0.036s</pre>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/auto_examples/cluster/plot_adjusted_for_chance_measures.txt"

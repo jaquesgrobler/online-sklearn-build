@@ -169,7 +169,7 @@
 <h1>8.30.2. sklearn.tree.DecisionTreeRegressor<a class="headerlink" href="#sklearn-tree-decisiontreeregressor" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.tree.DecisionTreeRegressor">
-<em class="property">class </em><tt class="descclassname">sklearn.tree.</tt><tt class="descname">DecisionTreeRegressor</tt><big>(</big><em>criterion='mse'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features=None</em>, <em>compute_importances=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.tree.DecisionTreeRegressor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.tree.</tt><tt class="descname">DecisionTreeRegressor</tt><big>(</big><em>criterion='mse'</em>, <em>splitter='best'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>max_features=None</em>, <em>random_state=None</em>, <em>min_density=None</em>, <em>compute_importances=None</em><big>)</big><a class="headerlink" href="#sklearn.tree.DecisionTreeRegressor" title="Permalink to this definition">¶</a></dt>
 <dd><p>A tree regressor.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -211,17 +211,6 @@ min_samples_split samples.</p>
 <blockquote>
 <div><p>The minimum number of samples required to be at a leaf node.</p>
 </div></blockquote>
-<p><strong>min_density</strong> : float, optional (default=0.1)</p>
-<blockquote>
-<div><p>This parameter controls a trade-off in an optimization heuristic. It
-controls the minimum density of the <cite>sample_mask</cite> (i.e. the
-fraction of samples in the mask). If the density falls below this
-threshold the mask is recomputed and the input data is packed
-which results in data copying.  If <cite>min_density</cite> equals to one,
-the partitions are always represented as copies of the original
-data. Otherwise, partitions are represented as bit masks (aka
-sample masks).</p>
-</div></blockquote>
 <p><strong>random_state</strong> : int, RandomState instance or None, optional (default=None)</p>
 <blockquote class="last">
 <div><p>If int, random_state is the seed used by the random number generator;
@@ -238,30 +227,30 @@ by <cite>np.random</cite>.</p>
 <p class="last"><a class="reference internal" href="sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="sklearn.tree.DecisionTreeClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">DecisionTreeClassifier</span></tt></a></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r148" rules="none">
+<table class="docutils citation" frame="void" id="r166" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R148]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Decision_tree_learning">http://en.wikipedia.org/wiki/Decision_tree_learning</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[R166]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Decision_tree_learning">http://en.wikipedia.org/wiki/Decision_tree_learning</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r149" rules="none">
+<table class="docutils citation" frame="void" id="r167" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R149]</a></td><td>L. Breiman, J. Friedman, R. Olshen, and C. Stone, &#8220;Classification
+<tr><td class="label"><a class="fn-backref" href="#id2">[R167]</a></td><td>L. Breiman, J. Friedman, R. Olshen, and C. Stone, &#8220;Classification
 and Regression Trees&#8221;, Wadsworth, Belmont, CA, 1984.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r150" rules="none">
+<table class="docutils citation" frame="void" id="r168" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R150]</a></td><td>T. Hastie, R. Tibshirani and J. Friedman. &#8220;Elements of Statistical
+<tr><td class="label"><a class="fn-backref" href="#id3">[R168]</a></td><td>T. Hastie, R. Tibshirani and J. Friedman. &#8220;Elements of Statistical
 Learning&#8221;, Springer, 2009.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r151" rules="none">
+<table class="docutils citation" frame="void" id="r169" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R151]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> L. Breiman, and A. Cutler, &#8220;Random Forests&#8221;,
+<tr><td class="label">[R169]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> L. Breiman, and A. Cutler, &#8220;Random Forests&#8221;,
 <a class="reference external" href="http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm">http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm</a></td></tr>
 </tbody>
 </table>
@@ -300,8 +289,8 @@ Learning&#8221;, Springer, 2009.</td></tr>
 <td>The feature importances.
 The higher, the more important the feature.
 The importance of a feature is computed as the
-(normalized)total reduction of the criterion brought
-by that feature. It is also known as the Gini importance <a class="reference internal" href="#r151">[R151]</a>.</td>
+(normalized) total reduction of the criterion brought
+by that feature. It is also known as the Gini importance <a class="reference internal" href="#r169">[R169]</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -337,7 +326,7 @@ by that feature. It is also known as the Gini importance <a class="reference int
 </table>
 <dl class="method">
 <dt id="sklearn.tree.DecisionTreeRegressor.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>criterion='mse'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>min_density=0.1</em>, <em>max_features=None</em>, <em>compute_importances=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.tree.DecisionTreeRegressor.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>criterion='mse'</em>, <em>splitter='best'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>max_features=None</em>, <em>random_state=None</em>, <em>min_density=None</em>, <em>compute_importances=None</em><big>)</big><a class="headerlink" href="#sklearn.tree.DecisionTreeRegressor.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -346,7 +335,7 @@ by that feature. It is also known as the Gini importance <a class="reference int
 <dd><p>Return the feature importances.</p>
 <p>The importance of a feature is computed as the (normalized) total
 reduction of the criterion brought by that feature.
-It is also known as the Gini importance <a href="#id7"><span class="problematic" id="id8"><span id="id6"></span>[4]_</span></a>.</p>
+It is also known as the Gini importance.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -367,8 +356,8 @@ It is also known as the Gini importance <a href="#id7"><span class="problematic"
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
 <blockquote>
-<div><p>The training input samples. Use <tt class="docutils literal"><span class="pre">dtype=np.float32</span></tt>
-and <tt class="docutils literal"><span class="pre">order='F'</span></tt> for maximum efficiency.</p>
+<div><p>The training input samples. Use <tt class="docutils literal"><span class="pre">dtype=np.float32</span></tt> for maximum
+efficiency.</p>
 </div></blockquote>
 <p><strong>y</strong> : array-like, shape = [n_samples] or [n_samples, n_outputs]</p>
 <blockquote>
@@ -376,25 +365,6 @@ and <tt class="docutils literal"><span class="pre">order='F'</span></tt> for max
 classification, real numbers in regression).
 Use <tt class="docutils literal"><span class="pre">dtype=np.float64</span></tt> and <tt class="docutils literal"><span class="pre">order='C'</span></tt> for maximum
 efficiency.</p>
-</div></blockquote>
-<p><strong>sample_mask</strong> : array-like, shape = [n_samples], dtype = bool or None</p>
-<blockquote>
-<div><p>A bit mask that encodes the rows of <tt class="docutils literal"><span class="pre">X</span></tt> that should be
-used to build the decision tree. It can be used for bagging
-without the need to create of copy of <tt class="docutils literal"><span class="pre">X</span></tt>.
-If None a mask will be created that includes all samples.</p>
-</div></blockquote>
-<p><strong>X_argsorted</strong> : array-like, shape = [n_samples, n_features] or None</p>
-<blockquote>
-<div><p>Each column of <tt class="docutils literal"><span class="pre">X_argsorted</span></tt> holds the row indices of <tt class="docutils literal"><span class="pre">X</span></tt>
-sorted according to the value of the corresponding feature
-in ascending order.
-I.e. <tt class="docutils literal"><span class="pre">X[X_argsorted[i,</span> <span class="pre">k],</span> <span class="pre">k]</span> <span class="pre">&lt;=</span> <span class="pre">X[X_argsorted[j,</span> <span class="pre">k],</span> <span class="pre">k]</span></tt>
-for each j &gt; i.
-If None, <tt class="docutils literal"><span class="pre">X_argsorted</span></tt> is computed internally.
-The argument is supported to enable multiple decision trees
-to share the data structure and to avoid re-computation in
-tree ensembles. For maximum efficiency use dtype np.int32.</p>
 </div></blockquote>
 <p><strong>sample_weight</strong> : array-like, shape = [n_samples] or None</p>
 <blockquote>
@@ -594,7 +564,7 @@ available, the object attribute <tt class="docutils literal"><span class="pre">t
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.tree.DecisionTreeRegressor.txt"

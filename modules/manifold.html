@@ -215,7 +215,7 @@
 <div class="figure align-center">
 <a class="reference external image-reference" href="../auto_examples/manifold/plot_compare_methods.html"><img alt="../_images/plot_compare_methods_11.png" src="../_images/plot_compare_methods_11.png" style="width: 900.0px; height: 480.0px;" /></a>
 </div>
-<p>Manifold learning is an approach to nonlinear dimensionality reduction.
+<p>Manifold learning is an approach to non-linear dimensionality reduction.
 Algorithms for this task are based on the idea that the dimensionality of
 many data sets is only artificially high.</p>
 <div class="section" id="introduction">
@@ -238,13 +238,13 @@ dimensionality reduction frameworks have been designed, such as Principal
 Component Analysis (PCA), Independent Component Analysis, Linear
 Discriminant Analysis, and others.  These algorithms define specific
 rubrics to choose an &#8220;interesting&#8221; linear projection of the data.
-These methods can be powerful, but often miss important nonlinear
+These methods can be powerful, but often miss important non-linear
 structure in the data.</p>
 <p class="centered">
 <strong><a class="reference external image-reference" href="../auto_examples/manifold/plot_lle_digits.html"><img alt="PCA_img" src="../_images/plot_lle_digits_31.png" style="width: 400.0px; height: 300.0px;" /></a>
  <a class="reference external image-reference" href="../auto_examples/manifold/plot_lle_digits.html"><img alt="LDA_img" src="../_images/plot_lle_digits_41.png" style="width: 400.0px; height: 300.0px;" /></a>
 </strong></p><p>Manifold Learning can be thought of as an attempt to generalize linear
-frameworks like PCA to be sensitive to nonlinear structure in data. Though
+frameworks like PCA to be sensitive to non-linear structure in data. Though
 supervised variants exist, the typical manifold learning problem is
 unsupervised: it learns the high-dimensional structure of the data
 from the data itself, without the use of predetermined classifications.</p>
@@ -315,7 +315,7 @@ Tenenbaum, J.B.; De Silva, V.; &amp; Langford, J.C.  Science 290 (5500)</li>
 <p>Locally linear embedding (LLE) seeks a lower-dimensional projection of the data
 which preserves distances within local neighborhoods.  It can be thought
 of as a series of local Principal Component Analyses which are globally
-compared to find the best nonlinear embedding.</p>
+compared to find the best non-linear embedding.</p>
 <p>Locally linear embedding can be performed with function
 <a class="reference internal" href="generated/sklearn.manifold.locally_linear_embedding.html#sklearn.manifold.locally_linear_embedding" title="sklearn.manifold.locally_linear_embedding"><tt class="xref py py-func docutils literal"><span class="pre">locally_linear_embedding</span></tt></a> or its object-oriented counterpart
 <a class="reference internal" href="generated/sklearn.manifold.LocallyLinearEmbedding.html#sklearn.manifold.LocallyLinearEmbedding" title="sklearn.manifold.LocallyLinearEmbedding"><tt class="xref py py-class docutils literal"><span class="pre">LocallyLinearEmbedding</span></tt></a>.</p>
@@ -357,7 +357,7 @@ of neighbors is greater than the number of input dimensions, the matrix
 defining each local neighborhood is rank-deficient.  To address this, standard
 LLE applies an arbitrary regularization parameter <img class="math" src="../_images/math/b55ca7a0aa88ab7d58f4fc035317fdac39b17861.png" alt="r"/>, which is chosen
 relative to the trace of the local weight matrix.  Though it can be shown
-formally that as <img class="math" src="../_images/math/de5569cd3c9b702d8eabe4af67b266bbb657572e.png" alt="r \to 0"/>, the solution coverges to the desired
+formally that as <img class="math" src="../_images/math/de5569cd3c9b702d8eabe4af67b266bbb657572e.png" alt="r \to 0"/>, the solution converges to the desired
 embedding, there is no guarantee that the optimal solution will be found
 for <img class="math" src="../_images/math/22ff7db3e755a8164f2344e0d3d84ea3a0fe93b3.png" alt="r &gt; 0"/>.  This problem manifests itself in embeddings which distort
 the underlying geometry of the manifold.</p>
@@ -447,7 +447,7 @@ Donoho, D. &amp; Grimes, C. Proc Natl Acad Sci USA. 100:5591 (2003)</li>
 <div class="section" id="spectral-embedding">
 <span id="id4"></span><h2>4.2.6. Spectral Embedding<a class="headerlink" href="#spectral-embedding" title="Permalink to this headline">¶</a></h2>
 <p>Spectral Embedding (also known as Laplacian Eigenmaps) is one method
-to calculate nonlinear embedding. It finds a low dimensional representation
+to calculate non-linear embedding. It finds a low dimensional representation
 of the data using a spectral decomposition of the graph Laplacian.
 The graph generated can be considered as a discrete approximation of the
 low dimensional manifold in the high dimensional space. Minimization of a
@@ -540,7 +540,7 @@ objects, interaction frequencies of molecules, or trade indices between
 countries.</p>
 <p>There exists two types of MDS algorithm: metric and non metric. In the
 scikit-learn, the class <a class="reference internal" href="generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS" title="sklearn.manifold.MDS"><tt class="xref py py-class docutils literal"><span class="pre">MDS</span></tt></a> implements both. In Metric MDS, the input
-simiarity matrix arises from a metric (and thus respects the triangular
+similarity matrix arises from a metric (and thus respects the triangular
 inequality), the distances between output two points are then set to be as
 close as possible to the similarity or dissimilarity data. In the non metric
 vision, the algorithms will try to preserve the order of the distances, and
@@ -629,7 +629,7 @@ dimensionality reduction.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/manifold.txt"

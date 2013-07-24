@@ -204,6 +204,15 @@ True by default.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#sklearn.feature_extraction.DictVectorizer" title="sklearn.feature_extraction.DictVectorizer"><tt class="xref py py-obj docutils literal"><span class="pre">DictVectorizer</span></tt></a></dt>
+<dd>performs vectorization in a similar as this class, but using a hash table instead of only a hash function.</dd>
+<dt><a class="reference internal" href="sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder" title="sklearn.preprocessing.OneHotEncoder"><tt class="xref py py-obj docutils literal"><span class="pre">sklearn.preprocessing.OneHotEncoder</span></tt></a></dt>
+<dd>handles nominal/categorical features encoded as columns of integers.</dd>
+</dl>
+</div>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction</span> <span class="kn">import</span> <span class="n">DictVectorizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">DictVectorizer</span><span class="p">(</span><span class="n">sparse</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
@@ -305,6 +314,9 @@ objects) to feature values (strings or convertible to dtype).</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>Because this method requires two passes over X, it materializes X in
+memory.</p>
 </dd></dl>
 
 <dl class="method">
@@ -456,7 +468,7 @@ objects) to feature values (strings or convertible to dtype).</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.feature_extraction.DictVectorizer.txt"

@@ -338,8 +338,8 @@ tests of <a class="reference internal" href="../modules/classes.html#module-skle
 (Back-ported from scipy v0.9)  Used in <tt class="docutils literal"><span class="pre">sklearn.linear_model.omp</span></tt>,
 independent back-ports in <tt class="docutils literal"><span class="pre">sklearn.mixture.gmm</span></tt> and
 <a class="reference internal" href="../modules/classes.html#module-sklearn.gaussian_process" title="sklearn.gaussian_process"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.gaussian_process</span></tt></a>.</li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">sparsetools.cs_graph_components</span></tt>
-(backported from <tt class="docutils literal"><span class="pre">scipy.sparse.cs_graph_components</span></tt> in scipy 0.9).
+<li><tt class="xref py py-func docutils literal"><span class="pre">sparsetools.connected_components</span></tt>
+(backported from <tt class="docutils literal"><span class="pre">scipy.sparse.connected_components</span></tt> in scipy 0.12).
 Used in <tt class="docutils literal"><span class="pre">sklearn.cluster.hierarchical</span></tt>, as well as in tests for
 <a class="reference internal" href="../modules/classes.html#module-sklearn.feature_extraction" title="sklearn.feature_extraction"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.feature_extraction</span></tt></a>.</li>
 </ul>
@@ -421,11 +421,11 @@ function is suitable for implementing lookup tables, Bloom filters,
 Count Min Sketch, feature hashing and implicitly defined sparse
 random projections:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">murmurhash3_32</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">murmurhash3_32</span><span class="p">(</span><span class="s">&quot;some feature&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="go">-384616559</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">murmurhash3_32</span><span class="p">(</span><span class="s">&quot;some feature&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">384616559</span>
+<span class="go">True</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">murmurhash3_32</span><span class="p">(</span><span class="s">&quot;some feature&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="go">3910350737L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">murmurhash3_32</span><span class="p">(</span><span class="s">&quot;some feature&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3910350737</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">sklearn.utils.murmurhash</span></tt> module can also be &#8220;cimported&#8221; from
@@ -453,7 +453,7 @@ Used in <tt class="docutils literal"><span class="pre">sklearn.covariance.graph_
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/developers/utilities.txt"

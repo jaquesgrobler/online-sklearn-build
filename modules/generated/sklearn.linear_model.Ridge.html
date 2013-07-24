@@ -180,12 +180,14 @@ This estimator has built-in support for multi-variate regression
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>alpha</strong> : float</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>alpha</strong> : {float, array-like}</p>
 <blockquote>
-<div><p>Small positive values of alpha improve the conditioning of the problem
+<div><p>shape = [n_targets]
+Small positive values of alpha improve the conditioning of the problem
 and reduce the variance of the estimates.  Alpha corresponds to
 <tt class="docutils literal"><span class="pre">(2*C)^-1</span></tt> in other linear models such as LogisticRegression or
-LinearSVC.</p>
+LinearSVC. If an array is passed, penalties are assumed to be specific
+to the targets. Hence they must correspond in number.</p>
 </div></blockquote>
 <p><strong>copy_X</strong> : boolean, optional, default True</p>
 <blockquote>
@@ -206,11 +208,14 @@ The default value is determined by scipy.sparse.linalg.</p>
 <blockquote>
 <div><p>If True, the regressors X will be normalized before regression.</p>
 </div></blockquote>
-<p><strong>solver</strong> : {&#8216;auto&#8217;, &#8216;dense_cholesky&#8217;, &#8216;lsqr&#8217;, &#8216;sparse_cg&#8217;}</p>
+<p><strong>solver</strong> : {&#8216;auto&#8217;, &#8216;svd&#8217;, &#8216;dense_cholesky&#8217;, &#8216;lsqr&#8217;, &#8216;sparse_cg&#8217;}</p>
 <blockquote>
 <div><p>Solver to use in the computational routines:</p>
 <ul class="simple">
 <li>&#8216;auto&#8217; chooses the solver automatically based on the type of data.</li>
+<li>&#8216;svd&#8217; uses a Singular Value Decomposition of X to compute the Ridge
+coefficients. More stable for singular matrices than
+&#8216;dense_cholesky&#8217;.</li>
 <li>&#8216;dense_cholesky&#8217; uses the standard scipy.linalg.solve function to
 obtain a closed-form solution.</li>
 <li>&#8216;sparse_cg&#8217; uses the conjugate gradient solver as found in
@@ -447,7 +452,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.linear_model.Ridge.txt"

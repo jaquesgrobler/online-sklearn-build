@@ -169,7 +169,7 @@
 <h1>8.1.1.5. sklearn.cluster.MeanShift<a class="headerlink" href="#sklearn-cluster-meanshift" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.cluster.MeanShift">
-<em class="property">class </em><tt class="descclassname">sklearn.cluster.</tt><tt class="descname">MeanShift</tt><big>(</big><em>bandwidth=None</em>, <em>seeds=None</em>, <em>bin_seeding=False</em>, <em>cluster_all=True</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MeanShift" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.cluster.</tt><tt class="descname">MeanShift</tt><big>(</big><em>bandwidth=None</em>, <em>seeds=None</em>, <em>bin_seeding=False</em>, <em>min_bin_freq=1</em>, <em>cluster_all=True</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MeanShift" title="Permalink to this definition">¶</a></dt>
 <dd><p>MeanShift clustering</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -188,6 +188,11 @@ the seeds are calculated by clustering.get_bin_seeds
 with bandwidth as the grid size and default values for
 other parameters.</p>
 </div></blockquote>
+<p><strong>min_bin_freq</strong> : int, optional</p>
+<blockquote>
+<div><p>To speed up the algorithm, accept only those bins with at least
+min_bin_freq points as seeds. If not defined, set to 1.</p>
+</div></blockquote>
 <p><strong>cluster_all</strong> : boolean, default True</p>
 <blockquote class="last">
 <div><p>If true, then all points are clustered, even those orphans that are
@@ -205,7 +210,7 @@ a Ball Tree to look up members of each kernel, the complexity will is
 to O(T*n*log(n)) in lower dimensions, with n the number of samples
 and T the number of points. In higher dimensions the complexity will
 tend towards O(T*n^2).</p>
-<p>Scalability can be boosted by using fewer seeds, for examply by using
+<p>Scalability can be boosted by using fewer seeds, for example by using
 a higher value of min_bin_freq in the get_bin_seeds function.</p>
 <p>Note that the estimate_bandwidth function is much less scalable than
 the mean shift algorithm and will be the bottleneck if it is used.</p>
@@ -239,7 +244,7 @@ Machine Intelligence. 2002. pp. 603-619.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.MeanShift.fit" title="sklearn.cluster.MeanShift.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X)</td>
-<td>Compute MeanShift</td>
+<td>Perform clustering.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.MeanShift.fit_predict" title="sklearn.cluster.MeanShift.fit_predict"><tt class="xref py py-obj docutils literal"><span class="pre">fit_predict</span></tt></a>(X[,&nbsp;y])</td>
 <td>Performs clustering on X and returns cluster labels.</td>
@@ -254,20 +259,20 @@ Machine Intelligence. 2002. pp. 603-619.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.cluster.MeanShift.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>bandwidth=None</em>, <em>seeds=None</em>, <em>bin_seeding=False</em>, <em>cluster_all=True</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MeanShift.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>bandwidth=None</em>, <em>seeds=None</em>, <em>bin_seeding=False</em>, <em>min_bin_freq=1</em>, <em>cluster_all=True</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MeanShift.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="sklearn.cluster.MeanShift.fit">
 <tt class="descname">fit</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MeanShift.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute MeanShift</p>
+<dd><p>Perform clustering.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape=[n_samples, n_features]</p>
 <blockquote class="last">
-<div><p>Input points.</p>
+<div><p>Samples to cluster.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -355,7 +360,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.cluster.MeanShift.txt"

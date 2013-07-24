@@ -162,10 +162,12 @@
 <li><a class="reference internal" href="#sparsity">6.1.3.2. Sparsity</a></li>
 <li><a class="reference internal" href="#common-vectorizer-usage">6.1.3.3. Common Vectorizer usage</a></li>
 <li><a class="reference internal" href="#tfidf-term-weighting">6.1.3.4. Tf–idf term weighting</a></li>
-<li><a class="reference internal" href="#applications-and-examples">6.1.3.5. Applications and examples</a></li>
-<li><a class="reference internal" href="#limitations-of-the-bag-of-words-representation">6.1.3.6. Limitations of the Bag of Words representation</a></li>
-<li><a class="reference internal" href="#vectorizing-a-large-text-corpus-with-the-hashing-trick">6.1.3.7. Vectorizing a large text corpus with the hashing trick</a></li>
-<li><a class="reference internal" href="#customizing-the-vectorizer-classes">6.1.3.8. Customizing the vectorizer classes</a></li>
+<li><a class="reference internal" href="#decoding-text-files">6.1.3.5. Decoding text files</a></li>
+<li><a class="reference internal" href="#applications-and-examples">6.1.3.6. Applications and examples</a></li>
+<li><a class="reference internal" href="#limitations-of-the-bag-of-words-representation">6.1.3.7. Limitations of the Bag of Words representation</a></li>
+<li><a class="reference internal" href="#vectorizing-a-large-text-corpus-with-the-hashing-trick">6.1.3.8. Vectorizing a large text corpus with the hashing trick</a></li>
+<li><a class="reference internal" href="#performing-out-of-core-scaling-with-hashingvectorizer">6.1.3.9. Performing out-of-core scaling with HashingVectorizer</a></li>
+<li><a class="reference internal" href="#customizing-the-vectorizer-classes">6.1.3.10. Customizing the vectorizer classes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#image-feature-extraction">6.1.4. Image feature extraction</a><ul>
@@ -260,8 +262,8 @@ suitable for feeding into a classifier (maybe after being piped into a
 <a class="reference internal" href="generated/sklearn.feature_extraction.text.TfidfTransformer.html#sklearn.feature_extraction.text.TfidfTransformer" title="sklearn.feature_extraction.text.TfidfTransformer"><tt class="xref py py-class docutils literal"><span class="pre">text.TfidfTransformer</span></tt></a> for normalization):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span> <span class="o">=</span> <span class="n">DictVectorizer</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pos_vectorized</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">pos_window</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pos_vectorized</span>                     
-<span class="go">&lt;1x6 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pos_vectorized</span>                
+<span class="go">&lt;1x6 sparse matrix of type &#39;&lt;... &#39;numpy.float64&#39;&gt;&#39;</span>
 <span class="go">    with 6 stored elements in Compressed Sparse Row format&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pos_vectorized</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 <span class="go">array([[ 1.,  1.,  1.,  1.,  1.,  1.]])</span>
@@ -384,7 +386,7 @@ with variable length.</p>
 common ways to extract numerical features from text content, namely:</p>
 <ul class="simple">
 <li><strong>tokenizing</strong> strings and giving an integer id for each possible token,
-for instance by using whitespaces and punctuation as token separators.</li>
+for instance by using white-spaces and punctuation as token separators.</li>
 <li><strong>counting</strong> the occurrences of tokens in each document.</li>
 <li><strong>normalizing</strong> and weighting with diminishing importance tokens that
 occur in the majority of samples / documents.</li>
@@ -399,7 +401,7 @@ considered a multivariate <strong>sample</strong>.</li>
 <p>A corpus of documents can thus be represented by a matrix with one row
 per document and one column per token (e.g. word) occurring in the corpus.</p>
 <p>We call <strong>vectorization</strong> the general process of turning a collection
-of text documents into numerical feature vectors. This specific stragegy
+of text documents into numerical feature vectors. This specific strategy
 (tokenization, counting and normalization) is called the <strong>Bag of Words</strong>
 or &#8220;Bag of n-grams&#8221; representation. Documents are described by word
 occurrences while completely ignoring the relative position information
@@ -428,13 +430,13 @@ counting in a single class:</p>
 <p>This model has many parameters, however the default values are quite
 reasonable (please see  the <a class="reference internal" href="classes.html#text-feature-extraction-ref"><em>reference documentation</em></a> for the details):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span>                            
-<span class="go">CountVectorizer(analyzer=u&#39;word&#39;, binary=False, charset=u&#39;utf-8&#39;,</span>
-<span class="go">        charset_error=u&#39;strict&#39;, dtype=&lt;type &#39;numpy.int64&#39;&gt;,</span>
-<span class="go">        input=u&#39;content&#39;, lowercase=True, max_df=1.0, max_features=None,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span>                     
+<span class="go">CountVectorizer(analyzer=...&#39;word&#39;, binary=False, charset=...&#39;utf-8&#39;,</span>
+<span class="go">        charset_error=...&#39;strict&#39;, dtype=&lt;... &#39;numpy.int64&#39;&gt;,</span>
+<span class="go">        input=...&#39;content&#39;, lowercase=True, max_df=1.0, max_features=None,</span>
 <span class="go">        min_df=1, ngram_range=(1, 1), preprocessor=None,</span>
 <span class="go">        stop_words=None, strip_accents=None,</span>
-<span class="go">        token_pattern=u&#39;(?u)\\b\\w\\w+\\b&#39;, tokenizer=None, vocabulary=None)</span>
+<span class="go">        token_pattern=...&#39;(?u)\\b\\w\\w+\\b&#39;, tokenizer=None, vocabulary=None)</span>
 </pre></div>
 </div>
 <p>Let&#8217;s use it to tokenize and count the word occurrences of a minimalistic
@@ -446,8 +448,8 @@ corpus of text documents:</p>
 <span class="gp">... </span>    <span class="s">&#39;Is this the first document?&#39;</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span>                                       
-<span class="go">&lt;4x9 sparse matrix of type &#39;&lt;type &#39;numpy.int64&#39;&gt;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span>                              
+<span class="go">&lt;4x9 sparse matrix of type &#39;&lt;... &#39;numpy.int64&#39;&gt;&#39;</span>
 <span class="go">    with 19 stored elements in Compressed Sparse Column format&gt;</span>
 </pre></div>
 </div>
@@ -455,15 +457,18 @@ corpus of text documents:</p>
 at least 2 letters. The specific function that does this step can be
 requested explicitly:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span><span class="p">(</span><span class="s">&quot;This is a text document to analyze.&quot;</span><span class="p">)</span>
-<span class="go">[u&#39;this&#39;, u&#39;is&#39;, u&#39;text&#39;, u&#39;document&#39;, u&#39;to&#39;, u&#39;analyze&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span><span class="p">(</span><span class="s">&quot;This is a text document to analyze.&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s">&#39;this&#39;</span><span class="p">,</span> <span class="s">&#39;is&#39;</span><span class="p">,</span> <span class="s">&#39;text&#39;</span><span class="p">,</span> <span class="s">&#39;document&#39;</span><span class="p">,</span> <span class="s">&#39;to&#39;</span><span class="p">,</span> <span class="s">&#39;analyze&#39;</span><span class="p">])</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 <p>Each term found by the analyzer during the fit is assigned a unique
 integer index corresponding to a column in the resulting matrix. This
 interpretation of the columns can be retrieved as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
-<span class="go">[u&#39;and&#39;, u&#39;document&#39;, u&#39;first&#39;, u&#39;is&#39;, u&#39;one&#39;, u&#39;second&#39;, u&#39;the&#39;, u&#39;third&#39;, u&#39;this&#39;]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span> <span class="o">==</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s">&#39;and&#39;</span><span class="p">,</span> <span class="s">&#39;document&#39;</span><span class="p">,</span> <span class="s">&#39;first&#39;</span><span class="p">,</span> <span class="s">&#39;is&#39;</span><span class="p">,</span> <span class="s">&#39;one&#39;</span><span class="p">,</span>
+<span class="gp">... </span>     <span class="s">&#39;second&#39;</span><span class="p">,</span> <span class="s">&#39;the&#39;</span><span class="p">,</span> <span class="s">&#39;third&#39;</span><span class="p">,</span> <span class="s">&#39;this&#39;</span><span class="p">])</span>
+<span class="go">True</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>           
 <span class="go">array([[0, 1, 1, 1, 0, 0, 1, 0, 1],</span>
@@ -487,14 +492,15 @@ ignored in future calls to the transform method:</p>
 </div>
 <p>Note that in the previous corpus, the first and the last documents have
 exactly the same words hence are encoded in equal vectors. In particular
-we lose the information that the last document is an interogative form. To
+we lose the information that the last document is an interrogative form. To
 preserve some of the local ordering information we can extract 2-grams
 of words in addition to the 1-grams (the word themselvs):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bigram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-<span class="gp">... </span>                                    <span class="n">token_pattern</span><span class="o">=</span><span class="s">ur&#39;\b\w+\b&#39;</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>                                    <span class="n">token_pattern</span><span class="o">=</span><span class="s">r&#39;\b\w+\b&#39;</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span> <span class="o">=</span> <span class="n">bigram_vectorizer</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span><span class="p">(</span><span class="s">&#39;Bi-grams are cool!&#39;</span><span class="p">)</span>
-<span class="go">[u&#39;bi&#39;, u&#39;grams&#39;, u&#39;are&#39;, u&#39;cool&#39;, u&#39;bi grams&#39;, u&#39;grams are&#39;, u&#39;are cool&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span><span class="p">(</span><span class="s">&#39;Bi-grams are cool!&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s">&#39;bi&#39;</span><span class="p">,</span> <span class="s">&#39;grams&#39;</span><span class="p">,</span> <span class="s">&#39;are&#39;</span><span class="p">,</span> <span class="s">&#39;cool&#39;</span><span class="p">,</span> <span class="s">&#39;bi grams&#39;</span><span class="p">,</span> <span class="s">&#39;grams are&#39;</span><span class="p">,</span> <span class="s">&#39;are cool&#39;</span><span class="p">])</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 <p>The vocabulary extracted by this vectorizer is hence much bigger and
@@ -508,9 +514,9 @@ can now resolve ambiguities encoded in local positioning patterns:</p>
 <span class="go">       [0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1]]...)</span>
 </pre></div>
 </div>
-<p>In particular the interogative form &#8220;Is this&#8221; is only present in the
+<p>In particular the interrogative form &#8220;Is this&#8221; is only present in the
 last document:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">feature_index</span> <span class="o">=</span> <span class="n">bigram_vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">u&#39;is this&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">feature_index</span> <span class="o">=</span> <span class="n">bigram_vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;is this&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_2</span><span class="p">[:,</span> <span class="n">feature_index</span><span class="p">]</span>     
 <span class="go">array([0, 0, 0, 1]...)</span>
 </pre></div>
@@ -519,7 +525,7 @@ last document:</p>
 <div class="section" id="tfidf-term-weighting">
 <span id="tfidf"></span><h3>6.1.3.4. Tf–idf term weighting<a class="headerlink" href="#tfidf-term-weighting" title="Permalink to this headline">¶</a></h3>
 <p>In a large text corpus, some words will be very present (e.g. &#8220;the&#8221;, &#8220;a&#8221;,
-&#8220;is&#8221; in English) hence carrying very little meaningul information about
+&#8220;is&#8221; in English) hence carrying very little meaningful information about
 the actual contents of the document. If we were to feed the direct count
 data directly to a classifier those very frequent terms would shadow
 the frequencies of rarer yet more interesting terms.</p>
@@ -536,7 +542,7 @@ class:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span>   
-<span class="go">TfidfTransformer(norm=u&#39;l2&#39;, smooth_idf=True, sublinear_tf=False,</span>
+<span class="go">TfidfTransformer(norm=...&#39;l2&#39;, smooth_idf=True, sublinear_tf=False,</span>
 <span class="go">                 use_idf=True)</span>
 </pre></div>
 </div>
@@ -553,8 +559,8 @@ content of the documents:</p>
 <span class="gp">... </span>          <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tfidf</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tfidf</span>                                  
-<span class="go">&lt;6x3 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tfidf</span>                         
+<span class="go">&lt;6x3 sparse matrix of type &#39;&lt;... &#39;numpy.float64&#39;&gt;&#39;</span>
 <span class="go">    with 9 stored elements in Compressed Sparse Row format&gt;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tfidf</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>                        
@@ -579,8 +585,8 @@ class called <a class="reference internal" href="generated/sklearn.feature_extra
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
-<span class="gp">... </span>                                      
-<span class="go">&lt;4x9 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
+<span class="gp">... </span>                               
+<span class="go">&lt;4x9 sparse matrix of type &#39;&lt;... &#39;numpy.float64&#39;&gt;&#39;</span>
 <span class="go">    with 19 stored elements in Compressed Sparse Row format&gt;</span>
 </pre></div>
 </div>
@@ -600,8 +606,51 @@ feature extractor with a classifier:</p>
 </ul>
 </div></blockquote>
 </div>
+<div class="section" id="decoding-text-files">
+<h3>6.1.3.5. Decoding text files<a class="headerlink" href="#decoding-text-files" title="Permalink to this headline">¶</a></h3>
+<p>Text is made of characters, but files are made of bytes. In Unicode,
+there are many more possible characters than possible bytes. Every text
+file is <em>encoded</em> so that its characters can be represented as bytes.</p>
+<p>When you work with text in Python, it should be Unicode. Most of the
+text feature extractors in scikit-learn will only work with Unicode. So
+to correctly load text from a file (or from the network), you need to
+decode it with the correct encoding.</p>
+<p>An encoding can also be called a &#8216;charset&#8217; or &#8216;character set&#8217;, though
+this terminology is less accurate. The <a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a> takes
+a <tt class="docutils literal"><span class="pre">charset</span></tt> parameter to tell it what encoding to decode text from.</p>
+<p>For modern text files, the correct encoding is probably UTF-8. The
+<a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a> has <tt class="docutils literal"><span class="pre">charset='utf-8'</span></tt> as the default. If the
+text you are loading is not actually encoded with UTF-8, however, you
+will get a <tt class="docutils literal"><span class="pre">UnicodeDecodeError</span></tt>.</p>
+<p>If you are having trouble decoding text, here are some things to try:</p>
+<ul class="simple">
+<li>Find out what the actual encoding of the text is. The file might come
+with a header that tells you the encoding, or there might be some
+standard encoding you can assume based on where the text comes from.</li>
+<li>You may be able to find out what kind of encoding it is in general
+using the UNIX command <tt class="docutils literal"><span class="pre">file</span></tt>. The Python <tt class="docutils literal"><span class="pre">chardet</span></tt> module comes with
+a script called <tt class="docutils literal"><span class="pre">chardetect.py</span></tt> that will guess the specific encoding,
+though you cannot rely on its guess being correct.</li>
+<li>You could try UTF-8 and disregard the errors. You can decode byte
+strings with <tt class="docutils literal"><span class="pre">bytes.decode(errors='replace')</span></tt> to replace all
+decoding errors with a meaningless character, or set
+<tt class="docutils literal"><span class="pre">charset_error='replace'</span></tt> in the vectorizer. This may damage the
+usefulness of your features.</li>
+<li>Real text may come from a variety of sources that may have used different
+encodings, or even be sloppily decoded in a different encoding than the
+one it was encoded with. This is common in text retrieved from the Web.
+The Python package <a class="reference external" href="http://github.com/LuminosoInsight/python-ftfy">ftfy</a> can automatically sort out some classes of
+decoding errors, so you could try decoding the unknown text as <tt class="docutils literal"><span class="pre">latin-1</span></tt>
+and then using <tt class="docutils literal"><span class="pre">ftfy</span></tt> to fix errors.</li>
+<li>If the text is in a mish-mash of encodings that is simply too hard to sort
+out (which is the case for the 20 Newsgroups dataset), you can fall back on
+a simple single-byte encoding such as <tt class="docutils literal"><span class="pre">latin-1</span></tt>. Some text may display
+incorrectly, but at least the same sequence of bytes will always represent
+the same feature.</li>
+</ul>
+</div>
 <div class="section" id="applications-and-examples">
-<h3>6.1.3.5. Applications and examples<a class="headerlink" href="#applications-and-examples" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.3.6. Applications and examples<a class="headerlink" href="#applications-and-examples" title="Permalink to this headline">¶</a></h3>
 <p>The bag of words representation is quite simplistic but surprisingly
 useful in practice.</p>
 <p>In particular in a <strong>supervised setting</strong> it can be successfully combined
@@ -629,7 +678,7 @@ using <a class="reference internal" href="decomposition.html#nmf"><em>Non-negati
 </div></blockquote>
 </div>
 <div class="section" id="limitations-of-the-bag-of-words-representation">
-<h3>6.1.3.6. Limitations of the Bag of Words representation<a class="headerlink" href="#limitations-of-the-bag-of-words-representation" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.3.7. Limitations of the Bag of Words representation<a class="headerlink" href="#limitations-of-the-bag-of-words-representation" title="Permalink to this headline">¶</a></h3>
 <p>A collection of unigrams (what bag of words is) cannot capture phrases
 and multi-word expressions, effectively disregarding any word order
 dependence. Additionally, bag of words model doesn&#8217;t account for potential
@@ -638,7 +687,7 @@ misspellings or word derivations.</p>
 unigrams (n=1), one might prefer a collection of bigrams (n=2), where
 occurrences of pairs of consecutive words are counted.</p>
 <p>One might alternatively consider a collection of character n-grams, a
-representation resiliant against misspellings and derivations.</p>
+representation resilient against misspellings and derivations.</p>
 <p>For example, let&#8217;s say we&#8217;re dealing with a corpus of two documents:
 <tt class="docutils literal"><span class="pre">['words',</span> <span class="pre">'wprds']</span></tt>. The second document contains a misspelling
 of the word &#8216;words&#8217;.
@@ -649,8 +698,9 @@ matching in 4 out of 8 features, which may help the preferred classifier
 decide better:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">analyzer</span><span class="o">=</span><span class="s">&#39;char_wb&#39;</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">counts</span> <span class="o">=</span> <span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="s">&#39;words&#39;</span><span class="p">,</span> <span class="s">&#39;wprds&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
-<span class="go">[u&#39; w&#39;, u&#39;ds&#39;, u&#39;or&#39;, u&#39;pr&#39;, u&#39;rd&#39;, u&#39;s &#39;, u&#39;wo&#39;, u&#39;wp&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span> <span class="o">==</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s">&#39; w&#39;</span><span class="p">,</span> <span class="s">&#39;ds&#39;</span><span class="p">,</span> <span class="s">&#39;or&#39;</span><span class="p">,</span> <span class="s">&#39;pr&#39;</span><span class="p">,</span> <span class="s">&#39;rd&#39;</span><span class="p">,</span> <span class="s">&#39;s &#39;</span><span class="p">,</span> <span class="s">&#39;wo&#39;</span><span class="p">,</span> <span class="s">&#39;wp&#39;</span><span class="p">])</span>
+<span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">counts</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="go">array([[1, 1, 1, 0, 1, 1, 1, 0],</span>
 <span class="go">       [1, 1, 0, 1, 1, 1, 0, 1]])</span>
@@ -662,23 +712,25 @@ side). The <tt class="docutils literal"><span class="pre">'char'</span></tt> ana
 span across words:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">analyzer</span><span class="o">=</span><span class="s">&#39;char_wb&#39;</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="s">&#39;jumpy fox&#39;</span><span class="p">])</span>
-<span class="gp">... </span>                                        
-<span class="go">&lt;1x4 sparse matrix of type &#39;&lt;type &#39;numpy.int64&#39;&gt;&#39;</span>
+<span class="gp">... </span>                               
+<span class="go">&lt;1x4 sparse matrix of type &#39;&lt;... &#39;numpy.int64&#39;&gt;&#39;</span>
 <span class="go">   with 4 stored elements in Compressed Sparse Column format&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
-<span class="go">[u&#39; fox &#39;, u&#39; jump&#39;, u&#39;jumpy&#39;, u&#39;umpy &#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span> <span class="o">==</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s">&#39; fox &#39;</span><span class="p">,</span> <span class="s">&#39; jump&#39;</span><span class="p">,</span> <span class="s">&#39;jumpy&#39;</span><span class="p">,</span> <span class="s">&#39;umpy &#39;</span><span class="p">])</span>
+<span class="go">True</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">analyzer</span><span class="o">=</span><span class="s">&#39;char&#39;</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="s">&#39;jumpy fox&#39;</span><span class="p">])</span>
-<span class="gp">... </span>                                        
-<span class="go">&lt;1x5 sparse matrix of type &#39;&lt;type &#39;numpy.int64&#39;&gt;&#39;</span>
+<span class="gp">... </span>                               
+<span class="go">&lt;1x5 sparse matrix of type &#39;&lt;... &#39;numpy.int64&#39;&gt;&#39;</span>
 <span class="go">    with 5 stored elements in Compressed Sparse Column format&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
-<span class="go">[u&#39;jumpy&#39;, u&#39;mpy f&#39;, u&#39;py fo&#39;, u&#39;umpy &#39;, u&#39;y fox&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span> <span class="o">==</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s">&#39;jumpy&#39;</span><span class="p">,</span> <span class="s">&#39;mpy f&#39;</span><span class="p">,</span> <span class="s">&#39;py fo&#39;</span><span class="p">,</span> <span class="s">&#39;umpy &#39;</span><span class="p">,</span> <span class="s">&#39;y fox&#39;</span><span class="p">])</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 <p>The word boundaries-aware variant <tt class="docutils literal"><span class="pre">char_wb</span></tt> is especially interesting
-for languages that use whitespaces for word separation as it generates
+for languages that use white-spaces for word separation as it generates
 significantly less noisy features than the raw <tt class="docutils literal"><span class="pre">char</span></tt> variant in
 that case. For such languages it can increase both the predictive
 accuracy and convergence speed of classifiers trained using such
@@ -694,7 +746,7 @@ into account. Many such models will thus be casted as &#8220;Structured output&#
 problems which are currently outside of the scope of scikit-learn.</p>
 </div>
 <div class="section" id="vectorizing-a-large-text-corpus-with-the-hashing-trick">
-<span id="hashing-vectorizer"></span><h3>6.1.3.7. Vectorizing a large text corpus with the hashing trick<a class="headerlink" href="#vectorizing-a-large-text-corpus-with-the-hashing-trick" title="Permalink to this headline">¶</a></h3>
+<span id="hashing-vectorizer"></span><h3>6.1.3.8. Vectorizing a large text corpus with the hashing trick<a class="headerlink" href="#vectorizing-a-large-text-corpus-with-the-hashing-trick" title="Permalink to this headline">¶</a></h3>
 <p>The above vectorization scheme is simple but the fact that it holds an <strong>in-
 memory mapping from the string tokens to the integer feature indices</strong> (the
 <tt class="docutils literal"><span class="pre">vocabulary_</span></tt> attribute) causes several <strong>problems when dealing with large
@@ -727,8 +779,8 @@ meaning that you don&#8217;t have to call <tt class="docutils literal"><span cla
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">HashingVectorizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span> <span class="o">=</span> <span class="n">HashingVectorizer</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
-<span class="gp">... </span>                                      
-<span class="go">&lt;4x10 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
+<span class="gp">... </span>                               
+<span class="go">&lt;4x10 sparse matrix of type &#39;&lt;... &#39;numpy.float64&#39;&gt;&#39;</span>
 <span class="go">    with 16 stored elements in Compressed Sparse Row format&gt;</span>
 </pre></div>
 </div>
@@ -749,8 +801,8 @@ etc).</p>
 <p>Let&#8217;s try again with the default setting:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span> <span class="o">=</span> <span class="n">HashingVectorizer</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
-<span class="gp">... </span>                                      
-<span class="go">&lt;4x1048576 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
+<span class="gp">... </span>                              
+<span class="go">&lt;4x1048576 sparse matrix of type &#39;&lt;... &#39;numpy.float64&#39;&gt;&#39;</span>
 <span class="go">    with 19 stored elements in Compressed Sparse Row format&gt;</span>
 </pre></div>
 </div>
@@ -768,16 +820,32 @@ model. A <a class="reference internal" href="generated/sklearn.feature_extractio
 required.</li>
 </ul>
 </div>
+<div class="section" id="performing-out-of-core-scaling-with-hashingvectorizer">
+<h3>6.1.3.9. Performing out-of-core scaling with HashingVectorizer<a class="headerlink" href="#performing-out-of-core-scaling-with-hashingvectorizer" title="Permalink to this headline">¶</a></h3>
+<p>An interesting development of using a <a class="reference internal" href="generated/sklearn.feature_extraction.text.HashingVectorizer.html#sklearn.feature_extraction.text.HashingVectorizer" title="sklearn.feature_extraction.text.HashingVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">HashingVectorizer</span></tt></a> is the ability
+to perform <a class="reference external" href="http://en.wikipedia.org/wiki/Out-of-core_algorithm.">out-of-core</a> scaling. This means that we can learn from data that
+does not fit into the computer&#8217;s main memory.</p>
+<p>A strategy to implement out-of-core scaling is to stream data to the estimator
+in mini-batches. Each mini-batch is vectorized using <a class="reference internal" href="generated/sklearn.feature_extraction.text.HashingVectorizer.html#sklearn.feature_extraction.text.HashingVectorizer" title="sklearn.feature_extraction.text.HashingVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">HashingVectorizer</span></tt></a>
+so as to guarantee that the input space of the estimator has always the same
+dimensionality. The amount of memory used at any time is thus bounded by the
+size of a mini-batch. Although there is no limit to the amount of data that can
+be ingested using such an approach, from a practical point of view the learning
+time is often limited by the CPU time one wants to spend on the task.</p>
+<p>For a full-fledged example of out-of-core scaling in a text classification
+task see <a class="reference internal" href="../auto_examples/applications/plot_out_of_core_classification.html#example-applications-plot-out-of-core-classification-py"><em>Out-of-core classification of text documents</em></a>.</p>
+</div>
 <div class="section" id="customizing-the-vectorizer-classes">
-<h3>6.1.3.8. Customizing the vectorizer classes<a class="headerlink" href="#customizing-the-vectorizer-classes" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.3.10. Customizing the vectorizer classes<a class="headerlink" href="#customizing-the-vectorizer-classes" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to customize the behavior by passing a callable
 to the vectorizer constructor:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_tokenizer</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">=</span><span class="n">my_tokenizer</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()(</span><span class="s">u&quot;Some... punctuation!&quot;</span><span class="p">)</span>
-<span class="go">[u&#39;some...&#39;, u&#39;punctuation!&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()(</span><span class="s">u&quot;Some... punctuation!&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s">&#39;some...&#39;</span><span class="p">,</span> <span class="s">&#39;punctuation!&#39;</span><span class="p">])</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 <p>In particular we name:</p>
@@ -926,7 +994,7 @@ or similarity matrices.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/feature_extraction.txt"

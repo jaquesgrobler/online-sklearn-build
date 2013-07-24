@@ -182,7 +182,7 @@ that are linked tend to cofluctuate during a day.</p>
 <p>We use sparse inverse covariance estimation to find which quotes are
 correlated conditionally on the others. Specifically, sparse inverse
 covariance gives us a graph, that is a list of connection. For each
-symbol, the symbols that it is connected too are those useful to expain
+symbol, the symbols that it is connected too are those useful to explain
 its fluctuations.</p>
 </div>
 <div class="section" id="clustering">
@@ -226,12 +226,12 @@ Cluster 3: GlaxoSmithKline, Novartis, Sanofi-Aventis
 Cluster 4: Comcast, Time Warner, Cablevision
 Cluster 5: ConocoPhillips, Chevron, Total, Valero Energy, Exxon
 Cluster 6: Walgreen, CVS
-Cluster 7: Kraft Foods
-Cluster 8: Navistar, Sony, Marriott, Caterpillar, Canon, Toyota, Honda, Mitsubishi, Xerox, Unilever
-Cluster 9: Kimberly-Clark, Colgate-Palmolive, Procter Gamble
-Cluster 10: American express, Ryder, Goldman Sachs, Wal-Mart, General Electrics, Pfizer, 3M, Wells Fargo, DuPont de Nemours, Bank of America, AIG, Home Depot, News Corp, Ford, JPMorgan Chase, Mc Donalds
-Cluster 11: Microsoft, SAP, IBM, Texas instruments, HP, Dell, Cisco
-Cluster 12: Raytheon, Boeing, Lookheed Martin, General Dynamics, Northrop Grumman</pre>
+Cluster 7: Navistar, Sony, Marriott, Caterpillar, Canon, Toyota, Honda, Mitsubishi, Xerox, Unilever
+Cluster 8: Kimberly-Clark, Colgate-Palmolive, Procter Gamble
+Cluster 9: American express, Ryder, Goldman Sachs, Wal-Mart, General Electrics, Pfizer, 3M, Wells Fargo, DuPont de Nemours, Bank of America, AIG, Home Depot, News Corp, Ford, JPMorgan Chase, Mc Donalds
+Cluster 10: Microsoft, SAP, IBM, Texas instruments, HP, Dell, Cisco
+Cluster 11: Raytheon, Boeing, Lookheed Martin, General Dynamics, Northrop Grumman
+Cluster 12: Kraft Foods</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_stock_market.py"><tt class="xref download docutils literal"><span class="pre">plot_stock_market.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
@@ -256,6 +256,7 @@ Cluster 12: Raytheon, Boeing, Lookheed Martin, General Dynamics, Northrop Grumma
 <span class="n">d1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2003</span><span class="p">,</span> <span class="mo">01</span><span class="p">,</span> <span class="mo">01</span><span class="p">)</span>
 <span class="n">d2</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mo">01</span><span class="p">,</span> <span class="mo">01</span><span class="p">)</span>
 
+<span class="c"># kraft symbol has now changed from KFT to MDLZ in yahoo</span>
 <span class="n">symbol_dict</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">&#39;TOT&#39;</span><span class="p">:</span> <span class="s">&#39;Total&#39;</span><span class="p">,</span>
     <span class="s">&#39;XOM&#39;</span><span class="p">:</span> <span class="s">&#39;Exxon&#39;</span><span class="p">,</span>
@@ -284,7 +285,7 @@ Cluster 12: Raytheon, Boeing, Lookheed Martin, General Dynamics, Northrop Grumma
     <span class="s">&#39;MMM&#39;</span><span class="p">:</span> <span class="s">&#39;3M&#39;</span><span class="p">,</span>
     <span class="s">&#39;MCD&#39;</span><span class="p">:</span> <span class="s">&#39;Mc Donalds&#39;</span><span class="p">,</span>
     <span class="s">&#39;PEP&#39;</span><span class="p">:</span> <span class="s">&#39;Pepsi&#39;</span><span class="p">,</span>
-    <span class="s">&#39;KFT&#39;</span><span class="p">:</span> <span class="s">&#39;Kraft Foods&#39;</span><span class="p">,</span>
+    <span class="s">&#39;MDLZ&#39;</span><span class="p">:</span> <span class="s">&#39;Kraft Foods&#39;</span><span class="p">,</span>
     <span class="s">&#39;K&#39;</span><span class="p">:</span> <span class="s">&#39;Kellogg&#39;</span><span class="p">,</span>
     <span class="s">&#39;UN&#39;</span><span class="p">:</span> <span class="s">&#39;Unilever&#39;</span><span class="p">,</span>
     <span class="s">&#39;MAR&#39;</span><span class="p">:</span> <span class="s">&#39;Marriott&#39;</span><span class="p">,</span>
@@ -431,7 +432,7 @@ Cluster 12: Raytheon, Boeing, Lookheed Martin, General Dynamics, Northrop Grumma
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  6.99 seconds</p>
+<p><strong>Total running time of the example:</strong>  7.48 seconds</p>
 </div>
 </div>
 
@@ -444,7 +445,7 @@ Cluster 12: Raytheon, Boeing, Lookheed Martin, General Dynamics, Northrop Grumma
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/auto_examples/applications/plot_stock_market.txt"

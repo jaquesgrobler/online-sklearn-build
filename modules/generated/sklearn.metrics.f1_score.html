@@ -178,17 +178,17 @@ equal. The formula for the F1 score is:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">F1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">precision</span> <span class="o">*</span> <span class="n">recall</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">precision</span> <span class="o">+</span> <span class="n">recall</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In the multi-class case, this is the weighted average of the F1 score of
-each class.</p>
+<p>In the multi-class and multi-label case, this is the weighted average of
+the F1 score of each class.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like or list of labels or label indicator matrix</p>
 <blockquote>
 <div><p>Ground truth (correct) target values.</p>
 </div></blockquote>
-<p><strong>y_pred</strong> : array, shape = [n_samples]</p>
+<p><strong>y_pred</strong> : array-like or list of labels or label indicator matrix</p>
 <blockquote>
 <div><p>Estimated targets as returned by a classifier.</p>
 </div></blockquote>
@@ -201,22 +201,30 @@ each class.</p>
 <div><p>If <tt class="docutils literal"><span class="pre">average</span></tt> is not <tt class="docutils literal"><span class="pre">None</span></tt> and the classification target is binary,
 only this class&#8217;s scores will be returned.</p>
 </div></blockquote>
-<p><strong>average</strong> : string, [None, &#8216;micro&#8217;, &#8216;macro&#8217;, &#8216;weighted&#8217; (default)]</p>
+<p><strong>average</strong> : string, [None, &#8216;micro&#8217;, &#8216;macro&#8217;, &#8216;samples&#8217;, &#8216;weighted&#8217; (default)]</p>
 <blockquote>
 <div><p>If <tt class="docutils literal"><span class="pre">None</span></tt>, the scores for each class are returned. Otherwise,
 unless <tt class="docutils literal"><span class="pre">pos_label</span></tt> is given in binary classification, this
 determines the type of averaging performed on the data:</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">'macro'</span></tt>:</dt>
-<dd><p class="first last">Average over classes (does not take imbalance into account).</p>
-</dd>
 <dt><tt class="docutils literal"><span class="pre">'micro'</span></tt>:</dt>
-<dd><p class="first last">Average over instances (takes imbalance into account).  This
-implies that <tt class="docutils literal"><span class="pre">precision</span> <span class="pre">==</span> <span class="pre">recall</span> <span class="pre">==</span> <span class="pre">F1</span></tt>.</p>
+<dd><p class="first last">Calculate metrics globally by counting the total true positives,
+false negatives and false positives.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">'macro'</span></tt>:</dt>
+<dd><p class="first last">Calculate metrics for each label, and find their unweighted
+mean.  This does not take label imbalance into account.</p>
 </dd>
 <dt><tt class="docutils literal"><span class="pre">'weighted'</span></tt>:</dt>
-<dd><p class="first last">Average weighted by support (takes imbalance into account).  Can
-result in F-score that is not between precision and recall.</p>
+<dd><p class="first last">Calculate metrics for each label, and find their average, weighted
+by support (the number of true instances for each label). This
+alters &#8216;macro&#8217; to account for label imbalance; it can result in an
+F-score that is not between precision and recall.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">'samples'</span></tt>:</dt>
+<dd><p class="first last">Calculate metrics for each instance, and find their average (only
+meaningful for multilabel classification where this differs from
+<a class="reference internal" href="sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score"><tt class="xref py py-func docutils literal"><span class="pre">accuracy_score</span></tt></a>).</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -232,10 +240,10 @@ average of the F1 scores of each class for the multiclass task.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r118" rules="none">
+<table class="docutils citation" frame="void" id="r135" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R118]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/F1_score">Wikipedia entry for the F1-score</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[R135]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/F1_score">Wikipedia entry for the F1-score</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -261,6 +269,38 @@ average of the F1 scores of each class for the multiclass task.</p>
 <span class="go">array([ 0.8,  0. ,  0. ])</span>
 </pre></div>
 </div>
+<p>In the multilabel case with binary indicator format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;macro&#39;</span><span class="p">)</span>  
+<span class="go">0.59...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">)</span>  
+<span class="go">0.61...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">)</span>  
+<span class="go">0.65...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;samples&#39;</span><span class="p">)</span>  
+<span class="go">0.59...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">array([ 0.5,  0.8,  0.5])</span>
+</pre></div>
+</div>
+<p>and with a list of labels format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">tuple</span><span class="p">()]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;macro&#39;</span><span class="p">)</span>  
+<span class="go">0.66...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;micro&#39;</span><span class="p">)</span>  
+<span class="go">0.8...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;weighted&#39;</span><span class="p">)</span>  
+<span class="go">0.66...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">&#39;samples&#39;</span><span class="p">)</span>  
+<span class="go">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">array([ 1.,  1.,  0.])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -274,7 +314,7 @@ average of the F1 scores of each class for the multiclass task.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.metrics.f1_score.txt"

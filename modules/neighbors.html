@@ -152,7 +152,11 @@
     <h3>This page</h3>
 	<ul>
 <li><a class="reference internal" href="#">3.4. Nearest Neighbors</a><ul>
-<li><a class="reference internal" href="#unsupervised-nearest-neighbors">3.4.1. Unsupervised Nearest Neighbors</a></li>
+<li><a class="reference internal" href="#unsupervised-nearest-neighbors">3.4.1. Unsupervised Nearest Neighbors</a><ul>
+<li><a class="reference internal" href="#finding-the-nearest-neighbors">3.4.1.1. Finding the Nearest Neighbors</a></li>
+<li><a class="reference internal" href="#kdtree-and-balltree-classes">3.4.1.2. KDTree and BallTree Classes</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#nearest-neighbors-classification">3.4.2. Nearest Neighbors Classification</a></li>
 <li><a class="reference internal" href="#nearest-neighbors-regression">3.4.3. Nearest Neighbors Regression</a></li>
 <li><a class="reference internal" href="#nearest-neighbor-algorithms">3.4.4. Nearest Neighbor Algorithms</a><ul>
@@ -203,16 +207,21 @@ learning methods, since they simply &#8220;remember&#8221; all of its training d
 <a class="reference internal" href="#ball-tree"><em>Ball Tree</em></a> or <a class="reference internal" href="#kd-tree"><em>KD Tree</em></a>.).</p>
 <p>Despite its simplicity, nearest neighbors has been successful in a
 large number of classification and regression problems, including
-handwritten digits or satellite image scenes. It is often successful
-in classification situations where the decision boundary is very irregular.</p>
+handwritten digits or satellite image scenes. Being a non-parametric method,
+it is often successful in classification situations where the decision
+boundary is very irregular.</p>
 <p>The classes in <a class="reference internal" href="classes.html#module-sklearn.neighbors" title="sklearn.neighbors"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.neighbors</span></tt></a> can handle either Numpy arrays or
-<cite>scipy.sparse</cite> matrices as input.  Arbitrary Minkowski metrics are supported
-for searches.</p>
+<cite>scipy.sparse</cite> matrices as input.  For dense matrices, a large number of
+possible distance metrics are supported.  For sparse matrices, arbitrary
+Minkowski metrics are supported for searches.</p>
+<p>There are many learning routines which rely on nearest neighbors at their
+core.  One example is <a class="reference internal" href="density.html#kernel-density"><em>kernel density estimation</em></a>,
+discussed in the <a class="reference internal" href="density.html#density-estimation"><em>density estimation</em></a> section.</p>
 <div class="section" id="unsupervised-nearest-neighbors">
-<h2>3.4.1. Unsupervised Nearest Neighbors<a class="headerlink" href="#unsupervised-nearest-neighbors" title="Permalink to this headline">¶</a></h2>
+<span id="unsupervised-neighbors"></span><h2>3.4.1. Unsupervised Nearest Neighbors<a class="headerlink" href="#unsupervised-nearest-neighbors" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors" title="sklearn.neighbors.NearestNeighbors"><tt class="xref py py-class docutils literal"><span class="pre">NearestNeighbors</span></tt></a> implements unsupervised nearest neighbors learning.
 It acts as a uniform interface to three different nearest neighbors
-algorithms: <a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-class docutils literal"><span class="pre">BallTree</span></tt></a>, <tt class="xref py py-class docutils literal"><span class="pre">scipy.spatial.cKDTree</span></tt>, and a
+algorithms: <a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-class docutils literal"><span class="pre">BallTree</span></tt></a>, <a class="reference internal" href="generated/sklearn.neighbors.KDTree.html#sklearn.neighbors.KDTree" title="sklearn.neighbors.KDTree"><tt class="xref py py-class docutils literal"><span class="pre">KDTree</span></tt></a>, and a
 brute-force algorithm based on routines in <a class="reference internal" href="classes.html#module-sklearn.metrics.pairwise" title="sklearn.metrics.pairwise"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.metrics.pairwise</span></tt></a>.
 The choice of neighbors search algorithm is controlled through the keyword
 <tt class="docutils literal"><span class="pre">'algorithm'</span></tt>, which must be one of
@@ -229,6 +238,78 @@ but different labels, the results will depend on the ordering of the
 training data.</p>
 </div>
 </div></blockquote>
+<div class="section" id="finding-the-nearest-neighbors">
+<h3>3.4.1.1. Finding the Nearest Neighbors<a class="headerlink" href="#finding-the-nearest-neighbors" title="Permalink to this headline">¶</a></h3>
+<p>For the simple task of finding the nearest neighbors between two sets of
+data, the unsupervised algorithms within <a class="reference internal" href="classes.html#module-sklearn.neighbors" title="sklearn.neighbors"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.neighbors</span></tt></a> can be
+used:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">NearestNeighbors</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s">&#39;ball_tree&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">distances</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span>                                           
+<span class="go">array([[0, 1],</span>
+<span class="go">       [1, 0],</span>
+<span class="go">       [2, 1],</span>
+<span class="go">       [3, 4],</span>
+<span class="go">       [4, 3],</span>
+<span class="go">       [5, 4]]...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">distances</span>
+<span class="go">array([[ 0.        ,  1.        ],</span>
+<span class="go">       [ 0.        ,  1.        ],</span>
+<span class="go">       [ 0.        ,  1.41421356],</span>
+<span class="go">       [ 0.        ,  1.        ],</span>
+<span class="go">       [ 0.        ,  1.        ],</span>
+<span class="go">       [ 0.        ,  1.41421356]])</span>
+</pre></div>
+</div>
+<p>Because the query set matches the training set, the nearest neighbor of each
+point is the point itself, at a distance of zero.</p>
+<p>It is also possible to efficiently produce a sparse graph showing the
+connections between neighboring points:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors_graph</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="go">array([[ 1.,  1.,  0.,  0.,  0.,  0.],</span>
+<span class="go">       [ 1.,  1.,  0.,  0.,  0.,  0.],</span>
+<span class="go">       [ 0.,  1.,  1.,  0.,  0.,  0.],</span>
+<span class="go">       [ 0.,  0.,  0.,  1.,  1.,  0.],</span>
+<span class="go">       [ 0.,  0.,  0.,  1.,  1.,  0.],</span>
+<span class="go">       [ 0.,  0.,  0.,  0.,  1.,  1.]])</span>
+</pre></div>
+</div>
+<p>Our dataset is structured such that points nearby in index order are nearby
+in parameter space, leading to an approximately block-diagonal matrix of
+K-nearest neighbors.  Such a sparse graph is useful in a variety of
+circumstances which make use of spatial relationships between points for
+unsupervised learning: in particular, see <tt class="xref py py-class docutils literal"><span class="pre">sklearn.manifold.IsoMap</span></tt>,
+<a class="reference internal" href="generated/sklearn.manifold.LocallyLinearEmbedding.html#sklearn.manifold.LocallyLinearEmbedding" title="sklearn.manifold.LocallyLinearEmbedding"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.manifold.LocallyLinearEmbedding</span></tt></a>, and
+<a class="reference internal" href="generated/sklearn.cluster.SpectralClustering.html#sklearn.cluster.SpectralClustering" title="sklearn.cluster.SpectralClustering"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.cluster.SpectralClustering</span></tt></a>.</p>
+</div>
+<div class="section" id="kdtree-and-balltree-classes">
+<h3>3.4.1.2. KDTree and BallTree Classes<a class="headerlink" href="#kdtree-and-balltree-classes" title="Permalink to this headline">¶</a></h3>
+<p>Alternatively, one can use the <a class="reference internal" href="generated/sklearn.neighbors.KDTree.html#sklearn.neighbors.KDTree" title="sklearn.neighbors.KDTree"><tt class="xref py py-class docutils literal"><span class="pre">KDTree</span></tt></a> or <a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-class docutils literal"><span class="pre">BallTree</span></tt></a> classes
+directly to find nearest neighbors.  This is the functionality wrapped by
+the <a class="reference internal" href="generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors" title="sklearn.neighbors.NearestNeighbors"><tt class="xref py py-class docutils literal"><span class="pre">NearestNeighbors</span></tt></a> class used above.  The Ball Tree and KD Tree
+have the same interface; we&#8217;ll show an example of using the KD Tree here:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KDTree</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kdt</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">leaf_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s">&#39;euclidean&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kdt</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">return_distance</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>          
+<span class="go">array([[0, 1],</span>
+<span class="go">       [1, 0],</span>
+<span class="go">       [2, 1],</span>
+<span class="go">       [3, 4],</span>
+<span class="go">       [4, 3],</span>
+<span class="go">       [5, 4]]...)</span>
+</pre></div>
+</div>
+<p>Refer to the <a class="reference internal" href="generated/sklearn.neighbors.KDTree.html#sklearn.neighbors.KDTree" title="sklearn.neighbors.KDTree"><tt class="xref py py-class docutils literal"><span class="pre">KDTree</span></tt></a> and <a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-class docutils literal"><span class="pre">BallTree</span></tt></a> class documentation
+for more information on the options available for neighbors searches,
+including specification of query strategies, of various distance metrics, etc.
+For a list of available metrics, see the documentation of the
+<a class="reference internal" href="generated/sklearn.neighbors.DistanceMetric.html#sklearn.neighbors.DistanceMetric" title="sklearn.neighbors.DistanceMetric"><tt class="xref py py-class docutils literal"><span class="pre">DistanceMetric</span></tt></a> class.</p>
+</div>
 </div>
 <div class="section" id="nearest-neighbors-classification">
 <span id="classification"></span><h2>3.4.2. Nearest Neighbors Classification<a class="headerlink" href="#nearest-neighbors-classification" title="Permalink to this headline">¶</a></h2>
@@ -341,7 +422,7 @@ improvement over brute-force for large <img class="math" src="../_images/math/fc
 <p>An early approach to taking advantage of this aggregate information was
 the <em>KD tree</em> data structure (short for <em>K-dimensional tree</em>), which
 generalizes two-dimensional <em>Quad-trees</em> and 3-dimensional <em>Oct-trees</em>
-to an arbitrary number of dimensions.  The KD tree is a tree
+to an arbitrary number of dimensions.  The KD tree is a binary tree
 structure which recursively partitions the parameter space along the data
 axes, dividing it into nested orthotopic regions into which data points
 are filed.  The construction of a KD tree is very fast: because partitioning
@@ -353,7 +434,7 @@ neighbors searches, it becomes inefficient as <img class="math" src="../_images/
 this is one manifestation of the so-called &#8220;curse of dimensionality&#8221;.
 In scikit-learn, KD tree neighbors searches are specified using the
 keyword <tt class="docutils literal"><span class="pre">algorithm</span> <span class="pre">=</span> <span class="pre">'kd_tree'</span></tt>, and are computed using the class
-<tt class="xref py py-class docutils literal"><span class="pre">scipy.spatial.cKDTree</span></tt>.</p>
+<a class="reference internal" href="generated/sklearn.neighbors.KDTree.html#sklearn.neighbors.KDTree" title="sklearn.neighbors.KDTree"><tt class="xref py py-class docutils literal"><span class="pre">KDTree</span></tt></a>.</p>
 <div class="topic">
 <p class="topic-title first">References:</p>
 <ul class="simple">
@@ -369,8 +450,8 @@ data structure was developed.  Where KD trees partition data along
 Cartesian axes, ball trees partition data in a series of nesting
 hyper-spheres.  This makes tree construction more costly than that of the
 KD tree, but
-results in a data structure which allows for efficient neighbors searches
-even in very high dimensions.</p>
+results in a data structure which can be very efficient on highly-structured
+data, even in very high dimensions.</p>
 <p>A ball tree recursively divides the data into
 nodes defined by a centroid <img class="math" src="../_images/math/c3355896da590fc491a10150a50416687626d7cc.png" alt="C"/> and radius <img class="math" src="../_images/math/b55ca7a0aa88ab7d58f4fc035317fdac39b17861.png" alt="r"/>, such that each
 point in the node lies within the hyper-sphere defined by <img class="math" src="../_images/math/b55ca7a0aa88ab7d58f4fc035317fdac39b17861.png" alt="r"/> and
@@ -381,8 +462,10 @@ is reduced through use of the <em>triangle inequality</em>:</p>
 </div><p>With this setup, a single distance calculation between a test point and
 the centroid is sufficient to determine a lower and upper bound on the
 distance to all points within the node.
-Because of the spherical geometry of the ball tree nodes, its performance
-does not degrade at high dimensions.  In scikit-learn, ball-tree-based
+Because of the spherical geometry of the ball tree nodes, it can out-perform
+a <em>KD-tree</em> in high dimensions, though the actual performance is highly
+dependent on the structure of the training data.
+In scikit-learn, ball-tree-based
 neighbors searches are specified using the keyword <tt class="docutils literal"><span class="pre">algorithm</span> <span class="pre">=</span> <span class="pre">'ball_tree'</span></tt>,
 and are computed using the class <a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.neighbors.BallTree</span></tt></a>.
 Alternatively, the user can work with the <a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-class docutils literal"><span class="pre">BallTree</span></tt></a> class directly.</p>
@@ -415,7 +498,7 @@ structure can lead to queries which are slower than brute force.</li>
 </ul>
 <p>For small data sets (<img class="math" src="../_images/math/fc97ef67268cd4e91bacdf12b8901d7036c9a056.png" alt="N"/> less than 30 or so), <img class="math" src="../_images/math/be48f1482cf25ed0006ab1883c7809bcb082d028.png" alt="\log(N)"/> is
 comparable to <img class="math" src="../_images/math/fc97ef67268cd4e91bacdf12b8901d7036c9a056.png" alt="N"/>, and brute force algorithms can be more efficient
-than a tree-based approach.  Both <tt class="xref py py-class docutils literal"><span class="pre">cKDTree</span></tt> and <a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-class docutils literal"><span class="pre">BallTree</span></tt></a>
+than a tree-based approach.  Both <a class="reference internal" href="generated/sklearn.neighbors.KDTree.html#sklearn.neighbors.KDTree" title="sklearn.neighbors.KDTree"><tt class="xref py py-class docutils literal"><span class="pre">KDTree</span></tt></a> and <a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-class docutils literal"><span class="pre">BallTree</span></tt></a>
 address this through providing a <em>leaf size</em> parameter: this controls the
 number of samples at which a query switches to brute-force.  This allows both
 algorithms to approach the efficiency of a brute-force computation for small
@@ -424,7 +507,7 @@ algorithms to approach the efficiency of a brute-force computation for small
 <li><p class="first">data structure: <em>intrinsic dimensionality</em> of the data and/or <em>sparsity</em>
 of the data. Intrinsic dimensionality refers to the dimension
 <img class="math" src="../_images/math/bc8e71117f4c312cd94640ed0be8a8261e207ef1.png" alt="d \le D"/> of a manifold on which the data lies, which can be linearly
-or nonlinearly embedded in the parameter space. Sparsity refers to the
+or non-linearly embedded in the parameter space. Sparsity refers to the
 degree to which the data fills the parameter space (this is to be
 distinguished from the concept as used in &#8220;sparse&#8221; matrices.  The data
 matrix may have no zero entries, but the <strong>structure</strong> can still be
@@ -553,7 +636,7 @@ classification using nearest centroid with different shrink thresholds.</li>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../_sources/modules/neighbors.txt"

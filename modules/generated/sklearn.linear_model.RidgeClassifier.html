@@ -185,7 +185,7 @@ LinearSVC.</p>
 <p><strong>class_weight</strong> : dict, optional</p>
 <blockquote>
 <div><p>Weights associated with classes in the form
-{class_label : weight}. If not given, all classes are
+<tt class="docutils literal"><span class="pre">{class_label</span> <span class="pre">:</span> <span class="pre">weight}</span></tt>. If not given, all classes are
 supposed to have weight one.</p>
 </div></blockquote>
 <p><strong>copy_X</strong> : boolean, optional, default True</p>
@@ -207,10 +207,11 @@ The default value is determined by scipy.sparse.linalg.</p>
 <blockquote>
 <div><p>If True, the regressors X will be normalized before regression.</p>
 </div></blockquote>
-<p><strong>solver</strong> : {&#8216;auto&#8217;, &#8216;dense_cholesky&#8217;, &#8216;lsqr&#8217;, &#8216;sparse_cg&#8217;}</p>
+<p><strong>solver</strong> : {&#8216;auto&#8217;, &#8216;svd&#8217;, &#8216;dense_cholesky&#8217;, &#8216;lsqr&#8217;, &#8216;sparse_cg&#8217;}</p>
 <blockquote>
 <div><p>Solver to use in the computational
-routines. &#8216;dense_cholesky&#8217; will use the standard
+routines. &#8216;svd&#8217; will use a Sinvular value decomposition to obtain
+the solution, &#8216;dense_cholesky&#8217; will use the standard
 scipy.linalg.solve function, &#8216;sparse_cg&#8217; will use the
 conjugate gradient solver as found in
 scipy.sparse.linalg.cg while &#8216;auto&#8217; will chose the most
@@ -436,7 +437,7 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2013, scikit-learn developers (BSD License).
+        &copy; 2010â2013, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
     <span style="padding-left: 5ex;">
     <a href="../../_sources/modules/generated/sklearn.linear_model.RidgeClassifier.txt"
