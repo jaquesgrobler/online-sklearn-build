@@ -5,7 +5,6 @@
 =========================================================
 SVM-Kernels
 =========================================================
-
 Three different types of SVM-Kernels are displayed below.
 The polynomial and RBF are especially useful when the
 data-points are not linearly separable.

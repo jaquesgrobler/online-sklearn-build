@@ -45,8 +45,17 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+  console.debug("google_analytics script done");
 </script>
+
+
+
+      <script type="text/javascript}">
+	  console.debug("DERP");
+
+      </script>
+      <link rel="canonical" href="http://jaquesgrobler.github.io/online-sklearn-build/auto_examples/plot_kernel_approximation.html">
+
 
 
 
@@ -167,10 +176,8 @@
             
   <div class="section" id="explicit-feature-map-approximation-for-rbf-kernels">
 <span id="example-plot-kernel-approximation-py"></span><h1>Explicit feature map approximation for RBF kernels<a class="headerlink" href="#explicit-feature-map-approximation-for-rbf-kernels" title="Permalink to this headline">¶</a></h1>
-<p>An example illustrating the approximation of the feature map
-of an RBF kernel.</p>
-<p>It shows how to use <a class="reference internal" href="../modules/generated/sklearn.kernel_approximation.RBFSampler.html#sklearn.kernel_approximation.RBFSampler" title="sklearn.kernel_approximation.RBFSampler"><tt class="xref py py-class docutils literal"><span class="pre">RBFSampler</span></tt></a> and <tt class="xref py py-class docutils literal"><span class="pre">Nystrom</span></tt> to
-appoximate the feature map of an RBF kernel for classification with an SVM on
+<p>An example shows how to use <a class="reference internal" href="../modules/generated/sklearn.kernel_approximation.RBFSampler.html#sklearn.kernel_approximation.RBFSampler" title="sklearn.kernel_approximation.RBFSampler"><tt class="xref py py-class docutils literal"><span class="pre">RBFSampler</span></tt></a> and <tt class="xref py py-class docutils literal"><span class="pre">Nystrom</span></tt> to
+approximate the feature map of an RBF kernel for classification with an SVM on
 the digits dataset. Results using a linear SVM in the original space, a linear
 SVM using the approximate mappings and using a kernelized SVM are compared.
 Timings and accuracy for varying amounts of Monte Carlo samplings (in the case
@@ -196,7 +203,7 @@ into the region it is lying in, since it will not lie on the plane
 that the first two principal components span.</p>
 <p>The usage of <a class="reference internal" href="../modules/generated/sklearn.kernel_approximation.RBFSampler.html#sklearn.kernel_approximation.RBFSampler" title="sklearn.kernel_approximation.RBFSampler"><tt class="xref py py-class docutils literal"><span class="pre">RBFSampler</span></tt></a> and <a class="reference internal" href="../modules/generated/sklearn.kernel_approximation.Nystroem.html#sklearn.kernel_approximation.Nystroem" title="sklearn.kernel_approximation.Nystroem"><tt class="xref py py-class docutils literal"><span class="pre">Nystroem</span></tt></a> is described in detail
 in <a class="reference internal" href="../modules/kernel_approximation.html#kernel-approximation"><em>Kernel Approximation</em></a>.</p>
-<p class="horizontal"><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_kernel_approximation.py"><tt class="xref download docutils literal"><span class="pre">plot_kernel_approximation.py</span></tt></a></p>
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_kernel_approximation.py"><tt class="xref download docutils literal"><span class="pre">plot_kernel_approximation.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Gael Varoquaux &lt;gael dot varoquaux at normalesup dot org&gt;</span>
@@ -366,7 +373,6 @@ in <a class="reference internal" href="../modules/kernel_approximation.html#kern
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.00 seconds</p>
 </div>
 
 

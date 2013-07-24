@@ -7,8 +7,7 @@
 Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood
 =======================================================================
 
-When working with covariance estimation, the usual approach is to use
-a maximum likelihood estimator, such as the
+The usual estimator for covariance is the maximum likelihood estimator,
 :class:`sklearn.covariance.EmpiricalCovariance`. It is unbiased, i.e. it
 converges to the true (population) covariance when given many
 observations. However, it can also be beneficial to regularize it, in
@@ -46,17 +45,8 @@ computationally costly.
 
 
 
-
-.. image:: images/plot_covariance_estimation_1.png
-    :align: center
-
-
-
-
 **Python source code:** :download:`plot_covariance_estimation.py <plot_covariance_estimation.py>`
 
 .. literalinclude:: plot_covariance_estimation.py
-    :lines: 44-
-
-**Total running time of the example:**  0.30 seconds
+    :lines: 43-
     

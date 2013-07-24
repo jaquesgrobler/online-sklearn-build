@@ -45,8 +45,17 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+  console.debug("google_analytics script done");
 </script>
+
+
+
+      <script type="text/javascript}">
+	  console.debug("DERP");
+
+      </script>
+      <link rel="canonical" href="http://jaquesgrobler.github.io/online-sklearn-build/modules/feature_extraction.html">
+
 
 
 
@@ -961,7 +970,7 @@ features or samples. For instance Ward clustering
 (<a class="reference internal" href="clustering.html#hierarchical-clustering"><em>Hierarchical clustering</em></a>) can cluster together only neighboring pixels
 of an image, thus forming contiguous patches:</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_lena_ward_segmentation.html"><img alt="../_images/plot_lena_ward_segmentation_11.png" src="../_images/plot_lena_ward_segmentation_11.png" style="width: 200.0px; height: 200.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_lena_ward_segmentation.html"><img alt="modules/../auto_examples/cluster/images/plot_lena_ward_segmentation_1.png" src="modules/../auto_examples/cluster/images/plot_lena_ward_segmentation_1.png" /></a>
 </div>
 <p>For this purpose, the estimators use a &#8216;connectivity&#8217; matrix, giving
 which samples are connected.</p>

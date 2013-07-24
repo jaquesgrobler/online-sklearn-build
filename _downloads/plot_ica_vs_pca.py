@@ -3,10 +3,8 @@
 FastICA on 2D point clouds
 ==========================
 
-This example illustrates visually in the feature space a comparison by
-results using two different component analysis techniques.
-
-:ref:`ICA` vs :ref:`PCA`.
+Illustrate visually the results of :ref:`ICA` vs :ref:`PCA` in the
+feature space.
 
 Representing ICA in the feature space gives the view of 'geometric ICA':
 ICA is an algorithm that finds directions in the feature space

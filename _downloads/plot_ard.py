@@ -3,9 +3,7 @@
 Automatic Relevance Determination Regression (ARD)
 ==================================================
 
-Fit regression model with Bayesian Ridge Regression.
-
-See :ref:`bayesian_ridge_regression` for more information on the regressor.
+Fit regression model with :ref:`bayesian_ridge_regression`.
 
 Compared to the OLS (ordinary least squares) estimator, the coefficient
 weights are slightly shifted toward zeros, which stabilises them.

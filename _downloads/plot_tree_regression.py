@@ -3,9 +3,7 @@
 Decision Tree Regression
 ===================================================================
 
-A 1D regression with decision tree.
-
-The :ref:`decision trees <tree>` is
+1D regression with :ref:`decision trees <tree>`: the decision tree is
 used to fit a sine curve with addition noisy observation. As a result, it
 learns local linear regressions approximating the sine curve.
 

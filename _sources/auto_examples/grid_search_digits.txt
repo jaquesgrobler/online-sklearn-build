@@ -7,8 +7,7 @@
 Parameter estimation using grid search with a nested cross-validation
 =====================================================================
 
-This examples shows how a classifier is optimized by "nested"
-cross-validation, which is done using the
+The classifier is optimized by "nested" cross-validation using the
 :class:`sklearn.grid_search.GridSearchCV` object on a development set
 that comprises only half of the available labeled data.
 
@@ -24,5 +23,5 @@ sections on :ref:`cross_validation` and :ref:`grid_search`.
 **Python source code:** :download:`grid_search_digits.py <grid_search_digits.py>`
 
 .. literalinclude:: grid_search_digits.py
-    :lines: 19-
+    :lines: 18-
     

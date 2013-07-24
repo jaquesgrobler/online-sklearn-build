@@ -7,10 +7,8 @@
 FastICA on 2D point clouds
 ==========================
 
-This example illustrates visually in the feature space a comparison by
-results using two different component analysis techniques.
-
-:ref:`ICA` vs :ref:`PCA`.
+Illustrate visually the results of :ref:`ICA` vs :ref:`PCA` in the
+feature space.
 
 Representing ICA in the feature space gives the view of 'geometric ICA':
 ICA is an algorithm that finds directions in the feature space
@@ -32,17 +30,8 @@ left). Running ICA corresponds to finding a rotation in this space to
 identify the directions of largest non-Gaussianity (lower right).
 
 
-
-.. image:: images/plot_ica_vs_pca_1.png
-    :align: center
-
-
-
-
 **Python source code:** :download:`plot_ica_vs_pca.py <plot_ica_vs_pca.py>`
 
 .. literalinclude:: plot_ica_vs_pca.py
-    :lines: 30-
-
-**Total running time of the example:**  0.70 seconds
+    :lines: 28-
     

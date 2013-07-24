@@ -3,9 +3,7 @@
 Multi-output Decision Tree Regression
 ===================================================================
 
-An example to illustrate multi-output regression with decision tree.
-
-The :ref:`decision trees <tree>`
+Multi-output regression with :ref:`decision trees <tree>`: the decision tree
 is used to predict simultaneously the noisy x and y observations of a circle
 given a single underlying feature. As a result, it learns local linear
 regressions approximating the circle.

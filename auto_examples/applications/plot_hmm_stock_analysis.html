@@ -45,8 +45,17 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+  console.debug("google_analytics script done");
 </script>
+
+
+
+      <script type="text/javascript}">
+	  console.debug("DERP");
+
+      </script>
+      <link rel="canonical" href="http://jaquesgrobler.github.io/online-sklearn-build/auto_examples/applications/plot_hmm_stock_analysis.html">
+
 
 
 
@@ -171,43 +180,6 @@
 It uses stock price data, which can be obtained from yahoo finance.
 For more information on how to get stock prices with matplotlib, please refer
 to date_demo1.py of matplotlib.</p>
-<img alt="../../_images/plot_hmm_stock_analysis_1.png" class="align-center" src="../../_images/plot_hmm_stock_analysis_1.png" />
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>fitting to HMM and decoding ...done
-
-Transition matrix
-[[  7.19389553e-01   1.54490761e-01   1.18545066e-01   3.57721691e-03
-    3.99740296e-03]
- [  1.49066361e-01   8.20942488e-01   2.91935585e-02   9.67147959e-06
-    7.87921470e-04]
- [  3.16276629e-01   3.31030650e-02   6.26669324e-01   2.39509822e-02
-    4.64499065e-15]
- [  1.69427372e-16   3.60014275e-18   3.22002362e-01   4.14356591e-01
-    2.63641047e-01]
- [  5.92841580e-09   2.38275244e-03   1.63094198e-16   2.09389209e-02
-    9.76678321e-01]]
-
-means and vars of each hidden state
-0th hidden state
-mean =  [  1.16344783e-02   6.99631659e+07]
-var =  [  1.24178968e-01   1.53072855e+14]
-
-1th hidden state
-mean =  [  6.33545732e-03   4.91489505e+07]
-var =  [  5.06333239e-02   1.09824688e+14]
-
-2th hidden state
-mean =  [  3.73479997e-02   1.10541973e+08]
-var =  [  1.97431875e-01   8.82226016e+14]
-
-3th hidden state
-mean =  [ -7.71496971e-01   1.48871576e+08]
-var =  [  6.17257739e+00   1.02346891e+16]
-
-4th hidden state
-mean =  [  2.80181977e-02   4.96955040e+07]
-var =  [  8.85469963e-01   2.50139810e+14]</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_hmm_stock_analysis.py"><tt class="xref download docutils literal"><span class="pre">plot_hmm_stock_analysis.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 
@@ -215,8 +187,8 @@ var =  [  8.85469963e-01   2.50139810e+14]</pre>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">from</span> <span class="nn">matplotlib.finance</span> <span class="kn">import</span> <span class="n">quotes_historical_yahoo</span>
-<span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="kn">import</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.YearLocator"><span class="n">YearLocator</span></a><span class="p">,</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.MonthLocator"><span class="n">MonthLocator</span></a><span class="p">,</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.DateFormatter"><span class="n">DateFormatter</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.hmm</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">GaussianHMM</span></a>
+<span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="kn">import</span> <span class="n">YearLocator</span><span class="p">,</span> <span class="n">MonthLocator</span><span class="p">,</span> <span class="n">DateFormatter</span>
+<span class="kn">from</span> <span class="nn">sklearn.hmm</span> <span class="kn">import</span> <span class="n">GaussianHMM</span>
 
 
 <span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
@@ -231,9 +203,9 @@ var =  [  8.85469963e-01   2.50139810e+14]</pre>
     <span class="k">raise</span> <span class="ne">SystemExit</span>
 
 <span class="c"># unpack quotes</span>
-<span class="n">dates</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">close_v</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">])</span>
-<span class="n">volume</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">])[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">close_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">])</span>
+<span class="n">volume</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">])[</span><span class="mi">1</span><span class="p">:]</span>
 
 <span class="c"># take diff of close value</span>
 <span class="c"># this makes len(diff) = len(close_t) - 1</span>
@@ -243,7 +215,7 @@ var =  [  8.85469963e-01   2.50139810e+14]</pre>
 <span class="n">close_v</span> <span class="o">=</span> <span class="n">close_v</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
 <span class="c"># pack diff and volume for training</span>
-<span class="n">X</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.column_stack.html#numpy.column_stack"><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span></a><span class="p">([</span><span class="n">diff</span><span class="p">,</span> <span class="n">volume</span><span class="p">])</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">diff</span><span class="p">,</span> <span class="n">volume</span><span class="p">])</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Run Gaussian HMM</span>
@@ -251,39 +223,39 @@ var =  [  8.85469963e-01   2.50139810e+14]</pre>
 <span class="n">n_components</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="c"># make an HMM instance and execute fit</span>
-<a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">GaussianHMM</span></a><span class="p">(</span><span class="n">n_components</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s">&quot;diag&quot;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GaussianHMM</span><span class="p">(</span><span class="n">n_components</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s">&quot;diag&quot;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 
-<a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">X</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">X</span><span class="p">])</span>
 
 <span class="c"># predict the optimal sequence of internal hidden state</span>
-<span class="n">hidden_states</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">hidden_states</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;done</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># print trained parameters and plot</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Transition matrix&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">transmat_</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">transmat_</span><span class="p">)</span>
 <span class="k">print</span><span class="p">()</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;means and vars of each hidden state&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_components</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">th hidden state&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;mean = &quot;</span><span class="p">,</span> <a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;var = &quot;</span><span class="p">,</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.diag.html#numpy.diag"><span class="n">np</span><span class="o">.</span><span class="n">diag</span></a><span class="p">(</span><a href="../../modules/generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM"><span class="n">model</span></a><span class="o">.</span><span class="n">covars_</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;mean = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;var = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">covars_</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
     <span class="k">print</span><span class="p">()</span>
 
-<span class="n">years</span> <span class="o">=</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.YearLocator"><span class="n">YearLocator</span></a><span class="p">()</span>   <span class="c"># every year</span>
-<span class="n">months</span> <span class="o">=</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.MonthLocator"><span class="n">MonthLocator</span></a><span class="p">()</span>  <span class="c"># every month</span>
-<span class="n">yearsFmt</span> <span class="o">=</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.DateFormatter"><span class="n">DateFormatter</span></a><span class="p">(</span><span class="s">&#39;%Y&#39;</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">pl</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">years</span> <span class="o">=</span> <span class="n">YearLocator</span><span class="p">()</span>   <span class="c"># every year</span>
+<span class="n">months</span> <span class="o">=</span> <span class="n">MonthLocator</span><span class="p">()</span>  <span class="c"># every month</span>
+<span class="n">yearsFmt</span> <span class="o">=</span> <span class="n">DateFormatter</span><span class="p">(</span><span class="s">&#39;%Y&#39;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_components</span><span class="p">):</span>
     <span class="c"># use fancy indexing to plot data in each state</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">hidden_states</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot_date</span><span class="p">(</span><span class="n">dates</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">close_v</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">th hidden state&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">ax</span><span class="o">.</span><span class="n">legend</span></a><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="c"># format the ticks</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">years</span><span class="p">)</span>
@@ -292,15 +264,14 @@ var =  [  8.85469963e-01   2.50139810e+14]</pre>
 <span class="n">ax</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">()</span>
 
 <span class="c"># format the coords message box</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">fmt_xdata</span> <span class="o">=</span> <a href="http://matplotlib.org/api/dates_api.html#matplotlib.dates.DateFormatter"><span class="n">DateFormatter</span></a><span class="p">(</span><span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fmt_xdata</span> <span class="o">=</span> <span class="n">DateFormatter</span><span class="p">(</span><span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s">&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">fmt_ydata</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s">&#39;$</span><span class="si">%1.2f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 
-<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  3.95 seconds</p>
 </div>
 
 

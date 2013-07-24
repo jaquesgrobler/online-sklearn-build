@@ -45,8 +45,17 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+  console.debug("google_analytics script done");
 </script>
+
+
+
+      <script type="text/javascript}">
+	  console.debug("DERP");
+
+      </script>
+      <link rel="canonical" href="http://jaquesgrobler.github.io/online-sklearn-build/modules/label_propagation.html">
+
 
 
 
@@ -199,7 +208,7 @@ inference algorithms.</p>
 <a class="reference internal" href="generated/sklearn.semi_supervised.LabelPropagation.html#sklearn.semi_supervised.LabelPropagation" title="sklearn.semi_supervised.LabelPropagation"><tt class="xref py py-class docutils literal"><span class="pre">LabelPropagation</span></tt></a> and <a class="reference internal" href="generated/sklearn.semi_supervised.LabelSpreading.html#sklearn.semi_supervised.LabelSpreading" title="sklearn.semi_supervised.LabelSpreading"><tt class="xref py py-class docutils literal"><span class="pre">LabelSpreading</span></tt></a>. Both work by
 constructing a similarity graph over all items in the input dataset.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/semi_supervised/plot_label_propagation_structure.html"><img alt="../_images/plot_label_propagation_structure_11.png" src="../_images/plot_label_propagation_structure_11.png" style="width: 510.0px; height: 240.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/semi_supervised/plot_label_propagation_structure.html"><img alt="modules/../auto_examples/semi_supervised/images/plot_label_propagation_structure_1.png" src="modules/../auto_examples/semi_supervised/images/plot_label_propagation_structure_1.png" /></a>
 <p class="caption"><strong>An illustration of label-propagation:</strong> <em>the structure of unlabeled
 observations is consistent with the class structure, and thus the
 class label can be propagated to the unlabeled observations of the

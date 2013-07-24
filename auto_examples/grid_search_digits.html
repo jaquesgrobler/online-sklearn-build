@@ -45,8 +45,17 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+  console.debug("google_analytics script done");
 </script>
+
+
+
+      <script type="text/javascript}">
+	  console.debug("DERP");
+
+      </script>
+      <link rel="canonical" href="http://jaquesgrobler.github.io/online-sklearn-build/auto_examples/grid_search_digits.html">
+
 
 
 
@@ -167,8 +176,7 @@
             
   <div class="section" id="parameter-estimation-using-grid-search-with-a-nested-cross-validation">
 <span id="example-grid-search-digits-py"></span><h1>Parameter estimation using grid search with a nested cross-validation<a class="headerlink" href="#parameter-estimation-using-grid-search-with-a-nested-cross-validation" title="Permalink to this headline">¶</a></h1>
-<p>This examples shows how a classifier is optimized by &#8220;nested&#8221;
-cross-validation, which is done using the
+<p>The classifier is optimized by &#8220;nested&#8221; cross-validation using the
 <a class="reference internal" href="../modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.grid_search.GridSearchCV</span></tt></a> object on a development set
 that comprises only half of the available labeled data.</p>
 <p>The performance of the selected hyper-parameters and trained model is
