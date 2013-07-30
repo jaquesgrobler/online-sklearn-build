@@ -8,7 +8,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Comparison of Manifold Learning methods &mdash; scikit-learn 0.14-git documentation</title>
+  
+    <title>Comparison of Manifold Learning methods &mdash; scikit-learn 0.12.1 documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../_static/css/bootstrap-responsive.css"/>
+
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.12.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,142 +31,94 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
-    <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Manifold Learning methods on a severed sphere" href="plot_manifold_sphere.html" />
-    <link rel="prev" title="Multi-dimensional scaling" href="plot_mds.html" />
+    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+   
+       <script type="text/javascript" src="../../_static/sidebar.js"></script>
+   
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  <link rel="canonical" href="http://scikit-learn.org/stable/auto_examples/manifold/plot_compare_methods.html" />
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-22606712-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
-      <link rel="canonical" href="http://scikit-learn.org/stable/auto_examples/manifold/plot_compare_methods.html">
-
-
-
+  <script type="text/javascript">
+    $("div.buttonNext, div.buttonPrevious").hover(
+       function () {
+           $(this).css('background-color', '#FF9C34');
+       },
+       function () {
+           $(this).css('background-color', '#A7D6E2');
+       }
+    );
+    var bodywrapper = $('.bodywrapper');
+    var sidebarbutton = $('#sidebarbutton');
+    sidebarbutton.css({'height': '900px'});
+  </script>
 
   </head>
   <body>
 
-    <div class="header-wrapper">
-      <div class="header">
-          <p class="logo"><a href="../../index.html">
+<div class="header-wrapper">
+    <div class="header">
+        <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
-          </a>
-          </p><div class="navbar">
-          <ul>
-            <li><a href="../../install.html">Download</a></li>
-            <li><a href="../../support.html">Support</a></li>
-            <li><a href="../../user_guide.html">User Guide</a></li>
+        </a>
+        </p>
+        <div class="navbar">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../install.html">Installation</a></li>
+                <li class="btn-li"><div class="btn-group">
+		      <a href="../../documentation.html">Documentation</a>
+		      <a class="btn dropdown-toggle" data-toggle="dropdown">
+			     <span class="caret"></span>
+		      </a>
+		      <ul class="dropdown-menu">
+			<li class="link-title">Scikit-learn 0.14 (stable)</li>
+			<li><a href="../../tutorial/basic/tutorial.html">Quick Start</a></li>
+			<li><a href="../../tutorial/index.html">Tutorials</a></li>
+			<li><a href="../../user_guide.html">User guide</a></li>
+			<li><a href="../../modules/classes.html">API</a></li>
+			<li class="divider"></li>
+		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
+		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
+		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
+		        <li><a href="../../documentation.html">More versions...</a></li>
+		      </ul>
+		    </div>
+		</li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../modules/classes.html">Reference</a></li>
-       </ul>
+            </ul>
 
-<div class="search_form">
-
-<div id="cse" style="width: 100%;"></div>
-<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript">
-  google.load('search', '1', {language : 'en'});
-  google.setOnLoadCallback(function() {
-    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse', options);
-  }, true);
-</script>
-
+            <div class="search_form">
+                <div id="cse" style="width: 100%;"></div>
+            </div>
+        </div> <!-- end navbar --></div>
 </div>
-          </div> <!-- end navbar --></div>
-    </div>
 
-    <div class="content-wrapper">
 
-      <div class="sphinxsidebar">
-	<div class="sphinxsidebarwrapper">
-	  <div class="rel">
-	   
-	<!-- rellinks[1:] is an ugly hack to avoid link to module
-	    index  -->
-	<div class="rellink">
-	<a href="plot_mds.html" title="Multi-dimensional scaling"
-	    accesskey="P">Previous
-	    <br>
-	    <span class="smallrellink">
-	    Multi-dimensiona...
-	    </span>
-	    <span class="hiddenrellink">
-	    Multi-dimensional scaling
-	    </span>
-	    
-	    </a>
-	</div>
-	    <div class="spacer">
-	    &nbsp;
-	    </div>
-	
-	<div class="rellink">
-	<a href="plot_manifold_sphere.html" title="Manifold Learning methods on a severed sphere"
-	    accesskey="N">Next
-	    <br>
-	    <span class="smallrellink">
-	    Manifold Learnin...
-	    </span>
-	    <span class="hiddenrellink">
-	    Manifold Learning methods on a severed sphere
-	    </span>
-	    
-	    </a>
-	</div>
-	<!-- Ad a link to the 'up' page -->
-	<div class="spacer">
-	&nbsp;
-	</div>
-	<div class="rellink">
-	<a href="../index.html" title="Examples" >
-	Up
-	<br>
-	<span class="smallrellink">
-	Examples
-	</span>
-	<span class="hiddenrellink">
-	Examples
-	</span>
-	
-	</a>
-	</div>
-    </div>
-    <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.14-git</strong>
-    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
-    
-    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
-    <p>If you use the software, please consider
-    <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
-    <h3>This page</h3>
-	<ul>
+<!-- Github "fork me" ribbon -->
+<a href="https://github.com/scikit-learn/scikit-learn">
+  <img class="fork-me"
+       style="position: absolute; top: 0; right: 0; border: 0;"
+       src="../../_static/img/forkme.png"
+       alt="Fork me on GitHub" />
+</a>
+
+<div class="content-wrapper">
+    <div class="sphinxsidebar">
+    <div class="sphinxsidebarwrapper">
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <ul>
 <li><a class="reference internal" href="#">Comparison of Manifold Learning methods</a></li>
 </ul>
 
-    
     </div>
-	  </div>
+</div>
+
 
 
       <div class="content">
@@ -175,8 +133,6 @@
 with various manifold learning methods.</p>
 <p>For a discussion and comparison of these algorithms, see the
 <a class="reference internal" href="../../modules/manifold.html#manifold"><em>manifold module page</em></a></p>
-<p>For a similar example, where the methods are applied to a
-sphere dataset, see <a class="reference internal" href="plot_manifold_sphere.html#example-manifold-plot-manifold-sphere-py"><em>Manifold Learning methods on a severed sphere</em></a></p>
 <p>Note that the purpose of the MDS is to find a low-dimensional
 representation of the data (here 2D) in which the distances respect well
 the distances in the original high-dimensional space, unlike other
@@ -185,7 +141,7 @@ representation of the data in the low-dimensional space.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_compare_methods.py"><tt class="xref download docutils literal"><span class="pre">plot_compare_methods.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author: Jake Vanderplas -- &lt;vanderplas@astro.washington.edu&gt;</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">__doc__</span>
 
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 
@@ -194,18 +150,19 @@ representation of the data in the low-dimensional space.</p>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">NullFormatter</span>
 
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">manifold</span><span class="p">,</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
 
 <span class="c"># Next line to silence pyflakes. This import is needed.</span>
 <span class="n">Axes3D</span>
 
 <span class="n">n_points</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">samples_generator</span><span class="o">.</span><span class="n">make_s_curve</span><span class="p">(</span><span class="n">n_points</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">samples_generator</span><span class="o">.</span><span class="n">make_s_curve</span><span class="p">(</span><span class="n">n_points</span><span class="p">)</span>
 <span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">n_components</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s">&quot;Manifold Learning with </span><span class="si">%i</span><span class="s"> points, </span><span class="si">%i</span><span class="s"> neighbors&quot;</span>
-            <span class="o">%</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+               <span class="o">%</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="c"># compatibility matplotlib &lt; 1.0</span>
@@ -225,7 +182,7 @@ representation of the data in the low-dimensional space.</p>
                                         <span class="n">eigen_solver</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">,</span>
                                         <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">methods</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+    <span class="k">print</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">methods</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">242</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span><span class="p">)</span>
@@ -237,7 +194,7 @@ representation of the data in the low-dimensional space.</p>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">manifold</span><span class="o">.</span><span class="n">Isomap</span><span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">n_components</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Isomap: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+<span class="k">print</span> <span class="s">&quot;Isomap: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">246</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Isomap (</span><span class="si">%.2g</span><span class="s"> sec)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
@@ -248,9 +205,9 @@ representation of the data in the low-dimensional space.</p>
 
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">mds</span> <span class="o">=</span> <span class="n">manifold</span><span class="o">.</span><span class="n">MDS</span><span class="p">(</span><span class="n">n_components</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">mds</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">mds</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">euclidean_distances</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
 <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;MDS: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+<span class="k">print</span> <span class="s">&quot;MDS: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">247</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;MDS (</span><span class="si">%.2g</span><span class="s"> sec)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
@@ -258,19 +215,6 @@ representation of the data in the low-dimensional space.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">NullFormatter</span><span class="p">())</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
 
-
-<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">se</span> <span class="o">=</span> <span class="n">manifold</span><span class="o">.</span><span class="n">SpectralEmbedding</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">,</span>
-                                <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">)</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">se</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;SpectralEmbedding: </span><span class="si">%.2g</span><span class="s"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">248</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;SpectralEmbedding (</span><span class="si">%.2g</span><span class="s"> sec)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">NullFormatter</span><span class="p">())</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">NullFormatter</span><span class="p">())</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -286,41 +230,37 @@ representation of the data in the low-dimensional space.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010â2013, scikit-learn developers (BSD License).
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
-    <span style="padding-left: 5ex;">
-    <a href="../../_sources/auto_examples/manifold/plot_compare_methods.txt"
-	    rel="nofollow">Show this page source</a>
-    </span>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      <a href="../../_sources/auto_examples/manifold/plot_compare_methods.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel">
+     <div class="rel rellarge">
     
-    <div class="buttonPrevious">
-      <a href="plot_mds.html">
-        Previous
-      </a>
-    </div>
-    <div class="buttonNext">
-      <a href="plot_manifold_sphere.html">
-        Next
-      </a>
-    </div>
     
      </div>
-     <script type="text/javascript">
-       $("div.buttonNext, div.buttonPrevious").hover(
-           function () {
-               $(this).css('background-color', '#FF9C34');
-           },
-           function () {
-               $(this).css('background-color', '#A7D6E2');
-           }
-       );
-       var bodywrapper = $('.bodywrapper');
-   	var sidebarbutton = $('#sidebarbutton');
-        sidebarbutton.css({
-	    'height': '900px'
-       });
-     </script>
+
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22606712-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript"> google.load('search', '1',
+        {language : 'en'}); google.setOnLoadCallback(function() {
+            var customSearchControl = new
+            google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+            var options = new google.search.DrawOptions();
+            options.setAutoComplete(true);
+            customSearchControl.draw('cse', options); }, true);
+    </script>
   </body>
 </html>

@@ -8,7 +8,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.11. Feature selection &mdash; scikit-learn 0.14-git documentation</title>
+  
+    <title>1.11. Feature selection &mdash; scikit-learn 0.12.1 documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../_static/css/bootstrap-responsive.css"/>
+
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.12.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,152 +31,104 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
-    <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
-    <link rel="next" title="3.12. Semi-Supervised" href="label_propagation.html" />
-    <link rel="prev" title="3.10. Multiclass and multilabel algorithms" href="multiclass.html" />
+    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../index.html" />
+   
+       <script type="text/javascript" src="../_static/sidebar.js"></script>
+   
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  <link rel="canonical" href="http://scikit-learn.org/stable/modules/feature_selection.html" />
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-22606712-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
-      <link rel="canonical" href="http://scikit-learn.org/stable/modules/feature_selection.html">
-
-
-
+  <script type="text/javascript">
+    $("div.buttonNext, div.buttonPrevious").hover(
+       function () {
+           $(this).css('background-color', '#FF9C34');
+       },
+       function () {
+           $(this).css('background-color', '#A7D6E2');
+       }
+    );
+    var bodywrapper = $('.bodywrapper');
+    var sidebarbutton = $('#sidebarbutton');
+    sidebarbutton.css({'height': '900px'});
+  </script>
 
   </head>
   <body>
 
-    <div class="header-wrapper">
-      <div class="header">
-          <p class="logo"><a href="../index.html">
+<div class="header-wrapper">
+    <div class="header">
+        <p class="logo"><a href="../index.html">
             <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
-          </a>
-          </p><div class="navbar">
-          <ul>
-            <li><a href="../install.html">Download</a></li>
-            <li><a href="../support.html">Support</a></li>
-            <li><a href="../user_guide.html">User Guide</a></li>
+        </a>
+        </p>
+        <div class="navbar">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../install.html">Installation</a></li>
+                <li class="btn-li"><div class="btn-group">
+		      <a href="../documentation.html">Documentation</a>
+		      <a class="btn dropdown-toggle" data-toggle="dropdown">
+			     <span class="caret"></span>
+		      </a>
+		      <ul class="dropdown-menu">
+			<li class="link-title">Scikit-learn 0.14 (stable)</li>
+			<li><a href="../tutorial/basic/tutorial.html">Quick Start</a></li>
+			<li><a href="../tutorial/index.html">Tutorials</a></li>
+			<li><a href="../user_guide.html">User guide</a></li>
+			<li><a href="classes.html">API</a></li>
+			<li class="divider"></li>
+		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
+		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
+		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
+		        <li><a href="../documentation.html">More versions...</a></li>
+		      </ul>
+		    </div>
+		</li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="classes.html">Reference</a></li>
-       </ul>
+            </ul>
 
-<div class="search_form">
-
-<div id="cse" style="width: 100%;"></div>
-<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript">
-  google.load('search', '1', {language : 'en'});
-  google.setOnLoadCallback(function() {
-    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse', options);
-  }, true);
-</script>
-
+            <div class="search_form">
+                <div id="cse" style="width: 100%;"></div>
+            </div>
+        </div> <!-- end navbar --></div>
 </div>
-          </div> <!-- end navbar --></div>
-    </div>
 
-    <div class="content-wrapper">
 
-      <div class="sphinxsidebar">
-	<div class="sphinxsidebarwrapper">
-	  <div class="rel">
-	   
-	<!-- rellinks[1:] is an ugly hack to avoid link to module
-	    index  -->
-	<div class="rellink">
-	<a href="multiclass.html" title="3.10. Multiclass and multilabel algorithms"
-	    accesskey="P">Previous
-	    <br>
-	    <span class="smallrellink">
-	    3.10. Multiclass...
-	    </span>
-	    <span class="hiddenrellink">
-	    3.10. Multiclass and multilabel algorithms
-	    </span>
-	    
-	    </a>
-	</div>
-	    <div class="spacer">
-	    &nbsp;
-	    </div>
-	
-	<div class="rellink">
-	<a href="label_propagation.html" title="3.12. Semi-Supervised"
-	    accesskey="N">Next
-	    <br>
-	    <span class="smallrellink">
-	    3.12. Semi-Super...
-	    </span>
-	    <span class="hiddenrellink">
-	    3.12. Semi-Supervised
-	    </span>
-	    
-	    </a>
-	</div>
-	<!-- Ad a link to the 'up' page -->
-	<div class="spacer">
-	&nbsp;
-	</div>
-	<div class="rellink">
-	<a href="../supervised_learning.html" title="3. Supervised learning" >
-	Up
-	<br>
-	<span class="smallrellink">
-	3. Supervised le...
-	</span>
-	<span class="hiddenrellink">
-	3. Supervised learning
-	</span>
-	
-	</a>
-	</div>
-    </div>
-    <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.14-git</strong>
-    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
-    
-    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
-    <p>If you use the software, please consider
-    <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
-    <h3>This page</h3>
-	<ul>
-<li><a class="reference internal" href="#">3.11. Feature selection</a><ul>
-<li><a class="reference internal" href="#univariate-feature-selection">3.11.1. Univariate feature selection</a></li>
-<li><a class="reference internal" href="#recursive-feature-elimination">3.11.2. Recursive feature elimination</a></li>
-<li><a class="reference internal" href="#l1-based-feature-selection">3.11.3. L1-based feature selection</a><ul>
-<li><a class="reference internal" href="#selecting-non-zero-coefficients">3.11.3.1. Selecting non-zero coefficients</a></li>
-<li><a class="reference internal" href="#randomized-sparse-models">3.11.3.2. Randomized sparse models</a></li>
+<!-- Github "fork me" ribbon -->
+<a href="https://github.com/scikit-learn/scikit-learn">
+  <img class="fork-me"
+       style="position: absolute; top: 0; right: 0; border: 0;"
+       src="../_static/img/forkme.png"
+       alt="Fork me on GitHub" />
+</a>
+
+<div class="content-wrapper">
+    <div class="sphinxsidebar">
+    <div class="sphinxsidebarwrapper">
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <ul>
+<li><a class="reference internal" href="#">1.11. Feature selection</a><ul>
+<li><a class="reference internal" href="#univariate-feature-selection">1.11.1. Univariate feature selection</a></li>
+<li><a class="reference internal" href="#recursive-feature-elimination">1.11.2. Recursive feature elimination</a></li>
+<li><a class="reference internal" href="#l1-based-feature-selection">1.11.3. L1-based feature selection</a><ul>
+<li><a class="reference internal" href="#selecting-non-zero-coefficients">1.11.3.1. Selecting non-zero coefficients</a></li>
+<li><a class="reference internal" href="#randomized-sparse-models">1.11.3.2. Randomized sparse models</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#tree-based-feature-selection">3.11.4. Tree-based feature selection</a></li>
+<li><a class="reference internal" href="#tree-based-feature-selection">1.11.4. Tree-based feature selection</a></li>
 </ul>
 </li>
 </ul>
 
-    
     </div>
-	  </div>
+</div>
+
 
 
       <div class="content">
@@ -180,22 +138,21 @@
           <div class="body">
             
   <div class="section" id="feature-selection">
-<span id="id1"></span><h1>3.11. Feature selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>1.11. Feature selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h1>
 <p>The classes in the <a class="reference internal" href="classes.html#module-sklearn.feature_selection" title="sklearn.feature_selection"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.feature_selection</span></tt></a> module can be used
 for feature selection/dimensionality reduction on sample sets, either to
 improve estimators&#8217; accuracy scores or to boost their performance on very
 high-dimensional datasets.</p>
 <div class="section" id="univariate-feature-selection">
-<h2>3.11.1. Univariate feature selection<a class="headerlink" href="#univariate-feature-selection" title="Permalink to this headline">¶</a></h2>
+<h2>1.11.1. Univariate feature selection<a class="headerlink" href="#univariate-feature-selection" title="Permalink to this headline">¶</a></h2>
 <p>Univariate feature selection works by selecting the best features based on
 univariate statistical tests. It can seen as a preprocessing step
-to an estimator. Scikit-learn exposes feature selection routines
-as objects that implement the <cite>transform</cite> method:</p>
+to an estimator. Scikit-Learn exposes feature selection routines
+a objects that implement the <cite>transform</cite> method:</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="generated/sklearn.feature_selection.SelectKBest.html#sklearn.feature_selection.SelectKBest" title="sklearn.feature_selection.SelectKBest"><tt class="xref py py-class docutils literal"><span class="pre">SelectKBest</span></tt></a> removes all but the <cite>k</cite> highest scoring features</li>
-<li><a class="reference internal" href="generated/sklearn.feature_selection.SelectPercentile.html#sklearn.feature_selection.SelectPercentile" title="sklearn.feature_selection.SelectPercentile"><tt class="xref py py-class docutils literal"><span class="pre">SelectPercentile</span></tt></a> removes all but a user-specified highest scoring
-percentile of features</li>
+<li>selecting the k-best features <a class="reference internal" href="generated/sklearn.feature_selection.SelectKBest.html#sklearn.feature_selection.SelectKBest" title="sklearn.feature_selection.SelectKBest"><tt class="xref py py-class docutils literal"><span class="pre">SelectKBest</span></tt></a></li>
+<li>setting a percentile of features to keep <a class="reference internal" href="generated/sklearn.feature_selection.SelectPercentile.html#sklearn.feature_selection.SelectPercentile" title="sklearn.feature_selection.SelectPercentile"><tt class="xref py py-class docutils literal"><span class="pre">SelectPercentile</span></tt></a></li>
 <li>using common univariate statistical tests for each feature:
 false positive rate <a class="reference internal" href="generated/sklearn.feature_selection.SelectFpr.html#sklearn.feature_selection.SelectFpr" title="sklearn.feature_selection.SelectFpr"><tt class="xref py py-class docutils literal"><span class="pre">SelectFpr</span></tt></a>, false discovery rate
 <a class="reference internal" href="generated/sklearn.feature_selection.SelectFdr.html#sklearn.feature_selection.SelectFdr" title="sklearn.feature_selection.SelectFdr"><tt class="xref py py-class docutils literal"><span class="pre">SelectFdr</span></tt></a>, or family wise error <a class="reference internal" href="generated/sklearn.feature_selection.SelectFwe.html#sklearn.feature_selection.SelectFwe" title="sklearn.feature_selection.SelectFwe"><tt class="xref py py-class docutils literal"><span class="pre">SelectFwe</span></tt></a>.</li>
@@ -225,7 +182,7 @@ problem, you will get useless results.</p>
 </div>
 </div>
 <div class="section" id="recursive-feature-elimination">
-<h2>3.11.2. Recursive feature elimination<a class="headerlink" href="#recursive-feature-elimination" title="Permalink to this headline">¶</a></h2>
+<h2>1.11.2. Recursive feature elimination<a class="headerlink" href="#recursive-feature-elimination" title="Permalink to this headline">¶</a></h2>
 <p>Given an external estimator that assigns weights to features (e.g., the
 coefficients of a linear model), recursive feature elimination (<a class="reference internal" href="generated/sklearn.feature_selection.RFE.html#sklearn.feature_selection.RFE" title="sklearn.feature_selection.RFE"><tt class="xref py py-class docutils literal"><span class="pre">RFE</span></tt></a>)
 is to select features by recursively considering smaller and smaller sets of
@@ -248,9 +205,9 @@ selected with cross-validation.</li>
 </div>
 </div>
 <div class="section" id="l1-based-feature-selection">
-<span id="l1-feature-selection"></span><h2>3.11.3. L1-based feature selection<a class="headerlink" href="#l1-based-feature-selection" title="Permalink to this headline">¶</a></h2>
+<span id="l1-feature-selection"></span><h2>1.11.3. L1-based feature selection<a class="headerlink" href="#l1-based-feature-selection" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="selecting-non-zero-coefficients">
-<h3>3.11.3.1. Selecting non-zero coefficients<a class="headerlink" href="#selecting-non-zero-coefficients" title="Permalink to this headline">¶</a></h3>
+<h3>1.11.3.1. Selecting non-zero coefficients<a class="headerlink" href="#selecting-non-zero-coefficients" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="linear_model.html#linear-model"><em>Linear models</em></a> penalized with the L1 norm have
 sparse solutions: many of their estimated coefficients are zero. When the goal
 is to reduce the dimensionality of the data to use with another classifier,
@@ -285,7 +242,7 @@ feature selection.</li>
 <p class="topic-title first"><strong>L1-recovery and compressive sensing</strong></p>
 <p>For a good choice of alpha, the <a class="reference internal" href="linear_model.html#lasso"><em>Lasso</em></a> can fully recover the
 exact set of non-zero variables using only few observations, provided
-certain specific conditions are met. In particular, the number of
+certain specific conditions are met. In paraticular, the number of
 samples should be &#8220;sufficiently large&#8221;, or L1 models will perform at
 random, where &#8220;sufficiently large&#8221; depends on the number of non-zero
 coefficients, the logarithm of the number of features, the amount of
@@ -305,7 +262,7 @@ Processing Magazine [120] July 2007
 </div>
 </div>
 <div class="section" id="randomized-sparse-models">
-<span id="randomized-l1"></span><h3>3.11.3.2. Randomized sparse models<a class="headerlink" href="#randomized-sparse-models" title="Permalink to this headline">¶</a></h3>
+<span id="randomized-l1"></span><h3>1.11.3.2. Randomized sparse models<a class="headerlink" href="#randomized-sparse-models" title="Permalink to this headline">¶</a></h3>
 <p>The limitation of L1-based sparse models is that faced with a group of
 very correlated features, they will select only one. To mitigate this
 problem, it is possible to use randomization techniques, reestimating the
@@ -343,7 +300,7 @@ Journal of the Royal Statistical Society, 72 (2010)
 </div>
 </div>
 <div class="section" id="tree-based-feature-selection">
-<h2>3.11.4. Tree-based feature selection<a class="headerlink" href="#tree-based-feature-selection" title="Permalink to this headline">¶</a></h2>
+<h2>1.11.4. Tree-based feature selection<a class="headerlink" href="#tree-based-feature-selection" title="Permalink to this headline">¶</a></h2>
 <p>Tree-based estimators (see the <a class="reference internal" href="classes.html#module-sklearn.tree" title="sklearn.tree"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.tree</span></tt></a> module and forest
 of trees in the <a class="reference internal" href="classes.html#module-sklearn.ensemble" title="sklearn.ensemble"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.ensemble</span></tt></a> module) can be used to compute
 feature importances, which in turn can be used to discard irrelevant
@@ -354,11 +311,9 @@ features:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(150, 4)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">ExtraTreesClassifier</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">ExtraTreesClassifier</span><span class="p">(</span><span class="n">compute_importances</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_new</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">feature_importances_</span>  
-<span class="go">array([ 0.04...,  0.05...,  0.4...,  0.4...])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X_new</span><span class="o">.</span><span class="n">shape</span>               
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_new</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(150, 2)</span>
 </pre></div>
 </div>
@@ -384,41 +339,37 @@ on face recognition data.</li>
     </div>
 
     <div class="footer">
-        &copy; 2010â2013, scikit-learn developers (BSD License).
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
-    <span style="padding-left: 5ex;">
-    <a href="../_sources/modules/feature_selection.txt"
-	    rel="nofollow">Show this page source</a>
-    </span>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      <a href="../_sources/modules/feature_selection.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel">
+     <div class="rel rellarge">
     
-    <div class="buttonPrevious">
-      <a href="multiclass.html">
-        Previous
-      </a>
-    </div>
-    <div class="buttonNext">
-      <a href="label_propagation.html">
-        Next
-      </a>
-    </div>
     
      </div>
-     <script type="text/javascript">
-       $("div.buttonNext, div.buttonPrevious").hover(
-           function () {
-               $(this).css('background-color', '#FF9C34');
-           },
-           function () {
-               $(this).css('background-color', '#A7D6E2');
-           }
-       );
-       var bodywrapper = $('.bodywrapper');
-   	var sidebarbutton = $('#sidebarbutton');
-        sidebarbutton.css({
-	    'height': '900px'
-       });
-     </script>
+
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22606712-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript"> google.load('search', '1',
+        {language : 'en'}); google.setOnLoadCallback(function() {
+            var customSearchControl = new
+            google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+            var options = new google.search.DrawOptions();
+            options.setAutoComplete(true);
+            customSearchControl.draw('cse', options); }, true);
+    </script>
   </body>
 </html>

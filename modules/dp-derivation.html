@@ -8,7 +8,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4.1.3.2.1. Variational Gaussian Mixture Models &mdash; scikit-learn 0.14-git documentation</title>
+  
+    <title>2.1.3.2.1. Variational Gaussian Mixture Models &mdash; scikit-learn 0.12.1 documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../_static/css/bootstrap-responsive.css"/>
+
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.12.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,165 +31,117 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
-    <link rel="up" title="4.1. Gaussian mixture models" href="mixture.html" />
-    <link rel="next" title="4.2. Manifold learning" href="manifold.html" />
-    <link rel="prev" title="4.1. Gaussian mixture models" href="mixture.html" />
+    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../index.html" />
+   
+       <script type="text/javascript" src="../_static/sidebar.js"></script>
+   
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  <link rel="canonical" href="http://scikit-learn.org/stable/modules/dp-derivation.html" />
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-22606712-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
-      <link rel="canonical" href="http://scikit-learn.org/stable/modules/dp-derivation.html">
-
-
-
+  <script type="text/javascript">
+    $("div.buttonNext, div.buttonPrevious").hover(
+       function () {
+           $(this).css('background-color', '#FF9C34');
+       },
+       function () {
+           $(this).css('background-color', '#A7D6E2');
+       }
+    );
+    var bodywrapper = $('.bodywrapper');
+    var sidebarbutton = $('#sidebarbutton');
+    sidebarbutton.css({'height': '900px'});
+  </script>
 
   </head>
   <body>
 
-    <div class="header-wrapper">
-      <div class="header">
-          <p class="logo"><a href="../index.html">
+<div class="header-wrapper">
+    <div class="header">
+        <p class="logo"><a href="../index.html">
             <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
-          </a>
-          </p><div class="navbar">
-          <ul>
-            <li><a href="../install.html">Download</a></li>
-            <li><a href="../support.html">Support</a></li>
-            <li><a href="../user_guide.html">User Guide</a></li>
+        </a>
+        </p>
+        <div class="navbar">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../install.html">Installation</a></li>
+                <li class="btn-li"><div class="btn-group">
+		      <a href="../documentation.html">Documentation</a>
+		      <a class="btn dropdown-toggle" data-toggle="dropdown">
+			     <span class="caret"></span>
+		      </a>
+		      <ul class="dropdown-menu">
+			<li class="link-title">Scikit-learn 0.14 (stable)</li>
+			<li><a href="../tutorial/basic/tutorial.html">Quick Start</a></li>
+			<li><a href="../tutorial/index.html">Tutorials</a></li>
+			<li><a href="../user_guide.html">User guide</a></li>
+			<li><a href="classes.html">API</a></li>
+			<li class="divider"></li>
+		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
+		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
+		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
+		        <li><a href="../documentation.html">More versions...</a></li>
+		      </ul>
+		    </div>
+		</li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="classes.html">Reference</a></li>
-       </ul>
+            </ul>
 
-<div class="search_form">
-
-<div id="cse" style="width: 100%;"></div>
-<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript">
-  google.load('search', '1', {language : 'en'});
-  google.setOnLoadCallback(function() {
-    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse', options);
-  }, true);
-</script>
-
+            <div class="search_form">
+                <div id="cse" style="width: 100%;"></div>
+            </div>
+        </div> <!-- end navbar --></div>
 </div>
-          </div> <!-- end navbar --></div>
-    </div>
 
-    <div class="content-wrapper">
 
-      <div class="sphinxsidebar">
-	<div class="sphinxsidebarwrapper">
-	  <div class="rel">
-	   
-	<!-- rellinks[1:] is an ugly hack to avoid link to module
-	    index  -->
-	<div class="rellink">
-	<a href="mixture.html" title="4.1. Gaussian mixture models"
-	    accesskey="P">Previous
-	    <br>
-	    <span class="smallrellink">
-	    4.1. Gaussian mi...
-	    </span>
-	    <span class="hiddenrellink">
-	    4.1. Gaussian mixture models
-	    </span>
-	    
-	    </a>
-	</div>
-	    <div class="spacer">
-	    &nbsp;
-	    </div>
-	
-	<div class="rellink">
-	<a href="manifold.html" title="4.2. Manifold learning"
-	    accesskey="N">Next
-	    <br>
-	    <span class="smallrellink">
-	    4.2. Manifold le...
-	    </span>
-	    <span class="hiddenrellink">
-	    4.2. Manifold learning
-	    </span>
-	    
-	    </a>
-	</div>
-	<!-- Ad a link to the 'up' page -->
-	<div class="spacer">
-	&nbsp;
-	</div>
-	<div class="rellink">
-	<a href="mixture.html" title="4.1. Gaussian mixture models" >
-	Up
-	<br>
-	<span class="smallrellink">
-	4.1. Gaussian mi...
-	</span>
-	<span class="hiddenrellink">
-	4.1. Gaussian mixture models
-	</span>
-	
-	</a>
-	</div>
-    </div>
-    <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.14-git</strong>
-    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
-    
-    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
-    <p>If you use the software, please consider
-    <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
-    <h3>This page</h3>
-	<ul>
-<li><a class="reference internal" href="#">4.1.3.2.1. Variational Gaussian Mixture Models</a></li>
-<li><a class="reference internal" href="#update-rules-for-vb-inference">4.1.3.2.2. Update rules for VB inference</a><ul>
-<li><a class="reference internal" href="#the-spherical-model">4.1.3.2.2.1. The spherical model</a><ul>
-<li><a class="reference internal" href="#the-bound">4.1.3.2.2.1.1. The bound</a></li>
-<li><a class="reference internal" href="#the-updates">4.1.3.2.2.1.2. The updates</a></li>
+<!-- Github "fork me" ribbon -->
+<a href="https://github.com/scikit-learn/scikit-learn">
+  <img class="fork-me"
+       style="position: absolute; top: 0; right: 0; border: 0;"
+       src="../_static/img/forkme.png"
+       alt="Fork me on GitHub" />
+</a>
+
+<div class="content-wrapper">
+    <div class="sphinxsidebar">
+    <div class="sphinxsidebarwrapper">
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <ul>
+<li><a class="reference internal" href="#">2.1.3.2.1. Variational Gaussian Mixture Models</a></li>
+<li><a class="reference internal" href="#update-rules-for-vb-inference">2.1.3.2.2. Update rules for VB inference</a><ul>
+<li><a class="reference internal" href="#the-spherical-model">2.1.3.2.2.1. The spherical model</a><ul>
+<li><a class="reference internal" href="#the-bound">2.1.3.2.2.1.1. The bound</a></li>
+<li><a class="reference internal" href="#the-updates">2.1.3.2.2.1.2. The updates</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-diagonal-model">4.1.3.2.2.2. The diagonal model</a><ul>
-<li><a class="reference internal" href="#the-lower-bound">4.1.3.2.2.2.1. The lower bound</a></li>
-<li><a class="reference internal" href="#id1">4.1.3.2.2.2.2. The updates</a></li>
+<li><a class="reference internal" href="#the-diagonal-model">2.1.3.2.2.2. The diagonal model</a><ul>
+<li><a class="reference internal" href="#the-lower-bound">2.1.3.2.2.2.1. The lower bound</a></li>
+<li><a class="reference internal" href="#id1">2.1.3.2.2.2.2. The updates</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-tied-model">4.1.3.2.2.3. The tied model</a><ul>
-<li><a class="reference internal" href="#id2">4.1.3.2.2.3.1. The lower bound</a></li>
-<li><a class="reference internal" href="#id3">4.1.3.2.2.3.2. The updates</a></li>
+<li><a class="reference internal" href="#the-tied-model">2.1.3.2.2.3. The tied model</a><ul>
+<li><a class="reference internal" href="#id2">2.1.3.2.2.3.1. The lower bound</a></li>
+<li><a class="reference internal" href="#id3">2.1.3.2.2.3.2. The updates</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-full-model">4.1.3.2.2.4. The full model</a><ul>
-<li><a class="reference internal" href="#id4">4.1.3.2.2.4.1. The lower bound</a></li>
-<li><a class="reference internal" href="#id5">4.1.3.2.2.4.2. The updates</a></li>
+<li><a class="reference internal" href="#the-full-model">2.1.3.2.2.4. The full model</a><ul>
+<li><a class="reference internal" href="#id4">2.1.3.2.2.4.1. The lower bound</a></li>
+<li><a class="reference internal" href="#id5">2.1.3.2.2.4.2. The updates</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
-    
     </div>
-	  </div>
+</div>
+
 
 
       <div class="content">
@@ -193,7 +151,7 @@
           <div class="body">
             
   <div class="section" id="variational-gaussian-mixture-models">
-<span id="dpgmm-derivation"></span><h1>4.1.3.2.1. Variational Gaussian Mixture Models<a class="headerlink" href="#variational-gaussian-mixture-models" title="Permalink to this headline">¶</a></h1>
+<span id="dpgmm-derivation"></span><h1>2.1.3.2.1. Variational Gaussian Mixture Models<a class="headerlink" href="#variational-gaussian-mixture-models" title="Permalink to this headline">¶</a></h1>
 <p>The API is identical to that of the <a class="reference internal" href="generated/sklearn.mixture.GMM.html#sklearn.mixture.GMM" title="sklearn.mixture.GMM"><tt class="xref py py-class docutils literal"><span class="pre">GMM</span></tt></a> class, the main
 difference being that it offers access to precision matrices as well
 as covariance matrices.</p>
@@ -225,7 +183,7 @@ its determinant, hence the cubic term).</p>
 the mixture of Gaussians.</p>
 </div>
 <div class="section" id="update-rules-for-vb-inference">
-<h1>4.1.3.2.2. Update rules for VB inference<a class="headerlink" href="#update-rules-for-vb-inference" title="Permalink to this headline">¶</a></h1>
+<h1>2.1.3.2.2. Update rules for VB inference<a class="headerlink" href="#update-rules-for-vb-inference" title="Permalink to this headline">¶</a></h1>
 <p>Here the full mathematical derivation of the Variational Bayes update
 rules for Gaussian Mixture Models is given. The main parameters of the
 model, defined for any class <img class="math" src="../_images/math/83f8d53b243d8196d2c9cab4fccdb82c7b8a97b7.png" alt="k \in [1..K]"/> are the class
@@ -237,7 +195,7 @@ scale matrix. Depending on the covariance parameterization,
 <img class="math" src="../_images/math/5754b618a3ce62e98fdb1766832459e0bcdd030a.png" alt="B_k"/> can be a positive scalar, a positive vector or a Symmetric
 Positive Definite matrix.</p>
 <div class="section" id="the-spherical-model">
-<h2>4.1.3.2.2.1. The spherical model<a class="headerlink" href="#the-spherical-model" title="Permalink to this headline">¶</a></h2>
+<h2>2.1.3.2.2.1. The spherical model<a class="headerlink" href="#the-spherical-model" title="Permalink to this headline">¶</a></h2>
 <p>The model then is</p>
 <div class="math">
 <p><img src="../_images/math/1e9e89da8fc37781c465eaf6996361ed96adcaf8.png" alt="\begin{array}{rcl}
@@ -256,7 +214,7 @@ X_t &amp;\sim&amp; Normal(\mu_{z_i}, \frac{1}{\sigma_{z_i}} \mathbf{I})
 z_{i}     &amp;\sim&amp; Discrete(\nu_{z_i}) \\
 \end{array}"/></p>
 </div><div class="section" id="the-bound">
-<h3>4.1.3.2.2.1.1. The bound<a class="headerlink" href="#the-bound" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.3.2.2.1.1. The bound<a class="headerlink" href="#the-bound" title="Permalink to this headline">¶</a></h3>
 <p>The variational bound is</p>
 <div class="math">
 <p><img src="../_images/math/31c014e87dccbbe328aa6fe0ba7348100ab6f792.png" alt="\begin{array}{rcl}
@@ -326,7 +284,7 @@ E_q[\log P(X_i)] &amp;=&amp; \sum_k \nu_{z_k} \left( - \frac{D}{2}\log 2\pi
 </div><p>For simplicity I&#8217;ll later call the term inside the parenthesis <img class="math" src="../_images/math/e93ec10dd1c219d67f6597679fb1637e2a226a7f.png" alt="E_q[\log P(X_i|z_i=k)]"/></p>
 </div>
 <div class="section" id="the-updates">
-<h3>4.1.3.2.2.1.2. The updates<a class="headerlink" href="#the-updates" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.3.2.2.1.2. The updates<a class="headerlink" href="#the-updates" title="Permalink to this headline">¶</a></h3>
 <p><strong>Updating</strong> <img class="math" src="../_images/math/66981fa3920210c6ad8dbe5e968783d5dd7520c3.png" alt="\gamma"/></p>
 <div class="math">
 <p><img src="../_images/math/d0867351ca3d4f207d9c0fa06bf7238fb87915b5.png" alt="\begin{array}{rcl}
@@ -368,7 +326,7 @@ constant and we get two terms: the prior and the probability of
 </div></div>
 </div>
 <div class="section" id="the-diagonal-model">
-<h2>4.1.3.2.2.2. The diagonal model<a class="headerlink" href="#the-diagonal-model" title="Permalink to this headline">¶</a></h2>
+<h2>2.1.3.2.2.2. The diagonal model<a class="headerlink" href="#the-diagonal-model" title="Permalink to this headline">¶</a></h2>
 <p>The model then is</p>
 <div class="math">
 <p><img src="../_images/math/4c89f2f5ee815d4fa23ca94e30e3aacadbfcaaed.png" alt="\begin{array}{rcl}
@@ -387,12 +345,12 @@ X_t &amp;\sim&amp; Normal(\mu_{z_i}, \bm{\sigma_{z_i}}^{-1})
 z_{i}     &amp;\sim&amp; Discrete(\nu_{z_i}) \\
 \end{array}"/></p>
 </div><div class="section" id="the-lower-bound">
-<h3>4.1.3.2.2.2.1. The lower bound<a class="headerlink" href="#the-lower-bound" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.3.2.2.2.1. The lower bound<a class="headerlink" href="#the-lower-bound" title="Permalink to this headline">¶</a></h3>
 <p>The changes in this lower bound from the previous model are in the
 distributions of <img class="math" src="../_images/math/fa35d9fc104207e09a712110ac81612c5b279a6c.png" alt="\sigma"/> (as there are a lot more <img class="math" src="../_images/math/fa35d9fc104207e09a712110ac81612c5b279a6c.png" alt="\sigma"/> s
 now) and <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/>.</p>
 <p>The bound for <img class="math" src="../_images/math/de6b344f507b3c5a1a4161252997460c08457ce1.png" alt="\sigma_{k,d}"/> is the same bound for <img class="math" src="../_images/math/86df44d705c06a8b803b6d09f87bb903541e6028.png" alt="\sigma_k"/> and can
-be safely omitted.</p>
+be safelly ommited.</p>
 <p><strong>The bound for</strong> <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/> :</p>
 <p>The main difference here is that the precision matrix <img class="math" src="../_images/math/7471b1396fad741ec7484d411165df3c00f7cd5f.png" alt="\bm{\sigma_k}"/>
 scales the norm, so we have an extra term after computing the
@@ -408,7 +366,7 @@ E_q[\log P(X_i)] &amp;=&amp; \sum_k \nu_{z_k} \Big( - \frac{D}{2}\log 2\pi
 \end{array}"/></p>
 </div></div>
 <div class="section" id="id1">
-<h3>4.1.3.2.2.2.2. The updates<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.3.2.2.2.2. The updates<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>The updates only chance for <img class="math" src="../_images/math/2d8c833ed800824727cd7bd2fb9de1a12ad7e674.png" alt="\mu"/> (to weight them with the new
 <img class="math" src="../_images/math/fa35d9fc104207e09a712110ac81612c5b279a6c.png" alt="\sigma"/>), <img class="math" src="../_images/math/b13f21416d84e13708696f34dea81026cda583c9.png" alt="z"/> (but the change is all folded into the
 <img class="math" src="../_images/math/fd84cfe6be87f50bf8cb8bbab071e1041d52b6dd.png" alt="E_q[P(X_i|z_i=k)]"/> term), and the <img class="math" src="../_images/math/c7d457e388298246adb06c587bccd419ea67f7e8.png" alt="a"/> and <img class="math" src="../_images/math/8136a7ef6a03334a7246df9097e5bcc31ba33fd2.png" alt="b"/> variables themselves.</p>
@@ -430,7 +388,7 @@ of the bound:</p>
 </div></div>
 </div>
 <div class="section" id="the-tied-model">
-<h2>4.1.3.2.2.3. The tied model<a class="headerlink" href="#the-tied-model" title="Permalink to this headline">¶</a></h2>
+<h2>2.1.3.2.2.3. The tied model<a class="headerlink" href="#the-tied-model" title="Permalink to this headline">¶</a></h2>
 <p>The model then is</p>
 <div class="math">
 <p><img src="../_images/math/f85b20e09841db6324dcf04f37b019206520d62a.png" alt="\begin{array}{rcl}
@@ -449,7 +407,7 @@ X_t &amp;\sim&amp; Normal(\mu_{z_i},  \Sigma^{-1})
 z_{i}     &amp;\sim&amp; Discrete(\nu_{z_i}) \\
 \end{array}"/></p>
 </div><div class="section" id="id2">
-<h3>4.1.3.2.2.3.1. The lower bound<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.3.2.2.3.1. The lower bound<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>There are two changes in the lower-bound: for <img class="math" src="../_images/math/c8f77e3035db5fe9a4975967750ac1a6454bda8c.png" alt="\Sigma"/> and for <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/>.</p>
 <p><strong>The bound for</strong> <img class="math" src="../_images/math/c8f77e3035db5fe9a4975967750ac1a6454bda8c.png" alt="\Sigma"/></p>
 <div class="math">
@@ -471,7 +429,7 @@ E_q[\log P(X_i)] &amp;=&amp; \sum_k \nu_{z_k} \Big( - \frac{D}{2}\log 2\pi
 \end{array}"/></p>
 </div></div>
 <div class="section" id="id3">
-<h3>4.1.3.2.2.3.2. The updates<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.3.2.2.3.2. The updates<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>As in the last setting, what changes are the trivial update for <img class="math" src="../_images/math/b13f21416d84e13708696f34dea81026cda583c9.png" alt="z"/>,
 the update for <img class="math" src="../_images/math/2d8c833ed800824727cd7bd2fb9de1a12ad7e674.png" alt="\mu"/> and the update for <img class="math" src="../_images/math/c7d457e388298246adb06c587bccd419ea67f7e8.png" alt="a"/> and <img class="math" src="../_images/math/684089822af19d4ccbfae10139f057dbdad68d9f.png" alt="\mathbf{B}"/>.</p>
 <p><strong>The update for</strong> <img class="math" src="../_images/math/2d8c833ed800824727cd7bd2fb9de1a12ad7e674.png" alt="\mu"/></p>
@@ -498,7 +456,7 @@ the middle can be expressed as the trace of something) reduces to</p>
 </div></div>
 </div>
 <div class="section" id="the-full-model">
-<h2>4.1.3.2.2.4. The full model<a class="headerlink" href="#the-full-model" title="Permalink to this headline">¶</a></h2>
+<h2>2.1.3.2.2.4. The full model<a class="headerlink" href="#the-full-model" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>The model then is</div></blockquote>
 <div class="math">
@@ -518,13 +476,13 @@ X_t &amp;\sim&amp; Normal(\mu_{z_i},  \Sigma_{z,i}^{-1})
 z_{i}     &amp;\sim&amp; Discrete(\nu_{z_i}) \\
 \end{array}"/></p>
 </div><div class="section" id="id4">
-<h3>4.1.3.2.2.4.1. The lower bound<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.3.2.2.4.1. The lower bound<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>All that changes in this lower bound in comparison to the previous one
 is that there are K priors on different <img class="math" src="../_images/math/c8f77e3035db5fe9a4975967750ac1a6454bda8c.png" alt="\Sigma"/> precision matrices
 and there are the correct indices on the bound for X.</p>
 </div>
 <div class="section" id="id5">
-<h3>4.1.3.2.2.4.2. The updates<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.3.2.2.4.2. The updates<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>All that changes in the updates is that the update for mu uses only
 the proper sigma and the updates for a and B don&#8217;t have a sum over K, so</p>
 <div class="math">
@@ -548,41 +506,37 @@ the proper sigma and the updates for a and B don&#8217;t have a sum over K, so</
     </div>
 
     <div class="footer">
-        &copy; 2010â2013, scikit-learn developers (BSD License).
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
-    <span style="padding-left: 5ex;">
-    <a href="../_sources/modules/dp-derivation.txt"
-	    rel="nofollow">Show this page source</a>
-    </span>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      <a href="../_sources/modules/dp-derivation.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel">
+     <div class="rel rellarge">
     
-    <div class="buttonPrevious">
-      <a href="mixture.html">
-        Previous
-      </a>
-    </div>
-    <div class="buttonNext">
-      <a href="manifold.html">
-        Next
-      </a>
-    </div>
     
      </div>
-     <script type="text/javascript">
-       $("div.buttonNext, div.buttonPrevious").hover(
-           function () {
-               $(this).css('background-color', '#FF9C34');
-           },
-           function () {
-               $(this).css('background-color', '#A7D6E2');
-           }
-       );
-       var bodywrapper = $('.bodywrapper');
-   	var sidebarbutton = $('#sidebarbutton');
-        sidebarbutton.css({
-	    'height': '900px'
-       });
-     </script>
+
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22606712-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript"> google.load('search', '1',
+        {language : 'en'}); google.setOnLoadCallback(function() {
+            var customSearchControl = new
+            google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+            var options = new google.search.DrawOptions();
+            options.setAutoComplete(true);
+            customSearchControl.draw('cse', options); }, true);
+    </script>
   </body>
 </html>

@@ -8,7 +8,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.17.9. sklearn.linear_model.LassoLars &mdash; scikit-learn 0.14-git documentation</title>
+  
+    <title>8.15.1.13. sklearn.linear_model.LassoLars &mdash; scikit-learn 0.12.1 documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../_static/css/bootstrap-responsive.css"/>
+
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.12.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,142 +31,94 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
-    <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.17.10. sklearn.linear_model.LassoLarsCV" href="sklearn.linear_model.LassoLarsCV.html" />
-    <link rel="prev" title="8.17.8. sklearn.linear_model.LassoCV" href="sklearn.linear_model.LassoCV.html" />
+    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+   
+       <script type="text/javascript" src="../../_static/sidebar.js"></script>
+   
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  <link rel="canonical" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html" />
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-22606712-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
-      <link rel="canonical" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html">
-
-
-
+  <script type="text/javascript">
+    $("div.buttonNext, div.buttonPrevious").hover(
+       function () {
+           $(this).css('background-color', '#FF9C34');
+       },
+       function () {
+           $(this).css('background-color', '#A7D6E2');
+       }
+    );
+    var bodywrapper = $('.bodywrapper');
+    var sidebarbutton = $('#sidebarbutton');
+    sidebarbutton.css({'height': '900px'});
+  </script>
 
   </head>
   <body>
 
-    <div class="header-wrapper">
-      <div class="header">
-          <p class="logo"><a href="../../index.html">
+<div class="header-wrapper">
+    <div class="header">
+        <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
-          </a>
-          </p><div class="navbar">
-          <ul>
-            <li><a href="../../install.html">Download</a></li>
-            <li><a href="../../support.html">Support</a></li>
-            <li><a href="../../user_guide.html">User Guide</a></li>
+        </a>
+        </p>
+        <div class="navbar">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../install.html">Installation</a></li>
+                <li class="btn-li"><div class="btn-group">
+		      <a href="../../documentation.html">Documentation</a>
+		      <a class="btn dropdown-toggle" data-toggle="dropdown">
+			     <span class="caret"></span>
+		      </a>
+		      <ul class="dropdown-menu">
+			<li class="link-title">Scikit-learn 0.14 (stable)</li>
+			<li><a href="../../tutorial/basic/tutorial.html">Quick Start</a></li>
+			<li><a href="../../tutorial/index.html">Tutorials</a></li>
+			<li><a href="../../user_guide.html">User guide</a></li>
+			<li><a href="../classes.html">API</a></li>
+			<li class="divider"></li>
+		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
+		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
+		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
+		        <li><a href="../../documentation.html">More versions...</a></li>
+		      </ul>
+		    </div>
+		</li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../classes.html">Reference</a></li>
-       </ul>
+            </ul>
 
-<div class="search_form">
-
-<div id="cse" style="width: 100%;"></div>
-<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript">
-  google.load('search', '1', {language : 'en'});
-  google.setOnLoadCallback(function() {
-    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse', options);
-  }, true);
-</script>
-
+            <div class="search_form">
+                <div id="cse" style="width: 100%;"></div>
+            </div>
+        </div> <!-- end navbar --></div>
 </div>
-          </div> <!-- end navbar --></div>
-    </div>
 
-    <div class="content-wrapper">
 
-      <div class="sphinxsidebar">
-	<div class="sphinxsidebarwrapper">
-	  <div class="rel">
-	   
-	<!-- rellinks[1:] is an ugly hack to avoid link to module
-	    index  -->
-	<div class="rellink">
-	<a href="sklearn.linear_model.LassoCV.html" title="8.17.8. sklearn.linear_model.LassoCV"
-	    accesskey="P">Previous
-	    <br>
-	    <span class="smallrellink">
-	    8.17.8. sklearn....
-	    </span>
-	    <span class="hiddenrellink">
-	    8.17.8. sklearn.linear_model.LassoCV
-	    </span>
-	    
-	    </a>
-	</div>
-	    <div class="spacer">
-	    &nbsp;
-	    </div>
-	
-	<div class="rellink">
-	<a href="sklearn.linear_model.LassoLarsCV.html" title="8.17.10. sklearn.linear_model.LassoLarsCV"
-	    accesskey="N">Next
-	    <br>
-	    <span class="smallrellink">
-	    8.17.10. sklearn...
-	    </span>
-	    <span class="hiddenrellink">
-	    8.17.10. sklearn.linear_model.LassoLarsCV
-	    </span>
-	    
-	    </a>
-	</div>
-	<!-- Ad a link to the 'up' page -->
-	<div class="spacer">
-	&nbsp;
-	</div>
-	<div class="rellink">
-	<a href="../classes.html" title="8. Reference" >
-	Up
-	<br>
-	<span class="smallrellink">
-	8. Reference
-	</span>
-	<span class="hiddenrellink">
-	8. Reference
-	</span>
-	
-	</a>
-	</div>
-    </div>
-    <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.14-git</strong>
-    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
-    
-    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
-    <p>If you use the software, please consider
-    <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
-    <h3>This page</h3>
-	<ul>
-<li><a class="reference internal" href="#">8.17.9. sklearn.linear_model.LassoLars</a></li>
+<!-- Github "fork me" ribbon -->
+<a href="https://github.com/scikit-learn/scikit-learn">
+  <img class="fork-me"
+       style="position: absolute; top: 0; right: 0; border: 0;"
+       src="../../_static/img/forkme.png"
+       alt="Fork me on GitHub" />
+</a>
+
+<div class="content-wrapper">
+    <div class="sphinxsidebar">
+    <div class="sphinxsidebarwrapper">
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <ul>
+<li><a class="reference internal" href="#">8.15.1.13. sklearn.linear_model.LassoLars</a></li>
 </ul>
 
-    
     </div>
-	  </div>
+</div>
+
 
 
       <div class="content">
@@ -170,7 +128,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-linear-model-lassolars">
-<h1>8.17.9. sklearn.linear_model.LassoLars<a class="headerlink" href="#sklearn-linear-model-lassolars" title="Permalink to this headline">¶</a></h1>
+<h1>sklearn.linear_model.LassoLars<a class="headerlink" href="#sklearn-linear-model-lassolars" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.linear_model.LassoLars">
 <em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">LassoLars</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em>, <em>verbose=False</em>, <em>normalize=True</em>, <em>precompute='auto'</em>, <em>max_iter=500</em>, <em>eps=2.2204460492503131e-16</em>, <em>copy_X=True</em>, <em>fit_path=True</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LassoLars" title="Permalink to this definition">¶</a></dt>
@@ -183,15 +141,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>alpha</strong> : float</p>
-<blockquote>
-<div><p>Constant that multiplies the penalty term. Defaults to 1.0.
-<tt class="docutils literal"><span class="pre">alpha</span> <span class="pre">=</span> <span class="pre">0</span></tt> is equivalent to an ordinary least square, solved
-by <a class="reference internal" href="sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression"><tt class="xref py py-class docutils literal"><span class="pre">LinearRegression</span></tt></a>. For numerical reasons, using
-<tt class="docutils literal"><span class="pre">alpha</span> <span class="pre">=</span> <span class="pre">0</span></tt> with the LassoLars object is not advised and you
-should prefer the LinearRegression object.</p>
-</div></blockquote>
-<p><strong>fit_intercept</strong> : boolean</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>fit_intercept</strong> : boolean</p>
 <blockquote>
 <div><p>whether to calculate the intercept for this model. If set
 to false, no intercept will be used in calculations
@@ -201,9 +151,9 @@ to false, no intercept will be used in calculations
 <blockquote>
 <div><p>Sets the verbosity amount</p>
 </div></blockquote>
-<p><strong>normalize</strong> : boolean, optional, default False</p>
+<p><strong>normalize</strong> : boolean, optional</p>
 <blockquote>
-<div><p>If True, the regressors X will be normalized before regression.</p>
+<div><p>If True, the regressors X are normalized</p>
 </div></blockquote>
 <p><strong>copy_X</strong> : boolean, optional, default True</p>
 <blockquote>
@@ -212,7 +162,7 @@ to false, no intercept will be used in calculations
 <p><strong>precompute</strong> : True | False | &#8216;auto&#8217; | array-like</p>
 <blockquote>
 <div><p>Whether to use a precomputed Gram matrix to speed up
-calculations. If set to <tt class="docutils literal"><span class="pre">'auto'</span></tt> let us decide. The Gram
+calculations. If set to &#8216;auto&#8217; let us decide. The Gram
 matrix can also be passed as argument.</p>
 </div></blockquote>
 <p><strong>max_iter: integer, optional</strong> :</p>
@@ -223,15 +173,15 @@ matrix can also be passed as argument.</p>
 <blockquote>
 <div><p>The machine-precision regularization in the computation of the
 Cholesky diagonal factors. Increase this for very ill-conditioned
-systems. Unlike the <tt class="docutils literal"><span class="pre">tol</span></tt> parameter in some iterative
+systems. Unlike the &#8216;tol&#8217; parameter in some iterative
 optimization-based algorithms, this parameter does not control
 the tolerance of the optimization.</p>
 </div></blockquote>
 <p><strong>fit_path</strong> : boolean</p>
 <blockquote class="last">
-<div><p>If <tt class="docutils literal"><span class="pre">True</span></tt> the full path is stored in the <tt class="docutils literal"><span class="pre">coef_path_</span></tt> attribute.
+<div><p>If True the full path is stored in the <cite>coef_path_</cite> attribute.
 If you compute the solution for a large problem or many targets,
-setting <tt class="docutils literal"><span class="pre">fit_path</span></tt> to <tt class="docutils literal"><span class="pre">False</span></tt> will lead to a speedup, especially
+setting fit_path to False will lead to a speedup, especially
 with a small alpha.</p>
 </div></blockquote>
 </td>
@@ -240,7 +190,11 @@ with a small alpha.</p>
 </table>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="sklearn.linear_model.lars_path.html#sklearn.linear_model.lars_path" title="sklearn.linear_model.lars_path"><tt class="xref py py-obj docutils literal"><span class="pre">lars_path</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.lasso_path.html#sklearn.linear_model.lasso_path" title="sklearn.linear_model.lasso_path"><tt class="xref py py-obj docutils literal"><span class="pre">lasso_path</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><tt class="xref py py-obj docutils literal"><span class="pre">Lasso</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><tt class="xref py py-obj docutils literal"><span class="pre">LassoCV</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV" title="sklearn.linear_model.LassoLarsCV"><tt class="xref py py-obj docutils literal"><span class="pre">LassoLarsCV</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.sparse_encode.html#sklearn.decomposition.sparse_encode" title="sklearn.decomposition.sparse_encode"><tt class="xref py py-obj docutils literal"><span class="pre">sklearn.decomposition.sparse_encode</span></tt></a></p>
+<p><a class="reference internal" href="sklearn.linear_model.lars_path.html#sklearn.linear_model.lars_path" title="sklearn.linear_model.lars_path"><tt class="xref py py-obj docutils literal"><span class="pre">lars_path</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.lasso_path.html#sklearn.linear_model.lasso_path" title="sklearn.linear_model.lasso_path"><tt class="xref py py-obj docutils literal"><span class="pre">lasso_path</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><tt class="xref py py-obj docutils literal"><span class="pre">Lasso</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><tt class="xref py py-obj docutils literal"><span class="pre">LassoCV</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV" title="sklearn.linear_model.LassoLarsCV"><tt class="xref py py-obj docutils literal"><span class="pre">LassoLarsCV</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.sparse_encode.html#sklearn.decomposition.sparse_encode" title="sklearn.decomposition.sparse_encode"><tt class="xref py py-obj docutils literal"><span class="pre">sklearn.decomposition.sparse_encode</span></tt></a></p>
+<dl class="last docutils">
+<dt><tt class="xref py py-obj docutils literal"><span class="pre">http</span></tt></dt>
+<dd>//en.wikipedia.org/wiki/Least_angle_regression</dd>
+</dl>
 </div>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
@@ -257,31 +211,21 @@ with a small alpha.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="5%" />
-<col width="20%" />
-<col width="76%" />
+<col width="8%" />
+<col width="23%" />
+<col width="69%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">alphas_</span></tt></td>
-<td>array, shape = [n_alphas + 1] | list of n_targets such arrays</td>
-<td>Maximum of covariances (in absolute value) at each iteration.         <tt class="docutils literal"><span class="pre">n_alphas</span></tt> is either <tt class="docutils literal"><span class="pre">max_iter</span></tt>, <tt class="docutils literal"><span class="pre">n_features</span></tt>, or the number of         nodes in the path with correlation greater than <tt class="docutils literal"><span class="pre">alpha</span></tt>, whichever         is smaller.</td>
+<tr class="row-odd"><td><cite>coef_path_</cite></td>
+<td>array, shape = [n_features, n_alpha]</td>
+<td>The varying values of the coefficients along the path. It is not     present if fit_path parameter is False.</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">active_</span></tt></td>
-<td>list, length = [n_alphas] | list of n_targets such lists</td>
-<td>Indices of active variables at the end of the path.</td>
+<tr class="row-even"><td><cite>coef_</cite></td>
+<td>array, shape = [n_features]</td>
+<td>Parameter vector (w in the fomulation formula).</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">coef_path_</span></tt></td>
-<td>array, shape = [n_features, n_alphas + 1] or list</td>
-<td>If a list is passed it&#8217;s expected to be one of n_targets such arrays.
-The varying values of the coefficients along the path. It is not
-present if the <tt class="docutils literal"><span class="pre">fit_path</span></tt> parameter is <tt class="docutils literal"><span class="pre">False</span></tt>.</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">coef_</span></tt></td>
-<td>array, shape = n_features or n_targets, n_features</td>
-<td>Parameter vector (w in the formulation formula).</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">intercept_</span></tt></td>
-<td>float or array of shape [n_targets]</td>
+<tr class="row-odd"><td><cite>intercept_</cite></td>
+<td>float</td>
 <td>Independent term in decision function.</td>
 </tr>
 </tbody>
@@ -349,13 +293,13 @@ present if the <tt class="docutils literal"><span class="pre">fit_path</span></t
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
 <blockquote>
-<div><p>Training data.</p>
+<div><p>training data.</p>
 </div></blockquote>
-<p><strong>y</strong> : array-like, shape = [n_samples] | [n_samples, n_targets]</p>
+<p><strong>y</strong> : array-like, shape = [n_samples] or [n_samples, n_targets]</p>
 <blockquote>
-<div><p>Target values.</p>
+<div><p>target values.</p>
 </div></blockquote>
-<p><strong>Xy</strong> : array-like, shape = [n_samples] | [n_samples, n_targets],                 optional</p>
+<p><strong>Xy</strong> : array-like, shape = [n_samples] or [n_samples, n_targets], optional</p>
 <blockquote>
 <div><p>Xy = np.dot(X.T, y) that can be precomputed. It is useful
 only when the Gram matrix is precomputed.</p>
@@ -381,15 +325,9 @@ only when the Gram matrix is precomputed.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote>
+<blockquote class="last">
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
-<blockquote class="last">
-<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -422,9 +360,9 @@ contained subobjects that are estimators.</p>
 <dt id="sklearn.linear_model.LassoLars.score">
 <tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LassoLars.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the coefficient of determination R^2 of the prediction.</p>
-<p>The coefficient R^2 is defined as (1 - u/v), where u is the regression
-sum of squares ((y_true - y_pred) ** 2).sum() and v is the residual
-sum of squares ((y_true - y_true.mean()) ** 2).sum().
+<p>The coefficient R^2 is defined as (1 - u/v), where u is the
+regression sum of squares ((y - y_pred) ** 2).sum() and v is the
+residual sum of squares ((y_true - y_true.mean()) ** 2).sum().
 Best possible score is 1.0, lower values are worse.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -475,41 +413,37 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010â2013, scikit-learn developers (BSD License).
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
-    <span style="padding-left: 5ex;">
-    <a href="../../_sources/modules/generated/sklearn.linear_model.LassoLars.txt"
-	    rel="nofollow">Show this page source</a>
-    </span>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      <a href="../../_sources/modules/generated/sklearn.linear_model.LassoLars.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel">
+     <div class="rel rellarge">
     
-    <div class="buttonPrevious">
-      <a href="sklearn.linear_model.LassoCV.html">
-        Previous
-      </a>
-    </div>
-    <div class="buttonNext">
-      <a href="sklearn.linear_model.LassoLarsCV.html">
-        Next
-      </a>
-    </div>
     
      </div>
-     <script type="text/javascript">
-       $("div.buttonNext, div.buttonPrevious").hover(
-           function () {
-               $(this).css('background-color', '#FF9C34');
-           },
-           function () {
-               $(this).css('background-color', '#A7D6E2');
-           }
-       );
-       var bodywrapper = $('.bodywrapper');
-   	var sidebarbutton = $('#sidebarbutton');
-        sidebarbutton.css({
-	    'height': '900px'
-       });
-     </script>
+
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22606712-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript"> google.load('search', '1',
+        {language : 'en'}); google.setOnLoadCallback(function() {
+            var customSearchControl = new
+            google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+            var options = new google.search.DrawOptions();
+            options.setAutoComplete(true);
+            customSearchControl.draw('cse', options); }, true);
+    </script>
   </body>
 </html>

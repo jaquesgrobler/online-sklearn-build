@@ -8,7 +8,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.9.4. sklearn.feature_selection.SelectFdr &mdash; scikit-learn 0.14-git documentation</title>
+  
+    <title>8.8.4. sklearn.feature_selection.SelectFdr &mdash; scikit-learn 0.12.1 documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../_static/css/bootstrap-responsive.css"/>
+
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.12.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,142 +31,94 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
-    <link rel="up" title="8. Reference" href="../classes.html" />
-    <link rel="next" title="8.9.5. sklearn.feature_selection.SelectFwe" href="sklearn.feature_selection.SelectFwe.html" />
-    <link rel="prev" title="8.9.3. sklearn.feature_selection.SelectFpr" href="sklearn.feature_selection.SelectFpr.html" />
+    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+   
+       <script type="text/javascript" src="../../_static/sidebar.js"></script>
+   
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  <link rel="canonical" href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFdr.html" />
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-22606712-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
-      <link rel="canonical" href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFdr.html">
-
-
-
+  <script type="text/javascript">
+    $("div.buttonNext, div.buttonPrevious").hover(
+       function () {
+           $(this).css('background-color', '#FF9C34');
+       },
+       function () {
+           $(this).css('background-color', '#A7D6E2');
+       }
+    );
+    var bodywrapper = $('.bodywrapper');
+    var sidebarbutton = $('#sidebarbutton');
+    sidebarbutton.css({'height': '900px'});
+  </script>
 
   </head>
   <body>
 
-    <div class="header-wrapper">
-      <div class="header">
-          <p class="logo"><a href="../../index.html">
+<div class="header-wrapper">
+    <div class="header">
+        <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
-          </a>
-          </p><div class="navbar">
-          <ul>
-            <li><a href="../../install.html">Download</a></li>
-            <li><a href="../../support.html">Support</a></li>
-            <li><a href="../../user_guide.html">User Guide</a></li>
+        </a>
+        </p>
+        <div class="navbar">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../install.html">Installation</a></li>
+                <li class="btn-li"><div class="btn-group">
+		      <a href="../../documentation.html">Documentation</a>
+		      <a class="btn dropdown-toggle" data-toggle="dropdown">
+			     <span class="caret"></span>
+		      </a>
+		      <ul class="dropdown-menu">
+			<li class="link-title">Scikit-learn 0.14 (stable)</li>
+			<li><a href="../../tutorial/basic/tutorial.html">Quick Start</a></li>
+			<li><a href="../../tutorial/index.html">Tutorials</a></li>
+			<li><a href="../../user_guide.html">User guide</a></li>
+			<li><a href="../classes.html">API</a></li>
+			<li class="divider"></li>
+		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
+		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
+		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
+		        <li><a href="../../documentation.html">More versions...</a></li>
+		      </ul>
+		    </div>
+		</li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../classes.html">Reference</a></li>
-       </ul>
+            </ul>
 
-<div class="search_form">
-
-<div id="cse" style="width: 100%;"></div>
-<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript">
-  google.load('search', '1', {language : 'en'});
-  google.setOnLoadCallback(function() {
-    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse', options);
-  }, true);
-</script>
-
+            <div class="search_form">
+                <div id="cse" style="width: 100%;"></div>
+            </div>
+        </div> <!-- end navbar --></div>
 </div>
-          </div> <!-- end navbar --></div>
-    </div>
 
-    <div class="content-wrapper">
 
-      <div class="sphinxsidebar">
-	<div class="sphinxsidebarwrapper">
-	  <div class="rel">
-	   
-	<!-- rellinks[1:] is an ugly hack to avoid link to module
-	    index  -->
-	<div class="rellink">
-	<a href="sklearn.feature_selection.SelectFpr.html" title="8.9.3. sklearn.feature_selection.SelectFpr"
-	    accesskey="P">Previous
-	    <br>
-	    <span class="smallrellink">
-	    8.9.3. sklearn.f...
-	    </span>
-	    <span class="hiddenrellink">
-	    8.9.3. sklearn.feature_selection.SelectFpr
-	    </span>
-	    
-	    </a>
-	</div>
-	    <div class="spacer">
-	    &nbsp;
-	    </div>
-	
-	<div class="rellink">
-	<a href="sklearn.feature_selection.SelectFwe.html" title="8.9.5. sklearn.feature_selection.SelectFwe"
-	    accesskey="N">Next
-	    <br>
-	    <span class="smallrellink">
-	    8.9.5. sklearn.f...
-	    </span>
-	    <span class="hiddenrellink">
-	    8.9.5. sklearn.feature_selection.SelectFwe
-	    </span>
-	    
-	    </a>
-	</div>
-	<!-- Ad a link to the 'up' page -->
-	<div class="spacer">
-	&nbsp;
-	</div>
-	<div class="rellink">
-	<a href="../classes.html" title="8. Reference" >
-	Up
-	<br>
-	<span class="smallrellink">
-	8. Reference
-	</span>
-	<span class="hiddenrellink">
-	8. Reference
-	</span>
-	
-	</a>
-	</div>
-    </div>
-    <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.14-git</strong>
-    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
-    
-    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
-    <p>If you use the software, please consider
-    <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
-    <h3>This page</h3>
-	<ul>
-<li><a class="reference internal" href="#">8.9.4. sklearn.feature_selection.SelectFdr</a></li>
+<!-- Github "fork me" ribbon -->
+<a href="https://github.com/scikit-learn/scikit-learn">
+  <img class="fork-me"
+       style="position: absolute; top: 0; right: 0; border: 0;"
+       src="../../_static/img/forkme.png"
+       alt="Fork me on GitHub" />
+</a>
+
+<div class="content-wrapper">
+    <div class="sphinxsidebar">
+    <div class="sphinxsidebarwrapper">
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <ul>
+<li><a class="reference internal" href="#">8.8.4. sklearn.feature_selection.SelectFdr</a></li>
 </ul>
 
-    
     </div>
-	  </div>
+</div>
+
 
 
       <div class="content">
@@ -170,10 +128,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-feature-selection-selectfdr">
-<h1>8.9.4. sklearn.feature_selection.SelectFdr<a class="headerlink" href="#sklearn-feature-selection-selectfdr" title="Permalink to this headline">¶</a></h1>
+<h1>sklearn.feature_selection.SelectFdr<a class="headerlink" href="#sklearn-feature-selection-selectfdr" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_selection.SelectFdr">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectFdr</tt><big>(</big><em>score_func=&lt;function f_classif at 0x3ecf500&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_selection.</tt><tt class="descname">SelectFdr</tt><big>(</big><em>score_func=&lt;function f_classif at 0x30d5aa0&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter: Select the p-values for an estimated false discovery rate</p>
 <p>This uses the Benjamini-Hochberg procedure. <tt class="docutils literal"><span class="pre">alpha</span></tt> is the target false
 discovery rate.</p>
@@ -181,34 +139,16 @@ discovery rate.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>score_func</strong> : callable</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>score_func: callable</strong> :</p>
 <blockquote>
-<div><p>Function taking two arrays X and y, and returning a pair of arrays
-(scores, pvalues).</p>
+<div><p>Function taking two arrays X and y, and returning 2 arrays:
+both scores and pvalues</p>
 </div></blockquote>
-<p><strong>alpha</strong> : float, optional</p>
+<p><strong>alpha: float, optional</strong> :</p>
 <blockquote class="last">
-<div><p>The highest uncorrected p-value for features to keep.</p>
+<div><p>The highest uncorrected p-value for features to keep</p>
 </div></blockquote>
 </td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="15%" />
-<col width="46%" />
-<col width="40%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><cite>scores_</cite></td>
-<td>array-like, shape=(n_features,)</td>
-<td>Scores of features.</td>
-</tr>
-<tr class="row-even"><td><cite>pvalues_</cite></td>
-<td>array-like, shape=(n_features,)</td>
-<td>p-values of feature scores.</td>
 </tr>
 </tbody>
 </table>
@@ -220,7 +160,7 @@ discovery rate.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.SelectFdr.fit" title="sklearn.feature_selection.SelectFdr.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
-<td>Evaluate the score function on samples X with outputs y.</td>
+<td>Evaluate the function</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_selection.SelectFdr.fit_transform" title="sklearn.feature_selection.SelectFdr.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
 <td>Fit to data, then transform it</td>
@@ -229,30 +169,28 @@ discovery rate.</p>
 <td>Get parameters for the estimator</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_selection.SelectFdr.get_support" title="sklearn.feature_selection.SelectFdr.get_support"><tt class="xref py py-obj docutils literal"><span class="pre">get_support</span></tt></a>([indices])</td>
-<td>Get a mask, or integer index, of the features selected</td>
+<td>Return a mask, or list, of the features/indices selected.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.SelectFdr.inverse_transform" title="sklearn.feature_selection.SelectFdr.inverse_transform"><tt class="xref py py-obj docutils literal"><span class="pre">inverse_transform</span></tt></a>(X)</td>
-<td>Reverse the transformation operation</td>
+<td>Transform a new matrix using the selected features</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_selection.SelectFdr.set_params" title="sklearn.feature_selection.SelectFdr.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_selection.SelectFdr.transform" title="sklearn.feature_selection.SelectFdr.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X)</td>
-<td>Reduce X to the selected features.</td>
+<td>Transform a new matrix using the selected features</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFdr.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x3ecf500&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>score_func=&lt;function f_classif at 0x30d5aa0&gt;</em>, <em>alpha=0.05</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFdr.fit">
 <tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluate the score function on samples X with outputs y.</p>
-<p>Records and selects features according to the p-values output by the
-score function.</p>
+<dd><p>Evaluate the function</p>
 </dd></dl>
 
 <dl class="method">
@@ -283,6 +221,10 @@ and returns a transformed version of X.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>This method just calls fit and transform consecutively, i.e., it is not
+an optimized implementation of fit_transform, unlike other transformers
+such as PCA.</p>
 </dd></dl>
 
 <dl class="method">
@@ -294,15 +236,9 @@ and returns a transformed version of X.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote>
+<blockquote class="last">
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
-<blockquote class="last">
-<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -313,56 +249,13 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFdr.get_support">
 <tt class="descname">get_support</tt><big>(</big><em>indices=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr.get_support" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a mask, or integer index, of the features selected</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>indices</strong> : boolean (default False)</p>
-<blockquote>
-<div><p>If True, the return value will be an array of integers, rather
-than a boolean mask.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>support</strong> : array</p>
-<blockquote class="last">
-<div><p>An index that selects the retained features from a feature vector.
-If <cite>indices</cite> is False, this is a boolean array of shape
-[# input features], in which an element is True iff its
-corresponding feature is selected for retention. If <cite>indices</cite> is
-True, this is an integer array of shape [# output features] whose
-values are indices into the input feature vector.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Return a mask, or list, of the features/indices selected.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFdr.inverse_transform">
 <tt class="descname">inverse_transform</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr.inverse_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reverse the transformation operation</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array of shape [n_samples, n_selected_features]</p>
-<blockquote>
-<div><p>The input samples.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X_r</strong> : array of shape [n_samples, n_original_features]</p>
-<blockquote class="last">
-<div><p><cite>X</cite> with columns of zeros inserted where features would have
-been removed by <cite>transform</cite>.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Transform a new matrix using the selected features</p>
 </dd></dl>
 
 <dl class="method">
@@ -386,25 +279,7 @@ component of a nested object.</p>
 <dl class="method">
 <dt id="sklearn.feature_selection.SelectFdr.transform">
 <tt class="descname">transform</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.feature_selection.SelectFdr.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reduce X to the selected features.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array of shape [n_samples, n_features]</p>
-<blockquote>
-<div><p>The input samples.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X_r</strong> : array of shape [n_samples, n_selected_features]</p>
-<blockquote class="last">
-<div><p>The input samples with only the selected features.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Transform a new matrix using the selected features</p>
 </dd></dl>
 
 </dd></dl>
@@ -420,41 +295,37 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010â2013, scikit-learn developers (BSD License).
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
-    <span style="padding-left: 5ex;">
-    <a href="../../_sources/modules/generated/sklearn.feature_selection.SelectFdr.txt"
-	    rel="nofollow">Show this page source</a>
-    </span>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      <a href="../../_sources/modules/generated/sklearn.feature_selection.SelectFdr.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel">
+     <div class="rel rellarge">
     
-    <div class="buttonPrevious">
-      <a href="sklearn.feature_selection.SelectFpr.html">
-        Previous
-      </a>
-    </div>
-    <div class="buttonNext">
-      <a href="sklearn.feature_selection.SelectFwe.html">
-        Next
-      </a>
-    </div>
     
      </div>
-     <script type="text/javascript">
-       $("div.buttonNext, div.buttonPrevious").hover(
-           function () {
-               $(this).css('background-color', '#FF9C34');
-           },
-           function () {
-               $(this).css('background-color', '#A7D6E2');
-           }
-       );
-       var bodywrapper = $('.bodywrapper');
-   	var sidebarbutton = $('#sidebarbutton');
-        sidebarbutton.css({
-	    'height': '900px'
-       });
-     </script>
+
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22606712-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript"> google.load('search', '1',
+        {language : 'en'}); google.setOnLoadCallback(function() {
+            var customSearchControl = new
+            google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+            var options = new google.search.DrawOptions();
+            options.setAutoComplete(true);
+            customSearchControl.draw('cse', options); }, true);
+    </script>
   </body>
 </html>

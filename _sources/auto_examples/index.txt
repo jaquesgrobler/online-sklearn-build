@@ -1,4 +1,6 @@
 
+
+
 .. raw:: html
 
 
@@ -11,36 +13,121 @@
     .figure {
         float: left;
         margin: 10px;
-        position: absolute;
-        top: 0;
-        left: 0;
         -webkit-border-radius: 10px; /* Saf3-4, iOS 1-3.2, Android <1.6 */
         -moz-border-radius: 10px; /* FF1-3.6 */
         border-radius: 10px; /* Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ */
         border: 2px solid #fff;
-        -webkit-transition: all 0.15s ease-out;  /* Saf3.2+, Chrome */
-        -moz-transition: all 0.15s ease-out;  /* FF4+ */
-        -ms-transition: all 0.15s ease-out;  /* IE10? */
-        -o-transition: all 0.15s ease-out;  /* Opera 10.5+ */
-        transition: all 0.15s ease-out;
-        background-repeat: no-repeat;
+        background-color: white;
         /* --> Thumbnail image size */
         width: 150px;
         height: 100px;
         -webkit-background-size: 150px 100px; /* Saf3-4 */
         -moz-background-size: 150px 100px; /* FF3.6 */
-        background-size: 150px 100px; /* Opera, IE9, Saf5, Chrome, FF4 */
     }
 
     .figure img {
         display: inline;
-        }
-
-    .figure .caption {
-        width: 170px;
-        text-align: center !important;
     }
+
+    div.docstringWrapper p.caption {
+        display: block;
+        -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.0);
+        -moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, .0); /* FF3.5 - 3.6 */
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.0); /* Opera 10.5, IE9, FF4+, Chrome 10+ */
+        padding: 0px;
+        border: white;
+    }
+
+    div.docstringWrapper p {
+        display: none;
+        background-color: white;
+        -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 1.00);
+        -moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, 1.00); /* FF3.5 - 3.6 */
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 1.00); /* Opera 10.5, IE9, FF4+, Chrome 10+ */
+        padding: 13px;
+        margin-top: 0px;
+        border-style: solid;
+        border-width: 1px;
+    }
+
+
     </style>
+
+
+.. raw:: html
+
+
+        <script type="text/javascript">
+
+        function animateClone(e){
+          var position;
+          position = $(this).position();
+          var clone = $(this).closest('.thumbnailContainer').find('.clonedItem');
+          var clone_fig = clone.find('.figure');
+          clone.css("left", position.left - 70).css("top", position.top - 70).css("position", "absolute").css("z-index", 1000).css("background-color", "white");
+
+          var cloneImg = clone_fig.find('img');
+
+          clone.show();
+          clone.animate({
+                height: "270px",
+                width: "320px"
+            }, 0
+          );
+          cloneImg.css({
+                'max-height': "200px",
+                'max-width': "280px"
+          });
+          cloneImg.animate({
+                height: "200px",
+                width: "280px"
+            }, 0
+           );
+          clone_fig.css({
+               'margin-top': '20px',
+          });
+          clone_fig.show();
+          clone.find('p').css("display", "block");
+          clone_fig.css({
+               height: "240",
+               width: "305px"
+          });
+          cloneP_height = clone.find('p.caption').height();
+          clone_fig.animate({
+               height: (200 + cloneP_height)
+           }, 0
+          );
+
+          clone.bind("mouseleave", function(e){
+              clone.animate({
+                  height: "100px",
+                  width: "150px"
+              }, 10, function(){$(this).hide();});
+              clone_fig.animate({
+                  height: "100px",
+                  width: "150px"
+              }, 10, function(){$(this).hide();});
+          });
+        } //end animateClone()
+
+
+        $(window).load(function () {
+            $(".figure").css("z-index", 1);
+
+            $(".docstringWrapper").each(function(i, obj){
+                var clone;
+                var $obj = $(obj);
+                clone = $obj.clone();
+                clone.addClass("clonedItem");
+                clone.appendTo($obj.closest(".thumbnailContainer"));
+                clone.hide();
+                $obj.bind("mouseenter", animateClone);
+            }); // end each
+        }); // end
+
+        </script>
+
+
 
 Examples
 ========
@@ -62,7 +149,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/feature_selection_pipeline.png
@@ -73,6 +162,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>Simple usage of Pipeline that runs successively a univariate feature selection with anova and t...
+    </p></div>
     </div>
 
 
@@ -85,7 +177,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/plot_rfe_digits.png
@@ -96,6 +190,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>A recursive feature elimination example showing the relevance of pixels in a digit classificati...
+    </p></div>
     </div>
 
 
@@ -108,7 +205,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/plot_rfe_with_cross_validation.png
@@ -119,6 +218,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>A recursive feature elimination example with automatic tuning of the number of features selecte...
+    </p></div>
     </div>
 
 
@@ -131,7 +233,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/plot_confusion_matrix.png
@@ -142,6 +246,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>Example of confusion matrix usage to evaluate the quality of the output of a classifier. 
+    </p></div>
     </div>
 
 
@@ -154,7 +261,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/plot_precision_recall.png
@@ -165,6 +274,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>Example of Precision-Recall metric to evaluate the quality of the output of a classifier. 
+    </p></div>
     </div>
 
 
@@ -177,53 +289,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/feature_stacker.png
-   :target: ./feature_stacker.html
-
-   :ref:`example_feature_stacker.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./feature_stacker
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/plot_isotonic_regression.png
-   :target: ./plot_isotonic_regression.html
-
-   :ref:`example_plot_isotonic_regression.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./plot_isotonic_regression
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/plot_roc.png
@@ -234,6 +302,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>Example of Receiver operating characteristic (ROC) metric to evaluate the quality of the output...
+    </p></div>
     </div>
 
 
@@ -246,7 +317,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/plot_hmm_sampling.png
@@ -257,6 +330,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>This script shows how to sample points from a Hiden Markov Model (HMM): we use a 4-components w...
+    </p></div>
     </div>
 
 
@@ -269,7 +345,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/plot_digits_classification.png
@@ -280,6 +358,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>An example showing how the scikit-learn can be used to recognize images of hand-written digits.
+    </p></div>
     </div>
 
 
@@ -292,122 +373,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/plot_digits_pipe.png
-   :target: ./plot_digits_pipe.html
-
-   :ref:`example_plot_digits_pipe.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./plot_digits_pipe
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/plot_permutation_test_for_classification.png
-   :target: ./plot_permutation_test_for_classification.html
-
-   :ref:`example_plot_permutation_test_for_classification.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./plot_permutation_test_for_classification
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/plot_roc_crossval.png
-   :target: ./plot_roc_crossval.html
-
-   :ref:`example_plot_roc_crossval.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./plot_roc_crossval
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/grid_search_digits.png
-   :target: ./grid_search_digits.html
-
-   :ref:`example_grid_search_digits.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./grid_search_digits
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/plot_train_error_vs_test_error.png
-   :target: ./plot_train_error_vs_test_error.html
-
-   :ref:`example_plot_train_error_vs_test_error.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./plot_train_error_vs_test_error
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/plot_feature_selection.png
@@ -418,6 +386,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>An example showing univariate feature selection.
+    </p></div>
     </div>
 
 
@@ -430,7 +401,177 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ./images/thumb/plot_digits_pipe.png
+   :target: ./plot_digits_pipe.html
+
+   :ref:`example_plot_digits_pipe.py`
+
+
+.. raw:: html
+
+
+    <p>The PCA does an unsupervised dimensionality reduction, while the logistic regression does the p...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_digits_pipe
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ./images/thumb/plot_iris_classifiers.png
+   :target: ./plot_iris_classifiers.html
+
+   :ref:`example_plot_iris_classifiers.py`
+
+
+.. raw:: html
+
+
+    <p>
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_iris_classifiers
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ./images/thumb/plot_permutation_test_for_classification.png
+   :target: ./plot_permutation_test_for_classification.html
+
+   :ref:`example_plot_permutation_test_for_classification.py`
+
+
+.. raw:: html
+
+
+    <p>In order to test if a classification score is significative a technique in repeating the classi...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_permutation_test_for_classification
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ./images/thumb/plot_roc_crossval.png
+   :target: ./plot_roc_crossval.html
+
+   :ref:`example_plot_roc_crossval.py`
+
+
+.. raw:: html
+
+
+    <p>Example of Receiver operating characteristic (ROC) metric to evaluate the quality of the output...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_roc_crossval
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ./images/thumb/grid_search_digits.png
+   :target: ./grid_search_digits.html
+
+   :ref:`example_grid_search_digits.py`
+
+
+.. raw:: html
+
+
+    <p>The classifier is optimized by "nested" cross-validation using the :class:`sklearn.grid_search....
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./grid_search_digits
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ./images/thumb/plot_train_error_vs_test_error.png
+   :target: ./plot_train_error_vs_test_error.html
+
+   :ref:`example_plot_train_error_vs_test_error.py`
+
+
+.. raw:: html
+
+
+    <p>Illustration of how the performance of an estimator on unseen data (test data) is not the same ...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_train_error_vs_test_error
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/plot_classification_probability.png
@@ -441,6 +582,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>Plot the classification probability for different classifiers. We use a 3 class dataset, and we...
+    </p></div>
     </div>
 
 
@@ -453,30 +597,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/randomized_search.png
-   :target: ./randomized_search.html
-
-   :ref:`example_randomized_search.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./randomized_search
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/plot_multilabel.png
@@ -487,6 +610,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>This example simulates a multi-label document classification problem. The dataset is generated ...
+    </p></div>
     </div>
 
 
@@ -499,7 +625,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/grid_search_text_feature_extraction.png
@@ -510,6 +638,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>The dataset used in this example is the 20 newsgroups dataset which will be automatically downl...
+    </p></div>
     </div>
 
 
@@ -522,145 +653,37 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
-.. figure:: ./images/thumb/hashing_vs_dict_vectorizer.png
-   :target: ./hashing_vs_dict_vectorizer.html
+.. figure:: ./images/thumb/plot_hmm_stock_analysis.png
+   :target: ./plot_hmm_stock_analysis.html
 
-   :ref:`example_hashing_vs_dict_vectorizer.py`
+   :ref:`example_plot_hmm_stock_analysis.py`
 
 
 .. raw:: html
 
+
+    <p>This script shows how to use Gaussian HMM. It uses stock price data, which can be obtained from...
+    </p></div>
     </div>
 
 
 .. toctree::
    :hidden:
 
-   ./hashing_vs_dict_vectorizer
+   ./plot_hmm_stock_analysis
 
 
 
 .. raw:: html
+
 
     <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/plot_johnson_lindenstrauss_bound.png
-   :target: ./plot_johnson_lindenstrauss_bound.html
-
-   :ref:`example_plot_johnson_lindenstrauss_bound.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./plot_johnson_lindenstrauss_bound
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/mlcomp_sparse_document_classification.png
-   :target: ./mlcomp_sparse_document_classification.html
-
-   :ref:`example_mlcomp_sparse_document_classification.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./mlcomp_sparse_document_classification
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/plot_classifier_comparison.png
-   :target: ./plot_classifier_comparison.html
-
-   :ref:`example_plot_classifier_comparison.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./plot_classifier_comparison
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/plot_pls.png
-   :target: ./plot_pls.html
-
-   :ref:`example_plot_pls.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./plot_pls
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: ./images/thumb/plot_lda_qda.png
-   :target: ./plot_lda_qda.html
-
-   :ref:`example_plot_lda_qda.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ./plot_lda_qda
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/document_clustering.png
@@ -671,6 +694,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>This is an example showing how the scikit-learn can be used to cluster documents by topics usin...
+    </p></div>
     </div>
 
 
@@ -683,7 +709,93 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ./images/thumb/mlcomp_sparse_document_classification.png
+   :target: ./mlcomp_sparse_document_classification.html
+
+   :ref:`example_mlcomp_sparse_document_classification.py`
+
+
+.. raw:: html
+
+
+    <p>This is an example showing how the scikit-learn can be used to classify documents by topics usi...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./mlcomp_sparse_document_classification
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ./images/thumb/plot_pls.png
+   :target: ./plot_pls.html
+
+   :ref:`example_plot_pls.py`
+
+
+.. raw:: html
+
+
+    <p>Simple usage of various PLS flavor: - PLSCanonical - PLSRegression, with multivariate response,...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_pls
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ./images/thumb/plot_lda_qda.png
+   :target: ./plot_lda_qda.html
+
+   :ref:`example_plot_lda_qda.py`
+
+
+.. raw:: html
+
+
+    <p>Plot the confidence ellipsoids of each class and decision boundary 
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_lda_qda
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/plot_kernel_approximation.png
@@ -694,6 +806,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>.. currentmodule:: sklearn.kernel_approximation
+    </p></div>
     </div>
 
 
@@ -706,7 +821,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ./images/thumb/document_classification_20newsgroups.png
@@ -717,6 +834,9 @@ General-purpose and introductory examples for the scikit.
 
 .. raw:: html
 
+
+    <p>This is an example showing how scikit-learn can be used to classify documents by topics using a...
+    </p></div>
     </div>
 
 
@@ -746,7 +866,9 @@ interactive user interface.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: applications/images/thumb/topics_extraction_with_nmf.png
@@ -757,6 +879,9 @@ interactive user interface.
 
 .. raw:: html
 
+
+    <p>This is a proof of concept application of Non Negative Matrix Factorization of the term frequen...
+    </p></div>
     </div>
 
 
@@ -769,7 +894,9 @@ interactive user interface.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: applications/images/thumb/plot_outlier_detection_housing.png
@@ -780,6 +907,9 @@ interactive user interface.
 
 .. raw:: html
 
+
+    <p>This example illustrates the need for robust covariance estimation on a real data set. It is us...
+    </p></div>
     </div>
 
 
@@ -792,30 +922,9 @@ interactive user interface.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: applications/images/thumb/plot_hmm_stock_analysis.png
-   :target: ./applications/plot_hmm_stock_analysis.html
-
-   :ref:`example_applications_plot_hmm_stock_analysis.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   applications/plot_hmm_stock_analysis
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: applications/images/thumb/plot_tomography_l1_reconstruction.png
@@ -826,6 +935,9 @@ interactive user interface.
 
 .. raw:: html
 
+
+    <p>This example shows the reconstruction of an image from a set of parallel projections, acquired ...
+    </p></div>
     </div>
 
 
@@ -838,7 +950,9 @@ interactive user interface.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: applications/images/thumb/face_recognition.png
@@ -849,6 +963,9 @@ interactive user interface.
 
 .. raw:: html
 
+
+    <p>The dataset used in this example is a preprocessed excerpt of the "Labeled Faces in the Wild", ...
+    </p></div>
     </div>
 
 
@@ -861,7 +978,9 @@ interactive user interface.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: applications/images/thumb/plot_species_distribution_modeling.png
@@ -872,6 +991,9 @@ interactive user interface.
 
 .. raw:: html
 
+
+    <p>Modeling species' geographic distributions is an important problem in conservation biology. In ...
+    </p></div>
     </div>
 
 
@@ -884,7 +1006,9 @@ interactive user interface.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: applications/images/thumb/plot_stock_market.png
@@ -895,6 +1019,9 @@ interactive user interface.
 
 .. raw:: html
 
+
+    <p>.. _stock_market:
+    </p></div>
     </div>
 
 
@@ -907,7 +1034,9 @@ interactive user interface.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: applications/images/thumb/wikipedia_principal_eigenvector.png
@@ -918,6 +1047,9 @@ interactive user interface.
 
 .. raw:: html
 
+
+    <p>A classical way to assert the relative importance of vertices in a graph is to compute the prin...
+    </p></div>
     </div>
 
 
@@ -930,30 +1062,9 @@ interactive user interface.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: applications/images/thumb/plot_out_of_core_classification.png
-   :target: ./applications/plot_out_of_core_classification.html
-
-   :ref:`example_applications_plot_out_of_core_classification.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   applications/plot_out_of_core_classification
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: applications/images/thumb/svm_gui.png
@@ -964,6 +1075,9 @@ interactive user interface.
 
 .. raw:: html
 
+
+    <p>A simple graphical frontend for Libsvm mainly intended for didactic purposes. You can create da...
+    </p></div>
     </div>
 
 
@@ -992,99 +1106,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: cluster/images/thumb/plot_mean_shift.png
-   :target: ./cluster/plot_mean_shift.html
-
-   :ref:`example_cluster_plot_mean_shift.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   cluster/plot_mean_shift
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
-
-
-.. figure:: cluster/images/thumb/plot_lena_ward_segmentation.png
-   :target: ./cluster/plot_lena_ward_segmentation.html
-
-   :ref:`example_cluster_plot_lena_ward_segmentation.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   cluster/plot_lena_ward_segmentation
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: cluster/images/thumb/plot_digits_agglomeration.png
-   :target: ./cluster/plot_digits_agglomeration.html
-
-   :ref:`example_cluster_plot_digits_agglomeration.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   cluster/plot_digits_agglomeration
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: cluster/images/thumb/plot_affinity_propagation.png
-   :target: ./cluster/plot_affinity_propagation.html
-
-   :ref:`example_cluster_plot_affinity_propagation.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   cluster/plot_affinity_propagation
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: cluster/images/thumb/plot_lena_segmentation.png
@@ -1095,6 +1119,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
+    <p>This example uses :ref:`spectral_clustering` on a graph created from voxel-to-voxel difference ...
+    </p></div>
     </div>
 
 
@@ -1107,53 +1134,121 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
-.. figure:: cluster/images/thumb/plot_dbscan.png
-   :target: ./cluster/plot_dbscan.html
+.. figure:: cluster/images/thumb/plot_mean_shift.png
+   :target: ./cluster/plot_mean_shift.html
 
-   :ref:`example_cluster_plot_dbscan.py`
+   :ref:`example_cluster_plot_mean_shift.py`
 
 
 .. raw:: html
 
+
+    <p>Reference:
+    </p></div>
     </div>
 
 
 .. toctree::
    :hidden:
 
-   cluster/plot_dbscan
+   cluster/plot_mean_shift
 
 
 
 .. raw:: html
+
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
-.. figure:: cluster/images/thumb/plot_dict_face_patches.png
-   :target: ./cluster/plot_dict_face_patches.html
+.. figure:: cluster/images/thumb/plot_lena_ward_segmentation.png
+   :target: ./cluster/plot_lena_ward_segmentation.html
 
-   :ref:`example_cluster_plot_dict_face_patches.py`
+   :ref:`example_cluster_plot_lena_ward_segmentation.py`
 
 
 .. raw:: html
 
+
+    <p>Compute the segmentation of a 2D image with Ward hierarchical clustering. The clustering is spa...
+    </p></div>
     </div>
 
 
 .. toctree::
    :hidden:
 
-   cluster/plot_dict_face_patches
+   cluster/plot_lena_ward_segmentation
 
 
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: cluster/images/thumb/plot_digits_agglomeration.png
+   :target: ./cluster/plot_digits_agglomeration.html
+
+   :ref:`example_cluster_plot_digits_agglomeration.py`
+
+
+.. raw:: html
+
+
+    <p>These images how similiar features are merged together using feature agglomeration. 
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   cluster/plot_digits_agglomeration
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: cluster/images/thumb/plot_affinity_propagation.png
+   :target: ./cluster/plot_affinity_propagation.html
+
+   :ref:`example_cluster_plot_affinity_propagation.py`
+
+
+.. raw:: html
+
+
+    <p>Reference: Brendan J. Frey and Delbert Dueck, "Clustering by Passing Messages Between Data Poin...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   cluster/plot_affinity_propagation
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: cluster/images/thumb/plot_lena_compress.png
@@ -1164,6 +1259,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
+    <p>
+    </p></div>
     </div>
 
 
@@ -1176,7 +1274,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: cluster/images/thumb/plot_ward_structured_vs_unstructured.png
@@ -1187,6 +1287,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
+    <p>Example builds a swiss roll dataset and runs :ref:`hierarchical_clustering` on their position.
+    </p></div>
     </div>
 
 
@@ -1199,7 +1302,37 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: cluster/images/thumb/plot_dbscan.png
+   :target: ./cluster/plot_dbscan.html
+
+   :ref:`example_cluster_plot_dbscan.py`
+
+
+.. raw:: html
+
+
+    <p>Finds core samples of high density and expands clusters from them.
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   cluster/plot_dbscan
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: cluster/images/thumb/plot_segmentation_toy.png
@@ -1210,6 +1343,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
+    <p>In this example, an image with connected circles is generated and :ref:`spectral_clustering` is...
+    </p></div>
     </div>
 
 
@@ -1222,7 +1358,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: cluster/images/thumb/plot_cluster_iris.png
@@ -1233,6 +1371,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
+    <p>The plots display firstly what a K-means algorithm would yield using three clusters. It is then...
+    </p></div>
     </div>
 
 
@@ -1245,7 +1386,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: cluster/images/thumb/plot_color_quantization.png
@@ -1256,6 +1399,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
+    <p>Performs a pixel-wise Vector Quantization (VQ) of an image of the summer palace (China), reduci...
+    </p></div>
     </div>
 
 
@@ -1268,7 +1414,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: cluster/images/thumb/plot_cluster_comparison.png
@@ -1279,6 +1427,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
+    <p>This example aims at showing characteristics of different clustering algorithms on datasets tha...
+    </p></div>
     </div>
 
 
@@ -1291,7 +1442,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: cluster/images/thumb/plot_feature_agglomeration_vs_univariate_selection.png
@@ -1302,6 +1455,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
+    <p>This example compares 2 dimensionality reduction strategies:
+    </p></div>
     </div>
 
 
@@ -1314,7 +1470,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: cluster/images/thumb/plot_kmeans_stability_low_dim_dense.png
@@ -1325,6 +1483,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
+    <p>Evaluate the ability of k-means initializations strategies to make the algorithm convergence ro...
+    </p></div>
     </div>
 
 
@@ -1337,7 +1498,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: cluster/images/thumb/plot_kmeans_digits.png
@@ -1348,6 +1511,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
+    <p>In this example with compare the various initialization strategies for K-means in terms of runt...
+    </p></div>
     </div>
 
 
@@ -1360,7 +1526,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: cluster/images/thumb/plot_adjusted_for_chance_measures.png
@@ -1371,6 +1539,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
+    <p>The following plots demonstrate the impact of the number of clusters and number of samples on v...
+    </p></div>
     </div>
 
 
@@ -1383,7 +1554,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: cluster/images/thumb/plot_mini_batch_kmeans.png
@@ -1394,6 +1567,9 @@ Examples concerning the :mod:`sklearn.cluster` package.
 
 .. raw:: html
 
+
+    <p>We want to compare the performance of the MiniBatchKMeans and KMeans: the MiniBatchKMeans is fa...
+    </p></div>
     </div>
 
 
@@ -1422,7 +1598,9 @@ Examples concerning the :mod:`sklearn.covariance` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: covariance/images/thumb/plot_lw_vs_oas.png
@@ -1433,6 +1611,9 @@ Examples concerning the :mod:`sklearn.covariance` package.
 
 .. raw:: html
 
+
+    <p>The usual covariance maximum likelihood estimate can be regularized using shrinkage. Ledoit and...
+    </p></div>
     </div>
 
 
@@ -1445,7 +1626,9 @@ Examples concerning the :mod:`sklearn.covariance` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: covariance/images/thumb/plot_outlier_detection.png
@@ -1456,6 +1639,9 @@ Examples concerning the :mod:`sklearn.covariance` package.
 
 .. raw:: html
 
+
+    <p>This example illustrates two ways of performing :ref:`outlier_detection` when the amount of con...
+    </p></div>
     </div>
 
 
@@ -1468,30 +1654,9 @@ Examples concerning the :mod:`sklearn.covariance` package.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: covariance/images/thumb/plot_sparse_cov.png
-   :target: ./covariance/plot_sparse_cov.html
-
-   :ref:`example_covariance_plot_sparse_cov.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   covariance/plot_sparse_cov
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: covariance/images/thumb/plot_covariance_estimation.png
@@ -1502,6 +1667,9 @@ Examples concerning the :mod:`sklearn.covariance` package.
 
 .. raw:: html
 
+
+    <p>The usual covariance maximum likelihood estimate can be regularized using shrinkage. Ledoit and...
+    </p></div>
     </div>
 
 
@@ -1514,7 +1682,37 @@ Examples concerning the :mod:`sklearn.covariance` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: covariance/images/thumb/plot_sparse_cov.png
+   :target: ./covariance/plot_sparse_cov.html
+
+   :ref:`example_covariance_plot_sparse_cov.py`
+
+
+.. raw:: html
+
+
+    <p>Using the GraphLasso estimator to learn a covariance and sparse precision from a small number o...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   covariance/plot_sparse_cov
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: covariance/images/thumb/plot_mahalanobis_distances.png
@@ -1525,6 +1723,9 @@ Examples concerning the :mod:`sklearn.covariance` package.
 
 .. raw:: html
 
+
+    <p>For Gaussian ditributed data, the distance of an observation :math:`x_i` to the mode of the dis...
+    </p></div>
     </div>
 
 
@@ -1537,7 +1738,9 @@ Examples concerning the :mod:`sklearn.covariance` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: covariance/images/thumb/plot_robust_vs_empirical_covariance.png
@@ -1548,6 +1751,9 @@ Examples concerning the :mod:`sklearn.covariance` package.
 
 .. raw:: html
 
+
+    <p>The usual covariance maximum likelihood estimate is very sensitive to the presence of outliers ...
+    </p></div>
     </div>
 
 
@@ -1576,7 +1782,9 @@ Examples concerning the :mod:`sklearn.datasets` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: datasets/images/thumb/plot_digits_last_image.png
@@ -1587,6 +1795,9 @@ Examples concerning the :mod:`sklearn.datasets` package.
 
 .. raw:: html
 
+
+    <p>See `here <http://archive.ics.uci.edu/ml/datasets/Pen-Based+Recognition+of+Handwritten+Digits>`...
+    </p></div>
     </div>
 
 
@@ -1599,30 +1810,9 @@ Examples concerning the :mod:`sklearn.datasets` package.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: datasets/images/thumb/plot_random_dataset.png
-   :target: ./datasets/plot_random_dataset.html
-
-   :ref:`example_datasets_plot_random_dataset.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   datasets/plot_random_dataset
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: datasets/images/thumb/plot_iris_dataset.png
@@ -1633,6 +1823,9 @@ Examples concerning the :mod:`sklearn.datasets` package.
 
 .. raw:: html
 
+
+    <p>The rows being the samples and the columns being: Sepal Length, Sepal Width, Petal Length	and P...
+    </p></div>
     </div>
 
 
@@ -1640,6 +1833,34 @@ Examples concerning the :mod:`sklearn.datasets` package.
    :hidden:
 
    datasets/plot_iris_dataset
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: datasets/images/thumb/plot_random_dataset.png
+   :target: ./datasets/plot_random_dataset.html
+
+   :ref:`example_datasets_plot_random_dataset.py`
+
+
+.. raw:: html
+
+
+    <p>Plot several randomly generated 2D classification datasets. This example illustrates the `datas...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   datasets/plot_random_dataset
 
 
 .. raw:: html
@@ -1662,7 +1883,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: decomposition/images/thumb/plot_pca_vs_lda.png
@@ -1673,6 +1896,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
+    <p>The Iris dataset represents 3 kind of Iris flowers (Setosa, Versicolour and Virginica) with 4 a...
+    </p></div>
     </div>
 
 
@@ -1685,7 +1911,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: decomposition/images/thumb/plot_ica_blind_source_separation.png
@@ -1696,6 +1924,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
+    <p>:ref:`ICA` is used to estimate sources given noisy measurements. Imagine 2 instruments playing ...
+    </p></div>
     </div>
 
 
@@ -1708,7 +1939,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: decomposition/images/thumb/plot_pca_iris.png
@@ -1719,6 +1952,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
+    <p>
+    </p></div>
     </div>
 
 
@@ -1731,7 +1967,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: decomposition/images/thumb/plot_kernel_pca.png
@@ -1742,6 +1980,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
+    <p>This example shows that Kernel PCA is able to find a projection of the data that makes data lin...
+    </p></div>
     </div>
 
 
@@ -1754,53 +1995,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: decomposition/images/thumb/plot_ica_vs_pca.png
-   :target: ./decomposition/plot_ica_vs_pca.html
-
-   :ref:`example_decomposition_plot_ica_vs_pca.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   decomposition/plot_ica_vs_pca
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
-
-
-.. figure:: decomposition/images/thumb/plot_sparse_coding.png
-   :target: ./decomposition/plot_sparse_coding.html
-
-   :ref:`example_decomposition_plot_sparse_coding.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   decomposition/plot_sparse_coding
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: decomposition/images/thumb/plot_pca_3d.png
@@ -1811,6 +2008,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
+    <p>These figures aid in illustrating how a the point cloud can be very flad in one direction - whi...
+    </p></div>
     </div>
 
 
@@ -1823,7 +2023,65 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: decomposition/images/thumb/plot_ica_vs_pca.png
+   :target: ./decomposition/plot_ica_vs_pca.html
+
+   :ref:`example_decomposition_plot_ica_vs_pca.py`
+
+
+.. raw:: html
+
+
+    <p>Illustrate visually the results of :ref:`ICA` vs :ref:`PCA` in the feature space.
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   decomposition/plot_ica_vs_pca
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: decomposition/images/thumb/plot_sparse_coding.png
+   :target: ./decomposition/plot_sparse_coding.html
+
+   :ref:`example_decomposition_plot_sparse_coding.py`
+
+
+.. raw:: html
+
+
+    <p>Transform a signal as a sparse combination of Ricker wavelets. This example visually compares d...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   decomposition/plot_sparse_coding
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: decomposition/images/thumb/plot_faces_decomposition.png
@@ -1834,6 +2092,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
+    <p>This example applies to :ref:`olivetti_faces` different unsupervised matrix decomposition (dime...
+    </p></div>
     </div>
 
 
@@ -1846,7 +2107,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: decomposition/images/thumb/plot_image_denoising.png
@@ -1857,6 +2120,9 @@ Examples concerning the :mod:`sklearn.decomposition` package.
 
 .. raw:: html
 
+
+    <p>An example comparing the effect of reconstructing noisy fragments of Lena using online :ref:`Di...
+    </p></div>
     </div>
 
 
@@ -1885,30 +2151,9 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: ensemble/images/thumb/plot_adaboost_regression.png
-   :target: ./ensemble/plot_adaboost_regression.html
-
-   :ref:`example_ensemble_plot_adaboost_regression.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ensemble/plot_adaboost_regression
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ensemble/images/thumb/plot_forest_importances_faces.png
@@ -1919,6 +2164,9 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
 .. raw:: html
 
+
+    <p>This example shows the use of forests of trees to evaluate the importance of the pixels in an i...
+    </p></div>
     </div>
 
 
@@ -1931,7 +2179,9 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ensemble/images/thumb/plot_forest_importances.png
@@ -1942,6 +2192,9 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
 .. raw:: html
 
+
+    <p>This examples shows the use of forests of trees to evaluate the importance of features on an ar...
+    </p></div>
     </div>
 
 
@@ -1954,30 +2207,9 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: ensemble/images/thumb/plot_forest_multioutput.png
-   :target: ./ensemble/plot_forest_multioutput.html
-
-   :ref:`example_ensemble_plot_forest_multioutput.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ensemble/plot_forest_multioutput
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ensemble/images/thumb/plot_gradient_boosting_regularization.png
@@ -1988,6 +2220,9 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
 .. raw:: html
 
+
+    <p>Illustration of the effect of different regularization strategies for Gradient Boosting. The ex...
+    </p></div>
     </div>
 
 
@@ -2000,7 +2235,37 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: ensemble/images/thumb/plot_forest_multioutput.png
+   :target: ./ensemble/plot_forest_multioutput.html
+
+   :ref:`example_ensemble_plot_forest_multioutput.py`
+
+
+.. raw:: html
+
+
+    <p>This example shows the use of multi-output forests to complete images. The goal is to predict t...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ensemble/plot_forest_multioutput
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ensemble/images/thumb/plot_gradient_boosting_regression.png
@@ -2011,6 +2276,9 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
 .. raw:: html
 
+
+    <p>Demonstrate Gradient Boosting on the boston housing dataset.
+    </p></div>
     </div>
 
 
@@ -2023,30 +2291,9 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: ensemble/images/thumb/plot_partial_dependence.png
-   :target: ./ensemble/plot_partial_dependence.html
-
-   :ref:`example_ensemble_plot_partial_dependence.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ensemble/plot_partial_dependence
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ensemble/images/thumb/plot_gradient_boosting_quantile.png
@@ -2057,6 +2304,9 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
 .. raw:: html
 
+
+    <p>This example shows how quantile regression can be used to create prediction intervals. 
+    </p></div>
     </div>
 
 
@@ -2069,99 +2319,9 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: ensemble/images/thumb/plot_adaboost_twoclass.png
-   :target: ./ensemble/plot_adaboost_twoclass.html
-
-   :ref:`example_ensemble_plot_adaboost_twoclass.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ensemble/plot_adaboost_twoclass
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
-
-
-.. figure:: ensemble/images/thumb/plot_random_forest_embedding.png
-   :target: ./ensemble/plot_random_forest_embedding.html
-
-   :ref:`example_ensemble_plot_random_forest_embedding.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ensemble/plot_random_forest_embedding
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: ensemble/images/thumb/plot_adaboost_multiclass.png
-   :target: ./ensemble/plot_adaboost_multiclass.html
-
-   :ref:`example_ensemble_plot_adaboost_multiclass.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ensemble/plot_adaboost_multiclass
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: ensemble/images/thumb/plot_adaboost_hastie_10_2.png
-   :target: ./ensemble/plot_adaboost_hastie_10_2.html
-
-   :ref:`example_ensemble_plot_adaboost_hastie_10_2.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   ensemble/plot_adaboost_hastie_10_2
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: ensemble/images/thumb/plot_forest_iris.png
@@ -2172,6 +2332,9 @@ Examples concerning the :mod:`sklearn.ensemble` package.
 
 .. raw:: html
 
+
+    <p>Plot the decision surfaces of forests of randomized trees trained on pairs of features of the i...
+    </p></div>
     </div>
 
 
@@ -2198,7 +2361,9 @@ Exercises for the tutorials
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: exercises/images/thumb/plot_digits_classification_exercise.png
@@ -2209,6 +2374,9 @@ Exercises for the tutorials
 
 .. raw:: html
 
+
+    <p>This exercise is used in the :ref:`clf_tut` part of the :ref:`supervised_learning_tut` section ...
+    </p></div>
     </div>
 
 
@@ -2221,7 +2389,9 @@ Exercises for the tutorials
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: exercises/images/thumb/plot_cv_digits.png
@@ -2232,6 +2402,9 @@ Exercises for the tutorials
 
 .. raw:: html
 
+
+    <p>This exercise is used in the :ref:`cv_generators_tut` part of the :ref:`model_selection_tut` se...
+    </p></div>
     </div>
 
 
@@ -2244,30 +2417,9 @@ Exercises for the tutorials
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: exercises/images/thumb/plot_iris_exercise.png
-   :target: ./exercises/plot_iris_exercise.html
-
-   :ref:`example_exercises_plot_iris_exercise.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   exercises/plot_iris_exercise
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: exercises/images/thumb/plot_cv_diabetes.png
@@ -2278,6 +2430,9 @@ Exercises for the tutorials
 
 .. raw:: html
 
+
+    <p>This exercise is used in the :ref:`cv_estimators_tut` part of the :ref:`model_selection_tut` se...
+    </p></div>
     </div>
 
 
@@ -2285,6 +2440,34 @@ Exercises for the tutorials
    :hidden:
 
    exercises/plot_cv_diabetes
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: exercises/images/thumb/plot_iris_exercise.png
+   :target: ./exercises/plot_iris_exercise.html
+
+   :ref:`example_exercises_plot_iris_exercise.py`
+
+
+.. raw:: html
+
+
+    <p>This exercise is used in the :ref:`using_kernels_tut` part of the :ref:`supervised_learning_tut...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   exercises/plot_iris_exercise
 
 
 .. raw:: html
@@ -2307,7 +2490,9 @@ Examples concerning the :mod:`sklearn.gaussian_process` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: gaussian_process/images/thumb/gp_diabetes_dataset.png
@@ -2318,6 +2503,9 @@ Examples concerning the :mod:`sklearn.gaussian_process` package.
 
 .. raw:: html
 
+
+    <p>This example consists in fitting a Gaussian Process model onto the diabetes dataset.
+    </p></div>
     </div>
 
 
@@ -2330,7 +2518,9 @@ Examples concerning the :mod:`sklearn.gaussian_process` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: gaussian_process/images/thumb/plot_gp_probabilistic_classification_after_regression.png
@@ -2341,6 +2531,9 @@ Examples concerning the :mod:`sklearn.gaussian_process` package.
 
 .. raw:: html
 
+
+    <p>A two-dimensional regression exercise with a post-processing allowing for probabilistic classif...
+    </p></div>
     </div>
 
 
@@ -2353,7 +2546,9 @@ Examples concerning the :mod:`sklearn.gaussian_process` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: gaussian_process/images/thumb/plot_gp_regression.png
@@ -2364,6 +2559,9 @@ Examples concerning the :mod:`sklearn.gaussian_process` package.
 
 .. raw:: html
 
+
+    <p>A simple one-dimensional regression exercise computed in two different ways:
+    </p></div>
     </div>
 
 
@@ -2392,7 +2590,37 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: linear_model/images/thumb/plot_sgd_ols.png
+   :target: ./linear_model/plot_sgd_ols.html
+
+   :ref:`example_linear_model_plot_sgd_ols.py`
+
+
+.. raw:: html
+
+
+    <p>Simple Ordinary Least Squares example with stochastic gradient descent, we draw the linear leas...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   linear_model/plot_sgd_ols
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_lasso_lars.png
@@ -2403,6 +2631,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Computes Lasso Path along the regularization parameter using the LARS algorithm on the diabetes...
+    </p></div>
     </div>
 
 
@@ -2415,99 +2646,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: linear_model/images/thumb/plot_sgd_separating_hyperplane.png
-   :target: ./linear_model/plot_sgd_separating_hyperplane.html
-
-   :ref:`example_linear_model_plot_sgd_separating_hyperplane.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   linear_model/plot_sgd_separating_hyperplane
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
-
-
-.. figure:: linear_model/images/thumb/plot_polynomial_interpolation.png
-   :target: ./linear_model/plot_polynomial_interpolation.html
-
-   :ref:`example_linear_model_plot_polynomial_interpolation.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   linear_model/plot_polynomial_interpolation
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: linear_model/images/thumb/plot_sgd_weighted_samples.png
-   :target: ./linear_model/plot_sgd_weighted_samples.html
-
-   :ref:`example_linear_model_plot_sgd_weighted_samples.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   linear_model/plot_sgd_weighted_samples
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: linear_model/images/thumb/plot_ridge_path.png
-   :target: ./linear_model/plot_ridge_path.html
-
-   :ref:`example_linear_model_plot_ridge_path.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   linear_model/plot_ridge_path
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_sgd_loss_functions.png
@@ -2518,6 +2659,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Plot the convex loss functions supported by `sklearn.linear_model.stochastic_gradient`. 
+    </p></div>
     </div>
 
 
@@ -2530,30 +2674,121 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
-.. figure:: linear_model/images/thumb/plot_sgd_comparison.png
-   :target: ./linear_model/plot_sgd_comparison.html
+.. figure:: linear_model/images/thumb/plot_sgd_separating_hyperplane.png
+   :target: ./linear_model/plot_sgd_separating_hyperplane.html
 
-   :ref:`example_linear_model_plot_sgd_comparison.py`
+   :ref:`example_linear_model_plot_sgd_separating_hyperplane.py`
 
 
 .. raw:: html
 
+
+    <p>Plot the maximum margin separating hyperplane within a two-class separable dataset using a line...
+    </p></div>
     </div>
 
 
 .. toctree::
    :hidden:
 
-   linear_model/plot_sgd_comparison
+   linear_model/plot_sgd_separating_hyperplane
 
 
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: linear_model/images/thumb/plot_polynomial_interpolation.png
+   :target: ./linear_model/plot_polynomial_interpolation.html
+
+   :ref:`example_linear_model_plot_polynomial_interpolation.py`
+
+
+.. raw:: html
+
+
+    <p>This example demonstrates how to approximate a function with a polynomial of degree n_degree by...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   linear_model/plot_polynomial_interpolation
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: linear_model/images/thumb/plot_sgd_weighted_samples.png
+   :target: ./linear_model/plot_sgd_weighted_samples.html
+
+   :ref:`example_linear_model_plot_sgd_weighted_samples.py`
+
+
+.. raw:: html
+
+
+    <p>Plot decision function of a weighted dataset, where the size of points is proportional to its w...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   linear_model/plot_sgd_weighted_samples
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: linear_model/images/thumb/plot_ridge_path.png
+   :target: ./linear_model/plot_ridge_path.html
+
+   :ref:`example_linear_model_plot_ridge_path.py`
+
+
+.. raw:: html
+
+
+    <p>.. currentmodule:: sklearn.linear_model
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   linear_model/plot_ridge_path
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_logistic_path.png
@@ -2564,6 +2799,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Computes path on IRIS dataset.
+    </p></div>
     </div>
 
 
@@ -2576,7 +2814,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_iris_logistic.png
@@ -2587,6 +2827,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>
+    </p></div>
     </div>
 
 
@@ -2599,7 +2842,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_sgd_weighted_classes.png
@@ -2610,6 +2855,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Fit linear SVMs with and without class weighting. Allows to handle problems with unbalanced cla...
+    </p></div>
     </div>
 
 
@@ -2622,30 +2870,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: linear_model/images/thumb/plot_ols_ridge_variance.png
-   :target: ./linear_model/plot_ols_ridge_variance.html
-
-   :ref:`example_linear_model_plot_ols_ridge_variance.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   linear_model/plot_ols_ridge_variance
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_ols.png
@@ -2656,6 +2883,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>The coefficients, the residual sum of squares and the variance score are also calculated.
+    </p></div>
     </div>
 
 
@@ -2668,7 +2898,37 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: linear_model/images/thumb/plot_ols_ridge_variance.png
+   :target: ./linear_model/plot_ols_ridge_variance.html
+
+   :ref:`example_linear_model_plot_ols_ridge_variance.py`
+
+
+.. raw:: html
+
+
+    <p>Ridge regression is basically minimizing a penalised version of the least-squared function. The...
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   linear_model/plot_ols_ridge_variance
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_multi_task_lasso_support.png
@@ -2679,6 +2939,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>The multi-task lasso allows to fit multiple regression problems jointly enforcing the selected ...
+    </p></div>
     </div>
 
 
@@ -2691,7 +2954,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_logistic.png
@@ -2702,6 +2967,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>
+    </p></div>
     </div>
 
 
@@ -2714,7 +2982,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_sgd_penalties.png
@@ -2725,6 +2995,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Plot the contours of the three penalties supported by `sklearn.linear_model.stochastic_gradient...
+    </p></div>
     </div>
 
 
@@ -2737,7 +3010,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/lasso_dense_vs_sparse_data.png
@@ -2748,6 +3023,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>We show that linear_model.Lasso provides the same results for dense and sparse data and that in...
+    </p></div>
     </div>
 
 
@@ -2760,7 +3038,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_omp.png
@@ -2771,6 +3051,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Using orthogonal matching pursuit for recovering a sparse signal from a noisy measurement encod...
+    </p></div>
     </div>
 
 
@@ -2783,7 +3066,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_lasso_and_elasticnet.png
@@ -2794,6 +3079,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>
+    </p></div>
     </div>
 
 
@@ -2806,7 +3094,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_bayesian_ridge.png
@@ -2817,6 +3107,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Computes a :ref:`bayesian_ridge_regression` on a synthetic dataset.
+    </p></div>
     </div>
 
 
@@ -2829,7 +3122,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_ols_3d.png
@@ -2840,6 +3135,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Features 1 and 2 of the diabetes-dataset are fitted and plotted below. It illustrates that alth...
+    </p></div>
     </div>
 
 
@@ -2852,7 +3150,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_ard.png
@@ -2863,6 +3163,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Fit regression model with :ref:`bayesian_ridge_regression`.
+    </p></div>
     </div>
 
 
@@ -2875,7 +3178,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_logistic_l1_l2_sparsity.png
@@ -2886,6 +3191,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Comparison of the sparsity (percentage of zero coefficients) of solutions when L1 and L2 penalt...
+    </p></div>
     </div>
 
 
@@ -2898,7 +3206,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_sgd_iris.png
@@ -2909,6 +3219,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Plot decision surface of multi-class SGD on iris dataset. The hyperplanes corresponding to the ...
+    </p></div>
     </div>
 
 
@@ -2921,7 +3234,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_lasso_coordinate_descent_path.png
@@ -2932,6 +3247,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Lasso and elastic net (L1 and L2 penalisation) implemented using a coordinate descent.
+    </p></div>
     </div>
 
 
@@ -2944,7 +3262,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_lasso_model_selection.png
@@ -2955,6 +3275,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Use the Akaike information criterion (AIC), the Bayes Information criterion (BIC) and cross-val...
+    </p></div>
     </div>
 
 
@@ -2967,7 +3290,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: linear_model/images/thumb/plot_sparse_recovery.png
@@ -2978,6 +3303,9 @@ Examples concerning the :mod:`sklearn.linear_model` package.
 
 .. raw:: html
 
+
+    <p>Given a small number of observations, we want to recover which features of X are relevant to ex...
+    </p></div>
     </div>
 
 
@@ -3007,7 +3335,9 @@ Examples concerning the :mod:`sklearn.manifold` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: manifold/images/thumb/plot_swissroll.png
@@ -3018,6 +3348,9 @@ Examples concerning the :mod:`sklearn.manifold` package.
 
 .. raw:: html
 
+
+    <p>An illustration of Swiss Roll reduction with locally linear embedding 
+    </p></div>
     </div>
 
 
@@ -3030,7 +3363,9 @@ Examples concerning the :mod:`sklearn.manifold` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: manifold/images/thumb/plot_mds.png
@@ -3041,6 +3376,9 @@ Examples concerning the :mod:`sklearn.manifold` package.
 
 .. raw:: html
 
+
+    <p>An illustration of the metric and non-metric MDS on generated noisy data.
+    </p></div>
     </div>
 
 
@@ -3053,7 +3391,9 @@ Examples concerning the :mod:`sklearn.manifold` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: manifold/images/thumb/plot_compare_methods.png
@@ -3064,6 +3404,9 @@ Examples concerning the :mod:`sklearn.manifold` package.
 
 .. raw:: html
 
+
+    <p>An illustration of dimensionality reduction on the S-curve dataset with various manifold learni...
+    </p></div>
     </div>
 
 
@@ -3076,30 +3419,9 @@ Examples concerning the :mod:`sklearn.manifold` package.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: manifold/images/thumb/plot_manifold_sphere.png
-   :target: ./manifold/plot_manifold_sphere.html
-
-   :ref:`example_manifold_plot_manifold_sphere.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   manifold/plot_manifold_sphere
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: manifold/images/thumb/plot_lle_digits.png
@@ -3110,6 +3432,9 @@ Examples concerning the :mod:`sklearn.manifold` package.
 
 .. raw:: html
 
+
+    <p>An illustration of various embeddings on the digits dataset. 
+    </p></div>
     </div>
 
 
@@ -3138,7 +3463,9 @@ Examples concerning the :mod:`sklearn.mixture` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: mixture/images/thumb/plot_gmm_pdf.png
@@ -3149,6 +3476,9 @@ Examples concerning the :mod:`sklearn.mixture` package.
 
 .. raw:: html
 
+
+    <p>Plot the density estimation of a mixture of two gaussians. Data is generated from two gaussians...
+    </p></div>
     </div>
 
 
@@ -3161,7 +3491,9 @@ Examples concerning the :mod:`sklearn.mixture` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: mixture/images/thumb/plot_gmm.png
@@ -3172,6 +3504,9 @@ Examples concerning the :mod:`sklearn.mixture` package.
 
 .. raw:: html
 
+
+    <p>Plot the confidence ellipsoids of a mixture of two gaussians with EM and variational dirichlet ...
+    </p></div>
     </div>
 
 
@@ -3184,7 +3519,9 @@ Examples concerning the :mod:`sklearn.mixture` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: mixture/images/thumb/plot_gmm_sin.png
@@ -3195,6 +3532,9 @@ Examples concerning the :mod:`sklearn.mixture` package.
 
 .. raw:: html
 
+
+    <p>This example highlights the advantages of the Dirichlet Process: complexity control and dealing...
+    </p></div>
     </div>
 
 
@@ -3207,7 +3547,9 @@ Examples concerning the :mod:`sklearn.mixture` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: mixture/images/thumb/plot_gmm_selection.png
@@ -3218,6 +3560,9 @@ Examples concerning the :mod:`sklearn.mixture` package.
 
 .. raw:: html
 
+
+    <p>This example shows that model selection can be perfomed with Gaussian Mixture Models using info...
+    </p></div>
     </div>
 
 
@@ -3230,7 +3575,9 @@ Examples concerning the :mod:`sklearn.mixture` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: mixture/images/thumb/plot_gmm_classifier.png
@@ -3241,6 +3588,9 @@ Examples concerning the :mod:`sklearn.mixture` package.
 
 .. raw:: html
 
+
+    <p>Demonstration of :ref:`gmm` for classification.
+    </p></div>
     </div>
 
 
@@ -3269,7 +3619,9 @@ Examples concerning the :mod:`sklearn.neighbors` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: neighbors/images/thumb/plot_regression.png
@@ -3280,6 +3632,9 @@ Examples concerning the :mod:`sklearn.neighbors` package.
 
 .. raw:: html
 
+
+    <p>Demonstrate the resolution of a regression problem using a k-Nearest Neighbor and the interpola...
+    </p></div>
     </div>
 
 
@@ -3292,7 +3647,9 @@ Examples concerning the :mod:`sklearn.neighbors` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: neighbors/images/thumb/plot_classification.png
@@ -3303,6 +3660,9 @@ Examples concerning the :mod:`sklearn.neighbors` package.
 
 .. raw:: html
 
+
+    <p>Sample usage of Nearest Neighbors classification. It will plot the decision boundaries for each...
+    </p></div>
     </div>
 
 
@@ -3315,7 +3675,9 @@ Examples concerning the :mod:`sklearn.neighbors` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: neighbors/images/thumb/plot_nearest_centroid.png
@@ -3326,6 +3688,9 @@ Examples concerning the :mod:`sklearn.neighbors` package.
 
 .. raw:: html
 
+
+    <p>Sample usage of Nearest Centroid classification. It will plot the decision boundaries for each ...
+    </p></div>
     </div>
 
 
@@ -3333,75 +3698,6 @@ Examples concerning the :mod:`sklearn.neighbors` package.
    :hidden:
 
    neighbors/plot_nearest_centroid
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: neighbors/images/thumb/plot_digits_kde_sampling.png
-   :target: ./neighbors/plot_digits_kde_sampling.html
-
-   :ref:`example_neighbors_plot_digits_kde_sampling.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   neighbors/plot_digits_kde_sampling
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: neighbors/images/thumb/plot_species_kde.png
-   :target: ./neighbors/plot_species_kde.html
-
-   :ref:`example_neighbors_plot_species_kde.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   neighbors/plot_species_kde
-
-
-
-.. raw:: html
-
-    <div class="thumbnailContainer">
-
-
-.. figure:: neighbors/images/thumb/plot_kde_1d.png
-   :target: ./neighbors/plot_kde_1d.html
-
-   :ref:`example_neighbors_plot_kde_1d.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   neighbors/plot_kde_1d
 
 
 .. raw:: html
@@ -3423,7 +3719,9 @@ Examples concerning the :mod:`sklearn.semi_supervised` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: semi_supervised/images/thumb/plot_label_propagation_structure.png
@@ -3434,6 +3732,9 @@ Examples concerning the :mod:`sklearn.semi_supervised` package.
 
 .. raw:: html
 
+
+    <p>Example of LabelPropagation learning a complex internal structure to demonstrate "manifold lear...
+    </p></div>
     </div>
 
 
@@ -3446,7 +3747,9 @@ Examples concerning the :mod:`sklearn.semi_supervised` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: semi_supervised/images/thumb/plot_label_propagation_versus_svm_iris.png
@@ -3457,6 +3760,9 @@ Examples concerning the :mod:`sklearn.semi_supervised` package.
 
 .. raw:: html
 
+
+    <p>Comparison for decision boundary generated on iris dataset between Label Propagation and SVM.
+    </p></div>
     </div>
 
 
@@ -3469,7 +3775,9 @@ Examples concerning the :mod:`sklearn.semi_supervised` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: semi_supervised/images/thumb/plot_label_propagation_digits.png
@@ -3480,6 +3788,9 @@ Examples concerning the :mod:`sklearn.semi_supervised` package.
 
 .. raw:: html
 
+
+    <p>This example demonstrates the power of semisupervised learning by training a Label Spreading mo...
+    </p></div>
     </div>
 
 
@@ -3492,7 +3803,9 @@ Examples concerning the :mod:`sklearn.semi_supervised` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: semi_supervised/images/thumb/plot_label_propagation_digits_active_learning.png
@@ -3503,6 +3816,9 @@ Examples concerning the :mod:`sklearn.semi_supervised` package.
 
 .. raw:: html
 
+
+    <p>Demonstrates an active learning technique to learn handwritten digits using label propagation.
+    </p></div>
     </div>
 
 
@@ -3531,7 +3847,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_weighted_samples.png
@@ -3542,6 +3860,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>Plot decision function of a weighted dataset, where the size of points is proportional to its w...
+    </p></div>
     </div>
 
 
@@ -3554,7 +3875,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_svm_nonlinear.png
@@ -3565,6 +3888,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>Perform binary classification using non-linear SVC with RBF kernel. The target to predict is a ...
+    </p></div>
     </div>
 
 
@@ -3577,7 +3903,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_svm_regression.png
@@ -3588,6 +3916,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>Toy example of 1D regression using linear, polynominial and RBF kernels.
+    </p></div>
     </div>
 
 
@@ -3600,7 +3931,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_separating_hyperplane.png
@@ -3611,6 +3944,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>Plot the maximum margin separating hyperplane within a two-class separable dataset using a Supp...
+    </p></div>
     </div>
 
 
@@ -3623,7 +3959,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_separating_hyperplane_unbalanced.png
@@ -3634,6 +3972,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>Find the optimal separating hyperplane using an SVC for classes that are unbalanced.
+    </p></div>
     </div>
 
 
@@ -3646,7 +3987,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_svm_iris.png
@@ -3657,6 +4000,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>The decision boundaries, are shown with all the points in the training-set.
+    </p></div>
     </div>
 
 
@@ -3669,7 +4015,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_custom_kernel.png
@@ -3680,6 +4028,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>Simple usage of Support Vector Machines to classify a sample. It will plot the decision surface...
+    </p></div>
     </div>
 
 
@@ -3692,7 +4043,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_svm_anova.png
@@ -3703,6 +4056,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>This example shows how to perform univariate feature before running a SVC (support vector class...
+    </p></div>
     </div>
 
 
@@ -3715,7 +4071,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_iris.png
@@ -3726,6 +4084,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>Comparison of different linear SVM classifiers on the iris dataset. It will plot the decision s...
+    </p></div>
     </div>
 
 
@@ -3738,7 +4099,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_oneclass.png
@@ -3749,6 +4112,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>:ref:`One-class SVM <svm_outlier_detection>` is an unsupervised algorithm that learns a decisio...
+    </p></div>
     </div>
 
 
@@ -3761,30 +4127,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
-    <div class="thumbnailContainer">
-
-
-.. figure:: svm/images/thumb/plot_svm_kernels.png
-   :target: ./svm/plot_svm_kernels.html
-
-   :ref:`example_svm_plot_svm_kernels.py`
-
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   svm/plot_svm_kernels
-
-
-
-.. raw:: html
 
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_svm_margin.png
@@ -3795,6 +4140,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>A small value of `C` includes more/all the observations, allowing the margins to be calculated ...
+    </p></div>
     </div>
 
 
@@ -3807,7 +4155,37 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
+
+
+.. figure:: svm/images/thumb/plot_svm_kernels.png
+   :target: ./svm/plot_svm_kernels.html
+
+   :ref:`example_svm_plot_svm_kernels.py`
+
+
+.. raw:: html
+
+
+    <p> 
+    </p></div>
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   svm/plot_svm_kernels
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_svm_scale_c.png
@@ -3818,6 +4196,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>The following example illustrates the effect of scaling the regularization parameter when using...
+    </p></div>
     </div>
 
 
@@ -3830,7 +4211,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: svm/images/thumb/plot_rbf_parameters.png
@@ -3841,6 +4224,9 @@ Examples concerning the :mod:`sklearn.svm` package.
 
 .. raw:: html
 
+
+    <p>This example illustrates the effect of the parameters `gamma` and `C` of the rbf kernel SVM.
+    </p></div>
     </div>
 
 
@@ -3869,7 +4255,9 @@ Examples concerning the :mod:`sklearn.tree` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: tree/images/thumb/plot_tree_regression.png
@@ -3880,6 +4268,9 @@ Examples concerning the :mod:`sklearn.tree` package.
 
 .. raw:: html
 
+
+    <p>1D regression with :ref:`decision trees <tree>`: the decision tree is used to fit a sine curve ...
+    </p></div>
     </div>
 
 
@@ -3892,7 +4283,9 @@ Examples concerning the :mod:`sklearn.tree` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: tree/images/thumb/plot_tree_regression_multioutput.png
@@ -3903,6 +4296,9 @@ Examples concerning the :mod:`sklearn.tree` package.
 
 .. raw:: html
 
+
+    <p>Multi-output regression with :ref:`decision trees <tree>`: the decision tree is used to predict...
+    </p></div>
     </div>
 
 
@@ -3915,7 +4311,9 @@ Examples concerning the :mod:`sklearn.tree` package.
 
 .. raw:: html
 
+
     <div class="thumbnailContainer">
+        <div class="docstringWrapper">
 
 
 .. figure:: tree/images/thumb/plot_iris.png
@@ -3926,6 +4324,9 @@ Examples concerning the :mod:`sklearn.tree` package.
 
 .. raw:: html
 
+
+    <p>Plot the decision surface of a :ref:`decision tree <tree>` trained on pairs of features of the ...
+    </p></div>
     </div>
 
 

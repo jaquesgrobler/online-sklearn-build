@@ -10,12 +10,12 @@ bit-depth, 512 x 512 sized image, is used here to illustrate
 how `k`-means is used for vector quantization.
 
 """
-print(__doc__)
+print __doc__
 
 
 # Code source: Gael Varoqueux
 # Modified for Documentation merge by Jaques Grobler
-# License: BSD 3 clause
+# License: BSD
 
 import numpy as np
 import scipy as sp

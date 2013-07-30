@@ -7,11 +7,11 @@ PCA example with Iris Data-set
 =========================================================
 
 """
-print(__doc__)
+print __doc__
 
 
 # Code source: Gael Varoqueux
-# License: BSD 3 clause
+# License: BSD
 
 import numpy as np
 import pylab as pl
@@ -42,7 +42,8 @@ for name, label in [('Setosa', 0), ('Versicolour', 1), ('Virginica', 2)]:
               X[y == label, 1].mean() + 1.5,
               X[y == label, 2].mean(), name,
               horizontalalignment='center',
-              bbox=dict(alpha=.5, edgecolor='w', facecolor='w'))
+              bbox=dict(alpha=.5, edgecolor='w', facecolor='w'),
+             )
 # Reorder the labels to have colors matching the cluster results
 y = np.choose(y, [1, 2, 0]).astype(np.float)
 ax.scatter(X[:, 0], X[:, 1], X[:, 2], c=y, cmap=pl.cm.spectral)

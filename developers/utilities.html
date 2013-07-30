@@ -8,7 +8,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3. Utilities for Developers &mdash; scikit-learn 0.14-git documentation</title>
+  
+    <title>Utilities for Developers &mdash; scikit-learn 0.12.1 documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../_static/css/bootstrap-responsive.css"/>
+
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.12.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,142 +31,109 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
-    <link rel="next" title="4. Developers’ Tips for Debugging" href="debugging.html" />
-    <link rel="prev" title="2. How to optimize for speed" href="performance.html" />
+    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../index.html" />
+   
+       <script type="text/javascript" src="../_static/sidebar.js"></script>
+   
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  <link rel="canonical" href="http://scikit-learn.org/stable/developers/utilities.html" />
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-22606712-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
-      <link rel="canonical" href="http://scikit-learn.org/stable/developers/utilities.html">
-
-
-
+  <script type="text/javascript">
+    $("div.buttonNext, div.buttonPrevious").hover(
+       function () {
+           $(this).css('background-color', '#FF9C34');
+       },
+       function () {
+           $(this).css('background-color', '#A7D6E2');
+       }
+    );
+    var bodywrapper = $('.bodywrapper');
+    var sidebarbutton = $('#sidebarbutton');
+    sidebarbutton.css({'height': '900px'});
+  </script>
 
   </head>
   <body>
 
-    <div class="header-wrapper">
-      <div class="header">
-          <p class="logo"><a href="../index.html">
+<div class="header-wrapper">
+    <div class="header">
+        <p class="logo"><a href="../index.html">
             <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
-          </a>
-          </p><div class="navbar">
-          <ul>
-            <li><a href="../install.html">Download</a></li>
-            <li><a href="../support.html">Support</a></li>
-            <li><a href="../user_guide.html">User Guide</a></li>
+        </a>
+        </p>
+        <div class="navbar">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../install.html">Installation</a></li>
+                <li class="btn-li"><div class="btn-group">
+		      <a href="../documentation.html">Documentation</a>
+		      <a class="btn dropdown-toggle" data-toggle="dropdown">
+			     <span class="caret"></span>
+		      </a>
+		      <ul class="dropdown-menu">
+			<li class="link-title">Scikit-learn 0.14 (stable)</li>
+			<li><a href="../tutorial/basic/tutorial.html">Quick Start</a></li>
+			<li><a href="../tutorial/index.html">Tutorials</a></li>
+			<li><a href="../user_guide.html">User guide</a></li>
+			<li><a href="../modules/classes.html">API</a></li>
+			<li class="divider"></li>
+		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
+		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
+		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
+		        <li><a href="../documentation.html">More versions...</a></li>
+		      </ul>
+		    </div>
+		</li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="../modules/classes.html">Reference</a></li>
-       </ul>
+            </ul>
 
-<div class="search_form">
-
-<div id="cse" style="width: 100%;"></div>
-<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript">
-  google.load('search', '1', {language : 'en'});
-  google.setOnLoadCallback(function() {
-    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse', options);
-  }, true);
-</script>
-
+            <div class="search_form">
+                <div id="cse" style="width: 100%;"></div>
+            </div>
+        </div> <!-- end navbar --></div>
 </div>
-          </div> <!-- end navbar --></div>
-    </div>
 
-    <div class="content-wrapper">
 
-      <div class="sphinxsidebar">
-	<div class="sphinxsidebarwrapper">
-	   <div class="rel rellarge">
-	     
-	<!-- rellinks[1:] is an ugly hack to avoid link to module
-	    index  -->
-	<div class="rellink">
-	<a href="performance.html" title="2. How to optimize for speed"
-	    accesskey="P">Previous
-	    <br>
-	    <span class="smallrellink">
-	    2. How to optimi...
-	    </span>
-	    <span class="hiddenrellink">
-	    2. How to optimize for speed
-	    </span>
-	    
-	    </a>
-	</div>
-	    <div class="spacer">
-	    &nbsp;
-	    </div>
-	
-	<div class="rellink">
-	<a href="debugging.html" title="4. Developers’ Tips for Debugging"
-	    accesskey="N">Next
-	    <br>
-	    <span class="smallrellink">
-	    4. Developers’ T...
-	    </span>
-	    <span class="hiddenrellink">
-	    4. Developers’ Tips for Debugging
-	    </span>
-	    
-	    </a>
-	</div>
-	<!-- Ad a link to the 'up' page -->
-    </div>
-    <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.14-git</strong>
-    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
-    
-    <h3><a href="../about.html#citing-scikit-learn">Citing</a></h3>
-    <p>If you use the software, please consider
-    <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
-    <h3>This page</h3>
-	<ul>
-<li><a class="reference internal" href="#">3. Utilities for Developers</a><ul>
-<li><a class="reference internal" href="#validation-tools">3.1. Validation Tools</a></li>
-<li><a class="reference internal" href="#efficient-linear-algebra-array-operations">3.2. Efficient Linear Algebra &amp; Array Operations</a></li>
-<li><a class="reference internal" href="#efficient-random-sampling">3.3. Efficient Random Sampling</a></li>
-<li><a class="reference internal" href="#efficient-routines-for-sparse-matrices">3.4. Efficient Routines for Sparse Matrices</a></li>
-<li><a class="reference internal" href="#graph-routines">3.5. Graph Routines</a></li>
-<li><a class="reference internal" href="#backports">3.6. Backports</a><ul>
-<li><a class="reference internal" href="#arpack">3.6.1. ARPACK</a></li>
-<li><a class="reference internal" href="#benchmarking">3.6.2. Benchmarking</a></li>
+<!-- Github "fork me" ribbon -->
+<a href="https://github.com/scikit-learn/scikit-learn">
+  <img class="fork-me"
+       style="position: absolute; top: 0; right: 0; border: 0;"
+       src="../_static/img/forkme.png"
+       alt="Fork me on GitHub" />
+</a>
+
+<div class="content-wrapper">
+    <div class="sphinxsidebar">
+    <div class="sphinxsidebarwrapper">
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <ul>
+<li><a class="reference internal" href="#">Utilities for Developers</a><ul>
+<li><a class="reference internal" href="#validation-tools">Validation Tools</a></li>
+<li><a class="reference internal" href="#efficient-linear-algebra-array-operations">Efficient Linear Algebra &amp; Array Operations</a></li>
+<li><a class="reference internal" href="#efficient-routines-for-sparse-matrices">Efficient Routines for Sparse Matrices</a></li>
+<li><a class="reference internal" href="#graph-routines">Graph Routines</a></li>
+<li><a class="reference internal" href="#backports">Backports</a><ul>
+<li><a class="reference internal" href="#arpack">ARPACK</a></li>
+<li><a class="reference internal" href="#benchmarking">Benchmarking</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#testing-functions">3.7. Testing Functions</a></li>
-<li><a class="reference internal" href="#multiclass-and-multilabel-utility-function">3.8. Multiclass and multilabel utility function</a></li>
-<li><a class="reference internal" href="#helper-functions">3.9. Helper Functions</a></li>
-<li><a class="reference internal" href="#hash-functions">3.10. Hash Functions</a></li>
-<li><a class="reference internal" href="#warnings-and-exceptions">3.11. Warnings and Exceptions</a></li>
+<li><a class="reference internal" href="#testing-functions">Testing Functions</a></li>
+<li><a class="reference internal" href="#helper-functions">Helper Functions</a></li>
+<li><a class="reference internal" href="#hash-functions">Hash Functions</a></li>
+<li><a class="reference internal" href="#warnings-and-exceptions">Warnings and Exceptions</a></li>
 </ul>
 </li>
 </ul>
 
-    
     </div>
-	  </div>
+</div>
+
 
 
       <div class="content">
@@ -170,7 +143,7 @@
           <div class="body">
             
   <div class="section" id="utilities-for-developers">
-<span id="developers-utils"></span><h1>3. Utilities for Developers<a class="headerlink" href="#utilities-for-developers" title="Permalink to this headline">¶</a></h1>
+<span id="developers-utils"></span><h1>Utilities for Developers<a class="headerlink" href="#utilities-for-developers" title="Permalink to this headline">¶</a></h1>
 <p>Scikit-learn contains a number of utilities to help with development.  These are
 located in <a class="reference internal" href="../modules/classes.html#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a>, and include tools in a number of categories.
 All the following functions and classes are in the module <a class="reference internal" href="../modules/classes.html#module-sklearn.utils" title="sklearn.utils"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.utils</span></tt></a>.</p>
@@ -182,7 +155,7 @@ scikit-learn.  Backports, in particular, will be removed as the scikit-learn
 dependencies evolve.</p>
 </div>
 <div class="section" id="validation-tools">
-<h2>3.1. Validation Tools<a class="headerlink" href="#validation-tools" title="Permalink to this headline">¶</a></h2>
+<h2>Validation Tools<a class="headerlink" href="#validation-tools" title="Permalink to this headline">¶</a></h2>
 <p>These are tools used to check and validate input.  When you write a function
 which accepts arrays, matrices, or sparse matrices as arguments, the following
 should be used when applicable.</p>
@@ -229,7 +202,7 @@ randomly-initialized <tt class="docutils literal"><span class="pre">RandomState<
 </div>
 </div>
 <div class="section" id="efficient-linear-algebra-array-operations">
-<h2>3.2. Efficient Linear Algebra &amp; Array Operations<a class="headerlink" href="#efficient-linear-algebra-array-operations" title="Permalink to this headline">¶</a></h2>
+<h2>Efficient Linear Algebra &amp; Array Operations<a class="headerlink" href="#efficient-linear-algebra-array-operations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">extmath.randomized_range_finder</span></tt>: construct an orthonormal matrix
 whose range approximates the range of the input.  This is used in
@@ -270,16 +243,8 @@ used in <a class="reference internal" href="../modules/generated/sklearn.utils.s
 Used in <tt class="docutils literal"><span class="pre">sklearn.cluster.k_means</span></tt>.</li>
 </ul>
 </div>
-<div class="section" id="efficient-random-sampling">
-<h2>3.3. Efficient Random Sampling<a class="headerlink" href="#efficient-random-sampling" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><tt class="xref py py-func docutils literal"><span class="pre">random.sample_without_replacement</span></tt>: implements efficient algorithms
-for sampling <cite>n_samples</cite> integers from a population of size <cite>n_population</cite>
-without replacement.</li>
-</ul>
-</div>
 <div class="section" id="efficient-routines-for-sparse-matrices">
-<h2>3.4. Efficient Routines for Sparse Matrices<a class="headerlink" href="#efficient-routines-for-sparse-matrices" title="Permalink to this headline">¶</a></h2>
+<h2>Efficient Routines for Sparse Matrices<a class="headerlink" href="#efficient-routines-for-sparse-matrices" title="Permalink to this headline">¶</a></h2>
 <p>The <tt class="docutils literal"><span class="pre">sklearn.utils.sparsefuncs</span></tt> cython module hosts compiled extensions to
 efficiently process <tt class="docutils literal"><span class="pre">scipy.sparse</span></tt> data.</p>
 <ul class="simple">
@@ -294,11 +259,11 @@ individual sparse samples to unit l1 or l2 norm as done in
 <li><tt class="xref py py-func docutils literal"><span class="pre">sparsefuncs.inplace_csr_column_scale</span></tt>: can be used to multiply the
 columns of a CSR matrix by a constant scale (one scale per column).
 Used for scaling features to unit standard deviation in
-<a class="reference internal" href="../modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.preprocessing.StandardScaler</span></tt></a>.</li>
+<a class="reference internal" href="../modules/generated/sklearn.preprocessing.Scaler.html#sklearn.preprocessing.Scaler" title="sklearn.preprocessing.Scaler"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.preprocessing.Scaler</span></tt></a>.</li>
 </ul>
 </div>
 <div class="section" id="graph-routines">
-<h2>3.5. Graph Routines<a class="headerlink" href="#graph-routines" title="Permalink to this headline">¶</a></h2>
+<h2>Graph Routines<a class="headerlink" href="#graph-routines" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">graph.single_source_shortest_path_length</span></tt>:
 (not currently used in scikit-learn)
@@ -319,7 +284,7 @@ connectivity matrix is a <tt class="docutils literal"><span class="pre">scipy.sp
 </ul>
 </div>
 <div class="section" id="backports">
-<h2>3.6. Backports<a class="headerlink" href="#backports" title="Permalink to this headline">¶</a></h2>
+<h2>Backports<a class="headerlink" href="#backports" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-class docutils literal"><span class="pre">fixes.Counter</span></tt> (partial backport of <tt class="docutils literal"><span class="pre">collections.Counter</span></tt> from
 Python 2.7) Used in <tt class="docutils literal"><span class="pre">sklearn.feature_extraction.text</span></tt>.</li>
@@ -342,13 +307,13 @@ tests of <a class="reference internal" href="../modules/classes.html#module-skle
 (Back-ported from scipy v0.9)  Used in <tt class="docutils literal"><span class="pre">sklearn.linear_model.omp</span></tt>,
 independent back-ports in <tt class="docutils literal"><span class="pre">sklearn.mixture.gmm</span></tt> and
 <a class="reference internal" href="../modules/classes.html#module-sklearn.gaussian_process" title="sklearn.gaussian_process"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.gaussian_process</span></tt></a>.</li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">sparsetools.connected_components</span></tt>
-(backported from <tt class="docutils literal"><span class="pre">scipy.sparse.connected_components</span></tt> in scipy 0.12).
+<li><tt class="xref py py-func docutils literal"><span class="pre">sparsetools.cs_graph_components</span></tt>
+(backported from <tt class="docutils literal"><span class="pre">scipy.sparse.cs_graph_components</span></tt> in scipy 0.9).
 Used in <tt class="docutils literal"><span class="pre">sklearn.cluster.hierarchical</span></tt>, as well as in tests for
 <a class="reference internal" href="../modules/classes.html#module-sklearn.feature_extraction" title="sklearn.feature_extraction"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.feature_extraction</span></tt></a>.</li>
 </ul>
 <div class="section" id="arpack">
-<h3>3.6.1. ARPACK<a class="headerlink" href="#arpack" title="Permalink to this headline">¶</a></h3>
+<h3>ARPACK<a class="headerlink" href="#arpack" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">arpack.eigs</span></tt>
 (backported from <tt class="docutils literal"><span class="pre">scipy.sparse.linalg.eigs</span></tt> in scipy 0.10)
@@ -368,7 +333,7 @@ scipy versions.</li>
 </ul>
 </div>
 <div class="section" id="benchmarking">
-<h3>3.6.2. Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this headline">¶</a></h3>
+<h3>Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">bench.total_seconds</span></tt> (back-ported from <tt class="docutils literal"><span class="pre">timedelta.total_seconds</span></tt>
 in Python 2.7).  Used in <tt class="docutils literal"><span class="pre">benchmarks/bench_glm.py</span></tt>.</li>
@@ -376,31 +341,16 @@ in Python 2.7).  Used in <tt class="docutils literal"><span class="pre">benchmar
 </div>
 </div>
 <div class="section" id="testing-functions">
-<h2>3.7. Testing Functions<a class="headerlink" href="#testing-functions" title="Permalink to this headline">¶</a></h2>
+<h2>Testing Functions<a class="headerlink" href="#testing-functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">testing.assert_in</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">testing.assert_not_in</span></tt>: Assertions for
 container membership. Designed for forward compatibility with Nose 1.0.</li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">testing.assert_raise_message</span></tt>: Assertions for checking the
-error raise message.</li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">testing.mock_mldata_urlopen</span></tt>: Mocks the urlopen function to fake
-requests to mldata.org. Used in tests of <a class="reference internal" href="../modules/classes.html#module-sklearn.datasets" title="sklearn.datasets"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.datasets</span></tt></a>.</li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">testing.all_estimators</span></tt> : returns a list of all estimators in
-sklearn to test for consistent behavior and interfaces.</li>
-</ul>
-</div>
-<div class="section" id="multiclass-and-multilabel-utility-function">
-<h2>3.8. Multiclass and multilabel utility function<a class="headerlink" href="#multiclass-and-multilabel-utility-function" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><tt class="xref py py-func docutils literal"><span class="pre">multiclass.is_multilabel</span></tt>: Helper function to check if the task
-is a multi-label classification one.</li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">multiclass.is_label_indicator_matrix</span></tt>: Helper function to check if
-a classification output is in label indicator matrix format.</li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">multiclass.unique_labels</span></tt>: Helper function to extract an ordered
-array of unique labels from a list of labels.</li>
+<li><tt class="xref py py-class docutils literal"><span class="pre">mock_urllib2</span></tt>: Object which mocks the urllib2 module to fake
+requests of mldata.  Used in tests of <a class="reference internal" href="../modules/classes.html#module-sklearn.datasets" title="sklearn.datasets"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.datasets</span></tt></a>.</li>
 </ul>
 </div>
 <div class="section" id="helper-functions">
-<h2>3.9. Helper Functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
+<h2>Helper Functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-class docutils literal"><span class="pre">gen_even_slices</span></tt>: generator to create <tt class="docutils literal"><span class="pre">n</span></tt>-packs of slices going up
 to <tt class="docutils literal"><span class="pre">n</span></tt>.  Used in <tt class="docutils literal"><span class="pre">sklearn.decomposition.dict_learning</span></tt> and
@@ -417,7 +367,7 @@ array-likes, matrices and sparse matrices.</li>
 </ul>
 </div>
 <div class="section" id="hash-functions">
-<h2>3.10. Hash Functions<a class="headerlink" href="#hash-functions" title="Permalink to this headline">¶</a></h2>
+<h2>Hash Functions<a class="headerlink" href="#hash-functions" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first"><tt class="xref py py-func docutils literal"><span class="pre">murmurhash3_32</span></tt> provides a python wrapper for the
 <cite>MurmurHash3_x86_32</cite> C++ non cryptographic hash function. This hash
@@ -425,11 +375,11 @@ function is suitable for implementing lookup tables, Bloom filters,
 Count Min Sketch, feature hashing and implicitly defined sparse
 random projections:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">murmurhash3_32</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">murmurhash3_32</span><span class="p">(</span><span class="s">&quot;some feature&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">384616559</span>
-<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">murmurhash3_32</span><span class="p">(</span><span class="s">&quot;some feature&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">-384616559</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">murmurhash3_32</span><span class="p">(</span><span class="s">&quot;some feature&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3910350737</span>
-<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">murmurhash3_32</span><span class="p">(</span><span class="s">&quot;some feature&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">3910350737L</span>
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">sklearn.utils.murmurhash</span></tt> module can also be &#8220;cimported&#8221; from
@@ -439,7 +389,7 @@ MurmurHash while skipping the overhead of the Python interpreter.</p>
 </ul>
 </div>
 <div class="section" id="warnings-and-exceptions">
-<h2>3.11. Warnings and Exceptions<a class="headerlink" href="#warnings-and-exceptions" title="Permalink to this headline">¶</a></h2>
+<h2>Warnings and Exceptions<a class="headerlink" href="#warnings-and-exceptions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="xref py py-class docutils literal"><span class="pre">deprecated</span></tt>: Decorator to mark a function or class as deprecated.</li>
 <li><tt class="xref py py-class docutils literal"><span class="pre">ConvergenceWarning</span></tt>: Custom warning to catch convergence problems.
@@ -457,41 +407,37 @@ Used in <tt class="docutils literal"><span class="pre">sklearn.covariance.graph_
     </div>
 
     <div class="footer">
-        &copy; 2010â2013, scikit-learn developers (BSD License).
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
-    <span style="padding-left: 5ex;">
-    <a href="../_sources/developers/utilities.txt"
-	    rel="nofollow">Show this page source</a>
-    </span>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      <a href="../_sources/developers/utilities.txt" rel="nofollow">Show this page source</a>
     </div>
      <div class="rel rellarge">
     
-    <div class="buttonPrevious">
-      <a href="performance.html">
-        Previous
-      </a>
-    </div>
-    <div class="buttonNext">
-      <a href="debugging.html">
-        Next
-      </a>
-    </div>
     
      </div>
-     <script type="text/javascript">
-       $("div.buttonNext, div.buttonPrevious").hover(
-           function () {
-               $(this).css('background-color', '#FF9C34');
-           },
-           function () {
-               $(this).css('background-color', '#A7D6E2');
-           }
-       );
-       var bodywrapper = $('.bodywrapper');
-   	var sidebarbutton = $('#sidebarbutton');
-        sidebarbutton.css({
-	    'height': '900px'
-       });
-     </script>
+
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22606712-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript"> google.load('search', '1',
+        {language : 'en'}); google.setOnLoadCallback(function() {
+            var customSearchControl = new
+            google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+            var options = new google.search.DrawOptions();
+            options.setAutoComplete(true);
+            customSearchControl.draw('cse', options); }, true);
+    </script>
   </body>
 </html>

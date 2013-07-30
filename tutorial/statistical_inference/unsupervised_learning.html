@@ -8,7 +8,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.2.4. Unsupervised learning: seeking representations of the data &mdash; scikit-learn 0.14-git documentation</title>
+  
+    <title>Unsupervised learning: seeking representations of the data &mdash; scikit-learn 0.12.1 documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../_static/css/bootstrap-responsive.css"/>
+
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.12.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,158 +31,110 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/sidebar.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
-    <link rel="up" title="2.2. A tutorial on statistical-learning for scientific data processing" href="index.html" />
-    <link rel="next" title="2.2.5. Putting it all together" href="putting_together.html" />
-    <link rel="prev" title="2.2.3. Model selection: choosing estimators and their parameters" href="model_selection.html" />
+    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+   
+       <script type="text/javascript" src="../../_static/sidebar.js"></script>
+   
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  <link rel="canonical" href="http://scikit-learn.org/stable/tutorial/statistical_inference/unsupervised_learning.html" />
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-22606712-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
-      <link rel="canonical" href="http://scikit-learn.org/stable/tutorial/statistical_inference/unsupervised_learning.html">
-
-
-
+  <script type="text/javascript">
+    $("div.buttonNext, div.buttonPrevious").hover(
+       function () {
+           $(this).css('background-color', '#FF9C34');
+       },
+       function () {
+           $(this).css('background-color', '#A7D6E2');
+       }
+    );
+    var bodywrapper = $('.bodywrapper');
+    var sidebarbutton = $('#sidebarbutton');
+    sidebarbutton.css({'height': '900px'});
+  </script>
 
   </head>
   <body>
 
-    <div class="header-wrapper">
-      <div class="header">
-          <p class="logo"><a href="../../index.html">
+<div class="header-wrapper">
+    <div class="header">
+        <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
-          </a>
-          </p><div class="navbar">
-          <ul>
-            <li><a href="../../install.html">Download</a></li>
-            <li><a href="../../support.html">Support</a></li>
-            <li><a href="../../user_guide.html">User Guide</a></li>
+        </a>
+        </p>
+        <div class="navbar">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../install.html">Installation</a></li>
+                <li class="btn-li"><div class="btn-group">
+		      <a href="../../documentation.html">Documentation</a>
+		      <a class="btn dropdown-toggle" data-toggle="dropdown">
+			     <span class="caret"></span>
+		      </a>
+		      <ul class="dropdown-menu">
+			<li class="link-title">Scikit-learn 0.14 (stable)</li>
+			<li><a href="../basic/tutorial.html">Quick Start</a></li>
+			<li><a href="../index.html">Tutorials</a></li>
+			<li><a href="../../user_guide.html">User guide</a></li>
+			<li><a href="../../modules/classes.html">API</a></li>
+			<li class="divider"></li>
+		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
+		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
+		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
+		        <li><a href="../../documentation.html">More versions...</a></li>
+		      </ul>
+		    </div>
+		</li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../modules/classes.html">Reference</a></li>
-       </ul>
+            </ul>
 
-<div class="search_form">
-
-<div id="cse" style="width: 100%;"></div>
-<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript">
-  google.load('search', '1', {language : 'en'});
-  google.setOnLoadCallback(function() {
-    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse', options);
-  }, true);
-</script>
-
+            <div class="search_form">
+                <div id="cse" style="width: 100%;"></div>
+            </div>
+        </div> <!-- end navbar --></div>
 </div>
-          </div> <!-- end navbar --></div>
-    </div>
 
-    <div class="content-wrapper">
 
-      <div class="sphinxsidebar">
-	<div class="sphinxsidebarwrapper">
-	  <div class="rel">
-	   
-	<!-- rellinks[1:] is an ugly hack to avoid link to module
-	    index  -->
-	<div class="rellink">
-	<a href="model_selection.html" title="2.2.3. Model selection: choosing estimators and their parameters"
-	    accesskey="P">Previous
-	    <br>
-	    <span class="smallrellink">
-	    2.2.3. Model sel...
-	    </span>
-	    <span class="hiddenrellink">
-	    2.2.3. Model selection: choosing estimators and their parameters
-	    </span>
-	    
-	    </a>
-	</div>
-	    <div class="spacer">
-	    &nbsp;
-	    </div>
-	
-	<div class="rellink">
-	<a href="putting_together.html" title="2.2.5. Putting it all together"
-	    accesskey="N">Next
-	    <br>
-	    <span class="smallrellink">
-	    2.2.5. Putting i...
-	    </span>
-	    <span class="hiddenrellink">
-	    2.2.5. Putting it all together
-	    </span>
-	    
-	    </a>
-	</div>
-	<!-- Ad a link to the 'up' page -->
-	<div class="spacer">
-	&nbsp;
-	</div>
-	<div class="rellink">
-	<a href="index.html" title="2.2. A tutorial on statistical-learning for scientific data processing" >
-	Up
-	<br>
-	<span class="smallrellink">
-	2.2. A tutorial ...
-	</span>
-	<span class="hiddenrellink">
-	2.2. A tutorial on statistical-learning for scientific data processing
-	</span>
-	
-	</a>
-	</div>
-    </div>
-    <p style="text-align: center; background-color: #FFE4E4">This documentation is
-    for scikit-learn <strong>version 0.14-git</strong>
-    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
-    
-    <h3><a href="../../about.html#citing-scikit-learn">Citing</a></h3>
-    <p>If you use the software, please consider
-    <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
-    <h3>This page</h3>
-	<ul>
-<li><a class="reference internal" href="#">2.2.4. Unsupervised learning: seeking representations of the data</a><ul>
-<li><a class="reference internal" href="#clustering-grouping-observations-together">2.2.4.1. Clustering: grouping observations together</a><ul>
-<li><a class="reference internal" href="#k-means-clustering">2.2.4.1.1. K-means clustering</a></li>
-<li><a class="reference internal" href="#hierarchical-agglomerative-clustering-ward">2.2.4.1.2. Hierarchical agglomerative clustering: Ward</a><ul>
-<li><a class="reference internal" href="#connectivity-constrained-clustering">2.2.4.1.2.1. Connectivity-constrained clustering</a></li>
-<li><a class="reference internal" href="#feature-agglomeration">2.2.4.1.2.2. Feature agglomeration</a></li>
+<!-- Github "fork me" ribbon -->
+<a href="https://github.com/scikit-learn/scikit-learn">
+  <img class="fork-me"
+       style="position: absolute; top: 0; right: 0; border: 0;"
+       src="../../_static/img/forkme.png"
+       alt="Fork me on GitHub" />
+</a>
+
+<div class="content-wrapper">
+    <div class="sphinxsidebar">
+    <div class="sphinxsidebarwrapper">
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <ul>
+<li><a class="reference internal" href="#">Unsupervised learning: seeking representations of the data</a><ul>
+<li><a class="reference internal" href="#clustering-grouping-observations-together">Clustering: grouping observations together</a><ul>
+<li><a class="reference internal" href="#k-means-clustering">K-means clustering</a></li>
+<li><a class="reference internal" href="#hierarchical-agglomerative-clustering-ward">Hierarchical agglomerative clustering: Ward</a><ul>
+<li><a class="reference internal" href="#connectivity-constrained-clustering">Connectivity-constrained clustering</a></li>
+<li><a class="reference internal" href="#feature-agglomeration">Feature agglomeration</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#decompositions-from-a-signal-to-components-and-loadings">2.2.4.2. Decompositions: from a signal to components and loadings</a><ul>
-<li><a class="reference internal" href="#principal-component-analysis-pca">2.2.4.2.1. Principal component analysis: PCA</a></li>
-<li><a class="reference internal" href="#independent-component-analysis-ica">2.2.4.2.2. Independent Component Analysis: ICA</a></li>
+<li><a class="reference internal" href="#decompositions-from-a-signal-to-components-and-loadings">Decompositions: from a signal to components and loadings</a><ul>
+<li><a class="reference internal" href="#principal-component-analysis-pca">Principal component analysis: PCA</a></li>
+<li><a class="reference internal" href="#independent-component-analysis-ica">Independent Component Analysis: ICA</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
-    
     </div>
-	  </div>
+</div>
+
 
 
       <div class="content">
@@ -186,20 +144,20 @@
           <div class="body">
             
   <div class="section" id="unsupervised-learning-seeking-representations-of-the-data">
-<h1>2.2.4. Unsupervised learning: seeking representations of the data<a class="headerlink" href="#unsupervised-learning-seeking-representations-of-the-data" title="Permalink to this headline">¶</a></h1>
+<h1>Unsupervised learning: seeking representations of the data<a class="headerlink" href="#unsupervised-learning-seeking-representations-of-the-data" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="clustering-grouping-observations-together">
-<h2>2.2.4.1. Clustering: grouping observations together<a class="headerlink" href="#clustering-grouping-observations-together" title="Permalink to this headline">¶</a></h2>
+<h2>Clustering: grouping observations together<a class="headerlink" href="#clustering-grouping-observations-together" title="Permalink to this headline">¶</a></h2>
 <div class="topic">
 <p class="topic-title first">The problem solved in clustering</p>
 <p>Given the iris dataset, if we knew that there were 3 types of iris, but
 did not have access to a taxonomist to label them: we could try a
-<strong>clustering task</strong>: split the observations into well-separated group
+<strong>clustering task</strong>: split the observations in well-separated group
 called <em>clusters</em>.</p>
 </div>
 <div class="section" id="k-means-clustering">
-<h3>2.2.4.1.1. K-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h3>
-<p>Note that there exist a lot of different clustering criteria and associated
-algorithms. The simplest clustering algorithm is
+<h3>K-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h3>
+<p>Note that their exists a lot of different clustering criteria and associated
+algorithms. The simplest clustering algorithm is the
 <a class="reference internal" href="../../modules/clustering.html#k-means"><em>K-means</em></a>.</p>
 <a class="reference external image-reference" href="../../auto_examples/cluster/plot_cluster_iris.html"><img alt="tutorial/statistical_inference/../../auto_examples/cluster/images/plot_cluster_iris_2.png" class="align-right" src="tutorial/statistical_inference/../../auto_examples/cluster/images/plot_cluster_iris_2.png" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">datasets</span>
@@ -210,17 +168,17 @@ algorithms. The simplest clustering algorithm is
 <span class="gp">&gt;&gt;&gt; </span><span class="n">k_means</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">k_means</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_iris</span><span class="p">)</span> 
 <span class="go">KMeans(copy_x=True, init=&#39;k-means++&#39;, ...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">k_means</span><span class="o">.</span><span class="n">labels_</span><span class="p">[::</span><span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">k_means</span><span class="o">.</span><span class="n">labels_</span><span class="p">[::</span><span class="mi">10</span><span class="p">]</span>
 <span class="go">[1 1 1 1 1 0 0 0 0 0 2 2 2 2 2]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">y_iris</span><span class="p">[::</span><span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">y_iris</span><span class="p">[::</span><span class="mi">10</span><span class="p">]</span>
 <span class="go">[0 0 0 0 0 1 1 1 1 1 2 2 2 2 2]</span>
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>There is absolutely no guarantee of recovering a ground truth. First,
+<p>There is absolutely no guarantee of recovering a ground truth. First
 choosing the right number of clusters is hard. Second, the algorithm
-is sensitive to initialization, and can fall into local minima,
+is sensitive to initialization, and can fall in local minima,
 although in the <cite>sklearn</cite> package we play many tricks to mitigate this
 issue.</p>
 <table border="1" class="centered docutils">
@@ -244,9 +202,9 @@ issue.</p>
 </div>
 <div class="topic">
 <p class="topic-title first"><strong>Application example: vector quantization</strong></p>
-<p>Clustering in general and KMeans, in particular, can be seen as a way
-of choosing a small number of exemplars to compress the information.
-The problem is sometimes known as
+<p>Clustering in general and KMeans in particular, can be seen as a way
+of choosing a small number of examplars to compress the information,
+a problem sometimes known as
 <a class="reference external" href="http://en.wikipedia.org/wiki/Vector_quantization">vector quantization</a>.
 For instance, this can be used to posterize an image:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
@@ -288,7 +246,7 @@ For instance, this can be used to posterize an image:</p>
 </div>
 </div>
 <div class="section" id="hierarchical-agglomerative-clustering-ward">
-<h3>2.2.4.1.2. Hierarchical agglomerative clustering: Ward<a class="headerlink" href="#hierarchical-agglomerative-clustering-ward" title="Permalink to this headline">¶</a></h3>
+<h3>Hierarchical agglomerative clustering: Ward<a class="headerlink" href="#hierarchical-agglomerative-clustering-ward" title="Permalink to this headline">¶</a></h3>
 <p>A <a class="reference internal" href="../../modules/clustering.html#hierarchical-clustering"><em>Hierarchical clustering</em></a> method is a type of cluster analysis
 that aims to build a hierarchy of clusters. In general, the various approaches
 of this technique are either:</p>
@@ -299,7 +257,7 @@ of this technique are either:</p>
 </ul>
 </div></blockquote>
 <p>For estimating a large number of clusters, top-down approaches are both
-statistically ill-posed and slow due to it starting with all observations
+statisticaly ill-posed, and slow - due to it starting with all observations
 as one cluster, which it splits recursively. Agglomerative
 hierarchical-clustering is a bottom-up approach that successively merges
 observations together and is particularly useful when the clusters of interest
@@ -307,12 +265,11 @@ are made of only a few observations. <em>Ward</em> clustering minimizes a criter
 similar to k-means in a bottom-up approach. When the number of clusters is large,
 it is much more computationally efficient than k-means.</p>
 <div class="section" id="connectivity-constrained-clustering">
-<h4>2.2.4.1.2.1. Connectivity-constrained clustering<a class="headerlink" href="#connectivity-constrained-clustering" title="Permalink to this headline">¶</a></h4>
+<h4>Connectivity-constrained clustering<a class="headerlink" href="#connectivity-constrained-clustering" title="Permalink to this headline">¶</a></h4>
 <p>With Ward clustering, it is possible to specify which samples can be
 clustered together by giving a connectivity graph. Graphs in the scikit
-are represented by their adjacency matrix. Often, a sparse matrix is used.
-This can be useful, for instance, to retrieve connected regions (sometimes
-also referred to as connected components) when
+are represented by their adjacency matrix. Often a sparse matrix is used.
+This can be useful for instance to retrieve connect regions when
 clustering an image:</p>
 <a class="reference external image-reference" href="../../auto_examples/cluster/plot_lena_ward_segmentation.html"><img alt="tutorial/statistical_inference/../../auto_examples/cluster/images/plot_lena_ward_segmentation_1.png" class="align-right" src="tutorial/statistical_inference/../../auto_examples/cluster/images/plot_lena_ward_segmentation_1.png" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">###############################################################################</span>
@@ -328,23 +285,23 @@ clustering an image:</p>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Compute clustering</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Compute structured hierarchical clustering...&quot;</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Compute structured hierarchical clustering...&quot;</span>
 <span class="n">st</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c"># number of regions</span>
 <span class="n">ward</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="n">connectivity</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ward</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="n">lena</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Elapsed time: &quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Number of pixels: &quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Number of clusters: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Elaspsed time: &quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st</span>
+<span class="k">print</span> <span class="s">&quot;Number of pixels: &quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">.</span><span class="n">size</span>
+<span class="k">print</span> <span class="s">&quot;Number of clusters: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">size</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="feature-agglomeration">
-<h4>2.2.4.1.2.2. Feature agglomeration<a class="headerlink" href="#feature-agglomeration" title="Permalink to this headline">¶</a></h4>
+<h4>Feature agglomeration<a class="headerlink" href="#feature-agglomeration" title="Permalink to this headline">¶</a></h4>
 <p>We have seen that sparsity could be used to mitigate the curse of
-dimensionality, <em>i.e</em> an insufficient amount of observations compared to the
+dimensionality, <em>i.e</em> the insufficience of observations compared to the
 number of features. Another approach is to merge together similar
-features: <strong>feature agglomeration</strong>. This approach can be implemented by
+features: <strong>feature agglomeration</strong>. This approach can be implementing by
 clustering in the feature direction, in other words clustering the
 transposed data.</p>
 <a class="reference external image-reference" href="../../auto_examples/cluster/plot_digits_agglomeration.html"><img alt="tutorial/statistical_inference/../../auto_examples/cluster/images/plot_digits_agglomeration_1.png" class="align-right" src="tutorial/statistical_inference/../../auto_examples/cluster/images/plot_digits_agglomeration_1.png" /></a>
@@ -372,22 +329,22 @@ the dimensionality of the dataset.</p>
 </div>
 </div>
 <div class="section" id="decompositions-from-a-signal-to-components-and-loadings">
-<h2>2.2.4.2. Decompositions: from a signal to components and loadings<a class="headerlink" href="#decompositions-from-a-signal-to-components-and-loadings" title="Permalink to this headline">¶</a></h2>
+<h2>Decompositions: from a signal to components and loadings<a class="headerlink" href="#decompositions-from-a-signal-to-components-and-loadings" title="Permalink to this headline">¶</a></h2>
 <div class="topic">
 <p class="topic-title first"><strong>Components and loadings</strong></p>
-<p>If X is our multivariate data, then the problem that we are trying to solve
-is to rewrite it on a different observational basis: we want to learn
+<p>If X is our multivariate data, the problem that we are trying to solve
+is to rewrite it on a different observation basis: we want to learn
 loadings L and a set of components C such that <em>X = L C</em>.
 Different criteria exist to choose the components</p>
 </div>
 <div class="section" id="principal-component-analysis-pca">
-<h3>2.2.4.2.1. Principal component analysis: PCA<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this headline">¶</a></h3>
+<h3>Principal component analysis: PCA<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="../../modules/decomposition.html#pca"><em>Principal component analysis (PCA)</em></a> selects the successive components that
 explain the maximum variance in the signal.</p>
 <p class="centered"><a class="reference external" href="../../auto_examples/decomposition/plot_pca_3d.html"><img alt="pca_3d_axis" src="tutorial/statistical_inference/../../auto_examples/decomposition/images/plot_pca_3d_1.png" /></a> <a class="reference external" href="../../auto_examples/decomposition/plot_pca_3d.html"><img alt="pca_3d_aligned" src="tutorial/statistical_inference/../../auto_examples/decomposition/images/plot_pca_3d_2.png" /></a></p>
 <p>The point cloud spanned by the observations above is very flat in one
-direction: one of the three univariate features can almost be exactly
-computed using the other two. PCA finds the directions in which the data is
+direction: one of the 3 univariate features can almost be exactly
+computed using the 2 other. PCA finds the directions in which the data is
 not <em>flat</em></p>
 <p>When used to <em>transform</em> data, PCA can reduce the dimensionality of the
 data by projecting on a principal subspace.</p>
@@ -401,7 +358,7 @@ data by projecting on a principal subspace.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pca</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">PCA</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="go">PCA(copy=True, n_components=None, whiten=False)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_</span>  
 <span class="go">[  2.18565811e+00   1.19346747e+00   8.43026679e-32]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># As we can see, only the 2 first components are useful</span>
@@ -413,7 +370,7 @@ data by projecting on a principal subspace.</p>
 </div>
 </div>
 <div class="section" id="independent-component-analysis-ica">
-<h3>2.2.4.2.2. Independent Component Analysis: ICA<a class="headerlink" href="#independent-component-analysis-ica" title="Permalink to this headline">¶</a></h3>
+<h3>Independent Component Analysis: ICA<a class="headerlink" href="#independent-component-analysis-ica" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="../../modules/decomposition.html#ica"><em>Independent component analysis (ICA)</em></a> selects components so that the distribution of their loadings carries
 a maximum amount of independent information. It is able to recover
 <strong>non-Gaussian</strong> independent signals:</p>
@@ -450,41 +407,37 @@ a maximum amount of independent information. It is able to recover
     </div>
 
     <div class="footer">
-        &copy; 2010â2013, scikit-learn developers (BSD License).
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://desgrana.es">Desgrana</a>.
-    <span style="padding-left: 5ex;">
-    <a href="../../_sources/tutorial/statistical_inference/unsupervised_learning.txt"
-	    rel="nofollow">Show this page source</a>
-    </span>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      <a href="../../_sources/tutorial/statistical_inference/unsupervised_learning.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel">
+     <div class="rel rellarge">
     
-    <div class="buttonPrevious">
-      <a href="model_selection.html">
-        Previous
-      </a>
-    </div>
-    <div class="buttonNext">
-      <a href="putting_together.html">
-        Next
-      </a>
-    </div>
     
      </div>
-     <script type="text/javascript">
-       $("div.buttonNext, div.buttonPrevious").hover(
-           function () {
-               $(this).css('background-color', '#FF9C34');
-           },
-           function () {
-               $(this).css('background-color', '#A7D6E2');
-           }
-       );
-       var bodywrapper = $('.bodywrapper');
-   	var sidebarbutton = $('#sidebarbutton');
-        sidebarbutton.css({
-	    'height': '900px'
-       });
-     </script>
+
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22606712-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript"> google.load('search', '1',
+        {language : 'en'}); google.setOnLoadCallback(function() {
+            var customSearchControl = new
+            google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+            var options = new google.search.DrawOptions();
+            options.setAutoComplete(true);
+            customSearchControl.draw('cse', options); }, true);
+    </script>
   </body>
 </html>

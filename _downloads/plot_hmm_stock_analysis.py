@@ -8,8 +8,7 @@ It uses stock price data, which can be obtained from yahoo finance.
 For more information on how to get stock prices with matplotlib, please refer
 to date_demo1.py of matplotlib.
 """
-
-from __future__ import print_function
+print __doc__
 
 import datetime
 import numpy as np
@@ -17,9 +16,6 @@ import pylab as pl
 from matplotlib.finance import quotes_historical_yahoo
 from matplotlib.dates import YearLocator, MonthLocator, DateFormatter
 from sklearn.hmm import GaussianHMM
-
-
-print(__doc__)
 
 ###############################################################################
 # Downloading the data
@@ -47,7 +43,7 @@ X = np.column_stack([diff, volume])
 
 ###############################################################################
 # Run Gaussian HMM
-print("fitting to HMM and decoding ...", end='')
+print "fitting to HMM and decoding ...",
 n_components = 5
 
 # make an HMM instance and execute fit
@@ -58,20 +54,20 @@ model.fit([X])
 # predict the optimal sequence of internal hidden state
 hidden_states = model.predict(X)
 
-print("done\n")
+print "done\n"
 
 ###############################################################################
 # print trained parameters and plot
-print("Transition matrix")
-print(model.transmat_)
-print()
+print "Transition matrix"
+print model.transmat_
+print ""
 
-print("means and vars of each hidden state")
-for i in range(n_components):
-    print("%dth hidden state" % i)
-    print("mean = ", model.means_[i])
-    print("var = ", np.diag(model.covars_[i]))
-    print()
+print "means and vars of each hidden state"
+for i in xrange(n_components):
+    print "%dth hidden state" % i
+    print "mean = ", model.means_[i]
+    print "var = ", np.diag(model.covars_[i])
+    print ""
 
 years = YearLocator()   # every year
 months = MonthLocator()  # every month
@@ -79,7 +75,7 @@ yearsFmt = DateFormatter('%Y')
 fig = pl.figure()
 ax = fig.add_subplot(111)
 
-for i in range(n_components):
+for i in xrange(n_components):
     # use fancy indexing to plot data in each state
     idx = (hidden_states == i)
     ax.plot_date(dates[idx], close_v[idx], 'o', label="%dth hidden state" % i)
