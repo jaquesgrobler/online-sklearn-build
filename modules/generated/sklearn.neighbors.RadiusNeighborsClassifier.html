@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.21.3. sklearn.neighbors.RadiusNeighborsClassifier &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.neighbors.RadiusNeighborsClassifier &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.neighbors.KNeighborsRegressor" href="sklearn.neighbors.KNeighborsRegressor.html" />
+    <link rel="prev" title="sklearn.neighbors.KNeighborsClassifier" href="sklearn.neighbors.KNeighborsClassifier.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.neighbors.KNeighborsClassifier.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.neighbor...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.neighbors.KNeighborsClassifier
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.neighbors.KNeighborsRegressor.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.neighbor...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.neighbors.KNeighborsRegressor
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.21.3. sklearn.neighbors.RadiusNeighborsClassifier</a></li>
+<li><a class="reference internal" href="#">sklearn.neighbors.RadiusNeighborsClassifier</a></li>
 </ul>
 
     </div>
@@ -131,7 +185,7 @@
 <h1>sklearn.neighbors.RadiusNeighborsClassifier<a class="headerlink" href="#sklearn-neighbors-radiusneighborsclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.neighbors.RadiusNeighborsClassifier">
-<em class="property">class </em><tt class="descclassname">sklearn.neighbors.</tt><tt class="descname">RadiusNeighborsClassifier</tt><big>(</big><em>radius=1.0</em>, <em>weights='uniform'</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>p=2</em>, <em>outlier_label=None</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.neighbors.</tt><tt class="descname">RadiusNeighborsClassifier</tt><big>(</big><em>radius=1.0</em>, <em>weights='uniform'</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>p=2</em>, <em>metric='minkowski'</em>, <em>outlier_label=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Classifier implementing a vote among neighbors within a given radius</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -162,7 +216,7 @@ containing the weights.</li>
 <div><p>Algorithm used to compute the nearest neighbors:</p>
 <ul class="simple">
 <li>&#8216;ball_tree&#8217; will use <a class="reference internal" href="sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-class docutils literal"><span class="pre">BallTree</span></tt></a></li>
-<li>&#8216;kd_tree&#8217; will use <tt class="xref py py-class docutils literal"><span class="pre">scipy.spatial.cKDtree</span></tt></li>
+<li>&#8216;kd_tree&#8217; will use <tt class="xref py py-class docutils literal"><span class="pre">KDtree</span></tt></li>
 <li>&#8216;brute&#8217; will use a brute-force search.</li>
 <li>&#8216;auto&#8217; will attempt to decide the most appropriate algorithm
 based on the values passed to <a class="reference internal" href="#sklearn.neighbors.RadiusNeighborsClassifier.fit" title="sklearn.neighbors.RadiusNeighborsClassifier.fit"><tt class="xref py py-meth docutils literal"><span class="pre">fit</span></tt></a> method.</li>
@@ -172,23 +226,34 @@ this parameter, using brute force.</p>
 </div></blockquote>
 <p><strong>leaf_size</strong> : int, optional (default = 30)</p>
 <blockquote>
-<div><p>Leaf size passed to BallTree or cKDTree.  This can affect the
+<div><p>Leaf size passed to BallTree or KDTree.  This can affect the
 speed of the construction and query, as well as the memory
 required to store the tree.  The optimal value depends on the
 nature of the problem.</p>
 </div></blockquote>
-<p><strong>p: integer, optional (default = 2)</strong> :</p>
+<p><strong>metric</strong> : string or DistanceMetric object (default=&#8217;minkowski&#8217;)</p>
 <blockquote>
-<div><p>Parameter for the Minkowski metric from
-sklearn.metrics.pairwise.pairwise_distances. When p = 1, this is
+<div><p>the distance metric to use for the tree.  The default metric is
+minkowski, and with p=2 is equivalent to the standard Euclidean
+metric. See the documentation of the DistanceMetric class for a
+list of available metrics.</p>
+</div></blockquote>
+<p><strong>p</strong> : integer, optional (default = 2)</p>
+<blockquote>
+<div><p>Power parameter for the Minkowski metric. When p = 1, this is
 equivalent to using manhattan_distance (l1), and euclidean_distance
 (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used.</p>
 </div></blockquote>
-<p><strong>outlier_label: int, optional (default = None)</strong> :</p>
-<blockquote class="last">
+<p><strong>outlier_label</strong> : int, optional (default = None)</p>
+<blockquote>
 <div><p>Label, which is given for outlier samples (samples with no
 neighbors on given radius).
 If set to None, ValueError is raised, when outlier is detected.</p>
+</div></blockquote>
+<p><strong>**kwargs :</strong> :</p>
+<blockquote class="last">
+<div><p>additional keyword arguments are passed to the distance function as
+additional arguments.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -224,13 +289,13 @@ for a discussion of the choice of <tt class="docutils literal"><span class="pre"
 <td>Fit the model using X as training data and y as target values</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.neighbors.RadiusNeighborsClassifier.get_params" title="sklearn.neighbors.RadiusNeighborsClassifier.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
-<td>Get parameters for the estimator</td>
+<td>Get parameters for this estimator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.neighbors.RadiusNeighborsClassifier.predict" title="sklearn.neighbors.RadiusNeighborsClassifier.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
 <td>Predict the class labels for the provided data</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.neighbors.RadiusNeighborsClassifier.radius_neighbors" title="sklearn.neighbors.RadiusNeighborsClassifier.radius_neighbors"><tt class="xref py py-obj docutils literal"><span class="pre">radius_neighbors</span></tt></a>(X[,&nbsp;radius,&nbsp;return_distance])</td>
-<td>Finds the neighbors of a point within a given radius.</td>
+<td>Finds the neighbors within a given radius of a point or points.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.neighbors.RadiusNeighborsClassifier.radius_neighbors_graph" title="sklearn.neighbors.RadiusNeighborsClassifier.radius_neighbors_graph"><tt class="xref py py-obj docutils literal"><span class="pre">radius_neighbors_graph</span></tt></a>(X[,&nbsp;radius,&nbsp;mode])</td>
 <td>Computes the (weighted) graph of Neighbors for points in X</td>
@@ -239,13 +304,13 @@ for a discussion of the choice of <tt class="docutils literal"><span class="pre"
 <td>Returns the mean accuracy on the given test data and labels.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.neighbors.RadiusNeighborsClassifier.set_params" title="sklearn.neighbors.RadiusNeighborsClassifier.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
-<td>Set the parameters of the estimator.</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="sklearn.neighbors.RadiusNeighborsClassifier.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>radius=1.0</em>, <em>weights='uniform'</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>p=2</em>, <em>outlier_label=None</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>radius=1.0</em>, <em>weights='uniform'</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>p=2</em>, <em>metric='minkowski'</em>, <em>outlier_label=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -256,14 +321,13 @@ for a discussion of the choice of <tt class="docutils literal"><span class="pre"
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix, BallTree, cKDTree}</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix, BallTree, KDTree}</p>
 <blockquote>
-<div><p>Training data. If array or matrix, then the shape
-is [n_samples, n_features]</p>
+<div><p>Training data. If array or matrix, shape = [n_samples, n_features]</p>
 </div></blockquote>
-<p><strong>y</strong> : {array-like, sparse matrix}, shape = [n_samples]</p>
+<p><strong>y</strong> : {array-like, sparse matrix}</p>
 <blockquote class="last">
-<div><p>Target values, array of integer values.</p>
+<div><p>Target values of shape = [n_samples] or [n_samples, n_outputs]</p>
 </div></blockquote>
 </td>
 </tr>
@@ -274,15 +338,21 @@ is [n_samples, n_features]</p>
 <dl class="method">
 <dt id="sklearn.neighbors.RadiusNeighborsClassifier.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsClassifier.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for the estimator</p>
+<dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -298,15 +368,15 @@ contained subobjects that are estimators.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array of shape [n_samples, n_features]</p>
 <blockquote>
 <div><p>A 2-D array representing the test points.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>labels: array</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>y</strong> : array of shape [n_samples] or [n_samples, n_outputs]</p>
 <blockquote class="last">
-<div><p>List of class labels (one for each data sample).</p>
+<div><p>Class labels for each data sample.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -317,15 +387,15 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.neighbors.RadiusNeighborsClassifier.radius_neighbors">
 <tt class="descname">radius_neighbors</tt><big>(</big><em>X</em>, <em>radius=None</em>, <em>return_distance=True</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsClassifier.radius_neighbors" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds the neighbors of a point within a given radius.</p>
-<p>Returns distance</p>
+<dd><p>Finds the neighbors within a given radius of a point or points.</p>
+<p>Returns indices of and distances to the neighbors of each point.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, last dimension same as that of fit data</p>
 <blockquote>
-<div><p>The new point.</p>
+<div><p>The new point or points</p>
 </div></blockquote>
 <p><strong>radius</strong> : float</p>
 <blockquote>
@@ -340,8 +410,8 @@ contained subobjects that are estimators.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>dist</strong> : array</p>
 <blockquote>
-<div><p>Array representing the lengths to point, only present if
-return_distance=True</p>
+<div><p>Array representing the euclidean distances to each point,
+only present if return_distance=True.</p>
 </div></blockquote>
 <p><strong>ind</strong> : array</p>
 <blockquote class="last">
@@ -351,8 +421,14 @@ return_distance=True</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>Because the number of neighbors of each point is not necessarily
+equal, the results for multiple query points cannot be fit in a
+standard data array.
+For efficiency, <cite>radius_neighbors</cite> returns arrays of objects, where
+each object is a 1D array of indices or distances.</p>
 <p class="rubric">Examples</p>
-<p>In the following example, we construnct a NeighborsClassifier
+<p>In the following example, we construct a NeighborsClassifier
 class from an array representing our data set and ask who&#8217;s
 the closest point to [1,1,1]</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">]]</span>
@@ -366,10 +442,7 @@ the closest point to [1,1,1]</p>
 </div>
 <p>The first array returned contains the distances to all points which
 are closer than 1.6, while the second array returned contains their
-indices.  In general, multiple points can be queried at the same time.
-Because the number of neighbors of each point is not necessarily
-equal, <cite>radius_neighbors</cite> returns an array of objects, where each
-object is a 1D array of indices.</p>
+indices.  In general, multiple points can be queried at the same time.</p>
 </dd></dl>
 
 <dl class="method">
@@ -454,7 +527,7 @@ edges are Euclidean distance between points.</p>
 <dl class="method">
 <dt id="sklearn.neighbors.RadiusNeighborsClassifier.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsClassifier.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of the estimator.</p>
+<dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
 <tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
@@ -482,11 +555,19 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.neighbors.RadiusNeighborsClassifier.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.neighbors.KNeighborsClassifier.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.neighbors.KNeighborsRegressor.html">Next
+      </a>
+    </div>
     
      </div>
 

@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.17.1.2. sklearn.metrics.roc_curve &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.metrics.roc_curve &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.metrics.zero_one_loss" href="sklearn.metrics.zero_one_loss.html" />
+    <link rel="prev" title="sklearn.metrics.recall_score" href="sklearn.metrics.recall_score.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.metrics.recall_score.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.metrics....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.metrics.recall_score
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.metrics.zero_one_loss.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.metrics....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.metrics.zero_one_loss
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.17.1.2. sklearn.metrics.roc_curve</a></li>
+<li><a class="reference internal" href="#">sklearn.metrics.roc_curve</a></li>
 </ul>
 
     </div>
@@ -131,8 +185,8 @@
 <h1>sklearn.metrics.roc_curve<a class="headerlink" href="#sklearn-metrics-roc-curve" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.roc_curve">
-<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">roc_curve</tt><big>(</big><em>y_true</em>, <em>y_score</em><big>)</big><a class="headerlink" href="#sklearn.metrics.roc_curve" title="Permalink to this definition">¶</a></dt>
-<dd><p>compute Receiver operating characteristic (ROC)</p>
+<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">roc_curve</tt><big>(</big><em>y_true</em>, <em>y_score</em>, <em>pos_label=None</em><big>)</big><a class="headerlink" href="#sklearn.metrics.roc_curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute Receiver operating characteristic (ROC)</p>
 <p>Note: this implementation is restricted to the binary classification task.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -140,45 +194,69 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>true binary labels</p>
+<div><p>True binary labels in range {0, 1} or {-1, 1}.  If labels are not
+binary, pos_label should be explicitly given.</p>
 </div></blockquote>
 <p><strong>y_score</strong> : array, shape = [n_samples]</p>
 <blockquote>
-<div><p>target scores, can either be probability estimates of
-the positive class, confidence values, or binary decisions.</p>
+<div><p>Target scores, can either be probability estimates of the positive
+class, confidence values, or binary decisions.</p>
+</div></blockquote>
+<p><strong>pos_label</strong> : int</p>
+<blockquote>
+<div><p>Label considered as positive and others are considered negative.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>fpr</strong> : array, shape = [&gt;2]</p>
 <blockquote>
-<div><p>False Positive Rates</p>
+<div><p>Increasing false positive rates such that element i is the false
+positive rate of predictions with score &gt;= thresholds[i].</p>
 </div></blockquote>
 <p><strong>tpr</strong> : array, shape = [&gt;2]</p>
 <blockquote>
-<div><p>True Positive Rates</p>
+<div><p>Increasing false positive rates such that element i is the true
+positive rate of predictions with score &gt;= thresholds[i].</p>
 </div></blockquote>
-<p><strong>thresholds</strong> : array, shape = [&gt;2]</p>
+<p><strong>thresholds</strong> : array, shape = [n_thresholds]</p>
 <blockquote class="last">
-<div><p>Thresholds on y_score used to compute fpr and tpr.</p>
-<p><em>Note</em>: Since the thresholds are sorted from low to high values,
-they are reversed upon returning them to ensure they
-correspond to both fpr and tpr, which are sorted in reversed order
-during their calculation.</p>
+<div><p>Decreasing thresholds on the decision function used to compute
+fpr and tpr.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="sklearn.metrics.auc_score.html#sklearn.metrics.auc_score" title="sklearn.metrics.auc_score"><tt class="xref py py-obj docutils literal"><span class="pre">auc_score</span></tt></a></dt>
+<dd>Compute Area Under the Curve (AUC) from prediction scores</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Since the thresholds are sorted from low to high values, they
+are reversed upon returning them to ensure they correspond to both <tt class="docutils literal"><span class="pre">fpr</span></tt>
+and <tt class="docutils literal"><span class="pre">tpr</span></tt>, which are sorted in reversed order during their calculation.</p>
 <p class="rubric">References</p>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Receiver_operating_characteristic">http://en.wikipedia.org/wiki/Receiver_operating_characteristic</a></p>
+<table class="docutils citation" frame="void" id="r157" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R157]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Receiver_operating_characteristic">Wikipedia entry for the Receiver operating characteristic</a></td></tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">roc_curve</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">roc_curve</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fpr</span>
 <span class="go">array([ 0. ,  0.5,  0.5,  1. ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tpr</span>
+<span class="go">array([ 0.5,  0.5,  1. ,  1. ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">thresholds</span>
+<span class="go">array([ 0.8 ,  0.4 ,  0.35,  0.1 ])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -194,11 +272,19 @@ during their calculation.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.metrics.roc_curve.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.metrics.recall_score.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.metrics.zero_one_loss.html">Next
+      </a>
+    </div>
     
      </div>
 

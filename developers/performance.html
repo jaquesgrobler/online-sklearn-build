@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>How to optimize for speed &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>How to optimize for speed &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,9 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
+    <link rel="next" title="Utilities for Developers" href="utilities.html" />
+    <link rel="prev" title="Maintainer / core-developer information" href="maintainer.html" />
    
        <script type="text/javascript" src="../_static/sidebar.js"></script>
    
@@ -64,8 +66,7 @@
         <p class="logo"><a href="../index.html">
             <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../install.html">Installation</a></li>
@@ -110,7 +111,43 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel rellarge">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="maintainer.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Maintainer / cor...
+        </span>
+            <span class="hiddenrellink">
+            Maintainer / core-developer information
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="utilities.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Utilities for De...
+        </span>
+            <span class="hiddenrellink">
+            Utilities for Developers
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">How to optimize for speed</a><ul>
@@ -153,9 +190,9 @@ to <strong>review the literature</strong> to ensure that the implemented algorit
 is the state of the art for the task before investing into costly
 implementation optimization.</p>
 <p>Times and times, hours of efforts invested in optimizing complicated
-implementation details have been rended irrelevant by the late discovery
-of simple <strong>algorithmic tricks</strong>, or by using another algorithm altogether
-that is better suited to the problem.</p>
+implementation details have been rendered irrelevant by the subsequent
+discovery of simple <strong>algorithmic tricks</strong>, or by using another algorithm
+altogether that is better suited to the problem.</p>
 <p class="last">The section <a class="reference internal" href="#warm-restarts"><em>A sample algorithmic trick: warm restarts for cross validation</em></a> gives an example of such a trick.</p>
 </div>
 <div class="section" id="python-cython-or-c-c">
@@ -250,7 +287,7 @@ the <tt class="docutils literal"><span class="pre">cumtime</span></tt> column.</
 <p>Note the use of the <tt class="docutils literal"><span class="pre">-l</span> <span class="pre">nmf.py</span></tt> that restricts the output to lines that
 contains the &#8220;nmf.py&#8221; string. This is useful to have a quick look at the hotspot
 of the nmf Python module it-self ignoring anything else.</p>
-<p>Here is the begining of the output of the same command without the <tt class="docutils literal"><span class="pre">-l</span> <span class="pre">nmf.py</span></tt>
+<p>Here is the beginning of the output of the same command without the <tt class="docutils literal"><span class="pre">-l</span> <span class="pre">nmf.py</span></tt>
 filter:</p>
 <div class="highlight-python"><pre>In [5] %prun NMF(n_components=16, tol=1e-2).fit(X)
          16159 function calls in 1.840 CPU seconds
@@ -466,7 +503,7 @@ following we will just highlight a couple of tricks that we found
 important in practice on the existing cython codebase in the scikit-learn
 project.</p>
 <p>TODO: html report, type declarations, bound checks, division by zero checks,
-memory alignement, direct blas calls...</p>
+memory alignment, direct blas calls...</p>
 <ul class="simple">
 <li><a class="reference external" href="http://www.euroscipy.org/file/3696?vid=download">http://www.euroscipy.org/file/3696?vid=download</a></li>
 <li><a class="reference external" href="http://conference.scipy.org/proceedings/SciPy2009/paper_1/">http://conference.scipy.org/proceedings/SciPy2009/paper_1/</a></li>
@@ -477,7 +514,7 @@ memory alignement, direct blas calls...</p>
 <span id="profiling-compiled-extension"></span><h2>Profiling compiled extensions<a class="headerlink" href="#profiling-compiled-extensions" title="Permalink to this headline">¶</a></h2>
 <p>When working with compiled extensions (written in C/C++ with a wrapper or
 directly as Cython extension), the default Python profiler is useless:
-we need a dedicated tool to instrospect what&#8217;s happening inside the
+we need a dedicated tool to introspect what&#8217;s happening inside the
 compiled extension it-self.</p>
 <div class="section" id="using-yep-and-google-perftools">
 <h3>Using yep and google-perftools<a class="headerlink" href="#using-yep-and-google-perftools" title="Permalink to this headline">¶</a></h3>
@@ -533,11 +570,19 @@ regression with Coordinate Descent.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../_sources/developers/performance.txt" rel="nofollow">Show this page source</a>
     </div>
      <div class="rel rellarge">
     
+    <div class="buttonPrevious">
+      <a href="maintainer.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="utilities.html">Next
+      </a>
+    </div>
     
      </div>
 

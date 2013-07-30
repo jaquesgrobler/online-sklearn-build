@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.7.3.3. sklearn.feature_extraction.text.TfidfVectorizer &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.feature_extraction.text.TfidfVectorizer &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.feature_selection.SelectPercentile" href="sklearn.feature_selection.SelectPercentile.html" />
+    <link rel="prev" title="sklearn.feature_extraction.text.TfidfTransformer" href="sklearn.feature_extraction.text.TfidfTransformer.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.feature_extraction.text.TfidfTransformer.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.feature_...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.feature_extraction.text.TfidfTransformer
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.feature_selection.SelectPercentile.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.feature_...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.feature_selection.SelectPercentile
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.7.3.3. sklearn.feature_extraction.text.TfidfVectorizer</a></li>
+<li><a class="reference internal" href="#">sklearn.feature_extraction.text.TfidfVectorizer</a></li>
 </ul>
 
     </div>
@@ -131,14 +185,14 @@
 <h1>sklearn.feature_extraction.text.TfidfVectorizer<a class="headerlink" href="#sklearn-feature-extraction-text-tfidfvectorizer" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_extraction.text.TfidfVectorizer">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_extraction.text.</tt><tt class="descname">TfidfVectorizer</tt><big>(</big><em>input='content'</em>, <em>charset='utf-8'</em>, <em>charset_error='strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>analyzer='word'</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>min_n=None</em>, <em>max_n=None</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>max_df=1.0</em>, <em>min_df=2</em>, <em>max_features=None</em>, <em>vocabulary=None</em>, <em>binary=False</em>, <em>dtype=&lt;type 'long'&gt;</em>, <em>norm='l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfVectorizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_extraction.text.</tt><tt class="descname">TfidfVectorizer</tt><big>(</big><em>input=u'content'</em>, <em>encoding=u'utf-8'</em>, <em>charset=None</em>, <em>decode_error=u'strict'</em>, <em>charset_error=None</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>analyzer=u'word'</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>max_df=1.0</em>, <em>min_df=1</em>, <em>max_features=None</em>, <em>vocabulary=None</em>, <em>binary=False</em>, <em>dtype=&lt;type 'numpy.int64'&gt;</em>, <em>norm=u'l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfVectorizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a collection of raw documents to a matrix of TF-IDF features.</p>
 <p>Equivalent to CountVectorizer followed by TfidfTransformer.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>input: string {&#8216;filename&#8217;, &#8216;file&#8217;, &#8216;content&#8217;}</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>input</strong> : string {&#8216;filename&#8217;, &#8216;file&#8217;, &#8216;content&#8217;}</p>
 <blockquote>
 <div><p>If filename, the sequence passed as an argument to fit is
 expected to be a list of filenames that need reading to fetch
@@ -148,19 +202,19 @@ object) it is called to fetch the bytes in memory.</p>
 <p>Otherwise the input is expected to be the sequence strings or
 bytes items are expected to be analyzed directly.</p>
 </div></blockquote>
-<p><strong>charset: string, &#8216;utf-8&#8217; by default.</strong> :</p>
+<p><strong>encoding</strong> : string, &#8216;utf-8&#8217; by default.</p>
 <blockquote>
-<div><p>If bytes or files are given to analyze, this charset is used to
+<div><p>If bytes or files are given to analyze, this encoding is used to
 decode.</p>
 </div></blockquote>
-<p><strong>charset_error: {&#8216;strict&#8217;, &#8216;ignore&#8217;, &#8216;replace&#8217;}</strong> :</p>
+<p><strong>decode_error</strong> : {&#8216;strict&#8217;, &#8216;ignore&#8217;, &#8216;replace&#8217;}</p>
 <blockquote>
 <div><p>Instruction on what to do if a byte sequence is given to analyze that
-contains characters not of the given <cite>charset</cite>. By default, it is
+contains characters not of the given <cite>encoding</cite>. By default, it is
 &#8216;strict&#8217;, meaning that a UnicodeDecodeError will be raised. Other
 values are &#8216;ignore&#8217; and &#8216;replace&#8217;.</p>
 </div></blockquote>
-<p><strong>strip_accents: {&#8216;ascii&#8217;, &#8216;unicode&#8217;, None}</strong> :</p>
+<p><strong>strip_accents</strong> : {&#8216;ascii&#8217;, &#8216;unicode&#8217;, None}</p>
 <blockquote>
 <div><p>Remove accents during the preprocessing step.
 &#8216;ascii&#8217; is a fast method that only works on characters that have
@@ -168,44 +222,44 @@ an direct ASCII mapping.
 &#8216;unicode&#8217; is a slightly slower method that works on any characters.
 None (default) does nothing.</p>
 </div></blockquote>
-<p><strong>analyzer: string, {&#8216;word&#8217;, &#8216;char&#8217;} or callable</strong> :</p>
+<p><strong>analyzer</strong> : string, {&#8216;word&#8217;, &#8216;char&#8217;} or callable</p>
 <blockquote>
 <div><p>Whether the feature should be made of word or character n-grams.</p>
 <p>If a callable is passed it is used to extract the sequence of features
 out of the raw, unprocessed input.</p>
 </div></blockquote>
-<p><strong>preprocessor: callable or None (default)</strong> :</p>
+<p><strong>preprocessor</strong> : callable or None (default)</p>
 <blockquote>
 <div><p>Override the preprocessing (string transformation) stage while
 preserving the tokenizing and n-grams generation steps.</p>
 </div></blockquote>
-<p><strong>tokenizer: callable or None (default)</strong> :</p>
+<p><strong>tokenizer</strong> : callable or None (default)</p>
 <blockquote>
 <div><p>Override the string tokenization step while preserving the
 preprocessing and n-grams generation steps.</p>
 </div></blockquote>
-<p><strong>ngram_range: tuple (min_n, max_n)</strong> :</p>
+<p><strong>ngram_range</strong> : tuple (min_n, max_n)</p>
 <blockquote>
 <div><p>The lower and upper boundary of the range of n-values for different
 n-grams to be extracted. All values of n such that min_n &lt;= n &lt;= max_n
 will be used.</p>
 </div></blockquote>
-<p><strong>stop_words: string {&#8216;english&#8217;}, list, or None (default)</strong> :</p>
+<p><strong>stop_words</strong> : string {&#8216;english&#8217;}, list, or None (default)</p>
 <blockquote>
 <div><p>If a string, it is passed to _check_stop_list and the appropriate stop
-list is returned is currently the only
-supported string value.</p>
+list is returned. &#8216;english&#8217; is currently the only supported string
+value.</p>
 <p>If a list, that list is assumed to contain stop words, all of which
 will be removed from the resulting tokens.</p>
 <p>If None, no stop words will be used. max_df can be set to a value
 in the range [0.7, 1.0) to automatically detect and filter stop
 words based on intra corpus document frequency of terms.</p>
 </div></blockquote>
-<p><strong>lowercase: boolean, default True</strong> :</p>
+<p><strong>lowercase</strong> : boolean, default True</p>
 <blockquote>
 <div><p>Convert all characters to lowercase befor tokenizing.</p>
 </div></blockquote>
-<p><strong>token_pattern: string</strong> :</p>
+<p><strong>token_pattern</strong> : string</p>
 <blockquote>
 <div><p>Regular expression denoting what constitutes a &#8220;token&#8221;, only used
 if <cite>tokenize == &#8216;word&#8217;</cite>. The default regexp select tokens of 2
@@ -220,7 +274,7 @@ If float, the parameter represents a proportion of documents, integer
 absolute counts.
 This parameter is ignored if vocabulary is not None.</p>
 </div></blockquote>
-<p><strong>min_df</strong> : float in range [0.0, 1.0] or int, optional, 2 by default</p>
+<p><strong>min_df</strong> : float in range [0.0, 1.0] or int, optional, 1 by default</p>
 <blockquote>
 <div><p>When building the vocabulary ignore terms that have a term frequency
 strictly lower than the given threshold.
@@ -235,19 +289,19 @@ This parameter is ignored if vocabulary is not None.</p>
 max_features ordered by term frequency across the corpus.</p>
 <p>This parameter is ignored if vocabulary is not None.</p>
 </div></blockquote>
-<p><strong>vocabulary: Mapping or iterable, optional</strong> :</p>
+<p><strong>vocabulary</strong> : Mapping or iterable, optional</p>
 <blockquote>
 <div><p>Either a Mapping (e.g., a dict) where keys are terms and values are
 indices in the feature matrix, or an iterable over terms. If not
 given, a vocabulary is determined from the input documents.</p>
 </div></blockquote>
-<p><strong>binary: boolean, False by default.</strong> :</p>
+<p><strong>binary</strong> : boolean, False by default.</p>
 <blockquote>
 <div><p>If True, all non zero counts are set to 1. This is useful for discrete
 probabilistic models that model binary events rather than integer
 counts.</p>
 </div></blockquote>
-<p><strong>dtype: type, optional</strong> :</p>
+<p><strong>dtype</strong> : type, optional</p>
 <blockquote>
 <div><p>Type of the matrix returned by fit_transform() or transform().</p>
 </div></blockquote>
@@ -301,7 +355,7 @@ exactly once. Prevents zero divisions.</p>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_extraction.text.TfidfVectorizer.decode" title="sklearn.feature_extraction.text.TfidfVectorizer.decode"><tt class="xref py py-obj docutils literal"><span class="pre">decode</span></tt></a>(doc)</td>
 <td>Decode the input into a string of unicode symbols</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_extraction.text.TfidfVectorizer.fit" title="sklearn.feature_extraction.text.TfidfVectorizer.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(raw_documents)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_extraction.text.TfidfVectorizer.fit" title="sklearn.feature_extraction.text.TfidfVectorizer.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(raw_documents[,&nbsp;y])</td>
 <td>Learn a conversion law from documents to array data</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_extraction.text.TfidfVectorizer.fit_transform" title="sklearn.feature_extraction.text.TfidfVectorizer.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(raw_documents[,&nbsp;y])</td>
@@ -311,7 +365,7 @@ exactly once. Prevents zero divisions.</p>
 <td>Array mapping from feature integer indices to feature name</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_extraction.text.TfidfVectorizer.get_params" title="sklearn.feature_extraction.text.TfidfVectorizer.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
-<td>Get parameters for the estimator</td>
+<td>Get parameters for this estimator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_extraction.text.TfidfVectorizer.get_stop_words" title="sklearn.feature_extraction.text.TfidfVectorizer.get_stop_words"><tt class="xref py py-obj docutils literal"><span class="pre">get_stop_words</span></tt></a>()</td>
 <td>Build or fetch the effective stop words list</td>
@@ -320,7 +374,7 @@ exactly once. Prevents zero divisions.</p>
 <td>Return terms per document with nonzero entries in X.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_extraction.text.TfidfVectorizer.set_params" title="sklearn.feature_extraction.text.TfidfVectorizer.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
-<td>Set the parameters of the estimator.</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_extraction.text.TfidfVectorizer.transform" title="sklearn.feature_extraction.text.TfidfVectorizer.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(raw_documents[,&nbsp;copy])</td>
 <td>Transform raw text documents to tf–idf vectors</td>
@@ -329,7 +383,7 @@ exactly once. Prevents zero divisions.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.TfidfVectorizer.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>input='content'</em>, <em>charset='utf-8'</em>, <em>charset_error='strict'</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>analyzer='word'</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>min_n=None</em>, <em>max_n=None</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>max_df=1.0</em>, <em>min_df=2</em>, <em>max_features=None</em>, <em>vocabulary=None</em>, <em>binary=False</em>, <em>dtype=&lt;type 'long'&gt;</em>, <em>norm='l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfVectorizer.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>input=u'content'</em>, <em>encoding=u'utf-8'</em>, <em>charset=None</em>, <em>decode_error=u'strict'</em>, <em>charset_error=None</em>, <em>strip_accents=None</em>, <em>lowercase=True</em>, <em>preprocessor=None</em>, <em>tokenizer=None</em>, <em>analyzer=u'word'</em>, <em>stop_words=None</em>, <em>token_pattern=u'(?u)\b\w\w+\b'</em>, <em>ngram_range=(1</em>, <em>1)</em>, <em>max_df=1.0</em>, <em>min_df=1</em>, <em>max_features=None</em>, <em>vocabulary=None</em>, <em>binary=False</em>, <em>dtype=&lt;type 'numpy.int64'&gt;</em>, <em>norm=u'l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfVectorizer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -359,7 +413,7 @@ exactly once. Prevents zero divisions.</p>
 
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.TfidfVectorizer.fit">
-<tt class="descname">fit</tt><big>(</big><em>raw_documents</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfVectorizer.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>raw_documents</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfVectorizer.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learn a conversion law from documents to array data</p>
 </dd></dl>
 
@@ -371,13 +425,13 @@ exactly once. Prevents zero divisions.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>raw_documents: iterable</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>raw_documents</strong> : iterable</p>
 <blockquote>
 <div><p>an iterable which yields either str, unicode or file objects</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>vectors: array, [n_samples, n_features]</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>vectors</strong> : array, [n_samples, n_features]</p>
 </td>
 </tr>
 </tbody>
@@ -393,15 +447,21 @@ exactly once. Prevents zero divisions.</p>
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.TfidfVectorizer.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfVectorizer.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for the estimator</p>
+<dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -439,7 +499,7 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.TfidfVectorizer.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfVectorizer.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of the estimator.</p>
+<dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
 <tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
@@ -462,13 +522,13 @@ component of a nested object.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>raw_documents: iterable</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>raw_documents</strong> : iterable</p>
 <blockquote>
 <div><p>an iterable which yields either str, unicode or file objects</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>vectors: sparse matrix, [n_samples, n_features]</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>vectors</strong> : sparse matrix, [n_samples, n_features]</p>
 </td>
 </tr>
 </tbody>
@@ -488,11 +548,19 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.feature_extraction.text.TfidfTransformer.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.feature_selection.SelectPercentile.html">Next
+      </a>
+    </div>
     
      </div>
 

@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.17.3.6. sklearn.metrics.mutual_info_score &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.metrics.mutual_info_score &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.metrics.normalized_mutual_info_score" href="sklearn.metrics.normalized_mutual_info_score.html" />
+    <link rel="prev" title="sklearn.metrics.homogeneity_score" href="sklearn.metrics.homogeneity_score.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.metrics.homogeneity_score.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.metrics....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.metrics.homogeneity_score
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.metrics.normalized_mutual_info_score.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.metrics....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.metrics.normalized_mutual_info_score
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.17.3.6. sklearn.metrics.mutual_info_score</a></li>
+<li><a class="reference internal" href="#">sklearn.metrics.mutual_info_score</a></li>
 </ul>
 
     </div>
@@ -133,11 +187,11 @@
 <dt id="sklearn.metrics.mutual_info_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">mutual_info_score</tt><big>(</big><em>labels_true</em>, <em>labels_pred</em>, <em>contingency=None</em><big>)</big><a class="headerlink" href="#sklearn.metrics.mutual_info_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mutual Information between two clusterings</p>
-<p>The Mutual Information is a measure of the similarity between two labels
-of the same data. Where P(i) is the probability of a random sample occuring
-in cluster U_i and P&#8217;(j) is the probability of a random sample occuring in
-cluster V_j, the Mutual information  between clusterings U and V is given
-as:</p>
+<p>The Mutual Information is a measure of the similarity between two labels of
+the same data. Where <img class="math" src="../../_images/math/b5e9eceb5c805a272e59cd35fc0cb0df9c5831c2.png" alt="P(i)"/> is the probability of a random sample
+occurring in cluster <img class="math" src="../../_images/math/fb8df2d00f692a5a5ee3e592916d04a5a3e1060b.png" alt="U_i"/> and <img class="math" src="../../_images/math/61b31ba302290ba8d4eb667344c20bc54f837c47.png" alt="P'(j)"/> is the probability of a
+random sample occurring in cluster <img class="math" src="../../_images/math/6fbba8e6f8bc75af045750f417c9000c07feb8dc.png" alt="V_j"/>, the Mutual Information
+between clusterings <img class="math" src="../../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U"/> and <img class="math" src="../../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/> is given as:</p>
 <div class="math">
 <p><img src="../../_images/math/0c19d1f2ac204c9bf5ae784b0e34fad3c0e0f7f0.png" alt="MI(U,V)=\sum_{i=1}^R \sum_{j=1}^C P(i,j)\log\frac{P(i,j)}{P(i)P'(j)}"/></p>
 </div><p>This is equal to the Kullback-Leibler divergence of the joint distribution
@@ -145,8 +199,8 @@ with the product distribution of the marginals.</p>
 <p>This metric is independent of the absolute values of the labels:
 a permutation of the class or cluster label values won&#8217;t change the
 score value in any way.</p>
-<p>This metric is furthermore symmetric: switching <cite>label_true</cite> with
-<cite>label_pred</cite> will return the same score value. This can be useful to
+<p>This metric is furthermore symmetric: switching <tt class="docutils literal"><span class="pre">label_true</span></tt> with
+<tt class="docutils literal"><span class="pre">label_pred</span></tt> will return the same score value. This can be useful to
 measure the agreement of two independent label assignments strategies
 on the same dataset when the real ground truth is not known.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -163,9 +217,9 @@ on the same dataset when the real ground truth is not known.</p>
 </div></blockquote>
 <p><strong>contingency: None or array, shape = [n_classes_true, n_classes_pred]</strong> :</p>
 <blockquote>
-<div><p>A contingency matrix given by the contingency_matrix function.
-If value is None, it will be computed, otherwise the given value is
-used, with labels_true and labels_pred ignored.</p>
+<div><p>A contingency matrix given by the <tt class="xref py py-func docutils literal"><span class="pre">contingency_matrix</span></tt> function.
+If value is <tt class="docutils literal"><span class="pre">None</span></tt>, it will be computed, otherwise the given value is
+used, with <tt class="docutils literal"><span class="pre">labels_true</span></tt> and <tt class="docutils literal"><span class="pre">labels_pred</span></tt> ignored.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -199,11 +253,19 @@ used, with labels_true and labels_pred ignored.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.metrics.mutual_info_score.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.metrics.homogeneity_score.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.metrics.normalized_mutual_info_score.html">Next
+      </a>
+    </div>
     
      </div>
 

@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Lasso model selection: Cross-Validation / AIC / BIC &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>Lasso model selection: Cross-Validation / AIC / BIC &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Sparse recovery: feature selection for sparse linear models" href="plot_sparse_recovery.html" />
+    <link rel="prev" title="Lasso and Elastic Net" href="plot_lasso_coordinate_descent_path.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="plot_lasso_coordinate_descent_path.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Lasso and Elasti...
+        </span>
+            <span class="hiddenrellink">
+            Lasso and Elastic Net
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="plot_sparse_recovery.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Sparse recovery:...
+        </span>
+            <span class="hiddenrellink">
+            Sparse recovery: feature selection for sparse linear models
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Examples
+        </span>
+            <span class="hiddenrellink">
+            Examples
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">Lasso model selection: Cross-Validation / AIC / BIC</a></li>
@@ -154,7 +208,7 @@ of grid points is smaller than the number of kinks in the path. Such a
 strategy can be interesting if the number of features is really large
 and there are enough samples to select a large amount. In terms of
 numerical errors, for heavily correlated variables, Lars will accumulate
-more erros, while the coordinate descent algorithm will only sample the
+more errors, while the coordinate descent algorithm will only sample the
 path on a grid.</p>
 <p>Note how the optimal value of alpha varies for each fold. This
 illustrates why nested-cross validation is necessary when trying to
@@ -162,10 +216,10 @@ evaluate the performance of a method for which a parameter is chosen by
 cross-validation: this choice of parameter may not be optimal for unseen
 data.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lasso_model_selection.py"><tt class="xref download docutils literal"><span class="pre">plot_lasso_model_selection.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Olivier Grisel, Gael Varoquaux, Alexandre Gramfort</span>
-<span class="c"># License: BSD Style.</span>
+<span class="c"># License: BSD 3 clause</span>
 
 <span class="kn">import</span> <span class="nn">time</span>
 
@@ -205,8 +259,8 @@ data.</p>
     <span class="n">criterion_</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">criterion_</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">alphas_</span><span class="p">),</span> <span class="n">criterion_</span><span class="p">,</span> <span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
             <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> criterion&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">alpha_</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-              <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;alpha: </span><span class="si">%s</span><span class="s"> estimate&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">alpha_</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+               <span class="n">label</span><span class="o">=</span><span class="s">&#39;alpha: </span><span class="si">%s</span><span class="s"> estimate&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;-log(alpha)&#39;</span><span class="p">)</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;criterion&#39;</span><span class="p">)</span>
 
@@ -221,7 +275,7 @@ data.</p>
 <span class="c"># LassoCV: coordinate descent</span>
 
 <span class="c"># Compute paths</span>
-<span class="k">print</span> <span class="s">&quot;Computing regularization path using the coordinate descent lasso...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing regularization path using the coordinate descent lasso...&quot;</span><span class="p">)</span>
 <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LassoCV</span><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">t_lasso_cv</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t1</span>
@@ -234,7 +288,7 @@ data.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m_log_alphas</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">mse_path_</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m_log_alphas</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">mse_path_</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="s">&#39;k&#39;</span><span class="p">,</span>
         <span class="n">label</span><span class="o">=</span><span class="s">&#39;Average across the folds&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">alpha</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">alpha_</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span>
            <span class="n">label</span><span class="o">=</span><span class="s">&#39;alpha: CV estimate&#39;</span><span class="p">)</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -250,7 +304,7 @@ data.</p>
 <span class="c"># LassoLarsCV: least angle regression</span>
 
 <span class="c"># Compute paths</span>
-<span class="k">print</span> <span class="s">&quot;Computing regularization path using the Lars lasso...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing regularization path using the Lars lasso...&quot;</span><span class="p">)</span>
 <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LassoLarsCV</span><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">t_lasso_lars_cv</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t1</span>
@@ -262,14 +316,14 @@ data.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m_log_alphas</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">cv_mse_path_</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m_log_alphas</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">cv_mse_path_</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="s">&#39;k&#39;</span><span class="p">,</span>
         <span class="n">label</span><span class="o">=</span><span class="s">&#39;Average across the folds&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">alpha</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">alpha_</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span>
            <span class="n">label</span><span class="o">=</span><span class="s">&#39;alpha CV&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;-log(alpha)&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Mean square error&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Mean square error on each fold: Lars (train time: </span><span class="si">%.2f</span><span class="s">s)&#39;</span> <span class="o">%</span>
-            <span class="n">t_lasso_lars_cv</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Mean square error on each fold: Lars (train time: </span><span class="si">%.2f</span><span class="s">s)&#39;</span>
+         <span class="o">%</span> <span class="n">t_lasso_lars_cv</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
 
@@ -287,11 +341,19 @@ data.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/auto_examples/linear_model/plot_lasso_model_selection.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="plot_lasso_coordinate_descent_path.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="plot_sparse_recovery.html">Next
+      </a>
+    </div>
     
      </div>
 

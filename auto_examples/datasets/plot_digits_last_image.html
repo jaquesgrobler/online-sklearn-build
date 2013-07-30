@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>The Digit Dataset &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>The Digit Dataset &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Plot randomly generated classification dataset" href="plot_random_dataset.html" />
+    <link rel="prev" title="Compare cross decomposition methods" href="../cross_decomposition/plot_compare_cross_decomposition.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="../cross_decomposition/plot_compare_cross_decomposition.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Compare cross de...
+        </span>
+            <span class="hiddenrellink">
+            Compare cross decomposition methods
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="plot_random_dataset.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Plot randomly ge...
+        </span>
+            <span class="hiddenrellink">
+            Plot randomly generated classification dataset
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Examples
+        </span>
+            <span class="hiddenrellink">
+            Examples
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">The Digit Dataset</a></li>
@@ -131,17 +185,17 @@
 <span id="example-datasets-plot-digits-last-image-py"></span><h1>The Digit Dataset<a class="headerlink" href="#the-digit-dataset" title="Permalink to this headline">¶</a></h1>
 <p>This dataset is made up of 1797 8x8 images. Each image,
 like the one shown below, is of a hand-written digit.
-In order to ultilise an 8x8 figure like this, we&#8217;d have to
-first transform it into a feature vector with lengh 64.</p>
+In order to utilize an 8x8 figure like this, we&#8217;d have to
+first transform it into a feature vector with length 64.</p>
 <p>See <a class="reference external" href="http://archive.ics.uci.edu/ml/datasets/Pen-Based+Recognition+of+Handwritten+Digits">here</a>
 for more information about this dataset.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_digits_last_image.py"><tt class="xref download docutils literal"><span class="pre">plot_digits_last_image.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 
 <span class="c"># Code source: Gael Varoqueux</span>
 <span class="c"># Modified for Documentation merge by Jaques Grobler</span>
-<span class="c"># License: BSD</span>
+<span class="c"># License: BSD 3 clause</span>
 
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 
@@ -167,11 +221,19 @@ for more information about this dataset.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/auto_examples/datasets/plot_digits_last_image.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="../cross_decomposition/plot_compare_cross_decomposition.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="plot_random_dataset.html">Next
+      </a>
+    </div>
     
      </div>
 

@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>3.2.3.3.5. sklearn.ensemble.GradientBoostingClassifier &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>3.2.3.3.5. sklearn.ensemble.GradientBoostingClassifier &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="3.2.3.3.6. sklearn.ensemble.GradientBoostingRegressor" href="sklearn.ensemble.GradientBoostingRegressor.html" />
+    <link rel="prev" title="sklearn.ensemble.AdaBoostRegressor" href="sklearn.ensemble.AdaBoostRegressor.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.ensemble.AdaBoostRegressor.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.ensemble...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.ensemble.AdaBoostRegressor
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.ensemble.GradientBoostingRegressor.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        3.2.3.3.6. sklea...
+        </span>
+            <span class="hiddenrellink">
+            3.2.3.3.6. sklearn.ensemble.GradientBoostingRegressor
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">3.2.3.3.5. sklearn.ensemble.GradientBoostingClassifier</a></li>
@@ -131,7 +185,7 @@
 <h1>3.2.3.3.5. sklearn.ensemble.GradientBoostingClassifier<a class="headerlink" href="#sklearn-ensemble-gradientboostingclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.ensemble.GradientBoostingClassifier">
-<em class="property">class </em><tt class="descclassname">sklearn.ensemble.</tt><tt class="descname">GradientBoostingClassifier</tt><big>(</big><em>loss='deviance'</em>, <em>learn_rate=0.1</em>, <em>n_estimators=100</em>, <em>subsample=1.0</em>, <em>min_samples_split=1</em>, <em>min_samples_leaf=1</em>, <em>max_depth=3</em>, <em>init=None</em>, <em>random_state=None</em>, <em>max_features=None</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.GradientBoostingClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.ensemble.</tt><tt class="descname">GradientBoostingClassifier</tt><big>(</big><em>loss='deviance'</em>, <em>learning_rate=0.1</em>, <em>n_estimators=100</em>, <em>subsample=1.0</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>max_depth=3</em>, <em>init=None</em>, <em>random_state=None</em>, <em>max_features=None</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.GradientBoostingClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gradient Boosting for classification.</p>
 <p>GB builds an additive model in a
 forward stage-wise fashion; it allows for the optimization of
@@ -149,10 +203,10 @@ is a special case where only a single regression tree is induced.</p>
 deviance (= logistic regression) for classification
 with probabilistic outputs.</p>
 </div></blockquote>
-<p><strong>learn_rate</strong> : float, optional (default=0.1)</p>
+<p><strong>learning_rate</strong> : float, optional (default=0.1)</p>
 <blockquote>
-<div><p>learning rate shrinks the contribution of each tree by <cite>learn_rate</cite>.
-There is a trade-off between learn_rate and n_estimators.</p>
+<div><p>learning rate shrinks the contribution of each tree by <cite>learning_rate</cite>.
+There is a trade-off between learning_rate and n_estimators.</p>
 </div></blockquote>
 <p><strong>n_estimators</strong> : int (default=100)</p>
 <blockquote>
@@ -167,7 +221,7 @@ depth limits the number of nodes in the tree. Tune this parameter
 for best performance; the best value depends on the interaction
 of the input variables.</p>
 </div></blockquote>
-<p><strong>min_samples_split</strong> : integer, optional (default=1)</p>
+<p><strong>min_samples_split</strong> : integer, optional (default=2)</p>
 <blockquote>
 <div><p>The minimum number of samples required to split an internal node.</p>
 </div></blockquote>
@@ -183,13 +237,36 @@ Boosting. <cite>subsample</cite> interacts with the parameter <cite>n_estimators
 Choosing <cite>subsample &lt; 1.0</cite> leads to a reduction of variance
 and an increase in bias.</p>
 </div></blockquote>
-<p><strong>max_features</strong> : int, None, optional (default=None)</p>
-<blockquote class="last">
-<div><p>The number of features to consider when looking for the best split.
-Features are choosen randomly at each split point.
-If None, then <cite>max_features=n_features</cite>. Choosing
-<cite>max_features &lt; n_features</cite> leads to a reduction of variance
+<p><strong>max_features</strong> : int, float, string or None, optional (default=&#8221;auto&#8221;)</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>The number of features to consider when looking for the best split:</dt>
+<dd><ul class="first last simple">
+<li>If int, then consider <cite>max_features</cite> features at each split.</li>
+<li>If float, then <cite>max_features</cite> is a percentage and
+<cite>int(max_features * n_features)</cite> features are considered at each
+split.</li>
+<li>If &#8220;auto&#8221;, then <cite>max_features=sqrt(n_features)</cite>.</li>
+<li>If &#8220;sqrt&#8221;, then <cite>max_features=sqrt(n_features)</cite>.</li>
+<li>If &#8220;log2&#8221;, then <cite>max_features=log2(n_features)</cite>.</li>
+<li>If None, then <cite>max_features=n_features</cite>.</li>
+</ul>
+</dd>
+</dl>
+<p>Choosing <cite>max_features &lt; n_features</cite> leads to a reduction of variance
 and an increase in bias.</p>
+</div></blockquote>
+<p><strong>init</strong> : BaseEstimator, None, optional (default=None)</p>
+<blockquote>
+<div><p>An estimator object that is used to compute the initial
+predictions. <tt class="docutils literal"><span class="pre">init</span></tt> has to provide <tt class="docutils literal"><span class="pre">fit</span></tt> and <tt class="docutils literal"><span class="pre">predict</span></tt>.
+If None it uses <tt class="docutils literal"><span class="pre">loss.init_estimator</span></tt>.</p>
+</div></blockquote>
+<p><strong>verbose</strong> : int, default: 0</p>
+<blockquote class="last">
+<div><p>Enable verbose output. If 1 then it prints progress and performance
+once in a while (the more trees the lower the frequency).
+If greater than 1 then it prints progress and performance for every tree.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -207,38 +284,50 @@ Machine, The Annals of Statistics, Vol. 29, No. 5, 2001.</p>
 </ol>
 <p>T. Hastie, R. Tibshirani and J. Friedman.
 Elements of Statistical Learning Ed. 2, Springer, 2009.</p>
-<p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gb</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">gb</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
-<span class="go">[0]</span>
-</pre></div>
-</div>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="18%" />
-<col width="24%" />
-<col width="58%" />
+<col width="31%" />
+<col width="20%" />
+<col width="49%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><cite>feature_importances_</cite></td>
 <td>array, shape = [n_features]</td>
 <td>The feature importances (the higher, the more important the feature).</td>
 </tr>
-<tr class="row-even"><td><cite>oob_score_</cite></td>
+<tr class="row-even"><td><cite>oob_improvement_</cite></td>
+<td>array, shape = [n_estimators]</td>
+<td>The improvement in loss (= deviance) on the out-of-bag samples
+relative to the previous iteration.
+<tt class="docutils literal"><span class="pre">oob_improvement_[0]</span></tt> is the improvement in
+loss of the first stage over the <tt class="docutils literal"><span class="pre">init</span></tt> estimator.</td>
+</tr>
+<tr class="row-odd"><td><cite>oob_score_</cite></td>
 <td>array, shape = [n_estimators]</td>
 <td>Score of the training dataset obtained using an out-of-bag estimate.
 The i-th score <tt class="docutils literal"><span class="pre">oob_score_[i]</span></tt> is the deviance (= loss) of the
-model at iteration <tt class="docutils literal"><span class="pre">i</span></tt> on the out-of-bag sample.</td>
+model at iteration <tt class="docutils literal"><span class="pre">i</span></tt> on the out-of-bag sample.
+Deprecated: use <cite>oob_improvement_</cite> instead.</td>
 </tr>
-<tr class="row-odd"><td><cite>train_score_</cite></td>
+<tr class="row-even"><td><cite>train_score_</cite></td>
 <td>array, shape = [n_estimators]</td>
 <td>The i-th score <tt class="docutils literal"><span class="pre">train_score_[i]</span></tt> is the deviance (= loss) of the
 model at iteration <tt class="docutils literal"><span class="pre">i</span></tt> on the in-bag sample.
 If <tt class="docutils literal"><span class="pre">subsample</span> <span class="pre">==</span> <span class="pre">1</span></tt> this is the deviance on the training data.</td>
+</tr>
+<tr class="row-odd"><td><cite>loss_</cite></td>
+<td>LossFunction</td>
+<td>The concrete <tt class="docutils literal"><span class="pre">LossFunction</span></tt> object.</td>
+</tr>
+<tr class="row-even"><td><cite>init</cite></td>
+<td>BaseEstimator</td>
+<td>The estimator that provides the initial predictions.
+Set via the <tt class="docutils literal"><span class="pre">init</span></tt> argument or <tt class="docutils literal"><span class="pre">loss.init_estimator</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><cite>estimators_</cite>: list of DecisionTreeRegressor</td>
+<td>&nbsp;</td>
+<td>The collection of fitted sub-estimators.</td>
 </tr>
 </tbody>
 </table>
@@ -255,38 +344,35 @@ If <tt class="docutils literal"><span class="pre">subsample</span> <span class="
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.fit" title="sklearn.ensemble.GradientBoostingClassifier.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
 <td>Fit the gradient boosting model.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.fit_stage" title="sklearn.ensemble.GradientBoostingClassifier.fit_stage"><tt class="xref py py-obj docutils literal"><span class="pre">fit_stage</span></tt></a>(i,&nbsp;X,&nbsp;X_argsorted,&nbsp;y,&nbsp;y_pred,&nbsp;...)</td>
-<td>Fit another stage of <tt class="docutils literal"><span class="pre">n_classes_</span></tt> trees to the boosting model.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.get_params" title="sklearn.ensemble.GradientBoostingClassifier.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
+<td>Get parameters for this estimator.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.get_params" title="sklearn.ensemble.GradientBoostingClassifier.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
-<td>Get parameters for the estimator</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.predict" title="sklearn.ensemble.GradientBoostingClassifier.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.predict" title="sklearn.ensemble.GradientBoostingClassifier.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
 <td>Predict class for X.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.predict_proba" title="sklearn.ensemble.GradientBoostingClassifier.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.predict_proba" title="sklearn.ensemble.GradientBoostingClassifier.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
 <td>Predict class probabilities for X.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.score" title="sklearn.ensemble.GradientBoostingClassifier.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.score" title="sklearn.ensemble.GradientBoostingClassifier.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
 <td>Returns the mean accuracy on the given test data and labels.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.set_params" title="sklearn.ensemble.GradientBoostingClassifier.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
-<td>Set the parameters of the estimator.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.set_params" title="sklearn.ensemble.GradientBoostingClassifier.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.staged_decision_function" title="sklearn.ensemble.GradientBoostingClassifier.staged_decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">staged_decision_function</span></tt></a>(X)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.staged_decision_function" title="sklearn.ensemble.GradientBoostingClassifier.staged_decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">staged_decision_function</span></tt></a>(X)</td>
 <td>Compute decision function of <tt class="docutils literal"><span class="pre">X</span></tt> for each iteration.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.staged_predict" title="sklearn.ensemble.GradientBoostingClassifier.staged_predict"><tt class="xref py py-obj docutils literal"><span class="pre">staged_predict</span></tt></a>(X)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.staged_predict" title="sklearn.ensemble.GradientBoostingClassifier.staged_predict"><tt class="xref py py-obj docutils literal"><span class="pre">staged_predict</span></tt></a>(X)</td>
 <td>Predict class probabilities at each stage for X.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.staged_predict_proba" title="sklearn.ensemble.GradientBoostingClassifier.staged_predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">staged_predict_proba</span></tt></a>(X)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.ensemble.GradientBoostingClassifier.staged_predict_proba" title="sklearn.ensemble.GradientBoostingClassifier.staged_predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">staged_predict_proba</span></tt></a>(X)</td>
 <td>Predict class probabilities at each stage for X.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="sklearn.ensemble.GradientBoostingClassifier.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>loss='deviance'</em>, <em>learn_rate=0.1</em>, <em>n_estimators=100</em>, <em>subsample=1.0</em>, <em>min_samples_split=1</em>, <em>min_samples_leaf=1</em>, <em>max_depth=3</em>, <em>init=None</em>, <em>random_state=None</em>, <em>max_features=None</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.GradientBoostingClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>loss='deviance'</em>, <em>learning_rate=0.1</em>, <em>n_estimators=100</em>, <em>subsample=1.0</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>max_depth=3</em>, <em>init=None</em>, <em>random_state=None</em>, <em>max_features=None</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.GradientBoostingClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -316,6 +402,23 @@ otherwise <tt class="docutils literal"><span class="pre">k==n_classes</span></tt
 </table>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="sklearn.ensemble.GradientBoostingClassifier.feature_importances_">
+<tt class="descname">feature_importances_</tt><a class="headerlink" href="#sklearn.ensemble.GradientBoostingClassifier.feature_importances_" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Return the feature importances (the higher, the more important the</dt>
+<dd>feature).</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><strong>feature_importances_</strong> : array, shape = [n_features]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="sklearn.ensemble.GradientBoostingClassifier.fit">
 <tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.GradientBoostingClassifier.fit" title="Permalink to this definition">¶</a></dt>
@@ -327,8 +430,7 @@ otherwise <tt class="docutils literal"><span class="pre">k==n_classes</span></tt
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
 <blockquote>
 <div><p>Training vectors, where n_samples is the number of samples
-and n_features is the number of features. Use fortran-style
-to avoid memory copies.</p>
+and n_features is the number of features.</p>
 </div></blockquote>
 <p><strong>y</strong> : array-like, shape = [n_samples]</p>
 <blockquote>
@@ -350,23 +452,23 @@ For classification, labels must correspond to classes
 </dd></dl>
 
 <dl class="method">
-<dt id="sklearn.ensemble.GradientBoostingClassifier.fit_stage">
-<tt class="descname">fit_stage</tt><big>(</big><em>i</em>, <em>X</em>, <em>X_argsorted</em>, <em>y</em>, <em>y_pred</em>, <em>sample_mask</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.GradientBoostingClassifier.fit_stage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit another stage of <tt class="docutils literal"><span class="pre">n_classes_</span></tt> trees to the boosting model.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="sklearn.ensemble.GradientBoostingClassifier.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.GradientBoostingClassifier.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for the estimator</p>
+<dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -451,7 +553,7 @@ ordered by arithmetical order.</p>
 <dl class="method">
 <dt id="sklearn.ensemble.GradientBoostingClassifier.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.ensemble.GradientBoostingClassifier.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of the estimator.</p>
+<dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
 <tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
@@ -560,11 +662,19 @@ after each stage.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.ensemble.GradientBoostingClassifier.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.ensemble.AdaBoostRegressor.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.ensemble.GradientBoostingRegressor.html">Next
+      </a>
+    </div>
     
      </div>
 

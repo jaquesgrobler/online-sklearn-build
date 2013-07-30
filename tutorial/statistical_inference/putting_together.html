@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Putting it all together &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>Putting it all together &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="A tutorial on statistical-learning for scientific data processing" href="index.html" />
+    <link rel="next" title="Finding help" href="finding_help.html" />
+    <link rel="prev" title="Unsupervised learning: seeking representations of the data" href="unsupervised_learning.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="unsupervised_learning.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Unsupervised lea...
+        </span>
+            <span class="hiddenrellink">
+            Unsupervised learning: seeking representations of the data
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="finding_help.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Finding help
+        </span>
+            <span class="hiddenrellink">
+            Finding help
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        A tutorial on st...
+        </span>
+            <span class="hiddenrellink">
+            A tutorial on statistical-learning for scientific data processing
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">Putting it all together</a><ul>
@@ -136,8 +190,8 @@
 <h1>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="pipelining">
 <h2>Pipelining<a class="headerlink" href="#pipelining" title="Permalink to this headline">¶</a></h2>
-<p>We have seen that some estimators can transform data, and some estimators
-can predict variables. We can create combined estimators:</p>
+<p>We have seen that some estimators can transform data and that some estimators
+can predict variables. We can also create combined estimators:</p>
 <a class="reference external image-reference" href="../../auto_examples/plot_digits_pipe.html"><img alt="tutorial/statistical_inference/../../auto_examples/images/plot_digits_pipe_1.png" class="align-right" src="tutorial/statistical_inference/../../auto_examples/images/plot_digits_pipe_1.png" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 
@@ -189,7 +243,7 @@ can predict variables. We can create combined estimators:</p>
 <div class="section" id="face-recognition-with-eigenfaces">
 <h2>Face recognition with eigenfaces<a class="headerlink" href="#face-recognition-with-eigenfaces" title="Permalink to this headline">¶</a></h2>
 <p>The dataset used in this example is a preprocessed excerpt of the
-&#8220;Labeled Faces in the Wild&#8221;, aka <a class="reference external" href="http://vis-www.cs.umass.edu/lfw/">LFW</a>:</p>
+&#8220;Labeled Faces in the Wild&#8221;, also known as <a class="reference external" href="http://vis-www.cs.umass.edu/lfw/">LFW</a>:</p>
 <blockquote>
 <div><a class="reference external" href="http://vis-www.cs.umass.edu/lfw/lfw-funneled.tgz">http://vis-www.cs.umass.edu/lfw/lfw-funneled.tgz</a> (233MB)</div></blockquote>
 <div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
@@ -219,7 +273,7 @@ can predict variables. We can create combined estimators:</p>
 
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="k">print</span> <span class="n">__doc__</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 <span class="kn">import</span> <span class="nn">logging</span>
@@ -232,6 +286,9 @@ can predict variables. We can create combined estimators:</p>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">RandomizedPCA</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Display progress logs on stdout</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(asctime)s</span><span class="s"> </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>
@@ -255,10 +312,10 @@ can predict variables. We can create combined estimators:</p>
 <span class="n">target_names</span> <span class="o">=</span> <span class="n">lfw_people</span><span class="o">.</span><span class="n">target_names</span>
 <span class="n">n_classes</span> <span class="o">=</span> <span class="n">target_names</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="k">print</span> <span class="s">&quot;Total dataset size:&quot;</span>
-<span class="k">print</span> <span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_samples</span>
-<span class="k">print</span> <span class="s">&quot;n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_features</span>
-<span class="k">print</span> <span class="s">&quot;n_classes: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_classes</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Total dataset size:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_samples</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_features</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;n_classes: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_classes</span><span class="p">)</span>
 
 
 <span class="c">###############################################################################</span>
@@ -266,7 +323,7 @@ can predict variables. We can create combined estimators:</p>
 
 <span class="c"># split into a training and testing set</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_fraction</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
 
 
 <span class="c">###############################################################################</span>
@@ -274,47 +331,45 @@ can predict variables. We can create combined estimators:</p>
 <span class="c"># dataset): unsupervised feature extraction / dimensionality reduction</span>
 <span class="n">n_components</span> <span class="o">=</span> <span class="mi">150</span>
 
-<span class="k">print</span> <span class="s">&quot;Extracting the top </span><span class="si">%d</span><span class="s"> eigenfaces from </span><span class="si">%d</span><span class="s"> faces&quot;</span> <span class="o">%</span> <span class="p">(</span>
-    <span class="n">n_components</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Extracting the top </span><span class="si">%d</span><span class="s"> eigenfaces from </span><span class="si">%d</span><span class="s"> faces&quot;</span>
+      <span class="o">%</span> <span class="p">(</span><span class="n">n_components</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">pca</span> <span class="o">=</span> <span class="n">RandomizedPCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">,</span> <span class="n">whiten</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 <span class="n">eigenfaces</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_components</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 
-<span class="k">print</span> <span class="s">&quot;Projecting the input data on the eigenfaces orthonormal basis&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Projecting the input data on the eigenfaces orthonormal basis&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">X_train_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">X_test_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 
 <span class="c">###############################################################################</span>
 <span class="c"># Train a SVM classification model</span>
 
-<span class="k">print</span> <span class="s">&quot;Fitting the classifier to the training set&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Fitting the classifier to the training set&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
- <span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e3</span><span class="p">,</span> <span class="mf">5e3</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">,</span> <span class="mf">5e4</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">],</span>
- <span class="s">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
-<span class="p">}</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e3</span><span class="p">,</span> <span class="mf">5e3</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">,</span> <span class="mf">5e4</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">],</span>
+              <span class="s">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">}</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">),</span> <span class="n">param_grid</span><span class="p">)</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Best estimator found by grid search:&quot;</span>
-<span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Best estimator found by grid search:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">)</span>
 
 
 <span class="c">###############################################################################</span>
 <span class="c"># Quantitative evaluation of the model quality on the test set</span>
 
-<span class="k">print</span> <span class="s">&quot;Predicting the people names on the testing set&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Predicting people&#39;s names on the test set&quot;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_pca</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
-<span class="k">print</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">target_names</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">n_classes</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">target_names</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">n_classes</span><span class="p">)))</span>
 
 
 <span class="c">###############################################################################</span>
@@ -380,8 +435,8 @@ Gerhard_Schroeder       0.91      0.75      0.82        28
 </div>
 <div class="section" id="open-problem-stock-market-structure">
 <h2>Open problem: Stock Market Structure<a class="headerlink" href="#open-problem-stock-market-structure" title="Permalink to this headline">¶</a></h2>
-<p>Can we predict the variation in stock prices for Google?</p>
-<p><a class="reference internal" href="../../auto_examples/applications/plot_stock_market.html#stock-market"><em>Visualizing the stock market structure</em></a></p>
+<p>Can we predict the variation in stock prices for Google over a given time frame?</p>
+<p><a class="reference internal" href="../../auto_examples/applications/plot_stock_market.html#stock-market"><em>Learning a graph structure</em></a></p>
 </div>
 </div>
 
@@ -394,11 +449,19 @@ Gerhard_Schroeder       0.91      0.75      0.82        28
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/tutorial/statistical_inference/putting_together.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="unsupervised_learning.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="finding_help.html">Next
+      </a>
+    </div>
     
      </div>
 

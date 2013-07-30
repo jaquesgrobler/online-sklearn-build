@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Lasso path using LARS &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>Lasso path using LARS &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="SGD: Maximum margin separating hyperplane" href="plot_sgd_separating_hyperplane.html" />
+    <link rel="prev" title="Gaussian Processes regression: basic introductory example" href="../gaussian_process/plot_gp_regression.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="../gaussian_process/plot_gp_regression.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Gaussian Process...
+        </span>
+            <span class="hiddenrellink">
+            Gaussian Processes regression: basic introductory example
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="plot_sgd_separating_hyperplane.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        SGD: Maximum mar...
+        </span>
+            <span class="hiddenrellink">
+            SGD: Maximum margin separating hyperplane
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Examples
+        </span>
+            <span class="hiddenrellink">
+            Examples
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">Lasso path using LARS</a></li>
@@ -130,15 +184,15 @@
   <div class="section" id="lasso-path-using-lars">
 <span id="example-linear-model-plot-lasso-lars-py"></span><h1>Lasso path using LARS<a class="headerlink" href="#lasso-path-using-lars" title="Permalink to this headline">¶</a></h1>
 <p>Computes Lasso Path along the regularization parameter using the LARS
-algorithm on the diabetest dataset. Each color represents a different
+algorithm on the diabetes dataset. Each color represents a different
 feature of the coefficient vector, and this is displayed as a function
 of the regularization parameter.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lasso_lars.py"><tt class="xref download docutils literal"><span class="pre">plot_lasso_lars.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Fabian Pedregosa &lt;fabian.pedregosa@inria.fr&gt;</span>
 <span class="c">#         Alexandre Gramfort &lt;alexandre.gramfort@inria.fr&gt;</span>
-<span class="c"># License: BSD Style.</span>
+<span class="c"># License: BSD 3 clause</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
@@ -150,7 +204,7 @@ of the regularization parameter.</p>
 <span class="n">X</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">data</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">target</span>
 
-<span class="k">print</span> <span class="s">&quot;Computing regularization path using the LARS ...&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Computing regularization path using the LARS ...&quot;</span><span class="p">)</span>
 <span class="n">alphas</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">coefs</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">lars_path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;lasso&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">coefs</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -177,11 +231,19 @@ of the regularization parameter.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/auto_examples/linear_model/plot_lasso_lars.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="../gaussian_process/plot_gp_regression.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="plot_sgd_separating_hyperplane.html">Next
+      </a>
+    </div>
     
      </div>
 

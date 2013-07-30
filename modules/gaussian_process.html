@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>1.5. Gaussian Processes &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>1.5. Gaussian Processes &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
+    <link rel="up" title="1. Supervised learning" href="../supervised_learning.html" />
+    <link rel="next" title="1.6. Cross decomposition" href="cross_decomposition.html" />
+    <link rel="prev" title="1.4. Nearest Neighbors" href="neighbors.html" />
    
        <script type="text/javascript" src="../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../index.html">
             <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="neighbors.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        1.4. Nearest Nei...
+        </span>
+            <span class="hiddenrellink">
+            1.4. Nearest Neighbors
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="cross_decomposition.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        1.6. Cross decom...
+        </span>
+            <span class="hiddenrellink">
+            1.6. Cross decomposition
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../supervised_learning.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        1. Supervised le...
+        </span>
+            <span class="hiddenrellink">
+            1. Supervised learning
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">1.5. Gaussian Processes</a><ul>
@@ -155,7 +209,7 @@ implementation, this is only a post-processing of the <em>regression</em> exerci
 <li>The prediction interpolates the observations (at least for regular
 correlation models).</li>
 <li>The prediction is probabilistic (Gaussian) so that one can compute
-empirical confidence intervals and exceedence probabilities that might be
+empirical confidence intervals and exceedance probabilities that might be
 used to refit (online fitting, adaptive fitting) the prediction in some
 region of interest.</li>
 <li>Versatile: different <a class="reference internal" href="linear_model.html#linear-model"><em>linear regression models</em></a> and <a class="reference internal" href="#correlation-models"><em>correlation models</em></a> can be specified. Common models are provided, but
@@ -186,7 +240,7 @@ applications: e.g. for global optimization, probabilistic classification.</p>
 the function is evaluated onto a design of experiments. Then, we define a
 GaussianProcess model whose regression and correlation models might be
 specified using additional kwargs, and ask for the model to be fitted to the
-data. Depending on the number of parameters provided at instanciation, the
+data. Depending on the number of parameters provided at instantiation, the
 fitting procedure may recourse to maximum likelihood estimation for the
 parameters or alternatively it uses the given parameters.</p>
 <div class="figure align-center">
@@ -260,7 +314,7 @@ sample, possibly featurewise (this is the stationarity assumption).</p>
 basic least squares linear regression problem:</p>
 <div class="math">
 <p><img src="../_images/math/d37fbfadc00a794aafe90474a96883848c2750fb.png" alt="g(X) \approx f(X)^T \beta"/></p>
-</div><p>Except we additionaly assume some spatial coherence (correlation) between the
+</div><p>Except we additionally assume some spatial coherence (correlation) between the
 samples dictated by the correlation function. Indeed, ordinary least squares
 assumes the correlation model <img class="math" src="../_images/math/5db56541a2e383e7f633b766e5f56371b58ad16e.png" alt="R(|X - X'|)"/> is one when <img class="math" src="../_images/math/e8ed95543f2a11944067f52062f98fd4114c1430.png" alt="X = X'"/>
 and zero otherwise : a <em>dirac</em> correlation model &#8211; sometimes referred to as a
@@ -384,7 +438,7 @@ Williams, W Notz Springer, 2003</li>
 <span id="id1"></span><h2>1.5.3. Correlation Models<a class="headerlink" href="#correlation-models" title="Permalink to this headline">¶</a></h2>
 <p>Common correlation models matches some famous SVM&#8217;s kernels because they are
 mostly built on equivalent assumptions. They must fulfill Mercer&#8217;s conditions
-and should additionaly remain stationary. Note however, that the choice of the
+and should additionally remain stationary. Note however, that the choice of the
 correlation model should be made in agreement with the known properties of the
 original experiment from which the observations come. For instance:</p>
 <ul class="simple">
@@ -433,11 +487,19 @@ Technometrics, 34(1) 15&#8211;25.</li>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../_sources/modules/gaussian_process.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="neighbors.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="cross_decomposition.html">Next
+      </a>
+    </div>
     
      </div>
 

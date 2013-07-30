@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.4.2.10. sklearn.datasets.make_multilabel_classification &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.datasets.make_multilabel_classification &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.datasets.make_regression" href="sklearn.datasets.make_regression.html" />
+    <link rel="prev" title="sklearn.datasets.make_moons" href="sklearn.datasets.make_moons.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.datasets.make_moons.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.datasets...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.datasets.make_moons
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.datasets.make_regression.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.datasets...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.datasets.make_regression
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.4.2.10. sklearn.datasets.make_multilabel_classification</a></li>
+<li><a class="reference internal" href="#">sklearn.datasets.make_multilabel_classification</a></li>
 </ul>
 
     </div>
@@ -131,7 +185,7 @@
 <h1>sklearn.datasets.make_multilabel_classification<a class="headerlink" href="#sklearn-datasets-make-multilabel-classification" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.datasets.make_multilabel_classification">
-<tt class="descclassname">sklearn.datasets.</tt><tt class="descname">make_multilabel_classification</tt><big>(</big><em>n_samples=100</em>, <em>n_features=20</em>, <em>n_classes=5</em>, <em>n_labels=2</em>, <em>length=50</em>, <em>allow_unlabeled=True</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.datasets.make_multilabel_classification" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.datasets.</tt><tt class="descname">make_multilabel_classification</tt><big>(</big><em>n_samples=100</em>, <em>n_features=20</em>, <em>n_classes=5</em>, <em>n_labels=2</em>, <em>length=50</em>, <em>allow_unlabeled=True</em>, <em>return_indicator=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.datasets.make_multilabel_classification" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a random multilabel classification problem.</p>
 <dl class="docutils">
 <dt>For each sample, the generative process is:</dt>
@@ -175,6 +229,11 @@ a Poisson distribution that never takes the value 0.</p>
 <blockquote>
 <div><p>If <tt class="docutils literal"><span class="pre">True</span></tt>, some instances might not belong to any class.</p>
 </div></blockquote>
+<p><strong>return_indicator</strong> : bool, optional (default=False),</p>
+<blockquote>
+<div><p>If <tt class="docutils literal"><span class="pre">True</span></tt>, return <tt class="docutils literal"><span class="pre">Y</span></tt> in the binary indicator format, else
+return a tuple of lists of labels.</p>
+</div></blockquote>
 <p><strong>random_state</strong> : int, RandomState instance or None, optional (default=None)</p>
 <blockquote>
 <div><p>If int, random_state is the seed used by the random number generator;
@@ -188,7 +247,7 @@ by <cite>np.random</cite>.</p>
 <blockquote>
 <div><p>The generated samples.</p>
 </div></blockquote>
-<p><strong>Y</strong> : list of tuples</p>
+<p><strong>Y</strong> : tuple of lists or array of shape [n_samples, n_classes]</p>
 <blockquote class="last">
 <div><p>The label sets.</p>
 </div></blockquote>
@@ -209,11 +268,19 @@ by <cite>np.random</cite>.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.datasets.make_multilabel_classification.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.datasets.make_moons.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.datasets.make_regression.html">Next
+      </a>
+    </div>
     
      </div>
 

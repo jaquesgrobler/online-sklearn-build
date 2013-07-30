@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Species distribution modeling &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>Species distribution modeling &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Visualizing the stock market structure" href="plot_stock_market.html" />
+    <link rel="prev" title="Faces recognition example using eigenfaces and SVMs" href="face_recognition.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="face_recognition.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Faces recognitio...
+        </span>
+            <span class="hiddenrellink">
+            Faces recognition example using eigenfaces and SVMs
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="plot_stock_market.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Visualizing the ...
+        </span>
+            <span class="hiddenrellink">
+            Visualizing the stock market structure
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Examples
+        </span>
+            <span class="hiddenrellink">
+            Examples
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">Species distribution modeling</a><ul>
@@ -164,11 +218,12 @@ S. J. Phillips, R. P. Anderson, R. E. Schapire - Ecological Modelling,
 </ul>
 </div></blockquote>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_species_distribution_modeling.py"><tt class="xref download docutils literal"><span class="pre">plot_species_distribution_modeling.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Authors: Peter Prettenhoer &lt;peter.prettenhofer@gmail.com&gt;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Authors: Peter Prettenhofer &lt;peter.prettenhofer@gmail.com&gt;</span>
 <span class="c">#          Jake Vanderplas &lt;vanderplas@astro.washington.edu&gt;</span>
 <span class="c">#</span>
-<span class="c"># License: BSD Style.</span>
+<span class="c"># License: BSD 3 clause</span>
 
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 
@@ -188,7 +243,7 @@ S. J. Phillips, R. P. Anderson, R. E. Schapire - Ecological Modelling,
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="n">basemap</span> <span class="o">=</span> <span class="bp">False</span>
 
-<span class="k">print</span> <span class="n">__doc__</span>
+<span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">create_species_bunch</span><span class="p">(</span><span class="n">species_name</span><span class="p">,</span>
@@ -223,8 +278,8 @@ S. J. Phillips, R. P. Anderson, R. E. Schapire - Ecological Modelling,
 <span class="sd">    Plot the species distribution.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">species</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Note: when more than two species are provided, only &quot;</span>
-               <span class="s">&quot;the first two will be used&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Note: when more than two species are provided,&quot;</span>
+              <span class="s">&quot; only the first two will be used&quot;</span><span class="p">)</span>
 
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 
@@ -258,8 +313,8 @@ S. J. Phillips, R. P. Anderson, R. E. Schapire - Ecological Modelling,
 
     <span class="c"># Fit, predict, and plot for each species.</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">species</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">BV_bunch</span><span class="p">,</span> <span class="n">MM_bunch</span><span class="p">]):</span>
-        <span class="k">print</span> <span class="s">&quot;_&quot;</span> <span class="o">*</span> <span class="mi">80</span>
-        <span class="k">print</span> <span class="s">&quot;Modeling distribution of species &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">species</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;_&quot;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Modeling distribution of species &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">species</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
         <span class="c"># Standardize features</span>
         <span class="n">mean</span> <span class="o">=</span> <span class="n">species</span><span class="o">.</span><span class="n">cov_train</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -267,29 +322,29 @@ S. J. Phillips, R. P. Anderson, R. E. Schapire - Ecological Modelling,
         <span class="n">train_cover_std</span> <span class="o">=</span> <span class="p">(</span><span class="n">species</span><span class="o">.</span><span class="n">cov_train</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span>
 
         <span class="c"># Fit OneClassSVM</span>
-        <span class="k">print</span> <span class="s">&quot; - fit OneClassSVM ... &quot;</span><span class="p">,</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot; - fit OneClassSVM ... &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
         <span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">OneClassSVM</span><span class="p">(</span><span class="n">nu</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
         <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_cover_std</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s">&quot;done. &quot;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;done.&quot;</span><span class="p">)</span>
 
         <span class="c"># Plot map of South America</span>
         <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">basemap</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s">&quot; - plot coastlines using basemap&quot;</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot; - plot coastlines using basemap&quot;</span><span class="p">)</span>
             <span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">&#39;cyl&#39;</span><span class="p">,</span> <span class="n">llcrnrlat</span><span class="o">=</span><span class="n">Y</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
                         <span class="n">urcrnrlat</span><span class="o">=</span><span class="n">Y</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">llcrnrlon</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
                         <span class="n">urcrnrlon</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">resolution</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
             <span class="n">m</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
             <span class="n">m</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s">&quot; - plot coastlines from coverage&quot;</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot; - plot coastlines from coverage&quot;</span><span class="p">)</span>
             <span class="n">pl</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">land_reference</span><span class="p">,</span>
                        <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">9999</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s">&quot;k&quot;</span><span class="p">,</span>
                        <span class="n">linestyles</span><span class="o">=</span><span class="s">&quot;solid&quot;</span><span class="p">)</span>
             <span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
             <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
 
-        <span class="k">print</span> <span class="s">&quot; - predict species distribution&quot;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot; - predict species distribution&quot;</span><span class="p">)</span>
 
         <span class="c"># Predict species distribution using the training data</span>
         <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">data</span><span class="o">.</span><span class="n">Ny</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">Nx</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -329,9 +384,9 @@ S. J. Phillips, R. P. Anderson, R. E. Schapire - Ecological Modelling,
         <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">roc_curve</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
         <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
         <span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">70</span><span class="p">,</span> <span class="s">&quot;AUC: </span><span class="si">%.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">roc_auc</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">&quot;right&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s"> Area under the ROC curve : </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">roc_auc</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s"> Area under the ROC curve : </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">roc_auc</span><span class="p">)</span>
 
-    <span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">time elapsed: </span><span class="si">%.2f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">time elapsed: </span><span class="si">%.2f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 
 <span class="n">plot_species_distribution</span><span class="p">()</span>
@@ -350,11 +405,19 @@ S. J. Phillips, R. P. Anderson, R. E. Schapire - Ecological Modelling,
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/auto_examples/applications/plot_species_distribution_modeling.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="face_recognition.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="plot_stock_market.html">Next
+      </a>
+    </div>
     
      </div>
 

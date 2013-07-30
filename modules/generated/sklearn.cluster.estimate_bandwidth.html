@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.1.2.1. sklearn.cluster.estimate_bandwidth &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.cluster.estimate_bandwidth &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.cluster.k_means" href="sklearn.cluster.k_means.html" />
+    <link rel="prev" title="sklearn.cluster.Ward" href="sklearn.cluster.Ward.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.cluster.Ward.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.cluster....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cluster.Ward
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.cluster.k_means.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.cluster....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cluster.k_means
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.1.2.1. sklearn.cluster.estimate_bandwidth</a></li>
+<li><a class="reference internal" href="#">sklearn.cluster.estimate_bandwidth</a></li>
 </ul>
 
     </div>
@@ -132,33 +186,33 @@
 <dl class="function">
 <dt id="sklearn.cluster.estimate_bandwidth">
 <tt class="descclassname">sklearn.cluster.</tt><tt class="descname">estimate_bandwidth</tt><big>(</big><em>X</em>, <em>quantile=0.3</em>, <em>n_samples=None</em>, <em>random_state=0</em><big>)</big><a class="headerlink" href="#sklearn.cluster.estimate_bandwidth" title="Permalink to this definition">¶</a></dt>
-<dd><p>Estimate the bandwith to use with MeanShift algorithm</p>
+<dd><p>Estimate the bandwidth to use with MeanShift algorithm</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array [n_samples, n_features]</p>
 <blockquote>
-<div><p>Input points</p>
+<div><p>Input points.</p>
 </div></blockquote>
-<p><strong>quantile: float, default 0.3</strong> :</p>
+<p><strong>quantile</strong> : float, default 0.3</p>
 <blockquote>
 <div><p>should be between [0, 1]
-0.5 means that the median is all pairwise distances is used</p>
+0.5 means that the median of all pairwise distances is used.</p>
 </div></blockquote>
-<p><strong>n_samples: int</strong> :</p>
+<p><strong>n_samples</strong> : int</p>
 <blockquote>
 <div><p>The number of samples to use. If None, all samples are used.</p>
 </div></blockquote>
-<p><strong>random_state: int or RandomState</strong> :</p>
+<p><strong>random_state</strong> : int or RandomState</p>
 <blockquote>
 <div><p>Pseudo number generator state used for random sampling.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>bandwidth: float</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>bandwidth</strong> : float</p>
 <blockquote class="last">
-<div><p>The bandwidth parameter</p>
+<div><p>The bandwidth parameter.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -177,11 +231,19 @@
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.cluster.estimate_bandwidth.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.cluster.Ward.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.cluster.k_means.html">Next
+      </a>
+    </div>
     
      </div>
 

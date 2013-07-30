@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.11.2. sklearn.hmm.MultinomialHMM &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.hmm.MultinomialHMM &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.hmm.GMMHMM" href="sklearn.hmm.GMMHMM.html" />
+    <link rel="prev" title="sklearn.hmm.GaussianHMM" href="sklearn.hmm.GaussianHMM.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.hmm.GaussianHMM.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.hmm.Gaus...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.hmm.GaussianHMM
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.hmm.GMMHMM.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.hmm.GMMH...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.hmm.GMMHMM
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.11.2. sklearn.hmm.MultinomialHMM</a></li>
+<li><a class="reference internal" href="#">sklearn.hmm.MultinomialHMM</a></li>
 </ul>
 
     </div>
@@ -211,16 +265,16 @@ covars, etc.  Defaults to all parameters.</td>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.decode" title="sklearn.hmm.MultinomialHMM.decode"><tt class="xref py py-obj docutils literal"><span class="pre">decode</span></tt></a>(obs[,&nbsp;algorithm])</td>
-<td>Find most likely state sequence corresponding to <cite>obs</cite>.</td>
+<td>Find most likely state sequence corresponding to <tt class="docutils literal"><span class="pre">obs</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.eval" title="sklearn.hmm.MultinomialHMM.eval"><tt class="xref py py-obj docutils literal"><span class="pre">eval</span></tt></a>(obs)</td>
-<td>Compute the log probability under the model and compute posteriors</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.eval" title="sklearn.hmm.MultinomialHMM.eval"><tt class="xref py py-obj docutils literal"><span class="pre">eval</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<td>DEPRECATED: HMM.eval was renamed to HMM.score_samples in 0.14 and will be removed in 0.16.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.fit" title="sklearn.hmm.MultinomialHMM.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(obs,&nbsp;**kwargs)</td>
-<td>Estimate model parameters.</td>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt>(obs,&nbsp;**kwargs)</td>
+<td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.get_params" title="sklearn.hmm.MultinomialHMM.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
-<td>Get parameters for the estimator</td>
+<td>Get parameters for this estimator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.predict" title="sklearn.hmm.MultinomialHMM.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(obs[,&nbsp;algorithm])</td>
 <td>Find most likely state sequence corresponding to <cite>obs</cite>.</td>
@@ -228,17 +282,17 @@ covars, etc.  Defaults to all parameters.</td>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.predict_proba" title="sklearn.hmm.MultinomialHMM.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(obs)</td>
 <td>Compute the posterior probability for each state in the model</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.rvs" title="sklearn.hmm.MultinomialHMM.rvs"><tt class="xref py py-obj docutils literal"><span class="pre">rvs</span></tt></a>(*args,&nbsp;**kwargs)</td>
-<td>DEPRECATED: rvs is deprecated in 0.11 will be removed in 0.13: use sample instead</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.sample" title="sklearn.hmm.MultinomialHMM.sample"><tt class="xref py py-obj docutils literal"><span class="pre">sample</span></tt></a>([n,&nbsp;random_state])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.sample" title="sklearn.hmm.MultinomialHMM.sample"><tt class="xref py py-obj docutils literal"><span class="pre">sample</span></tt></a>([n,&nbsp;random_state])</td>
 <td>Generate random samples from the model.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.score" title="sklearn.hmm.MultinomialHMM.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(obs)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.score" title="sklearn.hmm.MultinomialHMM.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(obs)</td>
 <td>Compute the log probability under the model.</td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.score_samples" title="sklearn.hmm.MultinomialHMM.score_samples"><tt class="xref py py-obj docutils literal"><span class="pre">score_samples</span></tt></a>(obs)</td>
+<td>Compute the log probability under the model and compute posteriors.</td>
+</tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.set_params" title="sklearn.hmm.MultinomialHMM.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
-<td>Set the parameters of the estimator.</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
 </tbody>
 </table>
@@ -269,7 +323,7 @@ covars, etc.  Defaults to all parameters.</td>
 <dl class="method">
 <dt id="sklearn.hmm.MultinomialHMM.decode">
 <tt class="descname">decode</tt><big>(</big><em>obs</em>, <em>algorithm='viterbi'</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM.decode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find most likely state sequence corresponding to <cite>obs</cite>.
+<dd><p>Find most likely state sequence corresponding to <tt class="docutils literal"><span class="pre">obs</span></tt>.
 Uses the selected algorithm for decoding.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -301,10 +355,10 @@ corresponds to a single data point.</p>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.eval" title="sklearn.hmm.MultinomialHMM.eval"><tt class="xref py py-obj docutils literal"><span class="pre">eval</span></tt></a></dt>
-<dd>Compute the log probability under the model and posteriors</dd>
+<dt><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.score_samples" title="sklearn.hmm.MultinomialHMM.score_samples"><tt class="xref py py-obj docutils literal"><span class="pre">score_samples</span></tt></a></dt>
+<dd>Compute the log probability under the model and posteriors.</dd>
 <dt><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.score" title="sklearn.hmm.MultinomialHMM.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a></dt>
-<dd>Compute the log probability under the model</dd>
+<dd>Compute the log probability under the model.</dd>
 </dl>
 </div>
 </dd></dl>
@@ -317,89 +371,28 @@ corresponds to a single data point.</p>
 
 <dl class="method">
 <dt id="sklearn.hmm.MultinomialHMM.eval">
-<tt class="descname">eval</tt><big>(</big><em>obs</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM.eval" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the log probability under the model and compute posteriors</p>
-<p>Implements rank and beam pruning in the forward-backward
-algorithm to speed up inference in large models.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
-<blockquote>
-<div><p>Sequence of n_features-dimensional data points.  Each row
-corresponds to a single point in the sequence.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>logprob</strong> : float</p>
-<blockquote>
-<div><p>Log likelihood of the sequence <cite>obs</cite></p>
-</div></blockquote>
-<p><strong>posteriors: array_like, shape (n, n_components)</strong> :</p>
-<blockquote class="last">
-<div><p>Posterior probabilities of each state for each
-observation</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition-see-also admonition seealso">
-<p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.score" title="sklearn.hmm.MultinomialHMM.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a></dt>
-<dd>Compute the log probability under the model</dd>
-<dt><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.decode" title="sklearn.hmm.MultinomialHMM.decode"><tt class="xref py py-obj docutils literal"><span class="pre">decode</span></tt></a></dt>
-<dd>Find most likely state sequence corresponding to a <cite>obs</cite></dd>
-</dl>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="sklearn.hmm.MultinomialHMM.fit">
-<tt class="descname">fit</tt><big>(</big><em>obs</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Estimate model parameters.</p>
-<p>An initialization step is performed before entering the EM
-algorithm. If you want to avoid this step, set the keyword
-argument init_params to the empty string &#8216;&#8217;. Likewise, if you
-would like just to do an initialization, call this method with
-n_iter=0.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : list</p>
-<blockquote class="last">
-<div><p>List of array-like observation sequences (shape (n_i, n_features)).</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>In general, <cite>logprob</cite> should be non-decreasing unless
-aggressive pruning is used.  Decreasing <cite>logprob</cite> is generally
-a sign of overfitting (e.g. a covariance parameter getting too
-small).  You can fix this by getting more training data, or
-decreasing <cite>covars_prior</cite>.</p>
-<p><strong>Please note that setting parameters in the `fit` method is
-deprecated and will be removed in the next release.
-Set it on initialization instead.</strong></p>
+<tt class="descname">eval</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: HMM.eval was renamed to HMM.score_samples in 0.14 and will be removed in 0.16.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="sklearn.hmm.MultinomialHMM.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for the estimator</p>
+<dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -458,12 +451,6 @@ corresponds to a single data point.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="sklearn.hmm.MultinomialHMM.rvs">
-<tt class="descname">rvs</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM.rvs" title="Permalink to this definition">¶</a></dt>
-<dd><p>DEPRECATED: rvs is deprecated in 0.11 will be removed in 0.13: use sample instead</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="sklearn.hmm.MultinomialHMM.sample">
 <tt class="descname">sample</tt><big>(</big><em>n=1</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM.sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate random samples from the model.</p>
@@ -508,7 +495,7 @@ corresponds to a single data point.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>logprob</strong> : float</p>
 <blockquote class="last">
-<div><p>Log likelihood of the <cite>obs</cite></p>
+<div><p>Log likelihood of the <tt class="docutils literal"><span class="pre">obs</span></tt>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -517,8 +504,47 @@ corresponds to a single data point.</p>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.eval" title="sklearn.hmm.MultinomialHMM.eval"><tt class="xref py py-obj docutils literal"><span class="pre">eval</span></tt></a></dt>
+<dt><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.score_samples" title="sklearn.hmm.MultinomialHMM.score_samples"><tt class="xref py py-obj docutils literal"><span class="pre">score_samples</span></tt></a></dt>
 <dd>Compute the log probability under the model and posteriors</dd>
+<dt><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.decode" title="sklearn.hmm.MultinomialHMM.decode"><tt class="xref py py-obj docutils literal"><span class="pre">decode</span></tt></a></dt>
+<dd>Find most likely state sequence corresponding to a <cite>obs</cite></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.hmm.MultinomialHMM.score_samples">
+<tt class="descname">score_samples</tt><big>(</big><em>obs</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM.score_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the log probability under the model and compute posteriors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
+<blockquote>
+<div><p>Sequence of n_features-dimensional data points. Each row
+corresponds to a single point in the sequence.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>logprob</strong> : float</p>
+<blockquote>
+<div><p>Log likelihood of the sequence <tt class="docutils literal"><span class="pre">obs</span></tt>.</p>
+</div></blockquote>
+<p><strong>posteriors</strong> : array_like, shape (n, n_components)</p>
+<blockquote class="last">
+<div><p>Posterior probabilities of each state for each
+observation</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.score" title="sklearn.hmm.MultinomialHMM.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a></dt>
+<dd>Compute the log probability under the model</dd>
 <dt><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.decode" title="sklearn.hmm.MultinomialHMM.decode"><tt class="xref py py-obj docutils literal"><span class="pre">decode</span></tt></a></dt>
 <dd>Find most likely state sequence corresponding to a <cite>obs</cite></dd>
 </dl>
@@ -528,7 +554,7 @@ corresponds to a single data point.</p>
 <dl class="method">
 <dt id="sklearn.hmm.MultinomialHMM.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of the estimator.</p>
+<dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
 <tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
@@ -568,11 +594,19 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.hmm.MultinomialHMM.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.hmm.GaussianHMM.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.hmm.GMMHMM.html">Next
+      </a>
+    </div>
     
      </div>
 

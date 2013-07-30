@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.3.12. sklearn.cross_validation.permutation_test_score &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.cross_validation.permutation_test_score &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.cross_validation.check_cv" href="sklearn.cross_validation.check_cv.html" />
+    <link rel="prev" title="sklearn.cross_validation.cross_val_score" href="sklearn.cross_validation.cross_val_score.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.cross_validation.cross_val_score.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.cross_va...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cross_validation.cross_val_score
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.cross_validation.check_cv.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.cross_va...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cross_validation.check_cv
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.3.12. sklearn.cross_validation.permutation_test_score</a></li>
+<li><a class="reference internal" href="#">sklearn.cross_validation.permutation_test_score</a></li>
 </ul>
 
     </div>
@@ -131,61 +185,59 @@
 <h1>sklearn.cross_validation.permutation_test_score<a class="headerlink" href="#sklearn-cross-validation-permutation-test-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.cross_validation.permutation_test_score">
-<tt class="descclassname">sklearn.cross_validation.</tt><tt class="descname">permutation_test_score</tt><big>(</big><em>estimator</em>, <em>X</em>, <em>y</em>, <em>score_func</em>, <em>cv=None</em>, <em>n_permutations=100</em>, <em>n_jobs=1</em>, <em>labels=None</em>, <em>random_state=0</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.permutation_test_score" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.cross_validation.</tt><tt class="descname">permutation_test_score</tt><big>(</big><em>estimator</em>, <em>X</em>, <em>y</em>, <em>score_func=None</em>, <em>cv=None</em>, <em>n_permutations=100</em>, <em>n_jobs=1</em>, <em>labels=None</em>, <em>random_state=0</em>, <em>verbose=0</em>, <em>scoring=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.permutation_test_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the significance of a cross-validated score with permutations</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>estimator: estimator object implementing &#8216;fit&#8217;</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>estimator</strong> : estimator object implementing &#8216;fit&#8217;</p>
 <blockquote>
-<div><p>The object to use to fit the data</p>
+<div><p>The object to use to fit the data.</p>
 </div></blockquote>
-<p><strong>X: array-like of shape at least 2D</strong> :</p>
+<p><strong>X</strong> : array-like of shape at least 2D</p>
 <blockquote>
 <div><p>The data to fit.</p>
 </div></blockquote>
-<p><strong>y: array-like</strong> :</p>
+<p><strong>y</strong> : array-like</p>
 <blockquote>
 <div><p>The target variable to try to predict in the case of
 supervised learning.</p>
 </div></blockquote>
-<p><strong>score_func: callable</strong> :</p>
+<p><strong>scoring</strong> : string, callable or None, optional, default: None</p>
 <blockquote>
-<div><p>Callable taking as arguments the test targets (y_test) and
-the predicted targets (y_pred) and returns a float. The score
-functions are expected to return a bigger value for a better result
-otherwise the returned value does not correspond to a p-value (see
-Returns below for further details).</p>
+<div><p>A string (see model evaluation documentation) or
+a scorer callable object / function with signature
+<tt class="docutils literal"><span class="pre">scorer(estimator,</span> <span class="pre">X,</span> <span class="pre">y)</span></tt>.</p>
 </div></blockquote>
-<p><strong>cv</strong> : integer or crossvalidation generator, optional</p>
+<p><strong>cv</strong> : integer or cross-validation generator, optional</p>
 <blockquote>
 <div><p>If an integer is passed, it is the number of fold (default 3).
-Specific crossvalidation objects can be passed, see
-sklearn.cross_validation module for the list of possible objects</p>
+Specific cross-validation objects can be passed, see
+sklearn.cross_validation module for the list of possible objects.</p>
 </div></blockquote>
-<p><strong>n_jobs: integer, optional</strong> :</p>
+<p><strong>n_jobs</strong> : integer, optional</p>
 <blockquote>
 <div><p>The number of CPUs to use to do the computation. -1 means
 &#8216;all CPUs&#8217;.</p>
 </div></blockquote>
-<p><strong>labels: array-like of shape [n_samples] (optional)</strong> :</p>
+<p><strong>labels</strong> : array-like of shape [n_samples] (optional)</p>
 <blockquote>
 <div><p>Labels constrain the permutation among groups of samples with
 a same label.</p>
 </div></blockquote>
-<p><strong>random_state: RandomState or an int seed (0 by default)</strong> :</p>
+<p><strong>random_state</strong> : RandomState or an int seed (0 by default)</p>
 <blockquote>
 <div><p>A random number generator instance to define the state of the
 random permutations generator.</p>
 </div></blockquote>
-<p><strong>verbose: integer, optional</strong> :</p>
+<p><strong>verbose</strong> : integer, optional</p>
 <blockquote>
-<div><p>The verbosity level</p>
+<div><p>The verbosity level.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>score: float</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>score</strong> : float</p>
 <blockquote>
 <div><p>The true score without permuting targets.</p>
 </div></blockquote>
@@ -193,11 +245,11 @@ random permutations generator.</p>
 <blockquote>
 <div><p>The scores obtained for each permutations.</p>
 </div></blockquote>
-<p><strong>pvalue: float</strong> :</p>
+<p><strong>pvalue</strong> : float</p>
 <blockquote class="last">
 <div><p>The returned value equals p-value if <cite>score_func</cite> returns bigger
-numbers for better scores (e.g., zero_one). If <cite>score_func</cite> is rather a
-loss function (i.e. when lower is better such as with
+numbers for better scores (e.g., accuracy_score). If <cite>score_func</cite> is
+rather a loss function (i.e. when lower is better such as with
 <cite>mean_squared_error</cite>) then this is actually the complement of the
 p-value:  1 - p-value.</p>
 </div></blockquote>
@@ -224,11 +276,19 @@ vol. 11</div></blockquote>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.cross_validation.permutation_test_score.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.cross_validation.cross_val_score.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.cross_validation.check_cv.html">Next
+      </a>
+    </div>
     
      </div>
 

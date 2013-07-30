@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>1. Supervised learning &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>1. Supervised learning &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="index.html" />
+    <link rel="up" title="&lt;no title&gt;" href="user_guide.html" />
+    <link rel="next" title="1.1. Generalized Linear Models" href="modules/linear_model.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="user_guide.html" />
    
        <script type="text/javascript" src="_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="index.html">
             <img src="_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="install.html">Installation</a></li>
@@ -110,7 +112,55 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="user_guide.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        <no title>
+        </span>
+            <span class="hiddenrellink">
+            <no title>
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="modules/linear_model.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        1.1. Generalized...
+        </span>
+            <span class="hiddenrellink">
+            1.1. Generalized Linear Models
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="user_guide.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        <no title>
+        </span>
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">1. Supervised learning</a><ul>
@@ -201,12 +251,14 @@
 <li class="toctree-l2"><a class="reference internal" href="modules/linear_model.html#logistic-regression">1.1.10. Logistic regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/linear_model.html#stochastic-gradient-descent-sgd">1.1.11. Stochastic Gradient Descent - SGD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/linear_model.html#perceptron">1.1.12. Perceptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/linear_model.html#passive-aggressive-algorithms">1.1.13. Passive Aggressive Algorithms</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules/svm.html">1.2. Support Vector Machines</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modules/svm.html#classification">1.2.1. Classification</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/svm.html#multi-class-classification">1.2.1.1. Multi-class classification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/svm.html#unbalanced-problems">1.2.1.2. Unbalanced problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/svm.html#scores-and-probabilities">1.2.1.2. Scores and probabilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/svm.html#unbalanced-problems">1.2.1.3. Unbalanced problems</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/svm.html#regression">1.2.2. Regression</a></li>
@@ -215,7 +267,7 @@
 <li class="toctree-l2"><a class="reference internal" href="modules/svm.html#tips-on-practical-use">1.2.5. Tips on Practical Use</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/svm.html#kernel-functions">1.2.6. Kernel functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/svm.html#custom-kernels">1.2.6.1. Custom Kernels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/svm.html#using-python-functions-as-kernels">1.2.6.1.1. Using python functions as kernels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/svm.html#using-python-functions-as-kernels">1.2.6.1.1. Using Python functions as kernels</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/svm.html#using-the-gram-matrix">1.2.6.1.2. Using the Gram matrix</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/svm.html#parameters-of-the-rbf-kernel">1.2.6.1.3. Parameters of the RBF Kernel</a></li>
 </ul>
@@ -244,7 +296,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules/neighbors.html">1.4. Nearest Neighbors</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules/neighbors.html#unsupervised-nearest-neighbors">1.4.1. Unsupervised Nearest Neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/neighbors.html#unsupervised-nearest-neighbors">1.4.1. Unsupervised Nearest Neighbors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/neighbors.html#finding-the-nearest-neighbors">1.4.1.1. Finding the Nearest Neighbors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/neighbors.html#kdtree-and-balltree-classes">1.4.1.2. KDTree and BallTree Classes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="modules/neighbors.html#nearest-neighbors-classification">1.4.2. Nearest Neighbors Classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/neighbors.html#nearest-neighbors-regression">1.4.3. Nearest Neighbors Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/neighbors.html#nearest-neighbor-algorithms">1.4.4. Nearest Neighbor Algorithms</a><ul>
@@ -278,11 +334,12 @@
 <li class="toctree-l2"><a class="reference internal" href="modules/gaussian_process.html#implementation-details">1.5.5. Implementation details</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules/pls.html">1.6. Partial Least Squares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/cross_decomposition.html">1.6. Cross decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules/naive_bayes.html">1.7. Naive Bayes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modules/naive_bayes.html#gaussian-naive-bayes">1.7.1. Gaussian Naive Bayes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/naive_bayes.html#multinomial-naive-bayes">1.7.2. Multinomial Naive Bayes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/naive_bayes.html#bernoulli-naive-bayes">1.7.3. Bernoulli Naive Bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/naive_bayes.html#out-of-core-naive-bayes-model-fitting">1.7.4. Out-of-core naive Bayes model fitting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules/tree.html">1.8. Decision Trees</a><ul>
@@ -306,18 +363,28 @@
 <li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#parameters">1.9.1.3. Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#parallelization">1.9.1.4. Parallelization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#feature-importance-evaluation">1.9.1.5. Feature importance evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#totally-random-trees-embedding">1.9.1.6. Totally Random Trees Embedding</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="modules/ensemble.html#gradient-tree-boosting">1.9.2. Gradient Tree Boosting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#classification">1.9.2.1. Classification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#regression">1.9.2.2. Regression</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#mathematical-formulation">1.9.2.3. Mathematical formulation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#loss-functions">1.9.2.3.1. Loss Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/ensemble.html#adaboost">1.9.2. AdaBoost</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#usage">1.9.2.1. Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#regularization">1.9.2.4. Regularization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#shrinkage">1.9.2.4.1. Shrinkage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#subsampling">1.9.2.4.2. Subsampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/ensemble.html#gradient-tree-boosting">1.9.3. Gradient Tree Boosting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#classification">1.9.3.1. Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#regression">1.9.3.2. Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#mathematical-formulation">1.9.3.3. Mathematical formulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#loss-functions">1.9.3.3.1. Loss Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#regularization">1.9.3.4. Regularization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#shrinkage">1.9.3.4.1. Shrinkage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#subsampling">1.9.3.4.2. Subsampling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#interpretation">1.9.3.5. Interpretation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#feature-importance">1.9.3.5.1. Feature importance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#partial-dependence">1.9.3.5.2. Partial dependence</a></li>
 </ul>
 </li>
 </ul>
@@ -325,12 +392,20 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules/multiclass.html">1.10. Multiclass and multilabel algorithms</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules/multiclass.html#one-vs-the-rest">1.10.1. One-Vs-The-Rest</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modules/multiclass.html#multilabel-learning-with-ovr">1.10.1.1. Multilabel learning with OvR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/multiclass.html#multilabel-classification-format">1.10.1. Multilabel classification format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/multiclass.html#one-vs-the-rest">1.10.2. One-Vs-The-Rest</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/multiclass.html#multiclass-learning">1.10.2.1. Multiclass learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/multiclass.html#multilabel-learning">1.10.2.2. Multilabel learning</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="modules/multiclass.html#one-vs-one">1.10.2. One-Vs-One</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/multiclass.html#error-correcting-output-codes">1.10.3. Error-Correcting Output-Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/multiclass.html#one-vs-one">1.10.3. One-Vs-One</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/multiclass.html#id1">1.10.3.1. Multiclass learning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/multiclass.html#error-correcting-output-codes">1.10.4. Error-Correcting Output-Codes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/multiclass.html#id3">1.10.4.1. Multiclass learning</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules/feature_selection.html">1.11. Feature selection</a><ul>
@@ -342,17 +417,19 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/feature_selection.html#tree-based-feature-selection">1.11.4. Tree-based feature selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/feature_selection.html#feature-selection-as-part-of-a-pipeline">1.11.5. Feature selection as part of a pipeline</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules/label_propagation.html">1.12. Semi-Supervised</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modules/label_propagation.html#label-propagation">1.12.1. Label Propagation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules/lda_qda.html">1.13. Linear and Quadratic Discriminant Analysis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules/lda_qda.html#dimensionality-reduction-using-lda">1.13.1. Dimensionality Reduction using LDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/lda_qda.html">1.13. Linear and quadratic discriminant analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/lda_qda.html#dimensionality-reduction-using-lda">1.13.1. Dimensionality reduction using LDA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/lda_qda.html#mathematical-idea">1.13.2. Mathematical Idea</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="modules/isotonic.html">1.14. Isotonic regression</a></li>
 </ul>
 </div>
 </div>
@@ -366,11 +443,19 @@
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="_sources/supervised_learning.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="user_guide.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="modules/linear_model.html">Next
+      </a>
+    </div>
     
      </div>
 

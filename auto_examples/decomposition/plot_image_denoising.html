@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Image denoising using dictionary learning &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>Image denoising using dictionary learning &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Decision Tree Regression with AdaBoost" href="../ensemble/plot_adaboost_regression.html" />
+    <link rel="prev" title="Faces dataset decompositions" href="plot_faces_decomposition.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="plot_faces_decomposition.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Faces dataset de...
+        </span>
+            <span class="hiddenrellink">
+            Faces dataset decompositions
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="../ensemble/plot_adaboost_regression.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Decision Tree Re...
+        </span>
+            <span class="hiddenrellink">
+            Decision Tree Regression with AdaBoost
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Examples
+        </span>
+            <span class="hiddenrellink">
+            Examples
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">Image denoising using dictionary learning</a></li>
@@ -130,9 +184,13 @@
   <div class="section" id="image-denoising-using-dictionary-learning">
 <span id="example-decomposition-plot-image-denoising-py"></span><h1>Image denoising using dictionary learning<a class="headerlink" href="#image-denoising-using-dictionary-learning" title="Permalink to this headline">¶</a></h1>
 <p>An example comparing the effect of reconstructing noisy fragments
-of Lena using online <a class="reference internal" href="../../modules/decomposition.html#dictionarylearning"><em>Dictionary Learning</em></a> and various transform methods.</p>
-<p>The dictionary is fitted on the non-distorted left half of the image, and
-subsequently used to reconstruct the right half.</p>
+of the Lena image using firstly online <a class="reference internal" href="../../modules/decomposition.html#dictionarylearning"><em>Dictionary Learning</em></a> and
+various transform methods.</p>
+<p>The dictionary is fitted on the distorted left half of the image, and
+subsequently used to reconstruct the right half. Note that even better
+performance could be achieved by fitting to an undistorted (i.e.
+noiseless) image, but here we start from the assumption that it is not
+available.</p>
 <p>A common practice for evaluating the results of image denoising is by looking
 at the difference between the reconstruction and the original image. If the
 reconstruction is perfect this will look like gaussian noise.</p>
@@ -147,7 +205,7 @@ it can produce a suggestive output with very high speed, and thus be useful
 for other tasks such as object classification, where performance is not
 necessarily related to visualisation.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_image_denoising.py"><tt class="xref download docutils literal"><span class="pre">plot_image_denoising.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 
@@ -171,29 +229,29 @@ necessarily related to visualisation.</p>
 <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">lena</span><span class="o">.</span><span class="n">shape</span>
 
 <span class="c"># Distort the right half of the image</span>
-<span class="k">print</span> <span class="s">&#39;Distorting image...&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Distorting image...&#39;</span><span class="p">)</span>
 <span class="n">distorted</span> <span class="o">=</span> <span class="n">lena</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">distorted</span><span class="p">[:,</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">+=</span> <span class="mf">0.075</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="c"># Extract all clean patches from the left half of the image</span>
-<span class="k">print</span> <span class="s">&#39;Extracting clean patches...&#39;</span>
+<span class="c"># Extract all reference patches from the left half of the image</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Extracting reference patches...&#39;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">patch_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">extract_patches_2d</span><span class="p">(</span><span class="n">distorted</span><span class="p">[:,</span> <span class="p">:</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="n">patch_size</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 <span class="c">###############################################################################</span>
-<span class="c"># Learn the dictionary from clean patches</span>
+<span class="c"># Learn the dictionary from reference patches</span>
 
-<span class="k">print</span> <span class="s">&#39;Learning the dictionary... &#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Learning the dictionary...&#39;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">dico</span> <span class="o">=</span> <span class="n">MiniBatchDictionaryLearning</span><span class="p">(</span><span class="n">n_atoms</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">dico</span> <span class="o">=</span> <span class="n">MiniBatchDictionaryLearning</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">V</span> <span class="o">=</span> <span class="n">dico</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">components_</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
-<span class="k">print</span> <span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="n">dt</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="n">dt</span><span class="p">)</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">4.2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">comp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">100</span><span class="p">]):</span>
@@ -235,13 +293,13 @@ necessarily related to visualisation.</p>
 <span class="c">###############################################################################</span>
 <span class="c"># Extract noisy patches and reconstruct them using the dictionary</span>
 
-<span class="k">print</span> <span class="s">&#39;Extracting noisy patches... &#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Extracting noisy patches... &#39;</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">extract_patches_2d</span><span class="p">(</span><span class="n">distorted</span><span class="p">[:,</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:],</span> <span class="n">patch_size</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">-=</span> <span class="n">intercept</span>
-<span class="k">print</span> <span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
 
 <span class="n">transform_algorithms</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="s">&#39;Orthogonal Matching Pursuit</span><span class="se">\n</span><span class="s">1 atom&#39;</span><span class="p">,</span> <span class="s">&#39;omp&#39;</span><span class="p">,</span>
@@ -249,12 +307,12 @@ necessarily related to visualisation.</p>
     <span class="p">(</span><span class="s">&#39;Orthogonal Matching Pursuit</span><span class="se">\n</span><span class="s">2 atoms&#39;</span><span class="p">,</span> <span class="s">&#39;omp&#39;</span><span class="p">,</span>
      <span class="p">{</span><span class="s">&#39;transform_n_nonzero_coefs&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}),</span>
     <span class="p">(</span><span class="s">&#39;Least-angle regression</span><span class="se">\n</span><span class="s">5 atoms&#39;</span><span class="p">,</span> <span class="s">&#39;lars&#39;</span><span class="p">,</span>
-                            <span class="p">{</span><span class="s">&#39;transform_n_nonzero_coefs&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}),</span>
+     <span class="p">{</span><span class="s">&#39;transform_n_nonzero_coefs&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}),</span>
     <span class="p">(</span><span class="s">&#39;Thresholding</span><span class="se">\n</span><span class="s"> alpha=0.1&#39;</span><span class="p">,</span> <span class="s">&#39;threshold&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;transform_alpha&#39;</span><span class="p">:</span> <span class="o">.</span><span class="mi">1</span><span class="p">})]</span>
 
 <span class="n">reconstructions</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">transform_algorithm</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="n">transform_algorithms</span><span class="p">:</span>
-    <span class="k">print</span> <span class="n">title</span><span class="p">,</span> <span class="s">&#39;... &#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">title</span> <span class="o">+</span> <span class="s">&#39;...&#39;</span><span class="p">)</span>
     <span class="n">reconstructions</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="o">=</span> <span class="n">lena</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
     <span class="n">dico</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">transform_algorithm</span><span class="o">=</span><span class="n">transform_algorithm</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -273,7 +331,7 @@ necessarily related to visualisation.</p>
     <span class="n">reconstructions</span><span class="p">[</span><span class="n">title</span><span class="p">][:,</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="n">reconstruct_from_patches_2d</span><span class="p">(</span>
         <span class="n">patches</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
     <span class="n">dt</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
-    <span class="k">print</span> <span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="n">dt</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="n">dt</span><span class="p">)</span>
     <span class="n">show_with_diff</span><span class="p">(</span><span class="n">reconstructions</span><span class="p">[</span><span class="n">title</span><span class="p">],</span> <span class="n">lena</span><span class="p">,</span>
                    <span class="n">title</span> <span class="o">+</span> <span class="s">&#39; (time: </span><span class="si">%.1f</span><span class="s">s)&#39;</span> <span class="o">%</span> <span class="n">dt</span><span class="p">)</span>
 
@@ -291,11 +349,19 @@ necessarily related to visualisation.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/auto_examples/decomposition/plot_image_denoising.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="plot_faces_decomposition.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="../ensemble/plot_adaboost_regression.html">Next
+      </a>
+    </div>
     
      </div>
 

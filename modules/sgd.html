@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>1.3. Stochastic Gradient Descent &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>1.3. Stochastic Gradient Descent &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
+    <link rel="up" title="1. Supervised learning" href="../supervised_learning.html" />
+    <link rel="next" title="1.4. Nearest Neighbors" href="neighbors.html" />
+    <link rel="prev" title="1.2. Support Vector Machines" href="svm.html" />
    
        <script type="text/javascript" src="../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../index.html">
             <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="svm.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        1.2. Support Vec...
+        </span>
+            <span class="hiddenrellink">
+            1.2. Support Vector Machines
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="neighbors.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        1.4. Nearest Nei...
+        </span>
+            <span class="hiddenrellink">
+            1.4. Nearest Neighbors
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../supervised_learning.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        1. Supervised le...
+        </span>
+            <span class="hiddenrellink">
+            1. Supervised learning
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">1.3. Stochastic Gradient Descent</a><ul>
@@ -191,9 +245,10 @@ for the training samples:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">&quot;hinge&quot;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&quot;l2&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="go">SGDClassifier(alpha=0.0001, class_weight=None, epsilon=0.1, eta0=0.0,</span>
-<span class="go">       fit_intercept=True, learning_rate=&#39;optimal&#39;, loss=&#39;hinge&#39;, n_iter=5,</span>
-<span class="go">       n_jobs=1, penalty=&#39;l2&#39;, power_t=0.5, rho=0.85, seed=0,</span>
-<span class="go">       shuffle=False, verbose=0, warm_start=False)</span>
+<span class="go">       fit_intercept=True, l1_ratio=0.15, learning_rate=&#39;optimal&#39;,</span>
+<span class="go">       loss=&#39;hinge&#39;, n_iter=5, n_jobs=1, penalty=&#39;l2&#39;, power_t=0.5,</span>
+<span class="go">       random_state=None, rho=None, shuffle=False, verbose=0,</span>
+<span class="go">       warm_start=False)</span>
 </pre></div>
 </div>
 <p>After being fitted, the model can then be used to predict new values:</p>
@@ -204,7 +259,7 @@ for the training samples:</p>
 <p>SGD fits a linear model to the training data. The member <tt class="docutils literal"><span class="pre">coef_</span></tt> holds
 the model parameters:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
-<span class="go">array([[ 9.90090187,  9.90090187]])</span>
+<span class="go">array([[ 9.91080278,  9.91080278]])</span>
 </pre></div>
 </div>
 <p>Member <tt class="docutils literal"><span class="pre">intercept_</span></tt> holds the intercept (aka offset or bias):</p>
@@ -216,7 +271,7 @@ the model parameters:</p>
 hyperplane, is controlled by the parameter <tt class="docutils literal"><span class="pre">fit_intercept</span></tt>.</p>
 <p>To get the signed distance to the hyperplane use <a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier.decision_function" title="sklearn.linear_model.SGDClassifier.decision_function"><tt class="xref py py-meth docutils literal"><span class="pre">SGDClassifier.decision_function</span></tt></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">([[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]])</span>
-<span class="go">array([ 29.61357756])</span>
+<span class="go">array([ 29.65318117])</span>
 </pre></div>
 </div>
 <p>The concrete loss function can be set via the <tt class="docutils literal"><span class="pre">loss</span></tt>
@@ -225,7 +280,7 @@ parameter. <a class="reference internal" href="generated/sklearn.linear_model.SG
 <div><ul class="simple">
 <li><tt class="docutils literal"><span class="pre">loss=&quot;hinge&quot;</span></tt>: (soft-margin) linear Support Vector Machine,</li>
 <li><tt class="docutils literal"><span class="pre">loss=&quot;modified_huber&quot;</span></tt>: smoothed hinge loss,</li>
-<li><tt class="docutils literal"><span class="pre">loss=&quot;log&quot;</span></tt>: Logistic Regression,</li>
+<li><tt class="docutils literal"><span class="pre">loss=&quot;log&quot;</span></tt>: logistic regression,</li>
 <li>and all regression losses below.</li>
 </ul>
 </div></blockquote>
@@ -233,12 +288,12 @@ parameter. <a class="reference internal" href="generated/sklearn.linear_model.SG
 parameters if an example violates the margin constraint, which makes
 training very efficient and may result in sparser models, even when L2 penalty
 is used.</p>
-<p>In the case of binary classification and <tt class="docutils literal"><span class="pre">loss=&quot;log&quot;</span></tt> or
-<tt class="docutils literal"><span class="pre">loss=&quot;modified_huber&quot;</span></tt> you get a probability estimate <img class="math" src="../_images/math/075de9d9e6dc6d3d3d7f6a6807a7a7c9eb164f26.png" alt="P(y=C|x)"/> using
-<a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier.predict_proba" title="sklearn.linear_model.SGDClassifier.predict_proba"><tt class="xref py py-meth docutils literal"><span class="pre">SGDClassifier.predict_proba</span></tt></a>, where <cite>C</cite> is the largest class label:</p>
+<p>Using <tt class="docutils literal"><span class="pre">loss=&quot;log&quot;</span></tt> or <tt class="docutils literal"><span class="pre">loss=&quot;modified_huber&quot;</span></tt> enables the
+<tt class="docutils literal"><span class="pre">predict_proba</span></tt> method, which gives a vector of probability estimates
+<img class="math" src="../_images/math/f4dd553f09dcc308f118dfd930863ecf198a1d20.png" alt="P(y|x)"/> per sample <img class="math" src="../_images/math/26eeb5258ca5099acf8fe96b2a1049c48c89a5e6.png" alt="x"/>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">&quot;log&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
-<span class="go">array([[ 0.00000051,  0.99999949]])</span>
+<span class="go">array([[ 0.0000005,  0.9999995]])</span>
 </pre></div>
 </div>
 <p>The concrete penalty can be set via the <tt class="docutils literal"><span class="pre">penalty</span></tt> parameter.
@@ -247,13 +302,14 @@ SGD supports the following penalties:</p>
 <div><ul class="simple">
 <li><tt class="docutils literal"><span class="pre">penalty=&quot;l2&quot;</span></tt>: L2 norm penalty on <tt class="docutils literal"><span class="pre">coef_</span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre">penalty=&quot;l1&quot;</span></tt>: L1 norm penalty on <tt class="docutils literal"><span class="pre">coef_</span></tt>.</li>
-<li><tt class="docutils literal"><span class="pre">penalty=&quot;elasticnet&quot;</span></tt>: Convex combination of L2 and L1; <cite>rho * L2 + (1 - rho) * L1</cite>.</li>
+<li><tt class="docutils literal"><span class="pre">penalty=&quot;elasticnet&quot;</span></tt>: Convex combination of L2 and L1; <cite>(1 - l1_ratio) * L2 + l1_ratio * L1</cite>.</li>
 </ul>
 </div></blockquote>
 <p>The default setting is <tt class="docutils literal"><span class="pre">penalty=&quot;l2&quot;</span></tt>. The L1 penalty leads to sparse
 solutions, driving most coefficients to zero. The Elastic Net solves
 some deficiencies of the L1 penalty in the presence of highly correlated
-attributes. The parameter <tt class="docutils literal"><span class="pre">rho</span></tt> has to be specified by the user.</p>
+attributes. The parameter <tt class="docutils literal"><span class="pre">l1_ratio</span></tt> controls the convex combination
+of L1 and L2 penalty.</p>
 <p><a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier" title="sklearn.linear_model.SGDClassifier"><tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt></a> supports multi-class classification by combining
 multiple binary classifiers in a &#8220;one versus all&#8221; (OVA) scheme. For each
 of the <cite>K</cite> classes, a binary classifier is learned that discriminates
@@ -266,7 +322,7 @@ the decision surface induced by the three classifiers.</p>
 <div class="figure align-center">
 <a class="reference external image-reference" href="../auto_examples/linear_model/plot_sgd_iris.html"><img alt="modules/../auto_examples/linear_model/images/plot_sgd_iris_1.png" src="modules/../auto_examples/linear_model/images/plot_sgd_iris_1.png" /></a>
 </div>
-<p>In the case of multi-class classification <tt class="docutils literal"><span class="pre">coef_</span></tt> is a two-dimensionaly
+<p>In the case of multi-class classification <tt class="docutils literal"><span class="pre">coef_</span></tt> is a two-dimensionally
 array of <tt class="docutils literal"><span class="pre">shape=[n_classes,</span> <span class="pre">n_features]</span></tt> and <tt class="docutils literal"><span class="pre">intercept_</span></tt> is a one
 dimensional array of <tt class="docutils literal"><span class="pre">shape=[n_classes]</span></tt>. The i-th row of <tt class="docutils literal"><span class="pre">coef_</span></tt> holds
 the weight vector of the OVA classifier for the i-th class; classes are
@@ -296,9 +352,6 @@ penalties to fit linear regression models. <a class="reference internal" href="g
 well suited for regression problems with a large number of training
 samples (&gt; 10.000), for other problems we recommend <a class="reference internal" href="generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="sklearn.linear_model.Ridge"><tt class="xref py py-class docutils literal"><span class="pre">Ridge</span></tt></a>,
 <a class="reference internal" href="generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><tt class="xref py py-class docutils literal"><span class="pre">Lasso</span></tt></a>, or <a class="reference internal" href="generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="sklearn.linear_model.ElasticNet"><tt class="xref py py-class docutils literal"><span class="pre">ElasticNet</span></tt></a>.</p>
-<div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_sgd_ols.html"><img alt="modules/../auto_examples/linear_model/images/plot_sgd_ols_1.png" src="modules/../auto_examples/linear_model/images/plot_sgd_ols_1.png" /></a>
-</div>
 <p>The concrete loss function can be set via the <tt class="docutils literal"><span class="pre">loss</span></tt>
 parameter. <a class="reference internal" href="generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor" title="sklearn.linear_model.SGDRegressor"><tt class="xref py py-class docutils literal"><span class="pre">SGDRegressor</span></tt></a> supports the following loss functions:</p>
 <blockquote>
@@ -312,12 +365,6 @@ parameter. <a class="reference internal" href="generated/sklearn.linear_model.SG
 robust regression. The width of the insensitive region has to be
 specified via the parameter <tt class="docutils literal"><span class="pre">epsilon</span></tt>. This parameter depends on the
 scale of the target variables.</p>
-<div class="topic">
-<p class="topic-title first">Examples:</p>
-<ul class="simple">
-<li><a class="reference internal" href="../auto_examples/linear_model/plot_sgd_ols.html#example-linear-model-plot-sgd-ols-py"><em>Ordinary Least Squares with SGD</em></a>,</li>
-</ul>
-</div>
 </div>
 <div class="section" id="stochastic-gradient-descent-for-sparse-data">
 <h2>1.3.3. Stochastic Gradient Descent for sparse data<a class="headerlink" href="#stochastic-gradient-descent-for-sparse-data" title="Permalink to this headline">¶</a></h2>
@@ -356,9 +403,9 @@ is highly recommended to scale your data. For example, scale each
 attribute on the input vector X to [0,1] or [-1,+1], or standardize
 it to have mean 0 and variance 1. Note that the <em>same</em> scaling
 must be applied to the test vector to obtain meaningful
-results. This can be easily done using <tt class="xref py py-class docutils literal"><span class="pre">Scaler</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Scaler</span>
-<span class="n">scaler</span> <span class="o">=</span> <span class="n">Scaler</span><span class="p">()</span>
+results. This can be easily done using <tt class="xref py py-class docutils literal"><span class="pre">StandardScaler</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>  <span class="c"># Don&#39;t cheat - fit only on training data</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>  <span class="c"># apply same transformation to test data</span>
@@ -425,7 +472,7 @@ misclassification error (Zero-one loss) as shown in the Figure below.</p>
 <li>L2 norm: <img class="math" src="../_images/math/b4272aa5d2ed5bd08f3d8be32d70f85f5c063bea.png" alt="R(w) := \frac{1}{2} \sum_{i=1}^{n} w_i^2"/>,</li>
 <li>L1 norm: <img class="math" src="../_images/math/f584c803031b0eb6fc5f26d56441ef6c9592fcb1.png" alt="R(w) := \sum_{i=1}^{n} |w_i|"/>, which leads to sparse
 solutions.</li>
-<li>Elastic Net: <img class="math" src="../_images/math/3259044f232e9fa404db7245a509c4af14d9ace1.png" alt="R(w) := \rho \frac{1}{2} \sum_{i=1}^{n} w_i^2 + (1-\rho) \sum_{i=1}^{n} |w_i|"/>, a convex combination of L2 and L1.</li>
+<li>Elastic Net: <img class="math" src="../_images/math/3259044f232e9fa404db7245a509c4af14d9ace1.png" alt="R(w) := \rho \frac{1}{2} \sum_{i=1}^{n} w_i^2 + (1-\rho) \sum_{i=1}^{n} |w_i|"/>, a convex combination of L2 and L1, where <img class="math" src="../_images/math/0027034d8a10372a06deaf4f4084c01956587479.png" alt="\rho"/> is given by <tt class="docutils literal"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">l1_ratio</span></tt>.</li>
 </ul>
 </div></blockquote>
 <p>The Figure below shows the contours of the different regularization terms
@@ -439,7 +486,7 @@ in the parameter space when <img class="math" src="../_images/math/4b2566e774110
 optimization problems. In contrast to (batch) gradient descent, SGD
 approximates the true gradient of <img class="math" src="../_images/math/0f5010a36c1ef37e53a7227ed06991d6c32a1033.png" alt="E(w,b)"/> by considering a
 single training example at a time.</p>
-<p>The class <a class="reference internal" href="generated/sklearn.linear_model.sparse.SGDClassifier.html#sklearn.linear_model.sparse.SGDClassifier" title="sklearn.linear_model.sparse.SGDClassifier"><tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt></a> implements a first-order SGD learning
+<p>The class <a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier" title="sklearn.linear_model.SGDClassifier"><tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt></a> implements a first-order SGD learning
 routine.  The algorithm iterates over the training examples and for each
 example updates the model parameters according to the update rule given by</p>
 <div class="math">
@@ -453,21 +500,21 @@ classification, the default learning rate schedule (<tt class="docutils literal"
 is given by</p>
 <div class="math">
 <p><img src="../_images/math/817aecbc24ddcea57b42df2d50982cdd8ccae5da.png" alt="\eta^{(t)} = \frac {1}{\alpha  (t_0 + t)}"/></p>
-</div><p>where <img class="math" src="../_images/math/e0d2bf360290fd61d1c1557e763f2622363b3d35.png" alt="t"/> is the time step (there are a total of <cite>n_samples * epochs</cite>
+</div><p>where <img class="math" src="../_images/math/e0d2bf360290fd61d1c1557e763f2622363b3d35.png" alt="t"/> is the time step (there are a total of <cite>n_samples * n_iter</cite>
 time steps), <img class="math" src="../_images/math/10fde25257f32317828fde97047bbe76438b6305.png" alt="t_0"/> is determined based on a heuristic proposed by Léon Bottou
 such that the expected initial updates are comparable with the expected
 size of the weights (this assuming that the norm of the training samples is
 approx. 1). The exact definition can be found in <tt class="docutils literal"><span class="pre">_init_t</span></tt> in <tt class="xref py py-class docutils literal"><span class="pre">BaseSGD</span></tt>.</p>
-<p>For regression, the default learning rate schedule, inverse scaling
-(<tt class="docutils literal"><span class="pre">learning_rate='invscaling'</span></tt>), is given by</p>
+<p>For regression the default learning rate schedule is inverse scaling
+(<tt class="docutils literal"><span class="pre">learning_rate='invscaling'</span></tt>), given by</p>
 <div class="math">
 <p><img src="../_images/math/1d5dd409d3ff0af6931e97cc37087d4d33c4ffd3.png" alt="\eta^{(t)} = \frac{eta_0}{t^{power\_t}}"/></p>
-</div><p>where <img class="math" src="../_images/math/4b2b820d2fd6e45c2457f073ffec25469e13e1c8.png" alt="eta_0"/> and <img class="math" src="../_images/math/9fac8c10bc0c567ad37e956d3f4d8285795be865.png" alt="power\_t"/> are hyperparameters choosen by the
+</div><p>where <img class="math" src="../_images/math/4b2b820d2fd6e45c2457f073ffec25469e13e1c8.png" alt="eta_0"/> and <img class="math" src="../_images/math/9fac8c10bc0c567ad37e956d3f4d8285795be865.png" alt="power\_t"/> are hyperparameters chosen by the
 user via <tt class="docutils literal"><span class="pre">eta0</span></tt> and <tt class="docutils literal"><span class="pre">power_t</span></tt>, resp.</p>
 <p>For a constant learning rate use <tt class="docutils literal"><span class="pre">learning_rate='constant'</span></tt> and use <tt class="docutils literal"><span class="pre">eta0</span></tt>
 to specify the learning rate.</p>
 <p>The model parameters can be accessed through the members <tt class="docutils literal"><span class="pre">coef_</span></tt> and
-<tt class="docutils literal"><span class="pre">intercept\_</span></tt>:</p>
+<tt class="docutils literal"><span class="pre">intercept_</span></tt>:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Member <tt class="docutils literal"><span class="pre">coef_</span></tt> holds the weights <img class="math" src="../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w"/></li>
@@ -524,11 +571,19 @@ Y. Tsuruoka, J. Tsujii, S. Ananiadou -  In Proceedings of the AFNLP/ACL &#8216;0
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../_sources/modules/sgd.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="svm.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="neighbors.html">Next
+      </a>
+    </div>
     
      </div>
 

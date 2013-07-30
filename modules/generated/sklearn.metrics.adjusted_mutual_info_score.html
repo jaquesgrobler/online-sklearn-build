@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.17.3.1. sklearn.metrics.adjusted_mutual_info_score &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.metrics.adjusted_mutual_info_score &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.metrics.adjusted_rand_score" href="sklearn.metrics.adjusted_rand_score.html" />
+    <link rel="prev" title="sklearn.metrics.r2_score" href="sklearn.metrics.r2_score.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.metrics.r2_score.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.metrics....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.metrics.r2_score
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.metrics.adjusted_rand_score.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.metrics....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.metrics.adjusted_rand_score
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.17.3.1. sklearn.metrics.adjusted_mutual_info_score</a></li>
+<li><a class="reference internal" href="#">sklearn.metrics.adjusted_mutual_info_score</a></li>
 </ul>
 
     </div>
@@ -133,19 +187,19 @@
 <dt id="sklearn.metrics.adjusted_mutual_info_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">adjusted_mutual_info_score</tt><big>(</big><em>labels_true</em>, <em>labels_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.adjusted_mutual_info_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adjusted Mutual Information between two clusterings</p>
-<p>Adjusted Mutual Information (AMI) is an adjustement of the Mutual
+<p>Adjusted Mutual Information (AMI) is an adjustment of the Mutual
 Information (MI) score to account for chance. It accounts for the fact that
 the MI is generally higher for two clusterings with a larger number of
 clusters, regardless of whether there is actually more information shared.
-For two clusterings U and V, the AMI is given as:</p>
+For two clusterings <img class="math" src="../../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U"/> and <img class="math" src="../../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/>, the AMI is given as:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">AMI</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">MI</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span> <span class="o">-</span> <span class="n">E</span><span class="p">(</span><span class="n">MI</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">))]</span> <span class="o">/</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">H</span><span class="p">(</span><span class="n">U</span><span class="p">),</span> <span class="n">H</span><span class="p">(</span><span class="n">V</span><span class="p">))</span> <span class="o">-</span> <span class="n">E</span><span class="p">(</span><span class="n">MI</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">))]</span>
 </pre></div>
 </div>
 <p>This metric is independent of the absolute values of the labels:
 a permutation of the class or cluster label values won&#8217;t change the
 score value in any way.</p>
-<p>This metric is furthermore symmetric: switching <cite>label_true</cite> with
-<cite>label_pred</cite> will return the same score value. This can be useful to
+<p>This metric is furthermore symmetric: switching <tt class="docutils literal"><span class="pre">label_true</span></tt> with
+<tt class="docutils literal"><span class="pre">label_pred</span></tt> will return the same score value. This can be useful to
 measure the agreement of two independent label assignments strategies
 on the same dataset when the real ground truth is not known.</p>
 <p>Be mindful that this function is an order of magnitude slower than other
@@ -182,19 +236,18 @@ metrics, such as the Adjusted Rand Index.</p>
 </dl>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r80" rules="none">
+<table class="docutils citation" frame="void" id="r137" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R80]</a></td><td>Vinh, Epps, and Bailey, (2010). Information Theoretic Measures for
+<tr><td class="label"><a class="fn-backref" href="#id1">[R137]</a></td><td><a class="reference external" href="http://jmlr.csail.mit.edu/papers/volume11/vinh10a/vinh10a.pdf">Vinh, Epps, and Bailey, (2010). Information Theoretic Measures for
 Clusterings Comparison: Variants, Properties, Normalization and
-Correction for Chance}, JMLR
-<a class="reference external" href="http://jmlr.csail.mit.edu/papers/volume11/vinh10a/vinh10a.pdf">http://jmlr.csail.mit.edu/papers/volume11/vinh10a/vinh10a.pdf</a></td></tr>
+Correction for Chance, JMLR</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r81" rules="none">
+<table class="docutils citation" frame="void" id="r138" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R81]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Adjusted_Mutual_Information">Wikipedia entry for the Adjusted Mutual Information</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id2">[R138]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Adjusted_Mutual_Information">Wikipedia entry for the Adjusted Mutual Information</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -207,7 +260,7 @@ score 1.0:</p>
 <span class="go">1.0</span>
 </pre></div>
 </div>
-<p>If classes members are completly splitted across different clusters,
+<p>If classes members are completely split across different clusters,
 the assignment is totally in-complete, hence the AMI is null:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">adjusted_mutual_info_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="go">0.0</span>
@@ -226,11 +279,19 @@ the assignment is totally in-complete, hence the AMI is null:</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.metrics.adjusted_mutual_info_score.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.metrics.r2_score.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.metrics.adjusted_rand_score.html">Next
+      </a>
+    </div>
     
      </div>
 

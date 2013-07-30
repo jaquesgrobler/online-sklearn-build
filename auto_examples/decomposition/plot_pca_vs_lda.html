@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Comparison of LDA and PCA 2D projection of Iris dataset &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>Comparison of LDA and PCA 2D projection of Iris dataset &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Blind source separation using FastICA" href="plot_ica_blind_source_separation.html" />
+    <link rel="prev" title="The Iris Dataset" href="../datasets/plot_iris_dataset.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="../datasets/plot_iris_dataset.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        The Iris Dataset
+        </span>
+            <span class="hiddenrellink">
+            The Iris Dataset
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="plot_ica_blind_source_separation.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Blind source sep...
+        </span>
+            <span class="hiddenrellink">
+            Blind source separation using FastICA
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Examples
+        </span>
+            <span class="hiddenrellink">
+            Examples
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">Comparison of LDA and PCA 2D projection of Iris dataset</a></li>
@@ -138,9 +192,9 @@ feature space) that account for the most variance in the data. Here we
 plot the different samples on the 2 first principal components.</p>
 <p>Linear Discriminant Analysis (LDA) tries to identify attributes that
 account for the most variance <em>between classes</em>. In particular,
-LDA, in constrast to PCA, is a supervised method, using known class labels.</p>
+LDA, in contrast to PCA, is a supervised method, using known class labels.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_pca_vs_lda.py"><tt class="xref download docutils literal"><span class="pre">plot_pca_vs_lda.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 
@@ -161,8 +215,8 @@ LDA, in constrast to PCA, is a supervised method, using known class labels.</p>
 <span class="n">X_r2</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="c"># Percentage of variance explained for each components</span>
-<span class="k">print</span> <span class="s">&#39;explained variance ratio (first two components):&#39;</span><span class="p">,</span> \
-    <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;explained variance ratio (first two components): </span><span class="si">%s</span><span class="s">&#39;</span>
+      <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">))</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">target_name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="s">&quot;rgb&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">target_names</span><span class="p">):</span>
@@ -190,11 +244,19 @@ LDA, in constrast to PCA, is a supervised method, using known class labels.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/auto_examples/decomposition/plot_pca_vs_lda.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="../datasets/plot_iris_dataset.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="plot_ica_blind_source_separation.html">Next
+      </a>
+    </div>
     
      </div>
 

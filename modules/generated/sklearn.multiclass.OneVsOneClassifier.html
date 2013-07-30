@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.19.3. sklearn.multiclass.OneVsOneClassifier &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.multiclass.OneVsOneClassifier &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.multiclass.OutputCodeClassifier" href="sklearn.multiclass.OutputCodeClassifier.html" />
+    <link rel="prev" title="sklearn.multiclass.OneVsRestClassifier" href="sklearn.multiclass.OneVsRestClassifier.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.multiclass.OneVsRestClassifier.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.multicla...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.multiclass.OneVsRestClassifier
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.multiclass.OutputCodeClassifier.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.multicla...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.multiclass.OutputCodeClassifier
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.19.3. sklearn.multiclass.OneVsOneClassifier</a></li>
+<li><a class="reference internal" href="#">sklearn.multiclass.OneVsOneClassifier</a></li>
 </ul>
 
     </div>
@@ -131,7 +185,7 @@
 <h1>sklearn.multiclass.OneVsOneClassifier<a class="headerlink" href="#sklearn-multiclass-onevsoneclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.multiclass.OneVsOneClassifier">
-<em class="property">class </em><tt class="descclassname">sklearn.multiclass.</tt><tt class="descname">OneVsOneClassifier</tt><big>(</big><em>estimator</em><big>)</big><a class="headerlink" href="#sklearn.multiclass.OneVsOneClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.multiclass.</tt><tt class="descname">OneVsOneClassifier</tt><big>(</big><em>estimator</em>, <em>n_jobs=1</em><big>)</big><a class="headerlink" href="#sklearn.multiclass.OneVsOneClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>One-vs-one multiclass strategy</p>
 <p>This strategy consists in fitting one classifier per class pair.
 At prediction time, the class which received the most votes is selected.
@@ -147,8 +201,15 @@ dataset is used <cite>n_classes</cite> times.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>estimator</strong> : estimator object</p>
-<blockquote class="last">
+<blockquote>
 <div><p>An estimator object implementing <cite>fit</cite> and <cite>predict</cite>.</p>
+</div></blockquote>
+<p><strong>n_jobs</strong> : int, optional, default: 1</p>
+<blockquote class="last">
+<div><p>The number of jobs to use for the computation. If -1 all CPUs are used.
+If 1 is given, no parallel computing code is used at all, which is
+useful for debugging. For n_jobs below -1, (n_cpus + 1 + n_jobs) are
+used. Thus for n_jobs = -2, all CPUs but one are used.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -183,7 +244,7 @@ dataset is used <cite>n_classes</cite> times.</p>
 <td>Fit underlying estimators.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.multiclass.OneVsOneClassifier.get_params" title="sklearn.multiclass.OneVsOneClassifier.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
-<td>Get parameters for the estimator</td>
+<td>Get parameters for this estimator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.multiclass.OneVsOneClassifier.predict" title="sklearn.multiclass.OneVsOneClassifier.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
 <td>Predict multi-class targets using underlying estimators.</td>
@@ -192,13 +253,13 @@ dataset is used <cite>n_classes</cite> times.</p>
 <td>Returns the mean accuracy on the given test data and labels.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.multiclass.OneVsOneClassifier.set_params" title="sklearn.multiclass.OneVsOneClassifier.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
-<td>Set the parameters of the estimator.</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="sklearn.multiclass.OneVsOneClassifier.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>estimator</em><big>)</big><a class="headerlink" href="#sklearn.multiclass.OneVsOneClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>estimator</em>, <em>n_jobs=1</em><big>)</big><a class="headerlink" href="#sklearn.multiclass.OneVsOneClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -209,7 +270,7 @@ dataset is used <cite>n_classes</cite> times.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: {array-like, sparse matrix}, shape = [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = [n_samples, n_features]</p>
 <blockquote>
 <div><p>Data.</p>
 </div></blockquote>
@@ -229,15 +290,21 @@ dataset is used <cite>n_classes</cite> times.</p>
 <dl class="method">
 <dt id="sklearn.multiclass.OneVsOneClassifier.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.multiclass.OneVsOneClassifier.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for the estimator</p>
+<dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -297,7 +364,7 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.multiclass.OneVsOneClassifier.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.multiclass.OneVsOneClassifier.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of the estimator.</p>
+<dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
 <tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
@@ -325,11 +392,19 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.multiclass.OneVsOneClassifier.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.multiclass.OneVsRestClassifier.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.multiclass.OutputCodeClassifier.html">Next
+      </a>
+    </div>
     
      </div>
 

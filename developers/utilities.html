@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Utilities for Developers &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>Utilities for Developers &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,9 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
+    <link rel="next" title="Installing scikit-learn" href="../install.html" />
+    <link rel="prev" title="How to optimize for speed" href="performance.html" />
    
        <script type="text/javascript" src="../_static/sidebar.js"></script>
    
@@ -64,8 +66,7 @@
         <p class="logo"><a href="../index.html">
             <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../install.html">Installation</a></li>
@@ -110,12 +111,49 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel rellarge">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="performance.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        How to optimize ...
+        </span>
+            <span class="hiddenrellink">
+            How to optimize for speed
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="../install.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Installing sciki...
+        </span>
+            <span class="hiddenrellink">
+            Installing scikit-learn
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">Utilities for Developers</a><ul>
 <li><a class="reference internal" href="#validation-tools">Validation Tools</a></li>
 <li><a class="reference internal" href="#efficient-linear-algebra-array-operations">Efficient Linear Algebra &amp; Array Operations</a></li>
+<li><a class="reference internal" href="#efficient-random-sampling">Efficient Random Sampling</a></li>
 <li><a class="reference internal" href="#efficient-routines-for-sparse-matrices">Efficient Routines for Sparse Matrices</a></li>
 <li><a class="reference internal" href="#graph-routines">Graph Routines</a></li>
 <li><a class="reference internal" href="#backports">Backports</a><ul>
@@ -124,6 +162,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#testing-functions">Testing Functions</a></li>
+<li><a class="reference internal" href="#multiclass-and-multilabel-utility-function">Multiclass and multilabel utility function</a></li>
 <li><a class="reference internal" href="#helper-functions">Helper Functions</a></li>
 <li><a class="reference internal" href="#hash-functions">Hash Functions</a></li>
 <li><a class="reference internal" href="#warnings-and-exceptions">Warnings and Exceptions</a></li>
@@ -243,6 +282,14 @@ used in <a class="reference internal" href="../modules/generated/sklearn.utils.s
 Used in <tt class="docutils literal"><span class="pre">sklearn.cluster.k_means</span></tt>.</li>
 </ul>
 </div>
+<div class="section" id="efficient-random-sampling">
+<h2>Efficient Random Sampling<a class="headerlink" href="#efficient-random-sampling" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">random.sample_without_replacement</span></tt>: implements efficient algorithms
+for sampling <cite>n_samples</cite> integers from a population of size <cite>n_population</cite>
+without replacement.</li>
+</ul>
+</div>
 <div class="section" id="efficient-routines-for-sparse-matrices">
 <h2>Efficient Routines for Sparse Matrices<a class="headerlink" href="#efficient-routines-for-sparse-matrices" title="Permalink to this headline">¶</a></h2>
 <p>The <tt class="docutils literal"><span class="pre">sklearn.utils.sparsefuncs</span></tt> cython module hosts compiled extensions to
@@ -259,7 +306,7 @@ individual sparse samples to unit l1 or l2 norm as done in
 <li><tt class="xref py py-func docutils literal"><span class="pre">sparsefuncs.inplace_csr_column_scale</span></tt>: can be used to multiply the
 columns of a CSR matrix by a constant scale (one scale per column).
 Used for scaling features to unit standard deviation in
-<a class="reference internal" href="../modules/generated/sklearn.preprocessing.Scaler.html#sklearn.preprocessing.Scaler" title="sklearn.preprocessing.Scaler"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.preprocessing.Scaler</span></tt></a>.</li>
+<a class="reference internal" href="../modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.preprocessing.StandardScaler</span></tt></a>.</li>
 </ul>
 </div>
 <div class="section" id="graph-routines">
@@ -307,8 +354,8 @@ tests of <a class="reference internal" href="../modules/classes.html#module-skle
 (Back-ported from scipy v0.9)  Used in <tt class="docutils literal"><span class="pre">sklearn.linear_model.omp</span></tt>,
 independent back-ports in <tt class="docutils literal"><span class="pre">sklearn.mixture.gmm</span></tt> and
 <a class="reference internal" href="../modules/classes.html#module-sklearn.gaussian_process" title="sklearn.gaussian_process"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.gaussian_process</span></tt></a>.</li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">sparsetools.cs_graph_components</span></tt>
-(backported from <tt class="docutils literal"><span class="pre">scipy.sparse.cs_graph_components</span></tt> in scipy 0.9).
+<li><tt class="xref py py-func docutils literal"><span class="pre">sparsetools.connected_components</span></tt>
+(backported from <tt class="docutils literal"><span class="pre">scipy.sparse.connected_components</span></tt> in scipy 0.12).
 Used in <tt class="docutils literal"><span class="pre">sklearn.cluster.hierarchical</span></tt>, as well as in tests for
 <a class="reference internal" href="../modules/classes.html#module-sklearn.feature_extraction" title="sklearn.feature_extraction"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.feature_extraction</span></tt></a>.</li>
 </ul>
@@ -345,8 +392,23 @@ in Python 2.7).  Used in <tt class="docutils literal"><span class="pre">benchmar
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">testing.assert_in</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">testing.assert_not_in</span></tt>: Assertions for
 container membership. Designed for forward compatibility with Nose 1.0.</li>
-<li><tt class="xref py py-class docutils literal"><span class="pre">mock_urllib2</span></tt>: Object which mocks the urllib2 module to fake
-requests of mldata.  Used in tests of <a class="reference internal" href="../modules/classes.html#module-sklearn.datasets" title="sklearn.datasets"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.datasets</span></tt></a>.</li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">testing.assert_raise_message</span></tt>: Assertions for checking the
+error raise message.</li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">testing.mock_mldata_urlopen</span></tt>: Mocks the urlopen function to fake
+requests to mldata.org. Used in tests of <a class="reference internal" href="../modules/classes.html#module-sklearn.datasets" title="sklearn.datasets"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.datasets</span></tt></a>.</li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">testing.all_estimators</span></tt> : returns a list of all estimators in
+sklearn to test for consistent behavior and interfaces.</li>
+</ul>
+</div>
+<div class="section" id="multiclass-and-multilabel-utility-function">
+<h2>Multiclass and multilabel utility function<a class="headerlink" href="#multiclass-and-multilabel-utility-function" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">multiclass.is_multilabel</span></tt>: Helper function to check if the task
+is a multi-label classification one.</li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">multiclass.is_label_indicator_matrix</span></tt>: Helper function to check if
+a classification output is in label indicator matrix format.</li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">multiclass.unique_labels</span></tt>: Helper function to extract an ordered
+array of unique labels from a list of labels.</li>
 </ul>
 </div>
 <div class="section" id="helper-functions">
@@ -375,11 +437,11 @@ function is suitable for implementing lookup tables, Bloom filters,
 Count Min Sketch, feature hashing and implicitly defined sparse
 random projections:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">murmurhash3_32</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">murmurhash3_32</span><span class="p">(</span><span class="s">&quot;some feature&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="go">-384616559</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">murmurhash3_32</span><span class="p">(</span><span class="s">&quot;some feature&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">384616559</span>
+<span class="go">True</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">murmurhash3_32</span><span class="p">(</span><span class="s">&quot;some feature&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="go">3910350737L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">murmurhash3_32</span><span class="p">(</span><span class="s">&quot;some feature&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3910350737</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">sklearn.utils.murmurhash</span></tt> module can also be &#8220;cimported&#8221; from
@@ -407,11 +469,19 @@ Used in <tt class="docutils literal"><span class="pre">sklearn.covariance.graph_
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../_sources/developers/utilities.txt" rel="nofollow">Show this page source</a>
     </div>
      <div class="rel rellarge">
     
+    <div class="buttonPrevious">
+      <a href="performance.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="../install.html">Next
+      </a>
+    </div>
     
      </div>
 

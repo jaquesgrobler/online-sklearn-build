@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.7.3.2. sklearn.feature_extraction.text.TfidfTransformer &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.feature_extraction.text.TfidfTransformer &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.feature_extraction.text.TfidfVectorizer" href="sklearn.feature_extraction.text.TfidfVectorizer.html" />
+    <link rel="prev" title="sklearn.feature_extraction.text.HashingVectorizer" href="sklearn.feature_extraction.text.HashingVectorizer.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.feature_extraction.text.HashingVectorizer.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.feature_...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.feature_extraction.text.HashingVectorizer
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.feature_extraction.text.TfidfVectorizer.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.feature_...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.feature_extraction.text.TfidfVectorizer
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.7.3.2. sklearn.feature_extraction.text.TfidfTransformer</a></li>
+<li><a class="reference internal" href="#">sklearn.feature_extraction.text.TfidfTransformer</a></li>
 </ul>
 
     </div>
@@ -131,7 +185,7 @@
 <h1>sklearn.feature_extraction.text.TfidfTransformer<a class="headerlink" href="#sklearn-feature-extraction-text-tfidftransformer" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.feature_extraction.text.TfidfTransformer">
-<em class="property">class </em><tt class="descclassname">sklearn.feature_extraction.text.</tt><tt class="descname">TfidfTransformer</tt><big>(</big><em>norm='l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfTransformer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.feature_extraction.text.</tt><tt class="descname">TfidfTransformer</tt><big>(</big><em>norm=u'l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfTransformer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform a count matrix to a normalized tf or tf–idf representation</p>
 <p>Tf means term-frequency while tf–idf means term-frequency times inverse
 document-frequency. This is a common term weighting scheme in information
@@ -142,8 +196,10 @@ very frequently in a given corpus and that are hence empirically less
 informative than features that occur in a small fraction of the training
 corpus.</p>
 <p>In the SMART notation used in IR, this class implements several tf–idf
-variants. Tf is always &#8220;n&#8221; (natural), idf is &#8220;t&#8221; iff use_idf is given,
-&#8220;n&#8221; otherwise, and normalization is &#8220;c&#8221; iff norm=&#8217;l2&#8217;, &#8220;n&#8221; iff norm=None.</p>
+variants:</p>
+<p>Tf is &#8220;n&#8221; (natural) by default, &#8220;l&#8221; (logarithmic) when sublinear_tf=True.
+Idf is &#8220;t&#8221; idf is &#8220;t&#8221; when use_idf is given, &#8220;n&#8221; (none) otherwise.
+Normalization is &#8220;c&#8221; (cosine) when norm=&#8217;l2&#8217;, &#8220;n&#8221; (none) when norm=None.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -197,13 +253,13 @@ pp. 121–125.</cite></td></tr>
 <td>Learn the idf vector (global term weights)</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_extraction.text.TfidfTransformer.fit_transform" title="sklearn.feature_extraction.text.TfidfTransformer.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
-<td>Fit to data, then transform it</td>
+<td>Fit to data, then transform it.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_extraction.text.TfidfTransformer.get_params" title="sklearn.feature_extraction.text.TfidfTransformer.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
-<td>Get parameters for the estimator</td>
+<td>Get parameters for this estimator.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.feature_extraction.text.TfidfTransformer.set_params" title="sklearn.feature_extraction.text.TfidfTransformer.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
-<td>Set the parameters of the estimator.</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.feature_extraction.text.TfidfTransformer.transform" title="sklearn.feature_extraction.text.TfidfTransformer.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X[,&nbsp;copy])</td>
 <td>Transform a count matrix to a tf or tf–idf representation</td>
@@ -212,7 +268,7 @@ pp. 121–125.</cite></td></tr>
 </table>
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.TfidfTransformer.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>norm='l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfTransformer.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>norm=u'l2'</em>, <em>use_idf=True</em>, <em>smooth_idf=True</em>, <em>sublinear_tf=False</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfTransformer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -223,7 +279,7 @@ pp. 121–125.</cite></td></tr>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: sparse matrix, [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : sparse matrix, [n_samples, n_features]</p>
 <blockquote class="last">
 <div><p>a matrix of term/token counts</p>
 </div></blockquote>
@@ -236,7 +292,7 @@ pp. 121–125.</cite></td></tr>
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.TfidfTransformer.fit_transform">
 <tt class="descname">fit_transform</tt><big>(</big><em>X</em>, <em>y=None</em>, <em>**fit_params</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfTransformer.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit to data, then transform it</p>
+<dd><p>Fit to data, then transform it.</p>
 <p>Fits transformer to X and y with optional parameters fit_params
 and returns a transformed version of X.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -261,24 +317,26 @@ and returns a transformed version of X.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>This method just calls fit and transform consecutively, i.e., it is not
-an optimized implementation of fit_transform, unlike other transformers
-such as PCA.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.TfidfTransformer.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfTransformer.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for the estimator</p>
+<dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -289,7 +347,7 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.feature_extraction.text.TfidfTransformer.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.feature_extraction.text.TfidfTransformer.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of the estimator.</p>
+<dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
 <tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
@@ -312,13 +370,13 @@ component of a nested object.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: sparse matrix, [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : sparse matrix, [n_samples, n_features]</p>
 <blockquote>
 <div><p>a matrix of term/token counts</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>vectors: sparse matrix, [n_samples, n_features]</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>vectors</strong> : sparse matrix, [n_samples, n_features]</p>
 </td>
 </tr>
 </tbody>
@@ -338,11 +396,19 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.feature_extraction.text.HashingVectorizer.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.feature_extraction.text.TfidfVectorizer.html">Next
+      </a>
+    </div>
     
      </div>
 

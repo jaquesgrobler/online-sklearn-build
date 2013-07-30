@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>3. Model Selection &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>3. Model selection and evaluation &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="index.html" />
+    <link rel="up" title="&lt;no title&gt;" href="user_guide.html" />
+    <link rel="next" title="3.1. Cross-validation: evaluating estimator performance" href="modules/cross_validation.html" />
+    <link rel="prev" title="2.10. Neural network models (unsupervised)" href="modules/neural_networks.html" />
    
        <script type="text/javascript" src="_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="index.html">
             <img src="_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="install.html">Installation</a></li>
@@ -110,10 +112,58 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="modules/neural_networks.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        2.10. Neural net...
+        </span>
+            <span class="hiddenrellink">
+            2.10. Neural network models (unsupervised)
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="modules/cross_validation.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        3.1. Cross-valid...
+        </span>
+            <span class="hiddenrellink">
+            3.1. Cross-validation: evaluating estimator performance
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="user_guide.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        <no title>
+        </span>
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">3. Model Selection</a><ul>
+<li><a class="reference internal" href="#">3. Model selection and evaluation</a><ul>
 </ul>
 </li>
 </ul>
@@ -163,15 +213,15 @@
       font-weight: normal;
       }
 
-</style><div class="section" id="model-selection">
-<span id="id1"></span><h1>3. Model Selection<a class="headerlink" href="#model-selection" title="Permalink to this headline">¶</a></h1>
+</style><div class="section" id="model-selection-and-evaluation">
+<span id="model-selection"></span><h1>3. Model selection and evaluation<a class="headerlink" href="#model-selection-and-evaluation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules/cross_validation.html">3.1. Cross-Validation: evaluating estimator performance</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="modules/cross_validation.html">3.1. Cross-validation: evaluating estimator performance</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modules/cross_validation.html#computing-cross-validated-metrics">3.1.1. Computing cross-validated metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/cross_validation.html#cross-validation-iterators">3.1.2. Cross validation iterators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/cross_validation.html#k-fold">3.1.2.1. K-fold</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/cross_validation.html#stratified-k-fold">3.1.2.2. Stratified K-Fold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/cross_validation.html#stratified-k-fold">3.1.2.2. Stratified k-fold</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/cross_validation.html#leave-one-out-loo">3.1.2.3. Leave-One-Out - LOO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/cross_validation.html#leave-p-out-lpo">3.1.2.4. Leave-P-Out - LPO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/cross_validation.html#leave-one-label-out-lolo">3.1.2.5. Leave-One-Label-Out - LOLO</a></li>
@@ -184,10 +234,13 @@
 <li class="toctree-l2"><a class="reference internal" href="modules/cross_validation.html#cross-validation-and-model-selection">3.1.3. Cross validation and model selection</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules/grid_search.html">3.2. Grid Search: setting estimator parameters</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules/grid_search.html#gridsearchcv">3.2.1. GridSearchCV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/grid_search.html#examples">3.2.2. Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/grid_search.html#alternatives-to-brute-force-grid-search">3.2.3. Alternatives to brute force grid search</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="modules/grid_search.html">3.2. Grid Search: Searching for estimator parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/grid_search.html#exhaustive-grid-search">3.2.1. Exhaustive Grid Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#scoring-functions-for-parameter-search">3.2.1.1. Scoring functions for parameter search</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/grid_search.html#randomized-parameter-optimization">3.2.2. Randomized Parameter Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/grid_search.html#alternatives-to-brute-force-parameter-search">3.2.3. Alternatives to brute force parameter search</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/grid_search.html#model-specific-cross-validation">3.2.3.1. Model specific cross-validation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.linear_model.RidgeCV.html">3.2.3.1.1. sklearn.linear_model.RidgeCV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.linear_model.RidgeClassifierCV.html">3.2.3.1.2. sklearn.linear_model.RidgeClassifierCV</a></li>
@@ -219,6 +272,57 @@
 <li class="toctree-l2"><a class="reference internal" href="modules/pipeline.html#notes">3.3.2. Notes</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="modules/pipeline.html#featureunion-combining-feature-extractors">3.4. FeatureUnion: Combining feature extractors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/pipeline.html#id1">3.4.1. Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/model_evaluation.html">3.5. Model evaluation: quantifying the quality of predictions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/model_evaluation.html#the-scoring-parameter-defining-model-evaluation-rules">3.5.1. The <cite>scoring</cite> parameter: defining model evaluation rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#common-cases-predefined-values">3.5.1.1. Common cases: predefined values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#defining-your-scoring-strategy-from-score-functions">3.5.1.2. Defining your scoring strategy from score functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#implementing-your-own-scoring-object">3.5.1.3. Implementing your own scoring object</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/model_evaluation.html#function-for-prediction-error-metrics">3.5.2. Function for prediction-error metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#classification-metrics">3.5.2.1. Classification metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#accuracy-score">3.5.2.1.1. Accuracy score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#area-under-the-curve-auc">3.5.2.1.2. Area under the curve (AUC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#average-precision-score">3.5.2.1.3. Average precision score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#confusion-matrix">3.5.2.1.4. Confusion matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#classification-report">3.5.2.1.5. Classification report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#hamming-loss">3.5.2.1.6. Hamming loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#jaccard-similarity-coefficient-score">3.5.2.1.7. Jaccard similarity coefficient score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#precision-recall-and-f-measures">3.5.2.1.8. Precision, recall and F-measures</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#binary-classification">3.5.2.1.8.1. Binary classification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#multiclass-and-multilabel-classification">3.5.2.1.8.2. Multiclass and multilabel classification</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#hinge-loss">3.5.2.1.9. Hinge loss</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#log-loss">3.5.2.2. Log loss</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#matthews-correlation-coefficient">3.5.2.2.1. Matthews correlation coefficient</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#receiver-operating-characteristic-roc">3.5.2.2.2. Receiver operating characteristic (ROC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#zero-one-loss">3.5.2.2.3. Zero one loss</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#regression-metrics">3.5.2.3. Regression metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#explained-variance-score">3.5.2.3.1. Explained variance score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#mean-absolute-error">3.5.2.3.2. Mean absolute error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#mean-squared-error">3.5.2.3.3. Mean squared error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#r2-score-the-coefficient-of-determination">3.5.2.3.4. R² score, the coefficient of determination</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/model_evaluation.html#clustering-metrics">3.5.3. Clustering metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/model_evaluation.html#biclustering-metrics">3.5.4. Biclustering metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#id8">3.5.4.1. Clustering metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/model_evaluation.html#dummy-estimators">3.5.5. Dummy estimators</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -232,11 +336,19 @@
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="_sources/model_selection.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="modules/neural_networks.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="modules/cross_validation.html">Next
+      </a>
+    </div>
     
      </div>
 

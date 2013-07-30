@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.15.1.3. sklearn.linear_model.RidgeClassifier &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.linear_model.RidgeClassifier &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="3.2.3.1.2. sklearn.linear_model.RidgeClassifierCV" href="sklearn.linear_model.RidgeClassifierCV.html" />
+    <link rel="prev" title="sklearn.linear_model.Ridge" href="sklearn.linear_model.Ridge.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.linear_model.Ridge.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.linear_m...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.linear_model.Ridge
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.linear_model.RidgeClassifierCV.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        3.2.3.1.2. sklea...
+        </span>
+            <span class="hiddenrellink">
+            3.2.3.1.2. sklearn.linear_model.RidgeClassifierCV
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.15.1.3. sklearn.linear_model.RidgeClassifier</a></li>
+<li><a class="reference internal" href="#">sklearn.linear_model.RidgeClassifier</a></li>
 </ul>
 
     </div>
@@ -131,7 +185,7 @@
 <h1>sklearn.linear_model.RidgeClassifier<a class="headerlink" href="#sklearn-linear-model-ridgeclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.linear_model.RidgeClassifier">
-<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">RidgeClassifier</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>tol=0.001</em>, <em>class_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RidgeClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">RidgeClassifier</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>max_iter=None</em>, <em>tol=0.001</em>, <em>class_weight=None</em>, <em>solver='auto'</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RidgeClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Classifier using Ridge regression.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -144,29 +198,45 @@ and reduce the variance of the estimates.  Alpha corresponds to
 <tt class="docutils literal"><span class="pre">(2*C)^-1</span></tt> in other linear models such as LogisticRegression or
 LinearSVC.</p>
 </div></blockquote>
+<p><strong>class_weight</strong> : dict, optional</p>
+<blockquote>
+<div><p>Weights associated with classes in the form
+<tt class="docutils literal"><span class="pre">{class_label</span> <span class="pre">:</span> <span class="pre">weight}</span></tt>. If not given, all classes are
+supposed to have weight one.</p>
+</div></blockquote>
+<p><strong>copy_X</strong> : boolean, optional, default True</p>
+<blockquote>
+<div><p>If True, X will be copied; else, it may be overwritten.</p>
+</div></blockquote>
 <p><strong>fit_intercept</strong> : boolean</p>
 <blockquote>
 <div><p>Whether to calculate the intercept for this model. If set to false, no
 intercept will be used in calculations (e.g. data is expected to be
 already centered).</p>
 </div></blockquote>
-<p><strong>normalize</strong> : boolean, optional</p>
+<p><strong>max_iter</strong> : int, optional</p>
 <blockquote>
-<div><p>If True, the regressors X are normalized</p>
+<div><p>Maximum number of iterations for conjugate gradient solver.
+The default value is determined by scipy.sparse.linalg.</p>
 </div></blockquote>
-<p><strong>copy_X</strong> : boolean, optional, default True</p>
+<p><strong>normalize</strong> : boolean, optional, default False</p>
 <blockquote>
-<div><p>If True, X will be copied; else, it may be overwritten.</p>
+<div><p>If True, the regressors X will be normalized before regression.</p>
+</div></blockquote>
+<p><strong>solver</strong> : {&#8216;auto&#8217;, &#8216;svd&#8217;, &#8216;dense_cholesky&#8217;, &#8216;lsqr&#8217;, &#8216;sparse_cg&#8217;}</p>
+<blockquote>
+<div><p>Solver to use in the computational
+routines. &#8216;svd&#8217; will use a Sinvular value decomposition to obtain
+the solution, &#8216;dense_cholesky&#8217; will use the standard
+scipy.linalg.solve function, &#8216;sparse_cg&#8217; will use the
+conjugate gradient solver as found in
+scipy.sparse.linalg.cg while &#8216;auto&#8217; will chose the most
+appropriate depending on the matrix X. &#8216;lsqr&#8217; uses
+a direct regularized least-squares routine provided by scipy.</p>
 </div></blockquote>
 <p><strong>tol</strong> : float</p>
-<blockquote>
-<div><p>Precision of the solution.</p>
-</div></blockquote>
-<p><strong>class_weight</strong> : dict, optional</p>
 <blockquote class="last">
-<div><p>Weights associated with classes in the form
-{class_label : weight}. If not given, all classes are
-supposed to have weight one.</p>
+<div><p>Precision of the solution.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -202,44 +272,51 @@ advantage of the multi-variate response support in Ridge.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.RidgeClassifier.decision_function" title="sklearn.linear_model.RidgeClassifier.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
-<td>Decision function of the linear model</td>
+<td>Predict confidence scores for samples.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.RidgeClassifier.fit" title="sklearn.linear_model.RidgeClassifier.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;solver])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.RidgeClassifier.fit" title="sklearn.linear_model.RidgeClassifier.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
 <td>Fit Ridge regression model.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.RidgeClassifier.get_params" title="sklearn.linear_model.RidgeClassifier.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
-<td>Get parameters for the estimator</td>
+<td>Get parameters for this estimator.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.RidgeClassifier.predict" title="sklearn.linear_model.RidgeClassifier.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
-<td>Predict target values according to the fitted model.</td>
+<td>Predict class labels for samples in X.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.RidgeClassifier.score" title="sklearn.linear_model.RidgeClassifier.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
 <td>Returns the mean accuracy on the given test data and labels.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.RidgeClassifier.set_params" title="sklearn.linear_model.RidgeClassifier.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
-<td>Set the parameters of the estimator.</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="sklearn.linear_model.RidgeClassifier.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>tol=0.001</em>, <em>class_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RidgeClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>max_iter=None</em>, <em>tol=0.001</em>, <em>class_weight=None</em>, <em>solver='auto'</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RidgeClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="sklearn.linear_model.RidgeClassifier.decision_function">
 <tt class="descname">decision_function</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RidgeClassifier.decision_function" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decision function of the linear model</p>
+<dd><p>Predict confidence scores for samples.</p>
+<p>The confidence score for a sample is the signed distance of that
+sample to the hyperplane.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array of shape [n_samples, n_features]</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = (n_samples, n_features)</p>
+<blockquote>
+<div><p>Samples.</p>
+</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array, shape = [n_samples]</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>array, shape=(n_samples,) if n_classes == 2 else (n_samples, n_classes)</strong> :</p>
 <blockquote class="last">
-<div><p>Returns predicted values.</p>
+<div><p>Confidence scores per (sample, class) combination. In the binary
+case, confidence score for self.classes_[1] where &gt;0 means this
+class would be predicted.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -249,7 +326,7 @@ advantage of the multi-variate response support in Ridge.</p>
 
 <dl class="method">
 <dt id="sklearn.linear_model.RidgeClassifier.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>solver='auto'</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RidgeClassifier.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RidgeClassifier.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit Ridge regression model.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -263,15 +340,6 @@ advantage of the multi-variate response support in Ridge.</p>
 <blockquote>
 <div><p>Target values</p>
 </div></blockquote>
-<p><strong>solver</strong> : {&#8216;auto&#8217;, &#8216;dense_cholesky&#8217;, &#8216;sparse_cg&#8217;}</p>
-<blockquote>
-<div><p>Solver to use in the computational
-routines. &#8216;dense_cholesky&#8217; will use the standard
-scipy.linalg.solve function, &#8216;sparse_cg&#8217; will use the
-conjugate gradient solver as found in
-scipy.sparse.linalg.cg while &#8216;auto&#8217; will chose the most
-appropriate depending on the matrix X.</p>
-</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>self</strong> : returns an instance of self.</p>
@@ -284,15 +352,21 @@ appropriate depending on the matrix X.</p>
 <dl class="method">
 <dt id="sklearn.linear_model.RidgeClassifier.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RidgeClassifier.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for the estimator</p>
+<dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -303,14 +377,22 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.linear_model.RidgeClassifier.predict">
 <tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RidgeClassifier.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict target values according to the fitted model.</p>
+<dd><p>Predict class labels for samples in X.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><strong>X</strong> : array-like, shape = [n_samples, n_features]</td>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Samples.</p>
+</div></blockquote>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><strong>y</strong> : array, shape = [n_samples]</td>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array, shape = [n_samples]</p>
+<blockquote class="last">
+<div><p>Predicted class label per sample.</p>
+</div></blockquote>
+</td>
 </tr>
 </tbody>
 </table>
@@ -344,7 +426,7 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.linear_model.RidgeClassifier.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.RidgeClassifier.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of the estimator.</p>
+<dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
 <tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
@@ -372,11 +454,19 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.linear_model.RidgeClassifier.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.linear_model.Ridge.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.linear_model.RidgeClassifierCV.html">Next
+      </a>
+    </div>
     
      </div>
 

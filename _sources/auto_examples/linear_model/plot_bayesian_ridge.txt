@@ -7,10 +7,12 @@
 Bayesian Ridge Regression
 =========================
 
-Computes a :ref:`bayesian_ridge_regression` on a synthetic dataset.
+Computes a Bayesian Ridge Regression on a synthetic dataset.
+
+See :ref:`bayesian_ridge_regression` for more information on the regressor.
 
 Compared to the OLS (ordinary least squares) estimator, the coefficient
-weights are slightly shifted toward zeros, wich stabilises them.
+weights are slightly shifted toward zeros, which stabilises them.
 
 As the prior on the weights is a Gaussian prior, the histogram of the
 estimated weights is Gaussian.
@@ -22,5 +24,5 @@ marginal log-likelihood of the observations.
 **Python source code:** :download:`plot_bayesian_ridge.py <plot_bayesian_ridge.py>`
 
 .. literalinclude:: plot_bayesian_ridge.py
-    :lines: 17-
+    :lines: 19-
     

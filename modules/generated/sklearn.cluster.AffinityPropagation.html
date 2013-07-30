@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.1.1.1. sklearn.cluster.AffinityPropagation &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.cluster.AffinityPropagation &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.cluster.DBSCAN" href="sklearn.cluster.DBSCAN.html" />
+    <link rel="prev" title="sklearn.utils.shuffle" href="sklearn.utils.shuffle.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.utils.shuffle.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.utils.sh...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.utils.shuffle
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.cluster.DBSCAN.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.cluster....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cluster.DBSCAN
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.1.1.1. sklearn.cluster.AffinityPropagation</a></li>
+<li><a class="reference internal" href="#">sklearn.cluster.AffinityPropagation</a></li>
 </ul>
 
     </div>
@@ -131,7 +185,7 @@
 <h1>sklearn.cluster.AffinityPropagation<a class="headerlink" href="#sklearn-cluster-affinitypropagation" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.cluster.AffinityPropagation">
-<em class="property">class </em><tt class="descclassname">sklearn.cluster.</tt><tt class="descname">AffinityPropagation</tt><big>(</big><em>damping=0.5</em>, <em>max_iter=200</em>, <em>convergence_iter=15</em>, <em>convit=None</em>, <em>copy=True</em>, <em>preference=None</em>, <em>p=None</em>, <em>affinity='euclidean'</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#sklearn.cluster.AffinityPropagation" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.cluster.</tt><tt class="descname">AffinityPropagation</tt><big>(</big><em>damping=0.5</em>, <em>max_iter=200</em>, <em>convergence_iter=15</em>, <em>copy=True</em>, <em>preference=None</em>, <em>affinity='euclidean'</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#sklearn.cluster.AffinityPropagation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform Affinity Propagation Clustering of data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -177,7 +231,7 @@ negative squared euclidean distance between points.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>See examples/plot_affinity_propagation.py for an example.</p>
+<p>See examples/cluster/plot_affinity_propagation.py for an example.</p>
 <p>The algorithmic complexity of affinity propagation is quadratic
 in the number of points.</p>
 <p class="rubric">References</p>
@@ -219,16 +273,16 @@ Between Data Points&#8221;, Science Feb. 2007</p>
 <td>Performs clustering on X and returns cluster labels.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.AffinityPropagation.get_params" title="sklearn.cluster.AffinityPropagation.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
-<td>Get parameters for the estimator</td>
+<td>Get parameters for this estimator.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.AffinityPropagation.set_params" title="sklearn.cluster.AffinityPropagation.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
-<td>Set the parameters of the estimator.</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="sklearn.cluster.AffinityPropagation.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>damping=0.5</em>, <em>max_iter=200</em>, <em>convergence_iter=15</em>, <em>convit=None</em>, <em>copy=True</em>, <em>preference=None</em>, <em>p=None</em>, <em>affinity='euclidean'</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#sklearn.cluster.AffinityPropagation.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>damping=0.5</em>, <em>max_iter=200</em>, <em>convergence_iter=15</em>, <em>copy=True</em>, <em>preference=None</em>, <em>affinity='euclidean'</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#sklearn.cluster.AffinityPropagation.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -255,7 +309,6 @@ similarities / affinities.</p>
 <dt id="sklearn.cluster.AffinityPropagation.fit_predict">
 <tt class="descname">fit_predict</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.AffinityPropagation.fit_predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs clustering on X and returns cluster labels.</p>
-<p>This is a non-optimized default implementation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -279,15 +332,21 @@ similarities / affinities.</p>
 <dl class="method">
 <dt id="sklearn.cluster.AffinityPropagation.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.cluster.AffinityPropagation.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for the estimator</p>
+<dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -298,7 +357,7 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.cluster.AffinityPropagation.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.cluster.AffinityPropagation.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of the estimator.</p>
+<dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
 <tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
@@ -326,11 +385,19 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.cluster.AffinityPropagation.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.utils.shuffle.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.cluster.DBSCAN.html">Next
+      </a>
+    </div>
     
      </div>
 

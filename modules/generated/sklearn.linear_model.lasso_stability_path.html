@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.15.1.30. sklearn.linear_model.lasso_stability_path &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.linear_model.lasso_stability_path &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.linear_model.orthogonal_mp" href="sklearn.linear_model.orthogonal_mp.html" />
+    <link rel="prev" title="sklearn.linear_model.lasso_path" href="sklearn.linear_model.lasso_path.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.linear_model.lasso_path.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.linear_m...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.linear_model.lasso_path
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.linear_model.orthogonal_mp.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.linear_m...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.linear_model.orthogonal_mp
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.15.1.30. sklearn.linear_model.lasso_stability_path</a></li>
+<li><a class="reference internal" href="#">sklearn.linear_model.lasso_stability_path</a></li>
 </ul>
 
     </div>
@@ -145,30 +199,30 @@
 <blockquote>
 <div><p>target values.</p>
 </div></blockquote>
-<p><strong>scaling</strong> : float</p>
+<p><strong>scaling</strong> : float, optional, default=0.5</p>
 <blockquote>
 <div><p>The alpha parameter in the stability selection article used to
 randomly scale the features. Should be between 0 and 1.</p>
 </div></blockquote>
-<p><strong>random_state</strong> : integer or numpy.RandomState, optional</p>
+<p><strong>random_state</strong> : integer or numpy.random.RandomState, optional</p>
 <blockquote>
 <div><p>The generator used to randomize the design.</p>
 </div></blockquote>
-<p><strong>n_resampling</strong> : int</p>
+<p><strong>n_resampling</strong> : int, optional, default=200</p>
 <blockquote>
 <div><p>Number of randomized models.</p>
 </div></blockquote>
-<p><strong>n_grid</strong> : int</p>
+<p><strong>n_grid</strong> : int, optional, default=100</p>
 <blockquote>
 <div><p>Number of grid points. The path is linearly reinterpolated
 on a grid between 0 and 1 before computing the scores.</p>
 </div></blockquote>
-<p><strong>sample_fraction</strong> : float</p>
+<p><strong>sample_fraction</strong> : float, optional, default=0.75</p>
 <blockquote>
 <div><p>The fraction of samples to be used in each randomized design.
 Should be between 0 and 1. If 1, all samples are used.</p>
 </div></blockquote>
-<p><strong>eps</strong> : float</p>
+<p><strong>eps</strong> : float, optional</p>
 <blockquote>
 <div><p>Smallest value of alpha / alpha_max considered</p>
 </div></blockquote>
@@ -196,7 +250,7 @@ all the CPUs</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>See examples/linear_model/plot_randomized_lasso.py for an example.</p>
+<p>See examples/linear_model/plot_sparse_recovery.py for an example.</p>
 </dd></dl>
 
 </div>
@@ -210,11 +264,19 @@ all the CPUs</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.linear_model.lasso_stability_path.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.linear_model.lasso_path.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.linear_model.orthogonal_mp.html">Next
+      </a>
+    </div>
     
      </div>
 

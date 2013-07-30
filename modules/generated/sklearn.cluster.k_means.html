@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.1.2.2. sklearn.cluster.k_means &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.cluster.k_means &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.cluster.ward_tree" href="sklearn.cluster.ward_tree.html" />
+    <link rel="prev" title="sklearn.cluster.estimate_bandwidth" href="sklearn.cluster.estimate_bandwidth.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.cluster.estimate_bandwidth.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.cluster....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cluster.estimate_bandwidth
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.cluster.ward_tree.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.cluster....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cluster.ward_tree
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.1.2.2. sklearn.cluster.k_means</a></li>
+<li><a class="reference internal" href="#">sklearn.cluster.k_means</a></li>
 </ul>
 
     </div>
@@ -131,32 +185,32 @@
 <h1>sklearn.cluster.k_means<a class="headerlink" href="#sklearn-cluster-k-means" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.cluster.k_means">
-<tt class="descclassname">sklearn.cluster.</tt><tt class="descname">k_means</tt><big>(</big><em>X</em>, <em>n_clusters</em>, <em>init='k-means++'</em>, <em>precompute_distances=True</em>, <em>n_init=10</em>, <em>max_iter=300</em>, <em>verbose=False</em>, <em>tol=0.0001</em>, <em>random_state=None</em>, <em>copy_x=True</em>, <em>n_jobs=1</em>, <em>k=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.k_means" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.cluster.</tt><tt class="descname">k_means</tt><big>(</big><em>X</em>, <em>n_clusters</em>, <em>init='k-means++'</em>, <em>precompute_distances=True</em>, <em>n_init=10</em>, <em>max_iter=300</em>, <em>verbose=False</em>, <em>tol=0.0001</em>, <em>random_state=None</em>, <em>copy_x=True</em>, <em>n_jobs=1</em><big>)</big><a class="headerlink" href="#sklearn.cluster.k_means" title="Permalink to this definition">¶</a></dt>
 <dd><p>K-means clustering algorithm.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like of floats, shape (n_samples, n_features)</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like or sparse matrix, shape (n_samples, n_features)</p>
 <blockquote>
 <div><p>The observations to cluster.</p>
 </div></blockquote>
-<p><strong>n_clusters: int</strong> :</p>
+<p><strong>n_clusters</strong> : int</p>
 <blockquote>
 <div><p>The number of clusters to form as well as the number of
 centroids to generate.</p>
 </div></blockquote>
-<p><strong>max_iter: int, optional, default 300</strong> :</p>
+<p><strong>max_iter</strong> : int, optional, default 300</p>
 <blockquote>
 <div><p>Maximum number of iterations of the k-means algorithm to run.</p>
 </div></blockquote>
-<p><strong>n_init: int, optional, default: 10</strong> :</p>
+<p><strong>n_init</strong> : int, optional, default: 10</p>
 <blockquote>
 <div><p>Number of time the k-means algorithm will be run with different
 centroid seeds. The final results will be the best output of
 n_init consecutive runs in terms of inertia.</p>
 </div></blockquote>
-<p><strong>init: {&#8216;k-means++&#8217;, &#8216;random&#8217;, or ndarray, or a callable}, optional</strong> :</p>
+<p><strong>init</strong> : {&#8216;k-means++&#8217;, &#8216;random&#8217;, or ndarray, or a callable}, optional</p>
 <blockquote>
 <div><p>Method for initialization, default to &#8216;k-means++&#8217;:</p>
 <p>&#8216;k-means++&#8217; : selects initial cluster centers for k-mean
@@ -169,21 +223,21 @@ and gives the initial centers.</p>
 <p>If a callable is passed, it should take arguments X, k and
 and a random state and return an initialization.</p>
 </div></blockquote>
-<p><strong>tol: float, optional</strong> :</p>
+<p><strong>tol</strong> : float, optional</p>
 <blockquote>
 <div><p>The relative increment in the results before declaring convergence.</p>
 </div></blockquote>
-<p><strong>verbose: boolean, optional</strong> :</p>
+<p><strong>verbose</strong> : boolean, optional</p>
 <blockquote>
-<div><p>Verbosity mode</p>
+<div><p>Verbosity mode.</p>
 </div></blockquote>
-<p><strong>random_state: integer or numpy.RandomState, optional</strong> :</p>
+<p><strong>random_state</strong> : integer or numpy.RandomState, optional</p>
 <blockquote>
 <div><p>The generator used to initialize the centers. If an integer is
 given, it fixes the seed. Defaults to the global numpy random
 number generator.</p>
 </div></blockquote>
-<p><strong>copy_x: boolean, optional</strong> :</p>
+<p><strong>copy_x</strong> : boolean, optional</p>
 <blockquote>
 <div><p>When pre-computing distances it is more numerically accurate to center
 the data first.  If copy_x is True, then the original data is not
@@ -191,28 +245,28 @@ modified.  If False, the original data is modified, and put back before
 the function returns, but small numerical differences may be introduced
 by subtracting and then adding the data mean.</p>
 </div></blockquote>
-<p><strong>n_jobs: int</strong> :</p>
+<p><strong>n_jobs</strong> : int</p>
 <blockquote>
 <div><p>The number of jobs to use for the computation. This works by breaking
 down the pairwise matrix into n_jobs even slices and computing them in
 parallel.</p>
 <p>If -1 all CPUs are used. If 1 is given, no parallel computing code is
-used at all, which is useful for debuging. For n_jobs below -1,
-(n_cpus + 1 - n_jobs) are used. Thus for n_jobs = -2, all CPUs but one
+used at all, which is useful for debugging. For n_jobs below -1,
+(n_cpus + 1 + n_jobs) are used. Thus for n_jobs = -2, all CPUs but one
 are used.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>centroid: float ndarray with shape (k, n_features)</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>centroid</strong> : float ndarray with shape (k, n_features)</p>
 <blockquote>
 <div><p>Centroids found at the last iteration of k-means.</p>
 </div></blockquote>
-<p><strong>label: integer ndarray with shape (n_samples,)</strong> :</p>
+<p><strong>label</strong> : integer ndarray with shape (n_samples,)</p>
 <blockquote>
 <div><p>label[i] is the code or index of the centroid the
 i&#8217;th observation is closest to.</p>
 </div></blockquote>
-<p><strong>inertia: float</strong> :</p>
+<p><strong>inertia</strong> : float</p>
 <blockquote class="last">
 <div><p>The final value of the inertia criterion (sum of squared distances to
 the closest centroid for all observations in the training set).</p>
@@ -234,11 +288,19 @@ the closest centroid for all observations in the training set).</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.cluster.k_means.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.cluster.estimate_bandwidth.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.cluster.ward_tree.html">Next
+      </a>
+    </div>
     
      </div>
 

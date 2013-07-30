@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.5.16. sklearn.decomposition.sparse_encode &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.decomposition.sparse_encode &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.dummy.DummyClassifier" href="sklearn.dummy.DummyClassifier.html" />
+    <link rel="prev" title="sklearn.decomposition.dict_learning_online" href="sklearn.decomposition.dict_learning_online.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.decomposition.dict_learning_online.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.decompos...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.decomposition.dict_learning_online
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.dummy.DummyClassifier.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.dummy.Du...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.dummy.DummyClassifier
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.5.16. sklearn.decomposition.sparse_encode</a></li>
+<li><a class="reference internal" href="#">sklearn.decomposition.sparse_encode</a></li>
 </ul>
 
     </div>
@@ -131,7 +185,7 @@
 <h1>sklearn.decomposition.sparse_encode<a class="headerlink" href="#sklearn-decomposition-sparse-encode" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.decomposition.sparse_encode">
-<tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">sparse_encode</tt><big>(</big><em>X</em>, <em>dictionary</em>, <em>gram=None</em>, <em>cov=None</em>, <em>algorithm='lasso_lars'</em>, <em>n_nonzero_coefs=None</em>, <em>alpha=None</em>, <em>copy_gram=None</em>, <em>copy_cov=True</em>, <em>init=None</em>, <em>max_iter=1000</em>, <em>n_jobs=1</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.sparse_encode" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">sparse_encode</tt><big>(</big><em>X</em>, <em>dictionary</em>, <em>gram=None</em>, <em>cov=None</em>, <em>algorithm='lasso_lars'</em>, <em>n_nonzero_coefs=None</em>, <em>alpha=None</em>, <em>copy_cov=True</em>, <em>init=None</em>, <em>max_iter=1000</em>, <em>n_jobs=1</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.sparse_encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sparse coding</p>
 <p>Each row of the result is the solution to a sparse coding problem.
 The goal is to find a sparse array <cite>code</cite> such that:</p>
@@ -145,17 +199,17 @@ The goal is to find a sparse array <cite>code</cite> such that:</p>
 <blockquote>
 <div><p>Data matrix</p>
 </div></blockquote>
-<p><strong>dictionary: array of shape (n_atoms, n_features)</strong> :</p>
+<p><strong>dictionary: array of shape (n_components, n_features)</strong> :</p>
 <blockquote>
 <div><p>The dictionary matrix against which to solve the sparse coding of
 the data. Some of the algorithms assume normalized rows for meaningful
 output.</p>
 </div></blockquote>
-<p><strong>gram: array, shape=(n_atoms, n_atoms)</strong> :</p>
+<p><strong>gram: array, shape=(n_components, n_components)</strong> :</p>
 <blockquote>
 <div><p>Precomputed Gram matrix, dictionary * dictionary&#8217;</p>
 </div></blockquote>
-<p><strong>cov: array, shape=(n_atoms, n_samples)</strong> :</p>
+<p><strong>cov: array, shape=(n_components, n_samples)</strong> :</p>
 <blockquote>
 <div><p>Precomputed covariance, dictionary&#8217; * X</p>
 </div></blockquote>
@@ -186,7 +240,7 @@ If <cite>algorithm=&#8217;omp&#8217;</cite>, <cite>alpha</cite> is the tolerance
 the reconstruction error targeted. In this case, it overrides
 <cite>n_nonzero_coefs</cite>.</p>
 </div></blockquote>
-<p><strong>init: array of shape (n_samples, n_atoms)</strong> :</p>
+<p><strong>init: array of shape (n_samples, n_components)</strong> :</p>
 <blockquote>
 <div><p>Initialization value of the sparse codes. Only used if
 <cite>algorithm=&#8217;lasso_cd&#8217;</cite>.</p>
@@ -206,7 +260,7 @@ overwritten.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>code: array of shape (n_samples, n_atoms)</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>code: array of shape (n_samples, n_components)</strong> :</p>
 <blockquote class="last">
 <div><p>The sparse codes</p>
 </div></blockquote>
@@ -231,11 +285,19 @@ overwritten.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.decomposition.sparse_encode.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.decomposition.dict_learning_online.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.dummy.DummyClassifier.html">Next
+      </a>
+    </div>
     
      </div>
 

@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Gradient Boosting regularization &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>Gradient Boosting regularization &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Gradient Boosting regression" href="plot_gradient_boosting_regression.html" />
+    <link rel="prev" title="Feature importances with forests of trees" href="plot_forest_importances.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="plot_forest_importances.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Feature importan...
+        </span>
+            <span class="hiddenrellink">
+            Feature importances with forests of trees
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="plot_gradient_boosting_regression.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Gradient Boostin...
+        </span>
+            <span class="hiddenrellink">
+            Gradient Boosting regression
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Examples
+        </span>
+            <span class="hiddenrellink">
+            Examples
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">Gradient Boosting regularization</a></li>
@@ -132,7 +186,7 @@
 <p>Illustration of the effect of different regularization strategies
 for Gradient Boosting. The example is taken from Hastie et al 2009.</p>
 <p>The loss function used is binomial deviance. Regularization via
-shrinkage (<tt class="docutils literal"><span class="pre">learn_rate</span> <span class="pre">&lt;</span> <span class="pre">1.0</span></tt>) improves performance considerably.
+shrinkage (<tt class="docutils literal"><span class="pre">learning_rate</span> <span class="pre">&lt;</span> <span class="pre">1.0</span></tt>) improves performance considerably.
 In combination with shrinkage, stochastic gradient boosting
 (<tt class="docutils literal"><span class="pre">subsample</span> <span class="pre">&lt;</span> <span class="pre">1.0</span></tt>) can produce more accurate models by reducing the
 variance via bagging.
@@ -148,20 +202,24 @@ Learning Ed. 2&#8221;, Springer, 2009.</td></tr>
 </tbody>
 </table>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_gradient_boosting_regularization.py"><tt class="xref download docutils literal"><span class="pre">plot_gradient_boosting_regularization.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Peter Prettenhofer &lt;peter.prettenhofer@gmail.com&gt;</span>
 <span class="c">#</span>
-<span class="c"># License: BSD</span>
+<span class="c"># License: BSD 3 clause</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">ensemble</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils.fixes</span> <span class="kn">import</span> <span class="n">unique</span>
 
 
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">make_hastie_10_2</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">12000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c"># map labels from {-1, 1} to {0, 1}</span>
+<span class="n">labels</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">2000</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">2000</span><span class="p">:]</span>
 <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="mi">2000</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">2000</span><span class="p">:]</span>
@@ -172,15 +230,15 @@ Learning Ed. 2&#8221;, Springer, 2009.</td></tr>
 <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">setting</span> <span class="ow">in</span> <span class="p">[(</span><span class="s">&#39;No shrinkage&#39;</span><span class="p">,</span> <span class="s">&#39;orange&#39;</span><span class="p">,</span>
-                               <span class="p">{</span><span class="s">&#39;learn_rate&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s">&#39;subsample&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}),</span>
-                              <span class="p">(</span><span class="s">&#39;learn_rate=0.1&#39;</span><span class="p">,</span> <span class="s">&#39;turquoise&#39;</span><span class="p">,</span>
-                               <span class="p">{</span><span class="s">&#39;learn_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s">&#39;subsample&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}),</span>
+                               <span class="p">{</span><span class="s">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s">&#39;subsample&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}),</span>
+                              <span class="p">(</span><span class="s">&#39;learning_rate=0.1&#39;</span><span class="p">,</span> <span class="s">&#39;turquoise&#39;</span><span class="p">,</span>
+                               <span class="p">{</span><span class="s">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s">&#39;subsample&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}),</span>
                               <span class="p">(</span><span class="s">&#39;subsample=0.5&#39;</span><span class="p">,</span> <span class="s">&#39;blue&#39;</span><span class="p">,</span>
-                               <span class="p">{</span><span class="s">&#39;learn_rate&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s">&#39;subsample&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}),</span>
-                              <span class="p">(</span><span class="s">&#39;learn_rate=0.1, subsample=0.5&#39;</span><span class="p">,</span> <span class="s">&#39;gray&#39;</span><span class="p">,</span>
-                               <span class="p">{</span><span class="s">&#39;learn_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s">&#39;subsample&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}),</span>
-                              <span class="p">(</span><span class="s">&#39;learn_rate=0.1, max_features=2&#39;</span><span class="p">,</span> <span class="s">&#39;magenta&#39;</span><span class="p">,</span>
-                               <span class="p">{</span><span class="s">&#39;learn_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})]:</span>
+                               <span class="p">{</span><span class="s">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s">&#39;subsample&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}),</span>
+                              <span class="p">(</span><span class="s">&#39;learning_rate=0.1, subsample=0.5&#39;</span><span class="p">,</span> <span class="s">&#39;gray&#39;</span><span class="p">,</span>
+                               <span class="p">{</span><span class="s">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s">&#39;subsample&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}),</span>
+                              <span class="p">(</span><span class="s">&#39;learning_rate=0.1, max_features=2&#39;</span><span class="p">,</span> <span class="s">&#39;magenta&#39;</span><span class="p">,</span>
+                               <span class="p">{</span><span class="s">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s">&#39;max_features&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})]:</span>
     <span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">original_params</span><span class="p">)</span>
     <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">setting</span><span class="p">)</span>
 
@@ -191,10 +249,11 @@ Learning Ed. 2&#8221;, Springer, 2009.</td></tr>
     <span class="n">test_deviance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">params</span><span class="p">[</span><span class="s">&#39;n_estimators&#39;</span><span class="p">],),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">y_pred</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">staged_decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)):</span>
+        <span class="c"># clf.loss_ assumes that y_test[i] in {0, 1}</span>
         <span class="n">test_deviance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">loss_</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
     <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">test_deviance</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[::</span><span class="mi">5</span><span class="p">],</span> <span class="n">test_deviance</span><span class="p">[::</span><span class="mi">5</span><span class="p">],</span>
-             <span class="s">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+            <span class="s">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&#39;upper left&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Boosting Iterations&#39;</span><span class="p">)</span>
@@ -214,11 +273,19 @@ Learning Ed. 2&#8221;, Springer, 2009.</td></tr>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/auto_examples/ensemble/plot_gradient_boosting_regularization.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="plot_forest_importances.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="plot_gradient_boosting_regression.html">Next
+      </a>
+    </div>
     
      </div>
 

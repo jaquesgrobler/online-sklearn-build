@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.2.4. sklearn.covariance.GraphLassoCV &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.covariance.GraphLassoCV &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.covariance.LedoitWolf" href="sklearn.covariance.LedoitWolf.html" />
+    <link rel="prev" title="sklearn.covariance.GraphLasso" href="sklearn.covariance.GraphLasso.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.covariance.GraphLasso.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.covarian...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.covariance.GraphLasso
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.covariance.LedoitWolf.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.covarian...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.covariance.LedoitWolf
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.2.4. sklearn.covariance.GraphLassoCV</a></li>
+<li><a class="reference internal" href="#">sklearn.covariance.GraphLassoCV</a></li>
 </ul>
 
     </div>
@@ -132,12 +186,12 @@
 <dl class="class">
 <dt id="sklearn.covariance.GraphLassoCV">
 <em class="property">class </em><tt class="descclassname">sklearn.covariance.</tt><tt class="descname">GraphLassoCV</tt><big>(</big><em>alphas=4</em>, <em>n_refinements=4</em>, <em>cv=None</em>, <em>tol=0.0001</em>, <em>max_iter=100</em>, <em>mode='cd'</em>, <em>n_jobs=1</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#sklearn.covariance.GraphLassoCV" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sparse inverse covariance w/ cross-validated choice of the l1 penality</p>
+<dd><p>Sparse inverse covariance w/ cross-validated choice of the l1 penalty</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>alphas: integer, or list positive float, optional</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>alphas</strong> : integer, or list positive float, optional</p>
 <blockquote>
 <div><p>If an integer is given, it fixes the number of points on the
 grids of alpha to be used. If a list is given, it gives the
@@ -146,37 +200,38 @@ more details.</p>
 </div></blockquote>
 <p><strong>n_refinements: strictly positive integer</strong> :</p>
 <blockquote>
-<div><p>The number of time the grid is refined. Not used if explicit
+<div><p>The number of times the grid is refined. Not used if explicit
 values of alphas are passed.</p>
 </div></blockquote>
-<p><strong>cv</strong> : crossvalidation generator, optional</p>
+<p><strong>cv</strong> : cross-validation generator, optional</p>
 <blockquote>
-<div><p>see sklearn.cross_validation module. If None is passed, default to
+<div><p>see sklearn.cross_validation module. If None is passed, defaults to
 a 3-fold strategy</p>
 </div></blockquote>
 <p><strong>tol: positive float, optional</strong> :</p>
 <blockquote>
 <div><p>The tolerance to declare convergence: if the dual gap goes below
-this value, iterations are stopped</p>
+this value, iterations are stopped.</p>
 </div></blockquote>
 <p><strong>max_iter: integer, optional</strong> :</p>
 <blockquote>
-<div><p>The maximum number of iterations</p>
+<div><p>Maximum number of iterations.</p>
 </div></blockquote>
 <p><strong>mode: {&#8216;cd&#8217;, &#8216;lars&#8217;}</strong> :</p>
 <blockquote>
 <div><p>The Lasso solver to use: coordinate descent or LARS. Use LARS for
-very sparse underlying graphs, where p &gt; n. Elsewhere prefer cd
-which is more numerically stable.</p>
+very sparse underlying graphs, where number of features is greater
+than number of samples. Elsewhere prefer cd which is more numerically
+stable.</p>
 </div></blockquote>
 <p><strong>n_jobs: int, optional</strong> :</p>
 <blockquote>
-<div><p>number of jobs to run in parallel (default 1)</p>
+<div><p>number of jobs to run in parallel (default 1).</p>
 </div></blockquote>
 <p><strong>verbose: boolean, optional</strong> :</p>
 <blockquote class="last">
-<div><p>If verbose is True, the objective function and dual gap are
-print at each iteration</p>
+<div><p>If verbose is True, the objective function and duality gap are
+printed at each iteration.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -187,40 +242,41 @@ print at each iteration</p>
 <p class="last"><a class="reference internal" href="sklearn.covariance.graph_lasso.html#sklearn.covariance.graph_lasso" title="sklearn.covariance.graph_lasso"><tt class="xref py py-obj docutils literal"><span class="pre">graph_lasso</span></tt></a>, <a class="reference internal" href="sklearn.covariance.GraphLasso.html#sklearn.covariance.GraphLasso" title="sklearn.covariance.GraphLasso"><tt class="xref py py-obj docutils literal"><span class="pre">GraphLasso</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The search for the optimal alpha is done on an iteratively refined
-grid: first the cross-validated scores on a grid are computed, then
-a new refined grid is center around the maximum...</p>
-<p>One of the challenges that we have to face is that the solvers can
+<p>The search for the optimal penalization parameter (alpha) is done on an
+iteratively refined grid: first the cross-validated scores on a grid are
+computed, then a new refined grid is centered around the maximum, and so
+on.</p>
+<p>One of the challenges which is faced here is that the solvers can
 fail to converge to a well-conditioned estimate. The corresponding
 values of alpha then come out as missing values, but the optimum may
 be close to these missing values.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="29%" />
-<col width="30%" />
-<col width="42%" />
+<col width="35%" />
+<col width="31%" />
+<col width="35%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><cite>covariance_</cite></td>
-<td>array-like, shape (n_features, n_features)</td>
-<td>Estimated covariance matrix</td>
+<td>numpy.ndarray, shape (n_features, n_features)</td>
+<td>Estimated covariance matrix.</td>
 </tr>
 <tr class="row-even"><td><cite>precision_</cite></td>
-<td>array-like, shape (n_features, n_features)</td>
+<td>numpy.ndarray, shape (n_features, n_features)</td>
 <td>Estimated precision matrix (inverse covariance).</td>
 </tr>
 <tr class="row-odd"><td><cite>alpha_</cite>: float</td>
 <td>&nbsp;</td>
-<td>Penalization parameter selected</td>
+<td>Penalization parameter selected.</td>
 </tr>
 <tr class="row-even"><td><cite>cv_alphas_</cite>: list of float</td>
 <td>&nbsp;</td>
-<td>All the penalization parameters explored</td>
+<td>All penalization parameters explored.</td>
 </tr>
-<tr class="row-odd"><td><cite>cv_scores</cite>: 2D array (n_alphas, n_folds)</td>
+<tr class="row-odd"><td><cite>grid_scores</cite>: 2D numpy.ndarray (n_alphas, n_folds)</td>
 <td>&nbsp;</td>
-<td>The log-likelihood score on left-out data across the folds.</td>
+<td>Log-likelihood score on left-out data across folds.</td>
 </tr>
 </tbody>
 </table>
@@ -238,19 +294,19 @@ be close to these missing values.</p>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.covariance.GraphLassoCV.get_params" title="sklearn.covariance.GraphLassoCV.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
-<td>Get parameters for the estimator</td>
+<td>Get parameters for this estimator.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.covariance.GraphLassoCV.get_precision" title="sklearn.covariance.GraphLassoCV.get_precision"><tt class="xref py py-obj docutils literal"><span class="pre">get_precision</span></tt></a>()</td>
 <td>Getter for the precision matrix.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.covariance.GraphLassoCV.mahalanobis" title="sklearn.covariance.GraphLassoCV.mahalanobis"><tt class="xref py py-obj docutils literal"><span class="pre">mahalanobis</span></tt></a>(observations)</td>
-<td>Computes the mahalanobis distances of given observations.</td>
+<td>Computes the Mahalanobis distances of given observations.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.covariance.GraphLassoCV.score" title="sklearn.covariance.GraphLassoCV.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X_test)</td>
-<td>Computes the log-likelihood of a gaussian data set with <cite>self.covariance_</cite> as an estimator of its covariance matrix.</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.covariance.GraphLassoCV.score" title="sklearn.covariance.GraphLassoCV.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X_test[,&nbsp;y])</td>
+<td>Computes the log-likelihood of a Gaussian data set with</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.covariance.GraphLassoCV.set_params" title="sklearn.covariance.GraphLassoCV.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
-<td>Set the parameters of the estimator.</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
 </tbody>
 </table>
@@ -263,28 +319,28 @@ be close to these missing values.</p>
 <dt id="sklearn.covariance.GraphLassoCV.error_norm">
 <tt class="descname">error_norm</tt><big>(</big><em>comp_cov</em>, <em>norm='frobenius'</em>, <em>scaling=True</em>, <em>squared=True</em><big>)</big><a class="headerlink" href="#sklearn.covariance.GraphLassoCV.error_norm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the Mean Squared Error between two covariance estimators.
-(In the sense of the Frobenius norm)</p>
+(In the sense of the Frobenius norm).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>comp_cov: array-like, shape = [n_features, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>comp_cov</strong> : array-like, shape = [n_features, n_features]</p>
 <blockquote>
 <div><p>The covariance to compare with.</p>
 </div></blockquote>
-<p><strong>norm: str</strong> :</p>
+<p><strong>norm</strong> : str</p>
 <blockquote>
 <div><p>The type of norm used to compute the error. Available error types:
 - &#8216;frobenius&#8217; (default): sqrt(tr(A^t.A))
 - &#8216;spectral&#8217;: sqrt(max(eigenvalues(A^t.A))
 where A is the error <tt class="docutils literal"><span class="pre">(comp_cov</span> <span class="pre">-</span> <span class="pre">self.covariance_)</span></tt>.</p>
 </div></blockquote>
-<p><strong>scaling: bool</strong> :</p>
+<p><strong>scaling</strong> : bool</p>
 <blockquote>
 <div><p>If True (default), the squared error norm is divided by n_features.
 If False, the squared error norm is not rescaled.</p>
 </div></blockquote>
-<p><strong>squared: bool</strong> :</p>
+<p><strong>squared</strong> : bool</p>
 <blockquote>
 <div><p>Whether to compute the squared error norm or the error norm.
 If True (default), the squared error norm is returned.
@@ -303,15 +359,21 @@ If False, the error norm is returned.</p>
 <dl class="method">
 <dt id="sklearn.covariance.GraphLassoCV.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.covariance.GraphLassoCV.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for the estimator</p>
+<dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -327,7 +389,7 @@ contained subobjects that are estimators.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>precision_: array-like,</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>`precision_`</strong> : array-like,</p>
 <blockquote class="last">
 <div><p>The precision matrix associated to the current covariance object.</p>
 </div></blockquote>
@@ -340,22 +402,22 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.covariance.GraphLassoCV.mahalanobis">
 <tt class="descname">mahalanobis</tt><big>(</big><em>observations</em><big>)</big><a class="headerlink" href="#sklearn.covariance.GraphLassoCV.mahalanobis" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the mahalanobis distances of given observations.</p>
+<dd><p>Computes the Mahalanobis distances of given observations.</p>
 <p>The provided observations are assumed to be centered. One may want to
 center them using a location estimate first.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>observations: array-like, shape = [n_observations, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>observations</strong> : array-like, shape = [n_observations, n_features]</p>
 <blockquote>
-<div><p>The observations, the Mahalanobis distances of the which we compute.
-Observations are assumed to be drawn from the same distribution than
-tha data used in fit (including centering).</p>
+<div><p>The observations, the Mahalanobis distances of the which we
+compute. Observations are assumed to be drawn from the same
+distribution than the data used in fit (including centering).</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>mahalanobis_distance: array, shape = [n_observations,]</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>mahalanobis_distance</strong> : array, shape = [n_observations,]</p>
 <blockquote class="last">
 <div><p>Mahalanobis distances of the observations.</p>
 </div></blockquote>
@@ -367,8 +429,8 @@ tha data used in fit (including centering).</p>
 
 <dl class="method">
 <dt id="sklearn.covariance.GraphLassoCV.score">
-<tt class="descname">score</tt><big>(</big><em>X_test</em><big>)</big><a class="headerlink" href="#sklearn.covariance.GraphLassoCV.score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the log-likelihood of a gaussian data set with
+<tt class="descname">score</tt><big>(</big><em>X_test</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.covariance.GraphLassoCV.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the log-likelihood of a Gaussian data set with
 <cite>self.covariance_</cite> as an estimator of its covariance matrix.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -379,8 +441,9 @@ tha data used in fit (including centering).</p>
 <div><p>Test data of which we compute the likelihood, where n_samples is
 the number of samples and n_features is the number of features.
 X_test is assumed to be drawn from the same distribution than
-tha data used in fit (including centering).</p>
+the data used in fit (including centering).</p>
 </div></blockquote>
+<p><strong>y</strong> : not used, present for API consistence purpose.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>res</strong> : float</p>
@@ -397,7 +460,7 @@ estimator of its covariance matrix.</p>
 <dl class="method">
 <dt id="sklearn.covariance.GraphLassoCV.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.covariance.GraphLassoCV.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of the estimator.</p>
+<dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
 <tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
@@ -425,11 +488,19 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.covariance.GraphLassoCV.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.covariance.GraphLasso.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.covariance.LedoitWolf.html">Next
+      </a>
+    </div>
     
      </div>
 

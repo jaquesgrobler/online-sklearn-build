@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.24.6. sklearn.preprocessing.KernelCenterer &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.preprocessing.KernelCenterer &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.preprocessing.LabelBinarizer" href="sklearn.preprocessing.LabelBinarizer.html" />
+    <link rel="prev" title="sklearn.preprocessing.Imputer" href="sklearn.preprocessing.Imputer.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.preprocessing.Imputer.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.preproce...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.preprocessing.Imputer
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.preprocessing.LabelBinarizer.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.preproce...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.preprocessing.LabelBinarizer
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.24.6. sklearn.preprocessing.KernelCenterer</a></li>
+<li><a class="reference internal" href="#">sklearn.preprocessing.KernelCenterer</a></li>
 </ul>
 
     </div>
@@ -133,8 +187,11 @@
 <dt id="sklearn.preprocessing.KernelCenterer">
 <em class="property">class </em><tt class="descclassname">sklearn.preprocessing.</tt><tt class="descname">KernelCenterer</tt><a class="headerlink" href="#sklearn.preprocessing.KernelCenterer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Center a kernel matrix</p>
-<p>This is equivalent to centering phi(X) with
-sklearn.preprocessing.Scaler(with_std=False).</p>
+<p>Let K(x, z) be a kernel defined by phi(x)^T phi(z), where phi is a
+function mapping x to a Hilbert space. KernelCenterer centers (i.e.,
+normalize to have zero mean) the data without explicitly computing phi(x).
+It is equivalent to centering phi(x) with
+sklearn.preprocessing.StandardScaler(with_std=False).</p>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -146,16 +203,16 @@ sklearn.preprocessing.Scaler(with_std=False).</p>
 <td>Fit KernelCenterer</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.preprocessing.KernelCenterer.fit_transform" title="sklearn.preprocessing.KernelCenterer.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
-<td>Fit to data, then transform it</td>
+<td>Fit to data, then transform it.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.preprocessing.KernelCenterer.get_params" title="sklearn.preprocessing.KernelCenterer.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
-<td>Get parameters for the estimator</td>
+<td>Get parameters for this estimator.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.preprocessing.KernelCenterer.set_params" title="sklearn.preprocessing.KernelCenterer.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
-<td>Set the parameters of the estimator.</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.preprocessing.KernelCenterer.transform" title="sklearn.preprocessing.KernelCenterer.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(K[,&nbsp;y,&nbsp;copy])</td>
-<td>Center kernel</td>
+<td>Center kernel matrix.</td>
 </tr>
 </tbody>
 </table>
@@ -189,7 +246,7 @@ sklearn.preprocessing.Scaler(with_std=False).</p>
 <dl class="method">
 <dt id="sklearn.preprocessing.KernelCenterer.fit_transform">
 <tt class="descname">fit_transform</tt><big>(</big><em>X</em>, <em>y=None</em>, <em>**fit_params</em><big>)</big><a class="headerlink" href="#sklearn.preprocessing.KernelCenterer.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit to data, then transform it</p>
+<dd><p>Fit to data, then transform it.</p>
 <p>Fits transformer to X and y with optional parameters fit_params
 and returns a transformed version of X.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -214,24 +271,26 @@ and returns a transformed version of X.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>This method just calls fit and transform consecutively, i.e., it is not
-an optimized implementation of fit_transform, unlike other transformers
-such as PCA.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="sklearn.preprocessing.KernelCenterer.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.preprocessing.KernelCenterer.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for the estimator</p>
+<dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -242,7 +301,7 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.preprocessing.KernelCenterer.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.preprocessing.KernelCenterer.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of the estimator.</p>
+<dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
 <tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
@@ -260,7 +319,7 @@ component of a nested object.</p>
 <dl class="method">
 <dt id="sklearn.preprocessing.KernelCenterer.transform">
 <tt class="descname">transform</tt><big>(</big><em>K</em>, <em>y=None</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#sklearn.preprocessing.KernelCenterer.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Center kernel</p>
+<dd><p>Center kernel matrix.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -291,11 +350,19 @@ component of a nested object.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.preprocessing.KernelCenterer.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.preprocessing.Imputer.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.preprocessing.LabelBinarizer.html">Next
+      </a>
+    </div>
     
      </div>
 

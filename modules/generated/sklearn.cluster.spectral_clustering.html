@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.1.2.7. sklearn.cluster.spectral_clustering &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.cluster.spectral_clustering &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.cluster.bicluster.SpectralBiclustering" href="sklearn.cluster.bicluster.SpectralBiclustering.html" />
+    <link rel="prev" title="sklearn.cluster.mean_shift" href="sklearn.cluster.mean_shift.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.cluster.mean_shift.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.cluster....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cluster.mean_shift
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.cluster.bicluster.SpectralBiclustering.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.cluster....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cluster.bicluster.SpectralBiclustering
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.1.2.7. sklearn.cluster.spectral_clustering</a></li>
+<li><a class="reference internal" href="#">sklearn.cluster.spectral_clustering</a></li>
 </ul>
 
     </div>
@@ -131,8 +185,8 @@
 <h1>sklearn.cluster.spectral_clustering<a class="headerlink" href="#sklearn-cluster-spectral-clustering" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.cluster.spectral_clustering">
-<tt class="descclassname">sklearn.cluster.</tt><tt class="descname">spectral_clustering</tt><big>(</big><em>affinity</em>, <em>n_clusters=8</em>, <em>n_components=None</em>, <em>mode=None</em>, <em>random_state=None</em>, <em>n_init=10</em>, <em>k=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.spectral_clustering" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply k-means to a projection to the normalized laplacian</p>
+<tt class="descclassname">sklearn.cluster.</tt><tt class="descname">spectral_clustering</tt><big>(</big><em>affinity</em>, <em>n_clusters=8</em>, <em>n_components=None</em>, <em>eigen_solver=None</em>, <em>random_state=None</em>, <em>n_init=10</em>, <em>k=None</em>, <em>eigen_tol=0.0</em>, <em>assign_labels='kmeans'</em>, <em>mode=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.spectral_clustering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply clustering to a projection to the normalized laplacian.</p>
 <p>In practice Spectral Clustering is very useful when the structure of
 the individual clusters is highly non-convex or more generally when
 a measure of the center and spread of the cluster is not a suitable
@@ -147,13 +201,13 @@ used to find normalized graph cuts.</p>
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>affinity: array-like or sparse matrix, shape: (n_samples, n_samples)</strong> :</p>
 <blockquote>
 <div><p>The affinity matrix describing the relationship of the samples to
-embed. <strong>Must be symetric</strong>.</p>
+embed. <strong>Must be symmetric</strong>.</p>
 <dl class="docutils">
 <dt>Possible examples:</dt>
 <dd><ul class="first last simple">
 <li>adjacency matrix of a graph,</li>
 <li>heat kernel of the pairwise distance matrix of the samples,</li>
-<li>symmetic k-nearest neighbours connectivity matrix of the samples.</li>
+<li>symmetric k-nearest neighbours connectivity matrix of the samples.</li>
 </ul>
 </dd>
 </dl>
@@ -166,7 +220,7 @@ embed. <strong>Must be symetric</strong>.</p>
 <blockquote>
 <div><p>Number of eigen vectors to use for the spectral embedding</p>
 </div></blockquote>
-<p><strong>mode: {None, &#8216;arpack&#8217; or &#8216;amg&#8217;}</strong> :</p>
+<p><strong>eigen_solver: {None, &#8216;arpack&#8217; or &#8216;amg&#8217;}</strong> :</p>
 <blockquote>
 <div><p>The eigenvalue decomposition strategy to use. AMG requires pyamg
 to be installed. It can be faster on very large, sparse problems,
@@ -175,7 +229,7 @@ but may also lead to instabilities</p>
 <p><strong>random_state: int seed, RandomState instance, or None (default)</strong> :</p>
 <blockquote>
 <div><p>A pseudo random number generator used for the initialization
-of the lobpcg eigen vectors decomposition when mode == &#8216;amg&#8217;
+of the lobpcg eigen vectors decomposition when eigen_solver == &#8216;amg&#8217;
 and by the K-Means initialization.</p>
 </div></blockquote>
 <p><strong>n_init: int, optional, default: 10</strong> :</p>
@@ -183,6 +237,21 @@ and by the K-Means initialization.</p>
 <div><p>Number of time the k-means algorithm will be run with different
 centroid seeds. The final results will be the best output of
 n_init consecutive runs in terms of inertia.</p>
+</div></blockquote>
+<p><strong>eigen_tol</strong> : float, optional, default: 0.0</p>
+<blockquote>
+<div><p>Stopping criterion for eigendecomposition of the Laplacian matrix
+when using arpack eigen_solver.</p>
+</div></blockquote>
+<p><strong>assign_labels</strong> : {&#8216;kmeans&#8217;, &#8216;discretize&#8217;}, default: &#8216;kmeans&#8217;</p>
+<blockquote>
+<div><p>The strategy to use to assign labels in the embedding
+space.  There are two ways to assign labels after the laplacian
+embedding.  k-means can be applied and is a popular choice. But it can
+also be sensitive to initialization. Discretization is another
+approach which is less sensitive to random initialization. See
+the &#8216;Multiclass spectral clustering&#8217; paper referenced below for
+more details on the discretization approach.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -207,6 +276,9 @@ Jianbo Shi, Jitendra Malik
 <li>A Tutorial on Spectral Clustering, 2007
 Ulrike von Luxburg
 <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.165.9323">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.165.9323</a></li>
+<li>Multiclass spectral clustering, 2003
+Stella X. Yu, Jianbo Shi
+<a class="reference external" href="http://www1.icsi.berkeley.edu/~stellayu/publication/doc/2003kwayICCV.pdf">http://www1.icsi.berkeley.edu/~stellayu/publication/doc/2003kwayICCV.pdf</a></li>
 </ul>
 </dd></dl>
 
@@ -221,11 +293,19 @@ Ulrike von Luxburg
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.cluster.spectral_clustering.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.cluster.mean_shift.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.cluster.bicluster.SpectralBiclustering.html">Next
+      </a>
+    </div>
     
      </div>
 

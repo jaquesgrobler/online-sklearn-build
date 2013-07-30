@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.14.1. sklearn.lda.LDA &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.lda.LDA &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.linear_model.ARDRegression" href="sklearn.linear_model.ARDRegression.html" />
+    <link rel="prev" title="sklearn.semi_supervised.LabelSpreading" href="sklearn.semi_supervised.LabelSpreading.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.semi_supervised.LabelSpreading.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.semi_sup...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.semi_supervised.LabelSpreading
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.linear_model.ARDRegression.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.linear_m...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.linear_model.ARDRegression
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.14.1. sklearn.lda.LDA</a></li>
+<li><a class="reference internal" href="#">sklearn.lda.LDA</a></li>
 </ul>
 
     </div>
@@ -179,26 +233,38 @@ directions.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="45%" />
-<col width="42%" />
+<col width="11%" />
+<col width="37%" />
+<col width="53%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><cite>means_</cite></td>
-<td>array-like, shape = [n_classes, n_features]</td>
-<td>Class means</td>
-</tr>
-<tr class="row-even"><td><cite>xbar_</cite></td>
-<td>float, shape = [n_features]</td>
-<td>Over all mean</td>
-</tr>
-<tr class="row-odd"><td><cite>priors_</cite></td>
-<td>array-like, shape = [n_classes]</td>
-<td>Class priors (sum to 1)</td>
+<tr class="row-odd"><td><cite>coef_</cite></td>
+<td>array-like, shape = [rank, n_classes - 1]</td>
+<td>Coefficients of the features in the linear decision
+function. rank is min(rank_features, n_classes) where
+rank_features is the dimensionality of the spaces spanned
+by the features (i.e. n_features excluding redundant features).</td>
 </tr>
 <tr class="row-even"><td><cite>covariance_</cite></td>
 <td>array-like, shape = [n_features, n_features]</td>
-<td>Covariance matrix (shared by all classes)</td>
+<td>Covariance matrix (shared by all classes).</td>
+</tr>
+<tr class="row-odd"><td><cite>means_</cite></td>
+<td>array-like, shape = [n_classes, n_features]</td>
+<td>Class means.</td>
+</tr>
+<tr class="row-even"><td><cite>priors_</cite></td>
+<td>array-like, shape = [n_classes]</td>
+<td>Class priors (sum to 1).</td>
+</tr>
+<tr class="row-odd"><td><cite>scalings_</cite></td>
+<td>array-like, shape = [rank, n_classes - 1]</td>
+<td>Scaling of the features in the space spanned by the class
+centroids.</td>
+</tr>
+<tr class="row-even"><td><cite>xbar_</cite></td>
+<td>float, shape = [n_features]</td>
+<td>Overall mean.</td>
 </tr>
 </tbody>
 </table>
@@ -210,31 +276,31 @@ directions.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.lda.LDA.decision_function" title="sklearn.lda.LDA.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
-<td>This function return the decision function values related to each</td>
+<td>This function returns the decision function values related to each</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.lda.LDA.fit" title="sklearn.lda.LDA.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;store_covariance,&nbsp;tol])</td>
 <td>Fit the LDA model according to the given training data and parameters.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.lda.LDA.fit_transform" title="sklearn.lda.LDA.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
-<td>Fit to data, then transform it</td>
+<td>Fit to data, then transform it.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.lda.LDA.get_params" title="sklearn.lda.LDA.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
-<td>Get parameters for the estimator</td>
+<td>Get parameters for this estimator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.lda.LDA.predict" title="sklearn.lda.LDA.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
 <td>This function does classification on an array of test vectors X.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.lda.LDA.predict_log_proba" title="sklearn.lda.LDA.predict_log_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_log_proba</span></tt></a>(X)</td>
-<td>This function return posterior log-probabilities of classification</td>
+<td>This function returns posterior log-probabilities of classification</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.lda.LDA.predict_proba" title="sklearn.lda.LDA.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
-<td>This function return posterior probabilities of classification</td>
+<td>This function returns posterior probabilities of classification</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.lda.LDA.score" title="sklearn.lda.LDA.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
 <td>Returns the mean accuracy on the given test data and labels.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.lda.LDA.set_params" title="sklearn.lda.LDA.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
-<td>Set the parameters of the estimator.</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.lda.LDA.transform" title="sklearn.lda.LDA.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X)</td>
 <td>Project the data so as to maximize class separation (large separation between projected class means and small variance within each class).</td>
@@ -249,7 +315,7 @@ directions.</p>
 <dl class="method">
 <dt id="sklearn.lda.LDA.decision_function">
 <tt class="descname">decision_function</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.lda.LDA.decision_function" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function return the decision function values related to each
+<dd><p>This function returns the decision function values related to each
 class on an array of test vectors X.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -301,7 +367,7 @@ and stored in <cite>self.covariance_</cite> attribute.</p>
 <dl class="method">
 <dt id="sklearn.lda.LDA.fit_transform">
 <tt class="descname">fit_transform</tt><big>(</big><em>X</em>, <em>y=None</em>, <em>**fit_params</em><big>)</big><a class="headerlink" href="#sklearn.lda.LDA.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit to data, then transform it</p>
+<dd><p>Fit to data, then transform it.</p>
 <p>Fits transformer to X and y with optional parameters fit_params
 and returns a transformed version of X.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -326,24 +392,26 @@ and returns a transformed version of X.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>This method just calls fit and transform consecutively, i.e., it is not
-an optimized implementation of fit_transform, unlike other transformers
-such as PCA.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="sklearn.lda.LDA.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.lda.LDA.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for the estimator</p>
+<dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -371,7 +439,7 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.lda.LDA.predict_log_proba">
 <tt class="descname">predict_log_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.lda.LDA.predict_log_proba" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function return posterior log-probabilities of classification
+<dd><p>This function returns posterior log-probabilities of classification
 according to each class on an array of test vectors X.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -388,7 +456,7 @@ according to each class on an array of test vectors X.</p>
 <dl class="method">
 <dt id="sklearn.lda.LDA.predict_proba">
 <tt class="descname">predict_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.lda.LDA.predict_proba" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function return posterior probabilities of classification
+<dd><p>This function returns posterior probabilities of classification
 according to each class on an array of test vectors X.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -430,7 +498,7 @@ according to each class on an array of test vectors X.</p>
 <dl class="method">
 <dt id="sklearn.lda.LDA.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.lda.LDA.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of the estimator.</p>
+<dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
 <tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
@@ -475,11 +543,19 @@ between projected class means and small variance within each class).</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.lda.LDA.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.semi_supervised.LabelSpreading.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.linear_model.ARDRegression.html">Next
+      </a>
+    </div>
     
      </div>
 

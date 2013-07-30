@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.5.15. sklearn.decomposition.dict_learning_online &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.decomposition.dict_learning_online &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.decomposition.sparse_encode" href="sklearn.decomposition.sparse_encode.html" />
+    <link rel="prev" title="sklearn.decomposition.dict_learning" href="sklearn.decomposition.dict_learning.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.decomposition.dict_learning.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.decompos...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.decomposition.dict_learning
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.decomposition.sparse_encode.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.decompos...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.decomposition.sparse_encode
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.5.15. sklearn.decomposition.dict_learning_online</a></li>
+<li><a class="reference internal" href="#">sklearn.decomposition.dict_learning_online</a></li>
 </ul>
 
     </div>
@@ -131,13 +185,13 @@
 <h1>sklearn.decomposition.dict_learning_online<a class="headerlink" href="#sklearn-decomposition-dict-learning-online" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.decomposition.dict_learning_online">
-<tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">dict_learning_online</tt><big>(</big><em>X</em>, <em>n_atoms</em>, <em>alpha</em>, <em>n_iter=100</em>, <em>return_code=True</em>, <em>dict_init=None</em>, <em>callback=None</em>, <em>chunk_size=3</em>, <em>verbose=False</em>, <em>shuffle=True</em>, <em>n_jobs=1</em>, <em>method='lars'</em>, <em>iter_offset=0</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.dict_learning_online" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">dict_learning_online</tt><big>(</big><em>X</em>, <em>n_components=2</em>, <em>alpha=1</em>, <em>n_iter=100</em>, <em>return_code=True</em>, <em>dict_init=None</em>, <em>callback=None</em>, <em>batch_size=3</em>, <em>verbose=False</em>, <em>shuffle=True</em>, <em>n_jobs=1</em>, <em>method='lars'</em>, <em>iter_offset=0</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.dict_learning_online" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solves a dictionary learning matrix factorization problem online.</p>
 <p>Finds the best dictionary and the corresponding sparse code for
 approximating the data matrix X by solving:</p>
 <div class="highlight-python"><pre>(U^*, V^*) = argmin 0.5 || X - U V ||_2^2 + alpha * || U ||_1
              (U,V)
-             with || V_k ||_2 = 1 for all  0 &lt;= k &lt; n_atoms</pre>
+             with || V_k ||_2 = 1 for all  0 &lt;= k &lt; n_components</pre>
 </div>
 <p>where V is the dictionary and U is the sparse code. This is
 accomplished by repeatedly iterating over mini-batches by slicing
@@ -148,49 +202,49 @@ the input data.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array of shape (n_samples, n_features)</strong> :</p>
 <blockquote>
-<div><p>data matrix</p>
+<div><p>Data matrix.</p>
 </div></blockquote>
-<p><strong>n_atoms: int,</strong> :</p>
+<p><strong>n_components</strong> : int,</p>
 <blockquote>
-<div><p>number of dictionary atoms to extract</p>
+<div><p>Number of dictionary atoms to extract.</p>
 </div></blockquote>
-<p><strong>alpha: int,</strong> :</p>
+<p><strong>alpha</strong> : int,</p>
 <blockquote>
-<div><p>sparsity controlling parameter</p>
+<div><p>Sparsity controlling parameter.</p>
 </div></blockquote>
-<p><strong>n_iter: int,</strong> :</p>
+<p><strong>n_iter</strong> : int,</p>
 <blockquote>
-<div><p>number of iterations to perform</p>
+<div><p>Number of iterations to perform.</p>
 </div></blockquote>
-<p><strong>return_code: boolean,</strong> :</p>
+<p><strong>return_code</strong> : boolean,</p>
 <blockquote>
-<div><p>whether to also return the code U or just the dictionary V</p>
+<div><p>Whether to also return the code U or just the dictionary V.</p>
 </div></blockquote>
-<p><strong>dict_init: array of shape (n_atoms, n_features),</strong> :</p>
+<p><strong>dict_init</strong> : array of shape (n_components, n_features),</p>
 <blockquote>
-<div><p>initial value for the dictionary for warm restart scenarios</p>
+<div><p>Initial value for the dictionary for warm restart scenarios.</p>
 </div></blockquote>
-<p><strong>callback:</strong> :</p>
+<p><strong>callback :</strong> :</p>
 <blockquote>
-<div><p>callable that gets invoked every five iterations</p>
+<div><p>Callable that gets invoked every five iterations.</p>
 </div></blockquote>
-<p><strong>chunk_size: int,</strong> :</p>
+<p><strong>batch_size</strong> : int,</p>
 <blockquote>
-<div><p>the number of samples to take in each batch</p>
+<div><p>The number of samples to take in each batch.</p>
 </div></blockquote>
-<p><strong>verbose:</strong> :</p>
+<p><strong>verbose :</strong> :</p>
 <blockquote>
-<div><p>degree of output the procedure will print</p>
+<div><p>Degree of output the procedure will print.</p>
 </div></blockquote>
-<p><strong>shuffle: boolean,</strong> :</p>
+<p><strong>shuffle</strong> : boolean,</p>
 <blockquote>
-<div><p>whether to shuffle the data before splitting it in batches</p>
+<div><p>Whether to shuffle the data before splitting it in batches.</p>
 </div></blockquote>
-<p><strong>n_jobs: int,</strong> :</p>
+<p><strong>n_jobs</strong> : int,</p>
 <blockquote>
-<div><p>number of parallel jobs to run, or -1 to autodetect.</p>
+<div><p>Number of parallel jobs to run, or -1 to autodetect.</p>
 </div></blockquote>
-<p><strong>method: {&#8216;lars&#8217;, &#8216;cd&#8217;}</strong> :</p>
+<p><strong>method</strong> : {&#8216;lars&#8217;, &#8216;cd&#8217;}</p>
 <blockquote>
 <div><p>lars: uses the least angle regression method to solve the lasso problem
 (linear_model.lars_path)
@@ -198,22 +252,22 @@ cd: uses the coordinate descent method to compute the
 Lasso solution (linear_model.Lasso). Lars will be faster if
 the estimated components are sparse.</p>
 </div></blockquote>
-<p><strong>iter_offset: int, default 0</strong> :</p>
+<p><strong>iter_offset</strong> : int, default 0</p>
 <blockquote>
-<div><p>number of previous iterations completed on the dictionary used for
-initialization</p>
+<div><p>Number of previous iterations completed on the dictionary used for
+initialization.</p>
 </div></blockquote>
-<p><strong>random_state: int or RandomState</strong> :</p>
+<p><strong>random_state</strong> : int or RandomState</p>
 <blockquote>
 <div><p>Pseudo number generator state used for random sampling.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>code: array of shape (n_samples, n_atoms),</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>code</strong> : array of shape (n_samples, n_components),</p>
 <blockquote>
 <div><p>the sparse code (only returned if <cite>return_code=True</cite>)</p>
 </div></blockquote>
-<p><strong>dictionary: array of shape (n_atoms, n_features),</strong> :</p>
+<p><strong>dictionary</strong> : array of shape (n_components, n_features),</p>
 <blockquote class="last">
 <div><p>the solutions to the dictionary learning problem</p>
 </div></blockquote>
@@ -238,11 +292,19 @@ initialization</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.decomposition.dict_learning_online.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.decomposition.dict_learning.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.decomposition.sparse_encode.html">Next
+      </a>
+    </div>
     
      </div>
 

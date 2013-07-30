@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>GMM classification &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>GMM classification &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Nearest Neighbors regression" href="../neighbors/plot_regression.html" />
+    <link rel="prev" title="Gaussian Mixture Model Selection" href="plot_gmm_selection.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="plot_gmm_selection.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Gaussian Mixture...
+        </span>
+            <span class="hiddenrellink">
+            Gaussian Mixture Model Selection
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="../neighbors/plot_regression.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Nearest Neighbor...
+        </span>
+            <span class="hiddenrellink">
+            Nearest Neighbors regression
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Examples
+        </span>
+            <span class="hiddenrellink">
+            Examples
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">GMM classification</a></li>
@@ -129,7 +183,8 @@
             
   <div class="section" id="gmm-classification">
 <span id="example-mixture-plot-gmm-classifier-py"></span><h1>GMM classification<a class="headerlink" href="#gmm-classification" title="Permalink to this headline">¶</a></h1>
-<p>Demonstration of <a class="reference internal" href="../../modules/mixture.html#gmm"><em>Gaussian mixture models</em></a> for classification.</p>
+<p>Demonstration of Gaussian mixture models for classification.</p>
+<p>See <a class="reference internal" href="../../modules/mixture.html#gmm"><em>Gaussian mixture models</em></a> for more information on the estimator.</p>
 <p>Plots predicted labels on both training and held out test data using a
 variety of GMM classifiers on the iris dataset.</p>
 <p>Compares GMMs with spherical, diagonal, full, and tied covariance
@@ -142,10 +197,10 @@ crosses. The iris dataset is four-dimensional. Only the first two
 dimensions are shown here, and thus some points are separated in other
 dimensions.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_gmm_classifier.py"><tt class="xref download docutils literal"><span class="pre">plot_gmm_classifier.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Ron Weiss &lt;ronweiss@gmail.com&gt;, Gael Varoquaux</span>
-<span class="c"># License: BSD Style.</span>
+<span class="c"># License: BSD 3 clause</span>
 
 <span class="c"># $Id$</span>
 
@@ -155,6 +210,7 @@ dimensions.</p>
 
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.externals.six.moves</span> <span class="kn">import</span> <span class="nb">xrange</span>
 <span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GMM</span>
 
 
@@ -175,7 +231,7 @@ dimensions.</p>
 
 <span class="c"># Break up the dataset into non-overlapping training (75%) and testing</span>
 <span class="c"># (25%) sets.</span>
-<span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">n_folds</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="c"># Only take the first fold.</span>
 <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">skf</span><span class="p">))</span>
 
@@ -190,7 +246,7 @@ dimensions.</p>
 <span class="c"># Try GMMs using different types of covariances.</span>
 <span class="n">classifiers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">covar_type</span><span class="p">,</span> <span class="n">GMM</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span>
                     <span class="n">covariance_type</span><span class="o">=</span><span class="n">covar_type</span><span class="p">,</span> <span class="n">init_params</span><span class="o">=</span><span class="s">&#39;wc&#39;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
-                    <span class="k">for</span> <span class="n">covar_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;spherical&#39;</span><span class="p">,</span> <span class="s">&#39;diag&#39;</span><span class="p">,</span> <span class="s">&#39;tied&#39;</span><span class="p">,</span> <span class="s">&#39;full&#39;</span><span class="p">])</span>
+                   <span class="k">for</span> <span class="n">covar_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;spherical&#39;</span><span class="p">,</span> <span class="s">&#39;diag&#39;</span><span class="p">,</span> <span class="s">&#39;tied&#39;</span><span class="p">,</span> <span class="s">&#39;full&#39;</span><span class="p">])</span>
 
 <span class="n">n_classifiers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">classifiers</span><span class="p">)</span>
 
@@ -214,7 +270,7 @@ dimensions.</p>
     <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s">&#39;rgb&#39;</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span> <span class="o">==</span> <span class="n">n</span><span class="p">]</span>
         <span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+                   <span class="n">label</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
     <span class="c"># Plot the test data with crosses</span>
     <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s">&#39;rgb&#39;</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">n</span><span class="p">]</span>
@@ -223,12 +279,12 @@ dimensions.</p>
     <span class="n">y_train_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
     <span class="n">train_accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_train_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">y_train</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span> <span class="o">*</span> <span class="mi">100</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s">&#39;Train accuracy: </span><span class="si">%.1f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">train_accuracy</span><span class="p">,</span>
-                    <span class="n">transform</span><span class="o">=</span><span class="n">h</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">h</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
 
     <span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
     <span class="n">test_accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_test_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">y_test</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span> <span class="o">*</span> <span class="mi">100</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s">&#39;Test accuracy: </span><span class="si">%.1f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">test_accuracy</span><span class="p">,</span>
-                    <span class="n">transform</span><span class="o">=</span><span class="n">h</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">h</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
 
     <span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
@@ -251,11 +307,19 @@ dimensions.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/auto_examples/mixture/plot_gmm_classifier.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="plot_gmm_selection.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="../neighbors/plot_regression.html">Next
+      </a>
+    </div>
     
      </div>
 

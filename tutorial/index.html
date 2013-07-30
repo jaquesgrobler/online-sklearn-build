@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>2. Tutorials: From the bottom up with scikit-learn &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>Tutorial: Statistical Learning for scientific data analysis &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,9 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
+    <link rel="next" title="A tutorial on statistical-learning for scientific data processing" href="statistical_inference/index.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="../index.html" />
    
        <script type="text/javascript" src="../_static/sidebar.js"></script>
    
@@ -64,8 +66,7 @@
         <p class="logo"><a href="../index.html">
             <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../install.html">Installation</a></li>
@@ -110,10 +111,46 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel rellarge">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="../index.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        <no title>
+        </span>
+            <span class="hiddenrellink">
+            <no title>
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="statistical_inference/index.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        A tutorial on st...
+        </span>
+            <span class="hiddenrellink">
+            A tutorial on statistical-learning for scientific data processing
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">2. Tutorials: From the bottom up with scikit-learn</a><ul>
+<li><a class="reference internal" href="#">Tutorial: Statistical Learning for scientific data analysis</a><ul>
 </ul>
 </li>
 </ul>
@@ -163,56 +200,20 @@
       font-weight: normal;
       }
 
-</style><div class="section" id="tutorials-from-the-bottom-up-with-scikit-learn">
-<h1>Tutorials: From the bottom up with scikit-learn<a class="headerlink" href="#tutorials-from-the-bottom-up-with-scikit-learn" title="Permalink to this headline">¶</a></h1>
-<div class="topic">
-<p class="topic-title first">Quick start</p>
-<p>In this section, we introduce the <a class="reference external" href="http://en.wikipedia.org/wiki/Machine_learning">machine learning</a>
-vocabulary that we use through-out <cite>scikit-learn</cite> and give a
-simple learning example.</p>
-</div>
+</style><div class="section" id="tutorial-statistical-learning-for-scientific-data-analysis">
+<h1>Tutorial: Statistical Learning for scientific data analysis<a class="headerlink" href="#tutorial-statistical-learning-for-scientific-data-analysis" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="basic/tutorial.html">1. An Introduction to machine learning with scikit-learn</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basic/tutorial.html#machine-learning-the-problem-setting">1.1. Machine learning: the problem setting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/tutorial.html#loading-an-example-dataset">1.2. Loading an example dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/tutorial.html#learning-and-predicting">1.3. Learning and Predicting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/tutorial.html#model-persistence">1.4. Model persistence</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="topic">
-<p class="topic-title first">Statistical-learning Tutorial</p>
-<p>This tutorial covers some of the models and tools available
-to do data-processing with Scikit Learn and how to learn from
-your data.</p>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="statistical_inference/index.html">2.2. A tutorial on statistical-learning for scientific data processing</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="statistical_inference/index.html">A tutorial on statistical-learning for scientific data processing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="statistical_inference/settings.html">Statistical learning: the setting and the estimator object in the scikit-learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="statistical_inference/supervised_learning.html">Supervised learning: predicting an output variable from high-dimensional observations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="statistical_inference/model_selection.html">Model selection: choosing estimators and their parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="statistical_inference/unsupervised_learning.html">Unsupervised learning: seeking representations of the data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="statistical_inference/putting_together.html">Putting it all together</a></li>
-<li class="toctree-l2"><a class="reference internal" href="statistical_inference/finding_help.html">2.2.6. Finding help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistical_inference/finding_help.html">Finding help</a></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="topic">
-<p class="topic-title first"><strong>External Tutorials</strong></p>
-<p>There are several online tutorials available which are geared toward
-specific subject areas:</p>
-<ul class="simple">
-<li><a class="reference external" href="http://nisl.github.com/">Machine Learning for NeuroImaging in Python</a></li>
-<li><a class="reference external" href="http://astroml.github.com/sklearn_tutorial/">Machine Learning for Astronomical Data Analysis</a></li>
-</ul>
-</div>
-<div class="topic">
-<p class="topic-title first"><strong>Videos</strong></p>
-<p>Videos with tutorials can also be found in the <a class="reference internal" href="../presentations.html#videos"><em>Videos</em></a> section.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -237,11 +238,19 @@ manually.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../_sources/tutorial/index.txt" rel="nofollow">Show this page source</a>
     </div>
      <div class="rel rellarge">
     
+    <div class="buttonPrevious">
+      <a href="../index.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="statistical_inference/index.html">Next
+      </a>
+    </div>
     
      </div>
 

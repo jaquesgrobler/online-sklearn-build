@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.17.3.4. sklearn.metrics.homogeneity_completeness_v_measure &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.metrics.homogeneity_completeness_v_measure &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.metrics.homogeneity_score" href="sklearn.metrics.homogeneity_score.html" />
+    <link rel="prev" title="sklearn.metrics.completeness_score" href="sklearn.metrics.completeness_score.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.metrics.completeness_score.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.metrics....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.metrics.completeness_score
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.metrics.homogeneity_score.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.metrics....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.metrics.homogeneity_score
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.17.3.4. sklearn.metrics.homogeneity_completeness_v_measure</a></li>
+<li><a class="reference internal" href="#">sklearn.metrics.homogeneity_completeness_v_measure</a></li>
 </ul>
 
     </div>
@@ -132,7 +186,7 @@
 <dl class="function">
 <dt id="sklearn.metrics.homogeneity_completeness_v_measure">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">homogeneity_completeness_v_measure</tt><big>(</big><em>labels_true</em>, <em>labels_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.homogeneity_completeness_v_measure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the homogeneity and completeness and V-measure scores at once</p>
+<dd><p>Compute the homogeneity and completeness and V-Measure scores at once</p>
 <p>Those metrics are based on normalized conditional entropy measures of
 the clustering labeling to evaluate given the knowledge of a Ground
 Truth class labels of the same samples.</p>
@@ -145,8 +199,8 @@ being desirable.</p>
 <p>Those 3 metrics are independent of the absolute values of the labels:
 a permutation of the class or cluster label values won&#8217;t change the
 score values in any way.</p>
-<p>V-Measure is furthermore symmetric: swapping <cite>labels_true</cite> and
-<cite>label_pred</cite> will give the same score. This does not hold for
+<p>V-Measure is furthermore symmetric: swapping <tt class="docutils literal"><span class="pre">labels_true</span></tt> and
+<tt class="docutils literal"><span class="pre">label_pred</span></tt> will give the same score. This does not hold for
 homogeneity and completeness.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -195,11 +249,19 @@ homogeneity and completeness.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.metrics.homogeneity_completeness_v_measure.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.metrics.completeness_score.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.metrics.homogeneity_score.html">Next
+      </a>
+    </div>
     
      </div>
 

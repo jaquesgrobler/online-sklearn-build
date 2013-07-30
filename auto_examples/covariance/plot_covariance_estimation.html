@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Ledoit-Wolf vs Covariance simple estimation &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Robust covariance estimation and Mahalanobis distances relevance" href="plot_mahalanobis_distances.html" />
+    <link rel="prev" title="Sparse inverse covariance estimation" href="plot_sparse_cov.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="plot_sparse_cov.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Sparse inverse c...
+        </span>
+            <span class="hiddenrellink">
+            Sparse inverse covariance estimation
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="plot_mahalanobis_distances.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Robust covarianc...
+        </span>
+            <span class="hiddenrellink">
+            Robust covariance estimation and Mahalanobis distances relevance
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Examples
+        </span>
+            <span class="hiddenrellink">
+            Examples
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">Ledoit-Wolf vs Covariance simple estimation</a></li>
+<li><a class="reference internal" href="#">Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood</a></li>
 </ul>
 
     </div>
@@ -127,33 +181,56 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="ledoit-wolf-vs-covariance-simple-estimation">
-<span id="example-covariance-plot-covariance-estimation-py"></span><h1>Ledoit-Wolf vs Covariance simple estimation<a class="headerlink" href="#ledoit-wolf-vs-covariance-simple-estimation" title="Permalink to this headline">¶</a></h1>
-<p>The usual covariance maximum likelihood estimate can be regularized
-using shrinkage. Ledoit and Wolf proposed a close formula to compute
-the asymptotical optimal shrinkage parameter (minimizing a MSE
-criterion), yielding the Ledoit-Wolf covariance estimate.</p>
-<p>Chen et al. proposed an improvement of the Ledoit-Wolf shrinkage
-parameter, the OAS coefficient, whose convergence is significantly
-better under the assumption that the data are gaussian.</p>
-<p>In this example, we compute the likelihood of unseen data for
-different values of the shrinkage parameter, highlighting the LW and
-OAS estimates. The Ledoit-Wolf estimate stays close to the likelihood
-criterion optimal value, which is an artifact of the method since it
-is asymptotic and we are working with a small number of observations.
-The OAS estimate deviates from the likelihood criterion optimal value
-but better approximate the MSE optimal value, especially for a small
-number a observations.</p>
+  <div class="section" id="shrinkage-covariance-estimation-ledoitwolf-vs-oas-and-max-likelihood">
+<span id="example-covariance-plot-covariance-estimation-py"></span><h1>Shrinkage covariance estimation: LedoitWolf vs OAS and max-likelihood<a class="headerlink" href="#shrinkage-covariance-estimation-ledoitwolf-vs-oas-and-max-likelihood" title="Permalink to this headline">¶</a></h1>
+<p>When working with covariance estimation, the usual approach is to use
+a maximum likelihood estimator, such as the
+<a class="reference internal" href="../../modules/generated/sklearn.covariance.EmpiricalCovariance.html#sklearn.covariance.EmpiricalCovariance" title="sklearn.covariance.EmpiricalCovariance"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.covariance.EmpiricalCovariance</span></tt></a>. It is unbiased, i.e. it
+converges to the true (population) covariance when given many
+observations. However, it can also be beneficial to regularize it, in
+order to reduce its variance; this, in turn, introduces some bias. This
+example illustrates the simple regularization used in
+<a class="reference internal" href="../../modules/covariance.html#shrunk-covariance"><em>Shrunk Covariance</em></a> estimators. In particular, it focuses on how to
+set the amount of regularization, i.e. how to choose the bias-variance
+trade-off.</p>
+<p>Here we compare 3 approaches:</p>
+<ul class="simple">
+<li>Setting the parameter by cross-validating the likelihood on three folds
+according to a grid of potential shrinkage parameters.</li>
+<li>A close formula proposed by Ledoit and Wolf to compute
+the asymptotically optimal regularization parameter (minimizing a MSE
+criterion), yielding the <a class="reference internal" href="../../modules/generated/sklearn.covariance.LedoitWolf.html#sklearn.covariance.LedoitWolf" title="sklearn.covariance.LedoitWolf"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.covariance.LedoitWolf</span></tt></a>
+covariance estimate.</li>
+<li>An improvement of the Ledoit-Wolf shrinkage, the
+<a class="reference internal" href="../../modules/generated/sklearn.covariance.OAS.html#sklearn.covariance.OAS" title="sklearn.covariance.OAS"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.covariance.OAS</span></tt></a>, proposed by Chen et al. Its
+convergence is significantly better under the assumption that the data
+are Gaussian, in particular for small samples.</li>
+</ul>
+<p>To quantify estimation error, we plot the likelihood of unseen data for
+different values of the shrinkage parameter. We also show the choices by
+cross-validation, or with the LedoitWolf and OAS estimates.</p>
+<p>Note that the maximum likelihood estimate corresponds to no shrinkage,
+and thus performs poorly. The Ledoit-Wolf estimate performs really well,
+as it is close to the optimal and is computational not costly. In this
+example, the OAS estimate is a bit further away. Interestingly, both
+approaches outperform cross-validation, which is significantly most
+computationally costly.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_covariance_estimation.py"><tt class="xref download docutils literal"><span class="pre">plot_covariance_estimation.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
 
+<span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">LedoitWolf</span><span class="p">,</span> <span class="n">OAS</span><span class="p">,</span> <span class="n">ShrunkCovariance</span><span class="p">,</span> \
+    <span class="n">log_likelihood</span><span class="p">,</span> <span class="n">empirical_covariance</span>
+<span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+
+
 <span class="c">###############################################################################</span>
 <span class="c"># Generate sample data</span>
-<span class="n">n_features</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">20</span>
+<span class="n">n_features</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">base_X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
 <span class="n">base_X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
 
@@ -163,10 +240,26 @@ number a observations.</p>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">base_X_test</span><span class="p">,</span> <span class="n">coloring_matrix</span><span class="p">)</span>
 
 <span class="c">###############################################################################</span>
-<span class="c"># Compute Ledoit-Wolf and Covariances on a grid of shrinkages</span>
+<span class="c"># Compute the likelihood on test data</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">LedoitWolf</span><span class="p">,</span> <span class="n">OAS</span><span class="p">,</span> <span class="n">ShrunkCovariance</span><span class="p">,</span> \
-    <span class="n">log_likelihood</span><span class="p">,</span> <span class="n">empirical_covariance</span>
+<span class="c"># spanning a range of possible shrinkage coefficient values</span>
+<span class="n">shrinkages</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">negative_logliks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">ShrunkCovariance</span><span class="p">(</span><span class="n">shrinkage</span><span class="o">=</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shrinkages</span><span class="p">]</span>
+
+<span class="c"># under the ground-truth model, which we would not have access to in real</span>
+<span class="c"># settings</span>
+<span class="n">real_cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">coloring_matrix</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">coloring_matrix</span><span class="p">)</span>
+<span class="n">emp_cov</span> <span class="o">=</span> <span class="n">empirical_covariance</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">loglik_real</span> <span class="o">=</span> <span class="o">-</span><span class="n">log_likelihood</span><span class="p">(</span><span class="n">emp_cov</span><span class="p">,</span> <span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">real_cov</span><span class="p">))</span>
+
+<span class="c">###############################################################################</span>
+<span class="c"># Compare different approaches to setting the parameter</span>
+
+<span class="c"># GridSearch for an optimal shrinkage coefficient</span>
+<span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;shrinkage&#39;</span><span class="p">:</span> <span class="n">shrinkages</span><span class="p">}]</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">ShrunkCovariance</span><span class="p">(),</span> <span class="n">tuned_parameters</span><span class="p">)</span>
+<span class="n">cv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 
 <span class="c"># Ledoit-Wolf optimal shrinkage coefficient estimate</span>
 <span class="n">lw</span> <span class="o">=</span> <span class="n">LedoitWolf</span><span class="p">()</span>
@@ -176,47 +269,40 @@ number a observations.</p>
 <span class="n">oa</span> <span class="o">=</span> <span class="n">OAS</span><span class="p">()</span>
 <span class="n">loglik_oa</span> <span class="o">=</span> <span class="n">oa</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="c"># spanning a range of possible shrinkage coefficient values</span>
-<span class="n">shrinkages</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">negative_logliks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">ShrunkCovariance</span><span class="p">(</span><span class="n">shrinkage</span><span class="o">=</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-                     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shrinkages</span><span class="p">]</span>
-
-<span class="c"># getting the likelihood under the real model</span>
-<span class="n">real_cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">coloring_matrix</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">coloring_matrix</span><span class="p">)</span>
-<span class="n">emp_cov</span> <span class="o">=</span> <span class="n">empirical_covariance</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">loglik_real</span> <span class="o">=</span> <span class="o">-</span><span class="n">log_likelihood</span><span class="p">(</span><span class="n">emp_cov</span><span class="p">,</span> <span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">real_cov</span><span class="p">))</span>
-
 <span class="c">###############################################################################</span>
 <span class="c"># Plot results</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Regularized covariance: likelihood and shrinkage coefficient&quot;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Shrinkage&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Negative log-likelihood&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Regularizaton parameter: shrinkage coefficient&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Error: negative log-likelihood on test data&#39;</span><span class="p">)</span>
 <span class="c"># range shrinkage curve</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">shrinkages</span><span class="p">,</span> <span class="n">negative_logliks</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">shrinkages</span><span class="p">,</span> <span class="n">negative_logliks</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;Negative log-likelihood&quot;</span><span class="p">)</span>
 
-<span class="c"># real likelihood reference</span>
-<span class="c"># BUG: hlines(..., linestyle=&#39;--&#39;) breaks on some older versions of matplotlib</span>
-<span class="c">#pl.hlines(loglik_real, pl.xlim()[0], pl.xlim()[1], color=&#39;red&#39;,</span>
-<span class="c">#          label=&quot;real covariance likelihood&quot;, linestyle=&#39;--&#39;)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(),</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="n">loglik_real</span><span class="p">],</span> <span class="s">&#39;--r&#39;</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="s">&quot;real covariance likelihood&quot;</span><span class="p">)</span>
+        <span class="n">label</span><span class="o">=</span><span class="s">&quot;Real covariance likelihood&quot;</span><span class="p">)</span>
 
 <span class="c"># adjust view</span>
 <span class="n">lik_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">negative_logliks</span><span class="p">)</span>
 <span class="n">lik_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">negative_logliks</span><span class="p">)</span>
-<span class="n">ylim0</span> <span class="o">=</span> <span class="n">lik_min</span> <span class="o">-</span> <span class="mf">5.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">ylim1</span> <span class="o">=</span> <span class="n">lik_max</span> <span class="o">+</span> <span class="mf">10.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">lik_max</span> <span class="o">-</span> <span class="n">lik_min</span><span class="p">)</span>
+<span class="n">ymin</span> <span class="o">=</span> <span class="n">lik_min</span> <span class="o">-</span> <span class="mf">6.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">ymax</span> <span class="o">=</span> <span class="n">lik_max</span> <span class="o">+</span> <span class="mf">10.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">lik_max</span> <span class="o">-</span> <span class="n">lik_min</span><span class="p">)</span>
+<span class="n">xmin</span> <span class="o">=</span> <span class="n">shrinkages</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="n">shrinkages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="c"># LW likelihood</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">lw</span><span class="o">.</span><span class="n">shrinkage_</span><span class="p">,</span> <span class="n">ylim0</span><span class="p">,</span> <span class="o">-</span><span class="n">loglik_lw</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">,</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">lw</span><span class="o">.</span><span class="n">shrinkage_</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="o">-</span><span class="n">loglik_lw</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;magenta&#39;</span><span class="p">,</span>
           <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Ledoit-Wolf estimate&#39;</span><span class="p">)</span>
 <span class="c"># OAS likelihood</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">oa</span><span class="o">.</span><span class="n">shrinkage_</span><span class="p">,</span> <span class="n">ylim0</span><span class="p">,</span> <span class="o">-</span><span class="n">loglik_oa</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">,</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">oa</span><span class="o">.</span><span class="n">shrinkage_</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="o">-</span><span class="n">loglik_oa</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;purple&#39;</span><span class="p">,</span>
           <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;OAS estimate&#39;</span><span class="p">)</span>
+<span class="c"># best CV estimator likelihood</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">shrinkage</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span>
+          <span class="o">-</span><span class="n">cv</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;cyan&#39;</span><span class="p">,</span>
+          <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Cross-validation best estimate&#39;</span><span class="p">)</span>
 
-<span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ylim0</span><span class="p">,</span> <span class="n">ylim1</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">shrinkages</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">shrinkages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -231,11 +317,19 @@ number a observations.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/auto_examples/covariance/plot_covariance_estimation.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="plot_sparse_cov.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="plot_mahalanobis_distances.html">Next
+      </a>
+    </div>
     
      </div>
 

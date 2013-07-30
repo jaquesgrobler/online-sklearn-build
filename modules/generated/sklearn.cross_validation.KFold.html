@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.3.2. sklearn.cross_validation.KFold &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.cross_validation.KFold &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.cross_validation.LeaveOneLabelOut" href="sklearn.cross_validation.LeaveOneLabelOut.html" />
+    <link rel="prev" title="sklearn.cross_validation.Bootstrap" href="sklearn.cross_validation.Bootstrap.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.cross_validation.Bootstrap.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.cross_va...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cross_validation.Bootstrap
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.cross_validation.LeaveOneLabelOut.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.cross_va...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cross_validation.LeaveOneLabelOut
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.3.2. sklearn.cross_validation.KFold</a></li>
+<li><a class="reference internal" href="#">sklearn.cross_validation.KFold</a></li>
 </ul>
 
     </div>
@@ -131,8 +185,8 @@
 <h1>sklearn.cross_validation.KFold<a class="headerlink" href="#sklearn-cross-validation-kfold" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.cross_validation.KFold">
-<em class="property">class </em><tt class="descclassname">sklearn.cross_validation.</tt><tt class="descname">KFold</tt><big>(</big><em>n</em>, <em>k</em>, <em>indices=True</em>, <em>shuffle=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.KFold" title="Permalink to this definition">¶</a></dt>
-<dd><p>K-Folds cross validation iterator</p>
+<em class="property">class </em><tt class="descclassname">sklearn.cross_validation.</tt><tt class="descname">KFold</tt><big>(</big><em>n</em>, <em>n_folds=3</em>, <em>indices=True</em>, <em>shuffle=False</em>, <em>random_state=None</em>, <em>k=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.KFold" title="Permalink to this definition">¶</a></dt>
+<dd><p>K-Folds cross validation iterator.</p>
 <p>Provides train/test indices to split data in train test sets. Split
 dataset into k consecutive folds (without shuffling).</p>
 <p>Each fold is then used a validation set once while the k - 1 remaining
@@ -141,25 +195,25 @@ fold form the training set.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n: int</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n</strong> : int</p>
 <blockquote>
-<div><p>Total number of elements</p>
+<div><p>Total number of elements.</p>
 </div></blockquote>
-<p><strong>k: int</strong> :</p>
+<p><strong>n_folds</strong> : int, default=3</p>
 <blockquote>
-<div><p>Number of folds</p>
+<div><p>Number of folds. Must be at least 2.</p>
 </div></blockquote>
-<p><strong>indices: boolean, optional (default True)</strong> :</p>
+<p><strong>indices</strong> : boolean, optional (default True)</p>
 <blockquote>
 <div><p>Return train/test split as arrays of indices, rather than a boolean
 mask array. Integer indices are required when dealing with sparse
 matrices, since those cannot be indexed by boolean masks.</p>
 </div></blockquote>
-<p><strong>shuffle: boolean, optional</strong> :</p>
+<p><strong>shuffle</strong> : boolean, optional</p>
 <blockquote>
-<div><p>whether to shuffle the data before splitting into batches</p>
+<div><p>Whether to shuffle the data before splitting into batches.</p>
 </div></blockquote>
-<p><strong>random_state: int or RandomState</strong> :</p>
+<p><strong>random_state</strong> : int or RandomState</p>
 <blockquote class="last">
 <div><p>Pseudo number generator state used for random sampling.</p>
 </div></blockquote>
@@ -176,19 +230,19 @@ matrices, since those cannot be indexed by boolean masks.</p>
 <p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">folds</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">classification</span></tt></p>
 </div>
 <p class="rubric">Notes</p>
-<p>All the folds have size trunc(n_samples / n_folds), the last one has the
-complementary.</p>
+<p>The first n % n_folds folds have size n // n_folds + 1, other folds have
+size n // n_folds.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">kf</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">KFold</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kf</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">KFold</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_folds</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">kf</span><span class="p">)</span>
 <span class="go">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">kf</span><span class="p">)</span>
-<span class="go">sklearn.cross_validation.KFold(n=4, k=2)</span>
+<span class="go">sklearn.cross_validation.KFold(n=4, n_folds=2)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">kf</span><span class="p">:</span>
-<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="s">&quot;TRAIN: </span><span class="si">%s</span><span class="s"> TEST: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">))</span>
+<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="s">&quot;TRAIN:&quot;</span><span class="p">,</span> <span class="n">train_index</span><span class="p">,</span> <span class="s">&quot;TEST:&quot;</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span>
 <span class="gp">... </span>   <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
 <span class="gp">... </span>   <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
 <span class="go">TRAIN: [2 3] TEST: [0 1]</span>
@@ -197,7 +251,7 @@ complementary.</p>
 </div>
 <dl class="method">
 <dt id="sklearn.cross_validation.KFold.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n</em>, <em>k</em>, <em>indices=True</em>, <em>shuffle=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.KFold.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n</em>, <em>n_folds=3</em>, <em>indices=True</em>, <em>shuffle=False</em>, <em>random_state=None</em>, <em>k=None</em><big>)</big><a class="headerlink" href="#sklearn.cross_validation.KFold.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -213,11 +267,19 @@ complementary.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.cross_validation.KFold.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.cross_validation.Bootstrap.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.cross_validation.LeaveOneLabelOut.html">Next
+      </a>
+    </div>
     
      </div>
 

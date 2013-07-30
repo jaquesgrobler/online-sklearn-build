@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Outlier detection on a real data set &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>Outlier detection on a real data set &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Gaussian HMM of stock data" href="plot_hmm_stock_analysis.html" />
+    <link rel="prev" title="Topics extraction with Non-Negative Matrix Factorization" href="topics_extraction_with_nmf.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="topics_extraction_with_nmf.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Topics extractio...
+        </span>
+            <span class="hiddenrellink">
+            Topics extraction with Non-Negative Matrix Factorization
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="plot_hmm_stock_analysis.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Gaussian HMM of ...
+        </span>
+            <span class="hiddenrellink">
+            Gaussian HMM of stock data
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Examples
+        </span>
+            <span class="hiddenrellink">
+            Examples
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">Outlier detection on a real data set</a><ul>
@@ -138,7 +192,7 @@ on a real data set. It is useful both for outlier detection and for
 a better understanding of the data structure.</p>
 <p>We selected two sets of two variables from the boston housing data set
 as an illustration of what kind of analysis can be done with several
-outlier detection tools. For the purpose of vizualisation, we are working
+outlier detection tools. For the purpose of visualization, we are working
 with two-dimensional examples, but one should be aware that things are
 not so trivial in high-dimension, as it will be pointed out.</p>
 <p>In both examples below, the main result is that the empirical covariance
@@ -167,14 +221,14 @@ distribution: the location seems to be well estimated, although the covariance
 is hard to estimate due to the banana-shaped distribution. Anyway, we can
 get rid of some outlying observations.
 The One-Class SVM is able to capture the real data structure, but the
-difficulty is to adjust its kernel bandwith parameter so as to obtain
+difficulty is to adjust its kernel bandwidth parameter so as to obtain
 a good compromise between the shape of the data scatter matrix and the
 risk of over-fitting the data.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_outlier_detection_housing.py"><tt class="xref download docutils literal"><span class="pre">plot_outlier_detection_housing.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Author: Virgile Fritsch &lt;virgile.fritsch@inria.fr&gt;</span>
-<span class="c"># License: BSD</span>
+<span class="c"># License: BSD 3 clause</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">EllipticEnvelope</span>
@@ -190,9 +244,9 @@ risk of over-fitting the data.</p>
 <span class="c"># Define &quot;classifiers&quot; to be used</span>
 <span class="n">classifiers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">&quot;Empirical Covariance&quot;</span><span class="p">:</span> <span class="n">EllipticEnvelope</span><span class="p">(</span><span class="n">support_fraction</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span>
-                                            <span class="n">contamination</span><span class="o">=</span><span class="mf">0.261</span><span class="p">),</span>
+                                             <span class="n">contamination</span><span class="o">=</span><span class="mf">0.261</span><span class="p">),</span>
     <span class="s">&quot;Robust Covariance (Minimum Covariance Determinant)&quot;</span><span class="p">:</span>
-        <span class="n">EllipticEnvelope</span><span class="p">(</span><span class="n">contamination</span><span class="o">=</span><span class="mf">0.261</span><span class="p">),</span>
+    <span class="n">EllipticEnvelope</span><span class="p">(</span><span class="n">contamination</span><span class="o">=</span><span class="mf">0.261</span><span class="p">),</span>
     <span class="s">&quot;OCSVM&quot;</span><span class="p">:</span> <span class="n">OneClassSVM</span><span class="p">(</span><span class="n">nu</span><span class="o">=</span><span class="mf">0.261</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)}</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">]</span>
 <span class="n">legend1</span> <span class="o">=</span> <span class="p">{}</span>
@@ -264,11 +318,19 @@ risk of over-fitting the data.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/auto_examples/applications/plot_outlier_detection_housing.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="topics_extraction_with_nmf.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="plot_hmm_stock_analysis.html">Next
+      </a>
+    </div>
     
      </div>
 

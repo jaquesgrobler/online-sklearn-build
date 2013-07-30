@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.26.2.3. sklearn.svm.libsvm.predict &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.svm.libsvm.predict &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.svm.libsvm.predict_proba" href="sklearn.svm.libsvm.predict_proba.html" />
+    <link rel="prev" title="sklearn.svm.libsvm.decision_function" href="sklearn.svm.libsvm.decision_function.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.svm.libsvm.decision_function.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.svm.libs...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.svm.libsvm.decision_function
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.svm.libsvm.predict_proba.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.svm.libs...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.svm.libsvm.predict_proba
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.26.2.3. sklearn.svm.libsvm.predict</a></li>
+<li><a class="reference internal" href="#">sklearn.svm.libsvm.predict</a></li>
 </ul>
 
     </div>
@@ -144,39 +198,26 @@
 </div></blockquote>
 <p><strong>kernel</strong> : {&#8216;linear&#8217;, &#8216;rbf&#8217;, &#8216;poly&#8217;, &#8216;sigmoid&#8217;, &#8216;precomputed&#8217;}</p>
 <blockquote>
-<div><p>Kernel to use in the model: linear, polynomial, RBF, sigmoid
-or precomputed.</p>
+<div><p>Type of kernel.</p>
 </div></blockquote>
 <p><strong>degree</strong> : int</p>
 <blockquote>
-<div><p>Degree of the polynomial kernel (only relevant if kernel is
-set to polynomial)</p>
+<div><p>Degree of the polynomial kernel.</p>
 </div></blockquote>
 <p><strong>gamma</strong> : float</p>
 <blockquote>
-<div><p>Gamma parameter in RBF kernel (only relevant if kernel is set
-to RBF)</p>
+<div><p>Gamma parameter in RBF kernel.</p>
 </div></blockquote>
 <p><strong>coef0</strong> : float</p>
 <blockquote>
 <div><p>Independent parameter in poly/sigmoid kernel.</p>
 </div></blockquote>
-<p><strong>eps</strong> : float</p>
-<blockquote>
-<div><p>Stopping criteria.</p>
-</div></blockquote>
-<p><strong>C</strong> : float</p>
-<blockquote>
-<div><p>C parameter in C-Support Vector Classification</p>
-</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>dec_values</strong> : array</p>
-<blockquote>
+<blockquote class="last">
 <div><p>predicted values.</p>
 </div></blockquote>
-<p><strong>TODO: probably there&#8217;s no point in setting some parameters, like</strong> :</p>
-<p class="last"><strong>cache_size or weights.</strong> :</p>
 </td>
 </tr>
 </tbody>
@@ -194,11 +235,19 @@ to RBF)</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.svm.libsvm.predict.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.svm.libsvm.decision_function.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.svm.libsvm.predict_proba.html">Next
+      </a>
+    </div>
     
      </div>
 

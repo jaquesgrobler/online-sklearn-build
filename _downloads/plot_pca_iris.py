@@ -6,12 +6,17 @@
 PCA example with Iris Data-set
 =========================================================
 
+Principal Component Analysis applied to the Iris dataset.
+
+See `here <http://en.wikipedia.org/wiki/Iris_flower_data_set>`_ for more
+information on this dataset.
+
 """
-print __doc__
+print(__doc__)
 
 
 # Code source: Gael Varoqueux
-# License: BSD
+# License: BSD 3 clause
 
 import numpy as np
 import pylab as pl
@@ -42,8 +47,7 @@ for name, label in [('Setosa', 0), ('Versicolour', 1), ('Virginica', 2)]:
               X[y == label, 1].mean() + 1.5,
               X[y == label, 2].mean(), name,
               horizontalalignment='center',
-              bbox=dict(alpha=.5, edgecolor='w', facecolor='w'),
-             )
+              bbox=dict(alpha=.5, edgecolor='w', facecolor='w'))
 # Reorder the labels to have colors matching the cluster results
 y = np.choose(y, [1, 2, 0]).astype(np.float)
 ax.scatter(X[:, 0], X[:, 1], X[:, 2], c=y, cmap=pl.cm.spectral)

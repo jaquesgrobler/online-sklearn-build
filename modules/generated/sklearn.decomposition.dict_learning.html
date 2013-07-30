@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.5.14. sklearn.decomposition.dict_learning &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.decomposition.dict_learning &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.decomposition.dict_learning_online" href="sklearn.decomposition.dict_learning_online.html" />
+    <link rel="prev" title="sklearn.decomposition.fastica" href="sklearn.decomposition.fastica.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.decomposition.fastica.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.decompos...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.decomposition.fastica
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.decomposition.dict_learning_online.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.decompos...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.decomposition.dict_learning_online
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.5.14. sklearn.decomposition.dict_learning</a></li>
+<li><a class="reference internal" href="#">sklearn.decomposition.dict_learning</a></li>
 </ul>
 
     </div>
@@ -131,13 +185,13 @@
 <h1>sklearn.decomposition.dict_learning<a class="headerlink" href="#sklearn-decomposition-dict-learning" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.decomposition.dict_learning">
-<tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">dict_learning</tt><big>(</big><em>X</em>, <em>n_atoms</em>, <em>alpha</em>, <em>max_iter=100</em>, <em>tol=1e-08</em>, <em>method='lars'</em>, <em>n_jobs=1</em>, <em>dict_init=None</em>, <em>code_init=None</em>, <em>callback=None</em>, <em>verbose=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.dict_learning" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">dict_learning</tt><big>(</big><em>X</em>, <em>n_components</em>, <em>alpha</em>, <em>max_iter=100</em>, <em>tol=1e-08</em>, <em>method='lars'</em>, <em>n_jobs=1</em>, <em>dict_init=None</em>, <em>code_init=None</em>, <em>callback=None</em>, <em>verbose=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.dict_learning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solves a dictionary learning matrix factorization problem.</p>
 <p>Finds the best dictionary and the corresponding sparse code for
 approximating the data matrix X by solving:</p>
 <div class="highlight-python"><pre>(U^*, V^*) = argmin 0.5 || X - U V ||_2^2 + alpha * || U ||_1
              (U,V)
-            with || V_k ||_2 = 1 for all  0 &lt;= k &lt; n_atoms</pre>
+            with || V_k ||_2 = 1 for all  0 &lt;= k &lt; n_components</pre>
 </div>
 <p>where V is the dictionary and U is the sparse code.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -148,7 +202,7 @@ approximating the data matrix X by solving:</p>
 <blockquote>
 <div><p>Data matrix.</p>
 </div></blockquote>
-<p><strong>n_atoms: int,</strong> :</p>
+<p><strong>n_components: int,</strong> :</p>
 <blockquote>
 <div><p>Number of dictionary atoms to extract.</p>
 </div></blockquote>
@@ -176,11 +230,11 @@ the estimated components are sparse.</p>
 <blockquote>
 <div><p>Number of parallel jobs to run, or -1 to autodetect.</p>
 </div></blockquote>
-<p><strong>dict_init: array of shape (n_atoms, n_features),</strong> :</p>
+<p><strong>dict_init: array of shape (n_components, n_features),</strong> :</p>
 <blockquote>
 <div><p>Initial value for the dictionary for warm restart scenarios.</p>
 </div></blockquote>
-<p><strong>code_init: array of shape (n_samples, n_atoms),</strong> :</p>
+<p><strong>code_init: array of shape (n_samples, n_components),</strong> :</p>
 <blockquote>
 <div><p>Initial value for the sparse code for warm restart scenarios.</p>
 </div></blockquote>
@@ -198,11 +252,11 @@ the estimated components are sparse.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>code: array of shape (n_samples, n_atoms)</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>code: array of shape (n_samples, n_components)</strong> :</p>
 <blockquote>
 <div><p>The sparse code factor in the matrix factorization.</p>
 </div></blockquote>
-<p><strong>dictionary: array of shape (n_atoms, n_features),</strong> :</p>
+<p><strong>dictionary: array of shape (n_components, n_features),</strong> :</p>
 <blockquote>
 <div><p>The dictionary factor in the matrix factorization.</p>
 </div></blockquote>
@@ -231,11 +285,19 @@ the estimated components are sparse.</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.decomposition.dict_learning.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.decomposition.fastica.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.decomposition.dict_learning_online.html">Next
+      </a>
+    </div>
     
      </div>
 

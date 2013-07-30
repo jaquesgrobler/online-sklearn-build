@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.1.2.5. sklearn.cluster.dbscan &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.cluster.dbscan &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.cluster.mean_shift" href="sklearn.cluster.mean_shift.html" />
+    <link rel="prev" title="sklearn.cluster.affinity_propagation" href="sklearn.cluster.affinity_propagation.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.cluster.affinity_propagation.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.cluster....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cluster.affinity_propagation
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.cluster.mean_shift.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.cluster....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.cluster.mean_shift
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.1.2.5. sklearn.cluster.dbscan</a></li>
+<li><a class="reference internal" href="#">sklearn.cluster.dbscan</a></li>
 </ul>
 
     </div>
@@ -131,7 +185,7 @@
 <h1>sklearn.cluster.dbscan<a class="headerlink" href="#sklearn-cluster-dbscan" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.cluster.dbscan">
-<tt class="descclassname">sklearn.cluster.</tt><tt class="descname">dbscan</tt><big>(</big><em>X</em>, <em>eps=0.5</em>, <em>min_samples=5</em>, <em>metric='euclidean'</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.dbscan" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.cluster.</tt><tt class="descname">dbscan</tt><big>(</big><em>X</em>, <em>eps=0.5</em>, <em>min_samples=5</em>, <em>metric='minkowski'</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em>, <em>p=2</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.dbscan" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform DBSCAN clustering from vector array or distance matrix.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -161,6 +215,24 @@ the options allowed by metrics.pairwise.calculate_distance for its
 metric parameter.
 If metric is &#8220;precomputed&#8221;, X is assumed to be a distance matrix and
 must be square.</p>
+</div></blockquote>
+<p><strong>algorithm: {&#8216;auto&#8217;, &#8216;ball_tree&#8217;, &#8216;kd_tree&#8217;, &#8216;brute&#8217;}, optional</strong> :</p>
+<blockquote>
+<div><p>The algorithm to be used by the NearestNeighbors module
+to compute pointwise distances and find nearest neighbors.
+See NearestNeighbors module documentation for details.</p>
+</div></blockquote>
+<p><strong>leaf_size: int, optional (default = 30)</strong> :</p>
+<blockquote>
+<div><p>Leaf size passed to BallTree or cKDTree. This can affect the speed
+of the construction and query, as well as the memory required
+to store the tree. The optimal value depends
+on the nature of the problem.</p>
+</div></blockquote>
+<p><strong>p: float, optional</strong> :</p>
+<blockquote>
+<div><p>The power of the Minkowski metric to be used to calculate distance
+between points.</p>
 </div></blockquote>
 <p><strong>random_state: numpy.RandomState, optional</strong> :</p>
 <blockquote>
@@ -200,11 +272,19 @@ and Data Mining, Portland, OR, AAAI Press, pp. 226–231. 1996</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.cluster.dbscan.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.cluster.affinity_propagation.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.cluster.mean_shift.html">Next
+      </a>
+    </div>
     
      </div>
 

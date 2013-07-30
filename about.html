@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>About us &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>About us &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,9 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="#" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="index.html" />
+    <link rel="next" title="Documentation of scikit-learn 0.13" href="documentation.html" />
+    <link rel="prev" title="External Resources, Videos and Talks" href="presentations.html" />
    
        <script type="text/javascript" src="_static/sidebar.js"></script>
    
@@ -64,8 +66,7 @@
         <p class="logo"><a href="index.html">
             <img src="_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="install.html">Installation</a></li>
@@ -110,14 +111,54 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel rellarge">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="presentations.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        External Resourc...
+        </span>
+            <span class="hiddenrellink">
+            External Resources, Videos and Talks
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="documentation.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Documentation of...
+        </span>
+            <span class="hiddenrellink">
+            Documentation of scikit-learn 0.13
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="##citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">About us</a><ul>
 <li><a class="reference internal" href="#history">History</a></li>
 <li><a class="reference internal" href="#people">People</a></li>
 <li><a class="reference internal" href="#citing-scikit-learn">Citing scikit-learn</a></li>
-<li><a class="reference internal" href="#funding">Funding</a></li>
+<li><a class="reference internal" href="#funding">Funding</a><ul>
+<li><a class="reference internal" href="#donating-to-the-project">Donating to the project</a></li>
+<li><a class="reference internal" href="#the-2013-paris-international-sprint">The 2013&#8217; Paris international sprint</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -144,7 +185,7 @@ David Cournapeau. Later that year, Matthieu Brucher started work on
 this project as part of his thesis.</p>
 <p>In 2010 Fabian Pedregosa, Gael Varoquaux, Alexandre Gramfort and Vincent
 Michel of INRIA took leadership of the project and made the first public
-release, February the 1st 2010. Since then, several releases have appeard
+release, February the 1st 2010. Since then, several releases have appeared
 following a ~3 month cycle, and a striving international community has
 been leading the development.</p>
 </div>
@@ -152,16 +193,8 @@ been leading the development.</p>
 <h2>People<a class="headerlink" href="#people" title="Permalink to this headline">¶</a></h2>
 <table class="hlist"><tr><td><ul class="simple">
 <li>David Cournapeau</li>
-<li>Fred Mailhot</li>
-<li>David Cooke</li>
-<li>David Huard</li>
-<li>Dave Morrill</li>
-<li>Ed Schofield</li>
-<li>Eric Jones</li>
 <li>Jarrod Millman</li>
 <li><a class="reference external" href="http://matt.eifelle.com/">Matthieu Brucher</a></li>
-<li>Travis Oliphant</li>
-<li>Pearu Peterson</li>
 <li><a class="reference external" href="http://fseoane.net/blog/">Fabian Pedregosa</a></li>
 <li><a class="reference external" href="http://gael-varoquaux.info/blog/">Gael Varoquaux</a></li>
 <li><a class="reference external" href="http://www.astro.washington.edu/users/vanderplas/">Jake VanderPlas</a></li>
@@ -170,14 +203,14 @@ been leading the development.</p>
 <li>Bertrand Thirion</li>
 <li>Vincent Michel</li>
 <li>Chris Filo Gorgolewski</li>
-</ul>
-</td><td><ul class="simple">
 <li><a class="reference external" href="http://webylimonada.com">Angel Soler Gollonet</a></li>
 <li><a class="reference external" href="http://www.onerussian.com/">Yaroslav Halchenko</a></li>
 <li>Ron Weiss</li>
 <li><a class="reference external" href="http://parietal.saclay.inria.fr/Members/virgile-fritsch">Virgile Fritsch</a></li>
 <li><a class="reference external" href="http://mblondel.org">Mathieu Blondel</a></li>
 <li><a class="reference external" href="http://sites.google.com/site/peterprettenhofer/">Peter Prettenhofer</a></li>
+</ul>
+</td><td><ul class="simple">
 <li>Vincent Dubourg</li>
 <li><a class="reference external" href="http://atpassos.posterous.com">Alexandre Passos</a></li>
 <li><a class="reference external" href="http://vene.ro">Vlad Niculae</a></li>
@@ -189,12 +222,13 @@ been leading the development.</p>
 <li><a class="reference external" href="http://info.ee.surrey.ac.uk/Personal/B.Holt/">Brian Holt</a></li>
 <li>Robert Layton</li>
 <li><a class="reference external" href="http://www.montefiore.ulg.ac.be/~glouppe">Gilles Louppe</a></li>
-<li><a class="reference external" href="http://www.ais.uni-bonn.de/~amueller/">Andreas Müller</a> (release manager)</li>
+<li><a class="reference external" href="http://peekaboo-vision.blogspot.com">Andreas Müller</a> (release manager)</li>
 <li><a class="reference external" href="http://www.mit.edu/~satra">Satra Ghosh</a></li>
+<li><a class="reference external" href="http://kuantkid.github.com">Wei Li</a></li>
+<li><a class="reference external" href="http://www.ajoly.org">Arnaud Joly</a></li>
+<li><a class="reference external" href="http://www.kemaleren.com">Kemal Eren</a></li>
 </ul>
 </td></tr></table>
-<p>If I forgot anyone, do not hesitate to send me an email to
-<a class="reference external" href="mailto:fabian&#46;pedregosa&#37;&#52;&#48;inria&#46;fr">fabian<span>&#46;</span>pedregosa<span>&#64;</span>inria<span>&#46;</span>fr</a> and I&#8217;ll include you in the list.</p>
 </div>
 <div class="section" id="citing-scikit-learn">
 <span id="id1"></span><h2>Citing scikit-learn<a class="headerlink" href="#citing-scikit-learn" title="Permalink to this headline">¶</a></h2>
@@ -205,7 +239,7 @@ citations to the following paper:</p>
 <em>et al.</em>, JMLR 12, pp. 2825-2830, 2011.</p>
 <p>Bibtex entry:</p>
 <div class="highlight-python"><pre>@article{scikit-learn,
- title={{Scikit-learn: Machine Learning in Python }},
+ title={Scikit-learn: Machine Learning in {P}ython},
  author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V.
          and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P.
          and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and
@@ -226,13 +260,62 @@ time in the period 2010-2012. It also hosts coding sprints and other
 events.</p>
 <img alt="_images/inria-logo.jpg" src="_images/inria-logo.jpg" />
 <p><a class="reference external" href="http://code.google.com/opensource/">Google</a> sponsored David
-Cournapeau with a Summer of Code Scholarship in the summer of 2007 and
-<a class="reference external" href="http://vene.ro">Vlad Niculae</a> in 2011. If
+Cournapeau with a Summer of Code Scholarship in the summer of 2007,
+<a class="reference external" href="http://vene.ro">Vlad Niculae</a> in 2011, and <a class="reference external" href="http://vene.ro">Vlad Niculae</a> and Immanuel Bayer in 2012 . It also provided funding for sprints and events
+around scikit-learn. If
 you would like to participate in the next Google Summer of code
 program, please see <a class="reference external" href="http://github.com/scikit-learn/scikit-learn/wiki/SummerOfCode">this page</a></p>
 <p>The <a class="reference external" href="http://neuro.debian.net">NeuroDebian</a> project providing <a class="reference external" href="http://www.debian.org">Debian</a> packaging and contributions is supported by
 <a class="reference external" href="http://haxbylab.dartmouth.edu/">Dr. James V. Haxby</a> (<a class="reference external" href="http://www.dartmouth.edu/~psych/">Dartmouth
 College</a>).</p>
+<p>The <a class="reference external" href="http://www.python.org/psf/">PSF</a> helped find and manage funding for our
+2011 Granada sprint. More information can be found <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/wiki/Past-sprints#granada-19th-21th-dec-2011">here</a></p>
+<p><a class="reference external" href="http://www.tinyclues.com/">tinyclues</a> funded the 2011 international Granada
+sprint.</p>
+<div class="section" id="donating-to-the-project">
+<h3>Donating to the project<a class="headerlink" href="#donating-to-the-project" title="Permalink to this headline">¶</a></h3>
+<p>If you are interested in donating to the project or to one of our code-sprints, you can use
+the <em>Paypal</em> button below or the <a class="reference external" href="http://numfocus.org/donatejoin/">NumFOCUS Donations Page</a> (if you use the latter, please indicate that you are donating for the scikit-learn project).</p>
+<p>All donations will be handled by <a class="reference external" href="http://numfocus.org/donatejoin/">NumFOCUS</a>, a non-profit-organization which is
+managed by a board of <a class="reference external" href="http://numfocus.org/sample-page-2/">Scipy community members</a>. NumFOCUS&#8217;s mission is to foster
+scientific computing software, in particular in Python. As a fiscal home
+of scikit-learn, it ensures that money is available when needed to keep
+the project funded and available while in compliance with tax regulations.</p>
+<p>The received donations for the scikit-learn project mostly will go towards covering travel-expenses
+for code sprints, as well as towards the organization budget of the project <a class="footnote-reference" href="#f1" id="id2">[1]</a>.</p>
+</br></br>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
+target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="74EYUMF3FTSW8">
+<input type="image"
+src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+border="0" name="submit" alt="PayPal - The safer, easier way to pay
+online!" style="position: relative;
+left: 40%;">
+<img alt="" border="0"
+src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1"
+height="1">
+</form>
+</br><p class="rubric">Notes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Regarding the organization budget in particular, we might use some of the donated funds to pay for other project expenses such as DNS, hosting or continuous integration services.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="the-2013-paris-international-sprint">
+<h3>The 2013&#8217; Paris international sprint<a class="headerlink" href="#the-2013-paris-international-sprint" title="Permalink to this headline">¶</a></h3>
+<p><div style="text-align: center; margin: -7px 0 -10px 0;">   <a class="reference external" href="http://www.telecom-paristech.fr/"><img alt="telecom" src="http://f.hypotheses.org/wp-content/blogs.dir/331/files/2011/03/Logo-TPT.jpg" style="width: 150px;" /></a>   <a class="reference external" href="http://www.tinyclues.fr"><img alt="tinyclues" src="http://www.tinyclues.com/item/50b77d01e4b0bff132989dfd?format=original" style="width: 150px;" /></a>   <a class="reference external" href="http://www.afpy.org"><img alt="afpy" src="http://www.afpy.org/logo.png" style="width: 150px;" /></a> <a class="reference external" href="http://www.frs-fnrs.be/"><img alt="FNRS" src="http://www.fnrs.be/uploaddocs/images/COMMUNIQUER/FRS-FNRS_rose_transp.png" style="width: 150px;" /></a></p>
+<blockquote>
+<div></div></div></blockquote>
+<div class="figure">
+<a class="reference external image-reference" href="http://sites.uclouvain.be/dysco/"><img alt="http://sites.uclouvain.be/dysco/pmwiki/uploads/Main/dysco.gif" src="http://sites.uclouvain.be/dysco/pmwiki/uploads/Main/dysco.gif" style="width: 150px;" /></a>
+<p class="caption">IAP VII/19 - DYSCO</p>
+</div>
+<p><em>For more information on this sprint, see</em> <a class="reference external" href="https://github.com/scikit-learn/administrative/blob/master/sprint_paris_2013/proposal.rst">here</a></p>
+</div>
 </div>
 </div>
 
@@ -245,11 +328,19 @@ College</a>).</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="_sources/about.txt" rel="nofollow">Show this page source</a>
     </div>
      <div class="rel rellarge">
     
+    <div class="buttonPrevious">
+      <a href="presentations.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="documentation.html">Next
+      </a>
+    </div>
     
      </div>
 

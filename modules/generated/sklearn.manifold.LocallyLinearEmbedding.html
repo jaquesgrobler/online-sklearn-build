@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>8.16.1. sklearn.manifold.LocallyLinearEmbedding &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>sklearn.manifold.LocallyLinearEmbedding &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Reference" href="../classes.html" />
+    <link rel="next" title="sklearn.manifold.Isomap" href="sklearn.manifold.Isomap.html" />
+    <link rel="prev" title="sklearn.linear_model.orthogonal_mp_gram" href="sklearn.linear_model.orthogonal_mp_gram.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,10 +112,62 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="sklearn.linear_model.orthogonal_mp_gram.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.linear_m...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.linear_model.orthogonal_mp_gram
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="sklearn.manifold.Isomap.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.manifold...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.manifold.Isomap
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../classes.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Reference
+        </span>
+            <span class="hiddenrellink">
+            Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">8.16.1. sklearn.manifold.LocallyLinearEmbedding</a></li>
+<li><a class="reference internal" href="#">sklearn.manifold.LocallyLinearEmbedding</a></li>
 </ul>
 
     </div>
@@ -131,7 +185,7 @@
 <h1>sklearn.manifold.LocallyLinearEmbedding<a class="headerlink" href="#sklearn-manifold-locallylinearembedding" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.manifold.LocallyLinearEmbedding">
-<em class="property">class </em><tt class="descclassname">sklearn.manifold.</tt><tt class="descname">LocallyLinearEmbedding</tt><big>(</big><em>n_neighbors=5</em>, <em>n_components=2</em>, <em>reg=0.001</em>, <em>eigen_solver='auto'</em>, <em>tol=1e-06</em>, <em>max_iter=100</em>, <em>method='standard'</em>, <em>hessian_tol=0.0001</em>, <em>modified_tol=1e-12</em>, <em>neighbors_algorithm='auto'</em>, <em>random_state=None</em>, <em>out_dim=None</em><big>)</big><a class="headerlink" href="#sklearn.manifold.LocallyLinearEmbedding" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.manifold.</tt><tt class="descname">LocallyLinearEmbedding</tt><big>(</big><em>n_neighbors=5</em>, <em>n_components=2</em>, <em>reg=0.001</em>, <em>eigen_solver='auto'</em>, <em>tol=1e-06</em>, <em>max_iter=100</em>, <em>method='standard'</em>, <em>hessian_tol=0.0001</em>, <em>modified_tol=1e-12</em>, <em>neighbors_algorithm='auto'</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.manifold.LocallyLinearEmbedding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Locally Linear Embedding</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -177,14 +231,14 @@ Not used if eigen_solver==&#8217;dense&#8217;.</p>
 <div><p>maximum number of iterations for the arpack solver.
 Not used if eigen_solver==&#8217;dense&#8217;.</p>
 </div></blockquote>
-<p><strong>method</strong> : string [&#8216;standard&#8217; | &#8216;hessian&#8217; | &#8216;modified&#8217;]</p>
+<p><strong>method</strong> : string (&#8216;standard&#8217;, &#8216;hessian&#8217;, &#8216;modified&#8217; or &#8216;ltsa&#8217;)</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>standard <span class="classifier-delimiter">:</span> <span class="classifier">use the standard locally linear embedding algorithm.</span></dt>
-<dd><p class="first last">see reference [1]</p>
+<dt>standard <span class="classifier-delimiter">:</span> <span class="classifier">use the standard locally linear embedding algorithm.  see</span></dt>
+<dd><p class="first last">reference [1]</p>
 </dd>
-<dt>hessian <span class="classifier-delimiter">:</span> <span class="classifier">use the Hessian eigenmap method.  This method requires</span></dt>
-<dd><p class="first last">n_neighbors &gt; n_components * (1 + (n_components + 1) / 2.
+<dt>hessian <span class="classifier-delimiter">:</span> <span class="classifier">use the Hessian eigenmap method. This method requires</span></dt>
+<dd><p class="first last"><tt class="docutils literal"><span class="pre">n_neighbors</span> <span class="pre">&gt;</span> <span class="pre">n_components</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">(n_components</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">/</span> <span class="pre">2</span></tt>
 see reference [2]</p>
 </dd>
 <dt>modified <span class="classifier-delimiter">:</span> <span class="classifier">use the modified locally linear embedding algorithm.</span></dt>
@@ -198,12 +252,12 @@ see reference [2]</p>
 <p><strong>hessian_tol</strong> : float, optional</p>
 <blockquote>
 <div><p>Tolerance for Hessian eigenmapping method.
-Only used if method == &#8216;hessian&#8217;</p>
+Only used if <tt class="docutils literal"><span class="pre">method</span> <span class="pre">==</span> <span class="pre">'hessian'</span></tt></p>
 </div></blockquote>
 <p><strong>modified_tol</strong> : float, optional</p>
 <blockquote>
 <div><p>Tolerance for modified LLE method.
-Only used if method == &#8216;modified&#8217;</p>
+Only used if <tt class="docutils literal"><span class="pre">method</span> <span class="pre">==</span> <span class="pre">'modified'</span></tt></p>
 </div></blockquote>
 <p><strong>neighbors_algorithm</strong> : string [&#8216;auto&#8217;|&#8217;brute&#8217;|&#8217;kd_tree&#8217;|&#8217;ball_tree&#8217;]</p>
 <blockquote>
@@ -220,33 +274,33 @@ iterations.  Defaults to numpy.random.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r72" rules="none">
+<table class="docutils citation" frame="void" id="r129" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R72]</a></td><td><cite>Roweis, S. &amp; Saul, L. Nonlinear dimensionality reduction
+<tr><td class="label"><a class="fn-backref" href="#id1">[R129]</a></td><td><cite>Roweis, S. &amp; Saul, L. Nonlinear dimensionality reduction
 by locally linear embedding.  Science 290:2323 (2000).</cite></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r73" rules="none">
+<table class="docutils citation" frame="void" id="r130" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R73]</a></td><td><cite>Donoho, D. &amp; Grimes, C. Hessian eigenmaps: Locally
+<tr><td class="label"><a class="fn-backref" href="#id2">[R130]</a></td><td><cite>Donoho, D. &amp; Grimes, C. Hessian eigenmaps: Locally
 linear embedding techniques for high-dimensional data.
 Proc Natl Acad Sci U S A.  100:5591 (2003).</cite></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r74" rules="none">
+<table class="docutils citation" frame="void" id="r131" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R74]</a></td><td><cite>Zhang, Z. &amp; Wang, J. MLLE: Modified Locally Linear
+<tr><td class="label"><a class="fn-backref" href="#id3">[R131]</a></td><td><cite>Zhang, Z. &amp; Wang, J. MLLE: Modified Locally Linear
 Embedding Using Multiple Weights.</cite>
 <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.70.382">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.70.382</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r75" rules="none">
+<table class="docutils citation" frame="void" id="r132" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[R75]</a></td><td><cite>Zhang, Z. &amp; Zha, H. Principal manifolds and nonlinear
+<tr><td class="label"><a class="fn-backref" href="#id4">[R132]</a></td><td><cite>Zhang, Z. &amp; Zha, H. Principal manifolds and nonlinear
 dimensionality reduction via tangent space alignment.
 Journal of Shanghai Univ.  8:406 (2004)</cite></td></tr>
 </tbody>
@@ -288,10 +342,10 @@ if applicable.</td>
 <td>Compute the embedding vectors for data X and transform X.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.manifold.LocallyLinearEmbedding.get_params" title="sklearn.manifold.LocallyLinearEmbedding.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
-<td>Get parameters for the estimator</td>
+<td>Get parameters for this estimator.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.manifold.LocallyLinearEmbedding.set_params" title="sklearn.manifold.LocallyLinearEmbedding.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
-<td>Set the parameters of the estimator.</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.manifold.LocallyLinearEmbedding.transform" title="sklearn.manifold.LocallyLinearEmbedding.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(X)</td>
 <td>Transform new points into embedding space.</td>
@@ -300,7 +354,7 @@ if applicable.</td>
 </table>
 <dl class="method">
 <dt id="sklearn.manifold.LocallyLinearEmbedding.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_neighbors=5</em>, <em>n_components=2</em>, <em>reg=0.001</em>, <em>eigen_solver='auto'</em>, <em>tol=1e-06</em>, <em>max_iter=100</em>, <em>method='standard'</em>, <em>hessian_tol=0.0001</em>, <em>modified_tol=1e-12</em>, <em>neighbors_algorithm='auto'</em>, <em>random_state=None</em>, <em>out_dim=None</em><big>)</big><a class="headerlink" href="#sklearn.manifold.LocallyLinearEmbedding.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_neighbors=5</em>, <em>n_components=2</em>, <em>reg=0.001</em>, <em>eigen_solver='auto'</em>, <em>tol=1e-06</em>, <em>max_iter=100</em>, <em>method='standard'</em>, <em>hessian_tol=0.0001</em>, <em>modified_tol=1e-12</em>, <em>neighbors_algorithm='auto'</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.manifold.LocallyLinearEmbedding.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -348,15 +402,21 @@ if applicable.</td>
 <dl class="method">
 <dt id="sklearn.manifold.LocallyLinearEmbedding.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.manifold.LocallyLinearEmbedding.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for the estimator</p>
+<dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -367,7 +427,7 @@ contained subobjects that are estimators.</p>
 <dl class="method">
 <dt id="sklearn.manifold.LocallyLinearEmbedding.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.manifold.LocallyLinearEmbedding.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of the estimator.</p>
+<dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
 <tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
@@ -414,11 +474,19 @@ it together with methods that are not scale-invariant (like SVMs)</p>
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/modules/generated/sklearn.manifold.LocallyLinearEmbedding.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="sklearn.linear_model.orthogonal_mp_gram.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="sklearn.manifold.Isomap.html">Next
+      </a>
+    </div>
     
      </div>
 

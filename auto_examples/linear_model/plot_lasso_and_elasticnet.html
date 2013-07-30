@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Lasso and Elastic Net for Sparse Signals &mdash; scikit-learn 0.12.1 documentation</title>
+    <title>Lasso and Elastic Net for Sparse Signals &mdash; scikit-learn 0.14-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.12.1',
+        VERSION:     '0.14-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.12.1 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Bayesian Ridge Regression" href="plot_bayesian_ridge.html" />
+    <link rel="prev" title="Lasso on dense and sparse data" href="lasso_dense_vs_sparse_data.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
@@ -64,8 +67,7 @@
         <p class="logo"><a href="../../index.html">
             <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
         </a>
-        </p>
-        <div class="navbar">
+        </p><div class="navbar">
             <ul>
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../install.html">Installation</a></li>
@@ -110,7 +112,59 @@
 <div class="content-wrapper">
     <div class="sphinxsidebar">
     <div class="sphinxsidebarwrapper">
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.12.1</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+        <div class="rel">
+    
+
+  <!-- rellinks[1:] is an ugly hack to avoid link to module
+  index -->
+        <div class="rellink">
+        <a href="lasso_dense_vs_sparse_data.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Lasso on dense a...
+        </span>
+            <span class="hiddenrellink">
+            Lasso on dense and sparse data
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="plot_bayesian_ridge.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Bayesian Ridge R...
+        </span>
+            <span class="hiddenrellink">
+            Bayesian Ridge Regression
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Examples
+        </span>
+            <span class="hiddenrellink">
+            Examples
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">Lasso and Elastic Net for Sparse Signals</a></li>
@@ -129,8 +183,11 @@
             
   <div class="section" id="lasso-and-elastic-net-for-sparse-signals">
 <span id="example-linear-model-plot-lasso-and-elasticnet-py"></span><h1>Lasso and Elastic Net for Sparse Signals<a class="headerlink" href="#lasso-and-elastic-net-for-sparse-signals" title="Permalink to this headline">¶</a></h1>
+<p>Estimates Lasso and Elastic-Net regression models on a manually generated
+sparse signal corrupted with an additive noise. Estimated coefficients are
+compared with the ground-truth.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lasso_and_elasticnet.py"><tt class="xref download docutils literal"><span class="pre">plot_lasso_and_elasticnet.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
@@ -166,26 +223,26 @@
 
 <span class="n">y_pred_lasso</span> <span class="o">=</span> <span class="n">lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">r2_score_lasso</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lasso</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">lasso</span>
-<span class="k">print</span> <span class="s">&quot;r^2 on test data : </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">r2_score_lasso</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lasso</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;r^2 on test data : </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">r2_score_lasso</span><span class="p">)</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># ElasticNet</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">ElasticNet</span>
 
-<span class="n">enet</span> <span class="o">=</span> <span class="n">ElasticNet</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">enet</span> <span class="o">=</span> <span class="n">ElasticNet</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 
 <span class="n">y_pred_enet</span> <span class="o">=</span> <span class="n">enet</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">r2_score_enet</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_enet</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">enet</span>
-<span class="k">print</span> <span class="s">&quot;r^2 on test data : </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">r2_score_enet</span>
+<span class="k">print</span><span class="p">(</span><span class="n">enet</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;r^2 on test data : </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">r2_score_enet</span><span class="p">)</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">enet</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Elastic net coefficients&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Lasso coefficients&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coef</span><span class="p">,</span> <span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;original coefficients&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&#39;best&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Lasso R^2: </span><span class="si">%f</span><span class="s">, Elastic Net R^2: </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r2_score_lasso</span><span class="p">,</span>
-    <span class="n">r2_score_enet</span><span class="p">))</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Lasso R^2: </span><span class="si">%f</span><span class="s">, Elastic Net R^2: </span><span class="si">%f</span><span class="s">&quot;</span>
+         <span class="o">%</span> <span class="p">(</span><span class="n">r2_score_lasso</span><span class="p">,</span> <span class="n">r2_score_enet</span><span class="p">))</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -200,11 +257,19 @@
     </div>
 
     <div class="footer">
-        &copy; 2010–2011, scikit-learn developers (BSD License).
+        &copy; 2010 - 2013, scikit-learn developers (BSD License).
       <a href="../../_sources/auto_examples/linear_model/plot_lasso_and_elasticnet.txt" rel="nofollow">Show this page source</a>
     </div>
-     <div class="rel rellarge">
+     <div class="rel">
     
+    <div class="buttonPrevious">
+      <a href="lasso_dense_vs_sparse_data.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="plot_bayesian_ridge.html">Next
+      </a>
+    </div>
     
      </div>
 
