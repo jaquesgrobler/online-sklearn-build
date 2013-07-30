@@ -69,7 +69,7 @@
         </a>
         </p><div class="navbar">
             <ul>
-                <li><a href="../index.html">Home</a></li>
+                <li><a href="../../stable/index.html">Home</a></li>
                 <li><a href="../install.html">Installation</a></li>
                 <li class="btn-li"><div class="btn-group">
 		      <a href="../documentation.html">Documentation</a>
@@ -680,6 +680,20 @@ at least <cite>min_samples</cite> points in it, following the definition of a co
 sample. For any sample that is not a core sample, and does have a
 distance higher than <cite>eps</cite> to any core sample, it is considered an outlier by
 the algorithm.</p>
+<p>In the figure below, the color indicates cluster membership, with large circles
+indicating core samples found by the algorithm. Smaller circles are non-core
+samples that are still part of a cluster. Moreover, the outliers are indicated
+by black points below.</p>
+<p class="centered">
+<strong><a class="reference external image-reference" href="../auto_examples/cluster/plot_dbscan.html"><img alt="dbscan_results" src="modules/../auto_examples/cluster/images/plot_dbscan_1.png" /></a>
+</strong></p><div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/cluster/plot_dbscan.html#example-cluster-plot-dbscan-py"><em>Demo of DBSCAN clustering algorithm</em></a></li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">Implementation</p>
 <p>The algorithm is non-deterministic, however the core samples themselves will
 always belong to the same clusters (although the labels themselves may be
 different). The non-determinism comes from deciding on which cluster a
@@ -691,23 +705,12 @@ sample is simply assigned to which ever cluster is generated first, where
 the order is determined randomly within the code. Other than the ordering of,
 the dataset, the algorithm is deterministic, making the results relatively
 stable between iterations on the same data.</p>
-<p>The current implementation relies heavily on :class:&#8217;NearestNeighbors&#8217;:
+<p>The current implementation relies heavily on <tt class="xref py py-class docutils literal"><span class="pre">NearestNeighbors</span></tt>
 to determine the number of samples within distance eps. This is to take
 advantage of the ball tree and kd-tree methods of speeding up neighbor
 searching and to avoid calculating the full distance matrix.
 We also retain the flexibility of custom metrics &#8211; for details,
-see :class:&#8217;NearestNeighbors&#8217;:.</p>
-<p>In the figure below, the color indicates cluster membership, with large circles
-indicating core samples found by the algorithm. Smaller circles are non-core
-samples that are still part of a cluster. Moreover, the outliers are indicated
-by black points below.</p>
-<p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/cluster/plot_dbscan.html"><img alt="dbscan_results" src="modules/../auto_examples/cluster/images/plot_dbscan_1.png" /></a>
-</strong></p><div class="topic">
-<p class="topic-title first">Examples:</p>
-<ul class="simple">
-<li><a class="reference internal" href="../auto_examples/cluster/plot_dbscan.html#example-cluster-plot-dbscan-py"><em>Demo of DBSCAN clustering algorithm</em></a>: Clustering synthetic data with DBSCAN</li>
-</ul>
+see <tt class="xref py py-class docutils literal"><span class="pre">NearestNeighbors</span></tt>.</p>
 </div>
 <div class="topic">
 <p class="topic-title first">References:</p>
