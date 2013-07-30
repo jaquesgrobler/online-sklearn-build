@@ -101,7 +101,7 @@ div.navbar ul li a:hover {
 
 .search_form {
     margin-top: -23px;
-    min-height : 42px
+    height : px
 }
 
 .gsc-branding {
@@ -261,13 +261,13 @@ div.sphinxsidebarwrapper {
     width: 199px;
 }
 
-
+{% if theme_collapsiblesidebar|tobool %}
 /* for collapsible sidebar */
 div#sidebarbutton {
     background-color: #F6F6F6;
     position: relative;
 }
-
+{% endif %}
 
 div.buttonPrevious, div.buttonNext {
     display: block;
