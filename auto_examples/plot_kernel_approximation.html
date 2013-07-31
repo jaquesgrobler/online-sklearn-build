@@ -185,13 +185,13 @@
 <span id="example-plot-kernel-approximation-py"></span><h1>Explicit feature map approximation for RBF kernels<a class="headerlink" href="#explicit-feature-map-approximation-for-rbf-kernels" title="Permalink to this headline">¶</a></h1>
 <p>An example illustrating the approximation of the feature map
 of an RBF kernel.</p>
-<p>It shows how to use <a class="reference internal" href="../modules/generated/sklearn.kernel_approximation.RBFSampler.html#sklearn.kernel_approximation.RBFSampler" title="sklearn.kernel_approximation.RBFSampler"><tt class="xref py py-class docutils literal"><span class="pre">RBFSampler</span></tt></a> and <tt class="xref py py-class docutils literal"><span class="pre">Nystrom</span></tt> to
+<p>It shows how to use <a class="reference internal" href="../modules/generated/sklearn.kernel_approximation.RBFSampler.html#sklearn.kernel_approximation.RBFSampler" title="sklearn.kernel_approximation.RBFSampler"><tt class="xref py py-class docutils literal"><span class="pre">RBFSampler</span></tt></a> and <a class="reference internal" href="../modules/generated/sklearn.kernel_approximation.Nystroem.html#sklearn.kernel_approximation.Nystroem" title="sklearn.kernel_approximation.Nystroem"><tt class="xref py py-class docutils literal"><span class="pre">Nystroem</span></tt></a> to
 appoximate the feature map of an RBF kernel for classification with an SVM on
 the digits dataset. Results using a linear SVM in the original space, a linear
 SVM using the approximate mappings and using a kernelized SVM are compared.
 Timings and accuracy for varying amounts of Monte Carlo samplings (in the case
 of <a class="reference internal" href="../modules/generated/sklearn.kernel_approximation.RBFSampler.html#sklearn.kernel_approximation.RBFSampler" title="sklearn.kernel_approximation.RBFSampler"><tt class="xref py py-class docutils literal"><span class="pre">RBFSampler</span></tt></a>, which uses random Fourier features) and different sized
-subsets of the training set (for <tt class="xref py py-class docutils literal"><span class="pre">Nystroem)</span></tt> for the approximate mapping
+subsets of the training set (for <a class="reference internal" href="../modules/generated/sklearn.kernel_approximation.Nystroem.html#sklearn.kernel_approximation.Nystroem" title="sklearn.kernel_approximation.Nystroem"><tt class="xref py py-class docutils literal"><span class="pre">Nystroem</span></tt></a>) for the approximate mapping
 are shown.</p>
 <p>Please not that the dataset here is not large enough to show the benefits
 of kernel approximation, as the exact SVM is still reasonably fast.</p>

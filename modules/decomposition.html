@@ -636,7 +636,11 @@ it can model the variance in every direction of the input space independently:</
 <p>Independent component analysis separates a multivariate signal into
 additive subcomponents that are maximally independent. It is
 implemented in scikit-learn using the <a class="reference internal" href="generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="sklearn.decomposition.FastICA"><tt class="xref py py-class docutils literal"><span class="pre">Fast</span> <span class="pre">ICA</span></tt></a>
-algorithm.</p>
+algorithm. Typically, ICA is not used for reducing dimensionality but
+for separating superimposed signals. Since the ICA model does not include
+a noise term, for the model to be correct, whitening must be applied.
+This can be done internally using the whiten argument or manually using one
+of the PCA variants.</p>
 <p>It is classically used to separate mixed signals (a problem known as
 <em>blind source separation</em>), as in the example below:</p>
 <div class="figure align-center">
