@@ -70,7 +70,7 @@
         </p><div class="navbar">
             <ul>
                 <li><a href="../../../stable/index.html">Home</a></li>
-                <li><a href="../../install.html">Installation</a></li>
+                <li><a href="../../../stable/install.html">Installation</a></li>
                 <li class="btn-li"><div class="btn-group">
 		      <a href="../../documentation.html">Documentation</a>
 		      <a class="btn dropdown-toggle" data-toggle="dropdown">
@@ -186,29 +186,33 @@
 <dl class="class">
 <dt id="sklearn.linear_model.SGDClassifier">
 <em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">SGDClassifier</tt><big>(</big><em>loss='hinge'</em>, <em>penalty='l2'</em>, <em>alpha=0.0001</em>, <em>l1_ratio=0.15</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>epsilon=0.1</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>learning_rate='optimal'</em>, <em>eta0=0.0</em>, <em>power_t=0.5</em>, <em>class_weight=None</em>, <em>warm_start=False</em>, <em>rho=None</em>, <em>seed=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.SGDClassifier" title="Permalink to this definition">¶</a></dt>
-<dd><p>Linear model fitted by minimizing a regularized empirical loss with SGD.</p>
-<p>SGD stands for Stochastic Gradient Descent: the gradient of the loss is
-estimated each sample at a time and the model is updated along the way with
-a decreasing strength schedule (aka learning rate).</p>
+<dd><p>Linear classifiers (SVM, logistic regression, a.o.) with SGD training.</p>
+<p>This estimator implements regularized linear models with stochastic
+gradient descent (SGD) learning: the gradient of the loss is estimated
+each sample at a time and the model is updated along the way with a
+decreasing strength schedule (aka learning rate). SGD allows minibatch
+(online/out-of-core) learning, see the partial_fit method.</p>
+<p>This implementation works with data represented as dense or sparse arrays
+of floating point values for the features. The model it fits can be
+controlled with the loss parameter; by default, it fits a linear support
+vector machine (SVM).</p>
 <p>The regularizer is a penalty added to the loss function that shrinks model
 parameters towards the zero vector using either the squared euclidean norm
 L2 or the absolute norm L1 or a combination of both (Elastic Net). If the
 parameter update crosses the 0.0 value because of the regularizer, the
 update is truncated to 0.0 to allow for learning sparse models and achieve
 online feature selection.</p>
-<p>This implementation works with data represented as dense or sparse arrays
-of floating point values for the features.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>loss</strong> : str, &#8216;hinge&#8217;, &#8216;log&#8217;, &#8216;modified_huber&#8217;, &#8216;squared_hinge&#8217;,                &#8216;perceptron&#8217;, or a regression loss: &#8216;squared_loss&#8217;, &#8216;huber&#8217;,                &#8216;epsilon_insensitive&#8217;, or &#8216;squared_epsilon_insensitive&#8217;</p>
 <blockquote>
-<div><p>The loss function to be used. Defaults to &#8216;hinge&#8217;. The hinge loss is
-a margin loss used by standard linear SVM models. The &#8216;log&#8217; loss is
-the loss of logistic regression models and can be used for
-probability estimation in binary classifiers. &#8216;modified_huber&#8217;
-is another smooth loss that brings tolerance to outliers.
+<div><p>The loss function to be used. Defaults to &#8216;hinge&#8217;, which gives a
+linear SVM.
+The &#8216;log&#8217; loss gives logistic regression, a probabilistic classifier.
+&#8216;modified_huber&#8217; is another smooth loss that brings tolerance to
+outliers as well as probability estimates.
 &#8216;squared_hinge&#8217; is like hinge but is quadratically penalized.
 &#8216;perceptron&#8217; is the linear loss used by the perceptron algorithm.
 The other losses are designed for regression but can be useful in

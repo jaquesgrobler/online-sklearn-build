@@ -20,9 +20,7 @@
                                 $(this).children('ul').toggle();
                             }
 			    // Update the sidebar height when expanding/collapsing toctree elemements
-			    var sidebarbutton = $('#sidebarbutton');
-                            var buttonheight = $('.toctree-wrapper').height();
-                            sidebarbutton.animate({height : buttonheight + 50}, 0);
+                            $('#sidebarbutton').animate({height : $('.toctree-wrapper').height() + 50}, 0);
                             return true; //Makes links clickable
                         }
             })
@@ -32,9 +30,7 @@
                 $('ul li ul li:not(:has(ul))').css({cursor:'default', 'list-style-image':'url(_static/noneBox.png)'});
                 $('ul li ul').css('margin-left', '0px');
 		//Initialise the sidebar button with the collapsing toctree
-                var sidebarbutton = $('#sidebarbutton');
-                var buttonheight = $('.toctree-wrapper').height();
-                sidebarbutton.animate({height : buttonheight + 50}, 0);
+                $('#sidebarbutton').animate({height : $('.toctree-wrapper').height() + 50}, 0);
             $('.toctree-l3').css({cursor:'default', 'list-style-image':'url(_static/noneBox.png)'});
             $('.toctree-l2').hover(
                 function () {
