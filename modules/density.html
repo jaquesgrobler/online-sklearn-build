@@ -204,7 +204,7 @@ familiar with one common density estimation technique: the histogram.</p>
 number of data points within each bin is tallied.  An example of a histogram
 can be seen in the upper-left panel of the following figure:</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/neighbors/plot_kde_1d.html"><img alt="hist_to_kde" src="modules/../auto_examples/neighbors/images/plot_kde_1d_1.png" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/neighbors/plot_kde_1d.html"><img alt="hist_to_kde" src="../_images/plot_kde_1d_11.png" style="width: 640.0px; height: 480.0px;" /></a>
 </strong></p><p>A major problem with histograms, however, is that the choice of binning can
 have a disproportionate effect on the resulting visualization.  Consider the
 upper-right panel of the above figure.  It shows a histogram over the same
@@ -238,7 +238,7 @@ dimensionality causes its performance to degrade in high dimensions.</p>
 <p>In the following figure, 100 points are drawn from a bimodal distribution,
 and the kernel density estimates are shown for three choices of kernels:</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/neighbors/plot_kde_1d.html"><img alt="kde_1d_distribution" src="modules/../auto_examples/neighbors/images/plot_kde_1d_3.png" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/neighbors/plot_kde_1d.html"><img alt="kde_1d_distribution" src="../_images/plot_kde_1d_31.png" style="width: 640.0px; height: 480.0px;" /></a>
 </strong></p><p>It&#8217;s clear how the kernel shape affects the smoothness of the resulting
 distribution.  The scikit-learn kernel density estimator can be used as
 follows:</p>
@@ -265,7 +265,7 @@ to an unsmooth (i.e. high-variance) density distribution.</p>
 <p><a class="reference internal" href="generated/sklearn.neighbors.KernelDensity.html#sklearn.neighbors.KernelDensity" title="sklearn.neighbors.KernelDensity"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.neighbors.KernelDensity</span></tt></a> implements several common kernel
 forms, which are shown in the following figure:</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/neighbors/plot_kde_1d.html"><img alt="kde_kernels" src="modules/../auto_examples/neighbors/images/plot_kde_1d_2.png" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/neighbors/plot_kde_1d.html"><img alt="kde_kernels" src="../_images/plot_kde_1d_21.png" style="width: 640.0px; height: 480.0px;" /></a>
 </strong></p><p>The form of these kernels is as follows:</p>
 <ul>
 <li><p class="first">Gaussian kernel (<tt class="docutils literal"><span class="pre">kernel</span> <span class="pre">=</span> <span class="pre">'gaussian'</span></tt>)</p>
@@ -297,7 +297,7 @@ is an example of using a kernel density estimate for a visualization
 of geospatial data, in this case the distribution of observations of two
 different species on the South American continent:</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/neighbors/plot_species_kde.html"><img alt="species_kde" src="modules/../auto_examples/neighbors/images/plot_species_kde_1.png" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/neighbors/plot_species_kde.html"><img alt="species_kde" src="../_images/plot_species_kde_11.png" style="width: 640.0px; height: 480.0px;" /></a>
 </strong></p><p>One other useful application of kernel density estimation is to learn a
 non-parametric generative model of a dataset in order to efficiently
 draw new samples from this generative model.
@@ -305,7 +305,7 @@ Here is an example of using this process to
 create a new set of hand-written digits, using a Gaussian kernel learned
 on a PCA projection of the data:</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/neighbors/plot_digits_kde_sampling.html"><img alt="digits_kde" src="modules/../auto_examples/neighbors/images/plot_digits_kde_sampling_1.png" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/neighbors/plot_digits_kde_sampling.html"><img alt="digits_kde" src="../_images/plot_digits_kde_sampling_11.png" style="width: 640.0px; height: 480.0px;" /></a>
 </strong></p><p>The &#8220;new&#8221; data consists of linear combinations of the input data, with weights
 probabilistically drawn given the KDE model.</p>
 <div class="topic">
