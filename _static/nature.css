@@ -800,12 +800,24 @@ div.container.index-lower ul {
 }
 
 div.container.index-lower ul li {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    line-height: 1.3em;
 }
 
 div.container.index-lower ul li em {
     font-style: normal;
     font-weight: bold;
+}
+
+#paypal-form {
+    margin: 30px 0;
+    padding: 0;
+}
+
+div.container.index-lower a.cite-us {
+    margin-left: 60px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 div.box h2 {
@@ -850,11 +862,23 @@ div#examples_carousel {
     margin-bottom: 0px;
 }
 
-div.carousel img {
-    max-height: 80px;
-    height: 80px;
-    background-color: #fff;
+div.carousel>.carousel-inner>.item {
+  width: 100%;
+  margin: auto;
 }
+
+
+div.carousel img {
+    max-height: 70px;
+    max-width: 50%;
+    background-color: #fff;
+    margin: auto;
+}
+
+div#testimonials_carousel {
+    height: 120px;
+}
+
 
 div#examples_carousel img {
     max-height: 201px;
@@ -866,7 +890,7 @@ div#examples_carousel img {
 div#examples_carousel .carousel-indicators {
     position: absolute;
     top: 200px;
-    right: 17%; # Should be adjusted as the number of elements grows
+    right: 26%; # Should be adjusted as the number of elements grows
 }
 
 div#examples_carousel .carousel-indicators .active {
@@ -893,7 +917,7 @@ div#examples_carousel .carousel-control.right {
 }
 
 div#intro_to_sklearn_p li {
-    line-height: 30px;
+    line-height: 22px;
 }
 
 div#index_carousel_tn {
@@ -977,21 +1001,44 @@ div.testimonial h2 {
     text-align: center;
 }
 
-div.testimonial img {
+
+div.logo {
     float: left;
-    padding-right: 30px;
+    width: 200px;
+}
+
+div.logo img {
+  max-width: 150px;
+  max-height: 150px;
 }
 
 div.testimonial p {
     line-height: 1.5em;
-    padding-left: 30px;
     font-size: 1.1em;
+    color: #1c1c1c;
+    padding-left: 230px;
 }
 
-div.testimonial-website {
+div.testimonial span.testimonial-author {
     width: 100%;
     text-align: right;
+    margin-bottom: 30px;
+}
+
+div.testimonial span.testimonial-author p{
     font-size: 0.8em;
+    font-style: italic;
+    color: #808080;
+}
+
+#index-funding-logo-big {
+    padding: 0 7px 7px 7px;
+    max-height: 40px
+}
+
+#index-funding-logo-small {
+    padding: 0 7px 7px 7px;
+    max-height: 24px
 }
 
 .no-display {
@@ -999,7 +1046,7 @@ div.testimonial-website {
 }
 
 .btn-group {
-  height: 100%	height: 100%;
+    height: 100%;
 }
 
 .btn-group .dropdown-menu {
@@ -1022,7 +1069,7 @@ div.navbar ul.dropdown-menu li{
 }
 
 div.navbar ul.dropdown-menu li a {
-  font-size: 88%;
+  font-size: 100%;
   color: #2878A2;
   padding: 0;
   font-weight: normal;
@@ -1107,7 +1154,7 @@ div.navbar ul.dropdown-menu li a.btn {
 
 .navbar ul.dropdown-menu li {
   font-weight: bold;
-  font-size: 11px;
+  font-size: 12px;
   color: #000;
 }
 
@@ -1118,6 +1165,7 @@ div.navbar ul.dropdown-menu li a.btn {
 div.container-index {
   margin-left: -210px;
 }
+
 
 @media all and (max-width: 780px) {
   .fork-me {

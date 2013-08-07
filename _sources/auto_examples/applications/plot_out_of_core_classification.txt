@@ -38,42 +38,8 @@ dataset and hold them out as separate testing data. We then use it to estimate
 accuracy after each mini-batch.
 
 
-
-.. image:: images/plot_out_of_core_classification_1.png
-    :align: center
-
-
-**Script output**::
-
-  Test set is 988 documents (122 positive)
-      29 train docs (     2 positive)    988 test docs (   122 positive) accuracy: 0.864 in 0.83s (   34 docs/s)
-     565 train docs (    58 positive)    988 test docs (   122 positive) accuracy: 0.903 in 1.52s (  372 docs/s)
-    1033 train docs (   110 positive)    988 test docs (   122 positive) accuracy: 0.912 in 2.17s (  475 docs/s)
-    2009 train docs (   219 positive)    988 test docs (   122 positive) accuracy: 0.904 in 3.01s (  667 docs/s)
-    2887 train docs (   280 positive)    988 test docs (   122 positive) accuracy: 0.907 in 3.73s (  773 docs/s)
-    3758 train docs (   403 positive)    988 test docs (   122 positive) accuracy: 0.941 in 4.54s (  827 docs/s)
-    4690 train docs (   532 positive)    988 test docs (   122 positive) accuracy: 0.948 in 5.35s (  876 docs/s)
-    5662 train docs (   656 positive)    988 test docs (   122 positive) accuracy: 0.922 in 6.17s (  917 docs/s)
-    6628 train docs (   775 positive)    988 test docs (   122 positive) accuracy: 0.948 in 7.00s (  946 docs/s)
-    7595 train docs (   926 positive)    988 test docs (   122 positive) accuracy: 0.954 in 7.80s (  973 docs/s)
-    8514 train docs (  1050 positive)    988 test docs (   122 positive) accuracy: 0.945 in 8.58s (  992 docs/s)
-    9486 train docs (  1155 positive)    988 test docs (   122 positive) accuracy: 0.950 in 9.42s ( 1007 docs/s)
-   10460 train docs (  1268 positive)    988 test docs (   122 positive) accuracy: 0.954 in 10.26s ( 1019 docs/s)
-   11435 train docs (  1394 positive)    988 test docs (   122 positive) accuracy: 0.956 in 11.08s ( 1032 docs/s)
-   12407 train docs (  1503 positive)    988 test docs (   122 positive) accuracy: 0.950 in 11.91s ( 1041 docs/s)
-   13373 train docs (  1609 positive)    988 test docs (   122 positive) accuracy: 0.963 in 12.74s ( 1049 docs/s)
-   14339 train docs (  1721 positive)    988 test docs (   122 positive) accuracy: 0.962 in 13.58s ( 1056 docs/s)
-   15310 train docs (  1854 positive)    988 test docs (   122 positive) accuracy: 0.956 in 14.49s ( 1056 docs/s)
-   16273 train docs (  2004 positive)    988 test docs (   122 positive) accuracy: 0.946 in 15.33s ( 1061 docs/s)
-   17265 train docs (  2147 positive)    988 test docs (   122 positive) accuracy: 0.956 in 16.15s ( 1068 docs/s)
-   18251 train docs (  2271 positive)    988 test docs (   122 positive) accuracy: 0.970 in 16.98s ( 1074 docs/s)
-
-
-
 **Python source code:** :download:`plot_out_of_core_classification.py <plot_out_of_core_classification.py>`
 
 .. literalinclude:: plot_out_of_core_classification.py
     :lines: 36-
-
-**Total running time of the example:**  17.49 seconds
     
