@@ -1,0 +1,621 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Neuroimaging in Python &mdash; NIPY Documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.0.dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="NIPY Documentation" href="../index.html" />
+    <link rel="up" title="Tutorials" href="tutorial.html" />
+    <link rel="next" title="Glossary" href="../glossary.html" />
+    <link rel="prev" title="Basics of the Coordinate Map" href="coordinate_map.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/reggie2.png" alt="NIPY logo"  border="0" />
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../glossary.html" title="Glossary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="coordinate_map.html" title="Basics of the Coordinate Map"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li><a href="../documentation.html" >NIPY documentation</a> &raquo;</li>
+          <li><a href="index.html" >User Guide</a> &raquo;</li>
+          <li><a href="tutorial.html" accesskey="U">Tutorials</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.org/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/software/license/index.html">License</a></li>
+  </ul>
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://github.com/nipy/nipy/">Nipy Github</a></li>
+  </ul>
+
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Specifying a GLM in NiPy</a><ul>
+<li><a class="reference internal" href="#experimental-model">Experimental model</a><ul>
+<li><a class="reference internal" href="#event-related-categorical-design">Event-related categorical design</a><ul>
+<li><a class="reference internal" href="#counting-processes-vs-intensities">Counting processes vs. intensities</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#block-categorical-design">Block categorical design</a></li>
+<li><a class="reference internal" href="#continuous-stimuli">Continuous stimuli</a></li>
+<li><a class="reference internal" href="#events-with-amplitudes">Events with amplitudes</a></li>
+<li><a class="reference internal" href="#events-with-random-amplitudes">Events with random amplitudes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#neuronal-model">Neuronal model</a><ul>
+<li><a class="reference internal" href="#convolution">Convolution</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">Events with amplitudes</a><ul>
+<li><a class="reference internal" href="#hemodynamic-model">Hemodynamic model</a></li>
+<li><a class="reference internal" href="#intensities">Intensities</a></li>
+<li><a class="reference internal" href="#derivative-information">Derivative information</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#design-matrix">Design matrix</a><ul>
+<li><a class="reference internal" href="#drift">Drift</a></li>
+<li><a class="reference internal" href="#nonlinear-example">Nonlinear example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#formula-objects">Formula objects</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="coordinate_map.html"
+                        title="previous chapter">Basics of the Coordinate Map</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../glossary.html"
+                        title="next chapter">Glossary</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/users/glm_spec.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:http://mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="specifying-a-glm-in-nipy">
+<h1>Specifying a GLM in NiPy<a class="headerlink" href="#specifying-a-glm-in-nipy" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial we will discuss NiPy&#8217;s model and specification of a fMRI
+experiment.</p>
+<p>This involves:</p>
+<ul class="simple">
+<li>an experimental model: a description of the experimental protocol
+(function of experimental time)</li>
+<li>a neuronal model: a model of how a particular neuron responds to the
+experimental protocol (function of the experimental model)</li>
+<li>a hemodynamic model: a model of the BOLD signal at a particular voxel,
+(function of the neuronal model)</li>
+</ul>
+<div class="section" id="experimental-model">
+<h2>Experimental model<a class="headerlink" href="#experimental-model" title="Permalink to this headline">¶</a></h2>
+<p>We first begin by describing typically encountered fMRI designs.</p>
+<ul class="simple">
+<li>Event-related categorical design, i.e. <em>Face</em> vs. <em>Object</em></li>
+<li>Block categorical design</li>
+<li>Continuous stimuli, i.e. a rotating checkerboard</li>
+<li>Events with amplitudes, i.e. non-categorical values</li>
+<li>Events with random amplitudes</li>
+</ul>
+<div class="section" id="event-related-categorical-design">
+<h3>Event-related categorical design<a class="headerlink" href="#event-related-categorical-design" title="Permalink to this headline">¶</a></h3>
+<p id="face-object">This design is a canonical design in fMRI used, for instance,
+in an experiment designed to detect regions associated to discrimination between <em>Face</em> and <em>Object</em>.
+This design can be graphically represented in terms of delta-function responses that are effectively  events of duration 0
+and infinite height.</p>
+<p>[<a class="reference external" href="../plot_directive/users/plots/event.py">source code</a>, <a class="reference external" href="../plot_directive/users/plots/event.hires.png">hires.png</a>, <a class="reference external" href="../plot_directive/users/plots/event.pdf">pdf</a>]</p>
+<div class="figure">
+<img alt="../_images/event.png" src="../_images/event.png" />
+</div>
+<p>In this example, there <em>Face</em> event types are presented at times [0,4,8,12,16]
+and <em>Object</em> event types at times [2,6,10,14,18].</p>
+<p>More generally, given a set of event types <em>V</em>, an event type experiment can be
+modeled as a sum of delta functions (point masses) at pairs of times and event
+types:</p>
+<div class="math">
+<p><img src="../_images/math/0b6043bf9a97b3e3a701d9863d478258673049a5.png" alt="E = \sum_{j=1}^{10} \delta_{(t_j, a_j)}."/></p>
+</div><p>Formally, this can be thought of as realization of a <em class="xref std std-term">marked point
+process</em>,  that says we observe 10 points in the space <img class="math" src="../_images/math/63eaf4dc67e3510a77db3e15b40be265c3607770.png" alt="\mathbb{R} \times
+V"/> where <em>V</em> is the set of all event types. Alternatively, we can think of the
+experiment as a measure <img class="math" src="../_images/math/fa2fa899f0afb05d6837885523503a2d4df434f9.png" alt="E"/> on <img class="math" src="../_images/math/cc470c3166d10c2a13f6dbfe85cc42bdb84085f0.png" alt="\mathbb{R} \times V"/></p>
+<div class="math">
+<p><img src="../_images/math/801c82ef63c75f893f9023d8af78347f4bd8ff0d.png" alt="E([t_1,t_2] \times A) = \int_{t_1}^{t_2} \int_A dE(v,t)"/></p>
+</div><p>This intensity measure determines, in words, &#8220;the amount of stimulus
+within <em>A</em> delivered in the interval <img class="math" src="../_images/math/cf22ccb564d6f9393afb0a4bd5c1bd489bd28626.png" alt="[t_1,t_2]"/>&#8221;. In this categorical
+design, stimuli <img class="math" src="../_images/math/0785f19824c8b23ab3dfe000b471994078fdf589.png" alt="a_j"/> are delivered as point masses at the times
+<img class="math" src="../_images/math/a652022db81b0ec1c066b09e32932b7b7e0cd716.png" alt="t_j"/>.</p>
+<p>Practically speaking, we can read this as saying that our experiment has 10
+events, occurring at times <img class="math" src="../_images/math/8a47585c12fb4bb4aa6f87ef1027b4fa7378e791.png" alt="t_1,\dots,t_{10}"/> with event types
+<img class="math" src="../_images/math/817ae22038a2b904843a0869c1292a610a172e50.png" alt="a_1,\dots,a_{10} \in V"/>.</p>
+<p>Typically, as in our <em>Face</em> vs <em>Object</em> example, the events occur
+in groups, say odd events are labelled <em>a</em>, even ones <em>b</em>. We might rewrite
+this as</p>
+<div class="math">
+<p><img src="../_images/math/034b733a01b6daf8e7ac33b74fbc4dcd406f9de4.png" alt="E = \delta_{(t_1,a)} + \delta_{(t_2,b)} + \delta_{(t_3,a)} + \dots +
+\delta_{(t_{10},b)}"/></p>
+</div><p>This type of experiment can be represented by two counting processes, i.e.
+measures on <img class="math" src="../_images/math/d7a5d650788a49834d2c3f7acfb45fe250ec7de5.png" alt="mathbb{R}"/>, <img class="math" src="../_images/math/2cbeaa28abcc044a4833b6d1e285dade9c47d82f.png" alt="(E_a, E_b)"/> defined as</p>
+<div class="math">
+<p><img src="../_images/math/546f35a61230d837a0535c170d6580dfe4ab49f5.png" alt="\begin{aligned}
+E_a(t) &amp;= \sum_{t_j, \text{$j$ odd}} 1_{(-\infty,t_j]}(t) \\
+       &amp;= E((-\infty,t], \{a\}) \\
+E_b(t) &amp;= \sum_{t_j, \text{$j$ even}} 1_{(-\infty,t_j]}(t) \\
+       &amp;= E((-\infty,t], \{b\}) \\
+\end{aligned}"/></p>
+</div><div class="section" id="counting-processes-vs-intensities">
+<h4>Counting processes vs. intensities<a class="headerlink" href="#counting-processes-vs-intensities" title="Permalink to this headline">¶</a></h4>
+<p>Though the experiment above can be represented in terms of the pair
+<img class="math" src="../_images/math/b9b6990928a2f85cc491fe5c4dac6c9bc4c4b561.png" alt="(E_a(t), E_b(t))"/>, it is more common in neuroimaging applications to work
+with instantaneous intensities rather then cumulative intensities.</p>
+<div class="math">
+<p><img src="../_images/math/8c881e00e7acf15d388125dc3b509247ea0b3f4c.png" alt="\begin{aligned}
+e_a(t) &amp;= \frac{\partial }{\partial t} E_a(t) \\
+e_b(t) &amp;=   \frac{\partial }{\partial t} E_b(t)
+\end{aligned}"/></p>
+</div><p>For the time being, we will stick with cumulative intensities because it unifies
+the designs above. When we turn to the neuronal model below, we will return to
+the intensity model.</p>
+</div>
+</div>
+<div class="section" id="block-categorical-design">
+<span id="block-face"></span><h3>Block categorical design<a class="headerlink" href="#block-categorical-design" title="Permalink to this headline">¶</a></h3>
+<p>For block designs of the <em>Face</em> vs. <em>Object</em>  type, we might also allow event
+durations, meaning that we show the subjects a <em>Face</em> for a period of, say, 0.5
+seconds.  We might represent this experiment graphically as follows,</p>
+<p>[<a class="reference external" href="../plot_directive/users/plots/block.py">source code</a>, <a class="reference external" href="../plot_directive/users/plots/block.hires.png">hires.png</a>, <a class="reference external" href="../plot_directive/users/plots/block.pdf">pdf</a>]</p>
+<div class="figure">
+<img alt="../_images/block.png" src="../_images/block.png" />
+</div>
+<p>and the intensity measure for the experiment could be expressed in terms of</p>
+<div class="math">
+<p><img src="../_images/math/6203b75798444542a3ddb3c5de6c0b2abd1c0aac.png" alt="\begin{aligned}
+ E_a(t) &amp;= E((-\infty,t], \{a\}) &amp;= \sum_{t_j, \text{$j$ odd}} \frac{1}{0.5} \int_{t_j}^
+{\min(t_j+0.5, t)} \; ds \\
+E_b(t) &amp;= E((-\infty,t], \{b\}) &amp;= \sum_{t_j, \text{$j$ even}} \frac{1}{0.5} \int_{t_j}^
+{\min(t_j+0.5, t)} \; ds \\
+\end{aligned}"/></p>
+</div><p>The normalization chosen above ensures that each event has integral 1, that is a
+total of 1 &#8220;stimulus unit&#8221; is presented for each 0.5 second block. This may or
+may not be desirable, and could easily be changed.</p>
+</div>
+<div class="section" id="continuous-stimuli">
+<h3>Continuous stimuli<a class="headerlink" href="#continuous-stimuli" title="Permalink to this headline">¶</a></h3>
+<p id="id1">Some experiments do not fit well into this &#8220;event-type&#8221; paradigm but are,
+rather, more continuous in nature. For instance, a rotating checkerboard, for
+which orientation, contrast, are functions of experiment time <em>t</em>.  This
+experiment can be represented in terms of a state vector <img class="math" src="../_images/math/3b4d6a6482c510fb59c3677fae9edb5b34a91544.png" alt="(O(t), C(t))"/>.
+In this example we have set</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mf">0.2</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>[<a class="reference external" href="../plot_directive/users/plots/sinusoidal.py">source code</a>, <a class="reference external" href="../plot_directive/users/plots/sinusoidal.hires.png">hires.png</a>, <a class="reference external" href="../plot_directive/users/plots/sinusoidal.pdf">pdf</a>]</p>
+<div class="figure">
+<img alt="../_images/sinusoidal.png" src="../_images/sinusoidal.png" />
+</div>
+<p>The cumulative intensity measure for such an experiment might look like</p>
+<div class="math">
+<p><img src="../_images/math/99e7482b7dfc7ec8543f3df598c094470752df56.png" alt="E([t_1, t_2], A) = \int_{t_1}^{t_2} \left(\int_A \; dc \; do\right) \; dt."/></p>
+</div><p>In words, this reads as <img class="math" src="../_images/math/6a261e7be725ae3a00641b06ff67c9a8b74d1d7e.png" alt="E([t_1,t_2],A)"/> is the amount of time in the
+interval <img class="math" src="../_images/math/cf22ccb564d6f9393afb0a4bd5c1bd489bd28626.png" alt="[t_1,t_2]"/> for which the state vector <img class="math" src="../_images/math/3b4d6a6482c510fb59c3677fae9edb5b34a91544.png" alt="(O(t), C(t))"/> was
+in the region <img class="math" src="../_images/math/019e9892786e493964e145e7c5cf7b700314e53b.png" alt="A"/>.</p>
+</div>
+<div class="section" id="events-with-amplitudes">
+<span id="event-amplitudes"></span><h3>Events with amplitudes<a class="headerlink" href="#events-with-amplitudes" title="Permalink to this headline">¶</a></h3>
+<p>Another (event-related) experimental paradigm is one in which the event types
+have amplitudes, perhaps in a pain experiment with a heat stimulus, we might
+consider the temperature an amplitude. These amplitudes could be multi-valued.
+We might represent this parametric design mathematically as</p>
+<div class="math">
+<p><img src="../_images/math/3116247d581184f11f4ec084f9795cc3e3f08ace.png" alt="E = \sum_{j=1}^{10} \delta_{(t_j, a_j)},"/></p>
+</div><p>which is virtually identical to our description of the <em>Face</em> vs. <em>Object</em>
+experiment in <em class="xref std std-ref">face-object</em> though the values <img class="math" src="../_images/math/0785f19824c8b23ab3dfe000b471994078fdf589.png" alt="a_j"/> are floats rather
+than labels. Graphically, this experiment might be represented as in this figure
+below.</p>
+<p>[<a class="reference external" href="../plot_directive/users/plots/amplitudes.py">source code</a>, <a class="reference external" href="../plot_directive/users/plots/amplitudes.hires.png">hires.png</a>, <a class="reference external" href="../plot_directive/users/plots/amplitudes.pdf">pdf</a>]</p>
+<div class="figure">
+<img alt="../_images/amplitudes.png" src="../_images/amplitudes.png" />
+</div>
+</div>
+<div class="section" id="events-with-random-amplitudes">
+<h3>Events with random amplitudes<a class="headerlink" href="#events-with-random-amplitudes" title="Permalink to this headline">¶</a></h3>
+<p>Another possible approach to specifying an experiment might be to deliver a
+randomly generated stimulus, say, uniformly distributed on some interval, at a
+set of prespecified event times.</p>
+<p>We might represent this graphically as in the following figure.</p>
+<p>[<a class="reference external" href="../plot_directive/users/plots/random_amplitudes.py">source code</a>, <a class="reference external" href="../plot_directive/users/plots/random_amplitudes.hires.png">hires.png</a>, <a class="reference external" href="../plot_directive/users/plots/random_amplitudes.pdf">pdf</a>]</p>
+<div class="figure">
+<img alt="../_images/random_amplitudes.png" src="../_images/random_amplitudes.png" />
+</div>
+<p>Of course, the stimuli need not be randomly distributed over some interval, they
+could have fairly arbitrary distributions. Or, in the <em>Face</em> vs <em>Object</em>
+scenario, we could randomly present of one of the two types and the distribution
+at a particular event time <img class="math" src="../_images/math/a652022db81b0ec1c066b09e32932b7b7e0cd716.png" alt="t_j"/> would be represented by a probability
+<img class="math" src="../_images/math/d35c3617166b646206937d658b1e00fb24b30745.png" alt="P_j"/>.</p>
+<p>The cumulative intensity model for such an experiment might be</p>
+<div class="math">
+<p><img src="../_images/math/e3584f2e2831d1d7c92461baef52182bb8b6b3ed.png" alt="E([t_1, t_2], A) = \sum_j 1_{[t_1, t_2]}(t_j)  \int_A \; P_j(da)"/></p>
+</div><p>If the times were not prespecified but were themselves random, say uniform over
+intervals <img class="math" src="../_images/math/19738b8616b1f2569c28fe9990ab31ed78569718.png" alt="[u_j,v_j]"/>, we might modify the cumulative intensity to be</p>
+<div class="math">
+<p><img src="../_images/math/f33b6f9cc3b66e68e16ec23dd00abf7e3063b2a7.png" alt="E([t_1, t_2], A) = \sum_j \int_{\max(u_j,t_1)}^{\min(v_j, t_2)}  \int_A \; P_j(da) \; dt"/></p>
+</div><p>[<a class="reference external" href="../plot_directive/users/plots/random_amplitudes_times.py">source code</a>, <a class="reference external" href="../plot_directive/users/plots/random_amplitudes_times.hires.png">hires.png</a>, <a class="reference external" href="../plot_directive/users/plots/random_amplitudes_times.pdf">pdf</a>]</p>
+<div class="figure">
+<img alt="../_images/random_amplitudes_times.png" src="../_images/random_amplitudes_times.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="neuronal-model">
+<h1>Neuronal model<a class="headerlink" href="#neuronal-model" title="Permalink to this headline">¶</a></h1>
+<p>The neuronal model is a model of the activity as a function of <em>t</em> at a neuron
+<em>x</em> given the experimental model <img class="math" src="../_images/math/fa2fa899f0afb05d6837885523503a2d4df434f9.png" alt="E"/>.  It is most commonly expressed as
+some linear function of the experiment <img class="math" src="../_images/math/fa2fa899f0afb05d6837885523503a2d4df434f9.png" alt="E"/>. As with the experimental
+model, we prefer to start off by working with the cumulative neuronal activity,
+a measure on <img class="math" src="../_images/math/906fddead65545297c74bbc2ca83cd01f3f9ecc9.png" alt="\mathbb{R}"/>, though, ultimately we will work with the
+intensities in <em class="xref std std-ref">intensity</em>.</p>
+<p>Typically, the neuronal model with an experiment model <img class="math" src="../_images/math/fa2fa899f0afb05d6837885523503a2d4df434f9.png" alt="E"/> has the form</p>
+<div class="math">
+<p><img src="../_images/math/2313439e4f963793756c60fbfb3cea16df58ac21.png" alt="N([t_1,t_2]) = \int_{t_1}^{t_2}\int_V f(v,t) \; dE(v,t)"/></p>
+</div><p>Unlike the experimental model, which can look somewhat abstract, the neuronal
+model can be directly modeled.  For example, take the standard <em>Face</em> vs.
+<em>Object</em> model <em class="xref std std-ref">face-object</em>, in which case <img class="math" src="../_images/math/d04460acb84506cb0cae751ee453fa40d9e49b40.png" alt="V=\{a,b\}"/> and we can
+set</p>
+<div class="math">
+<p><img src="../_images/math/88069f8edfd2042e1b14a7df8183e23d4eb30724.png" alt="f(v,t) = \begin{cases}
+\beta_a &amp; v = a \\
+\beta_b &amp; v = b
+\end{cases}"/></p>
+</div><p>Thus, the cumulative neuronal model can be expressed as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">Heaviside</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">ta</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">16</span><span class="p">]</span>
+<span class="n">tb</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">ba</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s">&#39;ba&#39;</span><span class="p">)</span>
+<span class="n">bb</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s">&#39;bb&#39;</span><span class="p">)</span>
+<span class="n">fa</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">Heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">_t</span><span class="p">)</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">ta</span><span class="p">])</span> <span class="o">*</span> <span class="n">ba</span>
+<span class="n">fb</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">Heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">_t</span><span class="p">)</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">tb</span><span class="p">])</span> <span class="o">*</span> <span class="n">bb</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">fa</span><span class="o">+</span><span class="n">fb</span>
+</pre></div>
+</div>
+<p>Or, graphically, if we set <img class="math" src="../_images/math/7de8faaa287fee6bfc9c02490114ac361eea2a46.png" alt="\beta_a=1"/> and <img class="math" src="../_images/math/690aec6799975adb9909e0bf13f5557bebc61ea7.png" alt="\beta_b=-2"/>, as</p>
+[<a class="reference external" href="../plot_directive/users/plots/neuronal_event.py">source code</a>]<p>Exception occurred rendering plot.</p>
+<p>In the block design, we might have the same form for the neuronal model (i.e.
+the same <img class="math" src="../_images/math/bb2c93730dbb48558bb3c4738c956c4e8f816437.png" alt="f"/> above), but the different experimental model <img class="math" src="../_images/math/fa2fa899f0afb05d6837885523503a2d4df434f9.png" alt="E"/> yields</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">Piecewise</span>
+<span class="n">ta</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">16</span><span class="p">];</span> <span class="n">tb</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">ba</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s">&#39;ba&#39;</span><span class="p">)</span>
+<span class="n">bb</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s">&#39;bb&#39;</span><span class="p">)</span>
+<span class="n">fa</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">Piecewise</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="o">&lt;</span><span class="n">_t</span><span class="p">)),</span> <span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="n">_t</span><span class="p">)</span><span class="o">/</span><span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="o">&lt;</span><span class="n">_t</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span> <span class="o">&gt;=</span> <span class="n">_t</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)))</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">ta</span><span class="p">])</span><span class="o">*</span><span class="n">ba</span>
+<span class="n">fb</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">Piecewise</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="o">&lt;</span><span class="n">_t</span><span class="p">)),</span> <span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="n">_t</span><span class="p">)</span><span class="o">/</span><span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="o">&lt;</span><span class="n">_t</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span> <span class="o">&gt;=</span> <span class="n">_t</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)))</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">tb</span><span class="p">])</span><span class="o">*</span><span class="n">bb</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">fa</span><span class="o">+</span><span class="n">fb</span>
+</pre></div>
+</div>
+<p>Or, graphically, if we set <img class="math" src="../_images/math/7de8faaa287fee6bfc9c02490114ac361eea2a46.png" alt="\beta_a=1"/> and <img class="math" src="../_images/math/690aec6799975adb9909e0bf13f5557bebc61ea7.png" alt="\beta_b=-2"/>, as</p>
+[<a class="reference external" href="../plot_directive/users/plots/neuronal_block.py">source code</a>]<p>Exception occurred rendering plot.</p>
+<p>The function <img class="math" src="../_images/math/bb2c93730dbb48558bb3c4738c956c4e8f816437.png" alt="f"/> above can be expressed as</p>
+<div class="math">
+<p><img src="../_images/math/df37bd0eeb702c6268e169cce5ff1d2a830e5e80.png" alt="f(v,t) = \beta_a 1_{\{a\}}(v) + \beta_b 1_{\{b\}}(v) = \beta_a
+f_a(v,t) + \beta_b f_b(v,t)"/></p>
+</div><p>Hence, our typical neuronal model can be expressed as a sum</p>
+<div class="math">
+<p><img src="../_images/math/dd15759895cfd579c270a6fa3b7bda3411d6f5c1.png" alt="\begin{aligned}
+N([t_1,t_2]) &amp;= \sum_i \beta_i \int_{t_1}^{t_2} \int_V f_i(v,t) \; dE(v,t) \\
+&amp;= \sum_i \beta_i \tilde{N}_{f_i}([t_1,t_2])
+\end{aligned}"/></p>
+</div><p>for arbitrary functions <img class="math" src="../_images/math/fd583fdf67a4c5747d649cbd76e49af243b427ce.png" alt="\tilde{N}_{f_i}"/>.  Above, <img class="math" src="../_images/math/fd583fdf67a4c5747d649cbd76e49af243b427ce.png" alt="\tilde{N}_{f_i}"/>
+represents the stimulus contributed to <img class="math" src="../_images/math/fc97ef67268cd4e91bacdf12b8901d7036c9a056.png" alt="N"/> from the function <img class="math" src="../_images/math/61c594c97b61f72af93af4e61894b3f16a3bbb30.png" alt="f_i"/>.
+In the <em>Face</em> vs. <em>Object</em> example <em class="xref std std-ref">face-object</em>, these cumulative
+intensities are related to the more common of neuronal model of intensities in
+terms of delta functions</p>
+<div class="math">
+<p><img src="../_images/math/d413f88c2e03a2dfb64412217b537ff403d485e3.png" alt="\frac{\partial}{\partial t} \tilde{N}_{f_a}(t) =
+\beta_a \sum_{t_i: \text{$i$ odd}} \delta_{t_i}(t)"/></p>
+</div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">Heaviside</span>
+<span class="n">ta</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">16</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">ba</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s">&#39;ba&#39;</span><span class="p">)</span>
+<span class="n">fa</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">Heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">_t</span><span class="p">)</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">ta</span><span class="p">])</span> <span class="o">*</span> <span class="n">ba</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fa</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>ba*(DiracDelta(t) + DiracDelta(t - 16) + DiracDelta(t - 12) + DiracDelta(t - 8) + DiracDelta(t - 4))
+</pre></div>
+</div>
+<p>[<a class="reference external" href="../plot_directive/users/plots/hrf_delta.py">source code</a>, <a class="reference external" href="../plot_directive/users/plots/hrf_delta.hires.png">hires.png</a>, <a class="reference external" href="../plot_directive/users/plots/hrf_delta.pdf">pdf</a>]</p>
+<div class="figure">
+<img alt="../_images/hrf_delta.png" src="../_images/hrf_delta.png" />
+</div>
+<div class="section" id="convolution">
+<h2>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">¶</a></h2>
+<p>In our continuous example above, with a periodic orientation and contrast, we
+might take</p>
+<div class="math">
+<p><img src="../_images/math/c1508de9a753b827d065506b772205cc8d8570b9.png" alt="\begin{aligned}
+f_O(t,(o,c)) &amp;= o \\
+f_O(t,(o,c)) &amp;= c \\
+\end{aligned}"/></p>
+</div><p>yielding a neuronal model</p>
+<div class="math">
+<p><img src="../_images/math/403f2605a5f6d13311a8f653eca7a42dc7c5a6cd.png" alt="N([t_1,t_2]) = \beta_{O} O(t) + \beta_{C} C(t)"/></p>
+</div><p>We might also want to allow a delay in the neuronal model</p>
+<div class="math">
+<p><img src="../_images/math/bc49a9007af7a5ed3cc8246b4c036655c7850b11.png" alt="N^{\text{delay}}([t_1,t_2]) = \beta_{O} O(t-\tau_O) + \beta_{C} C(t-\tau_C)."/></p>
+</div><p>This delay can be represented mathematically in terms of convolution (of
+measures)</p>
+<div class="math">
+<p><img src="../_images/math/8f4173fa558674b6497825a8f17ba80efdb0c23b.png" alt="N^{\text{delay}}([t_1,t_2]) = \left(\tilde{N}_{f_O} *
+\delta_{-\tau_O}\right)([t_1, t_2]) +\left(\tilde{N}_{f_C} *
+\delta_{-\tau_C}\right)([t_1, t_2])"/></p>
+</div><p>Another model that uses convolution is the <em>Face</em> vs. <em>Object</em> one in which the
+neuronal signal is attenuated with an exponential decay at time scale
+<img class="math" src="../_images/math/1dc1c0119a604b91be9142370dc3159b6a9bbcb9.png" alt="\tau"/></p>
+<div class="math">
+<p><img src="../_images/math/ceb08ba0af0ab1400ece60c6b0faa3593371bafa.png" alt="D([t_1, t_2]) = \int_{\max(t_1,0)}^{t_2} \tau e^{-\tau t} \; dt"/></p>
+</div><p>yielding</p>
+<div class="math">
+<p><img src="../_images/math/4fdb97ac65e3d742d6d31781c102fb737fdab61a.png" alt="N^{\text{decay}}([t_1,t_2]) = (N * D)[t_1, t_2]"/></p>
+</div></div>
+</div>
+<div class="section" id="id2">
+<h1>Events with amplitudes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<p>We described a model above <em class="xref std std-ref">event-amplitude</em> with events that each have a
+continuous value <img class="math" src="../_images/math/c7d457e388298246adb06c587bccd419ea67f7e8.png" alt="a"/> attached to them. In terms of a neuronal model, it
+seems reasonable to suppose that the (cumulative) neuronal activity is related
+to some function, perhaps expressed as a polynomial <img class="math" src="../_images/math/67af0a7df373de4cfadd59229b53ed5a306e199c.png" alt="h(a)=\sum_j \beta_j
+a^j"/> yielding a neuronal model</p>
+<div class="math">
+<p><img src="../_images/math/515ebdcb8f32a37e07a10a37f3d2de789f110f17.png" alt="N([t_1, t_2]) = \sum_j \beta_j \tilde{N}_{a^j}([t_1, t_2])"/></p>
+</div><div class="section" id="hemodynamic-model">
+<h2>Hemodynamic model<a class="headerlink" href="#hemodynamic-model" title="Permalink to this headline">¶</a></h2>
+<p>The hemodynamic model is a model for the BOLD signal, expressed as some function
+of the neuronal model. The most common hemodynamic model is just the convolution
+of the neuronal model with some hemodynamic response function, <img class="math" src="../_images/math/c03b6c7fb2bbda6bf671caaa3fa01a174286f499.png" alt="HRF"/></p>
+<div class="math">
+<p><img src="../_images/math/06179fab14009d38a86e76c5030ee4c97d9bfd2c.png" alt="\begin{aligned}
+HRF((-\infty,t]) &amp;= \int_{-\infty}^t h_{can}(s) \; ds \\
+H([t_1,t_2]) &amp; = (N * HRF)[t_1,t_2]
+\end{aligned}"/></p>
+</div><p>The canonical one is a difference of two Gamma densities</p>
+[<a class="reference external" href="../plot_directive/users/plots/hrf.py">source code</a>]<p>Exception occurred rendering plot.</p>
+</div>
+<div class="section" id="intensities">
+<h2>Intensities<a class="headerlink" href="#intensities" title="Permalink to this headline">¶</a></h2>
+<p>Hemodynamic models are, as mentioned above, most commonly expressed in terms of
+instantaneous intensities rather than cumulative intensities. Define</p>
+<div class="math">
+<p><img src="../_images/math/fcf94ecf1bb1d5d19da18757607884c740c20e1f.png" alt="n(t) = \frac{\partial}{\partial t} N((-\infty,t])."/></p>
+</div><p>The simple model above can then be written as</p>
+<div class="math">
+<p><img src="../_images/math/c927cde8491af5c620c318e78ea4a32463bd1055.png" alt="h(t) = \frac{\partial}{\partial t}(N * HRF)(t) =
+\int_{-\infty}^{\infty} n(t-s) h_{can}(s) \; ds."/></p>
+</div><p>In the <em>Face</em> vs. <em>Object</em> experiment, the integrals above can be evaluated
+explicitly because <img class="math" src="../_images/math/64771389d9658ce9f96d642c8b5b4bce6f6fad3b.png" alt="n(t)"/> is a sum of delta functions</p>
+<div class="math">
+<p><img src="../_images/math/ffdcff906c51149a1ecbde28633c1e506aea25bb.png" alt="n(t) = \beta_a \sum_{t_i: \text{$i$ odd}} \delta_{t_i}(t) + \beta_b
+\sum_{t_i: \text{$i$ even}} \delta_{t_i}(t)"/></p>
+</div><p>In this experiment we may want to allow different hemodynamic response functions
+within each group, say <img class="math" src="../_images/math/6285969f5a1da0e59d0c56ebf40efeb54755b342.png" alt="h_a"/> within group <img class="math" src="../_images/math/c7d457e388298246adb06c587bccd419ea67f7e8.png" alt="a"/> and <img class="math" src="../_images/math/a0876925308bdf5c4e764f385a7fbd317eecb646.png" alt="h_b"/> within
+group <img class="math" src="../_images/math/8136a7ef6a03334a7246df9097e5bcc31ba33fd2.png" alt="b"/>. This yields a hemodynamic model</p>
+<div class="math">
+<p><img src="../_images/math/2c9356d23b0b17f47a7bd83103d27b98073e9720.png" alt="h(t) = \beta_a \sum_{t_i: \text{$i$ odd}} h_a(t-t_i) + \beta_b
+\sum_{t_i: \text{$i$ even}} h_b(t-t_i)"/></p>
+</div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">nipy.modalities.fmri</span> <span class="kn">import</span> <span class="n">hrf</span>
+
+<span class="n">ta</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">16</span><span class="p">];</span> <span class="n">tb</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">18</span><span class="p">]</span>
+<span class="n">ba</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">bb</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">na</span> <span class="o">=</span> <span class="n">ba</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">([</span><span class="n">hrf</span><span class="o">.</span><span class="n">glover</span><span class="p">(</span><span class="n">hrf</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ta</span><span class="p">])</span>
+<span class="n">nb</span> <span class="o">=</span> <span class="n">bb</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">([</span><span class="n">hrf</span><span class="o">.</span><span class="n">afni</span><span class="p">(</span><span class="n">hrf</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tb</span><span class="p">])</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">na</span> <span class="o">+</span> <span class="n">nb</span>
+</pre></div>
+</div>
+[<a class="reference external" href="../plot_directive/users/plots/hrf_different.py">source code</a>]<p>Exception occurred rendering plot.</p>
+<p>Applying the simple model to the events with amplitude model and the canonical
+HRF yields a hemodynamic model</p>
+<div class="math">
+<p><img src="../_images/math/4f93aa1f1cb4fc02b8d251463366049824d39d6b.png" alt="h(t) = \sum_{i,j} \beta_j a_i^j h_{can}(t-t_i)"/></p>
+</div><div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">nipy.modalities.fmri.utils</span> <span class="kn">import</span> <span class="n">events</span><span class="p">,</span> <span class="n">Symbol</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">amp</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">events</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">amplitudes</span><span class="o">=</span><span class="n">amp</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">hrf</span><span class="o">.</span><span class="n">glover</span><span class="p">)</span>
+</pre></div>
+</div>
+[<a class="reference external" href="../plot_directive/users/plots/event_amplitude.py">source code</a>]<p>Exception occurred rendering plot.</p>
+</div>
+<div class="section" id="derivative-information">
+<h2>Derivative information<a class="headerlink" href="#derivative-information" title="Permalink to this headline">¶</a></h2>
+<p>In cases where the neuronal model has more than one derivative, such as the
+continuous stimuli <em class="xref std std-ref">continuous-stimuli</em> example, we might model the
+hemodynamic response using the higher derivatives as well.  For example</p>
+<div class="math">
+<p><img src="../_images/math/465073cb7417b001ec1dd6e1c07b1ce58d338cc4.png" alt="h(t) = \beta_{O,0} \tilde{n}_{f_O}(t) + \beta_{O,1}
+\frac{\partial}{\partial t}\tilde{n}_{f_O}(t) + \beta_{C,0}
+\tilde{n}_{f_C}(t) + \beta_{C,1} \frac{\partial}
+{\partial t}\tilde{n}_{f_C}(t)"/></p>
+</div><p>where</p>
+<div class="math">
+<p><img src="../_images/math/dd2eae7f21b8fed94a7cb2f48c317a91f8dae43b.png" alt="\begin{aligned}
+\tilde{n}_f(t) &amp;= \frac{\partial}{\partial t} \tilde{N}_f((-\infty,t]) \\
+ &amp;= \frac{\partial}{\partial t} \left(
+ \int_{-\infty}^t \int_V f(v,t) \; dE(v,t) \right)
+\end{aligned}"/></p>
+</div></div>
+</div>
+<div class="section" id="design-matrix">
+<h1>Design matrix<a class="headerlink" href="#design-matrix" title="Permalink to this headline">¶</a></h1>
+<p>In a typical GLM analysis, we will compare the observed BOLD signal <img class="math" src="../_images/math/429f9bbb73bef9e385fb33c6a610248910b919e0.png" alt="B(t)"/>
+at some fixed voxel <img class="math" src="../_images/math/26eeb5258ca5099acf8fe96b2a1049c48c89a5e6.png" alt="x"/>, observed at time points <img class="math" src="../_images/math/ed7afaf529c36078c5262dbf93cba18e4269332b.png" alt="(s_1, \dots,
+s_n)"/>, to a hemodynamic response model.  For instance, in the <em>Face</em> vs.
+<em>Object</em> model, using the canonical HRF</p>
+<div class="math">
+<p><img src="../_images/math/d014dc257f8e19b155e8bdf48b4942f35760c98c.png" alt="B(t) =  \beta_a \sum_{t_i: \text{$i$ odd}} h_{can}(t-t_i) + \beta_b
+\sum_{t_i: \text{$i$ even}} h_{can}(t-t_i) + \epsilon(t)"/></p>
+</div><p>where <img class="math" src="../_images/math/6c6a1ff55ed6be733f8a8393488a9333a40bedce.png" alt="\epsilon(t)"/> is the correlated noise in the BOLD data.</p>
+<p>Because the BOLD is modeled as linear in <img class="math" src="../_images/math/63c917720291eb0cf67393cdb48d78b26dcbe5a7.png" alt="(\beta_a,\beta_b)"/> this fits
+into a multiple linear regression model setting, typically written as</p>
+<div class="math">
+<p><img src="../_images/math/ba32f6aa7a1886ccf5f4981a232b598e03ea1b49.png" alt="Y_{n \times 1} = X_{n \times p} \beta_{p \times 1} + \epsilon_{n \times 1}"/></p>
+</div><p>In order to fit the regression model, we must find the matrix <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/>.  This
+is just the derivative of the model of the mean of <img class="math" src="../_images/math/ff5fb3d775862e2123b007eb4373ff6cc1a34d4e.png" alt="B"/> with respect to the
+parameters to be estimated. Setting <img class="math" src="../_images/math/4fd0db3f8515d4c340103cbab1f914a3ee971c4e.png" alt="(\beta_1, \beta_2)=(\beta_a,
+\beta_b)"/></p>
+<div class="math">
+<p><img src="../_images/math/b6c46df23b592ebdbd7d2adcb486207b322ee26c.png" alt="X_{ij} = \frac{\partial}{\partial \beta_j} \left(\beta_1 \sum_{t_k:
+\text{$k$ odd}} h_{can}(s_i-t_k) + \beta_b \sum_{t_k: \text{$k$ even}}
+h_{can}(s_i-t_k) \right)"/></p>
+</div><div class="section" id="drift">
+<h2>Drift<a class="headerlink" href="#drift" title="Permalink to this headline">¶</a></h2>
+<p>We sometimes include a natural spline model of the drift here.</p>
+<p>This changes the design matrix by adding more columns, one for each function in
+our model of the drift.  In general, starting from some model of the mean the
+design matrix is the derivative of the model of the mean, differentiated with
+respect to all parameters to be estimated (in some fixed order).</p>
+</div>
+<div class="section" id="nonlinear-example">
+<h2>Nonlinear example<a class="headerlink" href="#nonlinear-example" title="Permalink to this headline">¶</a></h2>
+<p>The delayed continuous stimuli example above is an example of a
+nonlinear function of the mean that is nonlinear in some parameters,
+<img class="math" src="../_images/math/62a77ea173cccc1a245ebb0e8bd6759a68cd89a4.png" alt="(\tau_O, \tau_C)"/>.</p>
+</div>
+</div>
+<div class="section" id="formula-objects">
+<h1>Formula objects<a class="headerlink" href="#formula-objects" title="Permalink to this headline">¶</a></h1>
+<p>This experience of building the model can often be simplified, using what is
+known in :ref:R as <em>formula</em> objects. NiPy has implemented a formula object that
+is similar to R&#8217;s, but differs in some important respects. See
+<tt class="xref py py-mod docutils literal"><span class="pre">nipy.algorithms.statistics.formula</span></tt>.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../glossary.html" title="Glossary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="coordinate_map.html" title="Basics of the Coordinate Map"
+             >previous</a> |</li>
+  <li><a href="../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li><a href="../documentation.html" >NIPY documentation</a> &raquo;</li>
+          <li><a href="index.html" >User Guide</a> &raquo;</li>
+          <li><a href="tutorial.html" >Tutorials</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2005-2013, Neuroimaging in Python team.
+      Last updated on Aug 26, 2013.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

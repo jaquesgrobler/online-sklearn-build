@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Neuroimaging in Python &mdash; NIPY Documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nipy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.4.0.dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="NIPY Documentation" href="../../index.html" />
+    <link rel="up" title="Developer Tools" href="index.html" />
+    <link rel="next" title="Setting up virtualenv" href="virtualenv-tutor.html" />
+    <link rel="prev" title="Developer Tools" href="index.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../../index.html">
+  <img src="../../_static/reggie2.png" alt="NIPY logo"  border="0" />
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="virtualenv-tutor.html" title="Setting up virtualenv"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Developer Tools"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li><a href="../../documentation.html" >NIPY documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Developer Guide</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Developer Tools</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../../documentation.html">Documentation</a></li>
+    <li><a href="../index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.org/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.org/software/license/index.html">License</a></li>
+  </ul>
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://github.com/nipy/nipy/">Nipy Github</a></li>
+  </ul>
+
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tricked out emacs for python coding</a><ul>
+<li><a class="reference internal" href="#rest-mode">ReST mode</a></li>
+<li><a class="reference internal" href="#doctest-mode">doctest mode</a></li>
+<li><a class="reference internal" href="#code-checkers">code checkers</a><ul>
+<li><a class="reference internal" href="#pychecker">pychecker</a></li>
+<li><a class="reference internal" href="#pylint">pylint</a></li>
+<li><a class="reference internal" href="#pyflakes">pyflakes</a></li>
+<li><a class="reference internal" href="#flymake-emacs-snippet">flymake .emacs snippet</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ropemacs">ropemacs</a><ul>
+<li><a class="reference internal" href="#install">Install</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#switching-between-modes">Switching between modes</a></li>
+<li><a class="reference internal" href="#emacs-code-browser">emacs code browser</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Developer Tools</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="virtualenv-tutor.html"
+                        title="next chapter">Setting up virtualenv</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/devel/tools/tricked_out_emacs.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:http://mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tricked-out-emacs-for-python-coding">
+<span id="tricked-out-emacs"></span><h1>Tricked out emacs for python coding<a class="headerlink" href="#tricked-out-emacs-for-python-coding" title="Permalink to this headline">¶</a></h1>
+<p>Various ways to configure your emacs that you might find useful.</p>
+<p>See <a class="reference external" href="http://www.emacswiki.org/cgi-bin/wiki/PythonMode">emacs_python_mode</a> for a good summary.</p>
+<div class="section" id="rest-mode">
+<span id="rst-emacs"></span><h2>ReST mode<a class="headerlink" href="#rest-mode" title="Permalink to this headline">¶</a></h2>
+<p>For editing ReST documents like this one.  You may need a recent
+version of the <a class="reference external" href="http://docutils.sourceforge.net/tools/editors/emacs/rst.el">rst.el</a> file from the <a class="reference external" href="http://docutils.sourceforge.net">docutils</a> site.</p>
+<p><tt class="docutils literal"><span class="pre">rst</span></tt> mode automates many important ReST tasks like building and updating
+table-of-contents, and promoting or demoting section headings.  Here
+is the basic <tt class="docutils literal"><span class="pre">.emacs</span></tt> configuration:</p>
+<div class="highlight-python"><pre>(require 'rst)
+(setq auto-mode-alist
+      (append '(("\\.txt$" . rst-mode)
+                ("\\.rst$" . rst-mode)
+                ("\\.rest$" . rst-mode)) auto-mode-alist))</pre>
+</div>
+<p>Some helpful functions:</p>
+<div class="highlight-python"><pre>C-c TAB - rst-toc-insert
+
+  Insert table of contents at point
+
+C-c C-u - rst-toc-update
+
+    Update the table of contents at point
+
+C-c C-l rst-shift-region-left
+
+    Shift region to the left
+
+C-c C-r rst-shift-region-right
+
+    Shift region to the right</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">On older Debian-based releases, the default <tt class="docutils literal"><span class="pre">M-x</span> <span class="pre">rst-compile</span></tt> command
+uses <tt class="docutils literal"><span class="pre">rst2html.py</span></tt> whereas the command installed is <tt class="docutils literal"><span class="pre">rst2html</span></tt>.
+Symlink was required as a quick fix.</p>
+</div>
+</div>
+<div class="section" id="doctest-mode">
+<h2>doctest mode<a class="headerlink" href="#doctest-mode" title="Permalink to this headline">¶</a></h2>
+<p>This useful mode for writing doctests (<tt class="docutils literal"><span class="pre">doctest-mode.el</span></tt>) cames with
+<tt class="docutils literal"><span class="pre">python-mode</span></tt> package on Debian-based systems.  Otherwise see <a class="reference external" href="http://www.cis.upenn.edu/~edloper/projects/doctestmode/">doctest-mode</a> project page.</p>
+</div>
+<div class="section" id="code-checkers">
+<h2>code checkers<a class="headerlink" href="#code-checkers" title="Permalink to this headline">¶</a></h2>
+<p>Code checkers within emacs can be useful to check code for errors,
+unused variables, imports and so on.  Alternatives are <a class="reference external" href="http://pychecker.sourceforge.net/">pychecker</a>,
+<a class="reference external" href="http://www.logilab.org/project/pylint">pylint</a> and <a class="reference external" href="http://divmod.org/trac/wiki/DivmodPyflakes">pyflakes</a>. Note that <a class="reference external" href="http://rope.sourceforge.net/">rope</a> (below) also does some code
+checking.  <a class="reference external" href="http://www.logilab.org/project/pylint">pylint</a> and <a class="reference external" href="http://divmod.org/trac/wiki/DivmodPyflakes">pyflakes</a> work best with emacs <a class="reference external" href="http://flymake.sourceforge.net/">flymake</a>,
+which usually comes with emacs.</p>
+<div class="section" id="pychecker">
+<h3><a class="reference external" href="http://pychecker.sourceforge.net/">pychecker</a><a class="headerlink" href="#pychecker" title="Permalink to this headline">¶</a></h3>
+<p>This appears to be plumbed in with <tt class="docutils literal"><span class="pre">python-mode</span></tt>, just do <tt class="docutils literal"><span class="pre">M-x</span>
+<span class="pre">py-pychecker-run</span></tt>.  If you try this, and <a class="reference external" href="http://pychecker.sourceforge.net/">pychecker</a> is not installed,
+you will get an error.  You can install it using your package manager
+(<tt class="docutils literal"><span class="pre">pychecker</span></tt> on Debian-based systems) or from the <a class="reference external" href="http://pychecker.sourceforge.net/">pychecker</a> webpage.</p>
+</div>
+<div class="section" id="pylint">
+<h3><a class="reference external" href="http://www.logilab.org/project/pylint">pylint</a><a class="headerlink" href="#pylint" title="Permalink to this headline">¶</a></h3>
+<p>Install <a class="reference external" href="http://www.logilab.org/project/pylint">pylint</a>.  Debian packages <a class="reference external" href="http://www.logilab.org/project/pylint">pylint</a> as <tt class="docutils literal"><span class="pre">pylint</span></tt>. Put the
+<a class="reference internal" href="#flymake-emacs-snippet">flymake .emacs snippet</a> in your <tt class="docutils literal"><span class="pre">.emacs</span></tt> file.  You will see, in the
+<a class="reference external" href="http://www.emacswiki.org/cgi-bin/wiki/PythonMode">emacs_python_mode</a> page, that you will need to save this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="s">&quot;pylint -f parseable -r n --disable-msg-cat=C,R </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span>
+          <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">shell</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">stdout</span> <span class="o">=</span> <span class="n">PIPE</span><span class="p">)</span><span class="o">.</span><span class="n">stdout</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\\</span><span class="s">[([WE])(, (.+?))?</span><span class="se">\\</span><span class="s">]&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+        <span class="n">kind</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">func</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s">&quot;W&quot;</span><span class="p">:</span>
+           <span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;Warning&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+           <span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;Error&quot;</span>
+
+        <span class="k">if</span> <span class="n">func</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\\</span><span class="s">[([WE])(, (.+?))?</span><span class="se">\\</span><span class="s">]&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;</span><span class="si">%s</span><span class="s"> (</span><span class="si">%s</span><span class="s">):&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">func</span><span class="p">),</span> <span class="n">line</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\\</span><span class="s">[([WE])?</span><span class="se">\\</span><span class="s">]&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">:&quot;</span> <span class="o">%</span> <span class="n">msg</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">line</span><span class="p">,</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>as <tt class="docutils literal"><span class="pre">epylint</span></tt> somewhere on your system path, and test that <tt class="docutils literal"><span class="pre">epylint</span>
+<span class="pre">somepyfile.py</span></tt> works.</p>
+</div>
+<div class="section" id="pyflakes">
+<h3>pyflakes<a class="headerlink" href="#pyflakes" title="Permalink to this headline">¶</a></h3>
+<p>Install <a class="reference external" href="http://divmod.org/trac/wiki/DivmodPyflakes">pyflakes</a>.  Maybe your package manager again? (<tt class="docutils literal"><span class="pre">apt-get</span>
+<span class="pre">install</span> <span class="pre">pyflakes</span></tt>).  Install the <a class="reference internal" href="#flymake-emacs-snippet">flymake .emacs snippet</a> in your
+<tt class="docutils literal"><span class="pre">.emacs</span></tt> file.</p>
+</div>
+<div class="section" id="flymake-emacs-snippet">
+<h3>flymake .emacs snippet<a class="headerlink" href="#flymake-emacs-snippet" title="Permalink to this headline">¶</a></h3>
+<p>Add this to your .emacs file:</p>
+<div class="highlight-python"><pre>;; code checking via flymake
+;; set code checker here from "epylint", "pyflakes"
+(setq pycodechecker "pyflakes")
+(when (load "flymake" t)
+  (defun flymake-pycodecheck-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list pycodechecker (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pycodecheck-init)))</pre>
+</div>
+<p>and set which of <a class="reference external" href="http://www.logilab.org/project/pylint">pylint</a> (&#8220;epylint&#8221;) or <a class="reference external" href="http://divmod.org/trac/wiki/DivmodPyflakes">pyflakes</a> (&#8220;pyflakes&#8221;) you
+want to use.</p>
+<p>You may also consider using the <tt class="docutils literal"><span class="pre">flymake-cursor</span></tt> functions, see the
+<tt class="docutils literal"><span class="pre">pyflakes</span></tt> section of the <a class="reference external" href="http://www.emacswiki.org/cgi-bin/wiki/PythonMode">emacs_python_mode</a> page for details.</p>
+</div>
+</div>
+<div class="section" id="ropemacs">
+<h2><a class="reference external" href="http://rope.sourceforge.net/ropemacs.html">ropemacs</a><a class="headerlink" href="#ropemacs" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://rope.sourceforge.net/">rope</a>  is a python refactoring library, and <a class="reference external" href="http://rope.sourceforge.net/ropemacs.html">ropemacs</a> is an emacs
+interface to it, that uses <a class="reference external" href="http://pymacs.progiciels-bpi.ca/pymacs.html">pymacs</a>.  <a class="reference external" href="http://pymacs.progiciels-bpi.ca/pymacs.html">pymacs</a> is an interface between
+emacs lisp and python that allows emacs to call into python and python
+to call back into emacs.</p>
+<div class="section" id="install">
+<h3>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://rope.sourceforge.net/">rope</a> - by downloading from the link, and running <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span>
+<span class="pre">install</span></tt> in the usual way.</li>
+<li><a class="reference external" href="http://pymacs.progiciels-bpi.ca/pymacs.html">pymacs</a> - probably via your package manager - for example <tt class="docutils literal"><span class="pre">apt-get</span>
+<span class="pre">install</span> <span class="pre">pymacs</span></tt></li>
+<li><a class="reference external" href="http://rope.sourceforge.net/ropemacs.html">ropemacs</a> - download from link, <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt></li>
+</ul>
+<p>You may need to make sure your gnome etc sessions have the correct
+python path settings - for example settings in <tt class="docutils literal"><span class="pre">.gnomerc</span></tt> as well as
+the usual <tt class="docutils literal"><span class="pre">.bashrc</span></tt>.</p>
+<p>Make sure you can <cite>import ropemacs</cite> from python (which should drop you
+into something lispey).  Add these lines somewhere in your <cite>.emacs</cite> file:</p>
+<div class="highlight-python"><pre>(require 'pymacs)
+(pymacs-load "ropemacs" "rope-")</pre>
+</div>
+<p>and restart emacs.  When you open a python file, you should have a
+<tt class="docutils literal"><span class="pre">rope</span></tt> menu. Note <cite>C-c g</cite> - the excellent <cite>goto-definition</cite> command.</p>
+</div>
+</div>
+<div class="section" id="switching-between-modes">
+<h2>Switching between modes<a class="headerlink" href="#switching-between-modes" title="Permalink to this headline">¶</a></h2>
+<p>You may well find it useful to be able to switch fluidly between
+python mode, doctest mode, ReST mode and flymake mode (<a class="reference external" href="http://www.logilab.org/project/pylint">pylint</a>).  You
+can attach these modes to function keys in your <tt class="docutils literal"><span class="pre">.emacs</span></tt> file with
+something like:</p>
+<div class="highlight-python"><pre>(global-set-key [f8]      'flymake-mode)
+(global-set-key [f9]      'python-mode)
+(global-set-key [f10]      'doctest-mode)
+(global-set-key [f11]      'rst-mode)</pre>
+</div>
+</div>
+<div class="section" id="emacs-code-browser">
+<h2>emacs code browser<a class="headerlink" href="#emacs-code-browser" title="Permalink to this headline">¶</a></h2>
+<p>Not really python specific, but a rather nice set of windows for
+browsing code directories, and code - see the <a class="reference external" href="http://ecb.sourceforge.net/">ECB</a> page.  Again, your
+package manager may help you (<tt class="docutils literal"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">ecb</span></tt>).</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="virtualenv-tutor.html" title="Setting up virtualenv"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Developer Tools"
+             >previous</a> |</li>
+  <li><a href="../../index.html">NIPY home</a> |&nbsp;</li>
+
+          <li><a href="../../documentation.html" >NIPY documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Developer Guide</a> &raquo;</li>
+          <li><a href="index.html" >Developer Tools</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2005-2013, Neuroimaging in Python team.
+      Last updated on Aug 26, 2013.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
