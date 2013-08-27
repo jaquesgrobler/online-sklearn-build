@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NiLearn: Machine learning for NeuroImaging in Python &mdash; Machine learning for NeuroImaging</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="Machine learning for NeuroImaging" href="../../index.html" />
+  <meta name="keywords" content="nilearn, neuroimaging, python, neuroscience, machinelearning">
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+  <div style="background-color: white; text-align: left; display: inline-block;padding: 10px 10px 15px 15px">
+    <a href="../../index.html">
+      <img src="../../_static/nilearn.png" alt="NIPY logo"  border="0" />
+    </a>
+  </div>
+  <div style=" text-align: center; padding: 30px 10px 15px 30px; display: inline-block; vertical-align: middle; position: absolute; font-size: 22px;overflow: auto;">
+    <h1>NiLearn: Machine learning for NeuroImaging in Python</h1>
+  </div>
+</div>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="https://github.com/nilearn/nilearn">NiLearn GitHub</a></li>
+  </ul>
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="../../AUTHORS.html#citing">citing the
+                    scikit-learn</a> if you use it.</p></li>
+  </ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/modules/generated/nilearn.datasets.fetch_yeo_2011_atlas.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+
+<div class="navbar">
+</div> <!-- end navbar -->
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nilearn-datasets-fetch-yeo-2011-atlas">
+<h1>7.1.1.8. nilearn.datasets.fetch_yeo_2011_atlas<a class="headerlink" href="#nilearn-datasets-fetch-yeo-2011-atlas" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="nilearn.datasets.fetch_yeo_2011_atlas">
+<tt class="descclassname">nilearn.datasets.</tt><tt class="descname">fetch_yeo_2011_atlas</tt><big>(</big><em>data_dir=None</em>, <em>url=None</em>, <em>resume=True</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#nilearn.datasets.fetch_yeo_2011_atlas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download and return file names for the Yeo 2011 parcellation.</p>
+<p>The provided images are in MNI152 space.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>data_dir: string</strong> :</p>
+<blockquote>
+<div><p>directory where data should be downloaded and unpacked.</p>
+</div></blockquote>
+<p><strong>url: string</strong> :</p>
+<blockquote>
+<div><p>url of file to download.</p>
+</div></blockquote>
+<p><strong>resume: bool</strong> :</p>
+<blockquote>
+<div><p>whether to resumed download of a partly-downloaded file.</p>
+</div></blockquote>
+<p><strong>verbose: int</strong> :</p>
+<blockquote>
+<div><p>verbosity level (0 means no message).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>data: sklearn.datasets.base.Bunch</strong> :</p>
+<blockquote class="last">
+<div><p>dictionary-like object, keys are:</p>
+<ul class="simple">
+<li>&#8220;tight_7&#8221;, &#8220;liberal_7&#8221;: 7-region parcellations, resp. tightly
+fitted to cortex shape, and liberally fitted.</li>
+<li>&#8220;tight_17&#8221;, &#8220;liberal_17&#8221;: 17-region parcellations.</li>
+<li>&#8220;colors_7&#8221;, &#8220;colors_17&#8221;: colormaps (text files) for 7- and 17-region
+parcellation respectively.</li>
+<li>&#8220;anat&#8221;: anatomy image.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>For more information on this dataset&#8217;s structure, see
+<a class="reference external" href="http://surfer.nmr.mgh.harvard.edu/fswiki/CorticalParcellation_Yeo2011">http://surfer.nmr.mgh.harvard.edu/fswiki/CorticalParcellation_Yeo2011</a></p>
+<p>Yeo BT, Krienen FM, Sepulcre J, Sabuncu MR, Lashkari D, Hollinshead M,
+Roffman JL, Smoller JW, Zollei L., Polimeni JR, Fischl B, Liu H,
+Buckner RL. The organization of the human cerebral cortex estimated by
+intrinsic functional connectivity. J Neurophysiol 106(3):1125-65, 2011.</p>
+<p>Licence: unknown.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright INRIA Parietal 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

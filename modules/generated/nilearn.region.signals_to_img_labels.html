@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NiLearn: Machine learning for NeuroImaging in Python &mdash; Machine learning for NeuroImaging</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="Machine learning for NeuroImaging" href="../../index.html" />
+  <meta name="keywords" content="nilearn, neuroimaging, python, neuroscience, machinelearning">
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+  <div style="background-color: white; text-align: left; display: inline-block;padding: 10px 10px 15px 15px">
+    <a href="../../index.html">
+      <img src="../../_static/nilearn.png" alt="NIPY logo"  border="0" />
+    </a>
+  </div>
+  <div style=" text-align: center; padding: 30px 10px 15px 30px; display: inline-block; vertical-align: middle; position: absolute; font-size: 22px;overflow: auto;">
+    <h1>NiLearn: Machine learning for NeuroImaging in Python</h1>
+  </div>
+</div>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="https://github.com/nilearn/nilearn">NiLearn GitHub</a></li>
+  </ul>
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="../../AUTHORS.html#citing">citing the
+                    scikit-learn</a> if you use it.</p></li>
+  </ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/modules/generated/nilearn.region.signals_to_img_labels.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+
+<div class="navbar">
+</div> <!-- end navbar -->
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nilearn-region-signals-to-img-labels">
+<h1>7.5.1.2. nilearn.region.signals_to_img_labels<a class="headerlink" href="#nilearn-region-signals-to-img-labels" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="nilearn.region.signals_to_img_labels">
+<tt class="descclassname">nilearn.region.</tt><tt class="descname">signals_to_img_labels</tt><big>(</big><em>signals</em>, <em>labels_img</em>, <em>mask_img=None</em>, <em>background_label=0</em>, <em>order='F'</em><big>)</big><a class="headerlink" href="#nilearn.region.signals_to_img_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create image from region signals defined as labels.</p>
+<p>The same region signal is used for each voxel of the corresponding 3D
+volume.</p>
+<p>labels_img, mask_img must have the same shapes and affines.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>signals: numpy.ndarray</strong> :</p>
+<blockquote>
+<div><p>2D array with shape: (scan number, number of regions in labels_img)</p>
+</div></blockquote>
+<p><strong>labels_img: niimg</strong> :</p>
+<blockquote>
+<div><p>Region definitions using labels.</p>
+</div></blockquote>
+<p><strong>mask_img: niimg, optional</strong> :</p>
+<blockquote>
+<div><p>Boolean array giving voxels to process. integer arrays also accepted,
+In this array, zero means False, non-zero means True.</p>
+</div></blockquote>
+<p><strong>background_label: number</strong> :</p>
+<blockquote>
+<div><p>label to use for &#8220;no region&#8221;.</p>
+</div></blockquote>
+<p><strong>order: str</strong> :</p>
+<blockquote>
+<div><p>ordering of output array (&#8220;C&#8221; or &#8220;F&#8221;). Defaults to &#8220;F&#8221;.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>img: nibabel.Nifti1Image</strong> :</p>
+<blockquote class="last">
+<div><p>Reconstructed image. dtype is that of &#8220;signals&#8221;, affine and shape are
+those of labels_img.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="nilearn.region.img_to_signals_labels.html#nilearn.region.img_to_signals_labels" title="nilearn.region.img_to_signals_labels"><tt class="xref py py-obj docutils literal"><span class="pre">nilearn.region.img_to_signals_labels</span></tt></a>, <a class="reference internal" href="nilearn.region.signals_to_img_maps.html#nilearn.region.signals_to_img_maps" title="nilearn.region.signals_to_img_maps"><tt class="xref py py-obj docutils literal"><span class="pre">nilearn.region.signals_to_img_maps</span></tt></a></p>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright INRIA Parietal 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

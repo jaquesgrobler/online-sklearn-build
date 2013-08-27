@@ -1,0 +1,198 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NiLearn: Machine learning for NeuroImaging in Python &mdash; Machine learning for NeuroImaging</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Machine learning for NeuroImaging" href="../index.html" />
+  <meta name="keywords" content="nilearn, neuroimaging, python, neuroscience, machinelearning">
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+  <div style="background-color: white; text-align: left; display: inline-block;padding: 10px 10px 15px 15px">
+    <a href="../index.html">
+      <img src="../_static/nilearn.png" alt="NIPY logo"  border="0" />
+    </a>
+  </div>
+  <div style=" text-align: center; padding: 30px 10px 15px 30px; display: inline-block; vertical-align: middle; position: absolute; font-size: 22px;overflow: auto;">
+    <h1>NiLearn: Machine learning for NeuroImaging in Python</h1>
+  </div>
+</div>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="index.html">Examples</a> |&nbsp;</li>
+<li><a href="../modules/classes.html">Reference</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="https://github.com/nilearn/nilearn">NiLearn GitHub</a></li>
+  </ul>
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="../AUTHORS.html#citing">citing the
+                    scikit-learn</a> if you use it.</p></li>
+  </ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/auto_examples/plot_canica_resting_state.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+
+<div class="navbar">
+</div> <!-- end navbar -->
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="group-analysis-of-resting-state-fmri-with-ica-canica">
+<span id="example-nilearn-plot-canica-resting-state-py"></span><h1>Group analysis of resting-state fMRI with ICA: CanICA<a class="headerlink" href="#group-analysis-of-resting-state-fmri-with-ica-canica" title="Permalink to this headline">¶</a></h1>
+<p>An example applying CanICA to resting-state data. This example applies it
+to 40 subjects of the ADHD200 datasets.</p>
+<p>CanICA is an ICA method for group-level analysis of fMRI data. Compared
+to other strategies, it brings a well-controlled group model, as well as a
+thresholding algorithm controlling for specificity and sensitivity with
+an explicit model of the signal. The reference papers are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>G. Varoquaux et al. &#8220;A group model for stable multi-subject ICA on
+fMRI datasets&#8221;, NeuroImage Vol 51 (2010), p. 288-299</li>
+<li>G. Varoquaux et al. &#8220;ICA-based sparse features recovery from fMRI
+datasets&#8221;, IEEE ISBI 2010, p. 1177</li>
+</ul>
+</div></blockquote>
+<p>Pre-prints for both papers are available on hal
+(<a class="reference external" href="http://hal.archives-ouvertes.fr">http://hal.archives-ouvertes.fr</a>)</p>
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_canica_resting_state.py"><tt class="xref download docutils literal"><span class="pre">plot_canica_resting_state.py</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">nibabel</span>
+
+<span class="c">### Load ADHD rest dataset ####################################################</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="c"># Here we use a limited number of subjects to get faster-running code. For</span>
+<span class="c"># better results, simply increase the number.</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_adhd</span><span class="p">()</span>
+<span class="n">func_files</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">func</span>
+
+<span class="c">### Filter and mask ###########################################################</span>
+<span class="kn">from</span> <span class="nn">nilearn.image</span> <span class="kn">import</span> <span class="n">resample_img</span>
+
+<span class="c"># This is a multi-subject method, thus we need to use the</span>
+<span class="c"># MultiNiftiMasker, rather than the NiftiMasker</span>
+<span class="c"># We specify the target_affine to downsample to 3mm isotropic</span>
+<span class="c"># resolution</span>
+
+<span class="n">target_affine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">epi_img</span> <span class="o">=</span> <span class="n">nibabel</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">func_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">mean_epi</span> <span class="o">=</span> <span class="n">epi_img</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mean_epi_img</span> <span class="o">=</span> <span class="n">nibabel</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">mean_epi</span><span class="p">,</span> <span class="n">epi_img</span><span class="o">.</span><span class="n">get_affine</span><span class="p">())</span>
+<span class="n">mean_epi</span> <span class="o">=</span> <span class="n">resample_img</span><span class="p">(</span><span class="n">mean_epi_img</span><span class="p">,</span> <span class="n">target_affine</span><span class="o">=</span><span class="n">target_affine</span><span class="p">)</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+
+<span class="c">### Apply CanICA ##############################################################</span>
+<span class="kn">from</span> <span class="nn">nilearn.decomposition.canica</span> <span class="kn">import</span> <span class="n">CanICA</span>
+
+<span class="n">n_components</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">canica</span> <span class="o">=</span> <span class="n">CanICA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">,</span>
+                <span class="n">smoothing_fwhm</span><span class="o">=</span><span class="mf">6.</span><span class="p">,</span> <span class="n">target_affine</span><span class="o">=</span><span class="n">target_affine</span><span class="p">,</span>
+                <span class="n">memory</span><span class="o">=</span><span class="s">&quot;nilearn_cache&quot;</span><span class="p">,</span> <span class="n">memory_level</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                <span class="n">threshold</span><span class="o">=</span><span class="mf">3.</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">canica</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">func_files</span><span class="p">)</span>
+
+<span class="n">components</span> <span class="o">=</span> <span class="n">canica</span><span class="o">.</span><span class="n">masker_</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">canica</span><span class="o">.</span><span class="n">components_</span><span class="p">)</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+
+<span class="c">### Visualize the results #####################################################</span>
+<span class="c"># Show some interesting components</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
+
+<span class="c"># Using a masked array is important to have transparency in the figures</span>
+<span class="n">components</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_equal</span><span class="p">(</span><span class="n">components</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_components</span><span class="p">):</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">cut_coord</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">maximum_position</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">components</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">i</span><span class="p">]))[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">components</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">cut_coord</span><span class="p">,</span> <span class="n">i</span><span class="p">]))</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">mean_epi</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">cut_coord</span><span class="p">]),</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">,</span>
+              <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">components</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">cut_coord</span><span class="p">,</span> <span class="n">i</span><span class="p">]),</span>
+              <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="n">vmax</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="index.html">Examples</a> |&nbsp;</li>
+<li><a href="../modules/classes.html">Reference</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright INRIA Parietal 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

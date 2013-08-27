@@ -59,12 +59,11 @@ $(function() {
 
   function collapse_sidebar() {
     sidebarwrapper.hide();
-    sidebar.width(ssb_width_collapsed);
+    sidebar.css('width', ssb_width_collapsed);
     bodywrapper.css('margin-left', bw_margin_collapsed);
     sidebarbutton.css({
         'margin-left': '0',
-        'height': bodywrapper.height(),
-	'left': '8px'
+        'height': bodywrapper.height()
     });
     sidebarbutton.find('span').text('»');
     sidebarbutton.attr('title', _('Expand sidebar'));
@@ -73,12 +72,11 @@ $(function() {
 
   function expand_sidebar() {
     bodywrapper.css('margin-left', bw_margin_expanded);
-    sidebar.width(ssb_width_expanded);
+    sidebar.css('width', ssb_width_expanded);
     sidebarwrapper.show();
     sidebarbutton.css({
         'margin-left': ssb_width_expanded-13,
-        'height': bodywrapper.height(),
-	'left': '0'
+        'height': bodywrapper.height()
     });
     sidebarbutton.find('span').text('«');
     sidebarbutton.attr('title', _('Collapse sidebar'));
@@ -126,7 +124,7 @@ $(function() {
           $(this).css('background-color', '#D0D0D0');
       },
       function () {
-          $(this).css('background-color', '#F6F6F6');
+          $(this).css('background-color', '#F0F0F0');
       }
     );
   }
@@ -150,7 +148,5 @@ $(function() {
 
   add_sidebar_button();
   var sidebarbutton = $('#sidebarbutton');
-  // set_position_from_cookie();
-  // Uncomment the above to have cookies remember sidebar position
-  // Causes problems on pages without sidebar like index
+  set_position_from_cookie();
 });

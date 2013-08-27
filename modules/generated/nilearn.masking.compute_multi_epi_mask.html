@@ -1,0 +1,198 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NiLearn: Machine learning for NeuroImaging in Python &mdash; Machine learning for NeuroImaging</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="Machine learning for NeuroImaging" href="../../index.html" />
+  <meta name="keywords" content="nilearn, neuroimaging, python, neuroscience, machinelearning">
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+  <div style="background-color: white; text-align: left; display: inline-block;padding: 10px 10px 15px 15px">
+    <a href="../../index.html">
+      <img src="../../_static/nilearn.png" alt="NIPY logo"  border="0" />
+    </a>
+  </div>
+  <div style=" text-align: center; padding: 30px 10px 15px 30px; display: inline-block; vertical-align: middle; position: absolute; font-size: 22px;overflow: auto;">
+    <h1>NiLearn: Machine learning for NeuroImaging in Python</h1>
+  </div>
+</div>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+<h4> Github repo </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="https://github.com/nilearn/nilearn">NiLearn GitHub</a></li>
+  </ul>
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="../../AUTHORS.html#citing">citing the
+                    scikit-learn</a> if you use it.</p></li>
+  </ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/modules/generated/nilearn.masking.compute_multi_epi_mask.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+
+<div class="navbar">
+</div> <!-- end navbar -->
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nilearn-masking-compute-multi-epi-mask">
+<h1>7.4.1.2. nilearn.masking.compute_multi_epi_mask<a class="headerlink" href="#nilearn-masking-compute-multi-epi-mask" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="nilearn.masking.compute_multi_epi_mask">
+<tt class="descclassname">nilearn.masking.</tt><tt class="descname">compute_multi_epi_mask</tt><big>(</big><em>epi_imgs</em>, <em>lower_cutoff=0.2</em>, <em>upper_cutoff=0.9</em>, <em>connected=True</em>, <em>opening=2</em>, <em>threshold=0.5</em>, <em>target_affine=None</em>, <em>target_shape=None</em>, <em>exclude_zeros=False</em>, <em>n_jobs=1</em>, <em>memory=None</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#nilearn.masking.compute_multi_epi_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute a common mask for several sessions or subjects of fMRI data.</p>
+<p>Uses the mask-finding algorithms to extract masks for each session
+or subject, and then keep only the main connected component of the
+a given fraction of the intersection of all the masks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>epi_imgs: list of Niimgs</strong> :</p>
+<blockquote>
+<div><p>A list of arrays, each item being a subject or a session.
+3D and 4D images are accepted.
+If 3D images is given, we suggest to use the mean image of each
+session</p>
+</div></blockquote>
+<p><strong>threshold: float, optional</strong> :</p>
+<blockquote>
+<div><p>the inter-session threshold: the fraction of the
+total number of session in for which a voxel must be in the
+mask to be kept in the common mask.
+threshold=1 corresponds to keeping the intersection of all
+masks, whereas threshold=0 is the union of all masks.</p>
+</div></blockquote>
+<p><strong>lower_cutoff: float, optional</strong> :</p>
+<blockquote>
+<div><p>lower fraction of the histogram to be discarded.</p>
+</div></blockquote>
+<p><strong>upper_cutoff: float, optional</strong> :</p>
+<blockquote>
+<div><p>upper fraction of the histogram to be discarded.</p>
+</div></blockquote>
+<p><strong>connected: boolean, optional</strong> :</p>
+<blockquote>
+<div><p>if connected is True, only the largest connect component is kept.</p>
+</div></blockquote>
+<p><strong>exclude_zeros: boolean, optional</strong> :</p>
+<blockquote>
+<div><p>Consider zeros as missing values for the computation of the
+threshold. This option is useful if the images have been
+resliced with a large padding of zeros.</p>
+</div></blockquote>
+<p><strong>target_affine: 3x3 or 4x4 matrix, optional</strong> :</p>
+<blockquote>
+<div><p>This parameter is passed to image.resample_img. Please see the
+related documentation for details.</p>
+</div></blockquote>
+<p><strong>target_shape: 3-tuple of integers, optional</strong> :</p>
+<blockquote>
+<div><p>This parameter is passed to image.resample_img. Please see the
+related documentation for details.</p>
+</div></blockquote>
+<p><strong>memory: instance of joblib.Memory or string</strong> :</p>
+<blockquote>
+<div><p>Used to cache the function call.</p>
+</div></blockquote>
+<p><strong>n_jobs: integer, optional</strong> :</p>
+<blockquote>
+<div><p>The number of CPUs to use to do the computation. -1 means
+&#8216;all CPUs&#8217;.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>mask</strong> : 3D nifti-like image</p>
+<blockquote class="last">
+<div><p>The brain mask.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright INRIA Parietal 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
