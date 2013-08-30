@@ -1,7 +1,6 @@
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -31,13 +30,13 @@
 
   </head>
   <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
-  <div style="background-color: white; text-align: left; display: inline-block;padding: 10px 10px 15px 15px">
+<div id="logo-banner">
+  <div class="logo">
     <a href="../index.html">
-      <img src="../_static/nilearn.png" alt="NIPY logo"  border="0" />
+      <img src="../_static/nilearn.png" alt="NiLearn logo"  border="0" />
     </a>
   </div>
-  <div style=" text-align: center; padding: 30px 10px 15px 30px; display: inline-block; vertical-align: middle; position: absolute; font-size: 22px;overflow: auto;">
+  <div class="banner">
     <h1>NiLearn: Machine learning for NeuroImaging in Python</h1>
   </div>
 </div>
@@ -97,6 +96,11 @@
 <p>A significant part of the running time of this example is actually spent
 in loading the data: we load all the data but only use the face and
 houses conditions.</p>
+<img alt="../_images/plot_haxby_decoding_1.png" class="align-center" src="../_images/plot_haxby_decoding_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>=== ANOVA ===
+Classification accuracy: 1.000000  / Chance level: 0.500000</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_haxby_decoding.py"><tt class="xref download docutils literal"><span class="pre">plot_haxby_decoding.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">### Load Haxby dataset ########################################################</span>
 <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
@@ -221,6 +225,7 @@ houses conditions.</p>
 <span class="c"># Classification accuracy: 0.986111  / Chance level: 0.500000</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  25.35 seconds</p>
 </div>
 
 

@@ -1,7 +1,6 @@
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -31,13 +30,13 @@
 
   </head>
   <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
-  <div style="background-color: white; text-align: left; display: inline-block;padding: 10px 10px 15px 15px">
+<div id="logo-banner">
+  <div class="logo">
     <a href="../index.html">
-      <img src="../_static/nilearn.png" alt="NIPY logo"  border="0" />
+      <img src="../_static/nilearn.png" alt="NiLearn logo"  border="0" />
     </a>
   </div>
-  <div style=" text-align: center; padding: 30px 10px 15px 30px; display: inline-block; vertical-align: middle; position: absolute; font-size: 22px;overflow: auto;">
+  <div class="banner">
     <h1>NiLearn: Machine learning for NeuroImaging in Python</h1>
   </div>
 </div>
@@ -98,6 +97,18 @@
 Using some visualization, one can see that the default parameters of the
 nifti masker are not suited for this dataset. They are consequently tweaked
 to obtained a decent mask.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../_images/plot_nifti_advanced_3.png"><img alt="../_images/plot_nifti_advanced_3.png" src="../_images/plot_nifti_advanced_3.png" style="width: 282.0px; height: 235.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../_images/plot_nifti_advanced_1.png"><img alt="../_images/plot_nifti_advanced_1.png" src="../_images/plot_nifti_advanced_1.png" style="width: 141.0px; height: 235.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../_images/plot_nifti_advanced_2.png"><img alt="../_images/plot_nifti_advanced_2.png" src="../_images/plot_nifti_advanced_2.png" style="width: 141.0px; height: 235.0px;" /></a>
+</li>
+</ul>
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Trended: mean -0.00, std 1.00
+Detrended: mean -0.00, std 1.00</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_nifti_advanced.py"><tt class="xref download docutils literal"><span class="pre">plot_nifti_advanced.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -172,6 +183,7 @@ to obtained a decent mask.</p>
     <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">detrended_data</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">detrended_data</span><span class="p">))</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  9.25 seconds</p>
 </div>
 
 

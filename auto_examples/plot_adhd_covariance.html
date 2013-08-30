@@ -1,7 +1,6 @@
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -31,13 +30,13 @@
 
   </head>
   <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
-  <div style="background-color: white; text-align: left; display: inline-block;padding: 10px 10px 15px 15px">
+<div id="logo-banner">
+  <div class="logo">
     <a href="../index.html">
-      <img src="../_static/nilearn.png" alt="NIPY logo"  border="0" />
+      <img src="../_static/nilearn.png" alt="NiLearn logo"  border="0" />
     </a>
   </div>
-  <div style=" text-align: center; padding: 30px 10px 15px 30px; display: inline-block; vertical-align: middle; position: absolute; font-size: 22px;overflow: auto;">
+  <div class="banner">
     <h1>NiLearn: Machine learning for NeuroImaging in Python</h1>
   </div>
 </div>
@@ -96,6 +95,31 @@
 <span id="example-nilearn-plot-adhd-covariance-py"></span><h1>Computation of covariance matrix between brain regions<a class="headerlink" href="#computation-of-covariance-matrix-between-brain-regions" title="Permalink to this headline">¶</a></h1>
 <p>This example shows how to extract signals from regions defined by an atlas,
 and to estimate a covariance matrix based on these signals.</p>
+<ul class="horizontal">
+<li><a class="first reference internal image-reference" href="../_images/plot_adhd_covariance_2.png"><img alt="../_images/plot_adhd_covariance_2.png" src="../_images/plot_adhd_covariance_2.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../_images/plot_adhd_covariance_1.png"><img alt="../_images/plot_adhd_covariance_1.png" src="../_images/plot_adhd_covariance_1.png" style="width: 376.0px; height: 282.0px;" /></a>
+</li>
+</ul>
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Downloading data from ftp://www.nitrc.org/fcon_1000/htdocs/indi/adhd200/sites/ADHD200_40sub_preprocessed.tgz ...
+...done. (8879 seconds, 147 min)
+extracting data from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/adhd/ADHD200_40sub_preprocessed.tgz...
+   ...done.
+-- Loading raw data (1) and masking ...
+Downloading data from https://team.inria.fr/parietal/files/2013/05/MSDL_rois.zip ...
+...done. (0 seconds, 0 min)
+extracting data from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/msdl_atlas/MSDL_rois.zip...
+   ...done.
+-- Computing confounds ...
+-- Computing region signals ...
+[NiftiMapsMasker.fit] loading regions from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/msdl_atlas/MSDL_rois/msdl_rois.nii
+[NiftiMapsMasker.transform] loading images from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/adhd/ADHD200_40sub_preprocessed/data/0010128/0010128_rest_tshift_RPI_voreg_mni.nii.gz
+[NiftiMapsMasker.transform] resampling images to fit maps
+[NiftiMapsMasker.transform] extracting region signals
+[NiftiMapsMasker.transform] cleaning extracted signals
+-- Computing covariance matrices ...</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_adhd_covariance.py"><tt class="xref download docutils literal"><span class="pre">plot_adhd_covariance.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
@@ -168,6 +192,7 @@ and to estimate a covariance matrix based on these signals.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Total running time of the example:</strong>  9579.23 seconds</p>
 </div>
 
 
