@@ -299,6 +299,12 @@ div.related ul li.right {
     }
 }
 
+@media (min-width: 360px) {
+    div.related ul li a#navbar-about {
+        display: none;
+    }
+}
+
 div.related ul li a {
     margin: 0;
     padding: 0 5px 0 5px;
@@ -395,7 +401,7 @@ div.body h3 {
 
 @media (max-width: 360px) {
     div.body h1 {
-        font-size: 1.7em;
+        font-size: 1.3em;
     }
 }
 
@@ -966,7 +972,8 @@ div#logo-banner .banner h2 {
 
 @media (max-width: 360px) {
     ul.horizontal img {
-        width: 100%
+	width: 100% !important;
+	height: 100% !important;
     }
 }
 
