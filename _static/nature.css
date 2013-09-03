@@ -865,6 +865,7 @@ div#logo-banner {
     overflow: hidden;
 }
 
+
 @media (max-width: 360px) {
     div#logo-banner {
         max-width: 100%;
@@ -897,9 +898,22 @@ div#logo-banner .banner {
     line-height: 1.7em;
 }
 
+div#logo-banner .banner h1 {
+    text-align: left;
+    margin : -0.7em 0 0.3em 4.5em;
+}
+
+div#logo-banner .banner h2 {
+    text-align: left;
+    margin : -0.5em 0 0 6.5em;
+    font-size: 1.05em;
+    color: #11557C;
+}
+
+
 @media (max-width: 360px) {
     div#logo-banner .banner {
-        line-height: 0.7em
+        font-size: 0.7em;
 	padding: 0 0 0 0;
     }
 }
