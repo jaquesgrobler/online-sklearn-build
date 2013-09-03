@@ -18,6 +18,16 @@ body {
     color: #3E4349;
 }
 
+@media (max-width: 360px) {
+    body {
+        margin: 0 0 0 0;
+	max-width: 100%;
+ 	max-height: 100%;
+	background: white;
+	min-width: none;
+    }
+}
+
 div.content-wrapper {
     background-color: #ffffff;
     color: #3E4349;
@@ -259,10 +269,21 @@ div.related ul li {
     height: 2em;
     float: left;
 }
+@media(max-width: 360px) {
+    div.related ul li {
+        background-image: none;
+    }
+}
 
 div.related ul li.right {
     float: right;
     margin-right: 5px;
+}
+
+@media (max-width: 360px) {
+    div.related ul li.right {
+        display: none;
+    }
 }
 
 div.related ul li a {
@@ -301,6 +322,13 @@ div.body p, div.body dd, div.body li {
 div.bodywrapper {
     margin: 0 246px 0 0;
     border-right: 1px solid #ccc;
+}
+
+@media (max-width: 360px) {
+    div.bodywrapper {
+        margin: 0 0 0 0;
+	border-right: none;
+    }
 }
 
 div.bodywrapper h1 {
@@ -682,6 +710,12 @@ div#download-container {
     text-align: right;
 }
 
+@media (max-width: 360px) {
+    div#download-container {
+        text-align: center;
+    }
+}
+
 div#download-container .green {
     text-align: left;
     display: inline-block;
@@ -690,6 +724,12 @@ div#download-container .green {
     background-color: #dff0d8;
     border: 0.3em solid rgba(79, 173, 117, 0.35);
     min-width: 30%;
+}
+
+@media (max-width: 360px) {
+    div#download-container .green{
+        margin: 0.5em;
+    }
 }
 
 div#download-container .green p {
@@ -707,6 +747,28 @@ div.warning {
 div#machine-learning-for-neuro-imaging h1 {
     background: rgba(153, 153, 153, 0.02);
     padding: 0.7em 0 1.3em 1.7em;
+}
+
+@media (max-width: 360px) {
+    div#machine-learning-for-neuro-imaging h1 {
+        margin: 0;
+	font-size: 1.2em;
+	background: white;
+	text-align: center;
+    }
+}
+
+@media (max-width: 360px) {
+    div#machine-learning-for-neuro-imaging.section .admonition.warning {
+        text-align: center;
+	max-width: 58%;
+    }
+}
+
+@media (max-width: 360px) {
+    blockquote {
+        margin: 0.1em;
+    }
 }
 
 /* ------- tag cloud on the front page -------------------- */
@@ -803,16 +865,36 @@ div#logo-banner {
     overflow: hidden;
 }
 
+@media (max-width: 360px) {
+    div#logo-banner {
+        max-width: 100%;
+    }
+}
+
 div#logo-banner .logo {
     background-color: white;
     padding: 10px 10px 15px 15px;
     float: left;
 }
 
+@media (max-width: 360px) {
+    div#logo-banner .logo {
+        max-width: 26%;
+	padding: 0 0 0 0;
+    }
+}
+
 div#logo-banner .banner {
     padding: 30px 10px 15px 30px;
     font-size: 1.6em;
     line-height: 1.7em;
+}
+
+@media (max-width: 360px) {
+    div#logo-banner .banner {
+        max-width: 26%;
+	padding: 0 0 0 0;
+    }
 }
 
 div.toctree-wrapper.compound {
