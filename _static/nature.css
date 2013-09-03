@@ -277,7 +277,7 @@ div.related ul li {
 }
 @media(max-width: 360px) {
     div.related ul {
-        background-image: none;
+        padding-bottom: 2em;
     }
 }
 
@@ -815,6 +815,13 @@ li.toctree-li {
    padding: 0 0 1.0em 0;
 }
 
+@media (max-width: 360px) {
+    li.toctree-li {
+        font-size: 122%;
+	line-height: 2.5em;
+    }
+}
+
 /* ------- Zoom plots to make them fit in layout -------------------------- */
 div.body img.align-center {
     max-width:805px;
@@ -909,11 +916,25 @@ div#logo-banner .banner h1 {
     margin : -0.7em 0 0.3em 4.5em;
 }
 
+@media (max-width: 360) {
+    div#logo-banner .banner h1 {
+         font-size: 190%;
+	 margin: -0.7em 0 0.3em 0;
+	 text-align: center;
+    }
+}
+
 div#logo-banner .banner h2 {
     text-align: left;
     margin : -0.5em 0 0 6.5em;
     font-size: 1.05em;
     color: #11557C;
+}
+
+@media (max-width: 360) {
+    div#logo-banner .banner h2 {
+         font-size: 118%;
+    }
 }
 
 
