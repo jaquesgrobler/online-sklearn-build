@@ -380,9 +380,9 @@ div.sphinxsidebar {
 /*    margin-left: -100%; */
 }
 
-@media all and (max-device-width: 360px) and (max-device-height: 640px) {
+@media (max-width: 360px) {
     div.sphinxsidebar {
-        display: none;
+        display: none !important;
     }
 }
 
