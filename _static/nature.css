@@ -34,6 +34,25 @@ body {
     }
 }
 
+form.gsc-search-box {
+    float: right;
+    max-width: 20%;
+}
+
+div.search_form {
+    margin: -1em -1em -0.9em 0;
+}
+
+table.gsc-branding {
+    display: none;
+}
+
+@media (max-width: 360px) {
+    div.search_form {
+        display: none;
+    }
+}
+
 div.content-wrapper {
     background-color: #ffffff;
     color: #3E4349;
@@ -906,8 +925,9 @@ div#logo-banner {
 
 div#logo-banner .logo {
     background-color: white;
-    padding: 10px 10px 15px 15px;
+    padding: 10px 20px 15px 15px;
     float: left;
+    max-width: 14em;
 }
 
 @media (max-width: 360px) {
@@ -916,6 +936,10 @@ div#logo-banner .logo {
 	padding: 0 0 0 0;
     }
 }
+
+div#logo-banner .logo a img {
+        max-width: 100%;
+    }
 
 @media (max-width: 360px) {
     div#logo-banner .logo a img {
