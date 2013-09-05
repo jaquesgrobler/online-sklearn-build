@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 
 
@@ -70,17 +71,18 @@
 <li><a href="index.html">Examples</a> |&nbsp;</li>
 <li><a href="../modules/classes.html">Reference</a> |&nbsp;</li>
 <li><a href="../AUTHORS.html" id="navbar-about">About</a></li>
+<li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
  
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-
-<h4> Github repository </h4>
+<h4> Developer </h4>
   <ul class="simple">
     <li><a class="reference external"
 	href="https://github.com/nilearn/nilearn">NiLearn GitHub</a></li>
   </ul>
+
 
 <h4> Giving credit </h4>
   <ul class="simple">
@@ -114,25 +116,6 @@ and to estimate a covariance matrix based on these signals.</p>
 <li><a class="first reference internal image-reference" href="../_images/plot_adhd_covariance_1.png"><img alt="../_images/plot_adhd_covariance_1.png" src="../_images/plot_adhd_covariance_1.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
 </ul>
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Downloading data from ftp://www.nitrc.org/fcon_1000/htdocs/indi/adhd200/sites/ADHD200_40sub_preprocessed.tgz ...
-...done. (8879 seconds, 147 min)
-extracting data from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/adhd/ADHD200_40sub_preprocessed.tgz...
-   ...done.
--- Loading raw data (1) and masking ...
-Downloading data from https://team.inria.fr/parietal/files/2013/05/MSDL_rois.zip ...
-...done. (0 seconds, 0 min)
-extracting data from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/msdl_atlas/MSDL_rois.zip...
-   ...done.
--- Computing confounds ...
--- Computing region signals ...
-[NiftiMapsMasker.fit] loading regions from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/msdl_atlas/MSDL_rois/msdl_rois.nii
-[NiftiMapsMasker.transform] loading images from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/adhd/ADHD200_40sub_preprocessed/data/0010128/0010128_rest_tshift_RPI_voreg_mni.nii.gz
-[NiftiMapsMasker.transform] resampling images to fit maps
-[NiftiMapsMasker.transform] extracting region signals
-[NiftiMapsMasker.transform] cleaning extracted signals
--- Computing covariance matrices ...</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_adhd_covariance.py"><tt class="xref download docutils literal"><span class="pre">plot_adhd_covariance.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
@@ -205,6 +188,25 @@ extracting data from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Downloading data from ftp://www.nitrc.org/fcon_1000/htdocs/indi/adhd200/sites/ADHD200_40sub_preprocessed.tgz ...
+...done. (8879 seconds, 147 min)
+extracting data from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/adhd/ADHD200_40sub_preprocessed.tgz...
+   ...done.
+-- Loading raw data (1) and masking ...
+Downloading data from https://team.inria.fr/parietal/files/2013/05/MSDL_rois.zip ...
+...done. (0 seconds, 0 min)
+extracting data from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/msdl_atlas/MSDL_rois.zip...
+   ...done.
+-- Computing confounds ...
+-- Computing region signals ...
+[NiftiMapsMasker.fit] loading regions from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/msdl_atlas/MSDL_rois/msdl_rois.nii
+[NiftiMapsMasker.transform] loading images from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/adhd/ADHD200_40sub_preprocessed/data/0010128/0010128_rest_tshift_RPI_voreg_mni.nii.gz
+[NiftiMapsMasker.transform] resampling images to fit maps
+[NiftiMapsMasker.transform] extracting region signals
+[NiftiMapsMasker.transform] cleaning extracted signals
+-- Computing covariance matrices ...</pre>
+</div>
 <p><strong>Total running time of the example:</strong>  9579.23 seconds</p>
 </div>
 
@@ -225,12 +227,17 @@ extracting data from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/
 <li><a href="index.html">Examples</a> |&nbsp;</li>
 <li><a href="../modules/classes.html">Reference</a> |&nbsp;</li>
 <li><a href="../AUTHORS.html" id="navbar-about">About</a></li>
+<li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
  
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright INRIA Parietal 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+            &copy; INRIA Parietal 2010-2013.
+          Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+        <span style="padding-left: 5ex;">
+          <a href="../_sources/auto_examples/plot_adhd_covariance.txt"
+        	 rel="nofollow">Show this page source</a>
+        </span>
     </div>
   </body>
 </html>
