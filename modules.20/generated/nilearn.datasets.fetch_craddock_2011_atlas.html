@@ -1,0 +1,206 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NiLearn: Machine learning for NeuroImaging in Python &mdash; Machine learning for NeuroImaging</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="Machine learning for NeuroImaging" href="../../index.html" />
+<meta content="True" name="HandheldFriendly">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+<meta name="keywords" content="nilearn, neuroimaging, python, neuroscience, machinelearning">
+
+<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-41920728-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </head>
+  <body>
+<div id="logo-banner">
+  <div class="logo">
+    <a href="../../index.html">
+      <img src="../../_static/nilearn-logo.png" alt="NiLearn logo"  border="0" />
+    </a>
+  </div>
+  <div class="banner">
+    <h1>NiLearn:</h1>
+    <h2>Machine learning for Neuro-Imaging in Python</h2>
+  </div>
+  <div class="search_form">
+    <div id="cse" style="width: 100%;"></div>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+      google.load('search', '1', {language : 'en'});
+      google.setOnLoadCallback(function() {
+      var customSearchControl = new google.search.CustomSearchControl('014136483057745874622:r-npolb1uki');
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse', options);
+      }, true);
+    </script>
+  </div>
+</div>
+
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+<li><a href="../../AUTHORS.html" id="navbar-about">About</a></li>
+<li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h4> Developer </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="https://github.com/nilearn/nilearn">NiLearn GitHub</a></li>
+  </ul>
+
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="../../AUTHORS.html#citing">citing the
+                    scikit-learn</a> if you use it.</p></li>
+  </ul>
+
+
+<div class="navbar">
+</div> <!-- end navbar -->
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nilearn-datasets-fetch-craddock-2011-atlas">
+<h1>7.1.1.2. nilearn.datasets.fetch_craddock_2011_atlas<a class="headerlink" href="#nilearn-datasets-fetch-craddock-2011-atlas" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="nilearn.datasets.fetch_craddock_2011_atlas">
+<tt class="descclassname">nilearn.datasets.</tt><tt class="descname">fetch_craddock_2011_atlas</tt><big>(</big><em>data_dir=None</em>, <em>url=None</em>, <em>resume=True</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#nilearn.datasets.fetch_craddock_2011_atlas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download and return file names for the Craddock 2011 parcellation</p>
+<p>The provided images are in MNI152 space.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>data_dir: string</strong> :</p>
+<blockquote>
+<div><p>directory where data should be downloaded and unpacked.</p>
+</div></blockquote>
+<p><strong>url: string</strong> :</p>
+<blockquote>
+<div><p>url of file to download.</p>
+</div></blockquote>
+<p><strong>resume: bool</strong> :</p>
+<blockquote>
+<div><p>whether to resumed download of a partly-downloaded file.</p>
+</div></blockquote>
+<p><strong>verbose: int</strong> :</p>
+<blockquote>
+<div><p>verbosity level (0 means no message).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>data: sklearn.datasets.base.Bunch</strong> :</p>
+<blockquote class="last">
+<div><p>dictionary-like object, keys are:
+scorr_mean, tcorr_mean,
+scorr_2level, tcorr_2level,
+random</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<p>Licence: Creative Commons Attribution Non-commercial Share Alike
+<a class="reference external" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">http://creativecommons.org/licenses/by-nc-sa/2.5/</a></p>
+<p>Craddock, R. Cameron, G.Andrew James, Paul E. Holtzheimer, Xiaoping P. Hu,
+and Helen S. Mayberg. &#8220;A Whole Brain fMRI Atlas Generated via Spatially
+Constrained Spectral Clustering&#8221;. Human Brain Mapping 33, no 8 (2012):
+1914–1928. doi:10.1002/hbm.21333.</p>
+<p>See <a class="reference external" href="http://www.nitrc.org/projects/cluster_roi/">http://www.nitrc.org/projects/cluster_roi/</a> for more information
+on this parcellation.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+<li><a href="../../AUTHORS.html" id="navbar-about">About</a></li>
+<li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+            &copy; INRIA Parietal 2010-2013.
+          Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+        <span style="padding-left: 5ex;">
+          <a href="../../_sources/modules/generated/nilearn.datasets.fetch_craddock_2011_atlas.txt"
+        	 rel="nofollow">Show this page source</a>
+        </span>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NiLearn: Machine learning for NeuroImaging in Python &mdash; Machine learning for NeuroImaging</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="Machine learning for NeuroImaging" href="../../index.html" />
+<meta content="True" name="HandheldFriendly">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+<meta name="keywords" content="nilearn, neuroimaging, python, neuroscience, machinelearning">
+
+<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-41920728-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </head>
+  <body>
+<div id="logo-banner">
+  <div class="logo">
+    <a href="../../index.html">
+      <img src="../../_static/nilearn-logo.png" alt="NiLearn logo"  border="0" />
+    </a>
+  </div>
+  <div class="banner">
+    <h1>NiLearn:</h1>
+    <h2>Machine learning for Neuro-Imaging in Python</h2>
+  </div>
+  <div class="search_form">
+    <div id="cse" style="width: 100%;"></div>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+      google.load('search', '1', {language : 'en'});
+      google.setOnLoadCallback(function() {
+      var customSearchControl = new google.search.CustomSearchControl('014136483057745874622:r-npolb1uki');
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse', options);
+      }, true);
+    </script>
+  </div>
+</div>
+
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+<li><a href="../../AUTHORS.html" id="navbar-about">About</a></li>
+<li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h4> Developer </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="https://github.com/nilearn/nilearn">NiLearn GitHub</a></li>
+  </ul>
+
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="../../AUTHORS.html#citing">citing the
+                    scikit-learn</a> if you use it.</p></li>
+  </ul>
+
+
+<div class="navbar">
+</div> <!-- end navbar -->
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nilearn-datasets-load-harvard-oxford">
+<h1>7.1.1.9. nilearn.datasets.load_harvard_oxford<a class="headerlink" href="#nilearn-datasets-load-harvard-oxford" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="nilearn.datasets.load_harvard_oxford">
+<tt class="descclassname">nilearn.datasets.</tt><tt class="descname">load_harvard_oxford</tt><big>(</big><em>atlas_name</em>, <em>dirname='/usr/share/data/harvard-oxford-atlases/HarvardOxford/'</em>, <em>symmetric_split=False</em><big>)</big><a class="headerlink" href="#nilearn.datasets.load_harvard_oxford" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load Harvard-Oxford parcellation.</p>
+<p>This function does not download anything, files must all be already on
+disk. They are distributed with FSL.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>atlas_name: string</strong> :</p>
+<blockquote>
+<div><p>Name of atlas to load. Can be:
+cort-maxprob-thr0-1mm,  cort-maxprob-thr0-2mm,
+cort-maxprob-thr25-1mm, cort-maxprob-thr25-2mm,
+cort-maxprob-thr50-1mm, cort-maxprob-thr50-2mm,
+sub-maxprob-thr0-1mm,  sub-maxprob-thr0-2mm,
+sub-maxprob-thr25-1mm, sub-maxprob-thr25-2mm,
+sub-maxprob-thr50-1mm, sub-maxprob-thr50-2mm,
+cort-prob-1mm, cort-prob-2mm,
+sub-prob-1mm, sub-prob-2mm</p>
+</div></blockquote>
+<p><strong>dirname: string, optional</strong> :</p>
+<blockquote>
+<div><p>This is the neurodebian&#8217;s directory for FSL data. It may be different
+with another distribution / installation.</p>
+</div></blockquote>
+<p><strong>symmetric_split: bool, optional</strong> :</p>
+<blockquote>
+<div><p>If True, split every symmetric region in left and right parts.
+Effectively doubles the number of regions. Default: False.
+Not implemented for probabilistic atlas (<em>-prob-</em> atlases)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>regions: nibabel.Nifti1Image</strong> :</p>
+<blockquote class="last">
+<div><p>regions definition, as a label image.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+<li><a href="../../AUTHORS.html" id="navbar-about">About</a></li>
+<li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+            &copy; INRIA Parietal 2010-2013.
+          Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+        <span style="padding-left: 5ex;">
+          <a href="../../_sources/modules/generated/nilearn.datasets.load_harvard_oxford.txt"
+        	 rel="nofollow">Show this page source</a>
+        </span>
+    </div>
+  </body>
+</html>

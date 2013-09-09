@@ -1,0 +1,258 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NiLearn: Machine learning for NeuroImaging in Python &mdash; Machine learning for NeuroImaging</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Machine learning for NeuroImaging" href="#" />
+<meta content="True" name="HandheldFriendly">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+<meta name="keywords" content="nilearn, neuroimaging, python, neuroscience, machinelearning">
+
+<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-41920728-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </head>
+  <body>
+<div id="logo-banner">
+  <div class="logo">
+    <a href="#">
+      <img src="_static/nilearn-logo.png" alt="NiLearn logo"  border="0" />
+    </a>
+  </div>
+  <div class="banner">
+    <h1>NiLearn:</h1>
+    <h2>Machine learning for Neuro-Imaging in Python</h2>
+  </div>
+  <div class="search_form">
+    <div id="cse" style="width: 100%;"></div>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+      google.load('search', '1', {language : 'en'});
+      google.setOnLoadCallback(function() {
+      var customSearchControl = new google.search.CustomSearchControl('014136483057745874622:r-npolb1uki');
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse', options);
+      }, true);
+    </script>
+  </div>
+</div>
+
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="#">NiLearn Home</a> |&nbsp;</li>
+<li><a href="user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="modules/classes.html">Reference</a> |&nbsp;</li>
+<li><a href="AUTHORS.html" id="navbar-about">About</a></li>
+<li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<!-- A tag cloud to make it easy for people to find what they are
+                         looking for -->
+ <div class="tags">
+  <ul>
+    <li>
+      <big><a href="auto_examples/plot_haxby_decoding.html">SVM</a></big>
+    </li>
+    <li>
+      <small><a href="ward_clustering.html">Ward
+          clustering</a></small>
+    </li>
+    <li>
+      <a href="haxby_searchlight.html">Searchlight</a>
+    </li>
+    <li>
+      <big><a href="ica_resting_state.html">ICA</a></big>
+    </li>
+    <li>
+      <a href="dataset_manipulation.html">Nifti IO</a>
+    </li>
+    <li>
+      <a href="modules/classes.html#module-nilearn.datasets">Datasets</a>
+    </li>
+  </ul>
+ </div>
+
+<h4> News </h4>
+  <ul>
+    <li><p>Welcome to our new website!</p></li>
+  </ul>
+<h4> Software </h4>
+  <ul class="simple">
+    <li>
+      <div id="download-container">
+	<a href="https://github.com/nilearn/nilearn/archive/master.zip" class="btn btn-primary">Download</a>
+        <p>Please see our </p><a href="introduction.html#installation-of-the-materials-useful-for-this-tutorial">Installation Instructions</a>
+      </div>
+    </li>
+  </ul>
+
+<h4> Developer </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="https://github.com/nilearn/nilearn">NiLearn GitHub</a></li>
+  </ul>
+
+<h4> Licensing </h4>
+  <ul class="simple">
+    <li><p>All material Free Software: <strong>BSD license</strong> (3 clause).</p></li>
+  </ul>
+
+<h4> About </h4>
+  <ul class="simple">
+    <li><p><a href="AUTHORS.html">Authors</a></p></li>
+  </ul>
+
+
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="AUTHORS.html#citing">citing the
+                    scikit-learn</a> if you use it.</p></li>
+  </ul>
+
+
+<div class="navbar">
+</div> <!-- end navbar -->
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div id="index-paragraph"><p>NiLearn is a software package to facilitate the use of statistical learning
+on NeuroImaging data.</p>
+<p>It leverages the <a class="reference external" href="http://scikit-learn.org">scikit-learn</a> Python toolbox
+for multivariate statistics with applications such as predictive modelling,
+classification, decoding, or connectivity analysis.</p>
+<p>It requires only
+<a class="reference external" href="htpp://nipy.org/nibabel">nibabel</a> and <a class="reference external" href="http://scikit-learn.org">scikit-learn</a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">NiLearn is still an unreleased package in early development stages.</p>
+</div>
+<p><blockquote>
+<div style="text-align: center; vertical-align: middle; margin: 40px;" id="banner" class="banner"> <a class="reference external" href="auto_examples/plot_haxby_decoding.html"><img alt="banner1" src="_images/plot_haxby_decoding_1.png" style="height: 130px;" /></a> <a class="reference external" href="auto_examples/plot_simulated_data.html"><img alt="banner2" src="_images/plot_simulated_data_3.png" style="height: 80px;" /></a> <a class="reference external" href="auto_examples/plot_rest_clustering.html"><img alt="banner3" src="_images/plot_rest_clustering_1.png" style="height: 130px;" /></a> <a class="reference external" href="auto_examples/plot_ica_resting_state.html"><img alt="banner4" src="_images/plot_ica_resting_state_1.png" style="height: 130px;" /></a> <a class="reference external" href="auto_examples/plot_haxby_searchlight.html"><img alt="banner5" src="_images/plot_haxby_searchlight_1.png" style="height: 130px;" /></a> </div>
+
+<SCRIPT>
+// Function to select 4 imgs in random order from a div
+function shuffle(e) {       // pass the divs to the function
+  var replace = $('<div>');
+  var size = 4;
+  var num_choices = e.size();
+
+  while (size >= 1 && num_choices >= 1) {
+    var rand = Math.floor(Math.random() * num_choices);
+    var temp = e.get(rand);      // grab a random div from our set
+    replace.append(temp);        // add the selected div to our new set
+    e = e.not(temp); // remove our selected div from the main set
+    size--;
+    num_choices--;
+  }
+  $('#banner').html(replace.html() ); // update our container div
+                                      // with the new, randomized divs
+}
+shuffle ($('#banner a.external'));
+
+</SCRIPT></p>
+</blockquote></div>
+
+  <div class="section group">
+     <div class="col span_1_of_3">
+       <h3><a href="#">
+       First Steps</a></h3>
+       <p>Getting started with NiLearn</p>
+     </div>
+     <div class="col span_1_of_3">
+       <h3><a href="#">
+       Examples</a></h3>
+       <p>Visit our example gallery</p>
+     </div>
+     <div class="col span_1_of_3">
+       <h3><a href="#">
+       User Guide</a></h3>
+       <p>Description</p>
+     </div>
+</div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="#">NiLearn Home</a> |&nbsp;</li>
+<li><a href="user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="modules/classes.html">Reference</a> |&nbsp;</li>
+<li><a href="AUTHORS.html" id="navbar-about">About</a></li>
+<li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+            &copy; INRIA Parietal 2010-2013.
+          Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+        <span style="padding-left: 5ex;">
+          <a href="_sources/index.txt"
+        	 rel="nofollow">Show this page source</a>
+        </span>
+    </div>
+  </body>
+</html>
