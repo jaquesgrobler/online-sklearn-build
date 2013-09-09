@@ -606,7 +606,7 @@ div.admonition, div.warning {
     border: 1px solid #86989B;
     background-color: #f7f7f7;
     max-width: 100%;
-    margin: 0 3em 0 3em;
+    margin: 4em 3em 0 3em;
 }
 
 div.admonition p, div.warning p {
@@ -827,10 +827,15 @@ div#machine-learning-for-neuro-imaging h1 {
 }
 
 div.body blockquote {
-    background: whitesmoke;
-    border: solid;
+    background: none;
+    margin: 3em -2em;
+    border: solid lightgray;
+    border-width: 1px 0px;
+    background: whiteSmoke;
     border-color: lightgray;
-    border-width: 0.1em;
+    background-image: -webkit-linear-gradient(#F0F0F0, white 10%);
+    background-image: -moz-linear-gradient(top, #F0F0F0, white 10%);
+    background-image: -o-linear-gradient(top, #F0F0F0, white 10%);
 }
 
 @media (max-width: 360px) {
@@ -1037,7 +1042,7 @@ div.toctree-wrapper.compound {
     display: inline-block;
     padding: 4px 12px;
     margin: 0.5em;
-    font-size: 2.6em;
+    font-size: 130%;
     font-weight: bold;
     line-height: 20px;
     color: #333333;
@@ -1069,14 +1074,13 @@ div.toctree-wrapper.compound {
 .btn-primary {
     color: #ffffff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    background-color: #006dcc;
-    background-image: -moz-linear-gradient(top, #84DF11, #18CC00);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#84DF11), to(#18CC00));
-    background-image: -webkit-linear-gradient(top, #84DF11, #18CC00);
-    background-image: -o-linear-gradient(top, #84DF11, #18CC00);
-    background-image: linear-gradient(to bottom, #84DF11, #18CC00);
+    background-image: -moz-linear-gradient(top, #FFC588, #F89939);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFC588), to(#F89939));
+    background-image: -webkit-linear-gradient(top, #FFC588, #F89939);
+    background-image: -o-linear-gradient(top, #FFC588, #F89939);
+    background-image: linear-gradient(to bottom, #FFC588, #F89939);
     background-repeat: repeat-x;
-    border-color: #18CC00 #18CC00 #18CC00;
+    border-color: #F89939 #F89939 #F89939;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
@@ -1084,7 +1088,7 @@ div.toctree-wrapper.compound {
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
     color: rgb(223, 238, 234);
-    background-color: #18CC00;
+    background-color: #F89939;
 }
 
 .btn:hover, .btn:focus {
