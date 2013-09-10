@@ -1022,9 +1022,14 @@ div#logo-banner .banner h2 {
     }
 }
 
-div#banner.banner img {
-    margin: 0 1em 0 1em;
+div#banner.banner {
+    margin: 20px !important;
 }
+
+div#banner.banner img {
+    margin: 0 0 0 0;
+}
+
 
 @media (max-width: 360px) {
     div#banner.banner {
@@ -1118,7 +1123,7 @@ table.longtable.docutils {
 
 div#index-grid.section.group {
     padding: 0px;
-    margin: 2.5em 0.5em 14.5em 8em;
+    margin: 2.5em 0.5em 14.5em 4em;
 }
 
  .col {
@@ -1148,6 +1153,7 @@ div#index-grid.section.group {
 
   .section.group h3 a {
     color: #355F7C;
+    font-size: 0.8em;
  }
 
     /*  GRID OF THREE  */
@@ -1158,12 +1164,13 @@ div#index-grid.section.group {
     width: 66.1%;
 }
  .span_1_of_3 {
-    width: 32.2%;
-    margin: 0 0 4.5em 0;
+    width: 29.2%;
+    margin: 1.15em;
 }
  .span_1_of_3 p {
-    font-size: 1.2em;
+    font-size: 1.0em;
 }
+
 
 @media only screen and (max-width: 480px) {
      .col {
