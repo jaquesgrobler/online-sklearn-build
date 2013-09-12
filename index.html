@@ -30,6 +30,45 @@
 <meta content="True" name="HandheldFriendly">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
 <meta name="keywords" content="nilearn, neuroimaging, python, neuroscience, machinelearning">
+<script type="text/javascript" src="_static/jquery.jcarousel.min.js"></script>
+<script type="text/javascript">
+(function($) {
+    $(function() {
+	$('.jcarousel').jcarousel();
+        $('.jcarousel-control-prev')
+            .on('active.jcarouselcontrol', function() {
+                $(this).removeClass('inactive');
+            })
+            .on('inactive.jcarouselcontrol', function() {
+                $(this).addClass('inactive');
+            })
+            .jcarouselControl({
+                target: '-=1'
+            });
+
+        $('.jcarousel-control-next')
+            .on('active.jcarouselcontrol', function() {
+                $(this).removeClass('inactive');
+            })
+            .on('inactive.jcarouselcontrol', function() {
+                $(this).addClass('inactive');
+            })
+            .jcarouselControl({
+                target: '+=1'
+            });
+
+        $('.jcarousel-pagination')
+            .on('active.jcarouselpagination', 'a', function() {
+                $(this).addClass('active');
+            })
+            .on('inactive.jcarouselpagination', 'a', function() {
+                $(this).removeClass('active');
+            })
+            .jcarouselPagination();
+    });
+})(jQuery);
+</script>
+
 
 <script type="text/javascript">
 
@@ -84,7 +123,7 @@
 <li><a href="user_guide.html">User Guide</a> |&nbsp;</li>
 <li><a href="auto_examples/index.html">Examples</a> |&nbsp;</li>
 <li><a href="modules/classes.html">Reference</a> |&nbsp;</li>
-<li><a href="AUTHORS.html" id="navbar-about">About</a></li>
+<li id="navbar-about"><a href="AUTHORS.html">About</a>|&nbsp;</li>
 <li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
  
       </ul>
@@ -130,20 +169,11 @@
       </div>
     </li>
   </ul>
-
-<h4> Developer </h4>
+<h4> Development </h4>
   <ul class="simple">
-    <li><a class="reference external"
-	href="https://github.com/nilearn/nilearn">NiLearn GitHub</a></li>
-  </ul>
-
-<h4> Licensing </h4>
-  <ul class="simple">
+    <li><p><a class="reference external"
+	href="https://github.com/nilearn/nilearn">NiLearn on GitHub</a></p></li>
     <li><p>All material Free Software: <strong>BSD license</strong> (3 clause).</p></li>
-  </ul>
-
-<h4> About </h4>
-  <ul class="simple">
     <li><p><a href="AUTHORS.html">Authors</a></p></li>
   </ul>
 
@@ -171,60 +201,51 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div id="index-paragraph"><p>NiLearn is a software package to facilitate the use of statistical learning
-on NeuroImaging data.</p>
+  <div class="index-paragraph container">
+<p>NiLearn is a Python module for <strong>fast and easy statistical learning on
+NeuroImaging</strong> data.</p>
 <p>It leverages the <a class="reference external" href="http://scikit-learn.org">scikit-learn</a> Python toolbox
 for multivariate statistics with applications such as predictive modelling,
 classification, decoding, or connectivity analysis.</p>
-<p>It requires only
-<a class="reference external" href="htpp://nipy.org/nibabel">nibabel</a> and <a class="reference external" href="http://scikit-learn.org">scikit-learn</a>.</p>
-<div class="admonition warning">
+</div>
+<div id="index-grid" class="section group">
+ <div class="col span_1_of_2">
+     <h3><a href="introduction.html">First Steps</a></h3>
+     <p>Get started with NiLearn</p>
+
+     <h3><a href="auto_examples/index.html"> Examples</a></h3>
+     <p>Visit our example gallery</p>
+     <h3><a href="user_guide.html"> User Guide</a></h3>
+     <p>Browse the full documentation</p>
+ </div>
+ <div class="col span_1_of_2">
+ <div class="jcarousel-wrapper">
+  <div class="jcarousel"><ul class="simple">
+<li><a class="reference external" href="auto_examples/plot_haxby_decoding.html"><img alt="banner1" src="_images/plot_haxby_decoding_1.png" style="width: 300px;" /></a></li>
+<li><a class="reference external" href="auto_examples/plot_haxby_simple.html"><img alt="banner2" src="_images/plot_haxby_simple_1.png" style="width: 300px;" /></a></li>
+<li><a class="reference external" href="auto_examples/plot_rest_clustering.html"><img alt="banner3" src="_images/plot_rest_clustering_1.png" style="width: 300px;" /></a></li>
+<li><a class="reference external" href="auto_examples/plot_canica_resting_state.html"><img alt="banner4" src="_images/plot_canica_resting_state_1.png" style="width: 300px;" /></a></li>
+<li><a class="reference external" href="auto_examples/plot_haxby_searchlight.html"><img alt="banner5" src="_images/plot_haxby_searchlight_1.png" style="width: 300px;" /></a></li>
+</ul>
+         </div>
+
+     <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+     <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+     <p class="jcarousel-pagination">
+
+     </p>
+
+     </div>
+     </div>
+
+</div>
+<div style="clear: left"></div><div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">NiLearn is still an unreleased package in early development stages.</p>
 </div>
-<p><blockquote>
-<div style="text-align: center; vertical-align: middle; margin: 40px;" id="banner" class="banner"> <a class="reference external" href="auto_examples/plot_haxby_decoding.html"><img alt="banner1" src="_images/plot_haxby_decoding_1.png" style="height: 130px;" /></a> <a class="reference external" href="auto_examples/plot_simulated_data.html"><img alt="banner2" src="_images/plot_simulated_data_3.png" style="height: 80px;" /></a> <a class="reference external" href="auto_examples/plot_rest_clustering.html"><img alt="banner3" src="_images/plot_rest_clustering_1.png" style="height: 130px;" /></a> <a class="reference external" href="auto_examples/plot_ica_resting_state.html"><img alt="banner4" src="_images/plot_ica_resting_state_1.png" style="height: 130px;" /></a> <a class="reference external" href="auto_examples/plot_haxby_searchlight.html"><img alt="banner5" src="_images/plot_haxby_searchlight_1.png" style="height: 130px;" /></a> </div>
+<p>NiLearn is part of the <a class="reference external" href="http://nipy.org">NiPy ecosystem</a>.</p>
 
-<SCRIPT>
-// Function to select 4 imgs in random order from a div
-function shuffle(e) {       // pass the divs to the function
-  var replace = $('<div>');
-  var size = 4;
-  var num_choices = e.size();
-
-  while (size >= 1 && num_choices >= 1) {
-    var rand = Math.floor(Math.random() * num_choices);
-    var temp = e.get(rand);      // grab a random div from our set
-    replace.append(temp);        // add the selected div to our new set
-    e = e.not(temp); // remove our selected div from the main set
-    size--;
-    num_choices--;
-  }
-  $('#banner').html(replace.html() ); // update our container div
-                                      // with the new, randomized divs
-}
-shuffle ($('#banner a.external'));
-
-</SCRIPT></p>
-</blockquote></div>
-
-  <div id="index-grid" class="section group">
-     <div class="col span_1_of_3">
-       <h3><a href="introduction.html">
-       First Steps</a></h3>
-       <p>Getting started with NiLearn</p>
-     </div>
-     <div class="col span_1_of_3">
-       <h3><a href="auto_examples/index.html">
-       Examples</a></h3>
-       <p>Visit our example gallery</p>
-     </div>
-     <div class="col span_1_of_3">
-       <h3><a href="user_guide.html">
-       User Guide</a></h3>
-       <p>Description</p>
-     </div>
-</div>
 
           </div>
         </div>
@@ -241,7 +262,7 @@ shuffle ($('#banner a.external'));
 <li><a href="user_guide.html">User Guide</a> |&nbsp;</li>
 <li><a href="auto_examples/index.html">Examples</a> |&nbsp;</li>
 <li><a href="modules/classes.html">Reference</a> |&nbsp;</li>
-<li><a href="AUTHORS.html" id="navbar-about">About</a></li>
+<li id="navbar-about"><a href="AUTHORS.html">About</a>|&nbsp;</li>
 <li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
  
       </ul>
