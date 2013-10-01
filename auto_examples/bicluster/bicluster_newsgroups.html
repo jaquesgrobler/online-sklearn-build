@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Biclustering documents with the Spectral Co-clustering algorithm &mdash; scikit-learn 0.14-git documentation</title>
+    <title>Biclustering documents with the Spectral Co-clustering algorithm &mdash; scikit-learn 0.15-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.15-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,18 +33,17 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="A demo of the mean-shift clustering algorithm" href="../cluster/plot_mean_shift.html" />
     <link rel="prev" title="A demo of the Spectral Biclustering algorithm" href="plot_spectral_biclustering.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="../../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  
   <link rel="canonical" href="http://scikit-learn.org/stable/auto_examples/bicluster/bicluster_newsgroups.html" />
-
   <script type="text/javascript">
     $("div.buttonNext, div.buttonPrevious").hover(
        function () {
@@ -58,6 +57,8 @@
     var sidebarbutton = $('#sidebarbutton');
     sidebarbutton.css({'height': '900px'});
   </script>
+ 
+
 
   </head>
   <body>
@@ -83,7 +84,7 @@
 			<li><a href="../../user_guide.html">User guide</a></li>
 			<li><a href="../../modules/classes.html">API</a></li>
 			<li class="divider"></li>
-		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/dev/documentation.html">Development</a></li>
 		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
 		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
 		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
@@ -164,7 +165,7 @@
         </div>
     </div>
     
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.15-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">Biclustering documents with the Spectral Co-clustering algorithm</a></li>
@@ -231,16 +232,18 @@ words        : scorer, unassisted, reichel, semak, sweeney, kovalenko, ricci, au
 
 <span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">import</span> <span class="nn">operator</span>
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.datasets.twenty_newsgroups</span> <span class="kn">import</span> <span class="n">fetch_20newsgroups</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.cluster.bicluster</span> <span class="kn">import</span> <span class="n">SpectralCoclustering</span>
 <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MiniBatchKMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.externals</span> <span class="kn">import</span> <span class="n">six</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets.twenty_newsgroups</span> <span class="kn">import</span> <span class="n">fetch_20newsgroups</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics.cluster</span> <span class="kn">import</span> <span class="n">v_measure_score</span>
 
 
@@ -311,6 +314,14 @@ words        : scorer, unassisted, reichel, semak, sweeney, kovalenko, ricci, au
     <span class="k">return</span> <span class="n">cut</span> <span class="o">/</span> <span class="n">weight</span>
 
 
+<span class="k">def</span> <span class="nf">most_common</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Items of a defaultdict(int) with the highest values.</span>
+
+<span class="sd">    Like Counter.most_common in Python &gt;=2.7.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+
 <span class="n">bicluster_ncuts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">bicluster_ncut</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">newsgroups</span><span class="o">.</span><span class="n">target_names</span><span class="p">)))</span>
 <span class="n">best_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">bicluster_ncuts</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
@@ -325,11 +336,11 @@ words        : scorer, unassisted, reichel, semak, sweeney, kovalenko, ricci, au
         <span class="k">continue</span>
 
     <span class="c"># categories</span>
-    <span class="n">cluster_categories</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">document_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cluster_docs</span><span class="p">)</span>
-    <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">cluster_categories</span><span class="p">)</span>
-    <span class="n">cat_string</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&quot;{:.0f}% {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_rows</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span>
-                                               <span class="n">name</span><span class="p">)</span>
-                           <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[:</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cluster_docs</span><span class="p">:</span>
+        <span class="n">counter</span><span class="p">[</span><span class="n">document_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">cat_string</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&quot;{:.0f}% {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_rows</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                           <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">most_common</span><span class="p">(</span><span class="n">counter</span><span class="p">)[:</span><span class="mi">3</span><span class="p">])</span>
 
     <span class="c"># words</span>
     <span class="n">out_of_cluster_docs</span> <span class="o">=</span> <span class="n">cocluster</span><span class="o">.</span><span class="n">row_labels_</span> <span class="o">!=</span> <span class="n">cluster</span>
@@ -374,6 +385,7 @@ words        : scorer, unassisted, reichel, semak, sweeney, kovalenko, ricci, au
     
      </div>
 
+    <script src="../../_static/js/bootstrap.min.js" type="text/javascript"></script>
     
     <script type="text/javascript">
       var _gaq = _gaq || [];

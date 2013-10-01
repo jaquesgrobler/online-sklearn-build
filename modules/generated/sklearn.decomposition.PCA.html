@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>sklearn.decomposition.PCA &mdash; scikit-learn 0.14-git documentation</title>
+    <title>sklearn.decomposition.PCA &mdash; scikit-learn 0.15-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.15-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,18 +33,17 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
     <link rel="up" title="Reference" href="../classes.html" />
-    <link rel="next" title="sklearn.decomposition.ProbabilisticPCA" href="sklearn.decomposition.ProbabilisticPCA.html" />
+    <link rel="next" title="sklearn.decomposition.ProjectedGradientNMF" href="sklearn.decomposition.ProjectedGradientNMF.html" />
     <link rel="prev" title="sklearn.datasets.make_checkerboard" href="sklearn.datasets.make_checkerboard.html" />
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
    
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="../../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  
   <link rel="canonical" href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html" />
-
   <script type="text/javascript">
     $("div.buttonNext, div.buttonPrevious").hover(
        function () {
@@ -58,6 +57,8 @@
     var sidebarbutton = $('#sidebarbutton');
     sidebarbutton.css({'height': '900px'});
   </script>
+ 
+
 
   </head>
   <body>
@@ -83,7 +84,7 @@
 			<li><a href="../../user_guide.html">User guide</a></li>
 			<li><a href="../classes.html">API</a></li>
 			<li class="divider"></li>
-		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/dev/documentation.html">Development</a></li>
 		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
 		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
 		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
@@ -133,14 +134,14 @@
             &nbsp;
             </div>
         <div class="rellink">
-        <a href="sklearn.decomposition.ProbabilisticPCA.html"
+        <a href="sklearn.decomposition.ProjectedGradientNMF.html"
         accesskey="N">Next
         <br/>
         <span class="smallrellink">
         sklearn.decompos...
         </span>
             <span class="hiddenrellink">
-            sklearn.decomposition.ProbabilisticPCA
+            sklearn.decomposition.ProjectedGradientNMF
             </span>
         </a>
         </div>
@@ -164,7 +165,7 @@
         </div>
     </div>
     
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.15-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">sklearn.decomposition.PCA</a></li>
@@ -233,11 +234,16 @@ making there data respect some hard-wired assumptions.</p>
 </table>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-obj docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA" title="sklearn.decomposition.RandomizedPCA"><tt class="xref py py-obj docutils literal"><span class="pre">RandomizedPCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.KernelPCA.html#sklearn.decomposition.KernelPCA" title="sklearn.decomposition.KernelPCA"><tt class="xref py py-obj docutils literal"><span class="pre">KernelPCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.SparsePCA.html#sklearn.decomposition.SparsePCA" title="sklearn.decomposition.SparsePCA"><tt class="xref py py-obj docutils literal"><span class="pre">SparsePCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.TruncatedSVD.html#sklearn.decomposition.TruncatedSVD" title="sklearn.decomposition.TruncatedSVD"><tt class="xref py py-obj docutils literal"><span class="pre">TruncatedSVD</span></tt></a></p>
+<p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">ProbabilisticPCA</span></tt>, <a class="reference internal" href="sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA" title="sklearn.decomposition.RandomizedPCA"><tt class="xref py py-obj docutils literal"><span class="pre">RandomizedPCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.KernelPCA.html#sklearn.decomposition.KernelPCA" title="sklearn.decomposition.KernelPCA"><tt class="xref py py-obj docutils literal"><span class="pre">KernelPCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.SparsePCA.html#sklearn.decomposition.SparsePCA" title="sklearn.decomposition.SparsePCA"><tt class="xref py py-obj docutils literal"><span class="pre">SparsePCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.TruncatedSVD.html#sklearn.decomposition.TruncatedSVD" title="sklearn.decomposition.TruncatedSVD"><tt class="xref py py-obj docutils literal"><span class="pre">TruncatedSVD</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>For n_components=&#8217;mle&#8217;, this class uses the method of <cite>Thomas P. Minka:
 Automatic Choice of Dimensionality for PCA. NIPS 2000: 598-604</cite></p>
+<p>Implements the probabilistic PCA model from:
+M. Tipping and C. Bishop, Probabilistic Principal Component Analysis,
+Journal of the Royal Statistical Society, Series B, 61, Part 3, pp. 611-622
+via the score and score_samples methods.
+See <a class="reference external" href="http://www.miketipping.com/papers/met-mppca.pdf">http://www.miketipping.com/papers/met-mppca.pdf</a></p>
 <p>Due to implementation subtleties of the Singular Value Decomposition (SVD),
 which is used in this implementation, running fit twice on the same matrix
 can lead to principal components with signs flipped (change in direction).
@@ -276,6 +282,14 @@ transform data in a consistent fashion.</p>
 to &#8216;mle&#8217; or a number between 0 and 1 to select using explained
 variance.</td>
 </tr>
+<tr class="row-even"><td><cite>noise_variance_</cite></td>
+<td>float</td>
+<td>The estimated noise covariance following the Probabilistic PCA model
+from Tipping and Bishop 1999. See &#8220;Pattern Recognition and
+Machine Learning&#8221; by C. Bishop, 12.2.1 p. 574 or
+<a class="reference external" href="http://www.miketipping.com/papers/met-mppca.pdf">http://www.miketipping.com/papers/met-mppca.pdf</a>. It is required to
+computed the estimated data covariance and score samples.</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
@@ -291,11 +305,23 @@ variance.</td>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.decomposition.PCA.fit_transform" title="sklearn.decomposition.PCA.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
 <td>Fit the model with X and apply the dimensionality reduction on X.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.decomposition.PCA.get_params" title="sklearn.decomposition.PCA.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.decomposition.PCA.get_covariance" title="sklearn.decomposition.PCA.get_covariance"><tt class="xref py py-obj docutils literal"><span class="pre">get_covariance</span></tt></a>()</td>
+<td>Compute data covariance with the generative model.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.decomposition.PCA.get_params" title="sklearn.decomposition.PCA.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for this estimator.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.decomposition.PCA.get_precision" title="sklearn.decomposition.PCA.get_precision"><tt class="xref py py-obj docutils literal"><span class="pre">get_precision</span></tt></a>()</td>
+<td>Compute data precision matrix with the generative model.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.decomposition.PCA.inverse_transform" title="sklearn.decomposition.PCA.inverse_transform"><tt class="xref py py-obj docutils literal"><span class="pre">inverse_transform</span></tt></a>(X)</td>
 <td>Transform data back to its original space, i.e.,</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.decomposition.PCA.score" title="sklearn.decomposition.PCA.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X[,&nbsp;y])</td>
+<td>Return the average log-likelihood of all samples</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.decomposition.PCA.score_samples" title="sklearn.decomposition.PCA.score_samples"><tt class="xref py py-obj docutils literal"><span class="pre">score_samples</span></tt></a>(X)</td>
+<td>Return the log-likelihood of each sample</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.decomposition.PCA.set_params" title="sklearn.decomposition.PCA.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of this estimator.</td>
@@ -358,6 +384,26 @@ and n_features is the number of features.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="sklearn.decomposition.PCA.get_covariance">
+<tt class="descname">get_covariance</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.decomposition.PCA.get_covariance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute data covariance with the generative model.</p>
+<p><tt class="docutils literal"><span class="pre">cov</span> <span class="pre">=</span> <span class="pre">components_.T</span> <span class="pre">*</span> <span class="pre">S**2</span> <span class="pre">*</span> <span class="pre">components_</span> <span class="pre">+</span> <span class="pre">sigma2</span> <span class="pre">*</span> <span class="pre">eye(n_features)</span></tt>
+where  S**2 contains the explained variances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>cov</strong> : array, shape=(n_features, n_features)</p>
+<blockquote class="last">
+<div><p>Estimated covariance of data.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="sklearn.decomposition.PCA.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.PCA.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
@@ -375,6 +421,26 @@ contained subobjects that are estimators.</p>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
 <blockquote class="last">
 <div><p>Parameter names mapped to their values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.decomposition.PCA.get_precision">
+<tt class="descname">get_precision</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.decomposition.PCA.get_precision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute data precision matrix with the generative model.</p>
+<p>Equals the inverse of the covariance but computed with
+the matrix inversion lemma for efficiency.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>precision</strong> : array, shape=(n_features, n_features)</p>
+<blockquote class="last">
+<div><p>Estimated precision of data.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -406,6 +472,60 @@ and n_components is the number of components.</p>
 <p class="rubric">Notes</p>
 <p>If whitening is enabled, inverse_transform does not compute the
 exact inverse operation as transform.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.decomposition.PCA.score">
+<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.PCA.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the average log-likelihood of all samples</p>
+<p>See. &#8220;Pattern Recognition and Machine Learning&#8221;
+by C. Bishop, 12.2.1 p. 574
+or <a class="reference external" href="http://www.miketipping.com/papers/met-mppca.pdf">http://www.miketipping.com/papers/met-mppca.pdf</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array, shape(n_samples, n_features)</strong> :</p>
+<blockquote>
+<div><p>The data.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>ll: float</strong> :</p>
+<blockquote class="last">
+<div><p>Average log-likelihood of the samples under the current model</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.decomposition.PCA.score_samples">
+<tt class="descname">score_samples</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.PCA.score_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the log-likelihood of each sample</p>
+<p>See. &#8220;Pattern Recognition and Machine Learning&#8221;
+by C. Bishop, 12.2.1 p. 574
+or <a class="reference external" href="http://www.miketipping.com/papers/met-mppca.pdf">http://www.miketipping.com/papers/met-mppca.pdf</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array, shape(n_samples, n_features)</strong> :</p>
+<blockquote>
+<div><p>The data.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>ll: array, shape (n_samples,)</strong> :</p>
+<blockquote class="last">
+<div><p>Log-likelihood of each sample under the current model</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -471,12 +591,13 @@ and n_features is the number of features.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="sklearn.decomposition.ProbabilisticPCA.html">Next
+      <a href="sklearn.decomposition.ProjectedGradientNMF.html">Next
       </a>
     </div>
     
      </div>
 
+    <script src="../../_static/js/bootstrap.min.js" type="text/javascript"></script>
     
     <script type="text/javascript">
       var _gaq = _gaq || [];

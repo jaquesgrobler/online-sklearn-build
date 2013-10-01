@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>2.5. Decomposing signals in components (matrix factorization problems) &mdash; scikit-learn 0.14-git documentation</title>
+    <title>2.5. Decomposing signals in components (matrix factorization problems) &mdash; scikit-learn 0.15-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.15-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,18 +33,17 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.15-git documentation" href="../index.html" />
     <link rel="up" title="2. Unsupervised learning" href="../unsupervised_learning.html" />
     <link rel="next" title="2.6. Covariance estimation" href="covariance.html" />
     <link rel="prev" title="2.4. Biclustering" href="biclustering.html" />
    
        <script type="text/javascript" src="../_static/sidebar.js"></script>
    
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  
   <link rel="canonical" href="http://scikit-learn.org/stable/modules/decomposition.html" />
-
   <script type="text/javascript">
     $("div.buttonNext, div.buttonPrevious").hover(
        function () {
@@ -58,6 +57,8 @@
     var sidebarbutton = $('#sidebarbutton');
     sidebarbutton.css({'height': '900px'});
   </script>
+ 
+
 
   </head>
   <body>
@@ -83,7 +84,7 @@
 			<li><a href="../user_guide.html">User guide</a></li>
 			<li><a href="classes.html">API</a></li>
 			<li class="divider"></li>
-		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/dev/documentation.html">Development</a></li>
 		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
 		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
 		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
@@ -164,7 +165,7 @@
         </div>
     </div>
     
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.15-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">2.5. Decomposing signals in components (matrix factorization problems)</a><ul>
@@ -218,19 +219,23 @@ strong assumptions on the isotropy of the signal: this is for example
 the case for Support Vector Machines with the RBF kernel and the K-Means
 clustering algorithm. However in that case the inverse transform is no
 longer exact since some information is lost while forward transforming.</p>
-<p>In addition, the <a class="reference internal" href="generated/sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-class docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a> object provides a
-probabilistic interpretation of the PCA that can give a likelihood of
-data based on the amount of variance it explains. As such it implements a
-<cite>score</cite> method that can be used in cross-validation.</p>
 <p>Below is an example of the iris dataset, which is comprised of 4
 features, projected on the 2 dimensions that explain most variance:</p>
 <div class="figure align-center">
 <a class="reference external image-reference" href="../auto_examples/decomposition/plot_pca_vs_lda.html"><img alt="../_images/plot_pca_vs_lda_11.png" src="../_images/plot_pca_vs_lda_11.png" style="width: 600.0px; height: 450.0px;" /></a>
 </div>
+<p>The <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a> object also provides a
+probabilistic interpretation of the PCA that can give a likelihood of
+data based on the amount of variance it explains. As such it implements a
+<cite>score</cite> method that can be used in cross-validation:</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/decomposition/plot_pca_vs_fa_model_selection.html"><img alt="../_images/plot_pca_vs_fa_model_selection_11.png" src="../_images/plot_pca_vs_fa_model_selection_11.png" style="width: 600.0px; height: 450.0px;" /></a>
+</div>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
 <li><a class="reference internal" href="../auto_examples/decomposition/plot_pca_vs_lda.html#example-decomposition-plot-pca-vs-lda-py"><em>Comparison of LDA and PCA 2D projection of Iris dataset</em></a></li>
+<li><a class="reference internal" href="../auto_examples/decomposition/plot_pca_vs_fa_model_selection.html#example-decomposition-plot-pca-vs-fa-model-selection-py"><em>Model selection with Probabilistic (PCA) and Factor Analysis (FA)</em></a></li>
 </ul>
 </div>
 </div>
@@ -610,7 +615,7 @@ of these two parameters. A simple additional assumption regards the
 structure of the error covariance <img class="math" src="../_images/math/866f0204648be9ca6b10e14dd72295295dd53a79.png" alt="\Psi"/>:</p>
 <ul class="simple">
 <li><img class="math" src="../_images/math/77101e5fc6c2fb4b935bd72fd65f779dd78d3c5c.png" alt="\Psi = \sigma^2 \mathbf{I}"/>: This assumption leads to
-<a class="reference internal" href="generated/sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-class docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a>.</li>
+the probabilistic model of <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a>.</li>
 <li><img class="math" src="../_images/math/a9125baf25810d1fb373bd5fc11147857bdae2ab.png" alt="\Psi = diag(\psi_1, \psi_2, \dots, \psi_n)"/>: This model is called Factor
 Analysis, a classical statistical model. The matrix W is sometimes called
 <cite>factor loading matrix</cite>.</li>
@@ -625,10 +630,22 @@ about these components (e.g. whether they are orthogonal):</p>
 <p class="centered">
 <strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img3" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
  <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="fa_img3" src="../_images/plot_faces_decomposition_91.png" style="width: 360.0px; height: 270.6px;" /></a>
-</strong></p><p>The main advantage for Factor Analysis (over <a class="reference internal" href="generated/sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-class docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a> is that
-it can model the variance in every direction of the input space independently:</p>
+</strong></p><p>The main advantage for Factor Analysis (over <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a> is that
+it can model the variance in every direction of the input space independently
+(heteroscedastic noise):</p>
 <div class="figure align-center">
 <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="../_images/plot_faces_decomposition_81.png" src="../_images/plot_faces_decomposition_81.png" style="width: 150.0px; height: 168.75px;" /></a>
+</div>
+<p>This allows better model selection than probabilistic PCA in the presence
+of heteroscedastic noise:</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/decomposition/plot_pca_vs_fa_model_selection.html"><img alt="../_images/plot_pca_vs_fa_model_selection_21.png" src="../_images/plot_pca_vs_fa_model_selection_21.png" style="width: 600.0px; height: 450.0px;" /></a>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/decomposition/plot_pca_vs_fa_model_selection.html#example-decomposition-plot-pca-vs-fa-model-selection-py"><em>Model selection with Probabilistic (PCA) and Factor Analysis (FA)</em></a></li>
+</ul>
 </div>
 </div>
 <div class="section" id="independent-component-analysis-ica">
@@ -665,7 +682,18 @@ components with some sparsity:</p>
 <p><a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> is an alternative approach to decomposition that assumes that the
 data and the components are non-negative. <a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> can be plugged in
 instead of <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a> or its variants, in the cases where the data matrix
-does not contain negative values.</p>
+does not contain negative values.
+It finds a decomposition of samples <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/>
+into two matrices <img class="math" src="../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/> and <img class="math" src="../_images/math/b1902d279ba37d60bdce4e0e987b7cd19d48974e.png" alt="H"/> of non-negative elements,
+by optimizing for the squared Frobenius norm:</p>
+<div class="highlight-python"><pre>.. math::</pre>
+</div>
+<blockquote>
+<div>argmin_{W,H} ||X - WH||^2 = sum_{i,j} X_{ij} - {WH}_{ij}</div></blockquote>
+<p>This norm is an obvious extension of the Euclidean norm to matrices.
+(Other optimization objectives have been suggested in the NMF literature,
+in particular Kullback-Leibler divergence,
+but these are not currently implemented.)</p>
 <p>Unlike <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a>, the representation of a vector is obtained in an additive
 fashion, by superimposing the components, without subtracting. Such additive
 models are efficient for representing images and text.</p>
@@ -742,6 +770,7 @@ C. Boutsidis, E. Gallopoulos, 2008</li>
     
      </div>
 
+    <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
     
     <script type="text/javascript">
       var _gaq = _gaq || [];

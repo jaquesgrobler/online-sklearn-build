@@ -36,8 +36,69 @@ necessarily related to visualisation.
 
 
 
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_image_denoising_1.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_image_denoising_2.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_image_denoising_3.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_image_denoising_4.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_image_denoising_5.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_image_denoising_6.png
+            :scale: 47
+
+
+**Script output**::
+
+  Distorting image...
+  Extracting reference patches...
+  done in 0.19s.
+  Learning the dictionary...
+  done in 18.42s.
+  Extracting noisy patches... 
+  done in 0.06s.
+  Orthogonal Matching Pursuit
+  1 atom...
+  done in 10.45s.
+  Orthogonal Matching Pursuit
+  2 atoms...
+  done in 16.30s.
+  Least-angle regression
+  5 atoms...
+  done in 100.97s.
+  Thresholding
+   alpha=0.1...
+  done in 1.46s.
+
+
+
 **Python source code:** :download:`plot_image_denoising.py <plot_image_denoising.py>`
 
 .. literalinclude:: plot_image_denoising.py
     :lines: 34-
+
+**Total running time of the example:**  158.35 seconds
     

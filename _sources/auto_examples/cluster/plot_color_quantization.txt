@@ -22,8 +22,41 @@ For comparison, a quantized image using a random codebook (colors picked up
 randomly) is also shown.
 
 
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_color_quantization_1.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_color_quantization_2.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_color_quantization_3.png
+            :scale: 47
+
+
+**Script output**::
+
+  Fitting model on a small sub-sample of the data
+  done in 1.655s.
+  Predicting color indices on the full image (k-means)
+  done in 1.328s.
+  Predicting color indices on the full image (random)
+  done in 1.395s.
+
+
+
 **Python source code:** :download:`plot_color_quantization.py <plot_color_quantization.py>`
 
 .. literalinclude:: plot_color_quantization.py
     :lines: 21-
+
+**Total running time of the example:**  7.96 seconds
     

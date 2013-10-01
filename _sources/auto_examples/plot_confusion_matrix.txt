@@ -16,8 +16,23 @@ classifier. The higher the diagonal values of the confusion
 matrix the better, indicating many correct predictions.
 
 
+
+.. image:: images/plot_confusion_matrix_1.png
+    :align: center
+
+
+**Script output**::
+
+  [[13  0  0]
+   [ 0 15  1]
+   [ 0  0  9]]
+
+
+
 **Python source code:** :download:`plot_confusion_matrix.py <plot_confusion_matrix.py>`
 
 .. literalinclude:: plot_confusion_matrix.py
     :lines: 14-
+
+**Total running time of the example:**  0.22 seconds
     

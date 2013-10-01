@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>2.3. Clustering &mdash; scikit-learn 0.14-git documentation</title>
+    <title>2.3. Clustering &mdash; scikit-learn 0.15-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.15-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,18 +33,17 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.15-git documentation" href="../index.html" />
     <link rel="up" title="2. Unsupervised learning" href="../unsupervised_learning.html" />
     <link rel="next" title="2.4. Biclustering" href="biclustering.html" />
     <link rel="prev" title="2.2. Manifold learning" href="manifold.html" />
    
        <script type="text/javascript" src="../_static/sidebar.js"></script>
    
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  
   <link rel="canonical" href="http://scikit-learn.org/stable/modules/clustering.html" />
-
   <script type="text/javascript">
     $("div.buttonNext, div.buttonPrevious").hover(
        function () {
@@ -58,6 +57,8 @@
     var sidebarbutton = $('#sidebarbutton');
     sidebarbutton.css({'height': '900px'});
   </script>
+ 
+
 
   </head>
   <body>
@@ -83,7 +84,7 @@
 			<li><a href="../user_guide.html">User guide</a></li>
 			<li><a href="classes.html">API</a></li>
 			<li class="divider"></li>
-		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/dev/documentation.html">Development</a></li>
 		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
 		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
 		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
@@ -164,7 +165,7 @@
         </div>
     </div>
     
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.15-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">2.3. Clustering</a><ul>
@@ -375,7 +376,7 @@ initializations of the centroids. One method to help address this issue is the
 k-means++ initialization scheme, which has been implemented in scikit-learn
 (use the <tt class="docutils literal"><span class="pre">init='kmeans++'</span></tt> parameter). This initializes the centroids to be
 (generally) distant from each other, leading to provably better results than
-random initialization.</p>
+random initialization, as shown in the reference.</p>
 <p>A parameter can be given to allow K-means to be run in parallel, called
 <cite>n_jobs</cite>. Giving this parameter a positive value uses that many processors
 (default: 1). A value of -1 uses all available processors, with -2 using one
@@ -395,6 +396,15 @@ transform method of a trained model of <a class="reference internal" href="gener
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
 <li><a class="reference internal" href="../auto_examples/cluster/plot_kmeans_digits.html#example-cluster-plot-kmeans-digits-py"><em>A demo of K-Means clustering on the handwritten digits data</em></a>: Clustering handwritten digits</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://ilpubs.stanford.edu:8090/778/1/2006-13.pdf">&#8220;k-means++: The advantages of careful seeding&#8221;</a>
+Arthur, David, and Sergei Vassilvitskii,
+<em>Proceedings of the eighteenth annual ACM-SIAM symposium on Discrete
+algorithms</em>, Society for Industrial and Applied Mathematics (2007)</li>
 </ul>
 </div>
 <div class="section" id="mini-batch-k-means">
@@ -518,14 +528,14 @@ on a synthetic 2D datasets with 3 classes.</li>
 <p><a class="reference internal" href="generated/sklearn.cluster.SpectralClustering.html#sklearn.cluster.SpectralClustering" title="sklearn.cluster.SpectralClustering"><tt class="xref py py-class docutils literal"><span class="pre">SpectralClustering</span></tt></a> does a low-dimension embedding of the
 affinity matrix between samples, followed by a KMeans in the low
 dimensional space. It is especially efficient if the affinity matrix is
-sparse and the <a class="reference external" href="http://code.google.com/p/pyamg/">pyamg</a> module is
-installed. SpectralClustering requires the number of clusters to be
-specified. It works well for a small number of clusters but is not
-advised when using many clusters.</p>
+sparse and the <a class="reference external" href="http://pyamg.org/">pyamg</a> module is installed.
+SpectralClustering requires the number of clusters to be specified. It
+works well for a small number of clusters but is not advised when using
+many clusters.</p>
 <p>For two clusters, it solves a convex relaxation of the <a class="reference external" href="http://www.cs.berkeley.edu/~malik/papers/SM-ncut.pdf">normalised
 cuts</a> problem on
 the similarity graph: cutting the graph in two so that the weight of the
-edges cut is small compared to the weights in of edges inside each
+edges cut is small compared to the weights of the edges inside each
 cluster. This criteria is especially interesting when working on images:
 graph vertices are pixels, and edges of the similarity graph are a
 function of the gradient of the image.</p>
@@ -694,23 +704,23 @@ by black points below.</p>
 </div>
 <div class="topic">
 <p class="topic-title first">Implementation</p>
-<p>The algorithm is non-deterministic, however the core samples themselves will
-always belong to the same clusters (although the labels themselves may be
-different). The non-determinism comes from deciding on which cluster a
-non-core sample belongs to. A non-core sample can have a distance lower
-than <cite>eps</cite> to two core samples in different classes. Following from the
-triangular inequality, those two core samples would be more distant than
-<cite>eps</cite> from each other &#8211; else they would be in the same class. The non-core
-sample is simply assigned to which ever cluster is generated first, where
-the order is determined randomly within the code. Other than the ordering of,
+<p>The algorithm is non-deterministic, but the core samples will
+always belong to the same clusters (although the labels may be
+different). The non-determinism comes from deciding to which cluster a
+non-core sample belongs. A non-core sample can have a distance lower
+than <cite>eps</cite> to two core samples in different clusters. By the
+triangular inequality, those two core samples must be more distant than
+<cite>eps</cite> from each other, or they would be in the same cluster. The non-core
+sample is assigned to whichever cluster is generated first, where
+the order is determined randomly. Other than the ordering of
 the dataset, the algorithm is deterministic, making the results relatively
-stable between iterations on the same data.</p>
-<p>The current implementation relies heavily on <tt class="xref py py-class docutils literal"><span class="pre">NearestNeighbors</span></tt>
-to determine the number of samples within distance eps. This is to take
-advantage of the ball tree and kd-tree methods of speeding up neighbor
-searching and to avoid calculating the full distance matrix.
-We also retain the flexibility of custom metrics &#8211; for details,
-see <tt class="xref py py-class docutils literal"><span class="pre">NearestNeighbors</span></tt>.</p>
+stable between runs on the same data.</p>
+<p>The current implementation uses ball trees and kd-trees
+to determine the neighborhood of points,
+which avoids calculating the full distance matrix
+(as was done in scikit-learn versions before 0.14).
+The possibility to use custom metrics is retained;
+for details, see <tt class="xref py py-class docutils literal"><span class="pre">NearestNeighbors</span></tt>.</p>
 </div>
 <div class="topic">
 <p class="topic-title first">References:</p>
@@ -1271,6 +1281,7 @@ through DBSCAN.</li>
     
      </div>
 
+    <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
     
     <script type="text/javascript">
       var _gaq = _gaq || [];

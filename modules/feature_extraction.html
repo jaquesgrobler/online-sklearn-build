@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>4.1. Feature extraction &mdash; scikit-learn 0.14-git documentation</title>
+    <title>4.1. Feature extraction &mdash; scikit-learn 0.15-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.15-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,18 +33,17 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.15-git documentation" href="../index.html" />
     <link rel="up" title="4. Dataset transformations" href="../data_transforms.html" />
     <link rel="next" title="4.2. Preprocessing data" href="preprocessing.html" />
     <link rel="prev" title="4. Dataset transformations" href="../data_transforms.html" />
    
        <script type="text/javascript" src="../_static/sidebar.js"></script>
    
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  
   <link rel="canonical" href="http://scikit-learn.org/stable/modules/feature_extraction.html" />
-
   <script type="text/javascript">
     $("div.buttonNext, div.buttonPrevious").hover(
        function () {
@@ -58,6 +57,8 @@
     var sidebarbutton = $('#sidebarbutton');
     sidebarbutton.css({'height': '900px'});
   </script>
+ 
+
 
   </head>
   <body>
@@ -83,7 +84,7 @@
 			<li><a href="../user_guide.html">User guide</a></li>
 			<li><a href="classes.html">API</a></li>
 			<li class="divider"></li>
-		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/dev/documentation.html">Development</a></li>
 		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
 		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
 		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
@@ -164,7 +165,7 @@
         </div>
     </div>
     
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.15-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">4.1. Feature extraction</a><ul>
@@ -425,7 +426,7 @@ of the words in the document.</p>
 </div>
 <div class="section" id="sparsity">
 <h3>4.1.3.2. Sparsity<a class="headerlink" href="#sparsity" title="Permalink to this headline">¶</a></h3>
-<p>As most documents will typically use a very subset of a the words used in
+<p>As most documents will typically use a very small subset of the words used in
 the corpus, the resulting matrix will have many feature values that are
 zeros (typically more than 99% of them).</p>
 <p>For instance a collection of 10,000 short text documents (such as emails)
@@ -511,7 +512,7 @@ ignored in future calls to the transform method:</p>
 exactly the same words hence are encoded in equal vectors. In particular
 we lose the information that the last document is an interrogative form. To
 preserve some of the local ordering information we can extract 2-grams
-of words in addition to the 1-grams (the word themselvs):</p>
+of words in addition to the 1-grams (individual words):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bigram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
 <span class="gp">... </span>                                    <span class="n">token_pattern</span><span class="o">=</span><span class="s">r&#39;\b\w+\b&#39;</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span> <span class="o">=</span> <span class="n">bigram_vectorizer</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()</span>
@@ -625,24 +626,33 @@ feature extractor with a classifier:</p>
 </div>
 <div class="section" id="decoding-text-files">
 <h3>4.1.3.5. Decoding text files<a class="headerlink" href="#decoding-text-files" title="Permalink to this headline">¶</a></h3>
-<p>Text is made of characters, but files are made of bytes. In Unicode,
-there are many more possible characters than possible bytes. Every text
-file is <em>encoded</em> so that its characters can be represented as bytes.</p>
-<p>When you work with text in Python, it should be Unicode. Most of the
-text feature extractors in scikit-learn will only work with Unicode. So
-to correctly load text from a file (or from the network), you need to
-decode it with the correct encoding.</p>
-<p>An encoding can also be called a &#8216;charset&#8217; or &#8216;character set&#8217;, though
-this terminology is less accurate. The <a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a> takes
-a <tt class="docutils literal"><span class="pre">encoding</span></tt> parameter to tell it what encoding to decode text from.</p>
-<p>For modern text files, the correct encoding is probably UTF-8. The
-<a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a> has <tt class="docutils literal"><span class="pre">encoding='utf-8'</span></tt> as the default. If the
-text you are loading is not actually encoded with UTF-8, however, you
-will get a <tt class="docutils literal"><span class="pre">UnicodeDecodeError</span></tt>.</p>
+<p>Text is made of characters, but files are made of bytes. These bytes represent
+characters according to some <em>encoding</em>. To work with text files in Python,
+their bytes must be <em>decoded</em> to a character set called Unicode.
+Common encodings are ASCII, Latin-1 (Western Europe), KOI8-R (Russian)
+and the universal encodings UTF-8 and UTF-16. Many others exist.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">An encoding can also be called a or &#8216;character set&#8217;,
+but this term is less accurate: several encodings can exist
+for a single character set.</p>
+</div>
+<p>The text feature extractors in scikit-learn know how to decode text files,
+but only if you tell them what encoding the files are in.
+The <a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a> takes an <tt class="docutils literal"><span class="pre">encoding</span></tt> parameter for this purpose.
+For modern text files, the correct encoding is probably UTF-8,
+which is therefore the default (<tt class="docutils literal"><span class="pre">encoding=&quot;utf-8&quot;</span></tt>).</p>
+<p>If the text you are loading is not actually encoded with UTF-8, however,
+you will get a <tt class="docutils literal"><span class="pre">UnicodeDecodeError</span></tt>.
+The vectorizers can be told to be silent about decoding errors
+by setting the <tt class="docutils literal"><span class="pre">decode_error</span></tt> parameter to either <tt class="docutils literal"><span class="pre">&quot;ignore&quot;</span></tt>
+or <tt class="docutils literal"><span class="pre">&quot;replace&quot;</span></tt>. See the documentation for the Python function
+<tt class="docutils literal"><span class="pre">bytes.decode</span></tt> for more details
+(type <tt class="docutils literal"><span class="pre">help(bytes.decode)</span></tt> at the Python prompt).</p>
 <p>If you are having trouble decoding text, here are some things to try:</p>
 <ul class="simple">
 <li>Find out what the actual encoding of the text is. The file might come
-with a header that tells you the encoding, or there might be some
+with a header or README that tells you the encoding, or there might be some
 standard encoding you can assume based on where the text comes from.</li>
 <li>You may be able to find out what kind of encoding it is in general
 using the UNIX command <tt class="docutils literal"><span class="pre">file</span></tt>. The Python <tt class="docutils literal"><span class="pre">chardet</span></tt> module comes with
@@ -665,6 +675,25 @@ a simple single-byte encoding such as <tt class="docutils literal"><span class="
 incorrectly, but at least the same sequence of bytes will always represent
 the same feature.</li>
 </ul>
+<p>For example, the following snippet uses <tt class="docutils literal"><span class="pre">chardet</span></tt>
+(not shipped with scikit-learn, must be installed separately)
+to figure out the encoding of three texts.
+It then vectorizes the texts and prints the learned vocabulary.
+The output is not shown here.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">chardet</span>    
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text1</span> <span class="o">=</span> <span class="n">b</span><span class="s">&quot;Sei mir gegr</span><span class="se">\xc3\xbc\xc3\x9f</span><span class="s">t mein Sauerkraut&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text2</span> <span class="o">=</span> <span class="n">b</span><span class="s">&quot;holdselig sind deine Ger</span><span class="se">\xfc</span><span class="s">che&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text3</span> <span class="o">=</span> <span class="n">b</span><span class="s">&quot;</span><span class="se">\xff\xfe</span><span class="s">A</span><span class="se">\x00</span><span class="s">u</span><span class="se">\x00</span><span class="s">f</span><span class="se">\x00</span><span class="s"> </span><span class="se">\x00</span><span class="s">F</span><span class="se">\x00</span><span class="s">l</span><span class="se">\x00\xfc\x00</span><span class="s">g</span><span class="se">\x00</span><span class="s">e</span><span class="se">\x00</span><span class="s">l</span><span class="se">\x00</span><span class="s">n</span><span class="se">\x00</span><span class="s"> </span><span class="se">\x00</span><span class="s">d</span><span class="se">\x00</span><span class="s">e</span><span class="se">\x00</span><span class="s">s</span><span class="se">\x00</span><span class="s"> </span><span class="se">\x00</span><span class="s">G</span><span class="se">\x00</span><span class="s">e</span><span class="se">\x00</span><span class="s">s</span><span class="se">\x00</span><span class="s">a</span><span class="se">\x00</span><span class="s">n</span><span class="se">\x00</span><span class="s">g</span><span class="se">\x00</span><span class="s">e</span><span class="se">\x00</span><span class="s">s</span><span class="se">\x00</span><span class="s">,</span><span class="se">\x00</span><span class="s"> </span><span class="se">\x00</span><span class="s">H</span><span class="se">\x00</span><span class="s">e</span><span class="se">\x00</span><span class="s">r</span><span class="se">\x00</span><span class="s">z</span><span class="se">\x00</span><span class="s">l</span><span class="se">\x00</span><span class="s">i</span><span class="se">\x00</span><span class="s">e</span><span class="se">\x00</span><span class="s">b</span><span class="se">\x00</span><span class="s">c</span><span class="se">\x00</span><span class="s">h</span><span class="se">\x00</span><span class="s">e</span><span class="se">\x00</span><span class="s">n</span><span class="se">\x00</span><span class="s">,</span><span class="se">\x00</span><span class="s"> </span><span class="se">\x00</span><span class="s">t</span><span class="se">\x00</span><span class="s">r</span><span class="se">\x00</span><span class="s">a</span><span class="se">\x00</span><span class="s">g</span><span class="se">\x00</span><span class="s"> </span><span class="se">\x00</span><span class="s">i</span><span class="se">\x00</span><span class="s">c</span><span class="se">\x00</span><span class="s">h</span><span class="se">\x00</span><span class="s"> </span><span class="se">\x00</span><span class="s">d</span><span class="se">\x00</span><span class="s">i</span><span class="se">\x00</span><span class="s">c</span><span class="se">\x00</span><span class="s">h</span><span class="se">\x00</span><span class="s"> </span><span class="se">\x00</span><span class="s">f</span><span class="se">\x00</span><span class="s">o</span><span class="se">\x00</span><span class="s">r</span><span class="se">\x00</span><span class="s">t</span><span class="se">\x00</span><span class="s">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decoded</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">chardet</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="s">&#39;encoding&#39;</span><span class="p">])</span>
+<span class="gp">... </span>           <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="n">text1</span><span class="p">,</span> <span class="n">text2</span><span class="p">,</span> <span class="n">text3</span><span class="p">)]</span>        
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span><span class="o">.</span><span class="n">vocabulary_</span>    
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>                           
+</pre></div>
+</div>
+<p>(Depending on the version of <tt class="docutils literal"><span class="pre">chardet</span></tt>, it might get the first one wrong.)</p>
+<p>For an introduction to Unicode and character encodings in general,
+see Joel Spolsky&#8217;s <a class="reference external" href="http://www.joelonsoftware.com/articles/Unicode.html">Absolute Minimum Every Software Developer Must Know
+About Unicode</a>.</p>
 </div>
 <div class="section" id="applications-and-examples">
 <h3>4.1.3.6. Applications and examples<a class="headerlink" href="#applications-and-examples" title="Permalink to this headline">¶</a></h3>
@@ -1027,6 +1056,7 @@ or similarity matrices.</p>
     
      </div>
 
+    <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
     
     <script type="text/javascript">
       var _gaq = _gaq || [];

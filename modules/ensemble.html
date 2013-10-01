@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>1.9. Ensemble methods &mdash; scikit-learn 0.14-git documentation</title>
+    <title>1.9. Ensemble methods &mdash; scikit-learn 0.15-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.15-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,18 +33,17 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.15-git documentation" href="../index.html" />
     <link rel="up" title="1. Supervised learning" href="../supervised_learning.html" />
     <link rel="next" title="1.10. Multiclass and multilabel algorithms" href="multiclass.html" />
     <link rel="prev" title="1.8. Decision Trees" href="tree.html" />
    
        <script type="text/javascript" src="../_static/sidebar.js"></script>
    
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  
   <link rel="canonical" href="http://scikit-learn.org/stable/modules/ensemble.html" />
-
   <script type="text/javascript">
     $("div.buttonNext, div.buttonPrevious").hover(
        function () {
@@ -58,6 +57,8 @@
     var sidebarbutton = $('#sidebarbutton');
     sidebarbutton.css({'height': '900px'});
   </script>
+ 
+
 
   </head>
   <body>
@@ -83,7 +84,7 @@
 			<li><a href="../user_guide.html">User guide</a></li>
 			<li><a href="classes.html">API</a></li>
 			<li class="divider"></li>
-		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/dev/documentation.html">Development</a></li>
 		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
 		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
 		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
@@ -164,38 +165,39 @@
         </div>
     </div>
     
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.15-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">1.9. Ensemble methods</a><ul>
-<li><a class="reference internal" href="#forests-of-randomized-trees">1.9.1. Forests of randomized trees</a><ul>
-<li><a class="reference internal" href="#random-forests">1.9.1.1. Random Forests</a></li>
-<li><a class="reference internal" href="#extremely-randomized-trees">1.9.1.2. Extremely Randomized Trees</a></li>
-<li><a class="reference internal" href="#parameters">1.9.1.3. Parameters</a></li>
-<li><a class="reference internal" href="#parallelization">1.9.1.4. Parallelization</a></li>
-<li><a class="reference internal" href="#feature-importance-evaluation">1.9.1.5. Feature importance evaluation</a></li>
-<li><a class="reference internal" href="#totally-random-trees-embedding">1.9.1.6. Totally Random Trees Embedding</a></li>
+<li><a class="reference internal" href="#bagging-meta-estimator">1.9.1. Bagging meta-estimator</a></li>
+<li><a class="reference internal" href="#forests-of-randomized-trees">1.9.2. Forests of randomized trees</a><ul>
+<li><a class="reference internal" href="#random-forests">1.9.2.1. Random Forests</a></li>
+<li><a class="reference internal" href="#extremely-randomized-trees">1.9.2.2. Extremely Randomized Trees</a></li>
+<li><a class="reference internal" href="#parameters">1.9.2.3. Parameters</a></li>
+<li><a class="reference internal" href="#parallelization">1.9.2.4. Parallelization</a></li>
+<li><a class="reference internal" href="#feature-importance-evaluation">1.9.2.5. Feature importance evaluation</a></li>
+<li><a class="reference internal" href="#totally-random-trees-embedding">1.9.2.6. Totally Random Trees Embedding</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#adaboost">1.9.2. AdaBoost</a><ul>
-<li><a class="reference internal" href="#usage">1.9.2.1. Usage</a></li>
+<li><a class="reference internal" href="#adaboost">1.9.3. AdaBoost</a><ul>
+<li><a class="reference internal" href="#usage">1.9.3.1. Usage</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#gradient-tree-boosting">1.9.3. Gradient Tree Boosting</a><ul>
-<li><a class="reference internal" href="#classification">1.9.3.1. Classification</a></li>
-<li><a class="reference internal" href="#regression">1.9.3.2. Regression</a></li>
-<li><a class="reference internal" href="#mathematical-formulation">1.9.3.3. Mathematical formulation</a><ul>
-<li><a class="reference internal" href="#loss-functions">1.9.3.3.1. Loss Functions</a></li>
+<li><a class="reference internal" href="#gradient-tree-boosting">1.9.4. Gradient Tree Boosting</a><ul>
+<li><a class="reference internal" href="#classification">1.9.4.1. Classification</a></li>
+<li><a class="reference internal" href="#regression">1.9.4.2. Regression</a></li>
+<li><a class="reference internal" href="#mathematical-formulation">1.9.4.3. Mathematical formulation</a><ul>
+<li><a class="reference internal" href="#loss-functions">1.9.4.3.1. Loss Functions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#regularization">1.9.3.4. Regularization</a><ul>
-<li><a class="reference internal" href="#shrinkage">1.9.3.4.1. Shrinkage</a></li>
-<li><a class="reference internal" href="#subsampling">1.9.3.4.2. Subsampling</a></li>
+<li><a class="reference internal" href="#regularization">1.9.4.4. Regularization</a><ul>
+<li><a class="reference internal" href="#shrinkage">1.9.4.4.1. Shrinkage</a></li>
+<li><a class="reference internal" href="#subsampling">1.9.4.4.2. Subsampling</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#interpretation">1.9.3.5. Interpretation</a><ul>
-<li><a class="reference internal" href="#feature-importance">1.9.3.5.1. Feature importance</a></li>
-<li><a class="reference internal" href="#partial-dependence">1.9.3.5.2. Partial dependence</a></li>
+<li><a class="reference internal" href="#interpretation">1.9.4.5. Interpretation</a><ul>
+<li><a class="reference internal" href="#feature-importance">1.9.4.5.1. Feature importance</a></li>
+<li><a class="reference internal" href="#partial-dependence">1.9.4.5.2. Partial dependence</a></li>
 </ul>
 </li>
 </ul>
@@ -218,24 +220,107 @@
   <div class="section" id="ensemble-methods">
 <span id="ensemble"></span><h1>1.9. Ensemble methods<a class="headerlink" href="#ensemble-methods" title="Permalink to this headline">¶</a></h1>
 <p>The goal of <strong>ensemble methods</strong> is to combine the predictions of several
-models built with a given learning algorithm in order to improve
-generalizability / robustness over a single model.</p>
+base estimators built with a given learning algorithm in order to improve
+generalizability / robustness over a single estimator.</p>
 <p>Two families of ensemble methods are usually distinguished:</p>
 <ul>
 <li><p class="first">In <strong>averaging methods</strong>, the driving principle is to build several
-models independently and then to average their predictions. On average,
-the combined model is usually better than any of the single model
-because its variance is reduced.</p>
-<p><strong>Examples:</strong> Bagging methods, <a class="reference internal" href="#forest"><em>Forests of randomized trees</em></a>...</p>
+estimators independently and then to average their predictions. On average,
+the combined estimator is usually better than any of the single base
+estimator because its variance is reduced.</p>
+<p><strong>Examples:</strong> <a class="reference internal" href="#bagging"><em>Bagging methods</em></a>, <a class="reference internal" href="#forest"><em>Forests of randomized trees</em></a>, ...</p>
 </li>
-<li><p class="first">By contrast, in <strong>boosting methods</strong>, models are built sequentially and one
-tries to reduce the bias of the combined model. The motivation is to combine
-several weak models to produce a powerful ensemble.</p>
+<li><p class="first">By contrast, in <strong>boosting methods</strong>, base estimators are built sequentially
+and one tries to reduce the bias of the combined estimator. The motivation is
+to combine several weak models to produce a powerful ensemble.</p>
 <p><strong>Examples:</strong> <a class="reference internal" href="#adaboost"><em>AdaBoost</em></a>, <a class="reference internal" href="#gradient-boosting"><em>Gradient Tree Boosting</em></a>, ...</p>
 </li>
 </ul>
+<div class="section" id="bagging-meta-estimator">
+<span id="bagging"></span><h2>1.9.1. Bagging meta-estimator<a class="headerlink" href="#bagging-meta-estimator" title="Permalink to this headline">¶</a></h2>
+<p>In ensemble algorithms, bagging methods form a class of algorithms which build
+several instances of a black-box estimator on random subsets of the original
+training set and then aggregate their individual predictions to form a final
+prediction. These methods are used as a way to reduce the variance of a base
+estimator (e.g., a decision tree), by introducing randomization into its
+construction procedure and then making an ensemble out of it. In many cases,
+bagging methods constitute a very simple way to improve with respect to a
+single model, without making it necessary to adapt the underlying base
+algorithm. As they provide a way to reduce overfitting, bagging methods work
+best with strong and complex models (e.g., fully developed decision trees), in
+contrast with boosting methods which usually work best with weak models (e.g.,
+shallow decision trees).</p>
+<p>Bagging methods come in many flavours but mostly differ from each other by the
+way they draw random subsets of the training set:</p>
+<blockquote>
+<div><ul class="simple">
+<li>When random subsets of the dataset are drawn as random subsets of the
+samples, then this algorithm is known as Pasting <a class="reference internal" href="#b1999">[B1999]</a>.</li>
+<li>When samples are drawn with replacement, then the method is known as
+Bagging <a class="reference internal" href="#b1996">[B1996]</a>.</li>
+<li>When random subsets of the dataset are drawn as random subsets of
+the features, then the method is known as Random Subspaces <a class="reference internal" href="#h1998">[H1998]</a>.</li>
+<li>Finally, when base estimators are built on subsets of both samples and
+features, then the method is known as Random Patches <a class="reference internal" href="#lg2012">[LG2012]</a>.</li>
+</ul>
+</div></blockquote>
+<p>In scikit-learn, bagging methods are offered as a unified
+<a class="reference internal" href="generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier" title="sklearn.ensemble.BaggingClassifier"><tt class="xref py py-class docutils literal"><span class="pre">BaggingClassifier</span></tt></a> meta-estimator  (resp. <a class="reference internal" href="generated/sklearn.ensemble.BaggingRegressor.html#sklearn.ensemble.BaggingRegressor" title="sklearn.ensemble.BaggingRegressor"><tt class="xref py py-class docutils literal"><span class="pre">BaggingRegressor</span></tt></a>),
+taking as input a user-specified base estimator along with parameters
+specifying the strategy to draw random subsets. In particular, <tt class="docutils literal"><span class="pre">max_samples</span></tt>
+and <tt class="docutils literal"><span class="pre">max_features</span></tt> control the size of the subsets (in terms of samples and
+features), while <tt class="docutils literal"><span class="pre">bootstrap</span></tt> and <tt class="docutils literal"><span class="pre">bootstrap_features</span></tt> control whether
+samples and features are drawn with or without replacement. As an example, the
+snippet below illustrates how to instantiate a bagging ensemble of
+<tt class="xref py py-class docutils literal"><span class="pre">KNeighborsClassifier</span></tt> base estimators, each built on random subsets of
+50% of the samples and 50% of the features.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bagging</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">KNeighborsClassifier</span><span class="p">(),</span>
+<span class="gp">... </span>                            <span class="n">max_samples</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/ensemble/plot_bias_variance.html#example-ensemble-plot-bias-variance-py"><em>Single estimator versus bagging: bias-variance decomposition</em></a></li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">References</p>
+<table class="docutils citation" frame="void" id="b1999" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[B1999]</a></td><td>L. Breiman, &#8220;Pasting small votes for classification in large
+databases and on-line&#8221;, Machine Learning, 36(1), 85-103, 1999.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="b1996" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[B1996]</a></td><td>L. Breiman, &#8220;Bagging predictors&#8221;, Machine Learning, 24(2),
+123-140, 1996.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="h1998" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[H1998]</a></td><td>T. Ho, &#8220;The random subspace method for constructing decision
+forests&#8221;, Pattern Analysis and Machine Intelligence, 20(8), 832-844,
+1998.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="lg2012" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[LG2012]</a></td><td>G. Louppe and P. Geurts, &#8220;Ensembles on Random Patches&#8221;,
+Machine Learning and Knowledge Discovery in Databases, 346-361, 2012.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="section" id="forests-of-randomized-trees">
-<span id="forest"></span><h2>1.9.1. Forests of randomized trees<a class="headerlink" href="#forests-of-randomized-trees" title="Permalink to this headline">¶</a></h2>
+<span id="forest"></span><h2>1.9.2. Forests of randomized trees<a class="headerlink" href="#forests-of-randomized-trees" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="classes.html#module-sklearn.ensemble" title="sklearn.ensemble"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.ensemble</span></tt></a> module includes two averaging algorithms based
 on randomized <a class="reference internal" href="tree.html#tree"><em>decision trees</em></a>: the RandomForest algorithm
 and the Extra-Trees method. Both algorithms are perturb-and-combine
@@ -258,7 +343,7 @@ target values (class labels) for the training samples:</p>
 to <a class="reference internal" href="tree.html#tree-multioutput"><em>multi-output problems</em></a>  (if Y is an array of size
 <tt class="docutils literal"><span class="pre">[n_samples,</span> <span class="pre">n_outputs]</span></tt>).</p>
 <div class="section" id="random-forests">
-<h3>1.9.1.1. Random Forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.1. Random Forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h3>
 <p>In random forests (see <a class="reference internal" href="generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><tt class="xref py py-class docutils literal"><span class="pre">RandomForestClassifier</span></tt></a> and
 <a class="reference internal" href="generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor" title="sklearn.ensemble.RandomForestRegressor"><tt class="xref py py-class docutils literal"><span class="pre">RandomForestRegressor</span></tt></a> classes), each tree in the ensemble is
 built from a sample drawn with replacement (i.e., a bootstrap sample)
@@ -275,7 +360,7 @@ implementation combines classifiers by averaging their probabilistic
 prediction, instead of letting each classifier vote for a single class.</p>
 </div>
 <div class="section" id="extremely-randomized-trees">
-<h3>1.9.1.2. Extremely Randomized Trees<a class="headerlink" href="#extremely-randomized-trees" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.2. Extremely Randomized Trees<a class="headerlink" href="#extremely-randomized-trees" title="Permalink to this headline">¶</a></h3>
 <p>In extremely randomized trees (see <a class="reference internal" href="generated/sklearn.ensemble.ExtraTreesClassifier.html#sklearn.ensemble.ExtraTreesClassifier" title="sklearn.ensemble.ExtraTreesClassifier"><tt class="xref py py-class docutils literal"><span class="pre">ExtraTreesClassifier</span></tt></a>
 and <a class="reference internal" href="generated/sklearn.ensemble.ExtraTreesRegressor.html#sklearn.ensemble.ExtraTreesRegressor" title="sklearn.ensemble.ExtraTreesRegressor"><tt class="xref py py-class docutils literal"><span class="pre">ExtraTreesRegressor</span></tt></a> classes), randomness goes one step
 further in the way splits are computed. As in random forests, a random
@@ -298,7 +383,7 @@ in bias:</p>
 <span class="gp">... </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>                             
-<span class="go">0.98...</span>
+<span class="go">0.97...</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -318,7 +403,7 @@ in bias:</p>
 </div>
 </div>
 <div class="section" id="parameters">
-<h3>1.9.1.3. Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.3. Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <p>The main parameters to adjust when using these methods is <tt class="docutils literal"><span class="pre">n_estimators</span></tt>
 and <tt class="docutils literal"><span class="pre">max_features</span></tt>. The former is the number of trees in the forest. The
 larger the better, but also the longer it will take to compute. In
@@ -338,7 +423,7 @@ in random forests (<tt class="docutils literal"><span class="pre">bootstrap=True
 use the original dataset for building extra-trees (<tt class="docutils literal"><span class="pre">bootstrap=False</span></tt>).</p>
 </div>
 <div class="section" id="parallelization">
-<h3>1.9.1.4. Parallelization<a class="headerlink" href="#parallelization" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.4. Parallelization<a class="headerlink" href="#parallelization" title="Permalink to this headline">¶</a></h3>
 <p>Finally, this module also features the parallel construction of the trees
 and the parallel computation of the predictions through the <tt class="docutils literal"><span class="pre">n_jobs</span></tt>
 parameter. If <tt class="docutils literal"><span class="pre">n_jobs=k</span></tt> then computations are partitioned into
@@ -362,7 +447,7 @@ amount of time (e.g., on large datasets).</p>
 <table class="docutils citation" frame="void" id="b2001" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[B2001]</a></td><td><ol class="first last upperalpha simple" start="12">
+<tr><td class="label"><a class="fn-backref" href="#id6">[B2001]</a></td><td><ol class="first last upperalpha simple" start="12">
 <li>Breiman, &#8220;Random Forests&#8221;, Machine Learning, 45(1), 5-32, 2001.</li>
 </ol>
 </td></tr>
@@ -371,7 +456,7 @@ amount of time (e.g., on large datasets).</p>
 <table class="docutils citation" frame="void" id="b1998" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[B1998]</a></td><td><ol class="first last upperalpha simple" start="12">
+<tr><td class="label"><a class="fn-backref" href="#id5">[B1998]</a></td><td><ol class="first last upperalpha simple" start="12">
 <li>Breiman, &#8220;Arcing Classifiers&#8221;, Annals of Statistics 1998.</li>
 </ol>
 </td></tr>
@@ -387,7 +472,7 @@ trees&#8221;, Machine Learning, 63(1), 3-42, 2006.</td></tr>
 </div>
 </div>
 <div class="section" id="feature-importance-evaluation">
-<span id="random-forest-feature-importance"></span><h3>1.9.1.5. Feature importance evaluation<a class="headerlink" href="#feature-importance-evaluation" title="Permalink to this headline">¶</a></h3>
+<span id="random-forest-feature-importance"></span><h3>1.9.2.5. Feature importance evaluation<a class="headerlink" href="#feature-importance-evaluation" title="Permalink to this headline">¶</a></h3>
 <p>The relative rank (i.e. depth) of a feature used as a decision node in a
 tree can be used to assess the relative importance of that feature with
 respect to the predictability of the target variable. Features used at
@@ -418,7 +503,7 @@ to the prediction function.</p>
 </div>
 </div>
 <div class="section" id="totally-random-trees-embedding">
-<span id="random-trees-embedding"></span><h3>1.9.1.6. Totally Random Trees Embedding<a class="headerlink" href="#totally-random-trees-embedding" title="Permalink to this headline">¶</a></h3>
+<span id="random-trees-embedding"></span><h3>1.9.2.6. Totally Random Trees Embedding<a class="headerlink" href="#totally-random-trees-embedding" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding" title="sklearn.ensemble.RandomTreesEmbedding"><tt class="xref py py-class docutils literal"><span class="pre">RandomTreesEmbedding</span></tt></a> implements an unsupervised transformation of the
 data.  Using a forest of completely random trees, <a class="reference internal" href="generated/sklearn.ensemble.RandomTreesEmbedding.html#sklearn.ensemble.RandomTreesEmbedding" title="sklearn.ensemble.RandomTreesEmbedding"><tt class="xref py py-class docutils literal"><span class="pre">RandomTreesEmbedding</span></tt></a>
 encodes the data by the indices of the leaves a data point ends up in.  This
@@ -449,7 +534,7 @@ dimensionality reduction.</p>
 </div>
 </div>
 <div class="section" id="adaboost">
-<span id="id3"></span><h2>1.9.2. AdaBoost<a class="headerlink" href="#adaboost" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>1.9.3. AdaBoost<a class="headerlink" href="#adaboost" title="Permalink to this headline">¶</a></h2>
 <p>The module <a class="reference internal" href="classes.html#module-sklearn.ensemble" title="sklearn.ensemble"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.ensemble</span></tt></a> includes the popular boosting algorithm
 AdaBoost, introduced in 1995 by Freud and Schapire <a class="reference internal" href="#fs1995">[FS1995]</a>.</p>
 <p>The core principle of AdaBoost is to fit a sequence of weak learners (i.e.,
@@ -475,13 +560,13 @@ concentrate on the examples that are missed by the previous ones in the sequence
 <p>AdaBoost can be used both for classification and regression problems:</p>
 <blockquote>
 <div><ul class="simple">
-<li>For multi-class classification, <tt class="xref py py-class docutils literal"><span class="pre">AdaBoostClassifier</span></tt> implements
+<li>For multi-class classification, <a class="reference internal" href="generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier" title="sklearn.ensemble.AdaBoostClassifier"><tt class="xref py py-class docutils literal"><span class="pre">AdaBoostClassifier</span></tt></a> implements
 AdaBoost-SAMME and AdaBoost-SAMME.R <a class="reference internal" href="#zzrh2009">[ZZRH2009]</a>.</li>
-<li>For regression, <tt class="xref py py-class docutils literal"><span class="pre">AdaBoostRegressor</span></tt> implements AdaBoost.R2 <a class="reference internal" href="#d1997">[D1997]</a>.</li>
+<li>For regression, <a class="reference internal" href="generated/sklearn.ensemble.AdaBoostRegressor.html#sklearn.ensemble.AdaBoostRegressor" title="sklearn.ensemble.AdaBoostRegressor"><tt class="xref py py-class docutils literal"><span class="pre">AdaBoostRegressor</span></tt></a> implements AdaBoost.R2 <a class="reference internal" href="#d1997">[D1997]</a>.</li>
 </ul>
 </div></blockquote>
 <div class="section" id="usage">
-<h3>1.9.2.1. Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.3.1. Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
 <p>The following example shows how to fit an AdaBoost classifier with 100 weak
 learners:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
@@ -523,21 +608,21 @@ with the AdaBoost.R2 algorithm.</li>
 <table class="docutils citation" frame="void" id="fs1995" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[FS1995]</a></td><td>Y. Freud, and R. Schapire, &#8220;A decision theoretic generalization of
+<tr><td class="label"><a class="fn-backref" href="#id8">[FS1995]</a></td><td>Y. Freud, and R. Schapire, &#8220;A decision theoretic generalization of
 online learning and an application to boosting&#8221;, 1997.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="zzrh2009" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[ZZRH2009]</a></td><td>J. Zhu, H. Zou, S. Rosset, T. Hastie. &#8220;Multi-class AdaBoost&#8221;,
+<tr><td class="label"><a class="fn-backref" href="#id10">[ZZRH2009]</a></td><td>J. Zhu, H. Zou, S. Rosset, T. Hastie. &#8220;Multi-class AdaBoost&#8221;,
 2009.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="d1997" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[D1997]</a></td><td><ol class="first last upperalpha simple" start="8">
+<tr><td class="label"><a class="fn-backref" href="#id11">[D1997]</a></td><td><ol class="first last upperalpha simple" start="8">
 <li>Drucker. &#8220;Improving Regressors using Boosting Techniques&#8221;, 1997.</li>
 </ol>
 </td></tr>
@@ -546,7 +631,7 @@ online learning and an application to boosting&#8221;, 1997.</td></tr>
 <table class="docutils citation" frame="void" id="htf" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[HTF]</a></td><td>T. Hastie, R. Tibshirani and J. Friedman, &#8220;Elements of
+<tr><td class="label"><a class="fn-backref" href="#id9">[HTF]</a></td><td>T. Hastie, R. Tibshirani and J. Friedman, &#8220;Elements of
 Statistical Learning Ed. 2&#8221;, Springer, 2009.</td></tr>
 </tbody>
 </table>
@@ -554,7 +639,7 @@ Statistical Learning Ed. 2&#8221;, Springer, 2009.</td></tr>
 </div>
 </div>
 <div class="section" id="gradient-tree-boosting">
-<span id="gradient-boosting"></span><h2>1.9.3. Gradient Tree Boosting<a class="headerlink" href="#gradient-tree-boosting" title="Permalink to this headline">¶</a></h2>
+<span id="gradient-boosting"></span><h2>1.9.4. Gradient Tree Boosting<a class="headerlink" href="#gradient-tree-boosting" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Gradient_boosting">Gradient Tree Boosting</a>
 or Gradient Boosted Regression Trees (GBRT) is a generalization
 of boosting to arbitrary
@@ -581,7 +666,7 @@ hardly be parallelized.</li>
 for both classification and regression via gradient boosted regression
 trees.</p>
 <div class="section" id="classification">
-<h3>1.9.3.1. Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.4.1. Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/sklearn.ensemble.GradientBoostingClassifier.html#sklearn.ensemble.GradientBoostingClassifier" title="sklearn.ensemble.GradientBoostingClassifier"><tt class="xref py py-class docutils literal"><span class="pre">GradientBoostingClassifier</span></tt></a> supports both binary and multi-class
 classification via the deviance loss function (<tt class="docutils literal"><span class="pre">loss='deviance'</span></tt>).
 The following example shows how to fit a gradient boosting classifier
@@ -614,7 +699,7 @@ of classes we strongly recommend to use
 </div>
 </div>
 <div class="section" id="regression">
-<h3>1.9.3.2. Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.4.2. Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="sklearn.ensemble.GradientBoostingRegressor"><tt class="xref py py-class docutils literal"><span class="pre">GradientBoostingRegressor</span></tt></a> supports a number of
 <a class="reference internal" href="#gradient-boosting-loss"><em>different loss functions</em></a>
 for regression which can be specified via the argument
@@ -657,7 +742,7 @@ the <tt class="docutils literal"><span class="pre">feature_importances_</span></
 </div>
 </div>
 <div class="section" id="mathematical-formulation">
-<h3>1.9.3.3. Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.4.3. Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this headline">¶</a></h3>
 <p>GBRT considers additive models of the following form:</p>
 <blockquote>
 <div><div class="math">
@@ -709,7 +794,7 @@ F_{m-1}(x_i))"/></p>
 <p>The algorithms for regression and classification
 only differ in the concrete loss function used.</p>
 <div class="section" id="loss-functions">
-<span id="gradient-boosting-loss"></span><h4>1.9.3.3.1. Loss Functions<a class="headerlink" href="#loss-functions" title="Permalink to this headline">¶</a></h4>
+<span id="gradient-boosting-loss"></span><h4>1.9.4.3.1. Loss Functions<a class="headerlink" href="#loss-functions" title="Permalink to this headline">¶</a></h4>
 <p>The following loss functions are supported and can be specified using
 the parameter <tt class="docutils literal"><span class="pre">loss</span></tt>:</p>
 <blockquote>
@@ -750,9 +835,9 @@ inefficient for data sets with a large number of classes.</li>
 </div>
 </div>
 <div class="section" id="regularization">
-<h3>1.9.3.4. Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.4.4. Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="shrinkage">
-<span id="gradient-boosting-shrinkage"></span><h4>1.9.3.4.1. Shrinkage<a class="headerlink" href="#shrinkage" title="Permalink to this headline">¶</a></h4>
+<span id="gradient-boosting-shrinkage"></span><h4>1.9.4.4.1. Shrinkage<a class="headerlink" href="#shrinkage" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="#f2001">[F2001]</a> proposed a simple regularization strategy that scales
 the contribution of each weak learner by a factor <img class="math" src="../_images/math/d6a7ccf879c4a4fe694033606332cb83806db296.png" alt="\nu"/>:</p>
 <div class="math">
@@ -764,14 +849,14 @@ be set via the <tt class="docutils literal"><span class="pre">learning_rate</spa
 <tt class="docutils literal"><span class="pre">n_estimators</span></tt>, the number of weak learners to fit. Smaller values
 of <tt class="docutils literal"><span class="pre">learning_rate</span></tt> require larger numbers of weak learners to maintain
 a constant training error. Empirical evidence suggests that small
-values of <tt class="docutils literal"><span class="pre">learning_rate</span></tt> favor better test error. <a class="reference internal" href="../auto_examples/ensemble/plot_partial_dependence.html#htf2009">[HTF2009]</a>
+values of <tt class="docutils literal"><span class="pre">learning_rate</span></tt> favor better test error. <a class="reference internal" href="#htf2009">[HTF2009]</a>
 recommend to set the learning rate to a small constant
 (e.g. <tt class="docutils literal"><span class="pre">learning_rate</span> <span class="pre">&lt;=</span> <span class="pre">0.1</span></tt>) and choose <tt class="docutils literal"><span class="pre">n_estimators</span></tt> by early
 stopping. For a more detailed discussion of the interaction between
 <tt class="docutils literal"><span class="pre">learning_rate</span></tt> and <tt class="docutils literal"><span class="pre">n_estimators</span></tt> see <a class="reference internal" href="#r2007">[R2007]</a>.</p>
 </div>
 <div class="section" id="subsampling">
-<h4>1.9.3.4.2. Subsampling<a class="headerlink" href="#subsampling" title="Permalink to this headline">¶</a></h4>
+<h4>1.9.4.4.2. Subsampling<a class="headerlink" href="#subsampling" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="#f1999">[F1999]</a> proposed stochastic gradient boosting, which combines gradient
 boosting with bootstrap averaging (bagging). At each iteration
 the base classifier is trained on a fraction <tt class="docutils literal"><span class="pre">subsample</span></tt> of
@@ -814,7 +899,7 @@ is too time consuming.</p>
 </div>
 </div>
 <div class="section" id="interpretation">
-<h3>1.9.3.5. Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.4.5. Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this headline">¶</a></h3>
 <p>Individual decision trees can be interpreted easily by simply
 visualizing the tree structure. Gradient boosting models, however,
 comprise hundreds of regression trees thus they cannot be easily
@@ -822,7 +907,7 @@ interpreted by visual inspection of the individual trees. Fortunately,
 a number of techniques have been proposed to summarize and interpret
 gradient boosting models.</p>
 <div class="section" id="feature-importance">
-<h4>1.9.3.5.1. Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h4>
+<h4>1.9.4.5.1. Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h4>
 <p>Often features do not contribute equally to predict the target
 response; in many situations the majority of the features are in fact
 irrelevant.
@@ -856,12 +941,12 @@ accessed via the <tt class="docutils literal"><span class="pre">feature_importan
 </div>
 </div>
 <div class="section" id="partial-dependence">
-<h4>1.9.3.5.2. Partial dependence<a class="headerlink" href="#partial-dependence" title="Permalink to this headline">¶</a></h4>
+<h4>1.9.4.5.2. Partial dependence<a class="headerlink" href="#partial-dependence" title="Permalink to this headline">¶</a></h4>
 <p>Partial dependence plots (PDP) show the dependence between the target response
 and a set of &#8216;target&#8217; features, marginalizing over the
 values of all other features (the &#8216;complement&#8217; features).
 Intuitively, we can interpret the partial dependence as the expected
-target response <a class="footnote-reference" href="#id16" id="id14">[1]</a> as a function of the &#8216;target&#8217; features <a class="footnote-reference" href="#id17" id="id15">[2]</a>.</p>
+target response <a class="footnote-reference" href="#id20" id="id18">[1]</a> as a function of the &#8216;target&#8217; features <a class="footnote-reference" href="#id21" id="id19">[2]</a>.</p>
 <p>Due to the limits of human perception the size of the target feature
 set must be small (usually, one or two) thus the target features are
 usually chosen among the most important features.</p>
@@ -941,17 +1026,17 @@ dependence is given by a weighted average of all visited leaves. For
 tree ensembles the results of each individual tree are again
 averaged.</p>
 <p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="id16" rules="none">
+<table class="docutils footnote" frame="void" id="id20" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[1]</a></td><td>For classification with <tt class="docutils literal"><span class="pre">loss='deviance'</span></tt>  the target
+<tr><td class="label"><a class="fn-backref" href="#id18">[1]</a></td><td>For classification with <tt class="docutils literal"><span class="pre">loss='deviance'</span></tt>  the target
 response is logit(p).</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id17" rules="none">
+<table class="docutils footnote" frame="void" id="id21" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id15">[2]</a></td><td>More precisely its the expectation of the target response after
+<tr><td class="label"><a class="fn-backref" href="#id19">[2]</a></td><td>More precisely its the expectation of the target response after
 accounting for the initial model; partial dependence plots
 do not include the <tt class="docutils literal"><span class="pre">init</span></tt> model.</td></tr>
 </tbody>
@@ -967,14 +1052,14 @@ do not include the <tt class="docutils literal"><span class="pre">init</span></t
 <table class="docutils citation" frame="void" id="f2001" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[F2001]</td><td><em>(<a class="fn-backref" href="#id9">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> J. Friedman, &#8220;Greedy Function Approximation: A Gradient Boosting Machine&#8221;,
+<tr><td class="label">[F2001]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id14">2</a>)</em> J. Friedman, &#8220;Greedy Function Approximation: A Gradient Boosting Machine&#8221;,
 The Annals of Statistics, Vol. 29, No. 5, 2001.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="f1999" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id13">[F1999]</a></td><td><ol class="first last upperalpha simple" start="10">
+<tr><td class="label"><a class="fn-backref" href="#id17">[F1999]</a></td><td><ol class="first last upperalpha simple" start="10">
 <li>Friedman, &#8220;Stochastic Gradient Boosting&#8221;, 1999</li>
 </ol>
 </td></tr>
@@ -983,7 +1068,7 @@ The Annals of Statistics, Vol. 29, No. 5, 2001.</td></tr>
 <table class="docutils citation" frame="void" id="htf2009" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[HTF2009]</a></td><td><ol class="first last upperalpha simple" start="20">
+<tr><td class="label"><a class="fn-backref" href="#id15">[HTF2009]</a></td><td><ol class="first last upperalpha simple" start="20">
 <li>Hastie, R. Tibshirani and J. Friedman, &#8220;Elements of Statistical Learning Ed. 2&#8221;, Springer, 2009.</li>
 </ol>
 </td></tr>
@@ -992,7 +1077,7 @@ The Annals of Statistics, Vol. 29, No. 5, 2001.</td></tr>
 <table class="docutils citation" frame="void" id="r2007" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[R2007]</a></td><td><ol class="first last upperalpha simple" start="7">
+<tr><td class="label"><a class="fn-backref" href="#id16">[R2007]</a></td><td><ol class="first last upperalpha simple" start="7">
 <li>Ridgeway, &#8220;Generalized Boosted Models: A guide to the gbm package&#8221;, 2007</li>
 </ol>
 </td></tr>
@@ -1029,6 +1114,7 @@ The Annals of Statistics, Vol. 29, No. 5, 2001.</td></tr>
     
      </div>
 
+    <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
     
     <script type="text/javascript">
       var _gaq = _gaq || [];

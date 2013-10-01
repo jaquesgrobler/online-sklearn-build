@@ -8,38 +8,95 @@ Out-of-core classification of text documents
 ======================================================
 
 This is an example showing how scikit-learn can be used for classification
-using an out-of-core approach.
-
-Out-of-core learning means that we can learn from data that would not fit into
-the computer main memory. To achieve this goal we make use of an online
-classifier (i.e. that supports the `partial_fit` method) that will be fed with
-batches of examples. Moreover, to guarantee that the features space remains the
-same over time we leverage the `HashingVectorizer` class that will project each
-example into the same input space. This is especially useful in the case of
-text classification where new features (e.g. words) are discovered on the fly.
+using an out-of-core approach: learning from data that doesn't fit into main
+memory. We make use of an online classifier, i.e., one that supports the
+partial_fit method, that will be fed with batches of examples. To guarantee
+that the features space remains the same over time we leverage a
+HashingVectorizer that will project each example into the same feature space.
+This is especially useful in the case of text classification where new
+features (words) may appear in each batch.
 
 The dataset used in this example is Reuters-21578 as provided by the UCI ML
-repository. It will be automatically downloaded and uncompressed in the current
-directory on first run.
+repository. It will be automatically downloaded and uncompressed on first run.
 
-The plot represents is the learning curve of the classifier i.e. the evolution
-of classification accuracy with the number of mini-batches fed to the
-classifier.
+The plot represents is the learning curve of the classifier: the evolution
+of classification accuracy over the course of the mini-batches. Accuracy is
+measured on the first 1000 samples, held out as a validation set.
 
-`ReutersParser` and `ReutersStreamReader` classes are utility classes to parse
-and stream examples to the main learning loop.
+To limit the memory consumption, we queue examples up to a fixed amount before
+feeding them to the learner.
 
-To limit the amount of consumed memory at any time we enqueue examples up to a
-fixed amount before calling the features transformation and learning routines.
-We then clear the examples queue and proceed with enqueuing again and so on.
 
-To study the performance of the method we sample the first 1000 examples of the
-dataset and hold them out as separate testing data. We then use it to estimate
-accuracy after each mini-batch.
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_out_of_core_classification_1.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_out_of_core_classification_2.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_out_of_core_classification_3.png
+            :scale: 47
+
+
+**Script output**::
+
+  Test set is 988 documents (122 positive)
+    Passive-Aggressive classifier : 	   469 train docs (    49 positive)    988 test docs (   122 positive) accuracy: 0.879 in 3.18s (  147 docs/s)
+            Perceptron classifier : 	   469 train docs (    49 positive)    988 test docs (   122 positive) accuracy: 0.880 in 3.20s (  146 docs/s)
+                   SGD classifier : 	   469 train docs (    49 positive)    988 test docs (   122 positive) accuracy: 0.892 in 3.22s (  145 docs/s)
+        NB Multinomial classifier : 	   469 train docs (    49 positive)    988 test docs (   122 positive) accuracy: 0.877 in 3.31s (  141 docs/s)
+  
+  
+    Passive-Aggressive classifier : 	  3198 train docs (   340 positive)    988 test docs (   122 positive) accuracy: 0.931 in 10.04s (  318 docs/s)
+            Perceptron classifier : 	  3198 train docs (   340 positive)    988 test docs (   122 positive) accuracy: 0.933 in 10.05s (  318 docs/s)
+                   SGD classifier : 	  3198 train docs (   340 positive)    988 test docs (   122 positive) accuracy: 0.932 in 10.07s (  317 docs/s)
+        NB Multinomial classifier : 	  3198 train docs (   340 positive)    988 test docs (   122 positive) accuracy: 0.880 in 10.17s (  314 docs/s)
+  
+  
+    Passive-Aggressive classifier : 	  6062 train docs (   720 positive)    988 test docs (   122 positive) accuracy: 0.939 in 17.13s (  353 docs/s)
+            Perceptron classifier : 	  6062 train docs (   720 positive)    988 test docs (   122 positive) accuracy: 0.915 in 17.15s (  353 docs/s)
+                   SGD classifier : 	  6062 train docs (   720 positive)    988 test docs (   122 positive) accuracy: 0.934 in 17.17s (  353 docs/s)
+        NB Multinomial classifier : 	  6062 train docs (   720 positive)    988 test docs (   122 positive) accuracy: 0.899 in 17.27s (  351 docs/s)
+  
+  
+    Passive-Aggressive classifier : 	  8920 train docs (  1105 positive)    988 test docs (   122 positive) accuracy: 0.954 in 24.30s (  367 docs/s)
+            Perceptron classifier : 	  8920 train docs (  1105 positive)    988 test docs (   122 positive) accuracy: 0.942 in 24.32s (  366 docs/s)
+                   SGD classifier : 	  8920 train docs (  1105 positive)    988 test docs (   122 positive) accuracy: 0.955 in 24.34s (  366 docs/s)
+        NB Multinomial classifier : 	  8920 train docs (  1105 positive)    988 test docs (   122 positive) accuracy: 0.917 in 24.44s (  364 docs/s)
+  
+  
+    Passive-Aggressive classifier : 	 11844 train docs (  1455 positive)    988 test docs (   122 positive) accuracy: 0.956 in 31.46s (  376 docs/s)
+            Perceptron classifier : 	 11844 train docs (  1455 positive)    988 test docs (   122 positive) accuracy: 0.959 in 31.48s (  376 docs/s)
+                   SGD classifier : 	 11844 train docs (  1455 positive)    988 test docs (   122 positive) accuracy: 0.945 in 31.50s (  376 docs/s)
+        NB Multinomial classifier : 	 11844 train docs (  1455 positive)    988 test docs (   122 positive) accuracy: 0.929 in 31.60s (  374 docs/s)
+  
+  
+    Passive-Aggressive classifier : 	 14752 train docs (  1799 positive)    988 test docs (   122 positive) accuracy: 0.954 in 38.92s (  379 docs/s)
+            Perceptron classifier : 	 14752 train docs (  1799 positive)    988 test docs (   122 positive) accuracy: 0.945 in 38.94s (  378 docs/s)
+                   SGD classifier : 	 14752 train docs (  1799 positive)    988 test docs (   122 positive) accuracy: 0.954 in 38.96s (  378 docs/s)
+        NB Multinomial classifier : 	 14752 train docs (  1799 positive)    988 test docs (   122 positive) accuracy: 0.935 in 39.06s (  377 docs/s)
+  
+  
+    Passive-Aggressive classifier : 	 17685 train docs (  2210 positive)    988 test docs (   122 positive) accuracy: 0.964 in 46.36s (  381 docs/s)
+            Perceptron classifier : 	 17685 train docs (  2210 positive)    988 test docs (   122 positive) accuracy: 0.956 in 46.38s (  381 docs/s)
+                   SGD classifier : 	 17685 train docs (  2210 positive)    988 test docs (   122 positive) accuracy: 0.966 in 46.40s (  381 docs/s)
+        NB Multinomial classifier : 	 17685 train docs (  2210 positive)    988 test docs (   122 positive) accuracy: 0.933 in 46.50s (  380 docs/s)
+
 
 
 **Python source code:** :download:`plot_out_of_core_classification.py <plot_out_of_core_classification.py>`
 
 .. literalinclude:: plot_out_of_core_classification.py
-    :lines: 36-
+    :lines: 25-
+
+**Total running time of the example:**  50.72 seconds
     

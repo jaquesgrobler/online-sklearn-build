@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>3.1. Cross-validation: evaluating estimator performance &mdash; scikit-learn 0.14-git documentation</title>
+    <title>3.1. Cross-validation: evaluating estimator performance &mdash; scikit-learn 0.15-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../_static/css/bootstrap.min.css" media="screen" />
@@ -22,7 +22,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.14-git',
+        VERSION:     '0.15-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,18 +33,17 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.14-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.15-git documentation" href="../index.html" />
     <link rel="up" title="3. Model selection and evaluation" href="../model_selection.html" />
     <link rel="next" title="3.2. Grid Search: Searching for estimator parameters" href="grid_search.html" />
     <link rel="prev" title="3. Model selection and evaluation" href="../model_selection.html" />
    
        <script type="text/javascript" src="../_static/sidebar.js"></script>
    
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  
   <link rel="canonical" href="http://scikit-learn.org/stable/modules/cross_validation.html" />
-
   <script type="text/javascript">
     $("div.buttonNext, div.buttonPrevious").hover(
        function () {
@@ -58,6 +57,8 @@
     var sidebarbutton = $('#sidebarbutton');
     sidebarbutton.css({'height': '900px'});
   </script>
+ 
+
 
   </head>
   <body>
@@ -83,7 +84,7 @@
 			<li><a href="../user_guide.html">User guide</a></li>
 			<li><a href="classes.html">API</a></li>
 			<li class="divider"></li>
-		        <li><a href="http://scikit-learn.org/dev/">Development</a></li>
+		        <li><a href="http://scikit-learn.org/dev/documentation.html">Development</a></li>
 		        <li><a href="http://scikit-learn.org/0.13/">Scikit-learn 0.13</a></li>
 		        <li><a href="http://scikit-learn.org/0.12/">Scikit-learn 0.12</a></li>
 		        <li><a href="http://scikit-learn.org/0.11/">Scikit-learn 0.11</a></li>
@@ -164,7 +165,7 @@
         </div>
     </div>
     
-      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.14-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+      <p class="doc-version">This documentation is for scikit-learn <strong>version 0.15-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">3.1. Cross-validation: evaluating estimator performance</a><ul>
@@ -292,24 +293,24 @@ time):</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">cross_val_score</span><span class="p">(</span>
 <span class="gp">... </span>   <span class="n">clf</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span>                                            
-<span class="go">array([ 1.  ...,  0.96...,  0.9 ...,  0.96...,  1.        ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span>                                              
+<span class="go">array([ 0.96...,  1.  ...,  0.96...,  0.96...,  1.        ])</span>
 </pre></div>
 </div>
 <p>The mean score and the standard deviation of the score estimate are hence given
 by:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;Accuracy: </span><span class="si">%0.2f</span><span class="s"> (+/- </span><span class="si">%0.2f</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
-<span class="go">Accuracy: 0.97 (+/- 0.07)</span>
+<span class="go">Accuracy: 0.98 (+/- 0.03)</span>
 </pre></div>
 </div>
 <p>By default, the score computed at each CV iteration is the <tt class="docutils literal"><span class="pre">score</span></tt>
 method of the estimator. It is possible to change this by using the
 scoring parameter:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cross_validation</span><span class="o">.</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">scoring</span><span class="o">=</span><span class="s">&#39;f1&#39;</span><span class="p">)</span>
-<span class="gp">... </span>                                                    
-<span class="go">array([ 1.  ...,  0.96...,  0.89...,  0.96...,  1.        ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">&#39;f1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span>                                              
+<span class="go">array([ 0.96...,  1.  ...,  0.96...,  0.96...,  1.        ])</span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="model_evaluation.html#scoring-parameter"><em>The scoring parameter: defining model evaluation rules</em></a> for details.
@@ -333,7 +334,7 @@ validation iterator instead, for instance:</p>
 <div class="topic">
 <p class="topic-title first">Examples</p>
 <ul class="simple">
-<li><a class="reference internal" href="../auto_examples/plot_roc_crossval.html#example-plot-roc-crossval-py"><em>Receiver operating characteristic (ROC) with cross validation</em></a>,</li>
+<li><a class="reference internal" href="../auto_examples/plot_roc_crossval.html#example-plot-roc-crossval-py"><em>Receiver Operating Characteristic (ROC) with cross validation</em></a>,</li>
 <li><a class="reference internal" href="../auto_examples/plot_rfe_with_cross_validation.html#example-plot-rfe-with-cross-validation-py"><em>Recursive feature elimination with cross-validation</em></a>,</li>
 <li><a class="reference internal" href="../auto_examples/grid_search_digits.html#example-grid-search-digits-py"><em>Parameter estimation using grid search with a nested cross-validation</em></a>,</li>
 <li><a class="reference internal" href="../auto_examples/grid_search_text_feature_extraction.html#example-grid-search-text-feature-extraction-py"><em>Sample pipeline for text feature extraction and evaluation</em></a>,</li>
@@ -342,86 +343,51 @@ validation iterator instead, for instance:</p>
 </div>
 <div class="section" id="cross-validation-iterators">
 <h2>3.1.2. Cross validation iterators<a class="headerlink" href="#cross-validation-iterators" title="Permalink to this headline">¶</a></h2>
-<p>The following sections list utilities to generate boolean masks or indices
+<p>The following sections list utilities to generate indices
 that can be used to generate dataset splits according to different cross
 validation strategies.</p>
-<div class="topic">
-<p class="topic-title first">Boolean mask vs integer indices</p>
-<p>Most cross validators support generating both boolean masks or integer
-indices to select the samples from a given fold.</p>
-<p>When the data matrix is sparse, only the integer indices will work as
-expected. Integer indexing is hence the default behavior (since version
-0.10).</p>
-<p>You can explicitly pass <tt class="docutils literal"><span class="pre">indices=False</span></tt> to the constructor of the
-CV object (when supported) to use the boolean mask method instead.</p>
-</div>
 <div class="section" id="k-fold">
 <h3>3.1.2.1. K-fold<a class="headerlink" href="#k-fold" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/sklearn.cross_validation.KFold.html#sklearn.cross_validation.KFold" title="sklearn.cross_validation.KFold"><tt class="xref py py-class docutils literal"><span class="pre">KFold</span></tt></a> divides all the samples in math:<cite>k</cite> groups of samples,
 called folds (if <img class="math" src="../_images/math/d35a51f5f4479cf610e903ad871c5baa6f1fe9c0.png" alt="k = n"/>, this is equivalent to the <em>Leave One
 Out</em> strategy), of equal sizes (if possible). The prediction function is
 learned using <img class="math" src="../_images/math/efce61aab04f52f5d37708f357df021c8baa7434.png" alt="k - 1"/> folds, and the fold left out is used for test.</p>
-<p>Example of 2-fold:</p>
+<p>Example of 2-fold cross-validation on a dataset with 4 samples:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">KFold</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span> <span class="n">n_folds</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">kf</span><span class="p">)</span>
-<span class="go">sklearn.cross_validation.KFold(n=4, n_folds=2)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">kf</span><span class="p">:</span>
-<span class="gp">... </span>     <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span>
-<span class="go">[False False  True  True] [ True  True False False]</span>
-<span class="go">[ True  True False False] [False False  True  True]</span>
-</pre></div>
-</div>
-<p>Each fold is constituted by two arrays: the first one is related to the
-<em>training set</em>, and the second one to the <em>test set</em>.
-Thus, one can create the training/test sets using:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">test</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">test</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>If X or Y are <cite>scipy.sparse</cite> matrices, train and test need to be integer
-indices. It can be obtained by setting the parameter indices to True
-when creating the cross-validation procedure:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span> <span class="n">n_folds</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_folds</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">kf</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span>
 <span class="go">[2 3] [0 1]</span>
 <span class="go">[0 1] [2 3]</span>
 </pre></div>
 </div>
+<p>Each fold is constituted by two arrays: the first one is related to the
+<em>training set</em>, and the second one to the <em>test set</em>.
+Thus, one can create the training/test sets using numpy indexing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">test</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test</span><span class="p">]</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="stratified-k-fold">
 <h3>3.1.2.2. Stratified k-fold<a class="headerlink" href="#stratified-k-fold" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold" title="sklearn.cross_validation.StratifiedKFold"><tt class="xref py py-class docutils literal"><span class="pre">StratifiedKFold</span></tt></a> is a variation of <em>k-fold</em> which returns
-<em>stratified</em> folds:
-each set contains the same percentage of samples
-of each target class as the complete set.</p>
-<p>Example of stratified 2-fold:</p>
+<p><a class="reference internal" href="generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold" title="sklearn.cross_validation.StratifiedKFold"><tt class="xref py py-class docutils literal"><span class="pre">StratifiedKFold</span></tt></a> is a variation of <em>k-fold</em> which returns <em>stratified</em>
+folds: each set contains approximately the same percentage of samples of each
+target class as the complete set.</p>
+<p>Example of stratified 2-fold cross-validation on a dataset with 10 samples from
+two slightly unbalanced classes:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">skf</span><span class="p">)</span>
-<span class="go">sklearn.cross_validation.StratifiedKFold(labels=[0 0 0 1 1 1 0], n_folds=2)</span>
-
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">skf</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span>
-<span class="go">[1 4 6] [0 2 3 5]</span>
-<span class="go">[0 2 3 5] [1 4 6]</span>
+<span class="go">[2 3 6 7 8 9] [0 1 4 5]</span>
+<span class="go">[0 1 3 4 5 8 9] [2 6 7]</span>
+<span class="go">[0 1 2 4 5 6 7] [3 8 9]</span>
 </pre></div>
 </div>
 </div>
@@ -433,13 +399,8 @@ the sample left out. Thus, for <cite>n</cite> samples, we have <cite>n</cite> di
 sets and <cite>n</cite> different tests set. This cross-validation procedure does
 not waste much data as only one sample is removed from the learning set:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">LeaveOneOut</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">loo</span> <span class="o">=</span> <span class="n">LeaveOneOut</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">loo</span><span class="p">)</span>
-<span class="go">sklearn.cross_validation.LeaveOneOut(n=4)</span>
-
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loo</span> <span class="o">=</span> <span class="n">LeaveOneOut</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">loo</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span>
 <span class="go">[1 2 3] [0]</span>
@@ -456,15 +417,10 @@ the possible training/test sets by removing <img class="math" src="../_images/ma
 set. For <img class="math" src="../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n"/> samples, this produces <img class="math" src="../_images/math/dfc4188b2b8c9f457c75ea87f7787cedee484acd.png" alt="{n \choose p}"/> train-test
 pairs. Unlike <a class="reference internal" href="generated/sklearn.cross_validation.LeaveOneOut.html#sklearn.cross_validation.LeaveOneOut" title="sklearn.cross_validation.LeaveOneOut"><tt class="xref py py-class docutils literal"><span class="pre">LeaveOneOut</span></tt></a> and <a class="reference internal" href="generated/sklearn.cross_validation.KFold.html#sklearn.cross_validation.KFold" title="sklearn.cross_validation.KFold"><tt class="xref py py-class docutils literal"><span class="pre">KFold</span></tt></a>, the test sets will
 overlap for <img class="math" src="../_images/math/fc86688cd9e5a4ce262df69345bacac9f89f8ed4.png" alt="p &gt; 1"/>.</p>
-<p>Example of Leave-2-Out:</p>
+<p>Example of Leave-2-Out on a dataset with 4 samples:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">LeavePOut</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lpo</span> <span class="o">=</span> <span class="n">LeavePOut</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">lpo</span><span class="p">)</span>
-<span class="go">sklearn.cross_validation.LeavePOut(n=4, p=2)</span>
-
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lpo</span> <span class="o">=</span> <span class="n">LeavePOut</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">lpo</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span>
 <span class="go">[2 3] [0 1]</span>
@@ -478,24 +434,19 @@ overlap for <img class="math" src="../_images/math/fc86688cd9e5a4ce262df69345bac
 </div>
 <div class="section" id="leave-one-label-out-lolo">
 <h3>3.1.2.5. Leave-One-Label-Out - LOLO<a class="headerlink" href="#leave-one-label-out-lolo" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="generated/sklearn.cross_validation.LeaveOneLabelOut.html#sklearn.cross_validation.LeaveOneLabelOut" title="sklearn.cross_validation.LeaveOneLabelOut"><tt class="xref py py-class docutils literal"><span class="pre">LeaveOneLabelOut</span></tt></a> (LOLO) is a cross-validation scheme which
-holds out the samples according to a third-party provided label. This
-label information can be used to encode arbitrary domain specific
-stratifications of the samples as integers.</p>
+<p><a class="reference internal" href="generated/sklearn.cross_validation.LeaveOneLabelOut.html#sklearn.cross_validation.LeaveOneLabelOut" title="sklearn.cross_validation.LeaveOneLabelOut"><tt class="xref py py-class docutils literal"><span class="pre">LeaveOneLabelOut</span></tt></a> (LOLO) is a cross-validation scheme which holds out
+the samples according to a third-party provided array of integer labels. This
+label information can be used to encode arbitrary domain specific pre-defined
+cross-validation folds.</p>
 <p>Each training set is thus constituted by all the samples except the ones
 related to a specific label.</p>
 <p>For example, in the cases of multiple experiments, <em>LOLO</em> can be used to
 create a cross-validation based on the different experiments: we create
 a training set using the samples of all the experiments except one:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">LeaveOneLabelOut</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lolo</span> <span class="o">=</span> <span class="n">LeaveOneLabelOut</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">lolo</span><span class="p">)</span>
-<span class="go">sklearn.cross_validation.LeaveOneLabelOut(labels=[1 1 2 2])</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">lolo</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span>
 <span class="go">[2 3] [0 1]</span>
@@ -505,6 +456,16 @@ a training set using the samples of all the experiments except one:</p>
 <p>Another common application is to use time information: for instance the
 labels could be the year of collection of the samples and thus allow
 for cross-validation against time-based splits.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Contrary to <a class="reference internal" href="generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold" title="sklearn.cross_validation.StratifiedKFold"><tt class="xref py py-class docutils literal"><span class="pre">StratifiedKFold</span></tt></a>, <strong>the `labels` of
+:class:`LeaveOneLabelOut` should not encode the target class to predict</strong>:
+the goal of <a class="reference internal" href="generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold" title="sklearn.cross_validation.StratifiedKFold"><tt class="xref py py-class docutils literal"><span class="pre">StratifiedKFold</span></tt></a> is to rebalance dataset classes across
+the train / test split to ensure that the train and test folds have
+approximately the same percentage of samples of each class while
+<a class="reference internal" href="generated/sklearn.cross_validation.LeaveOneLabelOut.html#sklearn.cross_validation.LeaveOneLabelOut" title="sklearn.cross_validation.LeaveOneLabelOut"><tt class="xref py py-class docutils literal"><span class="pre">LeaveOneLabelOut</span></tt></a> will do the opposite by ensuring that the samples
+of the train and test fold will not share the same label value.</p>
+</div>
 </div>
 <div class="section" id="leave-p-label-out">
 <h3>3.1.2.6. Leave-P-Label-Out<a class="headerlink" href="#leave-p-label-out" title="Permalink to this headline">¶</a></h3>
@@ -512,14 +473,9 @@ for cross-validation against time-based splits.</p>
 samples related to <img class="math" src="../_images/math/4b4cade9ca8a2c8311fafcf040bc5b15ca507f52.png" alt="P"/> labels for each training/test set.</p>
 <p>Example of Leave-2-Label Out:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">LeavePLabelOut</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lplo</span> <span class="o">=</span> <span class="n">LeavePLabelOut</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">lplo</span><span class="p">)</span>
-<span class="go">sklearn.cross_validation.LeavePLabelOut(labels=[1 1 2 2 3 3], p=2)</span>
-
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lplo</span> <span class="o">=</span> <span class="n">LeavePLabelOut</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">lplo</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span>
 <span class="go">[4 5] [0 1 2 3]</span>
@@ -540,11 +496,6 @@ generator.</p>
 <p>Here is a usage example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">ss</span><span class="p">)</span>
-<span class="go">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">ss</span><span class="p">)</span>                                           
-<span class="go">ShuffleSplit(5, n_iter=3, test_size=0.25, indices=True, ...)</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">ss</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">))</span>
 <span class="gp">...</span>
@@ -578,14 +529,8 @@ smaller than the total dataset if it is very large.</p>
 <p class="last">Contrary to other cross-validation strategies, bootstrapping
 will allow some samples to occur several times in each splits.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bs</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">Bootstrap</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">bs</span><span class="p">)</span>
-<span class="go">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">bs</span><span class="p">)</span>
-<span class="go">Bootstrap(9, n_iter=3, train_size=5, test_size=4, random_state=0)</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">bs</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bs</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">Bootstrap</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">bs</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">))</span>
 <span class="gp">...</span>
 <span class="go">[1 8 7 7 8] [0 3 0 5]</span>
@@ -628,6 +573,7 @@ model. This is the topic if the next section: <a class="reference internal" href
     
      </div>
 
+    <script src="../_static/js/bootstrap.min.js" type="text/javascript"></script>
     
     <script type="text/javascript">
       var _gaq = _gaq || [];
