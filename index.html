@@ -39,6 +39,20 @@
   <script src="_static/js/bootstrap.min.js" type="text/javascript"></script>
   <link rel="canonical" href="http://scikit-learn.org/stable/index.html" />
 
+  <script type="text/javascript">
+    $("div.buttonNext, div.buttonPrevious").hover(
+       function () {
+           $(this).css('background-color', '#FF9C34');
+       },
+       function () {
+           $(this).css('background-color', '#A7D6E2');
+       }
+    );
+    var bodywrapper = $('.bodywrapper');
+    var sidebarbutton = $('#sidebarbutton');
+    sidebarbutton.css({'height': '900px'});
+  </script>
+
 
   </head>
   <body>
