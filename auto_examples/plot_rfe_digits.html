@@ -194,30 +194,30 @@ a digit classification task.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_rfe_digits.py"><tt class="xref download docutils literal"><span class="pre">plot_rfe_digits.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">SVC</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits"><span class="n">load_digits</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.feature_selection.RFE.html#sklearn.feature_selection.RFE"><span class="n">RFE</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">RFE</span>
 
 <span class="c"># Load the digits dataset</span>
-<span class="n">digits</span> <span class="o">=</span> <a href="../modules/generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits"><span class="n">load_digits</span></a><span class="p">()</span>
+<span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span>
 
 <span class="c"># Create the RFE object and rank each pixel</span>
-<a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">svc</span></a> <span class="o">=</span> <a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">SVC</span></a><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&quot;linear&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a href="../modules/generated/sklearn.feature_selection.RFE.html#sklearn.feature_selection.RFE"><span class="n">rfe</span></a> <span class="o">=</span> <a href="../modules/generated/sklearn.feature_selection.RFE.html#sklearn.feature_selection.RFE"><span class="n">RFE</span></a><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">svc</span></a><span class="p">,</span> <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a href="../modules/generated/sklearn.feature_selection.RFE.html#sklearn.feature_selection.RFE"><span class="n">rfe</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">ranking</span> <span class="o">=</span> <a href="../modules/generated/sklearn.feature_selection.RFE.html#sklearn.feature_selection.RFE"><span class="n">rfe</span></a><span class="o">.</span><span class="n">ranking_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&quot;linear&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rfe</span> <span class="o">=</span> <span class="n">RFE</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">svc</span><span class="p">,</span> <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rfe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ranking</span> <span class="o">=</span> <span class="n">rfe</span><span class="o">.</span><span class="n">ranking_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="c"># Plot pixel ranking</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.matshow"><span class="n">pl</span><span class="o">.</span><span class="n">matshow</span></a><span class="p">(</span><span class="n">ranking</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/colorbar_api.html#matplotlib.colorbar"><span class="n">pl</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">()</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&quot;Ranking of pixels with RFE&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">ranking</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Ranking of pixels with RFE&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  24.89 seconds</p>
+<p><strong>Total running time of the example:</strong>  9.44 seconds</p>
 </div>
 
 

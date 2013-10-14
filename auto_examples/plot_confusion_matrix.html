@@ -191,7 +191,7 @@ the predicted label is equal to the true label, while
 off-diagonal elements are those that are mislabeled by the
 classifier. The higher the diagonal values of the confusion
 matrix the better, indicating many correct predictions.</p>
-<img alt="../_images/plot_confusion_matrix_1.png" class="align-center" src="../_images/plot_confusion_matrix_1.png" />
+<img alt="../_images/plot_confusion_matrix_11.png" class="align-center" src="../_images/plot_confusion_matrix_11.png" />
 <p><strong>Script output</strong>:</p>
 <div class="highlight-python"><pre>[[13  0  0]
  [ 0 15  1]
@@ -201,38 +201,38 @@ matrix the better, indicating many correct predictions.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span><span class="p">,</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.cross_validation.train_test_split.html#sklearn.cross_validation.train_test_split"><span class="n">train_test_split</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix"><span class="n">confusion_matrix</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
 
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 
 <span class="c"># import some data to play with</span>
-<span class="n">iris</span> <span class="o">=</span> <a href="../modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris"><span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span></a><span class="p">()</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
 
 <span class="c"># Split the data into a training set and a test set</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="../modules/generated/sklearn.cross_validation.train_test_split.html#sklearn.cross_validation.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c"># Run classifier</span>
-<a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">classifier</span></a> <span class="o">=</span> <a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">svm</span><span class="o">.</span><span class="n">SVC</span></a><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span>
-<span class="n">y_pred</span> <span class="o">=</span> <a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">classifier</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
 <span class="c"># Compute confusion matrix</span>
-<span class="n">cm</span> <span class="o">=</span> <a href="../modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix"><span class="n">confusion_matrix</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
 
 <span class="c"># Show confusion matrix in a separate window</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.matshow"><span class="n">pl</span><span class="o">.</span><span class="n">matshow</span></a><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;Confusion matrix&#39;</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/colorbar_api.html#matplotlib.colorbar"><span class="n">pl</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">()</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylabel"><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s">&#39;True label&#39;</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&#39;Predicted label&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Confusion matrix&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;True label&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Predicted label&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.22 seconds</p>
+<p><strong>Total running time of the example:</strong>  0.07 seconds</p>
 </div>
 
 

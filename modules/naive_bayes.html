@@ -246,7 +246,7 @@ Proc. FLAIRS.</li>
 <p><a class="reference internal" href="generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB" title="sklearn.naive_bayes.GaussianNB"><tt class="xref py py-class docutils literal"><span class="pre">GaussianNB</span></tt></a> implements the Gaussian Naive Bayes algorithm for
 classification. The likelihood of the features is assumed to be Gaussian:</p>
 <div class="math">
-<p><img src="../_images/math/66a4c26a170ace772cba1e80b9e1f389538c594a.png" alt="P(x_i \mid y) &amp;= \frac{1}{\sqrt{2\pi\sigma^2_y}} \exp\left(-\frac{ (x_i - \mu_y)^2}{2\pi\sigma^2_y}\right)"/></p>
+<p><img src="../_images/math/e7afa4d9cdaa0b391ea1fec2b895b21361524875.png" alt="P(x_i \mid y) &amp;= \frac{1}{\sqrt{2\pi\sigma^2_y}} \exp\left(-\frac{(x_i - \mu_y)^2}{2\sigma^2_y}\right)"/></p>
 </div><p>The parameters <img class="math" src="../_images/math/2409322e14bd3cbf9b678cfa12452196779d78da.png" alt="\sigma_y"/> and <img class="math" src="../_images/math/da3f8c3ea049e5151ffba0cec642beddc5c038d0.png" alt="\mu_y"/>
 are estimated using maximum likelihood.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
