@@ -1,0 +1,254 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NiLearn: Machine learning for NeuroImaging in Python &mdash; Machine learning for NeuroImaging</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Machine learning for NeuroImaging" href="../index.html" />
+<meta content="True" name="HandheldFriendly">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+<meta name="keywords" content="nilearn, neuroimaging, python, neuroscience, machinelearning">
+
+<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-41920728-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </head>
+  <body>
+<div id="logo-banner">
+  <div class="logo">
+    <a href="../index.html">
+      <img src="../_static/nilearn-logo.png" alt="NiLearn logo"  border="0" />
+    </a>
+  </div>
+  <div class="banner">
+    <h1>NiLearn:</h1>
+    <h2>Machine learning for Neuro-Imaging in Python</h2>
+  </div>
+  <div class="search_form">
+    <div id="cse" style="width: 100%;"></div>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+      google.load('search', '1', {language : 'en'});
+      google.setOnLoadCallback(function() {
+      var customSearchControl = new google.search.CustomSearchControl('014136483057745874622:r-npolb1uki');
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse', options);
+      }, true);
+    </script>
+  </div>
+</div>
+
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="index.html">Examples</a> |&nbsp;</li>
+<li><a href="../modules/reference.html">Reference</a> |&nbsp;</li>
+<li id="navbar-about"><a href="../AUTHORS.html">About</a>|&nbsp;</li>
+<li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="../AUTHORS.html#citing">citing the
+                    scikit-learn</a> if you use it.</p></li>
+  </ul>
+
+
+<div class="navbar">
+</div> <!-- end navbar -->
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p id="example-setup-py"><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/setup.py"><tt class="xref download docutils literal"><span class="pre">setup.py</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+
+<span class="n">DISTNAME</span> <span class="o">=</span> <span class="s">&#39;nilearn&#39;</span>
+<span class="n">DESCRIPTION</span> <span class="o">=</span> <span class="s">&#39;Statistical learning for neuroimaging in Python&#39;</span>
+<span class="n">LONG_DESCRIPTION</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;README.rst&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">MAINTAINER</span> <span class="o">=</span> <span class="s">&#39;Gael Varoquaux&#39;</span>
+<span class="n">MAINTAINER_EMAIL</span> <span class="o">=</span> <span class="s">&#39;gael.varoquaux@normalesup.org&#39;</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">&#39;http://nilearn.github.com&#39;</span>
+<span class="n">LICENSE</span> <span class="o">=</span> <span class="s">&#39;new BSD&#39;</span>
+<span class="n">DOWNLOAD_URL</span> <span class="o">=</span> <span class="s">&#39;http://nilearn.github.com&#39;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s">&#39;0.1-git&#39;</span>
+
+<span class="kn">from</span> <span class="nn">numpy.distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+
+
+<span class="c"># For some commands, use setuptools</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">((</span><span class="s">&#39;develop&#39;</span><span class="p">,</span> <span class="s">&#39;sdist&#39;</span><span class="p">,</span> <span class="s">&#39;release&#39;</span><span class="p">,</span> <span class="s">&#39;bdist_egg&#39;</span><span class="p">,</span> <span class="s">&#39;bdist_rpm&#39;</span><span class="p">,</span>
+           <span class="s">&#39;bdist&#39;</span><span class="p">,</span> <span class="s">&#39;bdist_dumb&#39;</span><span class="p">,</span> <span class="s">&#39;bdist_wininst&#39;</span><span class="p">,</span> <span class="s">&#39;install_egg_info&#39;</span><span class="p">,</span>
+           <span class="s">&#39;build_sphinx&#39;</span><span class="p">,</span> <span class="s">&#39;egg_info&#39;</span><span class="p">,</span> <span class="s">&#39;easy_install&#39;</span><span class="p">,</span> <span class="s">&#39;upload&#39;</span><span class="p">,</span>
+            <span class="p">))</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+
+
+<span class="k">def</span> <span class="nf">configuration</span><span class="p">(</span><span class="n">parent_package</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">top_path</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s">&#39;MANIFEST&#39;</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">&#39;MANIFEST&#39;</span><span class="p">)</span>
+
+    <span class="kn">from</span> <span class="nn">numpy.distutils.misc_util</span> <span class="kn">import</span> <span class="n">Configuration</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">parent_package</span><span class="p">,</span> <span class="n">top_path</span><span class="p">)</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">add_subpackage</span><span class="p">(</span><span class="s">&#39;nilearn&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_subpackage</span><span class="p">(</span><span class="s">&#39;nilearn/input_data&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_subpackage</span><span class="p">(</span><span class="s">&#39;nilearn/decomposition&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_subpackage</span><span class="p">(</span><span class="s">&#39;nilearn/decoding&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_subpackage</span><span class="p">(</span><span class="s">&#39;nilearn/image&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_subpackage</span><span class="p">(</span><span class="s">&#39;nilearn/_utils&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">config</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">old_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    <span class="n">local_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="c"># python 3 compatibility stuff.</span>
+    <span class="c"># Simplified version of scipy strategy: copy files into</span>
+    <span class="c"># build/py3k, and patch them using lib2to3.</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">lib2to3cache</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">local_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="s">&#39;build&#39;</span><span class="p">,</span> <span class="s">&#39;py3k&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">local_path</span><span class="p">):</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Copying source tree into build/py3k for 2to3 transformation&quot;</span>
+              <span class="s">&quot;...&quot;</span><span class="p">)</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">old_path</span><span class="p">,</span> <span class="s">&#39;nilearn&#39;</span><span class="p">),</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="s">&#39;nilearn&#39;</span><span class="p">))</span>
+        <span class="kn">import</span> <span class="nn">lib2to3.main</span>
+        <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Converting to Python3 via 2to3...&quot;</span><span class="p">)</span>
+        <span class="n">_old_stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>  <span class="c"># supress noisy output</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">lib2to3</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="s">&quot;lib2to3.fixes&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;-x&#39;</span><span class="p">,</span> <span class="s">&#39;import&#39;</span><span class="p">,</span> <span class="s">&#39;-w&#39;</span><span class="p">,</span> <span class="n">local_path</span><span class="p">])</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">_old_stdout</span>
+
+        <span class="k">if</span> <span class="n">res</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;2to3 failed, exiting ...&#39;</span><span class="p">)</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">local_path</span><span class="p">)</span>
+
+    <span class="n">setup</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">configuration</span><span class="p">,</span>
+          <span class="n">name</span><span class="o">=</span><span class="n">DISTNAME</span><span class="p">,</span>
+          <span class="n">maintainer</span><span class="o">=</span><span class="n">MAINTAINER</span><span class="p">,</span>
+          <span class="n">include_package_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+          <span class="n">maintainer_email</span><span class="o">=</span><span class="n">MAINTAINER_EMAIL</span><span class="p">,</span>
+          <span class="n">description</span><span class="o">=</span><span class="n">DESCRIPTION</span><span class="p">,</span>
+          <span class="n">license</span><span class="o">=</span><span class="n">LICENSE</span><span class="p">,</span>
+          <span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span>
+          <span class="n">version</span><span class="o">=</span><span class="n">VERSION</span><span class="p">,</span>
+          <span class="n">download_url</span><span class="o">=</span><span class="n">DOWNLOAD_URL</span><span class="p">,</span>
+          <span class="n">long_description</span><span class="o">=</span><span class="n">LONG_DESCRIPTION</span><span class="p">,</span>
+          <span class="n">zip_safe</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="c"># the package can run out of an .egg file</span>
+          <span class="n">classifiers</span><span class="o">=</span><span class="p">[</span>
+              <span class="s">&#39;Intended Audience :: Science/Research&#39;</span><span class="p">,</span>
+              <span class="s">&#39;Intended Audience :: Developers&#39;</span><span class="p">,</span>
+              <span class="s">&#39;License :: OSI Approved&#39;</span><span class="p">,</span>
+              <span class="s">&#39;Programming Language :: C&#39;</span><span class="p">,</span>
+              <span class="s">&#39;Programming Language :: Python&#39;</span><span class="p">,</span>
+              <span class="s">&#39;Topic :: Software Development&#39;</span><span class="p">,</span>
+              <span class="s">&#39;Topic :: Scientific/Engineering&#39;</span><span class="p">,</span>
+              <span class="s">&#39;Operating System :: Microsoft :: Windows&#39;</span><span class="p">,</span>
+              <span class="s">&#39;Operating System :: POSIX&#39;</span><span class="p">,</span>
+              <span class="s">&#39;Operating System :: Unix&#39;</span><span class="p">,</span>
+              <span class="s">&#39;Operating System :: MacOS&#39;</span>
+             <span class="p">],</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="../index.html">NiLearn Home</a> |&nbsp;</li>
+<li><a href="../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="index.html">Examples</a> |&nbsp;</li>
+<li><a href="../modules/reference.html">Reference</a> |&nbsp;</li>
+<li id="navbar-about"><a href="../AUTHORS.html">About</a>|&nbsp;</li>
+<li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+            &copy; INRIA Parietal 2010-2013.
+          Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+        <span style="padding-left: 5ex;">
+          <a href="../_sources/auto_examples/setup.txt"
+        	 rel="nofollow">Show this page source</a>
+        </span>
+    </div>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 
 
-.. _example_nilearn_plot_adhd_covariance.py:
+.. _example_plot_adhd_covariance.py:
 
 
 Computation of covariance matrix between brain regions
@@ -10,47 +10,8 @@ This example shows how to extract signals from regions defined by an atlas,
 and to estimate a covariance matrix based on these signals.
 
 
-
-.. rst-class:: horizontal
-
-
-    *
-
-      .. image:: images/plot_adhd_covariance_2.png
-            :scale: 47
-
-    *
-
-      .. image:: images/plot_adhd_covariance_1.png
-            :scale: 47
-
-
 **Python source code:** :download:`plot_adhd_covariance.py <plot_adhd_covariance.py>`
 
 .. literalinclude:: plot_adhd_covariance.py
     :lines: 8-
-
-**Script output**::
-
-  Downloading data from ftp://www.nitrc.org/fcon_1000/htdocs/indi/adhd200/sites/ADHD200_40sub_preprocessed.tgz ...
-  ...done. (8879 seconds, 147 min)
-  extracting data from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/adhd/ADHD200_40sub_preprocessed.tgz...
-     ...done.
-  -- Loading raw data (1) and masking ...
-  Downloading data from https://team.inria.fr/parietal/files/2013/05/MSDL_rois.zip ...
-  ...done. (0 seconds, 0 min)
-  extracting data from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/msdl_atlas/MSDL_rois.zip...
-     ...done.
-  -- Computing confounds ...
-  -- Computing region signals ...
-  [NiftiMapsMasker.fit] loading regions from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/msdl_atlas/MSDL_rois/msdl_rois.nii
-  [NiftiMapsMasker.transform] loading images from /media/0fa98ac3-0522-42c0-b3f0-7304fffa9b10/jaques/nilearn/nilearn/nilearn_data/adhd/ADHD200_40sub_preprocessed/data/0010128/0010128_rest_tshift_RPI_voreg_mni.nii.gz
-  [NiftiMapsMasker.transform] resampling images to fit maps
-  [NiftiMapsMasker.transform] extracting region signals
-  [NiftiMapsMasker.transform] cleaning extracted signals
-  -- Computing covariance matrices ...
-
-
-
-**Total running time of the example:**  9579.23 seconds
     

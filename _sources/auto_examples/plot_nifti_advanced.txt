@@ -1,6 +1,6 @@
 
 
-.. _example_nilearn_plot_nifti_advanced.py:
+.. _example_plot_nifti_advanced.py:
 
 
 Automatic mask computation with parameter tweaking
@@ -9,40 +9,11 @@ Automatic mask computation with parameter tweaking
 In this example, the Nifti masker is used to automatically compute a mask.
 Using some visualization, one can see that the default parameters of the
 nifti masker are not suited for this dataset. They are consequently tweaked
-to obtained a decent mask.
-
-
-
-.. rst-class:: horizontal
-
-
-    *
-
-      .. image:: images/plot_nifti_advanced_3.png
-            :scale: 47
-
-    *
-
-      .. image:: images/plot_nifti_advanced_1.png
-            :scale: 47
-
-    *
-
-      .. image:: images/plot_nifti_advanced_2.png
-            :scale: 47
+to obtain a decent mask.
 
 
 **Python source code:** :download:`plot_nifti_advanced.py <plot_nifti_advanced.py>`
 
 .. literalinclude:: plot_nifti_advanced.py
     :lines: 10-
-
-**Script output**::
-
-  Trended: mean -0.00, std 1.00
-  Detrended: mean -0.00, std 1.00
-
-
-
-**Total running time of the example:**  9.25 seconds
     

@@ -1,23 +1,22 @@
-.. include:: includes/big_toc_css.rst
+.. _supervised_learning:
 
-.. _supervised-learning:
-
+====================
 Supervised learning
------------------------
+====================
+
+`Supervised learning <http://en.wikipedia.org/wiki/Supervised_learning>`_
+is focused on predicting an output value. In NeuroImaging it is often
+used in the context of *decoding*: predicting behavior from brain images.
+It may also be useful for diagnostic.
+
+____
+
+.. include:: includes/big_toc_css.rst
 
 .. toctree::
 
-    modules/linear_model
-    modules/svm
-    modules/sgd
-    modules/neighbors
-    modules/gaussian_process
-    modules/cross_decomposition.rst
-    modules/naive_bayes
-    modules/tree
-    modules/ensemble
-    modules/multiclass
-    modules/feature_selection.rst
-    modules/label_propagation.rst
-    modules/lda_qda.rst
-    modules/isotonic.rst
+   simulations.rst
+   haxby_decoding.rst
+   haxby_searchlight.rst
+
+

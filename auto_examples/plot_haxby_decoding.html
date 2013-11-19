@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '0.1a',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -83,7 +83,7 @@
 <li><a href="../index.html">NiLearn Home</a> |&nbsp;</li>
 <li><a href="../user_guide.html">User Guide</a> |&nbsp;</li>
 <li><a href="index.html">Examples</a> |&nbsp;</li>
-<li><a href="../modules/classes.html">Reference</a> |&nbsp;</li>
+<li><a href="../modules/reference.html">Reference</a> |&nbsp;</li>
 <li id="navbar-about"><a href="../AUTHORS.html">About</a>|&nbsp;</li>
 <li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
  
@@ -116,11 +116,10 @@
           <div class="body">
             
   <div class="section" id="the-haxby-dataset-face-vs-house-in-object-recognition">
-<span id="example-nilearn-plot-haxby-decoding-py"></span><h1>The haxby dataset: face vs house in object recognition<a class="headerlink" href="#the-haxby-dataset-face-vs-house-in-object-recognition" title="Permalink to this headline">¶</a></h1>
+<span id="example-plot-haxby-decoding-py"></span><h1>The haxby dataset: face vs house in object recognition<a class="headerlink" href="#the-haxby-dataset-face-vs-house-in-object-recognition" title="Permalink to this headline">¶</a></h1>
 <p>A significant part of the running time of this example is actually spent
 in loading the data: we load all the data but only use the face and
 houses conditions.</p>
-<img alt="../_images/plot_haxby_decoding_1.png" class="align-center" src="../_images/plot_haxby_decoding_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_haxby_decoding.py"><tt class="xref download docutils literal"><span class="pre">plot_haxby_decoding.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">### Load Haxby dataset ########################################################</span>
 <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
@@ -192,11 +191,11 @@ houses conditions.</p>
 <span class="c">### Visualisation #############################################################</span>
 
 <span class="c">### Look at the discriminating weights</span>
-<span class="n">svc</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">support_vectors_</span>
+<span class="n">coef</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
 <span class="c"># reverse feature selection</span>
-<span class="n">svc</span> <span class="o">=</span> <span class="n">feature_selection</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">svc</span><span class="p">)</span>
+<span class="n">coef</span> <span class="o">=</span> <span class="n">feature_selection</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">coef</span><span class="p">)</span>
 <span class="c"># reverse masking</span>
-<span class="n">niimg</span> <span class="o">=</span> <span class="n">nifti_masker</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">svc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">niimg</span> <span class="o">=</span> <span class="n">nifti_masker</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">coef</span><span class="p">)</span>
 
 <span class="c"># We use a masked array so that the voxels at &#39;-1&#39; are displayed</span>
 <span class="c"># transparently</span>
@@ -208,7 +207,7 @@ houses conditions.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;SVM vectors&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">mean_img</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">27</span><span class="p">]),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">,</span>
           <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">act</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">27</span><span class="p">]),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">hot</span><span class="p">,</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">act</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">hot</span><span class="p">,</span>
           <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
@@ -245,11 +244,6 @@ houses conditions.</p>
 <span class="c"># Classification accuracy: 0.986111  / Chance level: 0.500000</span>
 </pre></div>
 </div>
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>=== ANOVA ===
-Classification accuracy: 1.000000  / Chance level: 0.500000</pre>
-</div>
-<p><strong>Total running time of the example:</strong>  25.35 seconds</p>
 </div>
 
 
@@ -267,7 +261,7 @@ Classification accuracy: 1.000000  / Chance level: 0.500000</pre>
 <li><a href="../index.html">NiLearn Home</a> |&nbsp;</li>
 <li><a href="../user_guide.html">User Guide</a> |&nbsp;</li>
 <li><a href="index.html">Examples</a> |&nbsp;</li>
-<li><a href="../modules/classes.html">Reference</a> |&nbsp;</li>
+<li><a href="../modules/reference.html">Reference</a> |&nbsp;</li>
 <li id="navbar-about"><a href="../AUTHORS.html">About</a>|&nbsp;</li>
 <li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
  

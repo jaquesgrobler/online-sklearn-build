@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1',
+        VERSION:     '0.1a',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -83,7 +83,7 @@
 <li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
 <li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
 <li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
-<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+<li><a href="../reference.html">Reference</a> |&nbsp;</li>
 <li id="navbar-about"><a href="../../AUTHORS.html">About</a>|&nbsp;</li>
 <li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
  
@@ -116,7 +116,7 @@
           <div class="body">
             
   <div class="section" id="nilearn-input-data-niftimasker">
-<h1>7.3.1.1. nilearn.input_data.NiftiMasker<a class="headerlink" href="#nilearn-input-data-niftimasker" title="Permalink to this headline">¶</a></h1>
+<h1>4.3.1.1. nilearn.input_data.NiftiMasker<a class="headerlink" href="#nilearn-input-data-niftimasker" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="nilearn.input_data.NiftiMasker">
 <em class="property">class </em><tt class="descclassname">nilearn.input_data.</tt><tt class="descname">NiftiMasker</tt><big>(</big><em>mask=None</em>, <em>sessions=None</em>, <em>smoothing_fwhm=None</em>, <em>standardize=True</em>, <em>detrend=False</em>, <em>low_pass=None</em>, <em>high_pass=None</em>, <em>t_r=None</em>, <em>target_affine=None</em>, <em>target_shape=None</em>, <em>mask_connected=True</em>, <em>mask_opening=2</em>, <em>mask_lower_cutoff=0.2</em>, <em>mask_upper_cutoff=0.9</em>, <em>memory_level=0</em>, <em>memory=Memory(cachedir=None)</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#nilearn.input_data.NiftiMasker" title="Permalink to this definition">¶</a></dt>
@@ -125,89 +125,89 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>mask: filename or NiImage, optional</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>mask</strong> : filename or NiImage, optional</p>
 <blockquote>
 <div><p>Mask of the data. If not given, a mask is computed in the fit step.
 Optional parameters detailed below (mask_connected...) can be set to
 fine tune the mask extraction.</p>
 </div></blockquote>
-<p><strong>sessions: numpy array, optional</strong> :</p>
+<p><strong>sessions</strong> : numpy array, optional</p>
 <blockquote>
 <div><p>Add a session level to the preprocessing. Each session will be
 detrended independently. Must be a 1D array of n_samples elements.</p>
 </div></blockquote>
-<p><strong>smoothing_fwhm: float, optional</strong> :</p>
+<p><strong>smoothing_fwhm</strong> : float, optional</p>
 <blockquote>
 <div><p>If smoothing_fwhm is not None, it gives the full-width half maximum in
 millimeters of the spatial smoothing to apply to the signal.</p>
 </div></blockquote>
-<p><strong>standardize: boolean, optional</strong> :</p>
+<p><strong>standardize</strong> : boolean, optional</p>
 <blockquote>
 <div><p>If standardize is True, the time-series are centered and normed:
-their mean is put to 0 and their variance to 1.</p>
+their mean is put to 0 and their variance to 1 in the time dimension.</p>
 </div></blockquote>
-<p><strong>detrend: boolean, optional</strong> :</p>
+<p><strong>detrend</strong> : boolean, optional</p>
 <blockquote>
 <div><p>This parameter is passed to signal.clean. Please see the related
 documentation for details</p>
 </div></blockquote>
-<p><strong>low_pass: False or float, optional</strong> :</p>
+<p><strong>low_pass</strong> : False or float, optional</p>
 <blockquote>
 <div><p>This parameter is passed to signal.clean. Please see the related
 documentation for details</p>
 </div></blockquote>
-<p><strong>high_pass: False or float, optional</strong> :</p>
+<p><strong>high_pass</strong> : False or float, optional</p>
 <blockquote>
 <div><p>This parameter is passed to signal.clean. Please see the related
 documentation for details</p>
 </div></blockquote>
-<p><strong>t_r: float, optional</strong> :</p>
+<p><strong>t_r</strong> : float, optional</p>
 <blockquote>
 <div><p>This parameter is passed to signal.clean. Please see the related
 documentation for details</p>
 </div></blockquote>
-<p><strong>target_affine: 3x3 or 4x4 matrix, optional</strong> :</p>
+<p><strong>target_affine</strong> : 3x3 or 4x4 matrix, optional</p>
 <blockquote>
 <div><p>This parameter is passed to image.resample_img. Please see the
 related documentation for details.</p>
 </div></blockquote>
-<p><strong>target_shape: 3-tuple of integers, optional</strong> :</p>
+<p><strong>target_shape</strong> : 3-tuple of integers, optional</p>
 <blockquote>
 <div><p>This parameter is passed to image.resample_img. Please see the
 related documentation for details.</p>
 </div></blockquote>
-<p><strong>mask_connected: boolean, optional</strong> :</p>
+<p><strong>mask_connected</strong> : boolean, optional</p>
 <blockquote>
 <div><p>If mask is None, this parameter is passed to masking.compute_epi_mask
 for mask computation. Please see the related documentation for details.</p>
 </div></blockquote>
-<p><strong>mask_opening: int, optional</strong> :</p>
+<p><strong>mask_opening</strong> : int, optional</p>
 <blockquote>
 <div><p>If mask is None, this parameter is passed to masking.compute_epi_mask
 for mask computation. Please see the related documentation for details.</p>
 </div></blockquote>
-<p><strong>mask_lower_cutoff: float, optional</strong> :</p>
+<p><strong>mask_lower_cutoff</strong> : float, optional</p>
 <blockquote>
 <div><p>If mask is None, this parameter is passed to masking.compute_epi_mask
 for mask computation. Please see the related documentation for details.</p>
 </div></blockquote>
-<p><strong>mask_upper_cutoff: float, optional</strong> :</p>
+<p><strong>mask_upper_cutoff</strong> : float, optional</p>
 <blockquote>
 <div><p>If mask is None, this parameter is passed to masking.compute_epi_mask
 for mask computation. Please see the related documentation for details.</p>
 </div></blockquote>
-<p><strong>memory: instance of joblib.Memory or string</strong> :</p>
+<p><strong>memory</strong> : instance of joblib.Memory or string</p>
 <blockquote>
 <div><p>Used to cache the masking process.
 By default, no caching is done. If a string is given, it is the
 path to the caching directory.</p>
 </div></blockquote>
-<p><strong>memory_level: integer, optional</strong> :</p>
+<p><strong>memory_level</strong> : integer, optional</p>
 <blockquote>
 <div><p>Rough estimator of the amount of memory used by caching. Higher value
 means more memory for caching.</p>
 </div></blockquote>
-<p><strong>verbose: integer, optional</strong> :</p>
+<p><strong>verbose</strong> : integer, optional</p>
 <blockquote class="last">
 <div><p>Indicate the level of verbosity. By default, nothing is printed</p>
 </div></blockquote>
@@ -245,7 +245,10 @@ means more memory for caching.</p>
 <tr class="row-even"><td><a class="reference internal" href="#nilearn.input_data.NiftiMasker.transform" title="nilearn.input_data.NiftiMasker.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a>(niimgs[,&nbsp;confounds])</td>
 <td>Apply mask, spatial and temporal preprocessing</td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">transform_single_niimgs</span></tt>(niimgs[,&nbsp;confounds,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#nilearn.input_data.NiftiMasker.transform_niimgs" title="nilearn.input_data.NiftiMasker.transform_niimgs"><tt class="xref py py-obj docutils literal"><span class="pre">transform_niimgs</span></tt></a>(niimgs_list[,&nbsp;confounds,&nbsp;...])</td>
+<td>Prepare multi subject data in parallel</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">transform_single_niimgs</span></tt>(niimgs[,&nbsp;confounds,&nbsp;...])</td>
 <td></td>
 </tr>
 </tbody>
@@ -370,6 +373,38 @@ related documentation for details</p>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="nilearn.input_data.NiftiMasker.transform_niimgs">
+<tt class="descname">transform_niimgs</tt><big>(</big><em>niimgs_list</em>, <em>confounds=None</em>, <em>copy=True</em>, <em>n_jobs=1</em><big>)</big><a class="headerlink" href="#nilearn.input_data.NiftiMasker.transform_niimgs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare multi subject data in parallel</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>niimgs_list: list of niimgs</strong> :</p>
+<blockquote>
+<div><p>List of niimgs file to prepare. One item per subject.</p>
+</div></blockquote>
+<p><strong>confounds: list of confounds, optional</strong> :</p>
+<blockquote>
+<div><p>List of confounds. Must be of same length than niimgs_list.</p>
+</div></blockquote>
+<p><strong>copy: boolean, optional</strong> :</p>
+<blockquote>
+<div><p>If True, guarantees that output array has no memory in common with
+input array.</p>
+</div></blockquote>
+<p><strong>n_jobs: integer, optional</strong> :</p>
+<blockquote class="last">
+<div><p>The number of cpus to use to do the computation. -1 means
+&#8216;all cpus&#8217;.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -389,7 +424,7 @@ related documentation for details</p>
 <li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
 <li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
 <li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
-<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+<li><a href="../reference.html">Reference</a> |&nbsp;</li>
 <li id="navbar-about"><a href="../../AUTHORS.html">About</a>|&nbsp;</li>
 <li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
  

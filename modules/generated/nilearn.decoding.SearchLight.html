@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1',
+        VERSION:     '0.1a',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -83,7 +83,7 @@
 <li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
 <li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
 <li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
-<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+<li><a href="../reference.html">Reference</a> |&nbsp;</li>
 <li id="navbar-about"><a href="../../AUTHORS.html">About</a>|&nbsp;</li>
 <li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
  
@@ -116,55 +116,53 @@
           <div class="body">
             
   <div class="section" id="nilearn-decoding-searchlight">
-<h1>7.6.1.1. nilearn.decoding.SearchLight<a class="headerlink" href="#nilearn-decoding-searchlight" title="Permalink to this headline">¶</a></h1>
+<h1>4.6.1.1. nilearn.decoding.SearchLight<a class="headerlink" href="#nilearn-decoding-searchlight" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt>
-<tt class="descname">SearchLight(mask_img, process_mask_img=None, radius=2.0, estimator=LinearSVC(C=1, class_weight=None, dual=True, fit_intercept=True,</tt></dt>
-<dt>
-<tt class="descname">intercept_scaling=1, loss='l2', multi_class='ovr', penalty='l2',</tt></dt>
-<dt>
-<tt class="descname">random_state=None, tol=0.0001, verbose=0), n_jobs=1, score_func=None, cv=None, verbose=0)</tt></dt>
+<dt id="nilearn.decoding.SearchLight">
+<em class="property">class </em><tt class="descclassname">nilearn.decoding.</tt><tt class="descname">SearchLight</tt><big>(</big><em>mask_img</em>, <em>process_mask_img=None</em>, <em>radius=2.0</em>, <em>estimator='svc'</em>, <em>n_jobs=1</em>, <em>scoring=None</em>, <em>cv=None</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#nilearn.decoding.SearchLight" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implement search_light analysis using an arbitrary type of classifier.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>mask: boolean matrix.</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>mask_img</strong> : niimg</p>
 <blockquote>
-<div><p>data mask</p>
+<div><p>boolean image giving location of voxels containing usable signals.</p>
 </div></blockquote>
-<p><strong>process_mask: boolean matrix, optional</strong> :</p>
+<p><strong>process_mask_img</strong> : niimg, optional</p>
 <blockquote>
-<div><p>mask of the data that will be processed by searchlight</p>
+<div><p>boolean image giving voxels on which searchlight should be
+computed.</p>
 </div></blockquote>
-<p><strong>radius: float, optional</strong> :</p>
+<p><strong>radius</strong> : float, optional</p>
 <blockquote>
-<div><p>radius of the searchlight sphere, in millimeters.</p>
+<div><p>radius of the searchlight ball, in millimeters. Defaults to 2.</p>
 </div></blockquote>
-<p><strong>estimator: estimator object implementing &#8216;fit&#8217;</strong> :</p>
+<p><strong>estimator</strong> : &#8216;svr&#8217;, &#8216;svc&#8217;, or an estimator object implementing &#8216;fit&#8217;</p>
 <blockquote>
 <div><p>The object to use to fit the data</p>
 </div></blockquote>
-<p><strong>n_jobs: int, optional. Default is -1.</strong> :</p>
+<p><strong>n_jobs</strong> : int, optional. Default is -1.</p>
 <blockquote>
 <div><p>The number of CPUs to use to do the computation. -1 means
 &#8216;all CPUs&#8217;.</p>
 </div></blockquote>
-<p><strong>score_func: callable, optional</strong> :</p>
+<p><strong>scoring</strong> : string or callable, optional</p>
 <blockquote>
-<div><p>callable taking as arguments the fitted estimator, the
+<div><p>The scoring strategy to use. See the scikit-learn documentation
+If callable, takes as arguments the fitted estimator, the
 test data (X_test) and the test target (y_test) if y is
 not None.</p>
 </div></blockquote>
-<p><strong>cv: cross-validation generator, optional</strong> :</p>
+<p><strong>cv</strong> : cross-validation generator, optional</p>
 <blockquote>
 <div><p>A cross-validation generator. If None, a 3-fold cross
 validation is used or 3-fold stratified cross-validation
 when y is supplied.</p>
 </div></blockquote>
-<p><strong>verbose: int, optional</strong> :</p>
+<p><strong>verbose</strong> : int, optional</p>
 <blockquote class="last">
-<div><p>The verbosity level. Defaut is False</p>
+<div><p>Verbosity level. Defaut is False</p>
 </div></blockquote>
 </td>
 </tr>
@@ -192,30 +190,35 @@ vol. 103, no. 10, pages 3863-3868, March 2006</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#nilearn.decoding.SearchLight.fit" title="nilearn.decoding.SearchLight.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(niimgs,&nbsp;y)</td>
+<td>Fit the searchlight</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#nilearn.decoding.SearchLight.get_params" title="nilearn.decoding.SearchLight.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
+<td>Get parameters for this estimator.</td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#nilearn.decoding.SearchLight.set_params" title="nilearn.decoding.SearchLight.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<td>Set the parameters of this estimator.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
+<dt id="nilearn.decoding.SearchLight.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>mask_img</em>, <em>process_mask_img=None</em>, <em>radius=2.0</em>, <em>estimator='svc'</em>, <em>n_jobs=1</em>, <em>scoring=None</em>, <em>cv=None</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#nilearn.decoding.SearchLight.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="nilearn.decoding.SearchLight.fit">
-<tt class="descclassname">SearchLight.</tt><tt class="descname">fit</tt><big>(</big><em>niimgs</em>, <em>y</em><big>)</big><a class="headerlink" href="#nilearn.decoding.SearchLight.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>niimgs</em>, <em>y</em><big>)</big><a class="headerlink" href="#nilearn.decoding.SearchLight.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit the searchlight</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>niimg: niimg</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>niimg</strong> : niimg</p>
 <blockquote>
 <div><p>4D image.</p>
 </div></blockquote>
-<p><strong>y: 1D array-like</strong> :</p>
+<p><strong>y</strong> : 1D array-like</p>
 <blockquote class="last">
 <div><p>Target variable to predict. Must have exactly as many elements as
 3D images in niimg.</p>
@@ -229,7 +232,7 @@ vol. 103, no. 10, pages 3863-3868, March 2006</p>
 
 <dl class="method">
 <dt id="nilearn.decoding.SearchLight.get_params">
-<tt class="descclassname">SearchLight.</tt><tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#nilearn.decoding.SearchLight.get_params" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#nilearn.decoding.SearchLight.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -254,7 +257,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="nilearn.decoding.SearchLight.set_params">
-<tt class="descclassname">SearchLight.</tt><tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#nilearn.decoding.SearchLight.set_params" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#nilearn.decoding.SearchLight.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
@@ -289,7 +292,7 @@ component of a nested object.</p>
 <li><a href="../../index.html">NiLearn Home</a> |&nbsp;</li>
 <li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
 <li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
-<li><a href="../classes.html">Reference</a> |&nbsp;</li>
+<li><a href="../reference.html">Reference</a> |&nbsp;</li>
 <li id="navbar-about"><a href="../../AUTHORS.html">About</a>|&nbsp;</li>
 <li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
  
