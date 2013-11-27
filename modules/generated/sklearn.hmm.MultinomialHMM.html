@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
@@ -246,15 +247,15 @@
 <td>string, optional</td>
 <td>Controls which parameters are updated in the training
 process.  Can contain any combination of &#8216;s&#8217; for startprob,
-&#8216;t&#8217; for transmat, &#8216;m&#8217; for means, and &#8216;c&#8217; for covars, etc.
+&#8216;t&#8217; for transmat, &#8216;e&#8217; for emmissionprob.
 Defaults to all parameters.</td>
 </tr>
 <tr class="row-even"><td>init_params</td>
 <td>string, optional</td>
 <td>Controls which parameters are initialized prior to
 training.  Can contain any combination of &#8216;s&#8217; for
-startprob, &#8216;t&#8217; for transmat, &#8216;m&#8217; for means, and &#8216;c&#8217; for
-covars, etc.  Defaults to all parameters.</td>
+startprob, &#8216;t&#8217; for transmat, &#8216;e&#8217; for emmissionprob.
+Defaults to all parameters.</td>
 </tr>
 </tbody>
 </table>
@@ -271,8 +272,8 @@ covars, etc.  Defaults to all parameters.</td>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.eval" title="sklearn.hmm.MultinomialHMM.eval"><tt class="xref py py-obj docutils literal"><span class="pre">eval</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>DEPRECATED: HMM.eval was renamed to HMM.score_samples in 0.14 and will be removed in 0.16.</td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt>(obs,&nbsp;**kwargs)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.fit" title="sklearn.hmm.MultinomialHMM.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(obs,&nbsp;**kwargs)</td>
+<td>Estimate model parameters.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.hmm.MultinomialHMM.get_params" title="sklearn.hmm.MultinomialHMM.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
 <td>Get parameters for this estimator.</td>
@@ -332,8 +333,8 @@ Uses the selected algorithm for decoding.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
 <blockquote>
-<div><p>List of n_features-dimensional data points.  Each row
-corresponds to a single data point.</p>
+<div><p>Sequence of n_features-dimensional data points. Each row
+corresponds to a single point in the sequence.</p>
 </div></blockquote>
 <p><strong>algorithm</strong> : string, one of the <cite>decoder_algorithms</cite></p>
 <blockquote>
@@ -377,6 +378,29 @@ corresponds to a single data point.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="sklearn.hmm.MultinomialHMM.fit">
+<tt class="descname">fit</tt><big>(</big><em>obs</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate model parameters.</p>
+<p>An initialization step is performed before entering the EM
+algorithm. If you want to avoid this step, pass proper
+<tt class="docutils literal"><span class="pre">init_params</span></tt> keyword argument to estimator&#8217;s constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : list</p>
+<blockquote class="last">
+<div><p>List of array-like observation sequences, each of which
+has shape (n_i, n_features), where n_i is the length of
+the i_th observation.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="sklearn.hmm.MultinomialHMM.get_params">
 <tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#sklearn.hmm.MultinomialHMM.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
@@ -411,8 +435,8 @@ contained subobjects that are estimators.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
 <blockquote>
-<div><p>List of n_features-dimensional data points.  Each row
-corresponds to a single data point.</p>
+<div><p>Sequence of n_features-dimensional data points. Each row
+corresponds to a single point in the sequence.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -436,8 +460,8 @@ corresponds to a single data point.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
 <blockquote>
-<div><p>List of n_features-dimensional data points.  Each row
-corresponds to a single data point.</p>
+<div><p>Sequence of n_features-dimensional data points. Each row
+corresponds to a single point in the sequence.</p>
 </div></blockquote>
 </td>
 </tr>

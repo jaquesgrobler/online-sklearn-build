@@ -31,6 +31,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="index.html" />
@@ -292,6 +293,17 @@ samples dependency.
 By <a class="reference external" href="http://danielnouri.org">Daniel Nouri</a> and <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a>.</li>
 <li>Add multi-output support to <a class="reference internal" href="modules/generated/sklearn.gaussian_process.GaussianProcess.html#sklearn.gaussian_process.GaussianProcess" title="sklearn.gaussian_process.GaussianProcess"><tt class="xref py py-class docutils literal"><span class="pre">gaussian_process.GaussianProcess</span></tt></a>
 by John Novak.</li>
+<li>Norm computations optimized for NumPy 1.6 and later versions by
+<a class="reference external" href="https://github.com/larsmans">Lars Buitinck</a>. In particular, the k-means algorithm no longer
+needs a temporary data structure the size of its input.</li>
+<li>Added <tt class="xref py py-class docutils literal"><span class="pre">linear_model.RANSACRegressor</span></tt> meta-estimator for the robust
+fitting of regression models. By Johannes Schönberger.</li>
+<li>Fixed bug in <tt class="xref py py-class docutils literal"><span class="pre">gradient_boosting.GradientBoostingRegressor</span></tt> with
+<tt class="docutils literal"><span class="pre">loss='huber'</span></tt>: <tt class="docutils literal"><span class="pre">gamma</span></tt> might have not been initialized.</li>
+<li><a class="reference internal" href="modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier"><tt class="xref py py-class docutils literal"><span class="pre">dummy.DummyClassifier</span></tt></a> can now be used to predict a constant
+output value. By Manoj Kumar.</li>
+<li>Fixed bug in <a class="reference internal" href="modules/generated/sklearn.decomposition.MiniBatchDictionaryLearning.html#sklearn.decomposition.MiniBatchDictionaryLearning" title="sklearn.decomposition.MiniBatchDictionaryLearning"><tt class="xref py py-class docutils literal"><span class="pre">decomposition.MiniBatchDictionaryLearning</span></tt></a> :
+partial_fit was not working properly.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -301,7 +313,7 @@ by John Novak.</li>
 <div><ul class="simple">
 <li>Add score method to <a class="reference internal" href="modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a> following the model of
 probabilistic PCA and deprecate
-<tt class="xref py py-class docutils literal"><span class="pre">ProbabilisticPCA</span></tt> model whose
+<a class="reference internal" href="modules/generated/sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-class docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a> model whose
 score implementation is not correct. The computation now also exploits the
 matrix inversion lemma for faster computation. By <a class="reference external" href="http://alexandre.gramfort.net">Alexandre Gramfort</a>.</li>
 <li>The score method of <a class="reference internal" href="modules/generated/sklearn.decomposition.FactorAnalysis.html#sklearn.decomposition.FactorAnalysis" title="sklearn.decomposition.FactorAnalysis"><tt class="xref py py-class docutils literal"><span class="pre">FactorAnalysis</span></tt></a>
@@ -1043,7 +1055,7 @@ useful when the number of clusters is not small compared to the
 number of samples.</li>
 <li>Add MultiTaskLasso and MultiTaskElasticNet for joint feature selection,
 by <a class="reference external" href="http://alexandre.gramfort.net">Alexandre Gramfort</a>.</li>
-<li>Added <tt class="xref py py-func docutils literal"><span class="pre">metrics.auc_score</span></tt> and
+<li>Added <a class="reference internal" href="modules/generated/sklearn.metrics.auc_score.html#sklearn.metrics.auc_score" title="sklearn.metrics.auc_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.auc_score</span></tt></a> and
 <a class="reference internal" href="modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score" title="sklearn.metrics.average_precision_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.average_precision_score</span></tt></a> convenience functions by <a class="reference external" href="http://peekaboo-vision.blogspot.com">Andreas
 Müller</a>.</li>
 <li>Improved sparse matrix support in the <a class="reference internal" href="modules/feature_selection.html#feature-selection"><em>Feature selection</em></a>
@@ -1057,7 +1069,7 @@ ignore infrequent words, <tt class="docutils literal"><span class="pre">min_df</
 <li>Add support for multiple targets in some linear models (ElasticNet, Lasso
 and OrthogonalMatchingPursuit) by <a class="reference external" href="http://vene.ro">Vlad Niculae</a> and
 <a class="reference external" href="http://alexandre.gramfort.net">Alexandre Gramfort</a>.</li>
-<li>Fixes in <tt class="xref py py-class docutils literal"><span class="pre">decomposition.ProbabilisticPCA</span></tt> score function by Wei Li.</li>
+<li>Fixes in <a class="reference internal" href="modules/generated/sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-class docutils literal"><span class="pre">decomposition.ProbabilisticPCA</span></tt></a> score function by Wei Li.</li>
 <li>Fixed feature importance computation in
 <a class="reference internal" href="modules/ensemble.html#gradient-boosting"><em>Gradient Tree Boosting</em></a>.</li>
 </ul>

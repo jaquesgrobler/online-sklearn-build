@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../index.html" />
@@ -232,19 +233,34 @@ which has a probability <img class="math" src="../_images/math/2e2811fa09079afac
 <div class="section" id="univariate-feature-selection">
 <h2>1.11.2. Univariate feature selection<a class="headerlink" href="#univariate-feature-selection" title="Permalink to this headline">¶</a></h2>
 <p>Univariate feature selection works by selecting the best features based on
-univariate statistical tests. It can seen as a preprocessing step
+univariate statistical tests. It can be seen as a preprocessing step
 to an estimator. Scikit-learn exposes feature selection routines
 as objects that implement the <cite>transform</cite> method:</p>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="generated/sklearn.feature_selection.SelectKBest.html#sklearn.feature_selection.SelectKBest" title="sklearn.feature_selection.SelectKBest"><tt class="xref py py-class docutils literal"><span class="pre">SelectKBest</span></tt></a> removes all but the <cite>k</cite> highest scoring features</li>
 <li><a class="reference internal" href="generated/sklearn.feature_selection.SelectPercentile.html#sklearn.feature_selection.SelectPercentile" title="sklearn.feature_selection.SelectPercentile"><tt class="xref py py-class docutils literal"><span class="pre">SelectPercentile</span></tt></a> removes all but a user-specified highest scoring
-percentile of features</li>
+percentage of features</li>
 <li>using common univariate statistical tests for each feature:
 false positive rate <a class="reference internal" href="generated/sklearn.feature_selection.SelectFpr.html#sklearn.feature_selection.SelectFpr" title="sklearn.feature_selection.SelectFpr"><tt class="xref py py-class docutils literal"><span class="pre">SelectFpr</span></tt></a>, false discovery rate
 <a class="reference internal" href="generated/sklearn.feature_selection.SelectFdr.html#sklearn.feature_selection.SelectFdr" title="sklearn.feature_selection.SelectFdr"><tt class="xref py py-class docutils literal"><span class="pre">SelectFdr</span></tt></a>, or family wise error <a class="reference internal" href="generated/sklearn.feature_selection.SelectFwe.html#sklearn.feature_selection.SelectFwe" title="sklearn.feature_selection.SelectFwe"><tt class="xref py py-class docutils literal"><span class="pre">SelectFwe</span></tt></a>.</li>
 </ul>
 </div></blockquote>
+<p>Using the boolean-feature example given above,
+we can perform a <img class="math" src="../_images/math/a61c1e51680e27d35d05bebed87d474972fc70bd.png" alt="\chi^2"/> test to the samples
+to retrieve only the two best features as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">VarianceThreshold</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sel</span> <span class="o">=</span> <span class="n">VarianceThreshold</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">8</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="o">.</span><span class="mi">8</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sel</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([[0, 1],</span>
+<span class="go">       [1, 0],</span>
+<span class="go">       [0, 0],</span>
+<span class="go">       [1, 1],</span>
+<span class="go">       [1, 0],</span>
+<span class="go">       [1, 1]])</span>
+</pre></div>
+</div>
 <p>These objects take as input a scoring function that returns
 univariate p-values:</p>
 <blockquote>
@@ -360,7 +376,7 @@ settings, using the Lasso, while <a class="reference internal" href="generated/s
 logistic regression and is suitable for classification tasks.  To get a full
 path of stability scores you can use <a class="reference internal" href="generated/sklearn.linear_model.lasso_stability_path.html#sklearn.linear_model.lasso_stability_path" title="sklearn.linear_model.lasso_stability_path"><tt class="xref py py-func docutils literal"><span class="pre">lasso_stability_path</span></tt></a>.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_sparse_recovery.html"><img alt="../_images/plot_sparse_recovery_21.png" src="../_images/plot_sparse_recovery_21.png" style="width: 480.0px; height: 360.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_sparse_recovery.html"><img alt="../_images/plot_sparse_recovery_2.png" src="../_images/plot_sparse_recovery_2.png" style="width: 480.0px; height: 360.0px;" /></a>
 </div>
 <p>Note that for randomized sparse models to be more powerful than standard
 F statistics at detecting non-zero features, the ground truth model
@@ -431,7 +447,7 @@ to use a <a class="reference internal" href="generated/sklearn.pipeline.Pipeline
 </div>
 <p>In this snippet we make use of a <a class="reference internal" href="generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.svm.LinearSVC</span></tt></a>
 to evaluate feature importances and select the most relevant features.
-Then, a class:<cite>sklearn.ensemble.GradientBoostingClassifier</cite> is trained on the
+Then, a <a class="reference internal" href="generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.ensemble.RandomForestClassifier</span></tt></a> is trained on the
 transformed output, i.e. using only relevant features. You can perform
 similar operations with the other feature selection methods and also
 classifiers that provide a way to evaluate feature importances of course.

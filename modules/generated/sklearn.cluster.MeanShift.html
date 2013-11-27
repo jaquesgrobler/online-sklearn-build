@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
@@ -204,6 +205,16 @@ See clustering.estimate_bandwidth.</p>
 the seeds are calculated by clustering.get_bin_seeds
 with bandwidth as the grid size and default values for
 other parameters.</p>
+</div></blockquote>
+<p><strong>bin_seeding</strong> : boolean, optional</p>
+<blockquote>
+<div><p>If true, initial kernel locations are not locations of all
+points, but rather the location of the discretized version of
+points, where points are binned onto a grid whose coarseness
+corresponds to the bandwidth. Setting this option to True will speed
+up the algorithm because fewer seeds will be initialized.
+default value: False
+Ignored if seeds argument is not None.</p>
 </div></blockquote>
 <p><strong>min_bin_freq</strong> : int, optional</p>
 <blockquote>

@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
@@ -209,19 +210,20 @@ errors and a lower bound of the fraction of support
 vectors. Should be in the interval (0, 1]. By default 0.5
 will be taken.</p>
 </div></blockquote>
-<p><strong>degree</strong> : int, optional</p>
+<p><strong>degree</strong> : int, optional (default=3)</p>
 <blockquote>
-<div><p>Degree of kernel function. Significant only in poly, rbf, sigmoid.</p>
+<div><p>Degree of the polynomial kernel function (&#8216;poly&#8217;).
+Ignored by all other kernels.</p>
 </div></blockquote>
 <p><strong>gamma</strong> : float, optional (default=0.0)</p>
 <blockquote>
-<div><p>kernel coefficient for rbf and poly, if gamma is 0.0 then 1/n_features
-will be taken.</p>
+<div><p>Kernel coefficient for &#8216;rbf&#8217;, &#8216;poly&#8217; and &#8216;sigmoid&#8217;.
+If gamma is 0.0 then 1/n_features will be used instead.</p>
 </div></blockquote>
-<p><strong>coef0</strong> : float, optional</p>
+<p><strong>coef0</strong> : float, optional (default=0.0)</p>
 <blockquote>
-<div><p>Independent term in kernel function. It is only significant in
-poly/sigmoid.</p>
+<div><p>Independent term in kernel function.
+It is only significant in &#8216;poly&#8217; and &#8216;sigmoid&#8217;.</p>
 </div></blockquote>
 <p><strong>tol</strong> : float, optional</p>
 <blockquote>

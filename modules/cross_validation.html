@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../index.html" />
@@ -283,7 +284,7 @@ which is a major advantage in problem such as inverse inference
 where the number of samples is very small.</p>
 <div class="section" id="computing-cross-validated-metrics">
 <h2>3.1.1. Computing cross-validated metrics<a class="headerlink" href="#computing-cross-validated-metrics" title="Permalink to this headline">¶</a></h2>
-<p>The simplest way to use perform cross-validation in to call the
+<p>The simplest way to use cross-validation is to call the
 <a class="reference internal" href="generated/sklearn.cross_validation.cross_val_score.html#sklearn.cross_validation.cross_val_score" title="sklearn.cross_validation.cross_val_score"><tt class="xref py py-func docutils literal"><span class="pre">cross_val_score</span></tt></a> helper function on the estimator and the dataset.</p>
 <p>The following example demonstrates how to estimate the accuracy of a linear
 kernel support vector machine on the iris dataset by splitting the data, fitting
@@ -348,7 +349,7 @@ that can be used to generate dataset splits according to different cross
 validation strategies.</p>
 <div class="section" id="k-fold">
 <h3>3.1.2.1. K-fold<a class="headerlink" href="#k-fold" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="generated/sklearn.cross_validation.KFold.html#sklearn.cross_validation.KFold" title="sklearn.cross_validation.KFold"><tt class="xref py py-class docutils literal"><span class="pre">KFold</span></tt></a> divides all the samples in math:<cite>k</cite> groups of samples,
+<p><a class="reference internal" href="generated/sklearn.cross_validation.KFold.html#sklearn.cross_validation.KFold" title="sklearn.cross_validation.KFold"><tt class="xref py py-class docutils literal"><span class="pre">KFold</span></tt></a> divides all the samples in <img class="math" src="../_images/math/8c325612684d41304b9751c175df7bcc0f61f64f.png" alt="k"/> groups of samples,
 called folds (if <img class="math" src="../_images/math/d35a51f5f4479cf610e903ad871c5baa6f1fe9c0.png" alt="k = n"/>, this is equivalent to the <em>Leave One
 Out</em> strategy), of equal sizes (if possible). The prediction function is
 learned using <img class="math" src="../_images/math/efce61aab04f52f5d37708f357df021c8baa7434.png" alt="k - 1"/> folds, and the fold left out is used for test.</p>
@@ -408,6 +409,31 @@ not waste much data as only one sample is removed from the learning set:</p>
 <span class="go">[0 1 3] [2]</span>
 <span class="go">[0 1 2] [3]</span>
 </pre></div>
+</div>
+<p>Potential users of LOO for model selection should weigh a few known caveats.
+When compared with <em>k</em>-fold cross validation, one builds <em>n</em> models from <em>n</em>
+samples instead of <em>k</em> models, where <em>n &gt; k</em>. Moreover, each is trained on <em>n - 1</em>
+samples rather than <em>(k-1)n / k</em>. In both ways, assuming <em>k</em> is not too large
+and <em>k &lt; n</em>, LOO is more computationally expensive than <em>k</em>-fold cross validation.</p>
+<p>In terms of accuracy, LOO often results in high variance as an estimator for the
+test error. Intuitively, since <em>n - 1</em> of
+the <em>n</em> samples are used to build each model, models constructed from folds are
+virtually identical to each other and to the model built from the entire training
+set.</p>
+<p>However, if the learning curve is steep for the training size in question,
+then 5- or 10- fold cross validation can overestimate the generalization error.</p>
+<p>As a general rule, most authors, and empirical evidence, suggest that 5- or 10-
+fold cross validation should be preferred to LOO.</p>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.faqs.org/faqs/ai-faq/neural-nets/part3/section-12.html">http://www.faqs.org/faqs/ai-faq/neural-nets/part3/section-12.html</a></li>
+<li>T. Hastie, R. Tibshirani, J. Friedman,  <a class="reference external" href="http://www-stat.stanford.edu/~tibs/ElemStatLearn">The Elements of Statistical Learning</a>, Springer 2009</li>
+<li>L. Breiman, P. Spector <a class="reference external" href="http://digitalassets.lib.berkeley.edu/sdtr/ucb/text/197.pdf">Submodel selection and evaluation in regression: The X-random case</a>, International Statistical Review 1992</li>
+<li>R. Kohavi, <a class="reference external" href="http://www.cs.iastate.edu/~jtian/cs573/Papers/Kohavi-IJCAI-95.pdf">A Study of Cross-Validation and Bootstrap for Accuracy Estimation and Model Selection</a>, Intl. Jnt. Conf. AI</li>
+<li>R. Bharat Rao, G. Fung, R. Rosales, <a class="reference external" href="http://www.siam.org/proceedings/datamining/2008/dm08_54_Rao.pdf">On the Dangers of Cross-Validation. An Experimental Evaluation</a>, SIAM 2008</li>
+<li>G. James, D. Witten, T. Hastie, R Tibshirani, <a class="reference external" href="http://www-bcf.usc.edu/~gareth/ISL">An Introduction to Statitical Learning</a>, Springer 2013</li>
+</ul>
 </div>
 </div>
 <div class="section" id="leave-p-out-lpo">

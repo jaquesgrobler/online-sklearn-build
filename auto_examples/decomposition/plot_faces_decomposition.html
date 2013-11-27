@@ -31,12 +31,13 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Image denoising using dictionary learning" href="plot_image_denoising.html" />
-    <link rel="prev" title="Principal components analysis (PCA)" href="plot_pca_3d.html" />
+    <link rel="prev" title="Model selection with Probabilistic (PCA) and Factor Analysis (FA)" href="plot_pca_vs_fa_model_selection.html" />
   
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
@@ -119,14 +120,14 @@
   <!-- rellinks[1:] is an ugly hack to avoid link to module
   index -->
         <div class="rellink">
-        <a href="plot_pca_3d.html"
+        <a href="plot_pca_vs_fa_model_selection.html"
         accesskey="P">Previous
         <br/>
         <span class="smallrellink">
-        Principal compon...
+        Model selection ...
         </span>
             <span class="hiddenrellink">
-            Principal components analysis (PCA)
+            Model selection with Probabilistic (PCA) and Factor Analysis (FA)
             </span>
         </a>
         </div>
@@ -188,43 +189,6 @@
 matrix decomposition (dimension reduction) methods from the module
 <a class="reference internal" href="../../modules/classes.html#module-sklearn.decomposition" title="sklearn.decomposition"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.decomposition</span></tt></a> (see the documentation chapter
 <a class="reference internal" href="../../modules/decomposition.html#decompositions"><em>Decomposing signals in components (matrix factorization problems)</em></a>) .</p>
-<ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_9.png"><img alt="../../_images/plot_faces_decomposition_9.png" src="../../_images/plot_faces_decomposition_9.png" style="width: 282.0px; height: 211.97px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_3.png"><img alt="../../_images/plot_faces_decomposition_3.png" src="../../_images/plot_faces_decomposition_3.png" style="width: 282.0px; height: 211.97px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_8.png"><img alt="../../_images/plot_faces_decomposition_8.png" src="../../_images/plot_faces_decomposition_8.png" style="width: 94.0px; height: 105.75px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_2.png"><img alt="../../_images/plot_faces_decomposition_2.png" src="../../_images/plot_faces_decomposition_2.png" style="width: 282.0px; height: 211.97px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_4.png"><img alt="../../_images/plot_faces_decomposition_4.png" src="../../_images/plot_faces_decomposition_4.png" style="width: 282.0px; height: 211.97px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_7.png"><img alt="../../_images/plot_faces_decomposition_7.png" src="../../_images/plot_faces_decomposition_7.png" style="width: 282.0px; height: 211.97px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_1.png"><img alt="../../_images/plot_faces_decomposition_1.png" src="../../_images/plot_faces_decomposition_1.png" style="width: 282.0px; height: 211.97px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_5.png"><img alt="../../_images/plot_faces_decomposition_5.png" src="../../_images/plot_faces_decomposition_5.png" style="width: 282.0px; height: 211.97px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_6.png"><img alt="../../_images/plot_faces_decomposition_6.png" src="../../_images/plot_faces_decomposition_6.png" style="width: 282.0px; height: 211.97px;" /></a>
-</li>
-</ul>
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Dataset consists of 400 faces
-Extracting the top 6 Eigenfaces - RandomizedPCA...
-done in 0.189s
-Extracting the top 6 Non-negative components - NMF...
-done in 1.075s
-Extracting the top 6 Independent components - FastICA...
-done in 1.220s
-Extracting the top 6 Sparse comp. - MiniBatchSparsePCA...
-done in 1.310s
-Extracting the top 6 MiniBatchDictionaryLearning...
-done in 0.975s
-Extracting the top 6 Cluster centers - MiniBatchKMeans...
-done in 0.267s
-Extracting the top 6 Factor Analysis components - FA...
-done in 0.680s</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_faces_decomposition.py"><tt class="xref download docutils literal"><span class="pre">plot_faces_decomposition.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
@@ -350,7 +314,6 @@ done in 0.680s</pre>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  7.27 seconds</p>
 </div>
 
 
@@ -368,7 +331,7 @@ done in 0.680s</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_pca_3d.html">Previous
+      <a href="plot_pca_vs_fa_model_selection.html">Previous
       </a>
     </div>
     <div class="buttonNext">

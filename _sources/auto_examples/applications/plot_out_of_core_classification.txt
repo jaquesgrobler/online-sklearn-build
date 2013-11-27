@@ -27,76 +27,8 @@ To limit the memory consumption, we queue examples up to a fixed amount before
 feeding them to the learner.
 
 
-
-.. rst-class:: horizontal
-
-
-    *
-
-      .. image:: images/plot_out_of_core_classification_3.png
-            :scale: 47
-
-    *
-
-      .. image:: images/plot_out_of_core_classification_1.png
-            :scale: 47
-
-    *
-
-      .. image:: images/plot_out_of_core_classification_2.png
-            :scale: 47
-
-
-**Script output**::
-
-  Test set is 988 documents (122 positive)
-    Passive-Aggressive classifier : 	   469 train docs (    49 positive)    988 test docs (   122 positive) accuracy: 0.879 in 1.19s (  395 docs/s)
-            Perceptron classifier : 	   469 train docs (    49 positive)    988 test docs (   122 positive) accuracy: 0.880 in 1.19s (  393 docs/s)
-                   SGD classifier : 	   469 train docs (    49 positive)    988 test docs (   122 positive) accuracy: 0.892 in 1.20s (  391 docs/s)
-        NB Multinomial classifier : 	   469 train docs (    49 positive)    988 test docs (   122 positive) accuracy: 0.877 in 1.23s (  380 docs/s)
-  
-  
-    Passive-Aggressive classifier : 	  3198 train docs (   340 positive)    988 test docs (   122 positive) accuracy: 0.931 in 3.73s (  858 docs/s)
-            Perceptron classifier : 	  3198 train docs (   340 positive)    988 test docs (   122 positive) accuracy: 0.933 in 3.73s (  856 docs/s)
-                   SGD classifier : 	  3198 train docs (   340 positive)    988 test docs (   122 positive) accuracy: 0.932 in 3.74s (  855 docs/s)
-        NB Multinomial classifier : 	  3198 train docs (   340 positive)    988 test docs (   122 positive) accuracy: 0.880 in 3.77s (  847 docs/s)
-  
-  
-    Passive-Aggressive classifier : 	  6062 train docs (   720 positive)    988 test docs (   122 positive) accuracy: 0.939 in 6.22s (  973 docs/s)
-            Perceptron classifier : 	  6062 train docs (   720 positive)    988 test docs (   122 positive) accuracy: 0.915 in 6.23s (  972 docs/s)
-                   SGD classifier : 	  6062 train docs (   720 positive)    988 test docs (   122 positive) accuracy: 0.934 in 6.24s (  971 docs/s)
-        NB Multinomial classifier : 	  6062 train docs (   720 positive)    988 test docs (   122 positive) accuracy: 0.899 in 6.27s (  966 docs/s)
-  
-  
-    Passive-Aggressive classifier : 	  8920 train docs (  1105 positive)    988 test docs (   122 positive) accuracy: 0.954 in 8.74s ( 1020 docs/s)
-            Perceptron classifier : 	  8920 train docs (  1105 positive)    988 test docs (   122 positive) accuracy: 0.942 in 8.75s ( 1019 docs/s)
-                   SGD classifier : 	  8920 train docs (  1105 positive)    988 test docs (   122 positive) accuracy: 0.955 in 8.75s ( 1018 docs/s)
-        NB Multinomial classifier : 	  8920 train docs (  1105 positive)    988 test docs (   122 positive) accuracy: 0.917 in 8.79s ( 1014 docs/s)
-  
-  
-    Passive-Aggressive classifier : 	 11844 train docs (  1455 positive)    988 test docs (   122 positive) accuracy: 0.956 in 11.28s ( 1050 docs/s)
-            Perceptron classifier : 	 11844 train docs (  1455 positive)    988 test docs (   122 positive) accuracy: 0.959 in 11.28s ( 1049 docs/s)
-                   SGD classifier : 	 11844 train docs (  1455 positive)    988 test docs (   122 positive) accuracy: 0.945 in 11.29s ( 1049 docs/s)
-        NB Multinomial classifier : 	 11844 train docs (  1455 positive)    988 test docs (   122 positive) accuracy: 0.929 in 11.33s ( 1045 docs/s)
-  
-  
-    Passive-Aggressive classifier : 	 14752 train docs (  1799 positive)    988 test docs (   122 positive) accuracy: 0.954 in 13.90s ( 1061 docs/s)
-            Perceptron classifier : 	 14752 train docs (  1799 positive)    988 test docs (   122 positive) accuracy: 0.945 in 13.90s ( 1061 docs/s)
-                   SGD classifier : 	 14752 train docs (  1799 positive)    988 test docs (   122 positive) accuracy: 0.954 in 13.91s ( 1060 docs/s)
-        NB Multinomial classifier : 	 14752 train docs (  1799 positive)    988 test docs (   122 positive) accuracy: 0.935 in 13.95s ( 1057 docs/s)
-  
-  
-    Passive-Aggressive classifier : 	 17685 train docs (  2210 positive)    988 test docs (   122 positive) accuracy: 0.964 in 16.44s ( 1076 docs/s)
-            Perceptron classifier : 	 17685 train docs (  2210 positive)    988 test docs (   122 positive) accuracy: 0.956 in 16.44s ( 1075 docs/s)
-                   SGD classifier : 	 17685 train docs (  2210 positive)    988 test docs (   122 positive) accuracy: 0.966 in 16.45s ( 1075 docs/s)
-        NB Multinomial classifier : 	 17685 train docs (  2210 positive)    988 test docs (   122 positive) accuracy: 0.933 in 16.48s ( 1072 docs/s)
-
-
-
 **Python source code:** :download:`plot_out_of_core_classification.py <plot_out_of_core_classification.py>`
 
 .. literalinclude:: plot_out_of_core_classification.py
     :lines: 25-
-
-**Total running time of the example:**  18.01 seconds
     

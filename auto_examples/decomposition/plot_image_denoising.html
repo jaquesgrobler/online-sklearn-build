@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
@@ -205,41 +206,6 @@ difference is reminiscent of the local intensity value of the original image.</p
 it can produce a suggestive output with very high speed, and thus be useful
 for other tasks such as object classification, where performance is not
 necessarily related to visualisation.</p>
-<ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_1.png"><img alt="../../_images/plot_image_denoising_1.png" src="../../_images/plot_image_denoising_1.png" style="width: 197.4px; height: 188.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_5.png"><img alt="../../_images/plot_image_denoising_5.png" src="../../_images/plot_image_denoising_5.png" style="width: 235.0px; height: 155.1px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_4.png"><img alt="../../_images/plot_image_denoising_4.png" src="../../_images/plot_image_denoising_4.png" style="width: 235.0px; height: 155.1px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_2.png"><img alt="../../_images/plot_image_denoising_2.png" src="../../_images/plot_image_denoising_2.png" style="width: 235.0px; height: 155.1px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_3.png"><img alt="../../_images/plot_image_denoising_3.png" src="../../_images/plot_image_denoising_3.png" style="width: 235.0px; height: 155.1px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_6.png"><img alt="../../_images/plot_image_denoising_6.png" src="../../_images/plot_image_denoising_6.png" style="width: 235.0px; height: 155.1px;" /></a>
-</li>
-</ul>
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Distorting image...
-Extracting reference patches...
-done in 0.06s.
-Learning the dictionary...
-done in 6.40s.
-Extracting noisy patches...
-done in 0.02s.
-Orthogonal Matching Pursuit
-1 atom...
-done in 3.63s.
-Orthogonal Matching Pursuit
-2 atoms...
-done in 5.68s.
-Least-angle regression
-5 atoms...
-done in 35.06s.
-Thresholding
- alpha=0.1...
-done in 0.52s.</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_image_denoising.py"><tt class="xref download docutils literal"><span class="pre">plot_image_denoising.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
@@ -374,7 +340,6 @@ done in 0.52s.</pre>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  55.47 seconds</p>
 </div>
 
 

@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
@@ -290,19 +291,6 @@ performance of downstream classifiers.</p>
 <p>J. Mairal, F. Bach, J. Ponce, G. Sapiro, 2009: Online dictionary learning
 for sparse coding (<a class="reference external" href="http://www.di.ens.fr/sierra/pdfs/icml09.pdf">http://www.di.ens.fr/sierra/pdfs/icml09.pdf</a>)</p>
 <p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="16%" />
-<col width="41%" />
-<col width="43%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><cite>components_</cite></td>
-<td>array, [n_components, n_features]</td>
-<td>components extracted from the data</td>
-</tr>
-</tbody>
-</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -417,7 +405,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="sklearn.decomposition.MiniBatchDictionaryLearning.partial_fit">
-<tt class="descname">partial_fit</tt><big>(</big><em>X</em>, <em>y=None</em>, <em>iter_offset=0</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.MiniBatchDictionaryLearning.partial_fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">partial_fit</tt><big>(</big><em>X</em>, <em>y=None</em>, <em>iter_offset=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.MiniBatchDictionaryLearning.partial_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the model using the data in X as a mini-batch.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -427,6 +415,13 @@ contained subobjects that are estimators.</p>
 <blockquote>
 <div><p>Training vector, where n_samples in the number of samples
 and n_features is the number of features.</p>
+</div></blockquote>
+<p><strong>iter_offset: integer, optional</strong> :</p>
+<blockquote>
+<div><p>The number of iteration on data batches that has been
+performed before this call to partial_fit. This is optional:
+if no number is passed, the memory of the object is
+used.</p>
 </div></blockquote>
 </td>
 </tr>

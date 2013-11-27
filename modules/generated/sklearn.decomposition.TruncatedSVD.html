@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
@@ -195,6 +196,9 @@ This means it can work with scipy.sparse matrices efficiently.</p>
 <p>In particular, truncated SVD works on term count/tf-idf matrices as
 returned by the vectorizers in sklearn.feature_extraction.text. In that
 context, it is known as latent semantic analysis (LSA).</p>
+<p>This estimator supports two algorithm: a fast randomized SVD solver, and
+a &#8220;naive&#8221; algorithm that uses ARPACK as an eigensolver on (X * X.T) or
+(X.T * X), whichever is more efficient.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

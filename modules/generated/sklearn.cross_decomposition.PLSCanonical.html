@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
@@ -319,8 +320,8 @@ Editions Technic.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt>(X,&nbsp;Y)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cross_decomposition.PLSCanonical.fit" title="sklearn.cross_decomposition.PLSCanonical.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;Y)</td>
+<td>Fit model to data.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.cross_decomposition.PLSCanonical.fit_transform" title="sklearn.cross_decomposition.PLSCanonical.fit_transform"><tt class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></tt></a>(X[,&nbsp;y])</td>
 <td>Learn and apply the dimension reduction on the train data.</td>
@@ -346,6 +347,30 @@ Editions Technic.</p>
 <dt id="sklearn.cross_decomposition.PLSCanonical.__init__">
 <tt class="descname">__init__</tt><big>(</big><em>n_components=2</em>, <em>scale=True</em>, <em>algorithm='nipals'</em>, <em>max_iter=500</em>, <em>tol=1e-06</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#sklearn.cross_decomposition.PLSCanonical.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="sklearn.cross_decomposition.PLSCanonical.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>Y</em><big>)</big><a class="headerlink" href="#sklearn.cross_decomposition.PLSCanonical.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit model to data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Training vectors, where n_samples in the number of samples and
+n_features is the number of predictors.</p>
+</div></blockquote>
+<p><strong>Y</strong> : array-like of response, shape = [n_samples, n_targets]</p>
+<blockquote class="last">
+<div><p>Target vectors, where n_samples in the number of samples and
+n_targets is the number of response variables.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="sklearn.cross_decomposition.PLSCanonical.fit_transform">

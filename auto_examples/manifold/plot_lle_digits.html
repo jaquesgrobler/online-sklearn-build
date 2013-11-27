@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
@@ -190,45 +191,6 @@ technically a manifold embedding method, as it learn a high-dimensional
 representation on which we apply a dimensionality reduction method.
 However, it is often useful to cast a dataset into a representation in
 which the classes are linearly-separable.</p>
-<ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_6.png"><img alt="../../_images/plot_lle_digits_6.png" src="../../_images/plot_lle_digits_6.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_9.png"><img alt="../../_images/plot_lle_digits_9.png" src="../../_images/plot_lle_digits_9.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_5.png"><img alt="../../_images/plot_lle_digits_5.png" src="../../_images/plot_lle_digits_5.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_7.png"><img alt="../../_images/plot_lle_digits_7.png" src="../../_images/plot_lle_digits_7.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_2.png"><img alt="../../_images/plot_lle_digits_2.png" src="../../_images/plot_lle_digits_2.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_4.png"><img alt="../../_images/plot_lle_digits_4.png" src="../../_images/plot_lle_digits_4.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_8.png"><img alt="../../_images/plot_lle_digits_8.png" src="../../_images/plot_lle_digits_8.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_1.png"><img alt="../../_images/plot_lle_digits_1.png" src="../../_images/plot_lle_digits_1.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_lle_digits_3.png"><img alt="../../_images/plot_lle_digits_3.png" src="../../_images/plot_lle_digits_3.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-</ul>
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>Computing random projection
-Computing PCA projection
-Computing LDA projection
-Computing Isomap embedding
-Done.
-Computing LLE embedding
-Done. Reconstruction error: 1.63544e-06
-Computing modified LLE embedding
-Done. Reconstruction error: 0.359772
-Computing Hessian LLE embedding
-Done. Reconstruction error: 0.212826
-Computing LTSA embedding
-Done. Reconstruction error: 0.212806
-Computing MDS embedding
-Done. Stress: 138880552.159517
-Computing Totally Random Trees embedding
-Computing Spectral embedding</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lle_digits.py"><tt class="xref download docutils literal"><span class="pre">plot_lle_digits.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Authors: Fabian Pedregosa &lt;fabian.pedregosa@inria.fr&gt;</span>
 <span class="c">#          Olivier Grisel &lt;olivier.grisel@ensta.org&gt;</span>
@@ -432,7 +394,6 @@ Computing Spectral embedding</pre>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  16.62 seconds</p>
 </div>
 
 

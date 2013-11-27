@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
@@ -213,21 +214,6 @@ the average score does not improve).</p>
 <p>It is worth noting that RandomForests and ExtraTrees can be fitted in parallel
 on many cores as each tree is built independently of the others. AdaBoost&#8217;s
 samples are built sequentially and so do not use multiple cores.</p>
-<img alt="../../_images/plot_forest_iris_1.png" class="align-center" src="../../_images/plot_forest_iris_1.png" />
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>DecisionTree with features [0, 1] has a score of 0.926666666667
-RandomForest with 30 estimators with features [0, 1] has a score of 0.926666666667
-ExtraTrees with 30 estimators with features [0, 1] has a score of 0.926666666667
-AdaBoost with 30 estimators with features [0, 1] has a score of 0.86
-DecisionTree with features [0, 2] has a score of 0.993333333333
-RandomForest with 30 estimators with features [0, 2] has a score of 0.993333333333
-ExtraTrees with 30 estimators with features [0, 2] has a score of 0.993333333333
-AdaBoost with 30 estimators with features [0, 2] has a score of 0.993333333333
-DecisionTree with features [2, 3] has a score of 0.993333333333
-RandomForest with 30 estimators with features [2, 3] has a score of 0.993333333333
-ExtraTrees with 30 estimators with features [2, 3] has a score of 0.993333333333
-AdaBoost with 30 estimators with features [2, 3] has a score of 0.993333333333</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_forest_iris.py"><tt class="xref download docutils literal"><span class="pre">plot_forest_iris.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
@@ -343,7 +329,6 @@ AdaBoost with 30 estimators with features [2, 3] has a score of 0.993333333333</
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  8.06 seconds</p>
 </div>
 
 

@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
@@ -186,7 +187,7 @@
 <h1>sklearn.covariance.GraphLassoCV<a class="headerlink" href="#sklearn-covariance-graphlassocv" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.covariance.GraphLassoCV">
-<em class="property">class </em><tt class="descclassname">sklearn.covariance.</tt><tt class="descname">GraphLassoCV</tt><big>(</big><em>alphas=4</em>, <em>n_refinements=4</em>, <em>cv=None</em>, <em>tol=0.0001</em>, <em>max_iter=100</em>, <em>mode='cd'</em>, <em>n_jobs=1</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#sklearn.covariance.GraphLassoCV" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.covariance.</tt><tt class="descname">GraphLassoCV</tt><big>(</big><em>alphas=4</em>, <em>n_refinements=4</em>, <em>cv=None</em>, <em>tol=0.0001</em>, <em>max_iter=100</em>, <em>mode='cd'</em>, <em>n_jobs=1</em>, <em>verbose=False</em>, <em>assume_centered=False</em><big>)</big><a class="headerlink" href="#sklearn.covariance.GraphLassoCV" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sparse inverse covariance w/ cross-validated choice of the l1 penalty</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -313,7 +314,7 @@ be close to these missing values.</p>
 </table>
 <dl class="method">
 <dt id="sklearn.covariance.GraphLassoCV.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>alphas=4</em>, <em>n_refinements=4</em>, <em>cv=None</em>, <em>tol=0.0001</em>, <em>max_iter=100</em>, <em>mode='cd'</em>, <em>n_jobs=1</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#sklearn.covariance.GraphLassoCV.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>alphas=4</em>, <em>n_refinements=4</em>, <em>cv=None</em>, <em>tol=0.0001</em>, <em>max_iter=100</em>, <em>mode='cd'</em>, <em>n_jobs=1</em>, <em>verbose=False</em>, <em>assume_centered=False</em><big>)</big><a class="headerlink" href="#sklearn.covariance.GraphLassoCV.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

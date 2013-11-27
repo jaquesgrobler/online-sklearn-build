@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../index.html" />
@@ -334,7 +335,7 @@ fits a bit the outliers present in the training set. On the
 opposite, the decision rule based on fitting an
 <a class="reference internal" href="generated/sklearn.covariance.EllipticEnvelope.html#sklearn.covariance.EllipticEnvelope" title="sklearn.covariance.EllipticEnvelope"><tt class="xref py py-class docutils literal"><span class="pre">covariance.EllipticEnvelope</span></tt></a> learns an ellipse, which
 fits well the inlier distribution.</td>
-<td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier1" src="../_images/plot_outlier_detection_11.png" style="width: 500.0px; height: 250.0px;" /></a></td>
+<td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier1" src="../_images/plot_outlier_detection_1.png" style="width: 500.0px; height: 250.0px;" /></a></td>
 </tr>
 <tr class="row-even"><td>As the inlier distribution becomes bimodal, the
 <a class="reference internal" href="generated/sklearn.covariance.EllipticEnvelope.html#sklearn.covariance.EllipticEnvelope" title="sklearn.covariance.EllipticEnvelope"><tt class="xref py py-class docutils literal"><span class="pre">covariance.EllipticEnvelope</span></tt></a> does not fit well the
@@ -342,13 +343,13 @@ inliers. However, we can see that the <a class="reference internal" href="genera
 tends to overfit: because it has not model of inliers, it
 interprets a region where, by chance some outliers are
 clustered, as inliers.</td>
-<td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier2" src="../_images/plot_outlier_detection_21.png" style="width: 500.0px; height: 250.0px;" /></a></td>
+<td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier2" src="../_images/plot_outlier_detection_2.png" style="width: 500.0px; height: 250.0px;" /></a></td>
 </tr>
 <tr class="row-odd"><td>If the inlier distribution is strongly non Gaussian, the
 <a class="reference internal" href="generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM" title="sklearn.svm.OneClassSVM"><tt class="xref py py-class docutils literal"><span class="pre">svm.OneClassSVM</span></tt></a> is able to recover a reasonable
 approximation, whereas the <a class="reference internal" href="generated/sklearn.covariance.EllipticEnvelope.html#sklearn.covariance.EllipticEnvelope" title="sklearn.covariance.EllipticEnvelope"><tt class="xref py py-class docutils literal"><span class="pre">covariance.EllipticEnvelope</span></tt></a>
 completely fails.</td>
-<td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier3" src="../_images/plot_outlier_detection_31.png" style="width: 500.0px; height: 250.0px;" /></a></td>
+<td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier3" src="../_images/plot_outlier_detection_3.png" style="width: 500.0px; height: 250.0px;" /></a></td>
 </tr>
 </tbody>
 </table>

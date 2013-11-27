@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
@@ -186,7 +187,7 @@
 <h1>sklearn.decomposition.dict_learning_online<a class="headerlink" href="#sklearn-decomposition-dict-learning-online" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.decomposition.dict_learning_online">
-<tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">dict_learning_online</tt><big>(</big><em>X</em>, <em>n_components=2</em>, <em>alpha=1</em>, <em>n_iter=100</em>, <em>return_code=True</em>, <em>dict_init=None</em>, <em>callback=None</em>, <em>batch_size=3</em>, <em>verbose=False</em>, <em>shuffle=True</em>, <em>n_jobs=1</em>, <em>method='lars'</em>, <em>iter_offset=0</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.dict_learning_online" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">dict_learning_online</tt><big>(</big><em>X</em>, <em>n_components=2</em>, <em>alpha=1</em>, <em>n_iter=100</em>, <em>return_code=True</em>, <em>dict_init=None</em>, <em>callback=None</em>, <em>batch_size=3</em>, <em>verbose=False</em>, <em>shuffle=True</em>, <em>n_jobs=1</em>, <em>method='lars'</em>, <em>iter_offset=0</em>, <em>random_state=None</em>, <em>return_inner_stats=False</em>, <em>inner_stats=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.dict_learning_online" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solves a dictionary learning matrix factorization problem online.</p>
 <p>Finds the best dictionary and the corresponding sparse code for
 approximating the data matrix X by solving:</p>
@@ -261,6 +262,21 @@ initialization.</p>
 <p><strong>random_state</strong> : int or RandomState</p>
 <blockquote>
 <div><p>Pseudo number generator state used for random sampling.</p>
+</div></blockquote>
+<p><strong>return_inner_stats</strong> : boolean, optional</p>
+<blockquote>
+<div><p>Return the inner statistics A (dictionary covariance) and B
+(data approximation). Useful to restart the algorithm in an
+online setting. If return_inner_stats is True, return_code is
+ignored</p>
+</div></blockquote>
+<p><strong>inner_stats</strong> : tuple of (A, B) ndarrays</p>
+<blockquote>
+<div><p>Inner sufficient statistics that are kept by the algorithm.
+Passing them at initialization is useful in online settings, to
+avoid loosing the history of the evolution.
+A (n_components, n_components) is the dictionary covariance matrix.
+B (n_features, n_components) is the data approximation matrix</p>
 </div></blockquote>
 </td>
 </tr>

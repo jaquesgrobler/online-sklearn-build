@@ -31,12 +31,13 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="Sparse coding with a precomputed dictionary" href="plot_sparse_coding.html" />
-    <link rel="prev" title="FastICA on 2D point clouds" href="plot_ica_vs_pca.html" />
+    <link rel="next" title="Faces dataset decompositions" href="plot_faces_decomposition.html" />
+    <link rel="prev" title="Principal components analysis (PCA)" href="plot_pca_3d.html" />
   
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
@@ -119,14 +120,14 @@
   <!-- rellinks[1:] is an ugly hack to avoid link to module
   index -->
         <div class="rellink">
-        <a href="plot_ica_vs_pca.html"
+        <a href="plot_pca_3d.html"
         accesskey="P">Previous
         <br/>
         <span class="smallrellink">
-        FastICA on 2D po...
+        Principal compon...
         </span>
             <span class="hiddenrellink">
-            FastICA on 2D point clouds
+            Principal components analysis (PCA)
             </span>
         </a>
         </div>
@@ -134,14 +135,14 @@
             &nbsp;
             </div>
         <div class="rellink">
-        <a href="plot_sparse_coding.html"
+        <a href="plot_faces_decomposition.html"
         accesskey="N">Next
         <br/>
         <span class="smallrellink">
-        Sparse coding wi...
+        Faces dataset de...
         </span>
             <span class="hiddenrellink">
-            Sparse coding with a precomputed dictionary
+            Faces dataset decompositions
             </span>
         </a>
         </div>
@@ -186,34 +187,25 @@
 <span id="example-decomposition-plot-pca-vs-fa-model-selection-py"></span><h1>Model selection with Probabilistic (PCA) and Factor Analysis (FA)<a class="headerlink" href="#model-selection-with-probabilistic-pca-and-factor-analysis-fa" title="Permalink to this headline">¶</a></h1>
 <p>Probabilistic PCA and Factor Analysis are probabilistic models.
 The consequence is that the likelihood of new data can be used
-for model selection. Here we compare PCA and FA with cross-validation
-on low rank data corrupted with homoscedastic noise (noise variance
+for model selection and covariance estimation.
+Here we compare PCA and FA with cross-validation on low rank data corrupted
+with homoscedastic noise (noise variance
 is the same for each feature) or heteroscedastic noise (noise variance
-is the different for each feature).</p>
+is the different for each feature). In a second step we compare the model
+likelihood to the likelihoods obtained from shrinkage covariance estimators.</p>
 <p>One can observe that with homoscedastic noise both FA and PCA succeed
 in recovering the size of the low rank subspace. The likelihood with PCA
 is higher than FA in this case. However PCA fails and overestimates
-the rank when heteroscedastic noise is present. The automatic estimation from
+the rank when heteroscedastic noise is present. Under appropriate
+circumstances the low rank models are more likely than shrinkage models.</p>
+<p>The automatic estimation from
 Automatic Choice of Dimensionality for PCA. NIPS 2000: 598-604
 by Thomas P. Minka is also compared.</p>
-<ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_pca_vs_fa_model_selection_1.png"><img alt="../../_images/plot_pca_vs_fa_model_selection_1.png" src="../../_images/plot_pca_vs_fa_model_selection_1.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_pca_vs_fa_model_selection_2.png"><img alt="../../_images/plot_pca_vs_fa_model_selection_2.png" src="../../_images/plot_pca_vs_fa_model_selection_2.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-</ul>
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>best n_components by PCA CV = 10
-best n_components by FactorAnalysis CV = 10
-best n_components by PCA MLE = 10
-best n_components by PCA CV = 40
-best n_components by FactorAnalysis CV = 10
-best n_components by PCA MLE = 38</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_pca_vs_fa_model_selection.py"><tt class="xref download docutils literal"><span class="pre">plot_pca_vs_fa_model_selection.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="c"># Authors: Alexandre Gramfort</span>
+<span class="c">#          Denis A. Engemann</span>
 <span class="c"># License: BSD 3 clause</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -221,7 +213,9 @@ best n_components by PCA MLE = 38</pre>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span><span class="p">,</span> <span class="n">FactorAnalysis</span>
+<span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">ShrunkCovariance</span><span class="p">,</span> <span class="n">LedoitWolf</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Create the data</span>
@@ -258,6 +252,19 @@ best n_components by PCA MLE = 38</pre>
 
     <span class="k">return</span> <span class="n">pca_scores</span><span class="p">,</span> <span class="n">fa_scores</span>
 
+
+<span class="k">def</span> <span class="nf">shrunk_cov_score</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">shrinkages</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+    <span class="n">cv</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">ShrunkCovariance</span><span class="p">(),</span> <span class="p">{</span><span class="s">&#39;shrinkage&#39;</span><span class="p">:</span> <span class="n">shrinkages</span><span class="p">})</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">best_estimator_</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="n">X</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">lw_score</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">LedoitWolf</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">LedoitWolf</span><span class="p">(),</span> <span class="n">X</span><span class="p">))</span>
+
+
 <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">X_homo</span><span class="p">,</span> <span class="s">&#39;Homoscedastic Noise&#39;</span><span class="p">),</span>
                  <span class="p">(</span><span class="n">X_hetero</span><span class="p">,</span> <span class="s">&#39;Heteroscedastic Noise&#39;</span><span class="p">)]:</span>
     <span class="n">pca_scores</span><span class="p">,</span> <span class="n">fa_scores</span> <span class="o">=</span> <span class="n">compute_scores</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -282,6 +289,13 @@ best n_components by PCA MLE = 38</pre>
                <span class="n">label</span><span class="o">=</span><span class="s">&#39;FactorAnalysis CV: </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n_components_fa</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">n_components_pca_mle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span>
                <span class="n">label</span><span class="o">=</span><span class="s">&#39;PCA MLE: </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n_components_pca_mle</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+
+    <span class="c"># compare with other covariance estimators</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">shrunk_cov_score</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;violet&#39;</span><span class="p">,</span>
+               <span class="n">label</span><span class="o">=</span><span class="s">&#39;Shrunk Covariance MLE&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;-.&#39;</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">lw_score</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">,</span>
+               <span class="n">label</span><span class="o">=</span><span class="s">&#39;LedoitWolf MLE&#39;</span> <span class="o">%</span> <span class="n">n_components_pca_mle</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;-.&#39;</span><span class="p">)</span>
+
     <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;nb of components&#39;</span><span class="p">)</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;CV scores&#39;</span><span class="p">)</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&#39;lower right&#39;</span><span class="p">)</span>
@@ -290,7 +304,6 @@ best n_components by PCA MLE = 38</pre>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  25.81 seconds</p>
 </div>
 
 
@@ -308,11 +321,11 @@ best n_components by PCA MLE = 38</pre>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_ica_vs_pca.html">Previous
+      <a href="plot_pca_3d.html">Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_sparse_coding.html">Next
+      <a href="plot_faces_decomposition.html">Next
       </a>
     </div>
     

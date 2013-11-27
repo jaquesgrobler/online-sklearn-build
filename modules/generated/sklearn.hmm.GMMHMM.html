@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
@@ -203,53 +204,6 @@
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="4%" />
-<col width="17%" />
-<col width="79%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>init_params</td>
-<td>string, optional</td>
-<td>Controls which parameters are initialized prior to training. Can         contain any combination of &#8216;s&#8217; for startprob, &#8216;t&#8217; for transmat, &#8216;m&#8217;         for means, and &#8216;c&#8217; for covars, etc.  Defaults to all parameters.</td>
-</tr>
-<tr class="row-even"><td>params</td>
-<td>string, optional</td>
-<td>Controls which parameters are updated in the training process.  Can
-contain any combination of &#8216;s&#8217; for startprob, &#8216;t&#8217; for transmat,&#8217;m&#8217; for
-means, and &#8216;c&#8217; for covars, etc.  Defaults to all parameters.</td>
-</tr>
-<tr class="row-odd"><td>n_components</td>
-<td>int</td>
-<td>Number of states in the model.</td>
-</tr>
-<tr class="row-even"><td>transmat</td>
-<td>array, shape (<cite>n_components</cite>, <cite>n_components</cite>)</td>
-<td>Matrix of transition probabilities between states.</td>
-</tr>
-<tr class="row-odd"><td>startprob</td>
-<td>array, shape (&#8216;n_components`,)</td>
-<td>Initial state occupation distribution.</td>
-</tr>
-<tr class="row-even"><td>gmms</td>
-<td>array of GMM objects, length <cite>n_components</cite></td>
-<td>GMM emission distributions for each state.</td>
-</tr>
-<tr class="row-odd"><td>random_state</td>
-<td>RandomState or an int seed (0 by default)</td>
-<td>A random number generator instance</td>
-</tr>
-<tr class="row-even"><td>n_iter</td>
-<td>int, optional</td>
-<td>Number of iterations to perform.</td>
-</tr>
-<tr class="row-odd"><td>thresh</td>
-<td>float, optional</td>
-<td>Convergence threshold.</td>
-</tr>
-</tbody>
-</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -331,8 +285,8 @@ Uses the selected algorithm for decoding.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
 <blockquote>
-<div><p>List of n_features-dimensional data points.  Each row
-corresponds to a single data point.</p>
+<div><p>Sequence of n_features-dimensional data points. Each row
+corresponds to a single point in the sequence.</p>
 </div></blockquote>
 <p><strong>algorithm</strong> : string, one of the <cite>decoder_algorithms</cite></p>
 <blockquote>
@@ -382,7 +336,9 @@ algorithm. If you want to avoid this step, pass proper
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : list</p>
 <blockquote class="last">
-<div><p>List of array-like observation sequences (shape (n_i, n_features)).</p>
+<div><p>List of array-like observation sequences, each of which
+has shape (n_i, n_features), where n_i is the length of
+the i_th observation.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -392,8 +348,9 @@ algorithm. If you want to avoid this step, pass proper
 <p>In general, <cite>logprob</cite> should be non-decreasing unless
 aggressive pruning is used.  Decreasing <cite>logprob</cite> is generally
 a sign of overfitting (e.g. a covariance parameter getting too
-small).  You can fix this by getting more training data, or
-decreasing <cite>covars_prior</cite>.</p>
+small).  You can fix this by getting more training data,
+or strengthening the appropriate subclass-specific regularization
+parameter.</p>
 </dd></dl>
 
 <dl class="method">
@@ -431,8 +388,8 @@ contained subobjects that are estimators.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
 <blockquote>
-<div><p>List of n_features-dimensional data points.  Each row
-corresponds to a single data point.</p>
+<div><p>Sequence of n_features-dimensional data points. Each row
+corresponds to a single point in the sequence.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -456,8 +413,8 @@ corresponds to a single data point.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
 <blockquote>
-<div><p>List of n_features-dimensional data points.  Each row
-corresponds to a single data point.</p>
+<div><p>Sequence of n_features-dimensional data points. Each row
+corresponds to a single point in the sequence.</p>
 </div></blockquote>
 </td>
 </tr>

@@ -25,46 +25,8 @@ value of k on various overlapping sub-samples of the dataset.
 
 
 
-
-.. rst-class:: horizontal
-
-
-    *
-
-      .. image:: images/plot_adjusted_for_chance_measures_2.png
-            :scale: 47
-
-    *
-
-      .. image:: images/plot_adjusted_for_chance_measures_1.png
-            :scale: 47
-
-
-**Script output**::
-
-  Computing adjusted_rand_score for 10 values of n_clusters and n_samples=100
-  done in 0.169s
-  Computing v_measure_score for 10 values of n_clusters and n_samples=100
-  done in 0.031s
-  Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=100
-  done in 0.788s
-  Computing mutual_info_score for 10 values of n_clusters and n_samples=100
-  done in 0.021s
-  Computing adjusted_rand_score for 10 values of n_clusters and n_samples=1000
-  done in 0.192s
-  Computing v_measure_score for 10 values of n_clusters and n_samples=1000
-  done in 0.056s
-  Computing adjusted_mutual_info_score for 10 values of n_clusters and n_samples=1000
-  done in 0.425s
-  Computing mutual_info_score for 10 values of n_clusters and n_samples=1000
-  done in 0.035s
-
-
-
 **Python source code:** :download:`plot_adjusted_for_chance_measures.py <plot_adjusted_for_chance_measures.py>`
 
 .. literalinclude:: plot_adjusted_for_chance_measures.py
     :lines: 23-
-
-**Total running time of the example:**  1.88 seconds
     
