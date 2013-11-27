@@ -358,12 +358,12 @@ analysis of the results::
   ...                                         # doctest: +NORMALIZE_WHITESPACE
                           precision    recall  f1-score   support
   <BLANKLINE>
-             alt.atheism       0.93      0.82      0.87       319
-           comp.graphics       0.88      0.98      0.93       389
+             alt.atheism       0.94      0.82      0.87       319
+           comp.graphics       0.88      0.98      0.92       389
                  sci.med       0.95      0.89      0.92       396
   soc.religion.christian       0.90      0.95      0.92       398
   <BLANKLINE>
-             avg / total       0.91      0.91      0.91      1502
+             avg / total       0.92      0.91      0.91      1502
   <BLANKLINE>
 
   >>> metrics.confusion_matrix(twenty_test.target, predicted)
