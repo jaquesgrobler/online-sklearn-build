@@ -199,9 +199,11 @@
 </div></blockquote>
 <p><strong>bandwidth</strong> : float, optional</p>
 <blockquote>
-<div><p>Kernel bandwidth.
-If bandwidth is not defined, it is set using
-a heuristic given by the median of all pairwise distances.</p>
+<div><p>Kernel bandwidth.</p>
+<p>If bandwidth is not given, it is determined using a heuristic based on
+the median of all pairwise distances. This will take quadratic time in
+the number of samples. The sklearn.cluster.estimate_bandwidth function
+can be used to do this more efficiently.</p>
 </div></blockquote>
 <p><strong>seeds</strong> : array [n_seeds, n_features]</p>
 <blockquote>
