@@ -79,7 +79,6 @@
 		      </a>
 		      <ul class="dropdown-menu">
 			<li class="link-title">Scikit-learn 0.14 (stable)</li>
-			<li><a href="tutorial/basic/tutorial.html">Quick Start</a></li>
 			<li><a href="tutorial/index.html">Tutorials</a></li>
 			<li><a href="user_guide.html">User guide</a></li>
 			<li><a href="modules/classes.html">API</a></li>
@@ -313,7 +312,7 @@ partial_fit was not working properly.</li>
 <div><ul class="simple">
 <li>Add score method to <a class="reference internal" href="modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a> following the model of
 probabilistic PCA and deprecate
-<a class="reference internal" href="modules/generated/sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-class docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a> model whose
+<tt class="xref py py-class docutils literal"><span class="pre">ProbabilisticPCA</span></tt> model whose
 score implementation is not correct. The computation now also exploits the
 matrix inversion lemma for faster computation. By <a class="reference external" href="http://alexandre.gramfort.net">Alexandre Gramfort</a>.</li>
 <li>The score method of <a class="reference internal" href="modules/generated/sklearn.decomposition.FactorAnalysis.html#sklearn.decomposition.FactorAnalysis" title="sklearn.decomposition.FactorAnalysis"><tt class="xref py py-class docutils literal"><span class="pre">FactorAnalysis</span></tt></a>
@@ -1055,7 +1054,7 @@ useful when the number of clusters is not small compared to the
 number of samples.</li>
 <li>Add MultiTaskLasso and MultiTaskElasticNet for joint feature selection,
 by <a class="reference external" href="http://alexandre.gramfort.net">Alexandre Gramfort</a>.</li>
-<li>Added <a class="reference internal" href="modules/generated/sklearn.metrics.auc_score.html#sklearn.metrics.auc_score" title="sklearn.metrics.auc_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.auc_score</span></tt></a> and
+<li>Added <tt class="xref py py-func docutils literal"><span class="pre">metrics.auc_score</span></tt> and
 <a class="reference internal" href="modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score" title="sklearn.metrics.average_precision_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.average_precision_score</span></tt></a> convenience functions by <a class="reference external" href="http://peekaboo-vision.blogspot.com">Andreas
 Müller</a>.</li>
 <li>Improved sparse matrix support in the <a class="reference internal" href="modules/feature_selection.html#feature-selection"><em>Feature selection</em></a>
@@ -1069,7 +1068,7 @@ ignore infrequent words, <tt class="docutils literal"><span class="pre">min_df</
 <li>Add support for multiple targets in some linear models (ElasticNet, Lasso
 and OrthogonalMatchingPursuit) by <a class="reference external" href="http://vene.ro">Vlad Niculae</a> and
 <a class="reference external" href="http://alexandre.gramfort.net">Alexandre Gramfort</a>.</li>
-<li>Fixes in <a class="reference internal" href="modules/generated/sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-class docutils literal"><span class="pre">decomposition.ProbabilisticPCA</span></tt></a> score function by Wei Li.</li>
+<li>Fixes in <tt class="xref py py-class docutils literal"><span class="pre">decomposition.ProbabilisticPCA</span></tt> score function by Wei Li.</li>
 <li>Fixed feature importance computation in
 <a class="reference internal" href="modules/ensemble.html#gradient-boosting"><em>Gradient Tree Boosting</em></a>.</li>
 </ul>
@@ -2040,7 +2039,7 @@ sphinx docs.</li>
 <blockquote>
 <div><ul class="simple">
 <li>new examples using some of the mlcomp datasets:
-<a class="reference internal" href="auto_examples/mlcomp_sparse_document_classification.html#example-mlcomp-sparse-document-classification-py"><em>Classification of text documents: using a MLComp dataset</em></a>,
+<em class="xref std std-ref">example_mlcomp_sparse_document_classification.py</em>,
 <a class="reference internal" href="auto_examples/document_classification_20newsgroups.html#example-document-classification-20newsgroups-py"><em>Classification of text documents using sparse features</em></a></li>
 <li>Many more examples. <a class="reference external" href="http://scikit-learn.org/stable/auto_examples/index.html">See here</a>
 the full list of examples.</li>

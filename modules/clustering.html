@@ -80,7 +80,6 @@
 		      </a>
 		      <ul class="dropdown-menu">
 			<li class="link-title">Scikit-learn 0.14 (stable)</li>
-			<li><a href="../tutorial/basic/tutorial.html">Quick Start</a></li>
 			<li><a href="../tutorial/index.html">Tutorials</a></li>
 			<li><a href="../user_guide.html">User guide</a></li>
 			<li><a href="classes.html">API</a></li>
@@ -264,7 +263,7 @@ long as a similarity measure exists for such objects.</p>
 <div class="section" id="overview-of-clustering-methods">
 <h2>2.3.1. Overview of clustering methods<a class="headerlink" href="#overview-of-clustering-methods" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_cluster_comparison.html"><img alt="../_images/plot_cluster_comparison_1.png" src="../_images/plot_cluster_comparison_1.png" style="width: 700.0px; height: 475.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_cluster_comparison.html"><img alt="modules/../auto_examples/cluster/images/plot_cluster_comparison_1.png" src="modules/../auto_examples/cluster/images/plot_cluster_comparison_1.png" /></a>
 <p class="caption">A comparison of the clustering algorithms in scikit-learn</p>
 </div>
 <table border="1" class="docutils">
@@ -361,7 +360,7 @@ samples assigned to each previous centroid. The difference between the old
 and the new centroids are computed and the algorithm repeats these last two
 steps until this value is less than a threshold. In other words, it repeats
 until the centroids do not move significantly.</p>
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_kmeans_digits.html"><img alt="../_images/plot_kmeans_digits_1.png" class="align-right" src="../_images/plot_kmeans_digits_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_kmeans_digits.html"><img alt="modules/../auto_examples/cluster/images/plot_kmeans_digits_1.png" class="align-right" src="modules/../auto_examples/cluster/images/plot_kmeans_digits_1.png" /></a>
 <p>The algorithm can be understood through the concept of <a class="reference external" href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagrams</a>. First the Voronoi diagram of
 the points is calculated using the current centroids. Each segment in the
 Voronoi diagram becomes a separate cluster. Secondly, the centroids are updated
@@ -431,7 +430,7 @@ convergence or a predetermined number of iterations is reached.</p>
 of the results is reduced. In practice this difference in quality can be quite
 small, as shown in the example and cited reference.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_mini_batch_kmeans.html"><img alt="../_images/plot_mini_batch_kmeans_1.png" src="../_images/plot_mini_batch_kmeans_1.png" style="width: 800.0px; height: 300.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_mini_batch_kmeans.html"><img alt="modules/../auto_examples/cluster/images/plot_mini_batch_kmeans_1.png" src="modules/../auto_examples/cluster/images/plot_mini_batch_kmeans_1.png" /></a>
 </div>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
@@ -464,7 +463,7 @@ values from other pairs. This updating happens iteratively until convergence,
 at which point the final exemplars are chosen, and hence the final clustering
 is given.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_affinity_propagation.html"><img alt="../_images/plot_affinity_propagation_1.png" src="../_images/plot_affinity_propagation_1.png" style="width: 400.0px; height: 300.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_affinity_propagation.html"><img alt="modules/../auto_examples/cluster/images/plot_affinity_propagation_1.png" src="modules/../auto_examples/cluster/images/plot_affinity_propagation_1.png" /></a>
 </div>
 <p>Affinity Propagation can be interesting as it chooses the number of
 clusters based on the data provided. For this purpose, the two important
@@ -514,7 +513,7 @@ of cluster. It will have difficulties scaling to thousands of samples.
 The utility function <a class="reference internal" href="generated/sklearn.cluster.estimate_bandwidth.html#sklearn.cluster.estimate_bandwidth" title="sklearn.cluster.estimate_bandwidth"><tt class="xref py py-func docutils literal"><span class="pre">estimate_bandwidth</span></tt></a> can be used to guess
 the optimal bandwidth for <a class="reference internal" href="generated/sklearn.cluster.MeanShift.html#sklearn.cluster.MeanShift" title="sklearn.cluster.MeanShift"><tt class="xref py py-class docutils literal"><span class="pre">MeanShift</span></tt></a> from the data.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_mean_shift.html"><img alt="../_images/plot_mean_shift_1.png" src="../_images/plot_mean_shift_1.png" style="width: 400.0px; height: 300.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_mean_shift.html"><img alt="modules/../auto_examples/cluster/images/plot_mean_shift_1.png" src="modules/../auto_examples/cluster/images/plot_mean_shift_1.png" /></a>
 </div>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
@@ -541,8 +540,8 @@ cluster. This criteria is especially interesting when working on images:
 graph vertices are pixels, and edges of the similarity graph are a
 function of the gradient of the image.</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/cluster/plot_segmentation_toy.html"><img alt="noisy_img" src="../_images/plot_segmentation_toy_1.png" style="width: 300.0px; height: 300.0px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/cluster/plot_segmentation_toy.html"><img alt="segmented_img" src="../_images/plot_segmentation_toy_2.png" style="width: 300.0px; height: 300.0px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/cluster/plot_segmentation_toy.html"><img alt="noisy_img" src="modules/../auto_examples/cluster/images/plot_segmentation_toy_1.png" /></a>
+ <a class="reference external image-reference" href="../auto_examples/cluster/plot_segmentation_toy.html"><img alt="segmented_img" src="modules/../auto_examples/cluster/images/plot_segmentation_toy_2.png" /></a>
 </strong></p><div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>Transforming distance to well-behaved similarities</p>
@@ -587,8 +586,8 @@ geometrical shape.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="../auto_examples/cluster/plot_lena_segmentation.html"><img alt="lena_kmeans" src="../_images/plot_lena_segmentation_1.png" style="width: 325.0px; height: 325.0px;" /></a></td>
-<td><a class="reference external" href="../auto_examples/cluster/plot_lena_segmentation.html"><img alt="lena_discretize" src="../_images/plot_lena_segmentation_2.png" style="width: 325.0px; height: 325.0px;" /></a></td>
+<tr class="row-even"><td><a class="reference external" href="../auto_examples/cluster/plot_lena_segmentation.html"><img alt="lena_kmeans" src="modules/../auto_examples/cluster/images/plot_lena_segmentation_1.png" /></a></td>
+<td><a class="reference external" href="../auto_examples/cluster/plot_lena_segmentation.html"><img alt="lena_discretize" src="modules/../auto_examples/cluster/images/plot_lena_segmentation_2.png" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -634,8 +633,8 @@ forbid the merging of points that are not adjacent on the swiss roll, and
 thus avoid forming clusters that extend across overlapping folds of the
 roll.</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html"><img alt="unstructured" src="../_images/plot_ward_structured_vs_unstructured_1.png" style="width: 392.0px; height: 294.0px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html"><img alt="structured" src="../_images/plot_ward_structured_vs_unstructured_2.png" style="width: 392.0px; height: 294.0px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html"><img alt="unstructured" src="modules/../auto_examples/cluster/images/plot_ward_structured_vs_unstructured_1.png" /></a>
+ <a class="reference external image-reference" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html"><img alt="structured" src="modules/../auto_examples/cluster/images/plot_ward_structured_vs_unstructured_2.png" /></a>
 </strong></p><p>The connectivity constraints are imposed via an connectivity matrix: a
 scipy sparse matrix that has elements only at the intersection of a row
 and a column with indices of the dataset that should be connected. This
@@ -1125,7 +1124,7 @@ an adjusted index such as the Adjusted Rand Index (ARI)</strong>.</p>
 </li>
 </ul>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_adjusted_for_chance_measures.html"><img alt="../_images/plot_adjusted_for_chance_measures_1.png" src="../_images/plot_adjusted_for_chance_measures_1.png" style="width: 800.0px; height: 600.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_adjusted_for_chance_measures.html"><img alt="modules/../auto_examples/cluster/images/plot_adjusted_for_chance_measures_1.png" src="modules/../auto_examples/cluster/images/plot_adjusted_for_chance_measures_1.png" /></a>
 </div>
 <ul class="simple">
 <li>These metrics <strong>require the knowledge of the ground truth classes</strong> while
