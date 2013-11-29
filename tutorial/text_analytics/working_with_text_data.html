@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
   
-    <title>Tutorial setup &mdash; scikit-learn 0.15-git documentation</title>
+    <title>Working With Text Data &mdash; scikit-learn 0.15-git documentation</title>
   <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
@@ -114,11 +114,10 @@
       <p class="doc-version">This documentation is for scikit-learn <strong>version 0.15-git</strong> &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     <p class="citing">If you use the software, please consider <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
-<li><a class="reference internal" href="#">Tutorial setup</a><ul>
+<li><a class="reference internal" href="#">Working With Text Data</a><ul>
+<li><a class="reference internal" href="#tutorial-setup">Tutorial setup</a></li>
 <li><a class="reference internal" href="#download-the-datasets">Download the datasets</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#working-with-text-data">Working with text data</a><ul>
+<li><a class="reference internal" href="#tutorial-introduction">Tutorial introduction</a></li>
 <li><a class="reference internal" href="#downloading-the-data-and-loading-it-from-python">Downloading the data and loading it from Python</a></li>
 <li><a class="reference internal" href="#extracting-features-from-text-files">Extracting features from text files</a><ul>
 <li><a class="reference internal" href="#bags-of-words">Bags of words</a></li>
@@ -130,9 +129,6 @@
 <li><a class="reference internal" href="#building-a-pipeline">Building a pipeline</a></li>
 <li><a class="reference internal" href="#evaluation-of-the-performance-on-the-test-set">Evaluation of the performance on the test set</a></li>
 <li><a class="reference internal" href="#parameter-tuning-using-grid-search">Parameter tuning using grid search</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#exercises">Exercises</a><ul>
 <li><a class="reference internal" href="#exercise-1-language-identification">Exercise 1: Language identification</a></li>
 <li><a class="reference internal" href="#exercise-2-sentiment-analysis-on-movie-reviews">Exercise 2: Sentiment Analysis on movie reviews</a></li>
 <li><a class="reference internal" href="#exercise-3-cli-text-classification-utility">Exercise 3: CLI text classification utility</a></li>
@@ -152,8 +148,10 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="tutorial-setup">
-<h1>Tutorial setup<a class="headerlink" href="#tutorial-setup" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="working-with-text-data">
+<h1>Working With Text Data<a class="headerlink" href="#working-with-text-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tutorial-setup">
+<h2>Tutorial setup<a class="headerlink" href="#tutorial-setup" title="Permalink to this headline">¶</a></h2>
 <p>To get started with this tutorial, you firstly must have the
 <em>scikit-learn</em> and all of its requiered dependencies installed.</p>
 <p>Please refer to the <a class="reference external" href="http://scikit-learn.sourceforge.net/install.html">scikit-learn install</a> page for more information
@@ -171,11 +169,12 @@ scikit-learn folder:</p>
 <li><tt class="docutils literal"><span class="pre">solutions</span></tt> - solutions of the exercices</li>
 </ul>
 </div></blockquote>
-<p>You can aleardy copy the skeletons into a new folder somewhere
+<p>You can already copy the skeletons into a new folder somewhere
 on your hard-drive named <tt class="docutils literal"><span class="pre">sklearn_tut_workspace</span></tt> where you
 will edit your own files for the exercices while keeping
 the original skeletons intact:</p>
 <div class="highlight-python"><pre>% cp -r skeletons work_directory/sklearn_tut_workspace</pre>
+</div>
 </div>
 <div class="section" id="download-the-datasets">
 <h2>Download the datasets<a class="headerlink" href="#download-the-datasets" title="Permalink to this headline">¶</a></h2>
@@ -188,9 +187,8 @@ having read them first).</p>
 % python fetch_data.py</pre>
 </div>
 </div>
-</div>
-<div class="section" id="working-with-text-data">
-<h1>Working with text data<a class="headerlink" href="#working-with-text-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tutorial-introduction">
+<h2>Tutorial introduction<a class="headerlink" href="#tutorial-introduction" title="Permalink to this headline">¶</a></h2>
 <p>The goal of this guide is to explore some of the main <tt class="docutils literal"><span class="pre">scikit-learn</span></tt>
 tools on a single practical task: analysing a collection of text
 documents (newsgroups posts) on twenty different topics.</p>
@@ -204,6 +202,7 @@ documents (newsgroups posts) on twenty different topics.</p>
 the feature extraction components and the classifier</li>
 </ul>
 </div></blockquote>
+</div>
 <div class="section" id="downloading-the-data-and-loading-it-from-python">
 <h2>Downloading the data and loading it from Python<a class="headerlink" href="#downloading-the-data-and-loading-it-from-python" title="Permalink to this headline">¶</a></h2>
 <p>The dataset is called &#8220;Twenty Newsgroups&#8221;. Here is the official
@@ -537,10 +536,6 @@ we can do:</p>
 <span class="go">0.902...</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
 <p>To do the exercises, copy the content of the &#8216;skeletons&#8217; folder as
 a new folder named &#8216;workspace&#8217;:</p>
 <div class="highlight-python"><pre>% cp -r skeletons workspace</pre>
@@ -556,6 +551,7 @@ mortem ipdb session.</p>
 <p><strong>For each exercise, the skeleton file provides all the necessary import
 statements, boilerplate code to load the data and sample code to evaluate
 the predictive accurracy of the model.</strong></p>
+</div>
 <div class="section" id="exercise-1-language-identification">
 <h2>Exercise 1: Language identification<a class="headerlink" href="#exercise-1-language-identification" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">

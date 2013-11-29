@@ -206,7 +206,7 @@ calculated.</p>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">linear_model</span>
 
 <span class="c"># Load the diabetes dataset</span>
-<span class="n">diabetes</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span><span class="p">()</span>
+<span class="n">diabetes</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.datasets.load_diabetes.html#sklearn.datasets.load_diabetes"><span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span></a><span class="p">()</span>
 
 
 <span class="c"># Use only one feature</span>
@@ -222,26 +222,26 @@ calculated.</p>
 <span class="n">diabetes_y_test</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]</span>
 
 <span class="c"># Create linear regression object</span>
-<span class="n">regr</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
+<a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span></a><span class="p">()</span>
 
 <span class="c"># Train the model using the training sets</span>
-<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">diabetes_X_train</span><span class="p">,</span> <span class="n">diabetes_y_train</span><span class="p">)</span>
+<a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">diabetes_X_train</span><span class="p">,</span> <span class="n">diabetes_y_train</span><span class="p">)</span>
 
 <span class="c"># The coefficients</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;Coefficients: </span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Coefficients: </span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 <span class="c"># The mean square error</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;Residual sum of squares: </span><span class="si">%.2f</span><span class="s">&quot;</span>
-      <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">)</span> <span class="o">-</span> <span class="n">diabetes_y_test</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+      <span class="o">%</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.mean.html#numpy.mean"><span class="n">np</span><span class="o">.</span><span class="n">mean</span></a><span class="p">((</span><a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">)</span> <span class="o">-</span> <span class="n">diabetes_y_test</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
 <span class="c"># Explained variance score: 1 is perfect prediction</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;Variance score: </span><span class="si">%.2f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">regr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">,</span> <span class="n">diabetes_y_test</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Variance score: </span><span class="si">%.2f</span><span class="s">&#39;</span> <span class="o">%</span> <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">,</span> <span class="n">diabetes_y_test</span><span class="p">))</span>
 
 <span class="c"># Plot outputs</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">,</span> <span class="n">diabetes_y_test</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter"><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">,</span> <span class="n">diabetes_y_test</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">,</span> <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">regr</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">diabetes_X_test</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span>
         <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
-<span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xticks"><span class="n">pl</span><span class="o">.</span><span class="n">xticks</span></a><span class="p">(())</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.yticks"><span class="n">pl</span><span class="o">.</span><span class="n">yticks</span></a><span class="p">(())</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
