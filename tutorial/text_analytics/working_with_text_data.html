@@ -116,9 +116,7 @@
     <ul>
 <li><a class="reference internal" href="#">Working With Text Data</a><ul>
 <li><a class="reference internal" href="#tutorial-setup">Tutorial setup</a></li>
-<li><a class="reference internal" href="#download-the-datasets">Download the datasets</a></li>
-<li><a class="reference internal" href="#tutorial-introduction">Tutorial introduction</a></li>
-<li><a class="reference internal" href="#downloading-the-data-and-loading-it-from-python">Downloading the data and loading it from Python</a></li>
+<li><a class="reference internal" href="#loading-the-20-newgroups-dataset">Loading the 20 newgroups dataset</a></li>
 <li><a class="reference internal" href="#extracting-features-from-text-files">Extracting features from text files</a><ul>
 <li><a class="reference internal" href="#bags-of-words">Bags of words</a></li>
 <li><a class="reference internal" href="#tokenizing-text-with-scikit-learn">Tokenizing text with <tt class="docutils literal"><span class="pre">scikit-learn</span></tt></a></li>
@@ -132,7 +130,6 @@
 <li><a class="reference internal" href="#exercise-1-language-identification">Exercise 1: Language identification</a></li>
 <li><a class="reference internal" href="#exercise-2-sentiment-analysis-on-movie-reviews">Exercise 2: Sentiment Analysis on movie reviews</a></li>
 <li><a class="reference internal" href="#exercise-3-cli-text-classification-utility">Exercise 3: CLI text classification utility</a></li>
-<li><a class="reference internal" href="#exercise-4-face-recognition">Exercise 4: Face recognition</a></li>
 </ul>
 </li>
 </ul>
@@ -150,6 +147,19 @@
             
   <div class="section" id="working-with-text-data">
 <h1>Working With Text Data<a class="headerlink" href="#working-with-text-data" title="Permalink to this headline">¶</a></h1>
+<p>The goal of this guide is to explore some of the main <tt class="docutils literal"><span class="pre">scikit-learn</span></tt>
+tools on a single practical task: analysing a collection of text
+documents (newsgroups posts) on twenty different topics.</p>
+<p>In this section we will see how to:</p>
+<blockquote>
+<div><ul class="simple">
+<li>load the file contents and the categories</li>
+<li>extract feature vectors suitable for machine learning</li>
+<li>train a linear model to perform categorization</li>
+<li>use a grid search strategy to find a good configuration of both
+the feature extraction components and the classifier</li>
+</ul>
+</div></blockquote>
 <div class="section" id="tutorial-setup">
 <h2>Tutorial setup<a class="headerlink" href="#tutorial-setup" title="Permalink to this headline">¶</a></h2>
 <p>To get started with this tutorial, you firstly must have the
@@ -175,9 +185,6 @@ will edit your own files for the exercices while keeping
 the original skeletons intact:</p>
 <div class="highlight-python"><pre>% cp -r skeletons work_directory/sklearn_tut_workspace</pre>
 </div>
-</div>
-<div class="section" id="download-the-datasets">
-<h2>Download the datasets<a class="headerlink" href="#download-the-datasets" title="Permalink to this headline">¶</a></h2>
 <p>Machine Learning algorithms need data. Go to each <tt class="docutils literal"><span class="pre">$TUTORIAL_HOME/data</span></tt>
 sub-folder and run the <tt class="docutils literal"><span class="pre">fetch_data.py</span></tt> script from there (after
 having read them first).</p>
@@ -187,24 +194,8 @@ having read them first).</p>
 % python fetch_data.py</pre>
 </div>
 </div>
-<div class="section" id="tutorial-introduction">
-<h2>Tutorial introduction<a class="headerlink" href="#tutorial-introduction" title="Permalink to this headline">¶</a></h2>
-<p>The goal of this guide is to explore some of the main <tt class="docutils literal"><span class="pre">scikit-learn</span></tt>
-tools on a single practical task: analysing a collection of text
-documents (newsgroups posts) on twenty different topics.</p>
-<p>In this section we will see how to:</p>
-<blockquote>
-<div><ul class="simple">
-<li>load the file contents and the categories</li>
-<li>extract feature vectors suitable for machine learning</li>
-<li>train a linear model to perform categorization</li>
-<li>use a grid search strategy to find a good configuration of both
-the feature extraction components and the classifier</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="downloading-the-data-and-loading-it-from-python">
-<h2>Downloading the data and loading it from Python<a class="headerlink" href="#downloading-the-data-and-loading-it-from-python" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="loading-the-20-newgroups-dataset">
+<h2>Loading the 20 newgroups dataset<a class="headerlink" href="#loading-the-20-newgroups-dataset" title="Permalink to this headline">¶</a></h2>
 <p>The dataset is called &#8220;Twenty Newsgroups&#8221;. Here is the official
 description, quoted from the <a class="reference external" href="http://people.csail.mit.edu/jrennie/20Newsgroups/">website</a>:</p>
 <blockquote>
@@ -584,14 +575,6 @@ the polarity (positive or negative) if the text is written in
 English.</p>
 <p>Bonus point if the utility is able to give a confidence level for its
 predictions.</p>
-</div>
-<div class="section" id="exercise-4-face-recognition">
-<h2>Exercise 4: Face recognition<a class="headerlink" href="#exercise-4-face-recognition" title="Permalink to this headline">¶</a></h2>
-<p>Build a classifier that recognizes persons on face pictures from the
-Labeled Faces in the Wild dataset.</p>
-<p>ipython command line:</p>
-<div class="highlight-python"><pre>%run workspace/exercise_04_face_recognition.py data/data/labeled_faces_wild/lfw_preprocessed/</pre>
-</div>
 </div>
 </div>
 
