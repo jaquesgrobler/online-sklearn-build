@@ -1,0 +1,11 @@
+sklearn.base.ClassifierMixin
+============================
+
+.. currentmodule:: sklearn.base
+
+.. autoclass:: ClassifierMixin
+
+   
+   .. automethod:: __init__
+   
+

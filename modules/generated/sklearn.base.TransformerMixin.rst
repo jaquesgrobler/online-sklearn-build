@@ -1,0 +1,11 @@
+sklearn.base.TransformerMixin
+=============================
+
+.. currentmodule:: sklearn.base
+
+.. autoclass:: TransformerMixin
+
+   
+   .. automethod:: __init__
+   
+

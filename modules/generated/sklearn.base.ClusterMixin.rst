@@ -1,0 +1,11 @@
+sklearn.base.ClusterMixin
+=========================
+
+.. currentmodule:: sklearn.base
+
+.. autoclass:: ClusterMixin
+
+   
+   .. automethod:: __init__
+   
+

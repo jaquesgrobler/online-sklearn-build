@@ -1,0 +1,7 @@
+sklearn.base.clone
+==================
+
+.. currentmodule:: sklearn.base
+
+.. autofunction:: clone
+
