@@ -274,6 +274,8 @@ this GridSearchCV instance after fitting.</p>
 <dd>generates all the combinations of a an hyperparameter grid.</dd>
 <dt><a class="reference internal" href="sklearn.cross_validation.train_test_split.html#sklearn.cross_validation.train_test_split" title="sklearn.cross_validation.train_test_split"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.cross_validation.train_test_split</span></tt></a></dt>
 <dd>utility function to split the data into a development set usable for fitting a GridSearchCV instance and an evaluation set for its final evaluation.</dd>
+<dt><a class="reference internal" href="sklearn.metrics.make_scorer.html#sklearn.metrics.make_scorer" title="sklearn.metrics.make_scorer"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.make_scorer</span></tt></a></dt>
+<dd>Make a scorer from a performance metric or loss function.</dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
@@ -340,6 +342,11 @@ on the left out data.</td>
 <tr class="row-even"><td><cite>best_params_</cite></td>
 <td>dict</td>
 <td>Parameter setting that gave the best results on the hold out data.</td>
+</tr>
+<tr class="row-odd"><td><cite>scorer_</cite></td>
+<td>function</td>
+<td>Scorer function used on the held out data to choose the best
+parameters for the model.</td>
 </tr>
 </tbody>
 </table>

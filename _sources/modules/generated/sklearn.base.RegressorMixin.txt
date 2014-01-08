@@ -1,0 +1,11 @@
+sklearn.base.RegressorMixin
+===========================
+
+.. currentmodule:: sklearn.base
+
+.. autoclass:: RegressorMixin
+
+   
+   .. automethod:: __init__
+   
+

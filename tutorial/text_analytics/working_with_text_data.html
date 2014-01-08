@@ -200,7 +200,7 @@
           <div class="body">
             
   <div class="section" id="working-with-text-data">
-<h1>Working With Text Data<a class="headerlink" href="#working-with-text-data" title="Permalink to this headline">¶</a></h1>
+<span id="text-data-tutorial"></span><h1>Working With Text Data<a class="headerlink" href="#working-with-text-data" title="Permalink to this headline">¶</a></h1>
 <p>The goal of this guide is to explore some of the main <tt class="docutils literal"><span class="pre">scikit-learn</span></tt>
 tools on a single practical task: analysing a collection of text
 documents (newsgroups posts) on twenty different topics.</p>
@@ -296,12 +296,12 @@ reference the filenames are also available:</p>
 </pre></div>
 </div>
 <p>Let&#8217;s print the first lines of the first loaded file:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)[:</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]))</span>
 <span class="go">From: sd345@city.ac.uk (Michael Collier)</span>
 <span class="go">Subject: Converting images to HP LaserJet III?</span>
 <span class="go">Nntp-Posting-Host: hampton</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
 <span class="go">comp.graphics</span>
 </pre></div>
 </div>
@@ -319,7 +319,7 @@ integer id of each sample is stored in the <tt class="docutils literal"><span cl
 </div>
 <p>It is possible to get back the category names as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
-<span class="gp">... </span>    <span class="k">print</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
 <span class="gp">...</span>
 <span class="go">comp.graphics</span>
 <span class="go">comp.graphics</span>
@@ -380,7 +380,7 @@ dictionary of features and transform documents to feature vectors:</p>
 <span class="go">(2257, 35788)</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">CountVectorizer</span></tt> supports counts of N-grams of words or consequective characters.
+<p><a class="reference internal" href="../../modules/generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a> supports counts of N-grams of words or consequective characters.
 Once fitted, the vectorizer has built a dictionary of feature indices:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">count_vect</span><span class="o">.</span><span class="n">vocabulary_</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">u&#39;algorithm&#39;</span><span class="p">)</span>
 <span class="go">4690</span>
@@ -410,8 +410,16 @@ Inverse Document Frequency&#8221;.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_train_tf</span> <span class="o">=</span> <span class="n">tf_transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train_counts</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_train_tf</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(2257, 35788)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tfidf_transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In the above example-code, we firstly use the <tt class="docutils literal"><span class="pre">fit(..)</span></tt> method to fit our
+estimator to the data and secondly the <tt class="docutils literal"><span class="pre">transform(..)</span></tt> method to transform
+our count-matrix to a tf-idf representation.
+These two steps can be combined to achieve the same end result faster
+by skipping redundant processing. This is done through using the
+<tt class="docutils literal"><span class="pre">fit_transform(..)</span></tt> method as shown below, and as mentioned in the note
+in the previous section.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tfidf_transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_train_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_counts</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_train_tfidf</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(2257, 35788)</span>
@@ -421,7 +429,7 @@ Inverse Document Frequency&#8221;.</p>
 </div>
 <div class="section" id="training-a-classifier">
 <h2>Training a classifier<a class="headerlink" href="#training-a-classifier" title="Permalink to this headline">¶</a></h2>
-<p>Now that we have our feature, we can train a classifier to try to predict
+<p>Now that we have our features, we can train a classifier to try to predict
 the category of a post. Let&#8217;s start with a <a class="reference internal" href="../../modules/naive_bayes.html#naive-bayes"><em>naïve Bayes</em></a>
 classifier, which
 provides a nice baseline for this task. <tt class="docutils literal"><span class="pre">scikit-learn</span></tt> includes several
@@ -442,7 +450,7 @@ on the transformers, since they have already been fit to the training set:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">predicted</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new_tfidf</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">doc</span><span class="p">,</span> <span class="n">category</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">docs_new</span><span class="p">,</span> <span class="n">predicted</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">print</span> <span class="s">&#39;</span><span class="si">%r</span><span class="s"> =&gt; </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">category</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="p">(</span><span class="s">&#39;</span><span class="si">%r</span><span class="s"> =&gt; </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">category</span><span class="p">]))</span>
 <span class="gp">...</span>
 <span class="go">&#39;God is love&#39; =&gt; soc.religion.christian</span>
 <span class="go">&#39;OpenGL on the GPU is fast&#39; =&gt; comp.graphics</span>
@@ -464,7 +472,7 @@ like a compound classifier:</p>
 <p>The names <tt class="docutils literal"><span class="pre">vect</span></tt>, <tt class="docutils literal"><span class="pre">tfidf</span></tt> and <tt class="docutils literal"><span class="pre">clf</span></tt> (classifier) are arbitrary.
 We shall see their use in the section on grid search, below.
 We can now train the model with a single command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">text_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">text_clf</span> <span class="o">=</span> <span class="n">text_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -501,8 +509,8 @@ classifier object into our pipeline:</p>
 <p><tt class="docutils literal"><span class="pre">scikit-learn</span></tt> further provides utilities for more detailed performance
 analysis of the results:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span><span class="p">(</span><span class="n">twenty_test</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">target_names</span><span class="o">=</span><span class="n">twenty_test</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span><span class="p">(</span><span class="n">twenty_test</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">target_names</span><span class="o">=</span><span class="n">twenty_test</span><span class="o">.</span><span class="n">target_names</span><span class="p">))</span>
 <span class="gp">... </span>                                        
 <span class="go">                        precision    recall  f1-score   support</span>
 
@@ -571,7 +579,7 @@ which is a list of parameters/score pairs. To get the best scoring attributes,
 we can do:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">best_parameters</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">gs_clf</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">param_name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%r</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">best_parameters</span><span class="p">[</span><span class="n">param_name</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%r</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">best_parameters</span><span class="p">[</span><span class="n">param_name</span><span class="p">]))</span>
 <span class="gp">...</span>
 <span class="go">clf__alpha: 0.001</span>
 <span class="go">tfidf__use_idf: True</span>

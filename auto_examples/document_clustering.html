@@ -234,7 +234,7 @@ necessary to get a good convergence.</p>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">HashingVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Normalizer</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 
@@ -314,10 +314,7 @@ necessary to get a good convergence.</p>
         <span class="n">hasher</span> <span class="o">=</span> <span class="n">HashingVectorizer</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">n_features</span><span class="p">,</span>
                                    <span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">,</span> <span class="n">non_negative</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                                    <span class="n">norm</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-        <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">((</span>
-            <span class="p">(</span><span class="s">&#39;hasher&#39;</span><span class="p">,</span> <span class="n">hasher</span><span class="p">),</span>
-            <span class="p">(</span><span class="s">&#39;tf_idf&#39;</span><span class="p">,</span> <span class="n">TfidfTransformer</span><span class="p">())</span>
-        <span class="p">))</span>
+        <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">hasher</span><span class="p">,</span> <span class="n">TfidfTransformer</span><span class="p">())</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">HashingVectorizer</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">n_features</span><span class="p">,</span>
                                        <span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">,</span>
@@ -325,7 +322,8 @@ necessary to get a good convergence.</p>
                                        <span class="n">binary</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">n_features</span><span class="p">,</span>
-                                 <span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">,</span> <span class="n">use_idf</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">use_idf</span><span class="p">)</span>
+                                 <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">,</span>
+                                 <span class="n">use_idf</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">use_idf</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
@@ -335,12 +333,12 @@ necessary to get a good convergence.</p>
 <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">n_components</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;Performing dimensionality reduction using LSA&quot;</span><span class="p">)</span>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-    <span class="n">lsa</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">n_components</span><span class="p">)</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">lsa</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="c"># Vectorizer results are normalized, which makes KMeans behave as</span>
     <span class="c"># spherical k-means for better results. Since LSA/SVD results are</span>
     <span class="c"># not normalized, we have to redo the normalization.</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">lsa</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">n_components</span><span class="p">),</span>
+                        <span class="n">Normalizer</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">lsa</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
     <span class="k">print</span><span class="p">()</span>
@@ -371,6 +369,16 @@ necessary to get a good convergence.</p>
       <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
 
 <span class="k">print</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">n_components</span> <span class="ow">or</span> <span class="n">opts</span><span class="o">.</span><span class="n">use_hashing</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Top terms per cluster:&quot;</span><span class="p">)</span>
+    <span class="n">order_centroids</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">terms</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">true_k</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Cluster </span><span class="si">%d</span><span class="s">:&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">order_centroids</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39; </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">terms</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

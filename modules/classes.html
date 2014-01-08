@@ -35,7 +35,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../index.html" />
-    <link rel="next" title="sklearn.cluster.AffinityPropagation" href="generated/sklearn.cluster.AffinityPropagation.html" />
+    <link rel="next" title="sklearn.base.BaseEstimator" href="generated/sklearn.base.BaseEstimator.html" />
     <link rel="prev" title="The 20 newsgroups text dataset" href="../datasets/twenty_newsgroups.html" />
   
    
@@ -133,14 +133,14 @@
             &nbsp;
             </div>
         <div class="rellink">
-        <a href="generated/sklearn.cluster.AffinityPropagation.html"
+        <a href="generated/sklearn.base.BaseEstimator.html"
         accesskey="N">Next
         <br/>
         <span class="smallrellink">
-        sklearn.cluster....
+        sklearn.base.Bas...
         </span>
             <span class="hiddenrellink">
-            sklearn.cluster.AffinityPropagation
+            sklearn.base.BaseEstimator
             </span>
         </a>
         </div>
@@ -152,8 +152,8 @@
     <p class="citing">If you use the software, please consider <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <ul>
 <li><a class="reference internal" href="#">Reference</a><ul>
-<li><a class="reference internal" href="#module-sklearn.cluster"><tt class="docutils literal"><span class="pre">sklearn.cluster</span></tt>: Clustering</a><ul>
-<li><a class="reference internal" href="#classes">Classes</a><ul>
+<li><a class="reference internal" href="#module-sklearn.base"><tt class="docutils literal"><span class="pre">sklearn.base</span></tt>: Base classes and utility functions</a><ul>
+<li><a class="reference internal" href="#base-classes">Base classes</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#functions">Functions</a><ul>
@@ -161,8 +161,17 @@
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#module-sklearn.cluster"><tt class="docutils literal"><span class="pre">sklearn.cluster</span></tt>: Clustering</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1">Functions</a><ul>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-sklearn.cluster.bicluster"><tt class="docutils literal"><span class="pre">sklearn.cluster.bicluster</span></tt>: Biclustering</a><ul>
-<li><a class="reference internal" href="#id1">Classes</a><ul>
+<li><a class="reference internal" href="#id2">Classes</a><ul>
 </ul>
 </li>
 </ul>
@@ -321,6 +330,50 @@
 the <a class="reference internal" href="../user_guide.html#user-guide"><em>full user guide</em></a> for further details, as the class and
 function raw specifications may not be enough to give full guidelines on their
 uses.</p>
+<div class="section" id="module-sklearn.base">
+<span id="sklearn-base-base-classes-and-utility-functions"></span><span id="base-ref"></span><h2><a class="reference internal" href="#module-sklearn.base" title="sklearn.base"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.base</span></tt></a>: Base classes and utility functions<a class="headerlink" href="#module-sklearn.base" title="Permalink to this headline">¶</a></h2>
+<p>Base classes for all estimators.</p>
+<div class="section" id="base-classes">
+<h3>Base classes<a class="headerlink" href="#base-classes" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator"><tt class="xref py py-obj docutils literal"><span class="pre">base.BaseEstimator</span></tt></a></td>
+<td>Base class for all estimators in scikit-learn   ..</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin" title="sklearn.base.ClassifierMixin"><tt class="xref py py-obj docutils literal"><span class="pre">base.ClassifierMixin</span></tt></a></td>
+<td>Mixin class for all classifiers in scikit-learn.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.base.ClusterMixin.html#sklearn.base.ClusterMixin" title="sklearn.base.ClusterMixin"><tt class="xref py py-obj docutils literal"><span class="pre">base.ClusterMixin</span></tt></a></td>
+<td>Mixin class for all cluster estimators in scikit-learn.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.base.RegressorMixin.html#sklearn.base.RegressorMixin" title="sklearn.base.RegressorMixin"><tt class="xref py py-obj docutils literal"><span class="pre">base.RegressorMixin</span></tt></a></td>
+<td>Mixin class for all regression estimators in scikit-learn.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin"><tt class="xref py py-obj docutils literal"><span class="pre">base.TransformerMixin</span></tt></a></td>
+<td>Mixin class for all transformers in scikit-learn.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.base.clone.html#sklearn.base.clone" title="sklearn.base.clone"><tt class="xref py py-obj docutils literal"><span class="pre">base.clone</span></tt></a>(estimator[,&nbsp;safe])</td>
+<td>Constructs a new estimator with the same parameters.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="section" id="module-sklearn.cluster">
 <span id="sklearn-cluster-clustering"></span><span id="cluster-ref"></span><h2><a class="reference internal" href="#module-sklearn.cluster" title="sklearn.cluster"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.cluster</span></tt></a>: Clustering<a class="headerlink" href="#module-sklearn.cluster" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-sklearn.cluster" title="sklearn.cluster"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.cluster</span></tt></a> module gathers popular unsupervised clustering
@@ -358,8 +411,8 @@ algorithms.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -394,8 +447,8 @@ algorithms.</p>
 <div class="section" id="module-sklearn.cluster.bicluster">
 <span id="sklearn-cluster-bicluster-biclustering"></span><span id="bicluster-ref"></span><h2><a class="reference internal" href="#module-sklearn.cluster.bicluster" title="sklearn.cluster.bicluster"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.cluster.bicluster</span></tt></a>: Biclustering<a class="headerlink" href="#module-sklearn.cluster.bicluster" title="Permalink to this headline">¶</a></h2>
 <p><strong>User guide:</strong> See the <a class="reference internal" href="biclustering.html#biclustering"><em>Biclustering</em></a> section for further details.</p>
-<div class="section" id="id1">
-<h3>Classes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>Classes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -599,7 +652,7 @@ features some artificial data generators.</p>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.fetch_covtype.html#sklearn.datasets.fetch_covtype" title="sklearn.datasets.fetch_covtype"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.fetch_covtype</span></tt></a>([data_home,&nbsp;...])</td>
 <td>Load the covertype dataset, downloading it if necessary.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_mlcomp.html#sklearn.datasets.load_mlcomp" title="sklearn.datasets.load_mlcomp"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_mlcomp</span></tt></a>(name_or_id[,&nbsp;<a href="#id2"><span class="problematic" id="id3">set_</span></a>,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_mlcomp.html#sklearn.datasets.load_mlcomp" title="sklearn.datasets.load_mlcomp"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_mlcomp</span></tt></a>(name_or_id[,&nbsp;<a href="#id3"><span class="problematic" id="id4">set_</span></a>,&nbsp;...])</td>
 <td>Load a datasets as downloaded from <a class="reference external" href="http://mlcomp.org">http://mlcomp.org</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.load_sample_image.html#sklearn.datasets.load_sample_image" title="sklearn.datasets.load_sample_image"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_sample_image</span></tt></a>(image_name)</td>
@@ -1424,7 +1477,7 @@ details.</p>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.recall_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
 <td>Compute the recall</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score" title="sklearn.metrics.roc_auc_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.roc_auc_score</span></tt></a>(y_true,&nbsp;y_score)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score" title="sklearn.metrics.roc_auc_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.roc_auc_score</span></tt></a>(y_true,&nbsp;y_score[,&nbsp;average])</td>
 <td>Compute Area Under the Curve (AUC) from prediction scores</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve" title="sklearn.metrics.roc_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.roc_curve</span></tt></a>(y_true,&nbsp;y_score[,&nbsp;pos_label])</td>
@@ -1837,6 +1890,20 @@ estimator, as a chain of transforms and estimators.</p>
 </tr>
 </tbody>
 </table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline"><tt class="xref py py-obj docutils literal"><span class="pre">pipeline.make_pipeline</span></tt></a>(*steps)</td>
+<td>Construct a Pipeline from the given estimators.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.pipeline.make_union.html#sklearn.pipeline.make_union" title="sklearn.pipeline.make_union"><tt class="xref py py-obj docutils literal"><span class="pre">pipeline.make_union</span></tt></a>(*transformers)</td>
+<td>Construct a FeatureUnion from the given transformers.</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="module-sklearn.preprocessing">
 <span id="sklearn-preprocessing-preprocessing-and-normalization"></span><span id="preprocessing-ref"></span><h2><a class="reference internal" href="#module-sklearn.preprocessing" title="sklearn.preprocessing"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.preprocessing</span></tt></a>: Preprocessing and Normalization<a class="headerlink" href="#module-sklearn.preprocessing" title="Permalink to this headline">¶</a></h2>
@@ -2116,7 +2183,7 @@ classification and regression.</p>
       </a>
     </div>
     <div class="buttonNext">
-      <a href="generated/sklearn.cluster.AffinityPropagation.html">Next
+      <a href="generated/sklearn.base.BaseEstimator.html">Next
       </a>
     </div>
     

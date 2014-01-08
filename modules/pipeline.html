@@ -202,9 +202,9 @@ data to fit a whole sequence of estimators.</p>
 <p><strong>Joint parameter selection</strong>: You can <a class="reference internal" href="grid_search.html#grid-search"><em>grid search</em></a>
 over parameters of all estimators in the pipeline at once.</p>
 </div></blockquote>
-<p>For estimators to be usable within a pipeline, all except the last one need to have
-a <tt class="docutils literal"><span class="pre">transform</span></tt> function. Otherwise, the dataset can not be passed through this
-estimator.</p>
+<p>All estimators in a pipeline, except the last one, must be transformers
+(i.e. must have a <tt class="docutils literal"><span class="pre">transform</span></tt> method).
+The last estimator may be any type (transformer, classifier, etc.).</p>
 <div class="section" id="usage">
 <h2>3.3.1. Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline"><tt class="xref py py-class docutils literal"><span class="pre">Pipeline</span></tt></a> is build using a list of <tt class="docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></tt> pairs, where
@@ -223,7 +223,21 @@ is an estimator object:</p>
 <span class="go">    verbose=False))])</span>
 </pre></div>
 </div>
-<p>The estimators of the pipeline are stored as a list in the <tt class="docutils literal"><span class="pre">steps</span></tt> attribute:</p>
+<p>The utility function <a class="reference internal" href="generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline"><tt class="xref py py-func docutils literal"><span class="pre">make_pipeline</span></tt></a> is a shorthand
+for constructing pipelines;
+it takes a variable number of estimators and returns a pipeline,
+filling in the names automatically:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Binarizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">make_pipeline</span><span class="p">(</span><span class="n">Binarizer</span><span class="p">(),</span> <span class="n">MultinomialNB</span><span class="p">())</span> 
+<span class="go">Pipeline(steps=[(&#39;binarizer&#39;, Binarizer(copy=True, threshold=0.0)),</span>
+<span class="go">                (&#39;multinomialnb&#39;, MultinomialNB(alpha=1.0,</span>
+<span class="go">                                                class_prior=None,</span>
+<span class="go">                                                fit_prior=True))])</span>
+</pre></div>
+</div>
+<p>The estimators of a pipeline are stored as a list in the <tt class="docutils literal"><span class="pre">steps</span></tt> attribute:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">(&#39;reduce_dim&#39;, PCA(copy=True, n_components=None, whiten=False))</span>
 </pre></div>
@@ -307,6 +321,8 @@ and <tt class="docutils literal"><span class="pre">value</span></tt> is an estim
 <span class="go">    transformer_weights=None)</span>
 </pre></div>
 </div>
+<p>Like pipelines, feature unions have a shorthand constructor called
+<a class="reference internal" href="generated/sklearn.pipeline.make_union.html#sklearn.pipeline.make_union" title="sklearn.pipeline.make_union"><tt class="xref py py-func docutils literal"><span class="pre">make_union</span></tt></a> that does require manual naming of the components.</p>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">

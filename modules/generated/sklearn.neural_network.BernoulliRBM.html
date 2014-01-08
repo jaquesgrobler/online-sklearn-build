@@ -186,7 +186,7 @@
 <h1>sklearn.neural_network.BernoulliRBM<a class="headerlink" href="#sklearn-neural-network-bernoullirbm" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.neural_network.BernoulliRBM">
-<em class="property">class </em><tt class="descclassname">sklearn.neural_network.</tt><tt class="descname">BernoulliRBM</tt><big>(</big><em>n_components=256</em>, <em>learning_rate=0.1</em>, <em>batch_size=10</em>, <em>n_iter=10</em>, <em>verbose=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.neural_network.BernoulliRBM" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.neural_network.</tt><tt class="descname">BernoulliRBM</tt><big>(</big><em>n_components=256</em>, <em>learning_rate=0.1</em>, <em>batch_size=10</em>, <em>n_iter=10</em>, <em>verbose=0</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.neural_network.BernoulliRBM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bernoulli Restricted Boltzmann Machine (RBM).</p>
 <p>A Restricted Boltzmann Machine with binary visible units and
 binary hiddens. Parameters are estimated using Stochastic Maximum
@@ -219,9 +219,7 @@ during training.</p>
 </div></blockquote>
 <p><strong>verbose</strong> : int, optional</p>
 <blockquote>
-<div><p>The verbosity level. Enabling it (with a non-zero value) will compute 
-the log-likelihood of each mini-batch and hence cause a runtime overhead
-in the order of 10%.</p>
+<div><p>The verbosity level. The default, zero, means silent mode.</p>
 </div></blockquote>
 <p><strong>random_state</strong> : integer or numpy.RandomState, optional</p>
 <blockquote class="last">
@@ -249,7 +247,7 @@ on Machine Learning (ICML) 2008</dd>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">BernoulliRBM</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="go">BernoulliRBM(batch_size=10, learning_rate=0.1, n_components=2, n_iter=10,</span>
-<span class="go">       random_state=None, verbose=False)</span>
+<span class="go">       random_state=None, verbose=0)</span>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
@@ -272,8 +270,8 @@ on Machine Learning (ICML) 2008</dd>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.neural_network.BernoulliRBM.gibbs" title="sklearn.neural_network.BernoulliRBM.gibbs"><tt class="xref py py-obj docutils literal"><span class="pre">gibbs</span></tt></a>(v)</td>
 <td>Perform one Gibbs sampling step.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.neural_network.BernoulliRBM.score_samples" title="sklearn.neural_network.BernoulliRBM.score_samples"><tt class="xref py py-obj docutils literal"><span class="pre">score_samples</span></tt></a>(v)</td>
-<td>Compute the pseudo-likelihood of v.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.neural_network.BernoulliRBM.score_samples" title="sklearn.neural_network.BernoulliRBM.score_samples"><tt class="xref py py-obj docutils literal"><span class="pre">score_samples</span></tt></a>(X)</td>
+<td>Compute the pseudo-likelihood of X.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.neural_network.BernoulliRBM.set_params" title="sklearn.neural_network.BernoulliRBM.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of this estimator.</td>
@@ -285,7 +283,7 @@ on Machine Learning (ICML) 2008</dd>
 </table>
 <dl class="method">
 <dt id="sklearn.neural_network.BernoulliRBM.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_components=256</em>, <em>learning_rate=0.1</em>, <em>batch_size=10</em>, <em>n_iter=10</em>, <em>verbose=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.neural_network.BernoulliRBM.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_components=256</em>, <em>learning_rate=0.1</em>, <em>batch_size=10</em>, <em>n_iter=10</em>, <em>verbose=0</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.neural_network.BernoulliRBM.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -393,26 +391,30 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="sklearn.neural_network.BernoulliRBM.score_samples">
-<tt class="descname">score_samples</tt><big>(</big><em>v</em><big>)</big><a class="headerlink" href="#sklearn.neural_network.BernoulliRBM.score_samples" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the pseudo-likelihood of v.</p>
+<tt class="descname">score_samples</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.neural_network.BernoulliRBM.score_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the pseudo-likelihood of X.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>v</strong> : {array-like, sparse matrix} shape (n_samples, n_features)</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix} shape (n_samples, n_features)</p>
 <blockquote>
-<div><p>Values of the visible layer.</p>
+<div><p>Values of the visible layer. Must be all-boolean (not checked).</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>pseudo_likelihood</strong> : array-like, shape (n_samples,)</p>
 <blockquote class="last">
-<div><p>Value of the pseudo-likelihood (proxy to likelihood).</p>
+<div><p>Value of the pseudo-likelihood (proxy for likelihood).</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>This method is not deterministic: it computes a quantity called the
+free energy on X, then on a randomly corrupted version of X, and
+returns the log of the logistic function of the difference.</p>
 </dd></dl>
 
 <dl class="method">

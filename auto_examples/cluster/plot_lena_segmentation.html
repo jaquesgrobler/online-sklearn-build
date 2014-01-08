@@ -209,7 +209,7 @@ space to the embedding space.</li>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction</span> <span class="kn">import</span> <span class="n">image</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">spectral_clustering</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.cluster.spectral_clustering.html#sklearn.cluster.spectral_clustering"><span class="n">spectral_clustering</span></a>
 
 <span class="n">lena</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
 <span class="c"># Downsample the image by a factor of 4</span>
@@ -218,14 +218,14 @@ space to the embedding space.</li>
 
 <span class="c"># Convert the image into a graph with the value of the gradient on the</span>
 <span class="c"># edges.</span>
-<span class="n">graph</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">img_to_graph</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
+<a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">img_to_graph</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
 
 <span class="c"># Take a decreasing function of the gradient: an exponential</span>
 <span class="c"># The smaller beta is, the more independent the segmentation is of the</span>
 <span class="c"># actual image. For beta=1, the segmentation is close to a voronoi</span>
 <span class="n">beta</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span>
-<span class="n">graph</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span> <span class="o">*</span> <span class="n">graph</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">lena</span><span class="o">.</span><span class="n">std</span><span class="p">())</span> <span class="o">+</span> <span class="n">eps</span>
+<a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span> <span class="o">*</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">lena</span><span class="o">.</span><span class="n">std</span><span class="p">())</span> <span class="o">+</span> <span class="n">eps</span>
 
 <span class="c"># Apply spectral clustering (this step goes much faster if you have pyamg</span>
 <span class="c"># installed)</span>
@@ -236,20 +236,20 @@ space to the embedding space.</li>
 
 <span class="k">for</span> <span class="n">assign_labels</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;kmeans&#39;</span><span class="p">,</span> <span class="s">&#39;discretize&#39;</span><span class="p">):</span>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">labels</span> <span class="o">=</span> <span class="n">spectral_clustering</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="n">N_REGIONS</span><span class="p">,</span>
+    <span class="n">labels</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.spectral_clustering.html#sklearn.cluster.spectral_clustering"><span class="n">spectral_clustering</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.sparse.coo_matrix.getH.html#scipy.sparse.coo_matrix"><span class="n">graph</span></a><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="n">N_REGIONS</span><span class="p">,</span>
                                  <span class="n">assign_labels</span><span class="o">=</span><span class="n">assign_labels</span><span class="p">,</span>
                                  <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">lena</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-    <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">lena</span><span class="p">,</span>   <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+    <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">pl</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow"><span class="n">pl</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><span class="n">lena</span><span class="p">,</span>   <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_REGIONS</span><span class="p">):</span>
         <span class="n">pl</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="n">contours</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">(</span><span class="n">l</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">N_REGIONS</span><span class="p">)),</span> <span class="p">])</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Spectral clustering: </span><span class="si">%s</span><span class="s">, </span><span class="si">%.2f</span><span class="s">s&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">assign_labels</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)))</span>
+    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xticks"><span class="n">pl</span><span class="o">.</span><span class="n">xticks</span></a><span class="p">(())</span>
+    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.yticks"><span class="n">pl</span><span class="o">.</span><span class="n">yticks</span></a><span class="p">(())</span>
+    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;Spectral clustering: </span><span class="si">%s</span><span class="s">, </span><span class="si">%.2f</span><span class="s">s&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">assign_labels</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)))</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>

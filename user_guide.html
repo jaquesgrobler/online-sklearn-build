@@ -374,6 +374,7 @@
 <li class="toctree-l3"><a class="reference internal" href="modules/linear_model.html#perceptron">1.1.12. Perceptron</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/linear_model.html#passive-aggressive-algorithms">1.1.13. Passive Aggressive Algorithms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/linear_model.html#robustness-to-outliers-ransac">1.1.14. Robustness to outliers: RANSAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/linear_model.html#polynomial-regression-extending-linear-models-with-basis-functions">1.1.15. Polynomial Regression: Extending Linear Models with Basis Functions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/svm.html">1.2. Support Vector Machines</a><ul>
@@ -830,21 +831,20 @@
 <li class="toctree-l3"><a class="reference internal" href="modules/model_evaluation.html#function-for-prediction-error-metrics">3.5.2. Function for prediction-error metrics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#classification-metrics">3.5.2.1. Classification metrics</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#accuracy-score">3.5.2.1.1. Accuracy score</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#average-precision-score">3.5.2.1.2. Average precision score</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#confusion-matrix">3.5.2.1.3. Confusion matrix</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#classification-report">3.5.2.1.4. Classification report</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#hamming-loss">3.5.2.1.5. Hamming loss</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#jaccard-similarity-coefficient-score">3.5.2.1.6. Jaccard similarity coefficient score</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#precision-recall-and-f-measures">3.5.2.1.7. Precision, recall and F-measures</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="modules/model_evaluation.html#binary-classification">3.5.2.1.7.1. Binary classification</a></li>
-<li class="toctree-l6"><a class="reference internal" href="modules/model_evaluation.html#multiclass-and-multilabel-classification">3.5.2.1.7.2. Multiclass and multilabel classification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#confusion-matrix">3.5.2.1.2. Confusion matrix</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#classification-report">3.5.2.1.3. Classification report</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#hamming-loss">3.5.2.1.4. Hamming loss</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#jaccard-similarity-coefficient-score">3.5.2.1.5. Jaccard similarity coefficient score</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#precision-recall-and-f-measures">3.5.2.1.6. Precision, recall and F-measures</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="modules/model_evaluation.html#binary-classification">3.5.2.1.6.1. Binary classification</a></li>
+<li class="toctree-l6"><a class="reference internal" href="modules/model_evaluation.html#multiclass-and-multilabel-classification">3.5.2.1.6.2. Multiclass and multilabel classification</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#hinge-loss">3.5.2.1.8. Hinge loss</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#log-loss">3.5.2.1.9. Log loss</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#matthews-correlation-coefficient">3.5.2.1.10. Matthews correlation coefficient</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#receiver-operating-characteristic-roc">3.5.2.1.11. Receiver operating characteristic (ROC)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#zero-one-loss">3.5.2.1.12. Zero one loss</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#hinge-loss">3.5.2.1.7. Hinge loss</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#log-loss">3.5.2.1.8. Log loss</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#matthews-correlation-coefficient">3.5.2.1.9. Matthews correlation coefficient</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#receiver-operating-characteristic-roc">3.5.2.1.10. Receiver operating characteristic (ROC)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/model_evaluation.html#zero-one-loss">3.5.2.1.11. Zero one loss</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="modules/model_evaluation.html#regression-metrics">3.5.2.2. Regression metrics</a><ul>
@@ -963,6 +963,25 @@
 <li class="toctree-l3"><a class="reference internal" href="modules/scaling_strategies.html#incremental-learning">6.1.3. Incremental learning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/scaling_strategies.html#examples">6.1.4. Examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/scaling_strategies.html#notes">6.1.5. Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/computational_performance.html">7. Computational Performance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/computational_performance.html#prediction-latency">7.1. Prediction Latency</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/computational_performance.html#bulk-versus-atomic-mode">7.1.1. Bulk versus Atomic mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/computational_performance.html#influence-of-the-number-of-features">7.1.2. Influence of the Number of Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/computational_performance.html#influence-of-the-input-data-representation">7.1.3. Influence of the Input Data Representation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/computational_performance.html#influence-of-the-model-complexity">7.1.4. Influence of the Model Complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/computational_performance.html#feature-extraction-latency">7.1.5. Feature Extraction Latency</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/computational_performance.html#prediction-throughput">7.2. Prediction Throughput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/computational_performance.html#tips-and-tricks">7.3. Tips and Tricks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/computational_performance.html#linear-algebra-libraries">7.3.1. Linear algebra libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/computational_performance.html#model-compression">7.3.2. Model Compression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/computational_performance.html#model-reshaping">7.3.3. Model Reshaping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/computational_performance.html#links">7.3.4. Links</a></li>
 </ul>
 </li>
 </ul>

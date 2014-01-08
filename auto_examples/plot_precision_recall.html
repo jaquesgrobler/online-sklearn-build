@@ -36,8 +36,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
-    <link rel="next" title="Isotonic Regression" href="plot_isotonic_regression.html" />
-    <link rel="prev" title="Concatenating multiple feature extraction methods" href="feature_stacker.html" />
+    <link rel="next" title="Multilabel classification" href="plot_multilabel.html" />
+    <link rel="prev" title="Receiver Operating Characteristic (ROC)" href="plot_roc.html" />
   
    
        <script type="text/javascript" src="../_static/sidebar.js"></script>
@@ -119,14 +119,14 @@
   <!-- rellinks[1:] is an ugly hack to avoid link to module
   index -->
         <div class="rellink">
-        <a href="feature_stacker.html"
+        <a href="plot_roc.html"
         accesskey="P">Previous
         <br/>
         <span class="smallrellink">
-        Concatenating mu...
+        Receiver Operati...
         </span>
             <span class="hiddenrellink">
-            Concatenating multiple feature extraction methods
+            Receiver Operating Characteristic (ROC)
             </span>
         </a>
         </div>
@@ -134,14 +134,14 @@
             &nbsp;
             </div>
         <div class="rellink">
-        <a href="plot_isotonic_regression.html"
+        <a href="plot_multilabel.html"
         accesskey="N">Next
         <br/>
         <span class="smallrellink">
-        Isotonic Regress...
+        Multilabel class...
         </span>
             <span class="hiddenrellink">
-            Isotonic Regression
+            Multilabel classification
             </span>
         </a>
         </div>
@@ -226,30 +226,41 @@ stairstep area of the plot - at the edges of these steps a small change
 in the threshold considerably reduces precision, with only a minor gain in
 recall. See the corner at recall = .59, precision = .8 for an example of this
 phenomenon.</p>
+<p>Precision-recall curves are typically used in binary classification to study
+the output of a classifier. In order to extend Precision-recall curve and
+average precision to multi-class or multi-label classification, it is necessary
+to binarize the output. One curve can be drawn per label, but one can also draw
+a precision-recall curve by considering each element of the label indicator
+matrix as a binary prediction (micro-averaging).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <dl class="last docutils">
 <dt>See also <a class="reference internal" href="../modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score" title="sklearn.metrics.average_precision_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.average_precision_score</span></tt></a>,</dt>
 <dd><a class="reference internal" href="../modules/generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.recall_score</span></tt></a>,
-<a class="reference internal" href="../modules/generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.precision_score</span></tt></a></dd>
+<a class="reference internal" href="../modules/generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.precision_score</span></tt></a>,
+<a class="reference internal" href="../modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.f1_score</span></tt></a></dd>
 </dl>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_precision_recall.py"><tt class="xref download docutils literal"><span class="pre">plot_precision_recall.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span><span class="p">,</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">auc</span>
-<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve"><span class="n">precision_recall_curve</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score"><span class="n">average_precision_score</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.cross_validation.train_test_split.html#sklearn.cross_validation.train_test_split"><span class="n">train_test_split</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.preprocessing.label_binarize.html#sklearn.preprocessing.label_binarize"><span class="n">label_binarize</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.multiclass</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.multiclass.OneVsRestClassifier.html#sklearn.multiclass.OneVsRestClassifier"><span class="n">OneVsRestClassifier</span></a>
 
 <span class="c"># import some data to play with</span>
-<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">iris</span> <span class="o">=</span> <a href="../modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris"><span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span></a><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">]</span>  <span class="c"># Keep also 2 classes (0 and 1)</span>
+
+<span class="c"># Binarize the output</span>
+<span class="n">y</span> <span class="o">=</span> <a href="../modules/generated/sklearn.preprocessing.label_binarize.html#sklearn.preprocessing.label_binarize"><span class="n">label_binarize</span></a><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">n_classes</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c"># Add noisy features</span>
 <span class="n">random_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -257,27 +268,56 @@ phenomenon.</p>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">random_state</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">200</span> <span class="o">*</span> <span class="n">n_features</span><span class="p">)]</span>
 
 <span class="c"># Split into training and test</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="../modules/generated/sklearn.cross_validation.train_test_split.html#sklearn.cross_validation.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span>
                                                     <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
 
 <span class="c"># Run classifier</span>
-<span class="n">classifier</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-                     <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
-<span class="n">probas_</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<a href="../modules/generated/sklearn.multiclass.OneVsRestClassifier.html#sklearn.multiclass.OneVsRestClassifier"><span class="n">classifier</span></a> <span class="o">=</span> <a href="../modules/generated/sklearn.multiclass.OneVsRestClassifier.html#sklearn.multiclass.OneVsRestClassifier"><span class="n">OneVsRestClassifier</span></a><span class="p">(</span><a href="../modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC"><span class="n">svm</span><span class="o">.</span><span class="n">SVC</span></a><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                 <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">))</span>
+<span class="n">y_score</span> <span class="o">=</span> <a href="../modules/generated/sklearn.multiclass.OneVsRestClassifier.html#sklearn.multiclass.OneVsRestClassifier"><span class="n">classifier</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
 <span class="c"># Compute Precision-Recall and plot curve</span>
-<span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">probas_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">area</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">recall</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Area Under Curve: </span><span class="si">%0.2f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">area</span><span class="p">)</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">average_precision</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_classes</span><span class="p">):</span>
+    <span class="n">precision</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">recall</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <a href="../modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve"><span class="n">precision_recall_curve</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span>
+                                                        <span class="n">y_score</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span>
+    <span class="n">average_precision</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <a href="../modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score"><span class="n">average_precision_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">y_score</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span>
 
-<span class="n">pl</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">recall</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Precision-Recall curve&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Recall&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Precision&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">])</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Precision-Recall example: AUC=</span><span class="si">%0.2f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">area</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&quot;lower left&quot;</span><span class="p">)</span>
+<span class="c"># Compute micro-average ROC curve and ROC area</span>
+<span class="n">precision</span><span class="p">[</span><span class="s">&quot;micro&quot;</span><span class="p">],</span> <span class="n">recall</span><span class="p">[</span><span class="s">&quot;micro&quot;</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <a href="../modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve"><span class="n">precision_recall_curve</span></a><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+    <span class="n">y_score</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="n">average_precision</span><span class="p">[</span><span class="s">&quot;micro&quot;</span><span class="p">]</span> <span class="o">=</span> <a href="../modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score"><span class="n">average_precision_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_score</span><span class="p">,</span>
+                                                     <span class="n">average</span><span class="o">=</span><span class="s">&quot;micro&quot;</span><span class="p">)</span>
+
+<span class="c"># Plot Precision-Recall curve</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.clf"><span class="n">pl</span><span class="o">.</span><span class="n">clf</span></a><span class="p">()</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">recall</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">precision</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Precision-Recall curve&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&#39;Recall&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylabel"><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s">&#39;Precision&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylim"><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span></a><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">])</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlim"><span class="n">pl</span><span class="o">.</span><span class="n">xlim</span></a><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;Precision-Recall example: AUC={0:0.2f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">average_precision</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">pl</span><span class="o">.</span><span class="n">legend</span></a><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&quot;lower left&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c"># Plot Precision-Recall curve for each class</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.clf"><span class="n">pl</span><span class="o">.</span><span class="n">clf</span></a><span class="p">()</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">recall</span><span class="p">[</span><span class="s">&quot;micro&quot;</span><span class="p">],</span> <span class="n">precision</span><span class="p">[</span><span class="s">&quot;micro&quot;</span><span class="p">],</span>
+        <span class="n">label</span><span class="o">=</span><span class="s">&#39;micro-average Precision-recall curve (area = {0:0.2f})&#39;</span>
+              <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">average_precision</span><span class="p">[</span><span class="s">&quot;micro&quot;</span><span class="p">]))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_classes</span><span class="p">):</span>
+    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">pl</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">recall</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">precision</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">label</span><span class="o">=</span><span class="s">&#39;Precision-recall curve of class {0} (area = {1:0.2f})&#39;</span>
+                  <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">average_precision</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlim"><span class="n">pl</span><span class="o">.</span><span class="n">xlim</span></a><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylim"><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span></a><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">])</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlabel"><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s">&#39;Recall&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylabel"><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s">&#39;Precision&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">pl</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;Extension of Precision-Recall curve to multi-class&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">pl</span><span class="o">.</span><span class="n">legend</span></a><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&quot;lower right&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -298,11 +338,11 @@ phenomenon.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="feature_stacker.html">Previous
+      <a href="plot_roc.html">Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_isotonic_regression.html">Next
+      <a href="plot_multilabel.html">Next
       </a>
     </div>
     

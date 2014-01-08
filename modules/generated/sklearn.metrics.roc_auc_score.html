@@ -186,21 +186,44 @@
 <h1>sklearn.metrics.roc_auc_score<a class="headerlink" href="#sklearn-metrics-roc-auc-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.roc_auc_score">
-<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">roc_auc_score</tt><big>(</big><em>y_true</em>, <em>y_score</em><big>)</big><a class="headerlink" href="#sklearn.metrics.roc_auc_score" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">roc_auc_score</tt><big>(</big><em>y_true</em>, <em>y_score</em>, <em>average='macro'</em><big>)</big><a class="headerlink" href="#sklearn.metrics.roc_auc_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Area Under the Curve (AUC) from prediction scores</p>
-<p>Note: this implementation is restricted to the binary classification task.</p>
+<p>Note: this implementation is restricted to the binary classification task
+or multilabel classification task in label indicator format.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples] or [n_samples, n_classes]</p>
 <blockquote>
-<div><p>True binary labels.</p>
+<div><p>True binary labels in binary indicator format.</p>
 </div></blockquote>
-<p><strong>y_score</strong> : array, shape = [n_samples]</p>
+<p><strong>y_score</strong> : array, shape = [n_samples] or [n_samples, n_classes]</p>
 <blockquote>
 <div><p>Target scores, can either be probability estimates of the positive
 class, confidence values, or binary decisions.</p>
+</div></blockquote>
+<p><strong>average</strong> : string, [None, &#8216;micro&#8217;, &#8216;macro&#8217; (default), &#8216;samples&#8217;, &#8216;weighted&#8217;]</p>
+<blockquote>
+<div><p>If <tt class="docutils literal"><span class="pre">None</span></tt>, the scores for each class are returned. Otherwise,
+this determines the type of averaging performed on the data:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">'micro'</span></tt>:</dt>
+<dd><p class="first last">Calculate metrics globally by considering each element of the label
+indicator matrix as a label.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">'macro'</span></tt>:</dt>
+<dd><p class="first last">Calculate metrics for each label, and find their unweighted
+mean.  This does not take label imbalance into account.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">'weighted'</span></tt>:</dt>
+<dd><p class="first last">Calculate metrics for each label, and find their average, weighted
+by support (the number of true instances for each label).</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">'samples'</span></tt>:</dt>
+<dd><p class="first last">Calculate metrics for each instance, and find their average.</p>
+</dd>
+</dl>
 </div></blockquote>
 </td>
 </tr>

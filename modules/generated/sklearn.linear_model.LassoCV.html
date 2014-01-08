@@ -254,9 +254,9 @@ should be directly passed as a Fortran-contiguous numpy array.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="11%" />
-<col width="42%" />
-<col width="48%" />
+<col width="10%" />
+<col width="39%" />
+<col width="51%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><tt class="docutils literal"><span class="pre">alpha_</span></tt></td>
@@ -278,6 +278,20 @@ should be directly passed as a Fortran-contiguous numpy array.</p>
 <tr class="row-odd"><td><tt class="docutils literal"><span class="pre">alphas_</span></tt></td>
 <td>numpy array</td>
 <td>The grid of alphas used for fitting</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">l1_ratio_</span></tt></td>
+<td>int</td>
+<td>An artifact of the super class LinearModelCV. In this case,
+<tt class="docutils literal"><span class="pre">l1_ratio_</span> <span class="pre">=</span> <span class="pre">1</span></tt> because the Lasso estimator uses an L1 penalty
+by definition.
+Typically it is a float between 0 and 1 passed to an estimator such as
+ElasticNet (scaling between l1 and l2 penalties). For <tt class="docutils literal"><span class="pre">l1_ratio</span> <span class="pre">=</span> <span class="pre">0</span></tt>
+the penalty is an L2 penalty. For <tt class="docutils literal"><span class="pre">l1_ratio</span> <span class="pre">=</span> <span class="pre">1</span></tt> it is an L1 penalty.</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">dual_gap_</span></tt></td>
+<td>numpy array</td>
+<td>The dual gap at the end of the optimization for the optimal alpha
+(<tt class="docutils literal"><span class="pre">alpha_</span></tt>).</td>
 </tr>
 </tbody>
 </table>
@@ -487,7 +501,7 @@ to <tt class="docutils literal"><span class="pre">False</span></tt>).</p>
 </div></blockquote>
 <p><strong>dual_gaps</strong> : shape (n_alphas + 1)</p>
 <blockquote class="last">
-<div><p>The dual gaps and the end of the optimization for each alpha.
+<div><p>The dual gaps at the end of the optimization for each alpha.
 (Is returned, along with <tt class="docutils literal"><span class="pre">alphas</span></tt>, when <tt class="docutils literal"><span class="pre">return_models</span></tt> is set
 to <tt class="docutils literal"><span class="pre">False</span></tt>).</p>
 </div></blockquote>

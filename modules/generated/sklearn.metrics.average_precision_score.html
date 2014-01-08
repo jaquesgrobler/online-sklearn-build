@@ -186,27 +186,40 @@
 <h1>sklearn.metrics.average_precision_score<a class="headerlink" href="#sklearn-metrics-average-precision-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.average_precision_score">
-<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">average_precision_score</tt><big>(</big><em>y_true</em>, <em>y_score</em><big>)</big><a class="headerlink" href="#sklearn.metrics.average_precision_score" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">average_precision_score</tt><big>(</big><em>y_true</em>, <em>y_score</em>, <em>average='macro'</em><big>)</big><a class="headerlink" href="#sklearn.metrics.average_precision_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute average precision (AP) from prediction scores</p>
 <p>This score corresponds to the area under the precision-recall curve.</p>
-<p>Note: this implementation is restricted to the binary classification task.</p>
+<p>Note: this implementation is restricted to the binary classification task
+or multilabel classification task.</p>
+<dl class="docutils">
+<dt>y_true <span class="classifier-delimiter">:</span> <span class="classifier">array, shape = [n_samples] or [n_samples, n_classes]</span></dt>
+<dd>True binary labels in binary indicator format.</dd>
+<dt>y_score <span class="classifier-delimiter">:</span> <span class="classifier">array, shape = [n_samples] or [n_samples, n_classes]</span></dt>
+<dd>Target scores, can either be probability estimates of the positive
+class, confidence values, or binary decisions.</dd>
+<dt>average <span class="classifier-delimiter">:</span> <span class="classifier">string, [None, &#8216;micro&#8217;, &#8216;macro&#8217; (default), &#8216;samples&#8217;, &#8216;weighted&#8217;]</span></dt>
+<dd><p class="first">If <tt class="docutils literal"><span class="pre">None</span></tt>, the scores for each class are returned. Otherwise,
+this determines the type of averaging performed on the data:</p>
+<dl class="last docutils">
+<dt><tt class="docutils literal"><span class="pre">'micro'</span></tt>:</dt>
+<dd>Calculate metrics globally by considering each element of the label
+indicator matrix as a label.</dd>
+<dt><tt class="docutils literal"><span class="pre">'macro'</span></tt>:</dt>
+<dd>Calculate metrics for each label, and find their unweighted
+mean.  This does not take label imbalance into account.</dd>
+<dt><tt class="docutils literal"><span class="pre">'weighted'</span></tt>:</dt>
+<dd>Calculate metrics for each label, and find their average, weighted
+by support (the number of true instances for each label).</dd>
+<dt><tt class="docutils literal"><span class="pre">'samples'</span></tt>:</dt>
+<dd>Calculate metrics for each instance, and find their average.</dd>
+</dl>
+</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array, shape = [n_samples]</p>
-<blockquote>
-<div><p>True binary labels.</p>
-</div></blockquote>
-<p><strong>y_score</strong> : array, shape = [n_samples]</p>
-<blockquote>
-<div><p>Target scores, can either be probability estimates of the positive
-class, confidence values, or binary decisions.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>average_precision</strong> : float</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><strong>average_precision</strong> : float</td>
 </tr>
 </tbody>
 </table>

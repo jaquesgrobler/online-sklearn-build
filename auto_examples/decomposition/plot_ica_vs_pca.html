@@ -199,7 +199,7 @@ space that correspond to directions accounting for maximum variance.</p>
 process, 2 student T with a low number of degrees of freedom (top left
 figure). We mix them to create observations (top right figure).
 In this raw observation space, directions identified by PCA are
-represented by green vectors. We represent the signal in the PCA space,
+represented by orange vectors. We represent the signal in the PCA space,
 after whitening by the variance corresponding to the PCA vectors (lower
 left). Running ICA corresponds to finding a rotation in this space to
 identify the directions of largest non-Gaussianity (lower right).</p>
@@ -238,15 +238,15 @@ identify the directions of largest non-Gaussianity (lower right).</p>
 <span class="c"># Plot results</span>
 
 <span class="k">def</span> <span class="nf">plot_samples</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">axis_list</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">S</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">S</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">S</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">S</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="s">&#39;steelblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">axis_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">colors</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;orange&#39;</span><span class="p">,</span> <span class="s">&#39;red&#39;</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">color</span><span class="p">,</span> <span class="n">axis</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">axis_list</span><span class="p">):</span>
             <span class="n">axis</span> <span class="o">/=</span> <span class="n">axis</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
             <span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span> <span class="o">=</span> <span class="n">axis</span>
             <span class="c"># Trick to get legend to work</span>
             <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">x_axis</span><span class="p">,</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">y_axis</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
-            <span class="c"># pl.quiver(x_axis, y_axis, x_axis, y_axis, zorder=11, width=0.01,</span>
             <span class="n">pl</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
                       <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
 
@@ -257,6 +257,7 @@ identify the directions of largest non-Gaussianity (lower right).</p>
     <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">)</span>
 
+<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plot_samples</span><span class="p">(</span><span class="n">S</span> <span class="o">/</span> <span class="n">S</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;True Independent Sources&#39;</span><span class="p">)</span>
@@ -264,19 +265,20 @@ identify the directions of largest non-Gaussianity (lower right).</p>
 <span class="n">axis_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">ica</span><span class="o">.</span><span class="n">mixing_</span><span class="p">]</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">plot_samples</span><span class="p">(</span><span class="n">X</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">axis_list</span><span class="o">=</span><span class="n">axis_list</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">&#39;PCA&#39;</span><span class="p">,</span> <span class="s">&#39;ICA&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">legend</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">&#39;PCA&#39;</span><span class="p">,</span> <span class="s">&#39;ICA&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">legend</span><span class="o">.</span><span class="n">set_zorder</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Observations&#39;</span><span class="p">)</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">plot_samples</span><span class="p">(</span><span class="n">S_pca_</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">S_pca_</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;PCA scores&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;PCA recovered signals&#39;</span><span class="p">)</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">plot_samples</span><span class="p">(</span><span class="n">S_ica_</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">S_ica_</span><span class="p">))</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;ICA estimated sources&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;ICA recovered signals&#39;</span><span class="p">)</span>
 
-<span class="n">pl</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.26</span><span class="p">,</span> <span class="mf">0.26</span><span class="p">)</span>
-
+<span class="n">pl</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.26</span><span class="p">,</span> <span class="mf">0.36</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>

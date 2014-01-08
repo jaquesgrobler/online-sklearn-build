@@ -591,9 +591,9 @@ that contain the missing values:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">imp</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 <span class="go">Imputer(axis=0, copy=True, missing_values=&#39;NaN&#39;, strategy=&#39;mean&#39;, verbose=0)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">imp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">imp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>                           
 <span class="go">[[ 4.          2.        ]</span>
-<span class="go"> [ 6.          3.66666667]</span>
+<span class="go"> [ 6.          3.666...]</span>
 <span class="go"> [ 7.          6.        ]]</span>
 </pre></div>
 </div>
@@ -604,9 +604,9 @@ that contain the missing values:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">imp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="go">Imputer(axis=0, copy=True, missing_values=0, strategy=&#39;mean&#39;, verbose=0)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_test</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">imp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">imp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>                      
 <span class="go">[[ 4.          2.        ]</span>
-<span class="go"> [ 6.          3.66666667]</span>
+<span class="go"> [ 6.          3.666...]</span>
 <span class="go"> [ 7.          6.        ]]</span>
 </pre></div>
 </div>

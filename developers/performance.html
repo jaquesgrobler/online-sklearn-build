@@ -153,7 +153,7 @@
     <ul>
 <li><a class="reference internal" href="#">How to optimize for speed</a><ul>
 <li><a class="reference internal" href="#python-cython-or-c-c">Python, Cython or C/C++?</a></li>
-<li><a class="reference internal" href="#memory-and-implicit-copies">Memory and implicit copies</a></li>
+<li><a class="reference internal" href="#fast-matrix-multiplications">Fast matrix multiplications</a></li>
 <li><a class="reference internal" href="#profiling-python-code">Profiling Python code</a></li>
 <li><a class="reference internal" href="#memory-usage-profiling">Memory usage profiling</a></li>
 <li><a class="reference internal" href="#performance-tips-for-the-cython-developer">Performance tips for the Cython developer</a></li>
@@ -243,45 +243,36 @@ parallelism</strong> that is amenable to <strong>multi-processing</strong> by us
 the Cython source code. The goal is to make it possible to install the
 scikit on any machine with Python, Numpy, Scipy and C/C++ compiler.</p>
 </div>
-<div class="section" id="memory-and-implicit-copies">
-<h2>Memory and implicit copies<a class="headerlink" href="#memory-and-implicit-copies" title="Permalink to this headline">¶</a></h2>
-<p>Some of the numpy and scipy core functions are optimized for Fortran contiguous
-data. In the case of the dot product, for numpy vetsions &lt; 1.8, this leads to
-implicit copies performed to adjust data to the needs of the underlying
-Fortran routines (See section <cite>Linear Algebra on large Arrays</cite>
-on <a class="reference external" href="http://wiki.scipy.org/PerformanceTips">http://wiki.scipy.org/PerformanceTips</a>). This not only consumes memory
-but also takes additional time.</p>
-<p>For convenience, if the numpy version available is older than 1.8, we internally
-use an optimized <cite>numpy.dot</cite> function that saves additional copies and improves
-speed by directly calling the Fortran routines with the appropriate data input
-while preserving the <cite>numpy.dot</cite> call signature. This means it can be used as a
-replacement for <cite>numpy.dot</cite>. example:</p>
+<div class="section" id="fast-matrix-multiplications">
+<h2>Fast matrix multiplications<a class="headerlink" href="#fast-matrix-multiplications" title="Permalink to this headline">¶</a></h2>
+<p>Matrix multiplications (matrix-matrix and matrix-vector) are usually handled
+using the NumPy function <tt class="docutils literal"><span class="pre">np.dot</span></tt>, but in versions of NumPy before 1.7.2
+this function is suboptimal when the inputs are not both in the C (row-major)
+layout; in that case, the inputs may be implicitly copied to obtain the right
+layout. This obviously consumes memory and takes time.</p>
+<p>The function <tt class="docutils literal"><span class="pre">fast_dot</span></tt> in <tt class="docutils literal"><span class="pre">sklearn.utils.extmath</span></tt> offers a fast
+replacement for <tt class="docutils literal"><span class="pre">np.dot</span></tt> that prevents copies from being made in some cases.
+In all other cases, it dispatches to <tt class="docutils literal"><span class="pre">np.dot</span></tt> and when the NumPy version is
+new enough, it is in fact an alias for that function, making it a drop-in
+replacement. Example usage of <tt class="docutils literal"><span class="pre">fast_dot</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.utils.extmath</span> <span class="kn">import</span> <span class="n">fast_dot</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_sample</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">fast_dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
 <span class="go">True</span>
 </pre></div>
 </div>
-<p>However this requires data to be exactly 2 dimensional and of the same type,
-either single or double precision float. If these requirements aren&#8217;t met or
-the BLAS package is not available, the call is silently dispatched to
-<cite>numpy.dot</cite>. If you want to be sure when the original <cite>numpy.dot</cite> has been
-invoked and when our <cite>fast_dot</cite> function has been used you can activate the
-related warning which is silenced by default. example:</p>
+<p>This function operates optimally on 2-dimensional arrays, both of the same
+dtype, which should be either single or double precision float. If these
+requirements aren&#8217;t met or the BLAS package is not available, the call is
+silently dispatched to <tt class="docutils literal"><span class="pre">numpy.dot</span></tt>. If you want to be sure when the original
+<tt class="docutils literal"><span class="pre">numpy.dot</span></tt> has been invoked in a situation where it is suboptimal, you can
+activate the related warning:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">warnings</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">NonBLASDotWarning</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s">&#39;always&#39;</span><span class="p">,</span> <span class="n">NonBLASDotWarning</span><span class="p">)</span> 
 </pre></div>
 </div>
-<p>If numpy &gt; 1.8 is available the <cite>fast_dot</cite> is not necessary. In that case
-the <cite>numpy.dot</cite> is being used. The issue has also been fixed in the 1.7.2
-maintenance branch.</p>
 </div>
 <div class="section" id="profiling-python-code">
 <span id="id1"></span><h2>Profiling Python code<a class="headerlink" href="#profiling-python-code" title="Permalink to this headline">¶</a></h2>

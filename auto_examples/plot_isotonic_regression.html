@@ -37,7 +37,7 @@
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../index.html" />
     <link rel="up" title="Examples" href="index.html" />
     <link rel="next" title="Imputing missing values before building an estimator" href="imputation.html" />
-    <link rel="prev" title="Precision-Recall" href="plot_precision_recall.html" />
+    <link rel="prev" title="Concatenating multiple feature extraction methods" href="feature_stacker.html" />
   
    
        <script type="text/javascript" src="../_static/sidebar.js"></script>
@@ -119,14 +119,14 @@
   <!-- rellinks[1:] is an ugly hack to avoid link to module
   index -->
         <div class="rellink">
-        <a href="plot_precision_recall.html"
+        <a href="feature_stacker.html"
         accesskey="P">Previous
         <br/>
         <span class="smallrellink">
-        Precision-Recall
+        Concatenating mu...
         </span>
             <span class="hiddenrellink">
-            Precision-Recall
+            Concatenating multiple feature extraction methods
             </span>
         </a>
         </div>
@@ -199,42 +199,42 @@ presented.</p>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">LineCollection</span>
+<span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.LineCollection"><span class="n">LineCollection</span></a>
 
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.isotonic</span> <span class="kn">import</span> <span class="n">IsotonicRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">check_random_state</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">LinearRegression</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.isotonic</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.isotonic.IsotonicRegression.html#sklearn.isotonic.IsotonicRegression"><span class="n">IsotonicRegression</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <a href="../modules/generated/sklearn.utils.check_random_state.html#sklearn.utils.check_random_state"><span class="n">check_random_state</span></a>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="n">rs</span> <span class="o">=</span> <span class="n">check_random_state</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span> <span class="o">+</span> <span class="mf">50.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">rs</span> <span class="o">=</span> <a href="../modules/generated/sklearn.utils.check_random_state.html#sklearn.utils.check_random_state"><span class="n">check_random_state</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span> <span class="o">+</span> <span class="mf">50.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="n">n</span><span class="p">))</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Fit IsotonicRegression and LinearRegression models</span>
 
-<span class="n">ir</span> <span class="o">=</span> <span class="n">IsotonicRegression</span><span class="p">()</span>
+<a href="../modules/generated/sklearn.isotonic.IsotonicRegression.html#sklearn.isotonic.IsotonicRegression"><span class="n">ir</span></a> <span class="o">=</span> <a href="../modules/generated/sklearn.isotonic.IsotonicRegression.html#sklearn.isotonic.IsotonicRegression"><span class="n">IsotonicRegression</span></a><span class="p">()</span>
 
-<span class="n">y_</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">y_</span> <span class="o">=</span> <a href="../modules/generated/sklearn.isotonic.IsotonicRegression.html#sklearn.isotonic.IsotonicRegression"><span class="n">ir</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="n">lr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>  <span class="c"># x needs to be 2d for LinearRegression</span>
+<a href="../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">lr</span></a> <span class="o">=</span> <a href="../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">LinearRegression</span></a><span class="p">()</span>
+<a href="../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">lr</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>  <span class="c"># x needs to be 2d for LinearRegression</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># plot result</span>
 
 <span class="n">segments</span> <span class="o">=</span> <span class="p">[[[</span><span class="n">i</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">y_</span><span class="p">[</span><span class="n">i</span><span class="p">]]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-<span class="n">lc</span> <span class="o">=</span> <span class="n">LineCollection</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">lc</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
-<span class="n">lc</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.LineCollection"><span class="n">lc</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.LineCollection"><span class="n">LineCollection</span></a><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.LineCollection"><span class="n">lc</span></a><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.ones.html#numpy.ones"><span class="n">np</span><span class="o">.</span><span class="n">ones</span></a><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+<a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.LineCollection"><span class="n">lc</span></a><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.ones.html#numpy.ones"><span class="n">np</span><span class="o">.</span><span class="n">ones</span></a><span class="p">(</span><span class="n">n</span><span class="p">))</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;r.&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_</span><span class="p">,</span> <span class="s">&#39;g.-&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]),</span> <span class="s">&#39;b-&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">lc</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Data&#39;</span><span class="p">,</span> <span class="s">&#39;Isotonic Fit&#39;</span><span class="p">,</span> <span class="s">&#39;Linear Fit&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;lower right&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Isotonic regression&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;r.&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_</span><span class="p">,</span> <span class="s">&#39;g.-&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">x</span><span class="p">,</span> <a href="../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><span class="n">lr</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]),</span> <span class="s">&#39;b-&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gca"><span class="n">plt</span><span class="o">.</span><span class="n">gca</span></a><span class="p">()</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.LineCollection"><span class="n">lc</span></a><span class="p">)</span>
+<a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span></a><span class="p">((</span><span class="s">&#39;Data&#39;</span><span class="p">,</span> <span class="s">&#39;Isotonic Fit&#39;</span><span class="p">,</span> <span class="s">&#39;Linear Fit&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;lower right&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">plt</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;Isotonic regression&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -255,7 +255,7 @@ presented.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_precision_recall.html">Previous
+      <a href="feature_stacker.html">Previous
       </a>
     </div>
     <div class="buttonNext">

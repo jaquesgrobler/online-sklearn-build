@@ -36,8 +36,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="top" title="scikit-learn 0.15-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
-    <link rel="next" title="PCA example with Iris Data-set" href="plot_pca_iris.html" />
-    <link rel="prev" title="Comparison of LDA and PCA 2D projection of Iris dataset" href="plot_pca_vs_lda.html" />
+    <link rel="next" title="Kernel PCA" href="plot_kernel_pca.html" />
+    <link rel="prev" title="PCA example with Iris Data-set" href="plot_pca_iris.html" />
   
    
        <script type="text/javascript" src="../../_static/sidebar.js"></script>
@@ -119,14 +119,14 @@
   <!-- rellinks[1:] is an ugly hack to avoid link to module
   index -->
         <div class="rellink">
-        <a href="plot_pca_vs_lda.html"
+        <a href="plot_pca_iris.html"
         accesskey="P">Previous
         <br/>
         <span class="smallrellink">
-        Comparison of LD...
+        PCA example with...
         </span>
             <span class="hiddenrellink">
-            Comparison of LDA and PCA 2D projection of Iris dataset
+            PCA example with Iris Data-set
             </span>
         </a>
         </div>
@@ -134,14 +134,14 @@
             &nbsp;
             </div>
         <div class="rellink">
-        <a href="plot_pca_iris.html"
+        <a href="plot_kernel_pca.html"
         accesskey="N">Next
         <br/>
         <span class="smallrellink">
-        PCA example with...
+        Kernel PCA
         </span>
             <span class="hiddenrellink">
-            PCA example with Iris Data-set
+            Kernel PCA
             </span>
         </a>
         </div>
@@ -186,49 +186,69 @@
 <span id="example-decomposition-plot-ica-blind-source-separation-py"></span><h1>Blind source separation using FastICA<a class="headerlink" href="#blind-source-separation-using-fastica" title="Permalink to this headline">¶</a></h1>
 <p>An example of estimating sources from noisy data.</p>
 <p><a class="reference internal" href="../../modules/decomposition.html#ica"><em>Independent component analysis (ICA)</em></a> is used to estimate sources given noisy measurements.
-Imagine 2 instruments playing simultaneously and 2 microphones
+Imagine 3 instruments playing simultaneously and 3 microphones
 recording the mixed signals. ICA is used to recover the sources
-ie. what is played by each instrument.</p>
+ie. what is played by each instrument. Importantly, PCA fails
+at recovering our <cite>instruments</cite> since the related signals reflect
+non-Gaussian processes.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_ica_blind_source_separation.py"><tt class="xref download docutils literal"><span class="pre">plot_ica_blind_source_separation.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">FastICA</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">FastICA</span><span class="p">,</span> <span class="n">PCA</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Generate sample data</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">2000</span>
-<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+
 <span class="n">s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span>  <span class="c"># Signal 1 : sinusoidal signal</span>
 <span class="n">s2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">time</span><span class="p">))</span>  <span class="c"># Signal 2 : square signal</span>
-<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">]</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">sawtooth</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span>  <span class="c"># Signal 3: saw tooth signal</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">]</span>
 <span class="n">S</span> <span class="o">+=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c"># Add noise</span>
 
 <span class="n">S</span> <span class="o">/=</span> <span class="n">S</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c"># Standardize data</span>
 <span class="c"># Mix data</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>  <span class="c"># Mixing matrix</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]])</span>  <span class="c"># Mixing matrix</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>  <span class="c"># Generate observations</span>
+
 <span class="c"># Compute ICA</span>
-<span class="n">ica</span> <span class="o">=</span> <span class="n">FastICA</span><span class="p">()</span>
-<span class="n">S_</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>  <span class="c"># Get the estimated sources</span>
+<span class="n">ica</span> <span class="o">=</span> <span class="n">FastICA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">S_</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>  <span class="c"># Reconstruct signals</span>
 <span class="n">A_</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">mixing_</span>  <span class="c"># Get estimated mixing matrix</span>
+
+<span class="c"># We can `prove` that the ICA model applies by reverting the unmixing.</span>
 <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S_</span><span class="p">,</span> <span class="n">A_</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">ica</span><span class="o">.</span><span class="n">mean_</span><span class="p">)</span>
+
+<span class="c"># For comparison, compute PCA</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>  <span class="c"># Reconstruct signals based on orthogonal components</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Plot results</span>
+
 <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;True Sources&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Observations (mixed signal)&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S_</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;ICA estimated sources&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.26</span><span class="p">,</span> <span class="mf">0.36</span><span class="p">)</span>
+
+<span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">S_</span><span class="p">,</span> <span class="n">H</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Observations (mixed signal)&#39;</span><span class="p">,</span>
+         <span class="s">&#39;True Sources&#39;</span><span class="p">,</span>
+         <span class="s">&#39;ICA recovered signals&#39;</span><span class="p">,</span> 
+         <span class="s">&#39;PCA recovered signals&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="s">&#39;steelblue&#39;</span><span class="p">,</span> <span class="s">&#39;orange&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">names</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ii</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">sig</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.26</span><span class="p">,</span> <span class="mf">0.46</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -249,11 +269,11 @@ ie. what is played by each instrument.</p>
      <div class="rel">
     
     <div class="buttonPrevious">
-      <a href="plot_pca_vs_lda.html">Previous
+      <a href="plot_pca_iris.html">Previous
       </a>
     </div>
     <div class="buttonNext">
-      <a href="plot_pca_iris.html">Next
+      <a href="plot_kernel_pca.html">Next
       </a>
     </div>
     

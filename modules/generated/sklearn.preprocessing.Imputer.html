@@ -231,7 +231,16 @@ value along the axis.</li>
 <p><strong>copy</strong> : boolean, optional (default=True)</p>
 <blockquote class="last">
 <div><p>If True, a copy of X will be created. If False, imputation will
-be done in-place.</p>
+be done in-place whenever possible. Note that, in the following cases,
+a new copy will always be made, even if <cite>copy=False</cite>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>If X is not an array of floating values;</li>
+<li>If X is sparse and <cite>missing_values=0</cite>;</li>
+<li>If <cite>axis=0</cite> and X is encoded as a CSR matrix;</li>
+<li>If <cite>axis=1</cite> and X is encoded as a CSC matrix.</li>
+</ul>
+</div></blockquote>
 </div></blockquote>
 </td>
 </tr>

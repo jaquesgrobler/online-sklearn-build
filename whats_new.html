@@ -259,6 +259,16 @@
 <h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
+<li>The <a class="reference internal" href="tutorial/text_analytics/working_with_text_data.html#text-data-tutorial"><em>Working With Text Data</em></a> tutorial
+has now been worked in to the main documentation&#8217;s tutorial section.
+Includes exercises and skeletons for tutorial presentation.
+Original tutorial created by several authors including
+<a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a>, Lars Buitinck and many others.
+Tutorial integration into the scikit-learn documentation
+by <a class="reference external" href="https://github.com/jaquesgrobler/scikit-learn/wiki/Jaques-Grobler">Jaques Grobler</a></li>
+<li>Use of <tt class="xref py py-class docutils literal"><span class="pre">covariance.EllipticEnvelop</span></tt> has now been removed after
+deprecation.
+Please use <a class="reference internal" href="modules/generated/sklearn.covariance.EllipticEnvelope.html#sklearn.covariance.EllipticEnvelope" title="sklearn.covariance.EllipticEnvelope"><tt class="xref py py-class docutils literal"><span class="pre">covariance.EllipticEnvelope</span></tt></a> instead.</li>
 <li>Added <a class="reference internal" href="modules/generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier" title="sklearn.ensemble.BaggingClassifier"><tt class="xref py py-class docutils literal"><span class="pre">ensemble.BaggingClassifier</span></tt></a> and
 <a class="reference internal" href="modules/generated/sklearn.ensemble.BaggingRegressor.html#sklearn.ensemble.BaggingRegressor" title="sklearn.ensemble.BaggingRegressor"><tt class="xref py py-class docutils literal"><span class="pre">ensemble.BaggingRegressor</span></tt></a> meta-estimators for ensembling
 any kind of base estimator. See the <a class="reference internal" href="modules/ensemble.html#bagging"><em>Bagging</em></a> section of
@@ -297,12 +307,31 @@ by John Novak.</li>
 needs a temporary data structure the size of its input.</li>
 <li>Added <tt class="xref py py-class docutils literal"><span class="pre">linear_model.RANSACRegressor</span></tt> meta-estimator for the robust
 fitting of regression models. By Johannes Schönberger.</li>
+<li>Added <a class="reference internal" href="modules/computational_performance.html#computational-performance"><em>Computational Performance</em></a>
+documentation. Discussion and examples of prediction latency / throughput
+and different factors that have influence over speed. Additional tips for
+building faster models and choosing a relevant compromise between speed
+and predictive power.
+By <a class="reference external" href="https://github.com/oddskool">Eustache Diemert</a>.</li>
 <li>Fixed bug in <tt class="xref py py-class docutils literal"><span class="pre">gradient_boosting.GradientBoostingRegressor</span></tt> with
 <tt class="docutils literal"><span class="pre">loss='huber'</span></tt>: <tt class="docutils literal"><span class="pre">gamma</span></tt> might have not been initialized.</li>
 <li><a class="reference internal" href="modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier"><tt class="xref py py-class docutils literal"><span class="pre">dummy.DummyClassifier</span></tt></a> can now be used to predict a constant
 output value. By Manoj Kumar.</li>
 <li>Fixed bug in <a class="reference internal" href="modules/generated/sklearn.decomposition.MiniBatchDictionaryLearning.html#sklearn.decomposition.MiniBatchDictionaryLearning" title="sklearn.decomposition.MiniBatchDictionaryLearning"><tt class="xref py py-class docutils literal"><span class="pre">decomposition.MiniBatchDictionaryLearning</span></tt></a> :
 partial_fit was not working properly.</li>
+<li>Multi-label classification output in multilabel indicator format
+is now supported by <a class="reference internal" href="modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score" title="sklearn.metrics.roc_auc_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.roc_auc_score</span></tt></a> and
+<a class="reference internal" href="modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score" title="sklearn.metrics.average_precision_score"><tt class="xref py py-func docutils literal"><span class="pre">metrics.average_precision_score</span></tt></a> by <a class="reference external" href="http://www.ajoly.org">Arnaud Joly</a>.</li>
+<li>Fixed bug in <tt class="xref py py-class docutils literal"><span class="pre">linear_model.stochastic_gradient</span></tt> :
+<tt class="docutils literal"><span class="pre">l1_ratio</span></tt> was used as <tt class="docutils literal"><span class="pre">(1.0</span> <span class="pre">-</span> <span class="pre">l1_ratio)</span></tt> .</li>
+<li>Fixed bug in <a class="reference internal" href="modules/generated/sklearn.multiclass.OneVsOneClassifier.html#sklearn.multiclass.OneVsOneClassifier" title="sklearn.multiclass.OneVsOneClassifier"><tt class="xref py py-class docutils literal"><span class="pre">multiclass.OneVsOneClassifier</span></tt></a> with string
+labels</li>
+<li>Shorthand constructors <a class="reference internal" href="modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline"><tt class="xref py py-func docutils literal"><span class="pre">pipeline.make_pipeline</span></tt></a> and
+<a class="reference internal" href="modules/generated/sklearn.pipeline.make_union.html#sklearn.pipeline.make_union" title="sklearn.pipeline.make_union"><tt class="xref py py-func docutils literal"><span class="pre">pipeline.make_union</span></tt></a> were added by <a class="reference external" href="https://github.com/larsmans">Lars Buitinck</a>.</li>
+<li>Reduce memory usage and overhead when fitting and predicting with forests
+of randomized trees in parallel with <tt class="docutils literal"><span class="pre">n_jobs</span> <span class="pre">!=</span> <span class="pre">1</span></tt> by leveraging new
+threading backend of joblib 0.8 and releasing the GIL in the tree fitting
+Cython code.  By <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a> and <a class="reference external" href="http://www.montefiore.ulg.ac.be/~glouppe/">Gilles Louppe</a></li>
 </ul>
 </div></blockquote>
 </div>
@@ -323,6 +352,12 @@ from cross-validation generators is deprecated.
 Support for masks will be removed in 0.17.
 The generators have produced arrays of indices by default since 0.10.
 By <a class="reference external" href="http://joelnothman.com">Joel Nothman</a>.</li>
+<li>1-d arrays containing strings with <tt class="docutils literal"><span class="pre">dtype=object</span></tt> (as used in Pandas)
+are now considered valid classification targets. This fixes a regression
+from version 0.13 in some classifiers. By <a class="reference external" href="http://joelnothman.com">Joel Nothman</a>.</li>
+<li>Fix wrong <cite>explained_variance_ratio_</cite> attribute in
+<a class="reference internal" href="modules/generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA" title="sklearn.decomposition.RandomizedPCA"><tt class="xref py py-class docutils literal"><span class="pre">RandomizedPCA</span></tt></a>.
+By <a class="reference external" href="http://alexandre.gramfort.net">Alexandre Gramfort</a>.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1626,8 +1661,8 @@ and <a class="reference external" href="http://alexandre.gramfort.net">Alexandre
 <li>Distance helper functions <a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.pairwise_distances.html#sklearn.metrics.pairwise.pairwise_distances" title="sklearn.metrics.pairwise.pairwise_distances"><tt class="xref py py-func docutils literal"><span class="pre">metrics.pairwise.pairwise_distances</span></tt></a>
 and <a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.pairwise_kernels.html#sklearn.metrics.pairwise.pairwise_kernels" title="sklearn.metrics.pairwise.pairwise_kernels"><tt class="xref py py-func docutils literal"><span class="pre">metrics.pairwise.pairwise_kernels</span></tt></a> by Robert Layton</li>
 <li><a class="reference internal" href="modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="sklearn.cluster.MiniBatchKMeans"><tt class="xref py py-class docutils literal"><span class="pre">Mini-Batch</span> <span class="pre">K-Means</span></tt></a> by Nelle Varoquaux and Peter Prettenhofer.</li>
-<li><a class="reference internal" href="datasets/index.html#mldata"><em>Downloading datasets from the mldata.org repository</em></a> utilities by Pietro Berkes.</li>
-<li><a class="reference internal" href="datasets/index.html#olivetti-faces"><em>The Olivetti faces dataset</em></a> by <a class="reference external" href="http://www-etud.iro.umontreal.ca/~wardefar/">David Warde-Farley</a>.</li>
+<li><a class="reference internal" href="datasets/mldata.html#mldata"><em>Downloading datasets from the mldata.org repository</em></a> utilities by Pietro Berkes.</li>
+<li><a class="reference internal" href="datasets/olivetti_faces.html#olivetti-faces"><em>The Olivetti faces dataset</em></a> by <a class="reference external" href="http://www-etud.iro.umontreal.ca/~wardefar/">David Warde-Farley</a>.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1648,7 +1683,7 @@ upgrade their codebase. For instance under Linux / MacOSX just run
 <li><p class="first">Estimators no longer accept model parameters as <tt class="docutils literal"><span class="pre">fit</span></tt> arguments:
 instead all parameters must be only be passed as constructor
 arguments or using the now public <tt class="docutils literal"><span class="pre">set_params</span></tt> method inherited
-from <tt class="xref py py-class docutils literal"><span class="pre">base.BaseEstimator</span></tt>.</p>
+from <a class="reference internal" href="modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator"><tt class="xref py py-class docutils literal"><span class="pre">base.BaseEstimator</span></tt></a>.</p>
 <p>Some estimators can still accept keyword arguments on the <tt class="docutils literal"><span class="pre">fit</span></tt>
 but this is restricted to data-dependent values (e.g. a Gram matrix
 or an affinity matrix that are precomputed from the <tt class="docutils literal"><span class="pre">X</span></tt> data matrix.</p>
@@ -1765,7 +1800,7 @@ enhancements and bug fixes.</p>
 <li>New <a class="reference internal" href="modules/clustering.html#hierarchical-clustering"><em>Hierarchical clustering</em></a> module by Vincent Michel,
 <a class="reference external" href="http://parietal.saclay.inria.fr/Members/bertrand-thirion">Bertrand Thirion</a>, <a class="reference external" href="http://alexandre.gramfort.net">Alexandre Gramfort</a> and <a class="reference external" href="http://gael-varoquaux.info">Gael Varoquaux</a>.</li>
 <li><a class="reference internal" href="modules/decomposition.html#kernel-pca"><em>Kernel PCA</em></a> implementation by <a class="reference external" href="http://www.mblondel.org">Mathieu Blondel</a></li>
-<li><a class="reference internal" href="datasets/index.html#labeled-faces-in-the-wild"><em>The Labeled Faces in the Wild face recognition dataset</em></a> by <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a>.</li>
+<li><a class="reference internal" href="datasets/labeled_faces.html#labeled-faces-in-the-wild"><em>The Labeled Faces in the Wild face recognition dataset</em></a> by <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a>.</li>
 <li>New <a class="reference internal" href="modules/cross_decomposition.html#cross-decomposition"><em>Cross decomposition</em></a> module by <a class="reference external" href="http://www.lnao.fr/spip.php?rubrique30">Edouard Duchesnay</a>.</li>
 <li><a class="reference internal" href="modules/decomposition.html#nmf"><em>Non-negative matrix factorization (NMF or NNMF)</em></a> module <a class="reference external" href="http://vene.ro">Vlad Niculae</a></li>
 <li>Implementation of the <a class="reference internal" href="modules/covariance.html#oracle-approximating-shrinkage"><em>Oracle Approximating Shrinkage</em></a> algorithm by

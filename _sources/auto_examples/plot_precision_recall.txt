@@ -61,15 +61,23 @@ in the threshold considerably reduces precision, with only a minor gain in
 recall. See the corner at recall = .59, precision = .8 for an example of this
 phenomenon.
 
+Precision-recall curves are typically used in binary classification to study
+the output of a classifier. In order to extend Precision-recall curve and
+average precision to multi-class or multi-label classification, it is necessary
+to binarize the output. One curve can be drawn per label, but one can also draw
+a precision-recall curve by considering each element of the label indicator
+matrix as a binary prediction (micro-averaging).
+
 .. note::
 
     See also :func:`sklearn.metrics.average_precision_score`,
              :func:`sklearn.metrics.recall_score`,
-             :func:`sklearn.metrics.precision_score`
+             :func:`sklearn.metrics.precision_score`,
+             :func:`sklearn.metrics.f1_score`
 
 
 **Python source code:** :download:`plot_precision_recall.py <plot_precision_recall.py>`
 
 .. literalinclude:: plot_precision_recall.py
-    :lines: 66-
+    :lines: 74-
     
