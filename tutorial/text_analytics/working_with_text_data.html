@@ -184,6 +184,7 @@
 <li><a class="reference internal" href="#exercise-1-language-identification">Exercise 1: Language identification</a></li>
 <li><a class="reference internal" href="#exercise-2-sentiment-analysis-on-movie-reviews">Exercise 2: Sentiment Analysis on movie reviews</a></li>
 <li><a class="reference internal" href="#exercise-3-cli-text-classification-utility">Exercise 3: CLI text classification utility</a></li>
+<li><a class="reference internal" href="#where-to-from-here">Where to From Here</a></li>
 </ul>
 </li>
 </ul>
@@ -637,6 +638,26 @@ the polarity (positive or negative) if the text is written in
 English.</p>
 <p>Bonus point if the utility is able to give a confidence level for its
 predictions.</p>
+</div>
+<div class="section" id="where-to-from-here">
+<h2>Where to From Here<a class="headerlink" href="#where-to-from-here" title="Permalink to this headline">¶</a></h2>
+<p>Here are a few suggestions to help further your scikit-learn intuition
+upon the completion of this tutorial:</p>
+<ul class="simple">
+<li>Try playing around with the <cite>analyzer</cite> and <cite>token normalisation</cite> under
+<a class="reference internal" href="../../modules/generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a></li>
+<li>If you don&#8217;t have labels, try using
+<a class="reference internal" href="../../auto_examples/document_clustering.html#example-document-clustering-py"><em>Clustering</em></a>
+on your problem.</li>
+<li>If you have multiple labels per document, e.g categories, have a look
+at the <a class="reference internal" href="../../modules/multiclass.html#multiclass"><em>Multiclass and multilabel section</em></a></li>
+<li>Try using <a class="reference internal" href="../../modules/decomposition.html#decompositions"><em>PCA (Principal Component Analysis)</em></a> for
+<a class="reference external" href="http://en.wikipedia.org/wiki/Latent_semantic_analysis">latent semantic analysis</a>.</li>
+<li>Have a look at using
+<a class="reference internal" href="../../auto_examples/applications/plot_out_of_core_classification.html#example-applications-plot-out-of-core-classification-py"><em>Out-of-core Classification</em></a> to
+learn from data that would not fit into the computer main memory.</li>
+<li>If you have too many sparse features, try using the <a class="reference internal" href="../../modules/feature_extraction.html#hashing-vectorizer"><em>Hashing Vectorizer</em></a>.</li>
+</ul>
 </div>
 </div>
 
